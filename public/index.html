@@ -17,16 +17,54 @@
 
 	<!-- AOS -->
 	<link rel="stylesheet" href="css/aos.css" />
+	<style>
+		html,
+		body {
+			width: 100%;
+			overflow-x: hidden;
+		}
+
+		@media screen and (max-width: 768px) {
+			#main-logo {
+				height: 150px;
+				width: 150px;
+			}
+
+			.heading {
+				margin: 0rem 3rem;
+			}
+
+			.copyright-footer {
+				margin-top: -4rem;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin-bottom: 0.5rem;
+			}
+		}
+
+		@media screen and (min-width: 768px) {
+			#main-logo {
+				height: 200px;
+				width: 200px;
+			}
+			.copyright-footer {
+				margin-top: -5rem;
+				
+			}
+		}
+	</style>
 </head>
 
 <body>
 	<!-- banner -->
 	<div class="jumbotron jumbotron-fluid" id="banner" style="background-image: url(img/banner-bk.jpg)">
 		<div class="container text-center text-md-left">
-			<header>
+			<header style="margin-top:-4rem">
 				<div class="row justify-content-between">
 					<div class="col-2">
-						<img src="img/logo.png" alt="logo" />
+						<img src="img/menubase_wording-inverted_1_200x200.png" id="main-logo" style="max-width:1000px"
+							alt="logo" />
 					</div>
 					<div class="col-6 align-self-center text-right">
 						<a href="https://app.menubase.io/" class="text-white lead">Get Early Access</a>
@@ -34,7 +72,7 @@
 				</div>
 			</header>
 			<h1 data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true"
-				class="display-3 text-white font-weight-bold my-5">
+				class="display-3 text-white font-weight-bold heading">
 				AP Automation <br />
 				and Smart Insights <br />
 				for the F&B Industry
@@ -44,8 +82,8 @@
 				Optimize your restaurant's spending habit. Monitor all your
 				costs in real-time.
 			</p>
-			<a href="https://app.menubase.io/" data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true"
-				class="btn my-4 font-weight-bold atlas-cta cta-green">Get Started</a>
+			<a href="https://app.menubase.io/" data-aos="fade" data-aos-easing="linear" data-aos-duration="1000"
+				data-aos-once="true" class="btn my-4 font-weight-bold atlas-cta cta-green">Get Started</a>
 		</div>
 	</div>
 	<!-- three-blcok -->
@@ -126,7 +164,8 @@
 						Let us seamlessly extract data from your point-of-sale system in real time
 
 					</p>
-					<a href="https://app.menubase.io/" class="btn my-4 font-weight-bold atlas-cta cta-blue">Learn More</a>
+					<a href="https://app.menubase.io/" class="btn my-4 font-weight-bold atlas-cta cta-blue">Learn
+						More</a>
 				</div>
 				<div data-aos="fade-left" data-aos-duration="1000" data-aos-once="true"
 					class="col-md-6 align-self-center">
@@ -181,7 +220,8 @@
 			<div class="row justify-content-between text-center text-md-left">
 				<div data-aos="fade-right" data-aos-duration="1000" data-aos-once="true"></div>
 				<div data-aos="fade-left" data-aos-duration="1000" data-aos-once="true" class="col-md-6 flex-md-last">
-					<a href="https://app.menubase.io/" class="btn my-4 font-weight-bold atlas-cta cta-blue">Learn More</a>
+					<a href="https://app.menubase.io/" class="btn my-4 font-weight-bold atlas-cta cta-blue">Learn
+						More</a>
 				</div>
 			</div>
 		</div>
@@ -326,8 +366,9 @@
 	<div class="jumbotron jumbotron-fluid" id="copyright">
 		<div class="container">
 			<div class="row justify-content-between">
-				<div class="col-md-6 text-white align-self-center text-center text-md-left my-2">
-					Copyright © 2020 Menubase.io.
+				<div class="col-md-6 text-white align-self-center text-center text-md-left  copyright-footer">
+					<img src='./img/menubase_wording-inverted_1_200x200.png' style="width: 200px;height:200px;">
+					<p style="margin-top:-4rem">Copyright © 2020 Menubase.io.</p>
 				</div>
 				<div class="col-md-6 align-self-center text-center text-md-right my-2" id="social-media">
 					<a href="https://www.facebook.com/Medusa-101217641876383" class="d-inline-block text-center ml-2"
