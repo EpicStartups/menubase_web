@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<title>Menubase | Restaurant intelligence menu analytics platform</title>
+	<meta name="description" content="Menubase | Restaurant intelligence menu analytics platform" />
+	<link rel="icon" href="img/colormenubaselogo-removebg-preview.png" sizes="16x16" type="image/png" />
+	<meta name="facebook-domain-verification" content="ofc4i13s0dxcv62cbilzlt2ifvn6up" />
+	<!-- custom.css -->
+	<link rel="stylesheet" href="css/custom.css" />
+	<!-- bootstrap.min.css -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<!-- font-awesome -->
+	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- AOS -->
+	<link rel="stylesheet" href="css/aos.css" />
+	<style>
+		html,
+		body {
+			width: 100%;
+			overflow-x: hidden;
+		}
+
+		@media screen and (max-width: 768px) {
+			#main-logo {
+				height: 150px;
+				width: 150px;
+			}
+
+			.heading {
+				margin: 0rem 3rem;
+			}
+
+			.copyright-footer {
+				margin-top: -4rem;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin-bottom: 0.5rem;
+			}
+		}
+
+		@media screen and (min-width: 768px) {
+			#main-logo {
+				height: 200px;
+				width: 200px;
+			}
+			.copyright-footer {
+				margin-top: -4.5rem;
+				
+			}
+		}
+	</style>
+</head>
+
+<body>
+	
+	
+
+	<div class="p-4">
+		<h2 id="type-form" class="text-center font-weight-bold my-5">
+			Interested?
+		</h2>
+		<h4 class="text-center font-weight-bold my-5">
+			Fill up this form and we'll get in touch with you to help solve
+			your pain points!
+		</h4>
+		<div class="typeform-widget" data-url="https://form.typeform.com/to/z9ksOQOP?typeform-medium=embed-snippet"
+			style="width: 100%; height: 500px"></div>
+	</div>
+
+	<!-- copyright -->
+	<div class="jumbotron jumbotron-fluid" id="copyright">
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col-md-6 text-white align-self-center text-center text-md-left  copyright-footer">
+					<img src='./img/menubase_wording-inverted_1_200x200.png' style="width: 200px;height:200px;">
+					<p style="margin-top:-4rem">Copyright © 2020 Menubase.io.</p>
+				</div>
+				<div class="col-md-6 align-self-center text-center text-md-right my-2" id="social-media">
+					<a href="https://www.facebook.com/Medusa-101217641876383" class="d-inline-block text-center ml-2"
+						target="_blank">
+						<i class="fa fa-facebook" aria-hidden="true"></i>
+					</a>
+					<a href="https://www.instagram.com/medusa.analytics/" class="d-inline-block text-center ml-2"
+						target="_blank">
+						<i class="fa fa-instagram" aria-hidden="true"></i>
+					</a>
+					<a href="https://www.linkedin.com/company/medusa-analytics" class="d-inline-block text-center ml-2"
+						target="_blank">
+						<i class="fa fa-linkedin" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- AOS -->
+	<script src="js/aos.js"></script>
+	<script>
+		AOS.init({});
+		(function () {
+			var qs,
+				js,
+				q,
+				s,
+				d = document,
+				gi = d.getElementById,
+				ce = d.createElement,
+				gt = d.getElementsByTagName,
+				id = 'typef_orm',
+				b = 'https://embed.typeform.com/';
+			if (!gi.call(d, id)) {
+				js = ce.call(d, 'script');
+				js.id = id;
+				js.src = b + 'embed.js';
+				q = gt.call(d, 'script')[0];
+				q.parentNode.insertBefore(js, q);
+			}
+		})();
+	</script>
+</body>
+
+</html>
