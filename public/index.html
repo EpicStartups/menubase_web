@@ -23,8 +23,22 @@
 			width: 100%;
 			overflow-x: hidden;
 		}
-
+		@media screen and (max-width: 432px) {
+			.invi-mr {
+				margin-top:1.5rem !important;
+				margin-bottom:0.75rem !important;
+				margin-right:0 !important;
+			}
+		}
 		@media screen and (max-width: 768px) {
+			.invi-full-width {
+				width:100%
+			}
+			.invi-mr {
+				margin-top:1.5rem;
+				margin-bottom:1.5rem;
+				/* margin-right:1rem; */
+			}
 			.left-text {
 				text-align: left;
 			}
@@ -36,9 +50,9 @@
 			.invi-break2{
 				display:none
 			}
-			.invi-mt {
+			/* .invi-mt {
 				margin-top:2rem;
-			}
+			} */
 			#get-started {
 				justify-content: center;
 			}
@@ -64,6 +78,11 @@
 		}
 
 		@media screen and (min-width: 768px) {
+			.invi-mr {
+				margin-right:2rem;
+				margin-top:1.5rem;
+				margin-bottom:1.5rem
+			}
 			.invi-break{
 				display:none
 			}
@@ -95,9 +114,9 @@
 							alt="logo" />
 					</div>
 					<div class="col-6 align-self-center text-right invi-mt">
-						<a href="https://menubase.io/contact-us.html" style='padding:1rem' class="text-white lead">Contact Us</a>
-						<a href="https://app.menubase.io/" style='padding:1rem' class="text-white lead">Login</a><br class="invi-break">
-						<a href="https://app.menubase.io/" style='padding:1rem' class="text-white lead">Sign Up</a>
+						<!-- <a href="https://menubase.io/contact-us.html" style='padding:1rem' class="text-white lead">Contact Us</a> -->
+						<a href="https://app.menubase.io/" style="padding-bottom:1rem"  class="text-white lead">Login</a>
+						<!-- <br class="invi-break"> -->
 					</div>
 				</div>
 			</header>
@@ -112,9 +131,13 @@
 				costs in real-time.
 			</p>
 			<div id='get-started' style='display:flex;align-items: center;flex-wrap: wrap;'>
+				<a href="https://menubase.io/contact-us.html" style="width:12.5rem"  data-aos="fade" data-aos-easing="linear" data-aos-duration="1000"
+				data-aos-once="true" class="btn  font-weight-bold atlas-cta cta-green invi-mr">Contact us</a>
+				<div  style="display:flex;align-items:center;flex-wrap: wrap;justify-content:center">
 			<a href="https://app.menubase.io/" data-aos="fade" data-aos-easing="linear" data-aos-duration="1000"
-				data-aos-once="true" class="btn my-4 font-weight-bold atlas-cta cta-green">Get Started for free</a>
-				<p data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true" class="lead text-white" style='margin-left:1rem;margin-top:0'>No credit card required</p>
+				data-aos-once="true" class="btn my-4 font-weight-bold atlas-cta cta-green ">Get Started for free</a>
+				<p data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true" class="lead text-white invi-full-width" style='margin-left:1rem;margin-top:0'>No credit card required</p>
+			</div>
 			</div>
 		</div>
 	</div>
