@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<title>Menubase | Restaurant intelligence menu analytics platform</title>
+	<meta name="description" content="Menubase | Restaurant intelligence menu analytics platform" />
+	<link rel="icon" href="img/colormenubaselogo-removebg-preview.png" sizes="16x16" type="image/png" />
+	<meta name="facebook-domain-verification" content="ofc4i13s0dxcv62cbilzlt2ifvn6up" />
+	<!-- custom.css -->
+	<link rel="stylesheet" href="css/custom.css" />
+	<!-- bootstrap.min.css -->
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<!-- font-awesome -->
+	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+
+	<!-- AOS -->
+	<link rel="stylesheet" href="css/aos.css" />
+	<style>
+		html,
+		body {
+			width: 100%;
+			overflow-x: hidden;
+		}
+		@media screen and (max-width: 432px) {
+			.invi-mr {
+				margin-top:1.5rem !important;
+				margin-bottom:0.75rem !important;
+				margin-right:0 !important;
+			}
+		}
+		@media screen and (max-width: 768px) {
+			.invi-full-width {
+				width:100%
+			}
+			.invi-mr {
+				margin-top:1.5rem;
+				margin-bottom:1.5rem;
+				/* margin-right:1rem; */
+			}
+			.left-text {
+				text-align: left;
+			}
+			#banner h1 { 
+				font-size: 2rem;
+				text-align: left;
+				margin-left:0;
+			}
+			.invi-break2{
+				display:none
+			}
+			/* .invi-mt {
+				margin-top:2rem;
+			} */
+			#get-started {
+				justify-content: center;
+			}
+			#get-started p {
+				margin-left:0 !important;
+			}
+			#main-logo {
+				height: 150px;
+				width: 180px;
+			}
+
+			.heading {
+				margin: 0rem 3rem;
+			}
+
+			.copyright-footer {
+				margin-top: -4rem;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin-bottom: 0.5rem;
+			}
+		}
+
+		@media screen and (min-width: 768px) {
+			.invi-mr {
+				margin-right:2rem;
+				margin-top:1.5rem;
+				margin-bottom:1.5rem
+			}
+			.invi-break{
+				display:none
+			}
+
+
+			#get-started p {
+				margin-top:1rem !important;
+			}
+			#main-logo {
+				height: 200px;
+				width: 250px;
+			}
+			.copyright-footer {
+				margin-top: -4.5rem;
+				
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<!-- banner -->
+	<div class="jumbotron jumbotron-fluid" id="banner" style="background-image: url(img/banner-bk.jpg)">
+		<div class="container text-center text-md-left">
+			<header style="margin-top:-4rem">
+				<div class="row justify-content-between">
+					<div class="col-2">
+						<img src="img/inverted-bookleftmenubase.png" id="main-logo" style="max-width:1000px;object-fit:contain"
+							alt="logo" />
+					</div>
+					<div class="col-6 align-self-center text-right invi-mt">
+						<!-- <a href="https://menubase.io/contact-us.html" style='padding:1rem' class="text-white lead">Contact Us</a> -->
+						<a href="https://app.menubase.io/" style="padding-bottom:1rem"  class="text-white lead">Login</a>
+						<!-- <br class="invi-break"> -->
+					</div>
+				</div>
+			</header>
+			<h1 data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true"
+				class="display-3 text-white font-weight-bold heading">
+				Never lose sight of<br class="invi-break2"> your expenses anymore.<br class="invi-break2">
+				 Track your spending for <br class="invi-break2">every menu item and <br class="invi-break2">turn your store's data <br class="invi-break2">into profits.
+			</h1>
+			<p data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true"
+				class="lead text-white my-4 left-text">
+				Optimize your restaurant's spending habit. Monitor all your
+				costs in real-time.
+			</p>
+			<div id='get-started' style='display:flex;align-items: center;flex-wrap: wrap;'>
+				<a href="https://menubase.io/contact-us.html" style="width:12.5rem"  data-aos="fade" data-aos-easing="linear" data-aos-duration="1000"
+				data-aos-once="true" class="btn  font-weight-bold atlas-cta cta-green invi-mr">Contact us</a>
+				<div  style="display:flex;align-items:center;flex-wrap: wrap;justify-content:center">
+			<a href="https://app.menubase.io/" data-aos="fade" data-aos-easing="linear" data-aos-duration="1000"
+				data-aos-once="true" class="btn my-4 font-weight-bold atlas-cta cta-green ">Get Started for free</a>
+				<p data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true" class="lead text-white invi-full-width" style='margin-left:1rem;margin-top:0'>No credit card required</p>
+			</div>
+			</div>
+		</div>
+	</div>
+	<!-- three-blcok -->
+	<div class="container my-5 py-2">
+		<h2 class="text-center font-weight-bold my-5">What we do?</h2>
+		<p class='text-center' style="margin-top:-1rem">We help restaurant managers track ingredient costs against sales
+			performance to optimize expenses and maximize menu item profits.</p>
+		<div class="row">
+			<div data-aos="fade-up" data-aos-delay="0" data-aos-duration="1000" data-aos-once="true"
+				class="col-md-4 text-center">
+				<img src="img/smart-protect-1.jpg" alt="Anti-spam" class="mx-auto" />
+				<h4>Menu Data Collection</h4>
+				<p>
+					We digitize your ingredient purchase invoices and menu sales data in the cloud for easy
+					accessibility and organization.
+				</p>
+			</div>
+			<div data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" data-aos-once="true"
+				class="col-md-4 text-center">
+				<img src="img/smart-protect-2.jpg" alt="Phishing Detect" class="mx-auto" />
+				<h4>Menu Cost Control</h4>
+				<p>
+					We associate your actual ingredients costs with existing menu items to improve cost control and
+					estimate menu selling price.
+
+				</p>
+			</div>
+			<div data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000" data-aos-once="true"
+				class="col-md-4 text-center">
+				<img src="img/smart-protect-3.jpg" alt="Smart Scan" class="mx-auto" />
+				<h4>Menu Analysis</h4>
+				<p>
+					We simplify and help paint a picture on the performance of your menu so that you can make more
+					informed decisions to constantly improve.
+
+				</p>
+			</div>
+		</div>
+	</div>
+	<!-- feature (skew background) -->
+	<div class="jumbotron jumbotron-fluid feature" id="feature-first">
+		<div class="container my-5">
+			<div class="row justify-content-between text-center text-md-left">
+				<div data-aos="fade-right" data-aos-duration="1000" data-aos-once="true" class="col-md-6">
+					<h2 class="font-weight-bold">ORGANIZE YOUR DATA</h2>
+					<p class="my-4">
+						<strong>Upload and automate data entry</strong> <br />
+						Save time by automating your data entry of invoices and sales data
+					</p>
+					<p class="my-4">
+						<strong>Track your invoices by line item
+						</strong>
+						<br />
+						We automatically capture your invoice line items detailing product name, cost and quantity.
+
+					</p>
+					<p class="my-4">
+						<strong>Search and sort invoices
+						</strong>
+						<br />
+						Have all your invoices in digital format in the cloud so that you can easily access them
+						remotely anywhere, anytime.
+
+					</p>
+					<p class="my-4">
+						<strong>Upload data through Whatsapp (coming soon)
+
+						</strong>
+						<br />
+						Conveniently upload your ingredient receipts and invoices through Whatsapp chat
+
+					</p>
+					<p class="my-4">
+						<strong>Point of sale integration (coming soon)
+
+						</strong>
+						<br />
+						Let us seamlessly extract data from your point-of-sale system in real time
+
+					</p>
+					<a href="https://app.menubase.io/" class="btn my-4 font-weight-bold atlas-cta cta-blue">Learn
+						More</a>
+				</div>
+				<div data-aos="fade-left" data-aos-duration="1000" data-aos-once="true"
+					class="col-md-6 align-self-center">
+					<img src="img/Invoice-processing.gif" alt="Take a look inside" class="mx-auto d-block" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- feature (green background) -->
+	<div class="jumbotron jumbotron-fluid feature" id="feature-last">
+		<div class="container">
+			<div class="row justify-content-between text-center text-md-left">
+				<div data-aos="fade-left" data-aos-duration="1000" data-aos-once="true" class="col-md-6 flex-md-last">
+					<h2 class="font-weight-bold">MANAGE YOUR MENU</h2>
+					<p class="my-4">
+						<strong>Associate purchased ingredients with menu items </strong> <br />
+						Reflect the cost of menu items based on purchased ingredients from your uploaded invoices
+					</p>
+					<p class="my-4">
+						<strong>Plan your overhead costs</strong> <br />
+						Populate your expected overhead costs to better understand the profitability of your menu items
+					</p>
+					<p class="my-4">
+						<strong>Manage ingredient categories and suppliers
+						</strong>
+						<br />
+						Sort and track ingredient purchase history to determine the most reliable suppliers
+
+					</p>
+					<p class="my-4">
+						<strong>Export data to your favourite accounting software (coming soon)
+						</strong>
+						<br />
+						We integrate with xero & quickbooks to reduce the burden of manual data entry.
+
+
+					</p>
+					<p class="my-4">
+						<strong>Make payments to suppliers (coming soon)
+
+						</strong>
+						<br />
+						Directly make invoice payments to your suppliers with a single click.
+
+					</p>
+				</div>
+				<div data-aos="fade-right" data-aos-duration="1000" data-aos-once="true"
+					class="col-md-6 align-self-center flex-md-first">
+					<img src="img/Manage.png" alt="Safe and reliable" class="mx-auto d-block" />
+				</div>
+			</div>
+			<div class="row justify-content-between text-center text-md-left">
+				<div data-aos="fade-right" data-aos-duration="1000" data-aos-once="true"></div>
+				<div data-aos="fade-left" data-aos-duration="1000" data-aos-once="true" class="col-md-6 flex-md-last">
+					<a href="https://app.menubase.io/" class="btn my-4 font-weight-bold atlas-cta cta-blue">Learn
+						More</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- feature (white background) -->
+	<div class="container my-5">
+		<div class="row justify-content-between text-center text-md-left">
+			<div data-aos="fade-right" data-aos-duration="1000" data-aos-once="true" class="col-md-6">
+				<h2 class="font-weight-bold">ANALYZE YOUR PERFORMANCE</h2>
+				<p class="my-4">
+					<strong>Real-time dashboard update</strong>
+					<br />
+					Monitor all your expenses and sales at a glance to gauge the health and performance of your
+					restaurant establishments.
+
+				</p>
+				<p class="my-4">
+					<strong>Dynamic menu analysis
+					</strong> <br />
+					Mix and match your ingredient costs and menu items sold over time through our dynamic analytical
+					matrix to gauge menu item performance
+
+				</p>
+				<p class="my-4">
+					<strong>Forecast future expenditures and expected sales
+					</strong> <br />
+					Plan ahead and make decisions for the coming weeks based on historical sales and spending patterns
+
+				</p>
+				<p class="my-4">
+					<strong>Make informed decisions from insights of the day (coming soon)
+					</strong>
+					<br />
+					Understand what’s happening within your business environment through our custom generated headlines
+					for your establishment.
+
+				</p>
+				<a href="https://app.menubase.io/" class="btn my-4 font-weight-bold atlas-cta cta-blue">Learn More</a>
+			</div>
+			<div data-aos="fade-left" data-aos-duration="1000" data-aos-once="true" class="col-md-6 align-self-center">
+				<img src="img/Analyze.png" alt="Take a look inside" class="mx-auto d-block" />
+			</div>
+		</div>
+	</div>
+
+	<!-- price table -->
+	<div class="container my-5 py-2" id="price-table">
+		<h2 class="text-center font-weight-bold d-block mb-4">
+			Check our flexible pricing model
+		</h2>
+		<div style="text-align:center">
+			<p><b>Refer a friend and receive 1 month free</b></p>
+			<p><b>Subscribe for yearly subscription to get 2 months waived</b></p>
+		</div>
+		<!-- <h5 class="text-center font-weight-normal d-block mb-3">
+				Subscribe for yearly subscription to get 2 months waived
+			</h5> -->
+		<div class="row">
+			<div data-aos="fade-right" data-aos-delay="200" data-aos-duration="1000" data-aos-once="true"
+				class="col-md-4 text-center py-4 mt-5">
+				<h4 class="my-4">INCUBATE</h4>
+				<p class="font-weight-bold">
+					RM <span class="display-2 font-weight-bold">0</span> /
+					MO.
+				</p>
+				<p>Great for mobile kiosks, hawkers and street stalls seeking to pursue their passion and share great
+					products</p>
+				<ul style="text-align:left">
+					<li>Upload and record up to 20 expense entries per month</li>
+					<li>Automate data entry of up to 5 invoices or receipts per month</li>
+					<li>Manage up to 20 menu items</li>
+					<li>Create up to 10 categories of ingredients</li>
+				</ul>
+				<!-- <a href="https://app.menubase.io/" class="btn my-4 font-weight-bold atlas-cta cta-ghost">Get Free</a> -->
+			</div>
+			<div data-aos="fade-up" data-aos-duration="1000" data-aos-once="true"
+				class="col-md-4 text-center py-4 mt-5 rounded" id="price-table__premium">
+				<h4 class="my-4">GROW</h4>
+				<p class="font-weight-bold">
+					RM <span class="display-2 font-weight-bold">99</span> /
+					MO.
+				</p>
+				<p class="font-weight-bold">(RM88/month per additional outlet)<br> [coming soon]
+				</p>
+				<p>Essential for independent restaurants and cafes who seeks to put systems in place
+				</p>
+				<ul style="text-align: left;">
+					<li>Upload and record unlimited expense entries per month</li>
+					<li>Automate data entry of up to 35 invoices or receipts per month</li>
+					<li>Automate unlimited entries of sales data</li>
+					<li>Manage unlimited menu items</li>
+					<li>Create unlimited categories of ingredients
+					</li>
+				</ul>
+				<!-- <a href="https://app.menubase.io/" class="btn my-4 font-weight-bold atlas-cta cta-green">Get Free</a> -->
+			</div>
+			<div data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000" data-aos-once="true"
+				class="col-md-4 text-center py-4 mt-5">
+				<h4 class="my-4">EXPAND</h4>
+				<p class="font-weight-bold">
+					RM <span class="display-2 font-weight-bold">199</span> /
+					MO.
+				</p>
+				<p class="font-weight-bold">(RM166/month per additional outlet) <br>[coming soon]
+				</p>
+				<p>Perfect for established and expanding businesses looking to track performance and make actionable
+					decisions </p>
+				<ul style="text-align:left">
+					<li>Automate data entry of unlimited invoices or receipts</li>
+					<li>Automate unlimited entries of sales data</li>
+					<li>Manage unlimited menu items</li>
+					<li>Create unlimited categories of ingredients</li>
+					<li>Customize overhead specifications to suit your establishment
+					</li>
+					<li>Tweak and adjust parameters for insights
+					</li>
+					<li>Tweak and adjust parameters for forecasting
+
+					</li>
+					<li>Specialist operational advisory assistance
+
+					</li>
+				</ul>
+				<!-- <a href="https://app.menubase.io/" class="btn my-4 font-weight-bold atlas-cta cta-ghost">Get Free</a> -->
+			</div>
+		</div>
+	</div>
+
+	<!-- <div class="p-4">
+		<h2 id="type-form" class="text-center font-weight-bold my-5">
+			Interested?
+		</h2>
+		<h4 class="text-center font-weight-bold my-5">
+			Fill up this form and we'll get in touch with you to help solve
+			your pain points!
+		</h4>
+		<div class="typeform-widget" data-url="https://form.typeform.com/to/z9ksOQOP?typeform-medium=embed-snippet"
+			style="width: 100%; height: 500px"></div>
+	</div> -->
+
+	<!-- copyright -->
+	<div class="jumbotron jumbotron-fluid" id="copyright">
+		<div class="container">
+			<div class="row justify-content-between">
+				<div class="col-md-6 text-white align-self-center text-center text-md-left  copyright-footer">
+					<img src='img/inverted-bookleftmenubase.png' style="width: 200px;height:200px;object-fit: contain;margin-left:-0.1rem">
+					<p style="margin-top:-4rem">Copyright © 2020 Menubase.io.</p>
+				</div>
+				<div class="col-md-6 align-self-center text-center text-md-right my-2" id="social-media">
+					<a href="https://www.facebook.com/Medusa-101217641876383" class="d-inline-block text-center ml-2"
+						target="_blank">
+						<i class="fa fa-facebook" aria-hidden="true"></i>
+					</a>
+					<a href="https://www.instagram.com/medusa.analytics/" class="d-inline-block text-center ml-2"
+						target="_blank">
+						<i class="fa fa-instagram" aria-hidden="true"></i>
+					</a>
+					<a href="https://www.linkedin.com/company/medusa-analytics" class="d-inline-block text-center ml-2"
+						target="_blank">
+						<i class="fa fa-linkedin" aria-hidden="true"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- AOS -->
+	<script src="js/aos.js"></script>
+	<script>
+		AOS.init({});
+		(function () {
+			var qs,
+				js,
+				q,
+				s,
+				d = document,
+				gi = d.getElementById,
+				ce = d.createElement,
+				gt = d.getElementsByTagName,
+				id = 'typef_orm',
+				b = 'https://embed.typeform.com/';
+			if (!gi.call(d, id)) {
+				js = ce.call(d, 'script');
+				js.id = id;
+				js.src = b + 'embed.js';
+				q = gt.call(d, 'script')[0];
+				q.parentNode.insertBefore(js, q);
+			}
+		})();
+	</script>
+</body>
+
+</html>
