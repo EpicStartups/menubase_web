@@ -1,463 +1,305 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MenuBase — Simple Procurement for Restaurants</title>
+    <meta name="description" content="Create supplier POs in one click, track supplier responses, and receive invoices — all in your browser." />
+    <meta property="og:image" content="/assets/og/menubase-procurement.png" />
+    <meta property="og:title" content="MenuBase — Simple Procurement for Restaurants" />
+    <meta property="og:description" content="Create supplier POs in one click, track supplier responses, and receive invoices — all in your browser." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/assets/favicon.png" />
+    <link rel="canonical" href="https://menubase.io/"/>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<title>Menubase | Restaurant intelligence menu analytics platform</title>
-	<meta name="description" content="Menubase | Restaurant intelligence menu analytics platform" />
-	<link rel="icon" href="img/colormenubaselogo-removebg-preview.png" sizes="16x16" type="image/png" />
-	<meta name="facebook-domain-verification" content="ofc4i13s0dxcv62cbilzlt2ifvn6up" />
-	<!-- custom.css -->
-	<link rel="stylesheet" href="css/custom.css" />
-	<!-- bootstrap.min.css -->
-	<link rel="stylesheet" href="css/bootstrap.min.css" />
-	<!-- font-awesome -->
-	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+    <style>
+      :root{
+        /* theme.colors */
+        --bg:#FFFFFF;
+        --bgAlt:#F7F9FB;
+        --text:#2F343A;
+        --muted:#64748B;
+        --primary:#C4E95A;
+        --primaryDark:#A9D349;
+        --primaryDarker:#7EAA2F;
+        --border:#E6E8EC;
+        --success:#16A34A;
+        --warning:#F59E0B;
 
-	<!-- AOS -->
-	<link rel="stylesheet" href="css/aos.css" />
-	<style>
-		html,
-		body {
-			width: 100%;
-			overflow-x: hidden;
-		}
-		@media screen and (max-width: 432px) {
-			.invi-mr {
-				margin-top:1.5rem !important;
-				margin-bottom:0.75rem !important;
-				margin-right:0 !important;
-			}
-		}
-		@media screen and (max-width: 768px) {
-			.invi-full-width {
-				width:100%
-			}
-			.invi-mr {
-				margin-top:1.5rem;
-				margin-bottom:1.5rem;
-				/* margin-right:1rem; */
-			}
-			.left-text {
-				text-align: left;
-			}
-			#banner h1 { 
-				font-size: 2rem;
-				text-align: left;
-				margin-left:0;
-			}
-			.invi-break2{
-				display:none
-			}
-			/* .invi-mt {
-				margin-top:2rem;
-			} */
-			#get-started {
-				justify-content: center;
-			}
-			#get-started p {
-				margin-left:0 !important;
-			}
-			#main-logo {
-				height: 150px;
-				width: 180px;
-			}
+        /* theme.spacing */
+        --sectionY:112px;
+        --sectionYHeroTop:128px;
+        --grid:24px;
+        --container:1200px;
 
-			.heading {
-				margin: 0rem 3rem;
-			}
+        /* theme.radii */
+        --r-sm:8px;
+        --r-md:12px;
+        --r-lg:16px;
 
-			.copyright-footer {
-				margin-top: -4rem;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				margin-bottom: 0.5rem;
-			}
-		}
+        /* shadows */
+        --shadow-sm:0 1px 2px rgba(15,23,42,0.04);
+        --shadow-md:0 6px 20px rgba(15,23,42,0.06);
+      }
+      html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter, ui-sans-serif, system-ui;font-size:16px;line-height:1.6;}
+      a{color:inherit;text-decoration:none}
+      a:hover{text-decoration:underline}
+      .container{max-width:var(--container);margin:0 auto;padding:0 24px}
+      .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:var(--r-md);border:1px solid transparent;font-weight:600;line-height:1}
+      .btn-filled{background:var(--primary);color:#0F172A}
+      .btn-filled:hover{background:var(--primaryDark)}
+      .btn-filled:active{background:var(--primaryDarker)}
+      .btn-ghost{background:transparent;border-color:var(--border)}
+      .btn-ghost:hover{background:#F1F5F9}
+      .chip{display:inline-flex;align-items:center;gap:6px;background:#F2FCE5;border:1px solid #E0F3B3;color:var(--text);border-radius:999px;padding:6px 10px;font-size:12px}
+      .section{padding:var(--sectionY) 0}
+      .section.alt{background:var(--bgAlt)}
+      .h1{font-size:44px;line-height:1.15;margin:12px 0 12px}
+      .h2{font-size:32px;line-height:1.2;margin:0 0 16px}
+      .muted{color:var(--muted)}
+      .grid{display:grid;gap:var(--grid)}
+      .two{grid-template-columns:1.1fr 1fr}
+      .three{grid-template-columns:repeat(3,1fr)}
+      .cards{display:grid;gap:var(--grid);grid-template-columns:repeat(3,1fr)}
+      .card{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);padding:20px}
+      header.nav{position:sticky;top:0;background:rgba(255,255,255,0.8);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--border);z-index:50}
+      .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+      .nav-links{display:flex;gap:18px;align-items:center}
+      .nav-cta .btn{height:40px}
+      .hero{padding:var(--sectionYHeroTop) 0}
+      .hero .eyebrow{font-weight:600;letter-spacing:.02em;color:var(--muted)}
+      .badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+      .media{border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);overflow:hidden}
+      .media img{display:block;width:100%;height:auto}
+      .caption{font-size:12px;color:var(--muted);margin-top:8px}
+      .logos{display:flex;gap:32px;align-items:center;opacity:.85;flex-wrap:wrap}
+      .faq .item{border:1px solid var(--border);border-radius:var(--r-lg);padding:16px}
+      footer{border-top:1px solid var(--border);padding:40px 0}
+      /* responsive */
+      @media (max-width:960px){
+        .two,.three,.cards{grid-template-columns:1fr}
+        .h1{font-size:34px}
+        .h2{font-size:26px}
+      }
+    </style>
+  </head>
 
-		@media screen and (min-width: 768px) {
-			.invi-mr {
-				margin-right:2rem;
-				margin-top:1.5rem;
-				margin-bottom:1.5rem
-			}
-			.invi-break{
-				display:none
-			}
+  <body>
+    <!-- Nav -->
+    <header class="nav">
+      <div class="container nav-inner">
+        <a href="/" class="brand" aria-label="MenuBase">
+          <img src="/assets/logo-mb.svg" alt="MenuBase" height="28" />
+        </a>
+        <nav class="nav-links">
+          <a href="#flow">How it works</a>
+          <a href="#benefits">Benefits</a>
+          <a href="#security">Security</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <div class="nav-cta">
+          <a class="btn btn-filled" href="/signup">Start Free</a>
+        </div>
+      </div>
+    </header>
 
+    <!-- Hero -->
+    <section id="hero" class="hero">
+      <div class="container grid two" style="align-items:center;gap:48px">
+        <div>
+          <div class="eyebrow">Procurement that just works</div>
+          <h1 class="h1">Smart Procurement. Simple for Every Restaurant.</h1>
+          <p class="muted">Build inventory, send multi-supplier POs, and track replies in one browser. Your suppliers don’t need an account — they just click your link.</p>
+          <div style="display:flex;gap:12px;margin:22px 0 6px">
+            <a class="btn btn-filled" href="/signup">Start Free →</a>
+            <a class="btn btn-ghost" href="#demo">Watch 1-min Demo</a>
+          </div>
+          <div class="badge-row">
+            <span class="chip">🌐 <span>Browser-based</span></span>
+            <span class="chip">⚡ <span>Setup in minutes</span></span>
+            <span class="chip">🔗 <span>Supplier-friendly</span></span>
+          </div>
+        </div>
+        <div>
+          <div class="media">
+            <img src="/assets/mock/po-dashboard.png" alt="PO dashboard with supplier responses" />
+          </div>
+          <div class="caption">Create PO → Supplier marks availability → Track status &amp; invoices</div>
+        </div>
+      </div>
+    </section>
 
-			#get-started p {
-				margin-top:1rem !important;
-			}
-			#main-logo {
-				height: 200px;
-				width: 250px;
-			}
-			.copyright-footer {
-				margin-top: -4.5rem;
-				
-			}
-		}
-	</style>
-</head>
+    <!-- How it works -->
+    <section id="flow" class="section">
+      <div class="container">
+        <h2 class="h2">How It Works</h2>
+        <div class="cards">
+          <div class="card">
+            <div style="font-size:24px">📦</div>
+            <h3 style="margin:8px 0 6px">Create Inventory &amp; Suppliers</h3>
+            <p class="muted">Create your ingredient list and supplier contacts once. It becomes your living shopping list.</p>
+          </div>
+          <div class="card">
+            <div style="font-size:24px">🧾</div>
+            <h3 style="margin:8px 0 6px">Build Purchase Orders</h3>
+            <p class="muted">Pick items and quantities. MenuBase auto-groups by supplier.</p>
+          </div>
+          <div class="card">
+            <div style="font-size:24px">📤</div>
+            <h3 style="margin:8px 0 6px">Send in One Click</h3>
+            <p class="muted">Fire off multiple POs to different suppliers at once. No PDFs or WhatsApp threads.</p>
+          </div>
+          <div class="card">
+            <div style="font-size:24px">✅</div>
+            <h3 style="margin:8px 0 6px">Suppliers Mark Availability</h3>
+            <p class="muted">They open a secure link (no login) and choose In Stock or Out of Stock — with notes.</p>
+          </div>
+          <div class="card">
+            <div style="font-size:24px">📂</div>
+            <h3 style="margin:8px 0 6px">Track &amp; Reconcile</h3>
+            <p class="muted">See real-time status. Receive invoices through the same link and keep records in one place.</p>
+          </div>
+        </div>
 
-<body>
-	<!-- banner -->
-	<div class="jumbotron jumbotron-fluid" id="banner" style="background-image: url(img/banner-bk.jpg)">
-		<div class="container text-center text-md-left">
-			<header style="margin-top:-4rem">
-				<div class="row justify-content-between">
-					<div class="col-2">
-						<img src="img/inverted-bookleftmenubase.png" id="main-logo" style="max-width:1000px;object-fit:contain"
-							alt="logo" />
-					</div>
-					<div class="col-6 align-self-center text-right invi-mt">
-						<!-- <a href="https://menubase.io/contact-us.html" style='padding:1rem' class="text-white lead">Contact Us</a> -->
-						<a href="https://app.menubase.io/" style="padding-bottom:1rem"  class="text-white lead">Login</a>
-						<!-- <br class="invi-break"> -->
-					</div>
-				</div>
-			</header>
-			<h1 data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true"
-				class="display-3 text-white font-weight-bold heading">
-				Never lose sight of<br class="invi-break2"> your expenses anymore.<br class="invi-break2">
-				 Track your spending for <br class="invi-break2">every menu item and <br class="invi-break2">turn your store's data <br class="invi-break2">into profits.
-			</h1>
-			<p data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true"
-				class="lead text-white my-4 left-text">
-				Optimize your restaurant's spending habit. Monitor all your
-				costs in real-time.
-			</p>
-			<div id='get-started' style='display:flex;align-items: center;flex-wrap: wrap;'>
-				<a href="https://menubase.io/contact-us.html" style="width:12.5rem"  data-aos="fade" data-aos-easing="linear" data-aos-duration="1000"
-				data-aos-once="true" class="btn  font-weight-bold atlas-cta cta-green invi-mr">Contact us</a>
-				<div  style="display:flex;align-items:center;flex-wrap: wrap;justify-content:center">
-			<a href="https://app.menubase.io/" data-aos="fade" data-aos-easing="linear" data-aos-duration="1000"
-				data-aos-once="true" class="btn my-4 font-weight-bold atlas-cta cta-green ">Get Started for free</a>
-				<p data-aos="fade" data-aos-easing="linear" data-aos-duration="1000" data-aos-once="true" class="lead text-white invi-full-width" style='margin-left:1rem;margin-top:0'>No credit card required</p>
-			</div>
-			</div>
-		</div>
-	</div>
-	<!-- three-blcok -->
-	<div class="container my-5 py-2">
-		<h2 class="text-center font-weight-bold my-5">What we do?</h2>
-		<p class='text-center' style="margin-top:-1rem">We help restaurant managers track ingredient costs against sales
-			performance to optimize expenses and maximize menu item profits.</p>
-		<div class="row">
-			<div data-aos="fade-up" data-aos-delay="0" data-aos-duration="1000" data-aos-once="true"
-				class="col-md-4 text-center">
-				<img src="img/smart-protect-1.jpg" alt="Anti-spam" class="mx-auto" />
-				<h4>Menu Data Collection</h4>
-				<p>
-					We digitize your ingredient purchase invoices and menu sales data in the cloud for easy
-					accessibility and organization.
-				</p>
-			</div>
-			<div data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" data-aos-once="true"
-				class="col-md-4 text-center">
-				<img src="img/smart-protect-2.jpg" alt="Phishing Detect" class="mx-auto" />
-				<h4>Menu Cost Control</h4>
-				<p>
-					We associate your actual ingredients costs with existing menu items to improve cost control and
-					estimate menu selling price.
+        <div class="card" style="margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+          <div>
+            <div style="font-weight:600;margin-bottom:4px">For Suppliers</div>
+            <div class="muted">Reply from a link. No signup. Keep your workflow — just faster.</div>
+          </div>
+          <a class="btn btn-ghost" href="#demo">See Supplier View</a>
+        </div>
+      </div>
+    </section>
 
-				</p>
-			</div>
-			<div data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000" data-aos-once="true"
-				class="col-md-4 text-center">
-				<img src="img/smart-protect-3.jpg" alt="Smart Scan" class="mx-auto" />
-				<h4>Menu Analysis</h4>
-				<p>
-					We simplify and help paint a picture on the performance of your menu so that you can make more
-					informed decisions to constantly improve.
+    <!-- Demo -->
+    <section id="demo" class="section alt">
+      <div class="container grid two" style="gap:32px;align-items:center">
+        <div>
+          <h2 class="h2">Built for Restaurants. Designed for Suppliers.</h2>
+          <p class="muted">You work in a clean dashboard. Suppliers reply from your link — zero setup, zero training.</p>
+          <div style="margin-top:16px">
+            <a class="btn btn-filled" href="/signup">Try MenuBase Free →</a>
+          </div>
+        </div>
+        <div class="grid" style="gap:16px">
+          <div class="media"><img src="/assets/mock/restaurant-po-list.png" alt="Restaurant PO list" /></div>
+          <div class="media"><img src="/assets/mock/supplier-reply.png" alt="Supplier reply screen" /></div>
+        </div>
+      </div>
+    </section>
 
-				</p>
-			</div>
-		</div>
-	</div>
-	<!-- feature (skew background) -->
-	<div class="jumbotron jumbotron-fluid feature" id="feature-first">
-		<div class="container my-5">
-			<div class="row justify-content-between text-center text-md-left">
-				<div data-aos="fade-right" data-aos-duration="1000" data-aos-once="true" class="col-md-6">
-					<h2 class="font-weight-bold">ORGANIZE YOUR DATA</h2>
-					<p class="my-4">
-						<strong>Upload and automate data entry</strong> <br />
-						Save time by automating your data entry of invoices and sales data
-					</p>
-					<p class="my-4">
-						<strong>Track your invoices by line item
-						</strong>
-						<br />
-						We automatically capture your invoice line items detailing product name, cost and quantity.
+    <!-- Benefits -->
+    <section id="benefits" class="section">
+      <div class="container">
+        <h2 class="h2">Why Restaurants Choose MenuBase</h2>
+        <div class="cards">
+          <div class="card">
+            <h3 style="margin:0 0 6px">🌐 Browser-Based</h3>
+            <p class="muted">Works on any phone, tablet, or computer. Nothing to install.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin:0 0 6px">⚙️ Setup in Minutes</h3>
+            <p class="muted">Upload items and suppliers — start ordering the same day.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin:0 0 6px">📶 Live Status</h3>
+            <p class="muted">Know what’s viewed, confirmed, and invoiced — instantly.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin:0 0 6px">🖱️ One-Click POs</h3>
+            <p class="muted">Send multiple POs at once. Reduce back-and-forth.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin:0 0 6px">🔗 Supplier-Friendly</h3>
+            <p class="muted">Vendors respond without accounts. Lower onboarding friction.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin:0 0 6px">📂 Centralized Records</h3>
+            <p class="muted">POs and invoices live together for easy audit and handovers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-					</p>
-					<p class="my-4">
-						<strong>Search and sort invoices
-						</strong>
-						<br />
-						Have all your invoices in digital format in the cloud so that you can easily access them
-						remotely anywhere, anytime.
+    <!-- Security -->
+    <section id="security" class="section alt">
+      <div class="container">
+        <h2 class="h2">Security &amp; Privacy</h2>
+        <div class="cards" style="grid-template-columns:repeat(3,1fr)">
+          <div class="card">
+            <h3 style="margin:0 0 6px">Secure links</h3>
+            <p class="muted">Time-bound, single-purpose links per PO.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin:0 0 6px">Role-based access</h3>
+            <p class="muted">Keep control across managers, outlets, and finance.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin:0 0 6px">Data portability</h3>
+            <p class="muted">Export POs and invoices anytime.</p>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:12px">We follow least-privilege access and encrypt data in transit and at rest.</p>
+      </div>
+    </section>
 
-					</p>
-					<p class="my-4">
-						<strong>Upload data through Whatsapp (coming soon)
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="container">
+        <h2 class="h2">FAQ</h2>
+        <div class="grid" style="gap:16px">
+          <div class="item faq">
+            <div class="item card">
+              <strong>Do suppliers need an account?</strong>
+              <p class="muted" style="margin:6px 0 0">No. They reply from your secure link — that’s the point.</p>
+            </div>
+          </div>
+          <div class="item faq">
+            <div class="item card">
+              <strong>Do I need to switch POS?</strong>
+              <p class="muted" style="margin:6px 0 0">No. MenuBase focuses on procurement. Keep your POS.</p>
+            </div>
+          </div>
+          <div class="item faq">
+            <div class="item card">
+              <strong>Is it free to start?</strong>
+              <p class="muted" style="margin:6px 0 0">Yes. The pilot plan lets you add inventory, send POs, and manage replies.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-						</strong>
-						<br />
-						Conveniently upload your ingredient receipts and invoices through Whatsapp chat
+    <!-- Closer -->
+    <section id="cta" class="section alt">
+      <div class="container grid two" style="align-items:center;gap:24px">
+        <div>
+          <h2 class="h2">Procurement That Just Works.</h2>
+          <p class="muted">Replace spreadsheets and scattered messages with one shared dashboard everyone understands.</p>
+        </div>
+        <div style="display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap">
+          <a class="btn btn-filled" href="/signup">Start Free →</a>
+          <a class="btn btn-ghost" href="/contact">Contact Us</a>
+        </div>
+      </div>
+      <div class="container"><p class="muted" style="margin-top:12px">No credit card required.</p></div>
+    </section>
 
-					</p>
-					<p class="my-4">
-						<strong>Point of sale integration (coming soon)
-
-						</strong>
-						<br />
-						Let us seamlessly extract data from your point-of-sale system in real time
-
-					</p>
-					<a href="https://app.menubase.io/" class="btn my-4 font-weight-bold atlas-cta cta-blue">Learn
-						More</a>
-				</div>
-				<div data-aos="fade-left" data-aos-duration="1000" data-aos-once="true"
-					class="col-md-6 align-self-center">
-					<img src="img/Invoice-processing.gif" alt="Take a look inside" class="mx-auto d-block" />
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- feature (green background) -->
-	<div class="jumbotron jumbotron-fluid feature" id="feature-last">
-		<div class="container">
-			<div class="row justify-content-between text-center text-md-left">
-				<div data-aos="fade-left" data-aos-duration="1000" data-aos-once="true" class="col-md-6 flex-md-last">
-					<h2 class="font-weight-bold">MANAGE YOUR MENU</h2>
-					<p class="my-4">
-						<strong>Associate purchased ingredients with menu items </strong> <br />
-						Reflect the cost of menu items based on purchased ingredients from your uploaded invoices
-					</p>
-					<p class="my-4">
-						<strong>Plan your overhead costs</strong> <br />
-						Populate your expected overhead costs to better understand the profitability of your menu items
-					</p>
-					<p class="my-4">
-						<strong>Manage ingredient categories and suppliers
-						</strong>
-						<br />
-						Sort and track ingredient purchase history to determine the most reliable suppliers
-
-					</p>
-					<p class="my-4">
-						<strong>Export data to your favourite accounting software (coming soon)
-						</strong>
-						<br />
-						We integrate with xero & quickbooks to reduce the burden of manual data entry.
-
-
-					</p>
-					<p class="my-4">
-						<strong>Make payments to suppliers (coming soon)
-
-						</strong>
-						<br />
-						Directly make invoice payments to your suppliers with a single click.
-
-					</p>
-				</div>
-				<div data-aos="fade-right" data-aos-duration="1000" data-aos-once="true"
-					class="col-md-6 align-self-center flex-md-first">
-					<img src="img/Manage.png" alt="Safe and reliable" class="mx-auto d-block" />
-				</div>
-			</div>
-			<div class="row justify-content-between text-center text-md-left">
-				<div data-aos="fade-right" data-aos-duration="1000" data-aos-once="true"></div>
-				<div data-aos="fade-left" data-aos-duration="1000" data-aos-once="true" class="col-md-6 flex-md-last">
-					<a href="https://app.menubase.io/" class="btn my-4 font-weight-bold atlas-cta cta-blue">Learn
-						More</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- feature (white background) -->
-	<div class="container my-5">
-		<div class="row justify-content-between text-center text-md-left">
-			<div data-aos="fade-right" data-aos-duration="1000" data-aos-once="true" class="col-md-6">
-				<h2 class="font-weight-bold">ANALYZE YOUR PERFORMANCE</h2>
-				<p class="my-4">
-					<strong>Real-time dashboard update</strong>
-					<br />
-					Monitor all your expenses and sales at a glance to gauge the health and performance of your
-					restaurant establishments.
-
-				</p>
-				<p class="my-4">
-					<strong>Dynamic menu analysis
-					</strong> <br />
-					Mix and match your ingredient costs and menu items sold over time through our dynamic analytical
-					matrix to gauge menu item performance
-
-				</p>
-				<p class="my-4">
-					<strong>Forecast future expenditures and expected sales
-					</strong> <br />
-					Plan ahead and make decisions for the coming weeks based on historical sales and spending patterns
-
-				</p>
-				<p class="my-4">
-					<strong>Make informed decisions from insights of the day (coming soon)
-					</strong>
-					<br />
-					Understand what’s happening within your business environment through our custom generated headlines
-					for your establishment.
-
-				</p>
-				<a href="https://app.menubase.io/" class="btn my-4 font-weight-bold atlas-cta cta-blue">Learn More</a>
-			</div>
-			<div data-aos="fade-left" data-aos-duration="1000" data-aos-once="true" class="col-md-6 align-self-center">
-				<img src="img/Analyze.png" alt="Take a look inside" class="mx-auto d-block" />
-			</div>
-		</div>
-	</div>
-
-	<!-- price table -->
-	<div class="container my-5 py-2" id="price-table">
-		<h2 class="text-center font-weight-bold d-block mb-4">
-			Check our flexible pricing model
-		</h2>
-		<div style="text-align:center">
-			<p><b>Refer a friend and receive 1 month free</b></p>
-			<p><b>Subscribe for yearly subscription to get 2 months waived</b></p>
-		</div>
-		<!-- <h5 class="text-center font-weight-normal d-block mb-3">
-				Subscribe for yearly subscription to get 2 months waived
-			</h5> -->
-		<div class="row">
-			<div data-aos="fade-right" data-aos-delay="200" data-aos-duration="1000" data-aos-once="true"
-				class="col-md-4 text-center py-4 mt-5">
-				<h4 class="my-4">INCUBATE</h4>
-				<p class="font-weight-bold">
-					RM <span class="display-2 font-weight-bold">99</span> /
-					MO.
-				</p>
-				<p>Great for mobile kiosks, hawkers and street stalls seeking to pursue their passion and share great
-					products</p>
-				<ul style="text-align:left">
-					<li>Automate data entry of up to 300 line items per month</li>
-					<li>Manage up to 20 menu items</li>
-				</ul>
-				<!-- <a href="https://app.menubase.io/" class="btn my-4 font-weight-bold atlas-cta cta-ghost">Get Free</a> -->
-			</div>
-			<div data-aos="fade-up" data-aos-duration="1000" data-aos-once="true"
-				class="col-md-4 text-center py-4 mt-5 rounded" id="price-table__premium">
-				<h4 class="my-4">GROW</h4>
-				<p class="font-weight-bold">
-					RM <span class="display-2 font-weight-bold">249</span> /
-					MO.
-				</p>
-				<!-- <p class="font-weight-bold">(RM88/month per additional outlet)<br> [coming soon] -->
-				</p>
-				<p>Essential for independent restaurants and cafes who seeks to put systems in place
-				</p>
-				<ul style="text-align: left;">
-					<li>Automate data entry of up to 3000 line items per month</li>
-					<li>Manage unlimited menu items</li>
-					</li>
-				</ul>
-				<!-- <a href="https://app.menubase.io/" class="btn my-4 font-weight-bold atlas-cta cta-green">Get Free</a> -->
-			</div>
-			<div data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000" data-aos-once="true"
-				class="col-md-4 text-center py-4 mt-5">
-				<h4 class="my-4">EXPAND</h4>
-				<p class="font-weight-bold">
-					RM <span class="display-2 font-weight-bold">369</span> /
-					MO.
-				</p>
-				<!-- <p class="font-weight-bold">(RM166/month per additional outlet) <br>[coming soon] -->
-				</p>
-				<p>Perfect for established and expanding businesses looking to track performance and make actionable
-					decisions </p>
-				<ul style="text-align:left">
-					<li>Unlimited data entry automation</li>
-					<li>Manage unlimited menu items</li>
-					<li>Customize insights and forecast report</li>
-					<li>Specialist operational advisory assistance</li>
-				</ul>
-				<!-- <a href="https://app.menubase.io/" class="btn my-4 font-weight-bold atlas-cta cta-ghost">Get Free</a> -->
-			</div>
-		</div>
-	</div>
-
-	<!-- <div class="p-4">
-		<h2 id="type-form" class="text-center font-weight-bold my-5">
-			Interested?
-		</h2>
-		<h4 class="text-center font-weight-bold my-5">
-			Fill up this form and we'll get in touch with you to help solve
-			your pain points!
-		</h4>
-		<div class="typeform-widget" data-url="https://form.typeform.com/to/z9ksOQOP?typeform-medium=embed-snippet"
-			style="width: 100%; height: 500px"></div>
-	</div> -->
-
-	<!-- copyright -->
-	<div class="jumbotron jumbotron-fluid" id="copyright">
-		<div class="container">
-			<div class="row justify-content-between">
-				<div class="col-md-6 text-white align-self-center text-center text-md-left  copyright-footer">
-					<img src='img/inverted-bookleftmenubase.png'
-						style="width: 200px;height:200px;object-fit: contain;margin-left:-0.1rem">
-					<p style="margin-top:-4rem">Copyright ©
-						<script>document.write(new Date().getFullYear())</script> Menubase.io.
-						<span>
-							<a href="https://menubase.io/privacy-policy.html" class="text-info">Privacy Policy</a>
-						</span>
-					</p>
-				</div>
-				<div class="col-md-6 align-self-center text-center text-md-right my-2" id="social-media">
-					<a href="https://www.facebook.com/Medusa-101217641876383" class="d-inline-block text-center ml-2"
-						target="_blank">
-						<i class="fa fa-facebook" aria-hidden="true"></i>
-					</a>
-					<a href="https://www.instagram.com/medusa.analytics/" class="d-inline-block text-center ml-2"
-						target="_blank">
-						<i class="fa fa-instagram" aria-hidden="true"></i>
-					</a>
-					<a href="https://www.linkedin.com/company/medusa-analytics" class="d-inline-block text-center ml-2"
-						target="_blank">
-						<i class="fa fa-linkedin" aria-hidden="true"></i>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- AOS -->
-	<script src="js/aos.js"></script>
-	<script>
-		AOS.init({});
-		(function () {
-			var qs,
-				js,
-				q,
-				s,
-				d = document,
-				gi = d.getElementById,
-				ce = d.createElement,
-				gt = d.getElementsByTagName,
-				id = 'typef_orm',
-				b = 'https://embed.typeform.com/';
-			if (!gi.call(d, id)) {
-				js = ce.call(d, 'script');
-				js.id = id;
-				js.src = b + 'embed.js';
-				q = gt.call(d, 'script')[0];
-				q.parentNode.insertBefore(js, q);
-			}
-		})();
-	</script>
-</body>
-
+    <!-- Footer -->
+    <footer>
+      <div class="container grid three" style="gap:32px">
+        <div>
+          <h4 style="margin:0 0 10px">MenuBase</h4>
+          <div class="grid" style="gap:6px">
+            <a href="/privacy">Privacy</a>
+            <a href="/terms">Terms</a>
+          </div>
+        </div>
+        <!-- (Only the provided column is rendered; content preserved exactly as supplied) -->
+      </div>
+      <div class="container" style="margin-top:24px">
+        <small class="muted">© 2025 MenuBase Sdn Bhd</small>
+      </div>
+    </footer>
+  </body>
 </html>
