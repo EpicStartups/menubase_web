@@ -1,132 +1,191 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Contact Us — MenuBase</title>
+    <meta name="description" content="Get in touch with MenuBase - We're here to help with your restaurant procurement needs." />
+    <meta property="og:image" content="/assets/og/menubase-procurement.png" />
+    <meta property="og:title" content="Contact Us — MenuBase" />
+    <meta property="og:description" content="Get in touch with MenuBase - We're here to help with your restaurant procurement needs." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="img/menubase_logo_icon.png" sizes="16x16" type="image/png" />
+    <link rel="canonical" href="https://menubase.io/contact-us.html"/>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<title>Menubase | Restaurant intelligence menu analytics platform</title>
-	<meta name="description" content="Menubase | Restaurant intelligence menu analytics platform" />
-	<link rel="icon" href="img/colormenubaselogo-removebg-preview.png" sizes="16x16" type="image/png" />
-	<meta name="facebook-domain-verification" content="ofc4i13s0dxcv62cbilzlt2ifvn6up" />
-	<!-- custom.css -->
-	<link rel="stylesheet" href="css/custom.css" />
-	<!-- bootstrap.min.css -->
-	<link rel="stylesheet" href="css/bootstrap.min.css" />
-	<!-- font-awesome -->
-	<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+    <style>
+      :root{
+        /* theme.colors */
+        --bg:#FFFFFF;
+        --bgAlt:#F7F9FB;
+        --text:#2F343A;
+        --muted:#64748B;
+        --primary:#C4E95A;
+        --primaryDark:#A9D349;
+        --primaryDarker:#7EAA2F;
+        --border:#E6E8EC;
+        --success:#16A34A;
+        --warning:#F59E0B;
 
-	<!-- AOS -->
-	<link rel="stylesheet" href="css/aos.css" />
-	<style>
-		html,
-		body {
-			width: 100%;
-			overflow-x: hidden;
-		}
+        /* theme.spacing */
+        --sectionY:112px;
+        --sectionYHeroTop:128px;
+        --grid:24px;
+        --container:1200px;
 
-		@media screen and (max-width: 768px) {
-			#main-logo {
-				height: 150px;
-				width: 150px;
-			}
+        /* theme.radii */
+        --r-sm:8px;
+        --r-md:12px;
+        --r-lg:16px;
 
-			.heading {
-				margin: 0rem 3rem;
-			}
+        /* shadows */
+        --shadow-sm:0 1px 2px rgba(15,23,42,0.04);
+        --shadow-md:0 6px 20px rgba(15,23,42,0.06);
+      }
+      html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter, ui-sans-serif, system-ui;font-size:16px;line-height:1.6;}
+      a{color:inherit;text-decoration:none}
+      a:hover{text-decoration:underline}
+      .container{max-width:var(--container);margin:0 auto;padding:0 24px}
+      .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:var(--r-md);border:1px solid transparent;font-weight:600;line-height:1}
+      .btn-filled{background:var(--primary);color:#0F172A}
+      .btn-filled:hover{background:var(--primaryDark)}
+      .btn-filled:active{background:var(--primaryDarker)}
+      .btn-ghost{background:transparent;border-color:var(--border)}
+      .btn-ghost:hover{background:#F1F5F9}
+      .chip{display:inline-flex;align-items:center;gap:6px;background:#F2FCE5;border:1px solid #E0F3B3;color:var(--text);border-radius:999px;padding:6px 10px;font-size:12px}
+      .section{padding:var(--sectionY) 0}
+      .section.alt{background:var(--bgAlt)}
+      .h1{font-size:44px;line-height:1.15;margin:12px 0 12px}
+      .h2{font-size:32px;line-height:1.2;margin:0 0 16px}
+      .muted{color:var(--muted)}
+      .grid{display:grid;gap:var(--grid)}
+      .two{grid-template-columns:1.1fr 1fr}
+      .three{grid-template-columns:repeat(3,1fr)}
+      .cards{display:grid;gap:var(--grid);grid-template-columns:repeat(3,1fr)}
+      .card{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);padding:20px}
+      header.nav{position:sticky;top:0;background:rgba(255,255,255,0.8);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--border);z-index:50}
+      .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+      .nav-links{display:flex;gap:18px;align-items:center}
+      .nav-cta .btn{height:40px}
+      .mobile-menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;margin:-8px}
+      .mobile-menu-toggle span{display:block;width:24px;height:2px;background:var(--text);margin:5px 0;transition:.3s}
+      .mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(7px,7px)}
+      .mobile-menu-toggle.active span:nth-child(2){opacity:0}
+      .mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px)}
+      footer{border-top:1px solid var(--border);padding:40px 0}
 
-			.copyright-footer {
-				margin-top: -4rem;
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				margin-bottom: 0.5rem;
-			}
-		}
+      /* Contact Content Styles */
+      .contact-content{max-width:800px;margin:0 auto;padding:80px 24px;text-align:center}
+      .contact-content h1{font-size:44px;line-height:1.15;margin:0 0 16px;font-weight:700}
+      .contact-content h2{font-size:24px;line-height:1.3;margin:24px 0 16px;font-weight:600}
+      .contact-content p{margin:0 0 16px;line-height:1.7}
+      .typeform-widget{margin-top:40px}
 
-		@media screen and (min-width: 768px) {
-			#main-logo {
-				height: 200px;
-				width: 200px;
-			}
-			.copyright-footer {
-				margin-top: -4.5rem;
-				
-			}
-		}
-	</style>
-</head>
+      /* responsive */
+      @media (max-width:960px){
+        .two,.three,.cards{grid-template-columns:1fr}
+        .h1{font-size:34px}
+        .h2{font-size:26px}
+        .contact-content{padding:60px 24px}
+        .contact-content h1{font-size:34px}
+        .contact-content h2{font-size:20px}
+        .mobile-menu-toggle{display:block}
+        .nav-links{position:fixed;top:64px;left:0;right:0;background:rgba(255,255,255,0.98);backdrop-filter:saturate(180%) blur(8px);flex-direction:column;padding:20px 24px;gap:12px;border-bottom:1px solid var(--border);transform:translateY(-100%);opacity:0;pointer-events:none;transition:transform .3s,opacity .3s}
+        .nav-links.active{transform:translateY(0);opacity:1;pointer-events:auto}
+        .nav-links a{width:100%;padding:12px 0;border-bottom:1px solid var(--border)}
+        .nav-links a:last-child{border-bottom:none}
+        .nav-cta{display:none}
+      }
+    </style>
+  </head>
 
-<body>
-	
-	
+  <body>
+    <!-- Nav -->
+    <header class="nav">
+      <div class="container nav-inner">
+        <a href="https://menubase.io/" class="brand" aria-label="MenuBase">
+          <img src="img/menubase_logo_light.png" alt="MenuBase" height="28" />
+        </a>
+        <button class="mobile-menu-toggle" aria-label="Toggle menu" onclick="toggleMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="nav-links" id="navLinks">
+          <a href="https://menubase.io/#flow">How it works</a>
+          <a href="https://menubase.io/#benefits">Benefits</a>
+          <a href="https://menubase.io/#security">Security</a>
+          <a href="https://menubase.io/#faq">FAQ</a>
+        </nav>
+        <div class="nav-cta">
+          <a class="btn btn-filled" href="https://app.menubase.io/">Start Free</a>
+        </div>
+      </div>
+    </header>
 
-	<div class="p-4">
-		<h2 id="type-form" class="text-center font-weight-bold my-5">
-			Interested?
-		</h2>
-		<h4 class="text-center font-weight-bold my-5">
-			Fill up this form and we'll get in touch with you to help solve
-			your pain points!
-		</h4>
-		<div class="typeform-widget" data-url="https://form.typeform.com/to/z9ksOQOP?typeform-medium=embed-snippet"
-			style="width: 100%; height: 500px"></div>
-	</div>
+    <!-- Contact Content -->
+    <div class="contact-content">
+      <h1>Interested?</h1>
+      <h2>Fill up this form and we'll get in touch with you to help solve your pain points!</h2>
 
-	<!-- copyright -->
-	<div class="jumbotron jumbotron-fluid" id="copyright">
-		<div class="container">
-			<div class="row justify-content-between">
-				<div class="col-md-6 text-white align-self-center text-center text-md-left  copyright-footer">
-					<img src='img/inverted-bookleftmenubase.png' style="width: 200px;height:200px;object-fit: contain;margin-left:-0.1rem">
-					<p style="margin-top:-4rem">Copyright ©
-						<script>document.write(new Date().getFullYear())</script> Menubase.io.
-					</p>
-					<span>
-						<a href="https://menubase.io/privacy-policy.html" class="text-info">Privacy Policy</a>
-					</span>
-				</div>
-				<div class="col-md-6 align-self-center text-center text-md-right my-2" id="social-media">
-					<a href="https://www.facebook.com/Medusa-101217641876383" class="d-inline-block text-center ml-2"
-						target="_blank">
-						<i class="fa fa-facebook" aria-hidden="true"></i>
-					</a>
-					<a href="https://www.instagram.com/medusa.analytics/" class="d-inline-block text-center ml-2"
-						target="_blank">
-						<i class="fa fa-instagram" aria-hidden="true"></i>
-					</a>
-					<a href="https://www.linkedin.com/company/medusa-analytics" class="d-inline-block text-center ml-2"
-						target="_blank">
-						<i class="fa fa-linkedin" aria-hidden="true"></i>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
+      <div class="typeform-widget" data-url="https://form.typeform.com/to/z9ksOQOP?typeform-medium=embed-snippet"
+        style="width: 100%; height: 500px"></div>
+    </div>
 
-	<!-- AOS -->
-	<script src="js/aos.js"></script>
-	<script>
-		AOS.init({});
-		(function () {
-			var qs,
-				js,
-				q,
-				s,
-				d = document,
-				gi = d.getElementById,
-				ce = d.createElement,
-				gt = d.getElementsByTagName,
-				id = 'typef_orm',
-				b = 'https://embed.typeform.com/';
-			if (!gi.call(d, id)) {
-				js = ce.call(d, 'script');
-				js.id = id;
-				js.src = b + 'embed.js';
-				q = gt.call(d, 'script')[0];
-				q.parentNode.insertBefore(js, q);
-			}
-		})();
-	</script>
-</body>
+    <!-- Footer -->
+    <footer>
+      <div class="container grid three" style="gap:32px">
+        <div>
+          <h4 style="margin:0 0 10px">MenuBase</h4>
+          <div class="grid" style="gap:6px">
+            <a href="https://menubase.io/privacy-policy.html">Privacy</a>
+            <a href="https://menubase.io/contact-us.html">Contact Us</a>
+          </div>
+        </div>
+      </div>
+      <div class="container" style="margin-top:24px">
+        <small class="muted">© <script>document.write(new Date().getFullYear())</script> MenuBase Sdn Bhd</small>
+      </div>
+    </footer>
 
+    <!-- Typeform Embed Script -->
+    <script>
+      // Mobile Menu Toggle
+      function toggleMobileMenu() {
+        const navLinks = document.getElementById('navLinks');
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        navLinks.classList.toggle('active');
+        toggle.classList.toggle('active');
+      }
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          const navLinks = document.getElementById('navLinks');
+          const toggle = document.querySelector('.mobile-menu-toggle');
+          navLinks.classList.remove('active');
+          toggle.classList.remove('active');
+        });
+      });
+
+      (function () {
+        var qs,
+          js,
+          q,
+          s,
+          d = document,
+          gi = d.getElementById,
+          ce = d.createElement,
+          gt = d.getElementsByTagName,
+          id = 'typef_orm',
+          b = 'https://embed.typeform.com/';
+        if (!gi.call(d, id)) {
+          js = ce.call(d, 'script');
+          js.id = id;
+          js.src = b + 'embed.js';
+          q = gt.call(d, 'script')[0];
+          q.parentNode.insertBefore(js, q);
+        }
+      })();
+    </script>
+  </body>
 </html>
