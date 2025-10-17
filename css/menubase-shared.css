@@ -1,0 +1,210 @@
+/* MenuBase Shared Styles
+ * This file contains the shared design system used across all MenuBase pages
+ * Last updated: 2025
+ */
+
+:root{
+  /* theme.colors */
+  --bg:#FFFFFF;
+  --bgAlt:#F7F9FB;
+  --text:#2F343A;
+  --muted:#64748B;
+  --primary:#C4E95A;
+  --primaryDark:#A9D349;
+  --primaryDarker:#7EAA2F;
+  --border:#E6E8EC;
+  --success:#16A34A;
+  --warning:#F59E0B;
+
+  /* theme.spacing */
+  --sectionY:112px;
+  --sectionYHeroTop:128px;
+  --grid:24px;
+  --container:1200px;
+
+  /* theme.radii */
+  --r-sm:8px;
+  --r-md:12px;
+  --r-lg:16px;
+
+  /* shadows */
+  --shadow-sm:0 1px 2px rgba(15,23,42,0.04);
+  --shadow-md:0 6px 20px rgba(15,23,42,0.06);
+}
+
+/* Base Styles */
+html,body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter, ui-sans-serif, system-ui;
+  font-size:16px;
+  line-height:1.6;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+a:hover{
+  text-decoration:underline;
+}
+
+/* Layout */
+.container{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 24px;
+}
+
+/* Buttons */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 18px;
+  border-radius:var(--r-md);
+  border:1px solid transparent;
+  font-weight:600;
+  line-height:1;
+  cursor:pointer;
+}
+
+.btn-filled{
+  background:var(--primary);
+  color:#0F172A;
+}
+
+.btn-filled:hover{
+  background:var(--primaryDark);
+}
+
+.btn-filled:active{
+  background:var(--primaryDarker);
+}
+
+.btn-ghost{
+  background:transparent;
+  border-color:var(--border);
+}
+
+.btn-ghost:hover{
+  background:#F1F5F9;
+}
+
+/* Chips/Badges */
+.chip{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:#F2FCE5;
+  border:1px solid #E0F3B3;
+  color:var(--text);
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:12px;
+}
+
+/* Sections */
+.section{
+  padding:var(--sectionY) 0;
+}
+
+.section.alt{
+  background:var(--bgAlt);
+}
+
+/* Typography */
+.h1{
+  font-size:44px;
+  line-height:1.15;
+  margin:12px 0 12px;
+  font-weight:700;
+}
+
+.h2{
+  font-size:32px;
+  line-height:1.2;
+  margin:0 0 16px;
+  font-weight:600;
+}
+
+.muted{
+  color:var(--muted);
+}
+
+/* Grid System */
+.grid{
+  display:grid;
+  gap:var(--grid);
+}
+
+.two{
+  grid-template-columns:1.1fr 1fr;
+}
+
+.three{
+  grid-template-columns:repeat(3,1fr);
+}
+
+/* Cards */
+.cards{
+  display:grid;
+  gap:var(--grid);
+  grid-template-columns:repeat(3,1fr);
+}
+
+.card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  padding:20px;
+}
+
+/* Navigation */
+header.nav{
+  position:sticky;
+  top:0;
+  background:rgba(255,255,255,0.8);
+  backdrop-filter:saturate(180%) blur(8px);
+  border-bottom:1px solid var(--border);
+  z-index:50;
+}
+
+.nav-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  height:64px;
+}
+
+.nav-links{
+  display:flex;
+  gap:18px;
+  align-items:center;
+}
+
+.nav-cta .btn{
+  height:40px;
+}
+
+/* Footer */
+footer{
+  border-top:1px solid var(--border);
+  padding:40px 0;
+}
+
+/* Responsive */
+@media (max-width:960px){
+  .two,.three,.cards{
+    grid-template-columns:1fr;
+  }
+  .h1{
+    font-size:34px;
+  }
+  .h2{
+    font-size:26px;
+  }
+}
