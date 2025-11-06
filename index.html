@@ -54,8 +54,8 @@
       .chip{display:inline-flex;align-items:center;gap:6px;background:#F2FCE5;border:1px solid #E0F3B3;color:var(--text);border-radius:999px;padding:6px 10px;font-size:12px}
       .section{padding:var(--sectionY) 0}
       .section.alt{background:var(--bgAlt)}
-      .h1{font-size:44px;line-height:1.15;margin:12px 0 12px}
-      .h2{font-size:32px;line-height:1.2;margin:0 0 16px}
+      .h1{font-size:38px;line-height:1.15;margin:12px 0 12px}
+      .h2{font-size:30px;line-height:1.2;margin:0 0 16px}
       .muted{color:var(--muted)}
       .grid{display:grid;gap:var(--grid)}
       .two{grid-template-columns:1.1fr 1fr}
@@ -133,7 +133,7 @@
       <div class="container grid two" style="align-items:center;gap:48px">
         <div>
           <div class="eyebrow">Procurement that just works</div>
-          <h1 class="h1">Still running your restaurant on WhatsApp and spreadsheets? Then you’re already losing.</h1>
+          <h1 class="h1">Still running your restaurant on WhatsApp and spreadsheets? <br> Then you’re already losing.</h1>
           <p class="muted">Every hour you spend chasing suppliers is an hour your competitors spend scaling. MenuBase replaces messy manual orders with smart procurement, live analytics, and effortless menu insights - All in your browser.</p>
           <div style="display:flex;gap:12px;margin:22px 0 6px">
             <a class="btn btn-filled" href="https://app.menubase.io/">Start Free →</a>
@@ -158,7 +158,7 @@
           <h2>How scalable is your restaurant, really?</h2>
           <p>Take the 2-minute readiness quiz to see where inefficiencies are hiding, and how top operators fix them.</p>
           <div style="display:flex;gap:12px;margin:22px 0 6px">
-            <a class="btn btn-filled" href="https://haobinmalaine.typeform.com/to/fUGeodbD">Find the Gaps Holding You Back →</a>
+            <a class="btn btn-filled" href="#" onclick="openQuizModal(event)">Find the Gaps Holding You Back →</a>
           </div>
         </div>
         <div>
@@ -349,6 +349,16 @@
       </div>
     </div>
 
+    <!-- Quiz Modal -->
+    <div id="quizModal" class="modal" onclick="closeQuizModal(event)">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeQuizModal(event)">&times;</button>
+        <div class="modal-quiz">
+          <div class="typeform-widget" data-url="https://haobinmalaine.typeform.com/to/fUGeodbD" style="width: 100%; height: 500px"></div>
+        </div>
+      </div>
+    </div>
+
     <script>
       // Mobile Menu Toggle
       function toggleMobileMenu() {
@@ -384,12 +394,26 @@
         videoFrame.src = ''; // Stop video playback
       }
 
+      function openQuizModal(e) {
+        e.preventDefault();
+        const modal = document.getElementById('quizModal');
+        modal.classList.add('active');
+      }
+
+      function closeQuizModal(e) {
+        e.preventDefault();
+        const modal = document.getElementById('quizModal');
+        modal.classList.remove('active');
+      }
+
       // Close modal on ESC key
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
           closeVideoModal(e);
+          closeQuizModal(e);
         }
       });
     </script>
+    <script src="https://embed.typeform.com/embed.js"></script>
   </body>
 </html>
