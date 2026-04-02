@@ -1,419 +1,1122 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>MenuBase | Simple Procurement for Restaurants</title>
-    <meta name="description" content="Create supplier POs in one click, track supplier responses, and receive invoices — all in your browser." />
-    <meta property="og:image" content="/assets/og/menubase-procurement.png" />
-    <meta property="og:title" content="MenuBase — Simple Procurement for Restaurants" />
-    <meta property="og:description" content="Create supplier POs in one click, track supplier responses, and receive invoices — all in your browser." />
-    <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" href="img/menubase_logo_icon.png" sizes="16x16" type="image/png" />
-    <link rel="canonical" href="https://menubase.io/"/>
 
-    <style>
-      :root{
-        /* theme.colors */
-        --bg:#FFFFFF;
-        --bgAlt:#F7F9FB;
-        --text:#2F343A;
-        --muted:#64748B;
-        --primary:#C4E95A;
-        --primaryDark:#A9D349;
-        --primaryDarker:#7EAA2F;
-        --border:#E6E8EC;
-        --success:#16A34A;
-        --warning:#F59E0B;
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MenuBase | Smart QR Ordering</title>
+  <meta property="og:image" content="/assets/og/menubase.png" />
+  <meta property="og:title" content="MenuBase — Smart QR Ordering" />
+  <meta name="description"
+    content="Turn every order into incremental revenue with MenuBase's smart QR ordering system. No trained waiters needed.">
+  <link rel="icon" href="img/menubase_logo_icon.png" sizes="16x16" type="image/png" />
+  <link rel="canonical" href="https://menubase.io/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
 
-        /* theme.spacing */
-        --sectionY:112px;
-        --sectionYHeroTop:128px;
-        --grid:24px;
-        --container:1200px;
+  <style>
+    :root {
+      --green: #A0D911;
+      --green-dark: #7CB305;
+      --green-glow: rgba(160, 217, 17, 0.25);
+      --dark: #0D0D0D;
+      --dark-card: #161616;
+      --dark-card-hover: #1E1E1E;
+      --dark-border: #2A2A2A;
+      --text: #F5F5F0;
+      --text-dim: #9A9A90;
+      --text-mid: #C5C5B8;
+      --accent-orange: #FF6B35;
+      --accent-blue: #3B82F6;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
 
-        /* theme.radii */
-        --r-sm:8px;
-        --r-md:12px;
-        --r-lg:16px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        /* shadows */
-        --shadow-sm:0 1px 2px rgba(15,23,42,0.04);
-        --shadow-md:0 6px 20px rgba(15,23,42,0.06);
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(13, 13, 13, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 32px;
+    }
+
+    .nav-logo-text {
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--text);
+    }
+
+    .nav-logo-text span {
+      color: var(--green);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    .nav-cta {
+      background: var(--green) !important;
+      color: var(--dark) !important;
+      padding: 10px 24px !important;
+      border-radius: 50px !important;
+      font-weight: 700 !important;
+      font-size: 0.85rem !important;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px var(--green-glow);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* ── HERO ─────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 40px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, var(--green-glow) 0%, transparent 70%);
+      pointer-events: none;
+      animation: pulseGlow 4s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+
+      0%,
+      100% {
+        opacity: 0.4;
+        transform: translateX(-50%) scale(1);
       }
-      html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter, ui-sans-serif, system-ui;font-size:16px;line-height:1.6;}
-      a{color:inherit;text-decoration:none}
-      a:hover{text-decoration:underline}
-      .container{max-width:var(--container);margin:0 auto;padding:0 24px}
-      .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:var(--r-md);border:1px solid transparent;font-weight:600;line-height:1}
-      .btn-filled{background:var(--primary);color:#0F172A}
-      .btn-filled:hover{background:var(--primaryDark)}
-      .btn-filled:active{background:var(--primaryDarker)}
-      .btn-ghost{background:transparent;border-color:var(--border)}
-      .btn-ghost:hover{background:#F1F5F9}
-      .chip{display:inline-flex;align-items:center;gap:6px;background:#F2FCE5;border:1px solid #E0F3B3;color:var(--text);border-radius:999px;padding:6px 10px;font-size:12px}
-      .section{padding:var(--sectionY) 0}
-      .section.alt{background:var(--bgAlt)}
-      .h1{font-size:38px;line-height:1.15;margin:12px 0 12px}
-      .h2{font-size:30px;line-height:1.2;margin:0 0 16px}
-      .muted{color:var(--muted)}
-      .grid{display:grid;gap:var(--grid)}
-      .two{grid-template-columns:1.1fr 1fr}
-      .three{grid-template-columns:repeat(3,1fr)}
-      .cards{display:grid;gap:var(--grid);grid-template-columns:repeat(3,1fr)}
-      .card{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);padding:20px}
-      header.nav{position:sticky;top:0;background:rgba(255,255,255,0.8);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--border);z-index:50}
-      .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
-      .nav-links{display:flex;gap:18px;align-items:center}
-      .nav-cta .btn{height:40px}
-      .mobile-menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;margin:-8px}
-      .mobile-menu-toggle span{display:block;width:24px;height:2px;background:var(--text);margin:5px 0;transition:.3s}
-      .mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(7px,7px)}
-      .mobile-menu-toggle.active span:nth-child(2){opacity:0}
-      .mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px)}
-      .hero{padding:var(--sectionYHeroTop) 0}
-      .hero .eyebrow{font-weight:600;letter-spacing:.02em;color:var(--muted)}
-      .badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-      .media{border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);overflow:hidden}
-      .media img{display:block;width:100%;height:auto}
-      .caption{font-size:12px;color:var(--muted);margin-top:8px}
-      .logos{display:flex;gap:32px;align-items:center;opacity:.85;flex-wrap:wrap}
-      .faq .item{border:1px solid var(--border);border-radius:var(--r-lg);padding:16px}
-      footer{border-top:1px solid var(--border);padding:40px 0}
-      /* Modal styles */
-      .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.8);align-items:center;justify-content:center}
-      .modal.active{display:flex}
-      .modal-content{position:relative;background:#fff;border-radius:var(--r-lg);width:90%;max-width:900px;padding:0;overflow:hidden}
-      .modal-close{position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.7);color:#fff;border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:20px;line-height:1;z-index:10}
-      .modal-close:hover{background:rgba(0,0,0,0.9)}
-      .modal-video{width:100%;height:0;padding-bottom:56.25%;position:relative}
-      .modal-video iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
-      /* responsive */
-      @media (max-width:960px){
-        .two,.three,.cards{grid-template-columns:1fr}
-        .h1{font-size:34px}
-        .h2{font-size:26px}
-        .modal-content{width:95%}
-        .mobile-menu-toggle{display:block}
-        .nav-links{position:fixed;top:64px;left:0;right:0;background:rgba(255,255,255,0.98);backdrop-filter:saturate(180%) blur(8px);flex-direction:column;padding:20px 24px;gap:12px;border-bottom:1px solid var(--border);transform:translateY(-100%);opacity:0;pointer-events:none;transition:transform .3s,opacity .3s}
-        .nav-links.active{transform:translateY(0);opacity:1;pointer-events:auto}
-        .nav-links a{width:100%;padding:12px 0;border-bottom:1px solid var(--border)}
-        .nav-links a:last-child{border-bottom:none}
-        .nav-cta{display:none}
-      }
-    </style>
-  </head>
 
-  <body>
-    <!-- Nav -->
-    <header class="nav">
-      <div class="container nav-inner">
-        <a href="https://menubase.io/" class="brand" aria-label="MenuBase">
-          <img src="img/menubase_logo_light.png" alt="MenuBase" height="28" />
+      50% {
+        opacity: 0.7;
+        transform: translateX(-50%) scale(1.1);
+      }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--green);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 32px;
+      animation: fadeUp 0.8s ease-out;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: blink 2s infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.3;
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      max-width: 900px;
+      margin: 0 auto 24px;
+      letter-spacing: -2px;
+      animation: fadeUp 0.8s ease-out 0.1s both;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--green), var(--green-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: clamp(1.05rem, 2vw, 1.3rem);
+      color: var(--text-dim);
+      max-width: 600px;
+      margin: 0 auto 48px;
+      font-weight: 300;
+      line-height: 1.7;
+      animation: fadeUp 0.8s ease-out 0.2s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp 0.8s ease-out 0.3s both;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: var(--dark);
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px var(--green-glow);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      padding: 16px 40px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      border: 1px solid var(--dark-border);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--green);
+      background: rgba(160, 217, 17, 0.05);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      justify-content: center;
+      margin-top: 72px;
+      animation: fadeUp 0.8s ease-out 0.4s both;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-val {
+      font-size: 2rem;
+      font-weight: 800;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--green);
+    }
+
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── SECTION SHARED ──────────────────────── */
+    section {
+      padding: 100px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--green);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      max-width: 700px;
+      margin-bottom: 20px;
+    }
+
+    .section-desc {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      max-width: 560px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── PROBLEM ──────────────────────────────── */
+    .problem {
+      position: relative;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      margin-top: 60px;
+    }
+
+    .problem-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .problem-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .problem-card:hover {
+      border-color: #ff4444;
+      transform: translateX(4px);
+    }
+
+    .problem-icon {
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 68, 68, 0.1);
+      border-radius: 12px;
+    }
+
+    .problem-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .problem-card p {
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    .problem-right {
+      position: relative;
+    }
+
+    .problem-big-number {
+      font-size: clamp(6rem, 12vw, 10rem);
+      font-weight: 900;
+      font-family: 'JetBrains Mono', monospace;
+      color: rgba(255, 68, 68, 0.08);
+      line-height: 1;
+      position: absolute;
+      top: -20px;
+      right: 0;
+    }
+
+    .problem-quote {
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-top: 60px;
+    }
+
+    .problem-quote span {
+      color: #ff6b6b;
+    }
+
+    .problem-footer {
+      font-size: 1rem;
+      color: var(--text-dim);
+      margin-top: 20px;
+      font-style: italic;
+    }
+
+    /* ── HOW IT WORKS ─────────────────────────── */
+    .how-section {
+      text-align: center;
+    }
+
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      margin-top: 64px;
+      position: relative;
+    }
+
+    .how-steps::before {
+      content: '';
+      position: absolute;
+      top: 44px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--dark-border), var(--green), var(--dark-border));
+    }
+
+    .how-step {
+      text-align: center;
+      position: relative;
+      padding: 0 12px;
+    }
+
+    .step-num {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--dark-card);
+      border: 2px solid var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--green);
+      position: relative;
+      z-index: 2;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .how-step:hover .step-num {
+      background: var(--green);
+      color: var(--dark);
+    }
+
+    .step-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .how-step h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .how-step p {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    /* ── FEATURES ─────────────────────────────── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 64px;
+    }
+
+    .feature-card {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      transition: border-color 0.3s, transform 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--green);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--green);
+      transform: translateY(-4px);
+    }
+
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .feature-icon {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h4 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 0.92rem;
+      color: var(--text-dim);
+      line-height: 1.6;
+    }
+
+    /* ── CALCULATOR ────────────────────────────── */
+    .calc-section {
+      text-align: center;
+    }
+
+    .calculator {
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: 24px;
+      padding: 48px;
+      margin-top: 48px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .calc-inputs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .calc-input-group {
+      text-align: left;
+    }
+
+    .calc-input-group label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-dim);
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .calc-input-group input {
+      width: 100%;
+      background: var(--dark);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-sm);
+      padding: 16px 20px;
+      font-size: 1.3rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .calc-input-group input:focus {
+      border-color: var(--green);
+    }
+
+    .calc-divider {
+      height: 1px;
+      background: var(--dark-border);
+      margin-bottom: 40px;
+    }
+
+    .calc-results {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .calc-result {
+      text-align: center;
+    }
+
+    .calc-result-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .calc-result-val {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2rem;
+      font-weight: 800;
+    }
+
+    .calc-result-val.daily {
+      color: var(--text-mid);
+    }
+
+    .calc-result-val.monthly {
+      color: var(--green);
+    }
+
+    .calc-result-val.annual {
+      font-size: 2.5rem;
+      background: linear-gradient(135deg, var(--green), #D3F261);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .calc-note {
+      margin-top: 32px;
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      font-style: italic;
+    }
+
+    /* ── CTA ──────────────────────────────────── */
+    .cta-section {
+      text-align: center;
+      padding: 120px 40px;
+      position: relative;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--green-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-section .section-title {
+      max-width: 800px;
+      margin: 0 auto 20px;
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+    }
+
+    .cta-section .section-desc {
+      max-width: 500px;
+      margin: 0 auto 48px;
+    }
+
+    .cta-whatsapp {
+      background: #25D366;
+      color: #fff;
+      padding: 18px 48px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-whatsapp:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.3);
+    }
+
+    .cta-whatsapp svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    /* ── FOOTER ───────────────────────────────── */
+    footer {
+      padding: 40px;
+      text-align: center;
+      border-top: 1px solid var(--dark-border);
+      color: var(--text-dim);
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: var(--text-dim);
+      text-decoration: none;
+      margin: 0 16px;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--green);
+    }
+
+    /* ── RESPONSIVE ───────────────────────────── */
+    @media (max-width: 900px) {
+      nav {
+        padding: 14px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: block;
+      }
+
+      .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(13, 13, 13, 0.97);
+        padding: 24px;
+        border-bottom: 1px solid var(--dark-border);
+      }
+
+      section {
+        padding: 60px 20px;
+      }
+
+      .hero {
+        padding: 120px 20px 60px;
+      }
+
+      .hero-stats {
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .problem-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .problem-big-number {
+        display: none;
+      }
+
+      .how-steps {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .how-steps::before {
+        display: none;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .calc-inputs {
+        grid-template-columns: 1fr;
+      }
+
+      .calc-results {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .calculator {
+        padding: 32px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="https://menubase.io" class="nav-logo">
+      <img src="https://menubase.io/img/menubase_logo_light.png" alt="MenuBase" onerror="this.style.display='none'">
+      <div class="nav-logo-text">Menu<span>Base</span></div>
+    </a>
+    <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
+    <ul class="nav-links">
+      <li><a href="#problem">The Problem</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#calculator">Revenue Calculator</a></li>
+      <li><a href="https://menubase.io/procurement.html">Procurement</a></li>
+      <li><a href="#cta" class="nav-cta">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <div class="hero-badge">New Feature - Now Live</div>
+      <h1>Your Menu.<br>Now It <span class="highlight">Sells For You.</span></h1>
+      <p class="hero-sub">QR ordering with built-in smart upselling. No trained waiters needed. Turn every order into
+        incremental revenue - automatically.</p>
+      <div class="hero-actions">
+        <a href="https://wa.me/60175981858?text=Hi%2C%20I'm%20interested%20in%20MenuBase%20QR%20Ordering"
+          class="btn-primary" target="_blank">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+          Talk to Us on WhatsApp
         </a>
-        <button class="mobile-menu-toggle" aria-label="Toggle menu" onclick="toggleMobileMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <nav class="nav-links" id="navLinks">
-          <a href="#flow">How it works</a>
-          <a href="#benefits">Benefits</a>
-          <a href="#security">Security</a>
-          <a href="#faq">FAQ</a>
-        </nav>
-        <div class="nav-cta">
-          <a class="btn btn-filled" href="https://app.menubase.io/">Start Free</a>
+        <a href="#how" class="btn-secondary">See How It Works ↓</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-val">+20%</div>
+          <div class="hero-stat-label">Upsell Acceptance</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">RM8</div>
+          <div class="hero-stat-label">Avg Upsell Value</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">RM57K</div>
+          <div class="hero-stat-label">Annual Uplift / Outlet</div>
         </div>
       </div>
-    </header>
+    </div>
+  </section>
 
-    <!-- Hero -->
-    <section id="hero" class="hero">
-      <div class="container grid two" style="align-items:center;gap:48px">
-        <div>
-          <div class="eyebrow">Procurement that just works</div>
-          <h1 class="h1">Still running your restaurant on WhatsApp and spreadsheets? <br> Then you’re already losing.</h1>
-          <p class="muted">Every hour you spend chasing suppliers is an hour your competitors spend scaling. MenuBase replaces messy manual orders with smart procurement, live analytics, and effortless menu insights - All in your browser.</p>
-          <div style="display:flex;gap:12px;margin:22px 0 6px">
-            <a class="btn btn-filled" href="https://app.menubase.io/">Start Free →</a>
-            <a class="btn btn-ghost" href="#" onclick="openVideoModal(event)">Watch 1-min Demo</a>
-          </div>
-          <div class="badge-row">
-            <span class="chip">🌐 <span>Browser-based</span></span>
-            <span class="chip">⚡ <span>Setup in minutes</span></span>
-            <span class="chip">🔗 <span>Supplier-friendly</span></span>
-          </div>
-        </div>
-        <div>
-          <div class="media">
-            <img src="img/demo/po_dashboard_with_supplier_responses.png" alt="PO dashboard with supplier responses" />
-          </div>
-          <div class="caption">Create PO → Supplier marks availability → Track status &amp; invoices</div>
-        </div>
-      </div>
-      <br>
-      <div class="container grid two" style="align-items:center;gap:48px">
-        <div>
-          <h2>How scalable is your restaurant, really?</h2>
-          <p>Take the 2-minute readiness quiz to see where inefficiencies are hiding, and how top operators fix them.</p>
-          <div style="display:flex;gap:12px;margin:22px 0 6px">
-            <a class="btn btn-filled" href="#" onclick="openQuizModal(event)">Find the Gaps Holding You Back →</a>
-          </div>
-        </div>
-        <div>
-        </div>
-      </div>
-    </section>
+  <!-- PROBLEM -->
+  <section id="problem" class="problem">
+    <div class="section-label">The Problem</div>
+    <div class="section-title">Revenue leakage is systemic in F&B.</div>
+    <div class="section-desc">Every order that goes through without an upsell is money left on the table. And it's
+      happening hundreds of times a day.</div>
 
-    <!-- How it works -->
-    <section id="flow" class="section">
-      <div class="container">
-        <h2 class="h2">How It Works</h2>
-        <div class="cards">
-          <div class="card">
-            <div style="font-size:24px">📦</div>
-            <h3 style="margin:8px 0 6px">Create Inventory &amp; Suppliers</h3>
-            <p class="muted">Create your ingredient list and supplier contacts once. It becomes your living shopping list.</p>
-          </div>
-          <div class="card">
-            <div style="font-size:24px">🧾</div>
-            <h3 style="margin:8px 0 6px">Build Purchase Orders</h3>
-            <p class="muted">Pick items and quantities. MenuBase auto-groups by supplier.</p>
-          </div>
-          <div class="card">
-            <div style="font-size:24px">📤</div>
-            <h3 style="margin:8px 0 6px">Send in One Click</h3>
-            <p class="muted">Fire off multiple POs to different suppliers at once. No PDFs or WhatsApp threads.</p>
-          </div>
-          <div class="card">
-            <div style="font-size:24px">✅</div>
-            <h3 style="margin:8px 0 6px">Suppliers Mark Availability</h3>
-            <p class="muted">They open a secure link (no login) and choose In Stock or Out of Stock — with notes.</p>
-          </div>
-          <div class="card">
-            <div style="font-size:24px">📂</div>
-            <h3 style="margin:8px 0 6px">Track &amp; Reconcile</h3>
-            <p class="muted">See real-time status. Receive invoices through the same link and keep records in one place.</p>
-          </div>
-        </div>
-
-        <div class="card" style="margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <div class="problem-grid">
+      <div class="problem-cards">
+        <div class="problem-card">
+          <div class="problem-icon">📋</div>
           <div>
-            <div style="font-weight:600;margin-bottom:4px">For Suppliers</div>
-            <div class="muted">Reply from a link. No signup. Keep your workflow — just faster.</div>
-          </div>
-          <a class="btn btn-ghost" href="https://app.menubase.io/supplier-view/demo">See Supplier View</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Demo -->
-    <section id="demo" class="section alt">
-      <div class="container grid two" style="gap:32px;align-items:center">
-        <div>
-          <h2 class="h2">Built for Restaurants. Designed for Suppliers.</h2>
-          <p class="muted">You work in a clean dashboard. Suppliers reply from your link — zero setup, zero training.</p>
-          <div style="margin-top:16px">
-            <a class="btn btn-filled" href="https://app.menubase.io/">Try MenuBase Free →</a>
+            <h4>Orders Are Taken, Not Optimised</h4>
+            <p>Staff take what customers say - they don't guide them toward higher-value combos or add-ons.</p>
           </div>
         </div>
-        <div class="grid" style="gap:16px">
-          <!-- <div class="media"><img src="/assets/mock/restaurant-po-list.png" alt="Restaurant PO list" /></div> -->
-          <div class="media"><img src="img/demo/supplier_reply_screen.png" alt="Supplier reply screen" /></div>
+        <div class="problem-card">
+          <div class="problem-icon">🧠</div>
+          <div>
+            <h4>Upselling Relies on Memory</h4>
+            <p>Your best server remembers. Everyone else? They just punch in the order and move on.</p>
+          </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Benefits -->
-    <section id="benefits" class="section">
-      <div class="container">
-        <h2 class="h2">Why Restaurants Choose MenuBase</h2>
-        <div class="cards">
-          <div class="card">
-            <h3 style="margin:0 0 6px">🌐 Browser-Based</h3>
-            <p class="muted">Works on any phone, tablet, or computer. Nothing to install.</p>
+        <div class="problem-card">
+          <div class="problem-icon">📉</div>
+          <div>
+            <h4>Menus Are Static</h4>
+            <p>Same menu, all day, every day - regardless of time, demand patterns, or what's actually selling.</p>
           </div>
-          <div class="card">
-            <h3 style="margin:0 0 6px">⚙️ Setup in Minutes</h3>
-            <p class="muted">Upload items and suppliers — start ordering the same day.</p>
-          </div>
-          <div class="card">
-            <h3 style="margin:0 0 6px">📶 Live Status</h3>
-            <p class="muted">Know what’s viewed, confirmed, and invoiced — instantly.</p>
-          </div>
-          <div class="card">
-            <h3 style="margin:0 0 6px">🖱️ One-Click POs</h3>
-            <p class="muted">Send multiple POs at once. Reduce back-and-forth.</p>
-          </div>
-          <div class="card">
-            <h3 style="margin:0 0 6px">🔗 Supplier-Friendly</h3>
-            <p class="muted">Vendors respond without accounts. Lower onboarding friction.</p>
-          </div>
-          <div class="card">
-            <h3 style="margin:0 0 6px">📂 Centralized Records</h3>
-            <p class="muted">POs and invoices live together for easy audit and handovers.</p>
+        </div>
+        <div class="problem-card">
+          <div class="problem-icon">💸</div>
+          <div>
+            <h4>Rising Costs, Flat Revenue</h4>
+            <p>Labour costs keep climbing but revenue per customer stays the same. The math doesn't work.</p>
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Security -->
-    <section id="security" class="section alt">
-      <div class="container">
-        <h2 class="h2">Security &amp; Privacy</h2>
-        <div class="cards" style="grid-template-columns:repeat(3,1fr)">
-          <div class="card">
-            <h3 style="margin:0 0 6px">Secure links</h3>
-            <p class="muted">Time-bound, single-purpose links per PO.</p>
-          </div>
-          <div class="card">
-            <h3 style="margin:0 0 6px">Role-based access</h3>
-            <p class="muted">Keep control across managers, outlets, and finance.</p>
-          </div>
-          <div class="card">
-            <h3 style="margin:0 0 6px">Data portability</h3>
-            <p class="muted">Export POs and invoices anytime.</p>
-          </div>
+      <div class="problem-right">
+        <div class="problem-big-number">0%</div>
+        <div class="problem-quote">
+          This is not a demand problem.<br>
+          It's an <span>execution</span> problem.
         </div>
-        <p class="muted" style="margin-top:12px">We follow least-privilege access and encrypt data in transit and at rest.</p>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq" class="section">
-      <div class="container">
-        <h2 class="h2">FAQ</h2>
-        <div class="grid" style="gap:16px">
-          <div class="item faq">
-            <div class="item card">
-              <strong>Do suppliers need an account?</strong>
-              <p class="muted" style="margin:6px 0 0">No. They reply from your secure link — that’s the point.</p>
-            </div>
-          </div>
-          <div class="item faq">
-            <div class="item card">
-              <strong>Do I need to switch POS?</strong>
-              <p class="muted" style="margin:6px 0 0">No. MenuBase focuses on procurement. Keep your POS.</p>
-            </div>
-          </div>
-          <div class="item faq">
-            <div class="item card">
-              <strong>Is it free to start?</strong>
-              <p class="muted" style="margin:6px 0 0">Yes. The pilot plan lets you add inventory, send POs, and manage replies.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Closer -->
-    <section id="cta" class="section alt">
-      <div class="container grid two" style="align-items:center;gap:24px">
-        <div>
-          <h2 class="h2">Procurement That Just Works.</h2>
-          <p class="muted">Replace spreadsheets and scattered messages with one shared dashboard everyone understands.</p>
-        </div>
-        <div style="display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap">
-          <a class="btn btn-filled" href="https://app.menubase.io/">Start Free →</a>
-          <a class="btn btn-ghost" href="https://menubase.io/contact-us.html">Contact Us</a>
-        </div>
-      </div>
-      <div class="container"><p class="muted" style="margin-top:12px">No credit card required.</p></div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div class="container grid three" style="gap:32px">
-        <div>
-          <h4 style="margin:0 0 10px">MenuBase</h4>
-          <div class="grid" style="gap:6px">
-            <a href="https://menubase.io/privacy-policy.html">Privacy</a>
-            <a href="https://menubase.io/contact-us.html">Contact Us</a>
-          </div>
-        </div>
-        <!-- (Only the provided column is rendered; content preserved exactly as supplied) -->
-      </div>
-      <div class="container" style="margin-top:24px">
-        <small class="muted">© <script>document.write(new Date().getFullYear())</script> MenuBase Sdn Bhd</small>
-      </div>
-    </footer>
-
-    <!-- Video Modal -->
-    <div id="videoModal" class="modal" onclick="closeVideoModal(event)">
-      <div class="modal-content" onclick="event.stopPropagation()">
-        <button class="modal-close" onclick="closeVideoModal(event)">&times;</button>
-        <div class="modal-video">
-          <iframe id="videoFrame" src="" allow="autoplay"></iframe>
-        </div>
+        <p class="problem-footer">You already have the customers. You're just not capturing their full spend.</p>
       </div>
     </div>
+  </section>
 
-    <!-- Quiz Modal -->
-    <div id="quizModal" class="modal" onclick="closeQuizModal(event)">
-      <div class="modal-content" onclick="event.stopPropagation()">
-        <button class="modal-close" onclick="closeQuizModal(event)">&times;</button>
-        <div class="modal-quiz">
-          <div class="typeform-widget" data-url="https://haobinmalaine.typeform.com/to/fUGeodbD" style="width: 100%; height: 500px"></div>
-        </div>
+  <!-- HOW IT WORKS -->
+  <section id="how" class="how-section">
+    <div class="section-label">How It Works</div>
+    <div class="section-title" style="margin: 0 auto 12px;">Five Steps. Zero Staff Training.</div>
+    <div class="section-desc" style="margin: 0 auto;">No app downloads for customers. No POS replacement for you. Just
+      scan, order, and earn more.</div>
+
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="step-num">1</div>
+        <div class="step-icon">📱</div>
+        <h4>Scan</h4>
+        <p>Customer scans your QR code and opens the digital menu instantly - no app needed.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">2</div>
+        <div class="step-icon">🛒</div>
+        <h4>Order</h4>
+        <p>They browse and build their order. MenuBase analyses the basket in real time.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">3</div>
+        <div class="step-icon">✨</div>
+        <h4>Suggest</h4>
+        <p>Smart upsell triggers at the perfect moment - add-ons, pairings, bundles, time-based offers.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">4</div>
+        <div class="step-icon">👆</div>
+        <h4>Accept</h4>
+        <p>Customer adds the suggestion with one tap. Frictionless, natural, no pressure.</p>
+      </div>
+      <div class="how-step">
+        <div class="step-num">5</div>
+        <div class="step-icon">🍽️</div>
+        <h4>Serve</h4>
+        <p>Order hits your tablet. Staff keys it into POS. Order value is already higher.</p>
       </div>
     </div>
+  </section>
 
-    <script>
-      // Mobile Menu Toggle
-      function toggleMobileMenu() {
-        const navLinks = document.getElementById('navLinks');
-        const toggle = document.querySelector('.mobile-menu-toggle');
-        navLinks.classList.toggle('active');
-        toggle.classList.toggle('active');
-      }
+  <!-- FEATURES -->
+  <section id="features">
+    <div style="text-align:center;">
+      <div class="section-label">Features</div>
+      <div class="section-title" style="margin: 0 auto 12px;">Your Best Server. Every Table. Every Time.</div>
+      <div class="section-desc" style="margin: 0 auto;">An intelligent ordering layer that sits in front of your POS. It
+        handles the soft sell so your staff doesn't have to.</div>
+    </div>
 
-      // Close mobile menu when clicking on a link
-      document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-          const navLinks = document.getElementById('navLinks');
-          const toggle = document.querySelector('.mobile-menu-toggle');
-          navLinks.classList.remove('active');
-          toggle.classList.remove('active');
-        });
-      });
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🧠</div>
+        <h4>Context-Aware Suggestions</h4>
+        <p>Analyses time of day, basket contents, and ordering patterns to recommend the right upsell - not a random
+          popup.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📲</div>
+        <h4>QR-Based Ordering</h4>
+        <p>Customers scan and order from their own phone. No app install, no queue, no awkward waiter interactions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔌</div>
+        <h4>POS-Agnostic</h4>
+        <p>Works alongside any existing POS. Orders appear on a dedicated tablet - staff just keys them in. No system
+          overhaul.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📈</div>
+        <h4>Self-Learning Engine</h4>
+        <p>Tracks what converts and what doesn't. Suggestion quality improves automatically over time without manual
+          rules.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⏱️</div>
+        <h4>Time-Based Offers</h4>
+        <p>Happy hour specials, lunch combos, late-night deals - all triggered automatically based on the clock.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h4>Pure Incremental Revenue</h4>
+        <p>Same kitchen, same staff, same seats, same rent. The uplift goes straight to your margin.</p>
+      </div>
+    </div>
+  </section>
 
-      function openVideoModal(e) {
-        e.preventDefault();
-        const modal = document.getElementById('videoModal');
-        const videoFrame = document.getElementById('videoFrame');
-        videoFrame.src = 'https://drive.google.com/file/d/1QUgyPCmPSVqVGezbG2zPvTvVtrrBJa3g/preview';
-        modal.classList.add('active');
-      }
+  <!-- CALCULATOR -->
+  <section id="calculator" class="calc-section">
+    <div class="section-label">Revenue Calculator</div>
+    <div class="section-title" style="margin: 0 auto 12px;">How Much Are You Leaving on the Table?</div>
+    <div class="section-desc" style="margin: 0 auto;">Drag the numbers. See the impact. These are conservative
+      estimates.</div>
 
-      function closeVideoModal(e) {
-        e.preventDefault();
-        const modal = document.getElementById('videoModal');
-        const videoFrame = document.getElementById('videoFrame');
-        modal.classList.remove('active');
-        videoFrame.src = ''; // Stop video playback
-      }
+    <div class="calculator">
+      <div class="calc-inputs">
+        <div class="calc-input-group">
+          <label>Orders per day</label>
+          <input type="number" id="ordersPerDay" value="100" min="1" oninput="calcRevenue()">
+        </div>
+        <div class="calc-input-group">
+          <label>Upsell acceptance %</label>
+          <input type="number" id="acceptRate" value="20" min="1" max="100" oninput="calcRevenue()">
+        </div>
+        <div class="calc-input-group">
+          <label>Avg upsell value (RM)</label>
+          <input type="number" id="upsellValue" value="8" min="1" oninput="calcRevenue()">
+        </div>
+      </div>
+      <div class="calc-divider"></div>
+      <div class="calc-results">
+        <div class="calc-result">
+          <div class="calc-result-label">Daily Uplift</div>
+          <div class="calc-result-val daily" id="dailyResult">RM160</div>
+        </div>
+        <div class="calc-result">
+          <div class="calc-result-label">Monthly Uplift</div>
+          <div class="calc-result-val monthly" id="monthlyResult">RM4,800</div>
+        </div>
+        <div class="calc-result">
+          <div class="calc-result-label">Annual Uplift</div>
+          <div class="calc-result-val annual" id="annualResult">RM57,600</div>
+        </div>
+      </div>
+      <p class="calc-note">No more customers. No more staff. No more seats. No more marketing. Just more revenue from
+        the same traffic.</p>
+    </div>
+  </section>
 
-      function openQuizModal(e) {
-        e.preventDefault();
-        const modal = document.getElementById('quizModal');
-        modal.classList.add('active');
-      }
+  <!-- CTA -->
+  <section id="cta" class="cta-section">
+    <div class="section-label">Ready?</div>
+    <div class="section-title">Stop leaving money on every order.</div>
+    <div class="section-desc">Talk to us. We'll show you exactly how much incremental revenue your outlet is missing -
+      and how to capture it.</div>
+    <a href="https://wa.me/60175981858?text=Hi%2C%20I'm%20interested%20in%20MenuBase%20QR%20Ordering%20%26%20Smart%20Upselling"
+      class="cta-whatsapp" target="_blank">
+      <svg viewBox="0 0 24 24">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+      </svg>
+      Chat With Us on WhatsApp
+    </a>
+    <p style="margin-top: 20px; color: var(--text-dim); font-size: 0.85rem;">Or email us at <a
+        href="mailto:contact.menubase@gmail.com"
+        style="color: var(--green); text-decoration: none;">contact.menubase@gmail.com</a></p>
+  </section>
 
-      function closeQuizModal(e) {
-        e.preventDefault();
-        const modal = document.getElementById('quizModal');
-        modal.classList.remove('active');
-      }
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 MenuBase Sdn Bhd</p>
+    <div style="margin-top: 12px;">
+      <a href="https://menubase.io">Home</a>
+      <a href="https://menubase.io/privacy-policy.html">Privacy</a>
+      <a href="https://menubase.io/contact-us.html">Contact</a>
+    </div>
+  </footer>
 
-      // Close modal on ESC key
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-          closeVideoModal(e);
-          closeQuizModal(e);
-        }
-      });
-    </script>
-    <script src="https://embed.typeform.com/embed.js"></script>
-  </body>
+  <script>
+    function calcRevenue() {
+      const orders = parseInt(document.getElementById('ordersPerDay').value) || 0;
+      const rate = parseInt(document.getElementById('acceptRate').value) || 0;
+      const value = parseInt(document.getElementById('upsellValue').value) || 0;
+
+      const daily = orders * (rate / 100) * value;
+      const monthly = daily * 30;
+      const annual = daily * 365;
+
+      document.getElementById('dailyResult').textContent = 'RM' + daily.toLocaleString('en-MY');
+      document.getElementById('monthlyResult').textContent = 'RM' + monthly.toLocaleString('en-MY');
+      document.getElementById('annualResult').textContent = 'RM' + annual.toLocaleString('en-MY');
+    }
+  </script>
+
+</body>
+
 </html>

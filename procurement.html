@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MenuBase | Simple Procurement for Restaurants</title>
+    <meta name="description" content="Create supplier POs in one click, track supplier responses, and receive invoices — all in your browser." />
+    <meta property="og:image" content="/assets/og/menubase-procurement.png" />
+    <meta property="og:title" content="MenuBase — Simple Procurement for Restaurants" />
+    <meta property="og:description" content="Create supplier POs in one click, track supplier responses, and receive invoices — all in your browser." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="img/menubase_logo_icon.png" sizes="16x16" type="image/png" />
+    <link rel="canonical" href="https://menubase.io/"/>
+
+    <style>
+      :root{
+        /* theme.colors */
+        --bg:#FFFFFF;
+        --bgAlt:#F7F9FB;
+        --text:#2F343A;
+        --muted:#64748B;
+        --primary:#C4E95A;
+        --primaryDark:#A9D349;
+        --primaryDarker:#7EAA2F;
+        --border:#E6E8EC;
+        --success:#16A34A;
+        --warning:#F59E0B;
+
+        /* theme.spacing */
+        --sectionY:112px;
+        --sectionYHeroTop:128px;
+        --grid:24px;
+        --container:1200px;
+
+        /* theme.radii */
+        --r-sm:8px;
+        --r-md:12px;
+        --r-lg:16px;
+
+        /* shadows */
+        --shadow-sm:0 1px 2px rgba(15,23,42,0.04);
+        --shadow-md:0 6px 20px rgba(15,23,42,0.06);
+      }
+      html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter, ui-sans-serif, system-ui;font-size:16px;line-height:1.6;}
+      a{color:inherit;text-decoration:none}
+      a:hover{text-decoration:underline}
+      .container{max-width:var(--container);margin:0 auto;padding:0 24px}
+      .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:var(--r-md);border:1px solid transparent;font-weight:600;line-height:1}
+      .btn-filled{background:var(--primary);color:#0F172A}
+      .btn-filled:hover{background:var(--primaryDark)}
+      .btn-filled:active{background:var(--primaryDarker)}
+      .btn-ghost{background:transparent;border-color:var(--border)}
+      .btn-ghost:hover{background:#F1F5F9}
+      .chip{display:inline-flex;align-items:center;gap:6px;background:#F2FCE5;border:1px solid #E0F3B3;color:var(--text);border-radius:999px;padding:6px 10px;font-size:12px}
+      .section{padding:var(--sectionY) 0}
+      .section.alt{background:var(--bgAlt)}
+      .h1{font-size:38px;line-height:1.15;margin:12px 0 12px}
+      .h2{font-size:30px;line-height:1.2;margin:0 0 16px}
+      .muted{color:var(--muted)}
+      .grid{display:grid;gap:var(--grid)}
+      .two{grid-template-columns:1.1fr 1fr}
+      .three{grid-template-columns:repeat(3,1fr)}
+      .cards{display:grid;gap:var(--grid);grid-template-columns:repeat(3,1fr)}
+      .card{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);padding:20px}
+      header.nav{position:sticky;top:0;background:rgba(255,255,255,0.8);backdrop-filter:saturate(180%) blur(8px);border-bottom:1px solid var(--border);z-index:50}
+      .nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+      .nav-links{display:flex;gap:18px;align-items:center}
+      .nav-cta .btn{height:40px}
+      .mobile-menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;margin:-8px}
+      .mobile-menu-toggle span{display:block;width:24px;height:2px;background:var(--text);margin:5px 0;transition:.3s}
+      .mobile-menu-toggle.active span:nth-child(1){transform:rotate(45deg) translate(7px,7px)}
+      .mobile-menu-toggle.active span:nth-child(2){opacity:0}
+      .mobile-menu-toggle.active span:nth-child(3){transform:rotate(-45deg) translate(7px,-7px)}
+      .hero{padding:var(--sectionYHeroTop) 0}
+      .hero .eyebrow{font-weight:600;letter-spacing:.02em;color:var(--muted)}
+      .badge-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+      .media{border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-sm);overflow:hidden}
+      .media img{display:block;width:100%;height:auto}
+      .caption{font-size:12px;color:var(--muted);margin-top:8px}
+      .logos{display:flex;gap:32px;align-items:center;opacity:.85;flex-wrap:wrap}
+      .faq .item{border:1px solid var(--border);border-radius:var(--r-lg);padding:16px}
+      footer{border-top:1px solid var(--border);padding:40px 0}
+      /* Modal styles */
+      .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.8);align-items:center;justify-content:center}
+      .modal.active{display:flex}
+      .modal-content{position:relative;background:#fff;border-radius:var(--r-lg);width:90%;max-width:900px;padding:0;overflow:hidden}
+      .modal-close{position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.7);color:#fff;border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:20px;line-height:1;z-index:10}
+      .modal-close:hover{background:rgba(0,0,0,0.9)}
+      .modal-video{width:100%;height:0;padding-bottom:56.25%;position:relative}
+      .modal-video iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+      /* responsive */
+      @media (max-width:960px){
+        .two,.three,.cards{grid-template-columns:1fr}
+        .h1{font-size:34px}
+        .h2{font-size:26px}
+        .modal-content{width:95%}
+        .mobile-menu-toggle{display:block}
+        .nav-links{position:fixed;top:64px;left:0;right:0;background:rgba(255,255,255,0.98);backdrop-filter:saturate(180%) blur(8px);flex-direction:column;padding:20px 24px;gap:12px;border-bottom:1px solid var(--border);transform:translateY(-100%);opacity:0;pointer-events:none;transition:transform .3s,opacity .3s}
+        .nav-links.active{transform:translateY(0);opacity:1;pointer-events:auto}
+        .nav-links a{width:100%;padding:12px 0;border-bottom:1px solid var(--border)}
+        .nav-links a:last-child{border-bottom:none}
+        .nav-cta{display:none}
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Nav -->
+    <header class="nav">
+      <div class="container nav-inner">
+        <a href="https://menubase.io/" class="brand" aria-label="MenuBase">
+          <img src="img/menubase_logo_light.png" alt="MenuBase" height="28" />
+        </a>
+        <button class="mobile-menu-toggle" aria-label="Toggle menu" onclick="toggleMobileMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav class="nav-links" id="navLinks">
+          <a href="#flow">How it works</a>
+          <a href="#benefits">Benefits</a>
+          <a href="#security">Security</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <div class="nav-cta">
+          <a class="btn btn-filled" href="https://app.menubase.io/">Start Free</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section id="hero" class="hero">
+      <div class="container grid two" style="align-items:center;gap:48px">
+        <div>
+          <div class="eyebrow">Procurement that just works</div>
+          <h1 class="h1">Still running your restaurant on WhatsApp and spreadsheets? <br> Then you’re already losing.</h1>
+          <p class="muted">Every hour you spend chasing suppliers is an hour your competitors spend scaling. MenuBase replaces messy manual orders with smart procurement, live analytics, and effortless menu insights - All in your browser.</p>
+          <div style="display:flex;gap:12px;margin:22px 0 6px">
+            <a class="btn btn-filled" href="https://app.menubase.io/">Start Free →</a>
+            <a class="btn btn-ghost" href="#" onclick="openVideoModal(event)">Watch 1-min Demo</a>
+          </div>
+          <div class="badge-row">
+            <span class="chip">🌐 <span>Browser-based</span></span>
+            <span class="chip">⚡ <span>Setup in minutes</span></span>
+            <span class="chip">🔗 <span>Supplier-friendly</span></span>
+          </div>
+        </div>
+        <div>
+          <div class="media">
+            <img src="img/demo/po_dashboard_with_supplier_responses.png" alt="PO dashboard with supplier responses" />
+          </div>
+          <div class="caption">Create PO → Supplier marks availability → Track status &amp; invoices</div>
+        </div>
+      </div>
+      <br>
+      <div class="container grid two" style="align-items:center;gap:48px">
+        <div>
+          <h2>How scalable is your restaurant, really?</h2>
+          <p>Take the 2-minute readiness quiz to see where inefficiencies are hiding, and how top operators fix them.</p>
+          <div style="display:flex;gap:12px;margin:22px 0 6px">
+            <a class="btn btn-filled" href="#" onclick="openQuizModal(event)">Find the Gaps Holding You Back →</a>
+          </div>
+        </div>
+        <div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="flow" class="section">
+      <div class="container">
+        <h2 class="h2">How It Works</h2>
+        <div class="cards">
+          <div class="card">
+            <div style="font-size:24px">📦</div>
+            <h3 style="margin:8px 0 6px">Create Inventory &amp; Suppliers</h3>
+            <p class="muted">Create your ingredient list and supplier contacts once. It becomes your living shopping list.</p>
+          </div>
+          <div class="card">
+            <div style="font-size:24px">🧾</div>
+            <h3 style="margin:8px 0 6px">Build Purchase Orders</h3>
+            <p class="muted">Pick items and quantities. MenuBase auto-groups by supplier.</p>
+          </div>
+          <div class="card">
+            <div style="font-size:24px">📤</div>
+            <h3 style="margin:8px 0 6px">Send in One Click</h3>
+            <p class="muted">Fire off multiple POs to different suppliers at once. No PDFs or WhatsApp threads.</p>
+          </div>
+          <div class="card">
+            <div style="font-size:24px">✅</div>
+            <h3 style="margin:8px 0 6px">Suppliers Mark Availability</h3>
+            <p class="muted">They open a secure link (no login) and choose In Stock or Out of Stock — with notes.</p>
+          </div>
+          <div class="card">
+            <div style="font-size:24px">📂</div>
+            <h3 style="margin:8px 0 6px">Track &amp; Reconcile</h3>
+            <p class="muted">See real-time status. Receive invoices through the same link and keep records in one place.</p>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+          <div>
+            <div style="font-weight:600;margin-bottom:4px">For Suppliers</div>
+            <div class="muted">Reply from a link. No signup. Keep your workflow — just faster.</div>
+          </div>
+          <a class="btn btn-ghost" href="https://app.menubase.io/supplier-view/demo">See Supplier View</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo -->
+    <section id="demo" class="section alt">
+      <div class="container grid two" style="gap:32px;align-items:center">
+        <div>
+          <h2 class="h2">Built for Restaurants. Designed for Suppliers.</h2>
+          <p class="muted">You work in a clean dashboard. Suppliers reply from your link — zero setup, zero training.</p>
+          <div style="margin-top:16px">
+            <a class="btn btn-filled" href="https://app.menubase.io/">Try MenuBase Free →</a>
+          </div>
+        </div>
+        <div class="grid" style="gap:16px">
+          <!-- <div class="media"><img src="/assets/mock/restaurant-po-list.png" alt="Restaurant PO list" /></div> -->
+          <div class="media"><img src="img/demo/supplier_reply_screen.png" alt="Supplier reply screen" /></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section id="benefits" class="section">
+      <div class="container">
+        <h2 class="h2">Why Restaurants Choose MenuBase</h2>
+        <div class="cards">
+          <div class="card">
+            <h3 style="margin:0 0 6px">🌐 Browser-Based</h3>
+            <p class="muted">Works on any phone, tablet, or computer. Nothing to install.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin:0 0 6px">⚙️ Setup in Minutes</h3>
+            <p class="muted">Upload items and suppliers — start ordering the same day.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin:0 0 6px">📶 Live Status</h3>
+            <p class="muted">Know what’s viewed, confirmed, and invoiced — instantly.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin:0 0 6px">🖱️ One-Click POs</h3>
+            <p class="muted">Send multiple POs at once. Reduce back-and-forth.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin:0 0 6px">🔗 Supplier-Friendly</h3>
+            <p class="muted">Vendors respond without accounts. Lower onboarding friction.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin:0 0 6px">📂 Centralized Records</h3>
+            <p class="muted">POs and invoices live together for easy audit and handovers.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security -->
+    <section id="security" class="section alt">
+      <div class="container">
+        <h2 class="h2">Security &amp; Privacy</h2>
+        <div class="cards" style="grid-template-columns:repeat(3,1fr)">
+          <div class="card">
+            <h3 style="margin:0 0 6px">Secure links</h3>
+            <p class="muted">Time-bound, single-purpose links per PO.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin:0 0 6px">Role-based access</h3>
+            <p class="muted">Keep control across managers, outlets, and finance.</p>
+          </div>
+          <div class="card">
+            <h3 style="margin:0 0 6px">Data portability</h3>
+            <p class="muted">Export POs and invoices anytime.</p>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:12px">We follow least-privilege access and encrypt data in transit and at rest.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section">
+      <div class="container">
+        <h2 class="h2">FAQ</h2>
+        <div class="grid" style="gap:16px">
+          <div class="item faq">
+            <div class="item card">
+              <strong>Do suppliers need an account?</strong>
+              <p class="muted" style="margin:6px 0 0">No. They reply from your secure link — that’s the point.</p>
+            </div>
+          </div>
+          <div class="item faq">
+            <div class="item card">
+              <strong>Do I need to switch POS?</strong>
+              <p class="muted" style="margin:6px 0 0">No. MenuBase focuses on procurement. Keep your POS.</p>
+            </div>
+          </div>
+          <div class="item faq">
+            <div class="item card">
+              <strong>Is it free to start?</strong>
+              <p class="muted" style="margin:6px 0 0">Yes. The pilot plan lets you add inventory, send POs, and manage replies.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closer -->
+    <section id="cta" class="section alt">
+      <div class="container grid two" style="align-items:center;gap:24px">
+        <div>
+          <h2 class="h2">Procurement That Just Works.</h2>
+          <p class="muted">Replace spreadsheets and scattered messages with one shared dashboard everyone understands.</p>
+        </div>
+        <div style="display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap">
+          <a class="btn btn-filled" href="https://app.menubase.io/">Start Free →</a>
+          <a class="btn btn-ghost" href="https://menubase.io/contact-us.html">Contact Us</a>
+        </div>
+      </div>
+      <div class="container"><p class="muted" style="margin-top:12px">No credit card required.</p></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container grid three" style="gap:32px">
+        <div>
+          <h4 style="margin:0 0 10px">MenuBase</h4>
+          <div class="grid" style="gap:6px">
+            <a href="https://menubase.io/privacy-policy.html">Privacy</a>
+            <a href="https://menubase.io/contact-us.html">Contact Us</a>
+          </div>
+        </div>
+        <!-- (Only the provided column is rendered; content preserved exactly as supplied) -->
+      </div>
+      <div class="container" style="margin-top:24px">
+        <small class="muted">© <script>document.write(new Date().getFullYear())</script> MenuBase Sdn Bhd</small>
+      </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal" onclick="closeVideoModal(event)">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeVideoModal(event)">&times;</button>
+        <div class="modal-video">
+          <iframe id="videoFrame" src="" allow="autoplay"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quiz Modal -->
+    <div id="quizModal" class="modal" onclick="closeQuizModal(event)">
+      <div class="modal-content" onclick="event.stopPropagation()">
+        <button class="modal-close" onclick="closeQuizModal(event)">&times;</button>
+        <div class="modal-quiz">
+          <div class="typeform-widget" data-url="https://haobinmalaine.typeform.com/to/fUGeodbD" style="width: 100%; height: 500px"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Mobile Menu Toggle
+      function toggleMobileMenu() {
+        const navLinks = document.getElementById('navLinks');
+        const toggle = document.querySelector('.mobile-menu-toggle');
+        navLinks.classList.toggle('active');
+        toggle.classList.toggle('active');
+      }
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          const navLinks = document.getElementById('navLinks');
+          const toggle = document.querySelector('.mobile-menu-toggle');
+          navLinks.classList.remove('active');
+          toggle.classList.remove('active');
+        });
+      });
+
+      function openVideoModal(e) {
+        e.preventDefault();
+        const modal = document.getElementById('videoModal');
+        const videoFrame = document.getElementById('videoFrame');
+        videoFrame.src = 'https://drive.google.com/file/d/1QUgyPCmPSVqVGezbG2zPvTvVtrrBJa3g/preview';
+        modal.classList.add('active');
+      }
+
+      function closeVideoModal(e) {
+        e.preventDefault();
+        const modal = document.getElementById('videoModal');
+        const videoFrame = document.getElementById('videoFrame');
+        modal.classList.remove('active');
+        videoFrame.src = ''; // Stop video playback
+      }
+
+      function openQuizModal(e) {
+        e.preventDefault();
+        const modal = document.getElementById('quizModal');
+        modal.classList.add('active');
+      }
+
+      function closeQuizModal(e) {
+        e.preventDefault();
+        const modal = document.getElementById('quizModal');
+        modal.classList.remove('active');
+      }
+
+      // Close modal on ESC key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeVideoModal(e);
+          closeQuizModal(e);
+        }
+      });
+    </script>
+    <script src="https://embed.typeform.com/embed.js"></script>
+  </body>
+</html>
