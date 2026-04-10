@@ -2,20 +2,15 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MenuBase | Smart QR Ordering</title>
-  <meta property="og:image" content="/assets/og/menubase.png" />
-  <meta property="og:title" content="MenuBase — Smart QR Ordering" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart QR Ordering - MenuBase</title>
   <meta name="description"
-    content="Turn every order into incremental revenue with MenuBase's smart QR ordering system. No trained waiters needed.">
-  <link rel="icon" href="img/menubase_logo_icon.png" sizes="16x16" type="image/png" />
-  <link rel="canonical" href="https://menubase.io/" />
+    content="Turn every order into incremental revenue with MenuBase's smart QR ordering system." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
     rel="stylesheet">
-
   <style>
     :root {
       --green: #A0D911;
@@ -28,8 +23,6 @@
       --text: #F5F5F0;
       --text-dim: #9A9A90;
       --text-mid: #C5C5B8;
-      --accent-orange: #FF6B35;
-      --accent-blue: #3B82F6;
       --radius: 16px;
       --radius-sm: 10px;
     }
@@ -43,6 +36,7 @@
     html {
       scroll-behavior: smooth;
       font-size: 16px;
+      overflow-x: hidden;
     }
 
     body {
@@ -53,7 +47,7 @@
       overflow-x: hidden;
     }
 
-    /* ── NAV ─────────────────────────────────── */
+    /* NAV */
     nav {
       position: fixed;
       top: 0;
@@ -66,6 +60,7 @@
       background: rgba(13, 13, 13, 0.85);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--dark-border);
+      box-sizing: border-box;
     }
 
     .nav-logo {
@@ -127,21 +122,27 @@
 
     .mobile-toggle {
       display: none;
-      background: none;
-      border: none;
-      color: var(--text);
-      font-size: 1.5rem;
+      background: rgba(160, 217, 17, 0.12);
+      border: 1px solid rgba(160, 217, 17, 0.3);
+      color: var(--green);
+      font-size: 1.4rem;
       cursor: pointer;
+      border-radius: 8px;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
     }
 
-    /* ── HERO ─────────────────────────────────── */
+    /* HERO */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 140px 40px 80px;
+      padding: 140px 20px 80px;
       position: relative;
       overflow: hidden;
     }
@@ -326,11 +327,12 @@
       }
     }
 
-    /* ── SECTION SHARED ──────────────────────── */
+    /* SECTIONS */
     section {
       padding: 100px 40px;
       max-width: 1200px;
       margin: 0 auto;
+      overflow-x: hidden;
     }
 
     .section-label {
@@ -359,7 +361,7 @@
       font-weight: 300;
     }
 
-    /* ── PROBLEM ──────────────────────────────── */
+    /* PROBLEM */
     .problem {
       position: relative;
     }
@@ -451,7 +453,786 @@
       font-style: italic;
     }
 
-    /* ── HOW IT WORKS ─────────────────────────── */
+    /* ═══════════════════════════════════════
+     DEMO - phone UI
+  ═══════════════════════════════════════ */
+    .demo-wrap {
+      text-align: center;
+      padding: 100px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .demo-phone-outer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .demo-phone-rel {
+      position: relative;
+      display: inline-block;
+    }
+
+    .demo-glow {
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(160, 217, 17, 0.15) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .mb-phone {
+      width: 300px;
+      height: 520px;
+      background: #fdf6f0;
+      border-radius: 40px;
+      border: 7px solid #1a1a1a;
+      box-shadow: 0 0 0 1px #2a2a2a, 0 32px 64px rgba(0, 0, 0, 0.5), 0 0 40px rgba(160, 217, 17, 0.12);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mb-sbar {
+      flex-shrink: 0;
+      height: 28px;
+      background: #1a1a1a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+    }
+
+    .mb-sbar span {
+      color: #888;
+      font-size: 10px;
+      font-weight: 500;
+    }
+
+    /* screen = flex col, steps live inside */
+    .mb-screen {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      min-height: 0;
+    }
+
+    .mb-step {
+      display: none;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    .mb-step.active {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    /* cafe header */
+    .mb-chdr {
+      flex-shrink: 0;
+      background: #fceee2;
+      padding: 10px 16px 9px;
+      border-bottom: 1px solid #e8d4c0;
+    }
+
+    .mb-chdr-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mb-cname {
+      color: #5a7a00;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .mb-csub {
+      color: #8a6a4a;
+      font-size: 10px;
+      margin-top: 1px;
+    }
+
+    .mb-wait-lbl {
+      font-size: 9px;
+      color: #a07850;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    .mb-wait-val {
+      font-size: 12px;
+      font-weight: 700;
+      color: #2a1f14;
+      text-align: right;
+    }
+
+    .mb-pow {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      margin-top: 6px;
+      background: #f4f9e8;
+      border: 1px solid #c8df7a;
+      border-radius: 4px;
+      padding: 2px 7px;
+    }
+
+    .mb-pow-dot {
+      width: 4px;
+      height: 4px;
+      background: #A0D911;
+      border-radius: 50%;
+    }
+
+    .mb-pow-txt {
+      color: #5a7a00;
+      font-size: 9px;
+      font-weight: 600;
+    }
+
+    /* scroll */
+    .mb-scroll {
+      flex: 1;
+      overflow-y: auto;
+      background: #fdf6f0;
+      min-height: 0;
+    }
+
+    .mb-scroll::-webkit-scrollbar {
+      width: 0;
+    }
+
+    /* category header */
+    .mb-cat {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px 4px;
+    }
+
+    .mb-cat-lbl {
+      font-size: 9px;
+      font-weight: 700;
+      color: #a07850;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .mb-cat-line {
+      flex: 1;
+      height: 1px;
+      background: #e8d4c0;
+    }
+
+    /* menu item */
+    .mb-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 14px;
+      border-bottom: 1px solid #e8d4c0;
+      background: #fceee2;
+    }
+
+    .mb-iimg {
+      width: 48px;
+      height: 48px;
+      border-radius: 9px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #e8d4c0;
+    }
+
+    .mb-iimg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mb-iinfo {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .mb-iname {
+      font-size: 12px;
+      font-weight: 600;
+      color: #2a1f14;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .mb-idesc {
+      font-size: 10px;
+      color: #7a5a38;
+      margin-top: 1px;
+      line-height: 1.3;
+    }
+
+    .mb-iprice {
+      font-size: 11px;
+      font-weight: 700;
+      color: #4a3828;
+      margin-top: 2px;
+    }
+
+    .mb-bp {
+      font-size: 8px;
+      background: #fef3cd;
+      color: #a07010;
+      border-radius: 3px;
+      padding: 1px 5px;
+      font-weight: 600;
+    }
+
+    .mb-bs {
+      font-size: 8px;
+      background: #fde8e8;
+      color: #c04040;
+      border-radius: 3px;
+      padding: 1px 5px;
+      font-weight: 600;
+    }
+
+    .mb-bv {
+      font-size: 8px;
+      background: #f4f9e8;
+      color: #5a7a00;
+      border-radius: 3px;
+      padding: 1px 5px;
+      font-weight: 600;
+    }
+
+    .mb-add {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #A0D911;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.15s;
+    }
+
+    .mb-add:hover {
+      background: #8ec510;
+    }
+
+    .mb-add.added {
+      background: #7CB305;
+      width: 32px;
+      height: 32px;
+    }
+
+    .mb-add.added::after {
+      content: '✓';
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .mb-add.added svg {
+      display: none;
+    }
+
+    /* cart bar */
+    .mb-cartbar {
+      flex-shrink: 0;
+      background: #A0D911;
+      padding: 13px 16px;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .mb-cartbar:hover {
+      background: #8ec510;
+    }
+
+    .mb-cartbar.show {
+      display: flex;
+    }
+
+    .mb-ci {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .mb-ca {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    /* checkout step */
+    .mb-cohdr {
+      flex-shrink: 0;
+      background: #fceee2;
+      padding: 11px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid #e8d4c0;
+    }
+
+    .mb-back {
+      color: #7CB305;
+      font-size: 12px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+    }
+
+    .mb-cotitle {
+      color: #2a1f14;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .mb-olist {
+      flex: 1;
+      overflow-y: auto;
+      padding: 6px 14px;
+      background: #fdf6f0;
+      min-height: 0;
+    }
+
+    .mb-olist::-webkit-scrollbar {
+      width: 0;
+    }
+
+    .mb-orow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 0;
+      border-bottom: 1px solid #e8d4c0;
+    }
+
+    .mb-orow:last-child {
+      border-bottom: none;
+    }
+
+    .mb-oimg {
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #e8d4c0;
+    }
+
+    .mb-oname {
+      font-size: 11px;
+      color: #2a1f14;
+      flex: 1;
+    }
+
+    .mb-oprice {
+      font-size: 11px;
+      color: #8a6a4a;
+    }
+
+    .mb-promo {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-top: 1px solid #e8d4c0;
+      background: #fdf6f0;
+      font-size: 10px;
+      color: #a07850;
+      font-weight: 600;
+    }
+
+    .mb-strow {
+      flex-shrink: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 14px;
+      border-top: 1px solid #e8d4c0;
+      background: #fceee2;
+    }
+
+    .mb-stlbl {
+      font-size: 11px;
+      color: #8a6a4a;
+    }
+
+    .mb-stval {
+      font-size: 13px;
+      font-weight: 700;
+      color: #2a1f14;
+    }
+
+    .mb-cobtnarea {
+      flex-shrink: 0;
+      padding: 9px 14px 11px;
+      background: #fceee2;
+      border-top: 1px solid #e8d4c0;
+    }
+
+    .mb-proceed {
+      width: 100%;
+      background: #A0D911;
+      color: #1a1a1a;
+      border: none;
+      border-radius: 10px;
+      padding: 13px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+      transition: background 0.2s;
+    }
+
+    .mb-proceed:hover {
+      background: #8ec510;
+    }
+
+    .mb-paynote {
+      font-size: 9px;
+      color: #a07850;
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    /* upsell steps */
+    .mb-uphdr {
+      flex-shrink: 0;
+      background: #fceee2;
+      padding: 11px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #e8d4c0;
+    }
+
+    .mb-uphtitle {
+      color: #2a1f14;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .mb-upprev {
+      flex: 1;
+      overflow-y: auto;
+      padding: 6px 14px;
+      background: #fdf6f0;
+      opacity: 0.55;
+      min-height: 0;
+    }
+
+    .mb-upprev::-webkit-scrollbar {
+      width: 0;
+    }
+
+    .mb-upsheet {
+      flex-shrink: 0;
+      background: #fceee2;
+      border-radius: 18px 18px 0 0;
+      padding: 13px 14px 14px;
+      border-top: 2px solid #e8d4c0;
+      box-shadow: 0 -6px 20px rgba(180, 140, 100, 0.1);
+    }
+
+    .mb-pill {
+      width: 28px;
+      height: 3px;
+      background: #d4b896;
+      border-radius: 2px;
+      margin: 0 auto 11px;
+    }
+
+    .mb-eyebrow {
+      font-size: 9px;
+      font-weight: 700;
+      color: #7CB305;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .mb-uptitle {
+      font-size: 13px;
+      font-weight: 700;
+      color: #2a1f14;
+      margin-bottom: 2px;
+    }
+
+    .mb-upsub {
+      font-size: 10px;
+      color: #8a6a4a;
+      margin-bottom: 9px;
+    }
+
+    .mb-upcard {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #fdf6f0;
+      border-radius: 10px;
+      padding: 8px;
+      margin-bottom: 9px;
+      border: 1.5px solid #A0D911;
+    }
+
+    .mb-upimg {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: #e8d4c0;
+    }
+
+    .mb-upimg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .mb-upiname {
+      font-size: 12px;
+      font-weight: 700;
+      color: #2a1f14;
+    }
+
+    .mb-upidesc {
+      font-size: 10px;
+      color: #8a6a4a;
+      margin-top: 1px;
+    }
+
+    .mb-upiprice {
+      font-size: 11px;
+      font-weight: 700;
+      color: #5a7a00;
+      margin-top: 2px;
+    }
+
+    .mb-yesbtn {
+      width: 100%;
+      background: #A0D911;
+      color: #1a1a1a;
+      border: none;
+      border-radius: 9px;
+      padding: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 6px;
+      font-family: 'Outfit', sans-serif;
+      transition: background 0.2s;
+    }
+
+    .mb-yesbtn:hover {
+      background: #8ec510;
+    }
+
+    .mb-skipbtn {
+      width: 100%;
+      background: none;
+      border: 1px solid #d4b896;
+      border-radius: 9px;
+      color: #8a6a4a;
+      font-size: 11px;
+      cursor: pointer;
+      padding: 10px;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* confirm step */
+    .mb-cfhdr {
+      flex-shrink: 0;
+      background: #fceee2;
+      padding: 10px 16px 9px;
+      border-bottom: 1px solid #e8d4c0;
+    }
+
+    .mb-cfcafe {
+      color: #5a7a00;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .mb-cfsubhdr {
+      color: #8a6a4a;
+      font-size: 10px;
+      margin-top: 1px;
+    }
+
+    .mb-cfbody {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      background: #fdf6f0;
+      overflow-y: auto;
+      min-height: 0;
+    }
+
+    .mb-check {
+      width: 46px;
+      height: 46px;
+      background: #eef6d6;
+      border: 1.5px solid #c8df7a;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 9px;
+    }
+
+    .mb-cftitle {
+      font-size: 14px;
+      font-weight: 700;
+      color: #2a1f14;
+      margin-bottom: 2px;
+    }
+
+    .mb-cfeta {
+      font-size: 10px;
+      color: #a07850;
+      margin-bottom: 10px;
+    }
+
+    .mb-cfmsg {
+      font-size: 10px;
+      color: #8a6a4a;
+      text-align: center;
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    .mb-receipt {
+      width: 100%;
+      background: #fceee2;
+      border: 1px solid #e8d4c0;
+      border-radius: 10px;
+      padding: 9px 11px;
+      margin-bottom: 9px;
+    }
+
+    .mb-rrow {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      padding: 3px 0;
+    }
+
+    .mb-rrow.total {
+      font-weight: 700;
+      font-size: 12px;
+      border-top: 1px solid #e8d4c0;
+      margin-top: 5px;
+      padding-top: 6px;
+    }
+
+    .mb-uplift {
+      background: #eef6d6;
+      border: 1px solid #c8df7a;
+      border-radius: 8px;
+      padding: 6px 10px;
+      display: none;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .mb-uplift-txt {
+      font-size: 10px;
+      color: #5a7a00;
+      font-weight: 700;
+    }
+
+    .mb-restartbtn {
+      margin-top: 9px;
+      background: none;
+      border: 1px solid #d4b896;
+      color: #8a6a4a;
+      border-radius: 8px;
+      padding: 6px 14px;
+      font-size: 11px;
+      cursor: pointer;
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* dots */
+    .mb-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .mb-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #d4b896;
+      transition: background 0.3s;
+    }
+
+    .mb-dot.active {
+      background: #A0D911;
+    }
+
+    .mb-hint {
+      font-size: 11px;
+      color: #555;
+      letter-spacing: 0.04em;
+    }
+
+    /* mobile phone resize */
+    @media(max-width:600px) {
+      .mb-phone {
+        width: min(300px, calc(100vw - 48px));
+        height: 500px;
+        border-radius: 34px;
+      }
+
+      .demo-glow {
+        width: 280px;
+        height: 280px;
+      }
+
+      .demo-wrap {
+        padding: 40px 16px;
+      }
+    }
+
+    /* HOW IT WORKS */
     .how-section {
       text-align: center;
     }
@@ -521,7 +1302,7 @@
       line-height: 1.5;
     }
 
-    /* ── FEATURES ─────────────────────────────── */
+    /* FEATURES */
     .features-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -577,7 +1358,7 @@
       line-height: 1.6;
     }
 
-    /* ── CALCULATOR ────────────────────────────── */
+    /* CALCULATOR */
     .calc-section {
       text-align: center;
     }
@@ -596,7 +1377,7 @@
     .calc-inputs {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 32px;
       margin-bottom: 40px;
     }
 
@@ -610,26 +1391,64 @@
       letter-spacing: 1.5px;
       color: var(--text-dim);
       display: block;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
       font-weight: 600;
     }
 
-    .calc-input-group input {
-      width: 100%;
-      background: var(--dark);
-      border: 1px solid var(--dark-border);
-      border-radius: var(--radius-sm);
-      padding: 16px 20px;
-      font-size: 1.3rem;
+    .calc-val-display {
+      font-size: 2rem;
+      font-weight: 800;
       font-family: 'JetBrains Mono', monospace;
-      font-weight: 700;
-      color: var(--text);
-      outline: none;
-      transition: border-color 0.2s;
+      color: var(--green);
+      margin-bottom: 14px;
+      line-height: 1;
     }
 
-    .calc-input-group input:focus {
-      border-color: var(--green);
+    .calc-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 4px;
+      border-radius: 2px;
+      background: var(--dark-border);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .calc-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--green);
+      cursor: pointer;
+      border: 3px solid var(--dark);
+      box-shadow: 0 0 0 2px var(--green);
+      transition: transform 0.15s;
+    }
+
+    .calc-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.2);
+    }
+
+    .calc-slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--green);
+      cursor: pointer;
+      border: 3px solid var(--dark);
+      box-shadow: 0 0 0 2px var(--green);
+    }
+
+    .calc-slider-range {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      margin-top: 6px;
+      font-family: 'JetBrains Mono', monospace;
     }
 
     .calc-divider {
@@ -686,11 +1505,12 @@
       font-style: italic;
     }
 
-    /* ── CTA ──────────────────────────────────── */
+    /* CTA */
     .cta-section {
       text-align: center;
       padding: 120px 40px;
       position: relative;
+      overflow: hidden;
     }
 
     .cta-section::before {
@@ -743,7 +1563,7 @@
       fill: currentColor;
     }
 
-    /* ── FOOTER ───────────────────────────────── */
+    /* FOOTER */
     footer {
       padding: 40px;
       text-align: center;
@@ -763,10 +1583,10 @@
       color: var(--green);
     }
 
-    /* ── RESPONSIVE ───────────────────────────── */
-    @media (max-width: 900px) {
+    /* RESPONSIVE */
+    @media(max-width:900px) {
       nav {
-        padding: 14px 20px;
+        padding: 12px 16px;
       }
 
       .nav-links {
@@ -774,7 +1594,7 @@
       }
 
       .mobile-toggle {
-        display: block;
+        display: flex;
       }
 
       .nav-links.active {
@@ -793,13 +1613,18 @@
         padding: 60px 20px;
       }
 
+      .hero h1 {
+        letter-spacing: -1px;
+      }
+
       .hero {
         padding: 120px 20px 60px;
       }
 
       .hero-stats {
-        gap: 24px;
+        gap: 16px;
         flex-wrap: wrap;
+        justify-content: center;
       }
 
       .problem-grid {
@@ -826,6 +1651,7 @@
 
       .calc-inputs {
         grid-template-columns: 1fr;
+        gap: 24px;
       }
 
       .calc-results {
@@ -846,11 +1672,11 @@
   <nav>
     <a href="https://menubase.io" class="nav-logo">
       <img src="https://menubase.io/img/menubase_logo_light.png" alt="MenuBase" onerror="this.style.display='none'">
-      <div class="nav-logo-text">Menu<span>Base</span></div>
     </a>
     <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
     <ul class="nav-links">
       <li><a href="#problem">The Problem</a></li>
+      <li><a href="#demo">Live Demo</a></li>
       <li><a href="#how">How It Works</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#calculator">Revenue Calculator</a></li>
@@ -862,20 +1688,20 @@
   <!-- HERO -->
   <section class="hero">
     <div>
-      <div class="hero-badge">New Feature - Now Live</div>
+      <div class="hero-badge">Now Live</div>
       <h1>Your Menu.<br>Now It <span class="highlight">Sells For You.</span></h1>
       <p class="hero-sub">QR ordering with built-in smart upselling. No trained waiters needed. Turn every order into
         incremental revenue - automatically.</p>
       <div class="hero-actions">
-        <a href="https://wa.me/60175981858?text=Hi%2C%20I'm%20interested%20in%20MenuBase%20QR%20Ordering"
-          class="btn-primary" target="_blank">
+        <a href="https://wa.me/60175981858?text=Hi%2C%20I'm%20interested%20in%20MenuBase" class="btn-primary"
+          target="_blank">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
             <path
               d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
           </svg>
           Talk to Us on WhatsApp
         </a>
-        <a href="#how" class="btn-secondary">See How It Works ↓</a>
+        <a href="#demo" class="btn-secondary">See the Demo ↓</a>
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
@@ -900,7 +1726,6 @@
     <div class="section-title">Revenue leakage is systemic in F&B.</div>
     <div class="section-desc">Every order that goes through without an upsell is money left on the table. And it's
       happening hundreds of times a day.</div>
-
     <div class="problem-grid">
       <div class="problem-cards">
         <div class="problem-card">
@@ -921,7 +1746,7 @@
           <div class="problem-icon">📉</div>
           <div>
             <h4>Menus Are Static</h4>
-            <p>Same menu, all day, every day - regardless of time, demand patterns, or what's actually selling.</p>
+            <p>Same menu, all day - regardless of time, demand patterns, or what's actually selling.</p>
           </div>
         </div>
         <div class="problem-card">
@@ -934,22 +1759,288 @@
       </div>
       <div class="problem-right">
         <div class="problem-big-number">0%</div>
-        <div class="problem-quote">
-          This is not a demand problem.<br>
-          It's an <span>execution</span> problem.
-        </div>
+        <div class="problem-quote">This is not a demand problem.<br>It's an <span>execution</span> problem.</div>
         <p class="problem-footer">You already have the customers. You're just not capturing their full spend.</p>
       </div>
     </div>
   </section>
 
+  <!-- DEMO -->
+  <div id="demo" class="demo-wrap">
+    <div class="section-label" style="text-align:center;">Live Interactive Demo</div>
+    <div class="section-title" style="text-align:center;margin:0 auto 12px;max-width:600px;">See It Work. Right Now.
+    </div>
+    <p class="section-desc" style="text-align:center;margin:0 auto 40px;">Tap items, build an order, and watch MenuBase
+      suggest the perfect upsell at the right moment.</p>
+
+    <div class="demo-phone-outer">
+      <div class="demo-phone-rel">
+        <div class="demo-glow"></div>
+
+        <div class="mb-phone">
+          <div class="mb-sbar"><span>9:41</span><span>MenuBase</span><span>●●●</span></div>
+
+          <div class="mb-screen">
+
+            <!-- STEP 1: MENU -->
+            <div id="mb-step-menu" class="mb-step active">
+              <div class="mb-chdr">
+                <div class="mb-chdr-row">
+                  <div>
+                    <div class="mb-cname">Biji Coffee Co.</div>
+                    <div class="mb-csub">Table 7 · Dine in</div>
+                  </div>
+                  <div>
+                    <div class="mb-wait-lbl">Est. wait</div>
+                    <div class="mb-wait-val">~12 min</div>
+                  </div>
+                </div>
+                <div class="mb-pow">
+                  <div class="mb-pow-dot"></div><span class="mb-pow-txt">Powered by MenuBase</span>
+                </div>
+              </div>
+              <div class="mb-scroll">
+                <div class="mb-cat"><span class="mb-cat-lbl">☀️ All-day breakfast</span>
+                  <div class="mb-cat-line"></div>
+                </div>
+                <div class="mb-item" id="mb-item-0">
+                  <div class="mb-iimg"><img src="img/menu photos/Eggs Benedict.png" alt="" /></div>
+                  <div class="mb-iinfo">
+                    <div class="mb-iname">Eggs Benedict <span class="mb-bp">POPULAR</span></div>
+                    <div class="mb-idesc">Poached eggs, hollandaise, sourdough</div>
+                    <div class="mb-iprice">RM22</div>
+                  </div><button class="mb-add" onclick="mbAdd(0)"><svg viewBox="0 0 14 14" fill="none" width="12"
+                      height="12">
+                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
+                    </svg></button>
+                </div>
+                <div class="mb-item" id="mb-item-1">
+                  <div class="mb-iimg"><img src="img/menu photos/Smashed Avo Toast.png" alt="" /></div>
+                  <div class="mb-iinfo">
+                    <div class="mb-iname">Smashed Avo Toast</div>
+                    <div class="mb-idesc">Feta, cherry tomato, chilli flakes</div>
+                    <div class="mb-iprice">RM18</div>
+                  </div><button class="mb-add" onclick="mbAdd(1)"><svg viewBox="0 0 14 14" fill="none" width="12"
+                      height="12">
+                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
+                    </svg></button>
+                </div>
+                <div class="mb-item" id="mb-item-2">
+                  <div class="mb-iimg"><img src="img/menu photos/Nasi Lemak Benedict.png" alt="" /></div>
+                  <div class="mb-iinfo">
+                    <div class="mb-iname">Nasi Lemak Benedict <span class="mb-bs">🌶 SPICY</span></div>
+                    <div class="mb-idesc">Local twist, sambal hollandaise</div>
+                    <div class="mb-iprice">RM24</div>
+                  </div><button class="mb-add" onclick="mbAdd(2)"><svg viewBox="0 0 14 14" fill="none" width="12"
+                      height="12">
+                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
+                    </svg></button>
+                </div>
+                <div class="mb-item" id="mb-item-3">
+                  <div class="mb-iimg"><img src="img/menu photos/Banana French Toast.png" alt="" /></div>
+                  <div class="mb-iinfo">
+                    <div class="mb-iname">Banana French Toast</div>
+                    <div class="mb-idesc">Brioche, maple syrup, whipped cream</div>
+                    <div class="mb-iprice">RM19</div>
+                  </div><button class="mb-add" onclick="mbAdd(3)"><svg viewBox="0 0 14 14" fill="none" width="12"
+                      height="12">
+                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
+                    </svg></button>
+                </div>
+                <div class="mb-cat" style="background:#fdf6f0;"><span class="mb-cat-lbl">🍽 Toasties &amp; mains</span>
+                  <div class="mb-cat-line"></div>
+                </div>
+                <div class="mb-item" id="mb-item-4">
+                  <div class="mb-iimg"><img src="img/menu photos/Croque Monsieur.png" alt="" /></div>
+                  <div class="mb-iinfo">
+                    <div class="mb-iname">Croque Monsieur</div>
+                    <div class="mb-idesc">Ham, gruyère, béchamel sauce</div>
+                    <div class="mb-iprice">RM16</div>
+                  </div><button class="mb-add" onclick="mbAdd(4)"><svg viewBox="0 0 14 14" fill="none" width="12"
+                      height="12">
+                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
+                    </svg></button>
+                </div>
+                <div class="mb-item" id="mb-item-5">
+                  <div class="mb-iimg"><img src="img/menu photos/Truffle Mushroom Pasta.png" alt="" /></div>
+                  <div class="mb-iinfo">
+                    <div class="mb-iname">Truffle Mushroom Pasta <span class="mb-bv">VEG</span></div>
+                    <div class="mb-idesc">Wild mushrooms, truffle oil, parmesan</div>
+                    <div class="mb-iprice">RM26</div>
+                  </div><button class="mb-add" onclick="mbAdd(5)"><svg viewBox="0 0 14 14" fill="none" width="12"
+                      height="12">
+                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
+                    </svg></button>
+                </div>
+                <div class="mb-cat" style="background:#fdf6f0;"><span class="mb-cat-lbl">🍰 Sweets</span>
+                  <div class="mb-cat-line"></div>
+                </div>
+                <div class="mb-item" id="mb-item-6">
+                  <div class="mb-iimg"><img src="img/menu photos/Basque Cheesecake.png" alt="" /></div>
+                  <div class="mb-iinfo">
+                    <div class="mb-iname">Basque Cheesecake <span class="mb-bp">POPULAR</span></div>
+                    <div class="mb-idesc">Burnt top, jiggly creamy centre</div>
+                    <div class="mb-iprice">RM14</div>
+                  </div><button class="mb-add" onclick="mbAdd(6)"><svg viewBox="0 0 14 14" fill="none" width="12"
+                      height="12">
+                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
+                    </svg></button>
+                </div>
+                <div class="mb-item" id="mb-item-7">
+                  <div class="mb-iimg"><img src="img/menu photos/Matcha Tiramisu.png" alt="" /></div>
+                  <div class="mb-iinfo">
+                    <div class="mb-iname">Matcha Tiramisu</div>
+                    <div class="mb-idesc">Ladyfinger, matcha cream, cocoa dust</div>
+                    <div class="mb-iprice">RM16</div>
+                  </div><button class="mb-add" onclick="mbAdd(7)"><svg viewBox="0 0 14 14" fill="none" width="12"
+                      height="12">
+                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
+                    </svg></button>
+                </div>
+                <div class="mb-cat" style="background:#fdf6f0;"><span class="mb-cat-lbl">☕ Drinks</span>
+                  <div class="mb-cat-line"></div>
+                </div>
+                <div class="mb-item" id="mb-item-8">
+                  <div class="mb-iimg"><img src="img/menu photos/White Coffee.png" alt="" /></div>
+                  <div class="mb-iinfo">
+                    <div class="mb-iname">White Coffee <span class="mb-bp">POPULAR</span></div>
+                    <div class="mb-idesc">Creamy, smooth house blend</div>
+                    <div class="mb-iprice">RM9</div>
+                  </div><button class="mb-add" onclick="mbAdd(8)"><svg viewBox="0 0 14 14" fill="none" width="12"
+                      height="12">
+                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
+                    </svg></button>
+                </div>
+                <div class="mb-item" style="border-bottom:none;" id="mb-item-9">
+                  <div class="mb-iimg"><img src="img/menu photos/Matcha Latte.png" alt="" /></div>
+                  <div class="mb-iinfo">
+                    <div class="mb-iname">Matcha Latte</div>
+                    <div class="mb-idesc">Ceremonial grade, oat milk</div>
+                    <div class="mb-iprice">RM12</div>
+                  </div><button class="mb-add" onclick="mbAdd(9)"><svg viewBox="0 0 14 14" fill="none" width="12"
+                      height="12">
+                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
+                    </svg></button>
+                </div>
+              </div>
+              <div id="mb-cart-bar" class="mb-cartbar" onclick="mbGoCheckout()">
+                <div id="mb-cart-info" class="mb-ci">0 items</div>
+                <div id="mb-cart-action" class="mb-ca">View order →</div>
+              </div>
+            </div>
+
+            <!-- STEP 2: CHECKOUT -->
+            <div id="mb-step-checkout" class="mb-step">
+              <div class="mb-cohdr">
+                <button class="mb-back" onclick="mbGoMenu()">← Back</button>
+                <div class="mb-cotitle">Your order</div>
+              </div>
+              <div id="mb-order-list" class="mb-olist"></div>
+              <div class="mb-promo">🏷 Add promo code</div>
+              <div class="mb-strow">
+                <div class="mb-stlbl">Subtotal</div>
+                <div id="mb-subtotal" class="mb-stval">RM0</div>
+              </div>
+              <div class="mb-cobtnarea">
+                <button class="mb-proceed" onclick="mbShowUpsell1()">Proceed to checkout</button>
+                <div class="mb-paynote">Cash · Card · E-wallet accepted</div>
+              </div>
+            </div>
+
+            <!-- STEP 3: UPSELL DRINK -->
+            <div id="mb-step-upsell1" class="mb-step">
+              <div class="mb-uphdr">
+                <div class="mb-uphtitle">Almost there...</div>
+              </div>
+              <div id="mb-ol-u1" class="mb-upprev"></div>
+              <div class="mb-upsheet">
+                <div class="mb-pill"></div>
+                <div class="mb-eyebrow">MenuBase suggests · 1 of 2</div>
+                <div class="mb-uptitle">Complete your meal?</div>
+                <div class="mb-upsub">89% of customers add a drink ☕</div>
+                <div class="mb-upcard">
+                  <div class="mb-upimg"><img src="img/menu photos/White Coffee.png" alt="" /></div>
+                  <div style="flex:1;">
+                    <div class="mb-upiname">White Coffee</div>
+                    <div class="mb-upidesc">Creamy, smooth - perfect pairing</div>
+                    <div class="mb-upiprice">+ RM9</div>
+                  </div>
+                </div>
+                <button class="mb-yesbtn" onclick="mbAcceptUpsell1()">Yes, add White Coffee - RM9</button>
+                <button class="mb-skipbtn" onclick="mbSkipUpsell1()">No thanks, skip to next</button>
+              </div>
+            </div>
+
+            <!-- STEP 4: UPSELL DESSERT -->
+            <div id="mb-step-upsell2" class="mb-step">
+              <div class="mb-uphdr">
+                <div class="mb-uphtitle">One more thing...</div>
+              </div>
+              <div id="mb-ol-u2" class="mb-upprev"></div>
+              <div class="mb-upsheet">
+                <div class="mb-pill"></div>
+                <div class="mb-eyebrow">MenuBase suggests · 2 of 2</div>
+                <div class="mb-uptitle">End on a sweet note?</div>
+                <div class="mb-upsub">Today's crowd favourite 🏆</div>
+                <div class="mb-upcard">
+                  <div class="mb-upimg"><img src="img/menu photos/Basque Cheesecake.png" alt="" /></div>
+                  <div style="flex:1;">
+                    <div class="mb-upiname">Burnt Basque Cheesecake</div>
+                    <div class="mb-upidesc">Creamy centre, caramelised top</div>
+                    <div class="mb-upiprice">+ RM14</div>
+                  </div>
+                </div>
+                <button class="mb-yesbtn" onclick="mbAcceptUpsell2()">Yes, add Cheesecake - RM14</button>
+                <button class="mb-skipbtn" onclick="mbSkipUpsell2()">No thanks, confirm order</button>
+              </div>
+            </div>
+
+            <!-- STEP 5: CONFIRM -->
+            <div id="mb-step-confirm" class="mb-step">
+              <div class="mb-cfhdr">
+                <div class="mb-cfcafe">Biji Coffee Co.</div>
+                <div class="mb-cfsubhdr">Order confirmed · Table 7</div>
+              </div>
+              <div class="mb-cfbody">
+                <div class="mb-check"><svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+                    <path d="M6 16l7 7 13-13" stroke="#5a7a00" stroke-width="2.5" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg></div>
+                <div class="mb-cftitle">Order placed!</div>
+                <div class="mb-cfeta">Est. ready in ~12 min</div>
+                <div id="mb-confirm-msg" class="mb-cfmsg">Your order is heading to the kitchen.</div>
+                <div id="mb-receipt" class="mb-receipt"></div>
+                <div id="mb-uplift" class="mb-uplift">
+                  <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
+                    <path d="M8 2l1.8 3.6L14 6.3l-3 2.9.7 4.1L8 11.1l-3.7 2.2.7-4.1-3-2.9 4.2-.7z" fill="#7CB305" />
+                  </svg>
+                  <div id="mb-uplift-txt" class="mb-uplift-txt"></div>
+                </div>
+                <button class="mb-restartbtn" onclick="mbRestart()">Try demo again</button>
+              </div>
+            </div>
+
+          </div><!-- end mb-screen -->
+        </div><!-- end mb-phone -->
+      </div><!-- end demo-phone-rel -->
+
+      <div class="mb-dots">
+        <div id="mb-d0" class="mb-dot active"></div>
+        <div id="mb-d1" class="mb-dot"></div>
+        <div id="mb-d2" class="mb-dot"></div>
+        <div id="mb-d3" class="mb-dot"></div>
+        <div id="mb-d4" class="mb-dot"></div>
+      </div>
+      <div class="mb-hint">Interactive demo - tap any item to start ordering</div>
+    </div>
+  </div>
+
   <!-- HOW IT WORKS -->
   <section id="how" class="how-section">
     <div class="section-label">How It Works</div>
-    <div class="section-title" style="margin: 0 auto 12px;">Five Steps. Zero Staff Training.</div>
-    <div class="section-desc" style="margin: 0 auto;">No app downloads for customers. No POS replacement for you. Just
+    <div class="section-title" style="margin:0 auto 12px;">Five Steps. Zero Staff Training.</div>
+    <div class="section-desc" style="margin:0 auto;">No app downloads for customers. No POS replacement for you. Just
       scan, order, and earn more.</div>
-
     <div class="how-steps">
       <div class="how-step">
         <div class="step-num">1</div>
@@ -988,11 +2079,10 @@
   <section id="features">
     <div style="text-align:center;">
       <div class="section-label">Features</div>
-      <div class="section-title" style="margin: 0 auto 12px;">Your Best Server. Every Table. Every Time.</div>
-      <div class="section-desc" style="margin: 0 auto;">An intelligent ordering layer that sits in front of your POS. It
+      <div class="section-title" style="margin:0 auto 12px;">Your Best Server. Every Table. Every Time.</div>
+      <div class="section-desc" style="margin:0 auto;">An intelligent ordering layer that sits in front of your POS. It
         handles the soft sell so your staff doesn't have to.</div>
     </div>
-
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">🧠</div>
@@ -1033,23 +2123,31 @@
   <!-- CALCULATOR -->
   <section id="calculator" class="calc-section">
     <div class="section-label">Revenue Calculator</div>
-    <div class="section-title" style="margin: 0 auto 12px;">How Much Are You Leaving on the Table?</div>
-    <div class="section-desc" style="margin: 0 auto;">Drag the numbers. See the impact. These are conservative
-      estimates.</div>
-
+    <div class="section-title" style="margin:0 auto 12px;">How Much Are You Leaving on the Table?</div>
+    <div class="section-desc" style="margin:0 auto;">Drag the numbers. See the impact. These are conservative estimates.
+    </div>
     <div class="calculator">
       <div class="calc-inputs">
         <div class="calc-input-group">
           <label>Orders per day</label>
-          <input type="number" id="ordersPerDay" value="100" min="1" oninput="calcRevenue()">
+          <div class="calc-val-display" id="ordersDisplay">100</div>
+          <input type="range" class="calc-slider" id="ordersPerDay" min="20" max="250" step="10" value="100"
+            oninput="calcRevenue()">
+          <div class="calc-slider-range"><span>20</span><span>250</span></div>
         </div>
         <div class="calc-input-group">
           <label>Upsell acceptance %</label>
-          <input type="number" id="acceptRate" value="20" min="1" max="100" oninput="calcRevenue()">
+          <div class="calc-val-display" id="rateDisplay">20%</div>
+          <input type="range" class="calc-slider" id="acceptRate" min="5" max="50" step="1" value="20"
+            oninput="calcRevenue()">
+          <div class="calc-slider-range"><span>5%</span><span>50%</span></div>
         </div>
         <div class="calc-input-group">
           <label>Avg upsell value (RM)</label>
-          <input type="number" id="upsellValue" value="8" min="1" oninput="calcRevenue()">
+          <div class="calc-val-display" id="valueDisplay">RM8</div>
+          <input type="range" class="calc-slider" id="upsellValue" min="3" max="30" step="1" value="8"
+            oninput="calcRevenue()">
+          <div class="calc-slider-range"><span>RM3</span><span>RM30</span></div>
         </div>
       </div>
       <div class="calc-divider"></div>
@@ -1088,35 +2186,209 @@
     </a>
     <p style="margin-top: 20px; color: var(--text-dim); font-size: 0.85rem;">Or email us at <a
         href="mailto:contact.menubase@gmail.com"
-        style="color: var(--green); text-decoration: none;">contact.menubase@gmail.com</a></p>
+        style="color: var(--green); text-decoration: none;">contact.menubase@gmail.com</a>
+    </p>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <p>&copy; 2026 MenuBase Sdn Bhd</p>
-    <div style="margin-top: 12px;">
+    <div style="margin-top:12px;">
       <a href="https://menubase.io">Home</a>
       <a href="https://menubase.io/privacy-policy.html">Privacy</a>
       <a href="https://menubase.io/contact-us.html">Contact</a>
     </div>
   </footer>
 
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script>
+    /* CALCULATOR */
     function calcRevenue() {
-      const orders = parseInt(document.getElementById('ordersPerDay').value) || 0;
-      const rate = parseInt(document.getElementById('acceptRate').value) || 0;
-      const value = parseInt(document.getElementById('upsellValue').value) || 0;
-
-      const daily = orders * (rate / 100) * value;
-      const monthly = daily * 30;
-      const annual = daily * 365;
-
+      var orders = parseInt(document.getElementById('ordersPerDay').value) || 0;
+      var rate = parseInt(document.getElementById('acceptRate').value) || 0;
+      var value = parseInt(document.getElementById('upsellValue').value) || 0;
+      document.getElementById('ordersDisplay').textContent = orders;
+      document.getElementById('rateDisplay').textContent = rate + '%';
+      document.getElementById('valueDisplay').textContent = 'RM' + value;
+      var daily = Math.round(orders * (rate / 100) * value);
+      var monthly = Math.round(daily * 30);
+      var annual = Math.round(daily * 365);
       document.getElementById('dailyResult').textContent = 'RM' + daily.toLocaleString('en-MY');
       document.getElementById('monthlyResult').textContent = 'RM' + monthly.toLocaleString('en-MY');
       document.getElementById('annualResult').textContent = 'RM' + annual.toLocaleString('en-MY');
     }
-  </script>
 
+    /* DEMO */
+    (function () {
+      var MB = {
+        prices: [22, 18, 24, 19, 16, 26, 14, 16, 9, 12],
+        names: ['Eggs Benedict', 'Smashed Avo Toast', 'Nasi Lemak Benedict', 'Banana French Toast', 'Croque Monsieur', 'Truffle Mushroom Pasta', 'Basque Cheesecake', 'Matcha Tiramisu', 'White Coffee', 'Matcha Latte'],
+        imgs: ['img/menu photos/Eggs Benedict.png', 'img/menu photos/Smashed Avo Toast.png', 'img/menu photos/Nasi Lemak Benedict.png', 'img/menu photos/Banana French Toast.png', 'img/menu photos/Croque Monsieur.png', 'img/menu photos/Truffle Mushroom Pasta.png', 'img/menu photos/Basque Cheesecake.png', 'img/menu photos/Matcha Tiramisu.png', 'img/menu photos/White Coffee.png', 'img/menu photos/Matcha Latte.png'],
+        cart: {}, upsell1: null, upsell2: null, upsellAdded1: null, upsellAdded2: null
+      };
+
+      function total() { return Object.keys(MB.cart).reduce(function (s, k) { return s + MB.prices[parseInt(k)]; }, 0); }
+
+      function updateCart() {
+        var keys = Object.keys(MB.cart);
+        var bar = document.getElementById('mb-cart-bar');
+        if (keys.length > 0) {
+          bar.classList.add('show');
+          document.getElementById('mb-cart-info').textContent = keys.length + ' item' + (keys.length > 1 ? 's' : '');
+          document.getElementById('mb-cart-action').textContent = 'RM' + total() + ' · View order →';
+        } else {
+          bar.classList.remove('show');
+        }
+      }
+
+      function renderList(elId) {
+        var el = document.getElementById(elId); if (!el) return; el.innerHTML = '';
+        Object.keys(MB.cart).forEach(function (k) {
+          var i = parseInt(k), row = document.createElement('div'); row.className = 'mb-orow';
+          row.innerHTML = '<img class="mb-oimg" src="' + MB.imgs[i] + '" alt=""/><span class="mb-oname">' + MB.names[i] + '</span><span class="mb-oprice">RM' + MB.prices[i] + '</span>';
+          el.appendChild(row);
+        });
+        if (MB.drinkAdded) {
+          var r = document.createElement('div'); r.className = 'mb-orow';
+          r.innerHTML = '<img class="mb-oimg" src="img/menu photos/White Coffee.png" alt=""/><span class="mb-oname" style="color:#5a7a00;">White Coffee</span><span class="mb-oprice" style="color:#5a7a00;">RM9</span>';
+          el.appendChild(r);
+        }
+      }
+
+      function show(name) {
+        ['menu', 'checkout', 'upsell1', 'upsell2', 'confirm'].forEach(function (s, i) {
+          var el = document.getElementById('mb-step-' + s);
+          var dot = document.getElementById('mb-d' + i);
+          if (el) el.classList.toggle('active', s === name);
+          if (dot) dot.classList.toggle('active', s === name);
+        });
+      }
+
+      window.mbAdd = function (idx) {
+        if (MB.cart[idx]) {
+          delete MB.cart[idx];
+          var b = document.querySelector('#mb-item-' + idx + ' .mb-add');
+          if (b) b.classList.remove('added');
+        } else {
+          MB.cart[idx] = true;
+          var b = document.querySelector('#mb-item-' + idx + ' .mb-add');
+          if (b) b.classList.add('added');
+        }
+        updateCart();
+      };
+
+      window.mbGoMenu = function () { show('menu'); };
+      window.mbGoCheckout = function () {
+        if (!Object.keys(MB.cart).length) return;
+        show('checkout');
+        renderList('mb-order-list');
+        document.getElementById('mb-subtotal').textContent = 'RM' + total();
+      };
+      // Full pool of all items available for upsell
+      var POOL = [
+        { idx: 0, name: 'Eggs Benedict', desc: 'Poached eggs, hollandaise, sourdough', price: 22, img: 'img/menu photos/Eggs Benedict.png', tag: 'food' },
+        { idx: 1, name: 'Smashed Avo Toast', desc: 'Feta, cherry tomato, chilli flakes', price: 18, img: 'img/menu photos/Smashed Avo Toast.png', tag: 'food' },
+        { idx: 2, name: 'Nasi Lemak Benedict', desc: 'Local twist, sambal hollandaise', price: 24, img: 'img/menu photos/Nasi Lemak Benedict.png', tag: 'food' },
+        { idx: 3, name: 'Banana French Toast', desc: 'Brioche, maple syrup, whipped cream', price: 19, img: 'img/menu photos/Banana French Toast.png', tag: 'food' },
+        { idx: 4, name: 'Croque Monsieur', desc: 'Ham, gruyère, béchamel sauce', price: 16, img: 'img/menu photos/Croque Monsieur.png', tag: 'food' },
+        { idx: 5, name: 'Truffle Mushroom Pasta', desc: 'Wild mushrooms, truffle oil, parmesan', price: 26, img: 'img/menu photos/Truffle Mushroom Pasta.png', tag: 'food' },
+        { idx: 6, name: 'Basque Cheesecake', desc: 'Burnt top, jiggly creamy centre', price: 14, img: 'img/menu photos/Basque Cheesecake.png', tag: 'dessert' },
+        { idx: 7, name: 'Matcha Tiramisu', desc: 'Ladyfinger, matcha cream, cocoa dust', price: 16, img: 'img/menu photos/Matcha Tiramisu.png', tag: 'dessert' },
+        { idx: 8, name: 'White Coffee', desc: 'Creamy, smooth house blend', price: 9, img: 'img/menu photos/White Coffee.png', tag: 'drink' },
+        { idx: 9, name: 'Matcha Latte', desc: 'Ceremonial grade, oat milk', price: 12, img: 'img/menu photos/Matcha Latte.png', tag: 'drink' }
+      ];
+
+      function pickUpsell(exclude) {
+        // exclude = array of idx already in cart or already picked
+        var available = POOL.filter(function (p) { return exclude.indexOf(p.idx) === -1; });
+        if (!available.length) return null;
+        return available[Math.floor(Math.random() * available.length)];
+      }
+
+      function populateUpsellCard(stepNum, item) {
+        // stepNum = 1 or 2
+        var s = stepNum === 1 ? 'u1' : 'u2';
+        var card = document.querySelector('#mb-step-upsell' + stepNum + ' .mb-upcard');
+        var yesbtn = document.querySelector('#mb-step-upsell' + stepNum + ' .mb-yesbtn');
+        if (!card || !yesbtn || !item) return;
+        card.querySelector('img').src = item.img;
+        card.querySelector('.mb-upiname').textContent = item.name;
+        card.querySelector('.mb-upidesc').textContent = item.desc;
+        card.querySelector('.mb-upiprice').textContent = '+ RM' + item.price;
+        yesbtn.textContent = 'Yes, add ' + item.name + ' - RM' + item.price;
+      }
+
+      window.mbShowUpsell1 = function () {
+        var cartIdxs = Object.keys(MB.cart).map(function (k) { return parseInt(k); });
+        MB.upsell1 = pickUpsell(cartIdxs);
+        populateUpsellCard(1, MB.upsell1);
+        show('upsell1');
+        renderList('mb-ol-u1');
+      };
+
+      window.mbAcceptUpsell1 = function () {
+        MB.upsellAdded1 = MB.upsell1;
+        var cartIdxs = Object.keys(MB.cart).map(function (k) { return parseInt(k); });
+        var exclude = cartIdxs.concat(MB.upsell1 ? [MB.upsell1.idx] : []);
+        MB.upsell2 = pickUpsell(exclude);
+        populateUpsellCard(2, MB.upsell2);
+        show('upsell2');
+        renderList('mb-ol-u2');
+      };
+
+      window.mbSkipUpsell1 = function () {
+        MB.upsellAdded1 = null;
+        var cartIdxs = Object.keys(MB.cart).map(function (k) { return parseInt(k); });
+        var exclude = cartIdxs.concat(MB.upsell1 ? [MB.upsell1.idx] : []);
+        MB.upsell2 = pickUpsell(exclude);
+        populateUpsellCard(2, MB.upsell2);
+        show('upsell2');
+        renderList('mb-ol-u2');
+      };
+
+      window.mbAcceptUpsell2 = function () { MB.upsellAdded2 = MB.upsell2; showConfirm(); };
+      window.mbSkipUpsell2 = function () { MB.upsellAdded2 = null; showConfirm(); };
+
+      // Keep old names as aliases for safety
+      window.mbAcceptDrink = window.mbAcceptUpsell1;
+      window.mbSkipDrink = window.mbSkipUpsell1;
+      window.mbAcceptDessert = window.mbAcceptUpsell2;
+      window.mbSkipDessert = window.mbSkipUpsell2;
+
+      function showConfirm() {
+        show('confirm');
+        var u1 = MB.upsellAdded1, u2 = MB.upsellAdded2;
+        var uplift = (u1 ? u1.price : 0) + (u2 ? u2.price : 0);
+        var fin = total() + uplift;
+        var box = document.getElementById('mb-receipt'); box.innerHTML = '';
+        Object.keys(MB.cart).forEach(function (k) {
+          var row = document.createElement('div'); row.className = 'mb-rrow';
+          row.innerHTML = '<span style="color:#7a5a38;">' + MB.names[parseInt(k)] + '</span><span style="color:#4a3828;">RM' + MB.prices[parseInt(k)] + '</span>';
+          box.appendChild(row);
+        });
+        if (u1) { var r1 = document.createElement('div'); r1.className = 'mb-rrow'; r1.innerHTML = '<span style="color:#5a7a00;">' + u1.name + '</span><span style="color:#5a7a00;">RM' + u1.price + '</span>'; box.appendChild(r1); }
+        if (u2) { var r2 = document.createElement('div'); r2.className = 'mb-rrow'; r2.innerHTML = '<span style="color:#5a7a00;">' + u2.name + '</span><span style="color:#5a7a00;">RM' + u2.price + '</span>'; box.appendChild(r2); }
+        var tot = document.createElement('div'); tot.className = 'mb-rrow total'; tot.innerHTML = '<span>Total</span><span>RM' + fin + '</span>'; box.appendChild(tot);
+        var added = [u1, u2].filter(Boolean).map(function (u) { return u.name; });
+        document.getElementById('mb-confirm-msg').textContent =
+          (added.length ? added.join(' + ') + ' added! ' : '') + 'Your order is heading to the kitchen.';
+        var badge = document.getElementById('mb-uplift');
+        if (uplift > 0) { badge.style.display = 'flex'; document.getElementById('mb-uplift-txt').textContent = 'RM' + uplift + ' incremental revenue captured by MenuBase'; }
+        else { badge.style.display = 'none'; }
+      }
+
+      window.mbRestart = function () {
+        MB.cart = {};
+        MB.upsell1 = null; MB.upsell2 = null;
+        MB.upsellAdded1 = null; MB.upsellAdded2 = null;
+        document.querySelectorAll('.mb-add').forEach(function (b) { b.classList.remove('added'); });
+        updateCart();
+        show('menu');
+      };
+
+    })();
+  </script>
 </body>
 
 </html>
