@@ -50,42 +50,85 @@ body {
   overflow-x: hidden;
   position: relative;
 }
-/* Texture layer A: subtle dot grid */
+/* ─── BACKGROUND SYSTEM (multi-layer ambient) ─── */
+
+/* Layer A: dot grid, vignette-masked so it fades toward edges */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background-image: radial-gradient(circle, rgba(26,26,26,0.06) 1px, transparent 1.5px);
-  background-size: 18px 18px;
+  background-image: radial-gradient(circle, rgba(26,26,26,0.07) 1px, transparent 1.5px);
+  background-size: 22px 22px;
   background-position: 0 0;
+  -webkit-mask-image: radial-gradient(ellipse 85% 70% at 50% 42%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 92%);
+  mask-image: radial-gradient(ellipse 85% 70% at 50% 42%, rgba(0,0,0,1) 25%, rgba(0,0,0,0) 92%);
   opacity: 0.7;
 }
-/* Texture layer B: drifting lime pixels — full page, very subtle */
+
+/* Layer B: primary aurora — 5 lime/grey blobs slowly drifting & scaling */
 body::after {
   content: '';
   position: fixed;
-  inset: 0;
+  inset: -15%;
   pointer-events: none;
   z-index: 0;
   background-image:
-    radial-gradient(ellipse 600px 400px at 10% 20%, rgba(188,241,37,0.10) 0%, transparent 60%),
-    radial-gradient(ellipse 500px 300px at 90% 70%, rgba(188,241,37,0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 400px 300px at 50% 95%, rgba(188,241,37,0.06) 0%, transparent 60%);
-  animation: bgDrift 24s ease-in-out infinite alternate;
+    radial-gradient(ellipse 800px 600px at 12% 8%,  rgba(188,241,37,0.22) 0%, transparent 55%),
+    radial-gradient(ellipse 650px 500px at 88% 18%, rgba(166,212,19,0.16) 0%, transparent 55%),
+    radial-gradient(ellipse 750px 480px at 92% 78%, rgba(188,241,37,0.20) 0%, transparent 60%),
+    radial-gradient(ellipse 520px 420px at 18% 92%, rgba(100,101,106,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 460px 380px at 58% 55%, rgba(188,241,37,0.07) 0%, transparent 60%);
+  filter: blur(18px);
+  animation: auroraDrift 32s ease-in-out infinite alternate;
+  will-change: transform;
 }
-@keyframes bgDrift {
-  0%   { transform: translate(0, 0); }
-  50%  { transform: translate(-30px, 20px); }
-  100% { transform: translate(20px, -15px); }
+@keyframes auroraDrift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  33%  { transform: translate3d(-2%, 1.5%, 0) scale(1.04); }
+  66%  { transform: translate3d(2.5%, -1%, 0) scale(0.98); }
+  100% { transform: translate3d(-1%, -2%, 0) scale(1.02); }
 }
-/* Scrolling lime pixel particle field on top */
-.bg-pixels {
+
+/* Layer C: secondary aurora — slower, softer, counter-rotates for parallax depth */
+.bg-aurora-2 {
+  position: fixed;
+  inset: -20%;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(ellipse 900px 700px at 72% 32%, rgba(188,241,37,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 700px 550px at 28% 68%, rgba(100,101,106,0.08) 0%, transparent 60%);
+  filter: blur(40px);
+  animation: auroraDrift2 52s ease-in-out infinite alternate-reverse;
+  opacity: 0.85;
+  will-change: transform;
+}
+@keyframes auroraDrift2 {
+  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
+  50%  { transform: translate3d(3%, -2%, 0) rotate(6deg); }
+  100% { transform: translate3d(-2%, 3%, 0) rotate(-4deg); }
+}
+
+/* Layer D: film grain noise — subtle tactile feel via SVG turbulence */
+.bg-grain {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 1;
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 240px 240px;
+}
+
+/* Layer E: rising lime pixel particles (above bg layers, behind content) */
+.bg-pixels {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
   overflow: hidden;
 }
 .bg-pixels span {
@@ -93,16 +136,19 @@ body::after {
   background: var(--lime);
   opacity: 0;
   animation: pxRise 56s linear infinite;
-  box-shadow: 0 0 0 1px rgba(26,26,26,0.04);
+  box-shadow: 0 0 8px rgba(188,241,37,0.55), 0 0 0 1px rgba(26,26,26,0.04);
+  border-radius: 1px;
 }
 @keyframes pxRise {
-  0%   { opacity: 0; transform: translateY(20px) scale(0.6); }
-  10%  { opacity: 0.4; transform: translateY(0) scale(1); }
-  90%  { opacity: 0.4; transform: translateY(-100vh) scale(1); }
-  100% { opacity: 0; transform: translateY(-110vh) scale(0.6); }
+  0%   { opacity: 0;    transform: translateY(20px) scale(0.6); }
+  10%  { opacity: 0.5;  transform: translateY(0) scale(1); }
+  50%  { opacity: 0.45; }
+  90%  { opacity: 0.4;  transform: translateY(-100vh) scale(1); }
+  100% { opacity: 0;    transform: translateY(-110vh) scale(0.6); }
 }
+
 @media (prefers-reduced-motion: reduce) {
-  body::after, .bg-pixels span { animation: none; }
+  body::after, .bg-aurora-2, .bg-pixels span { animation: none; }
 }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
@@ -1494,6 +1540,8 @@ footer.foot {
 </head>
 <body>
 
+<div class="bg-aurora-2" aria-hidden="true"></div>
+<div class="bg-grain" aria-hidden="true"></div>
 <div class="bg-pixels" aria-hidden="true">
   <span style="left:8%;top:100%;width:10px;height:10px;animation-delay:0s"></span>
   <span style="left:22%;top:100%;width:8px;height:8px;animation-delay:7s"></span>
