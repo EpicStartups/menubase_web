@@ -1,2396 +1,2279 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Smart QR Ordering - MenuBase</title>
-  <meta name="description"
-    content="Turn every order into incremental revenue with MenuBase's smart QR ordering system." />
-  <link rel="icon" href="img/menubase_logo_icon.png" sizes="16x16" type="image/png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
-  <style>
-    :root {
-      --green: #A0D911;
-      --green-dark: #7CB305;
-      --green-glow: rgba(160, 217, 17, 0.25);
-      --dark: #0D0D0D;
-      --dark-card: #161616;
-      --dark-card-hover: #1E1E1E;
-      --dark-border: #2A2A2A;
-      --text: #F5F5F0;
-      --text-dim: #9A9A90;
-      --text-mid: #C5C5B8;
-      --radius: 16px;
-      --radius-sm: 10px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 16px;
-      overflow-x: hidden;
-    }
-
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: var(--dark);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      z-index: 100;
-      padding: 18px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(13, 13, 13, 0.85);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--dark-border);
-      box-sizing: border-box;
-    }
-
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
-    .nav-logo img {
-      height: 32px;
-    }
-
-    .nav-logo-text {
-      font-weight: 700;
-      font-size: 1.3rem;
-      color: var(--text);
-    }
-
-    .nav-logo-text span {
-      color: var(--green);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 32px;
-      align-items: center;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--text-dim);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--green);
-    }
-
-    .nav-cta {
-      background: var(--green) !important;
-      color: var(--dark) !important;
-      padding: 10px 24px !important;
-      border-radius: 50px !important;
-      font-weight: 700 !important;
-      font-size: 0.85rem !important;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .nav-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 20px var(--green-glow);
-    }
-
-    .mobile-toggle {
-      display: none;
-      background: rgba(160, 217, 17, 0.12);
-      border: 1px solid rgba(160, 217, 17, 0.3);
-      color: var(--green);
-      font-size: 1.4rem;
-      cursor: pointer;
-      border-radius: 8px;
-      width: 42px;
-      height: 42px;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
-    }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 140px 20px 80px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -200px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 800px;
-      height: 800px;
-      background: radial-gradient(circle, var(--green-glow) 0%, transparent 70%);
-      pointer-events: none;
-      animation: pulseGlow 4s ease-in-out infinite;
-    }
-
-    @keyframes pulseGlow {
-
-      0%,
-      100% {
-        opacity: 0.4;
-        transform: translateX(-50%) scale(1);
-      }
-
-      50% {
-        opacity: 0.7;
-        transform: translateX(-50%) scale(1.1);
-      }
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--dark-card);
-      border: 1px solid var(--dark-border);
-      border-radius: 50px;
-      padding: 8px 20px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: var(--green);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 32px;
-      animation: fadeUp 0.8s ease-out;
-    }
-
-    .hero-badge::before {
-      content: '';
-      width: 8px;
-      height: 8px;
-      background: var(--green);
-      border-radius: 50%;
-      animation: blink 2s infinite;
-    }
-
-    @keyframes blink {
-
-      0%,
-      100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0.3;
-      }
-    }
-
-    .hero h1 {
-      font-size: clamp(2.8rem, 6vw, 5.5rem);
-      font-weight: 900;
-      line-height: 1.05;
-      max-width: 900px;
-      margin: 0 auto 24px;
-      letter-spacing: -2px;
-      animation: fadeUp 0.8s ease-out 0.1s both;
-    }
-
-    .hero h1 .highlight {
-      background: linear-gradient(135deg, var(--green), var(--green-dark));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .hero-sub {
-      font-size: clamp(1.05rem, 2vw, 1.3rem);
-      color: var(--text-dim);
-      max-width: 600px;
-      margin: 0 auto 48px;
-      font-weight: 300;
-      line-height: 1.7;
-      animation: fadeUp 0.8s ease-out 0.2s both;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-      animation: fadeUp 0.8s ease-out 0.3s both;
-    }
-
-    .btn-primary {
-      background: var(--green);
-      color: var(--dark);
-      padding: 16px 40px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 30px var(--green-glow);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--text);
-      padding: 16px 40px;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 1rem;
-      text-decoration: none;
-      border: 1px solid var(--dark-border);
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: border-color 0.2s, background 0.2s;
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--green);
-      background: rgba(160, 217, 17, 0.05);
-    }
-
-    .hero-stats {
-      display: flex;
-      gap: 48px;
-      justify-content: center;
-      margin-top: 72px;
-      animation: fadeUp 0.8s ease-out 0.4s both;
-    }
-
-    .hero-stat {
-      text-align: center;
-    }
-
-    .hero-stat-val {
-      font-size: 2rem;
-      font-weight: 800;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--green);
-    }
-
-    .hero-stat-label {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-top: 4px;
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* SECTIONS */
-    section {
-      padding: 100px 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-      overflow-x: hidden;
-    }
-
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      color: var(--green);
-      margin-bottom: 16px;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -1px;
-      max-width: 700px;
-      margin-bottom: 20px;
-    }
-
-    .section-desc {
-      font-size: 1.1rem;
-      color: var(--text-dim);
-      max-width: 560px;
-      line-height: 1.7;
-      font-weight: 300;
-    }
-
-    /* PROBLEM */
-    .problem {
-      position: relative;
-    }
-
-    .problem-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      margin-top: 60px;
-    }
-
-    .problem-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .problem-card {
-      background: var(--dark-card);
-      border: 1px solid var(--dark-border);
-      border-radius: var(--radius);
-      padding: 28px 32px;
-      display: flex;
-      gap: 20px;
-      align-items: flex-start;
-      transition: border-color 0.3s, transform 0.3s;
-    }
-
-    .problem-card:hover {
-      border-color: #ff4444;
-      transform: translateX(4px);
-    }
-
-    .problem-icon {
-      font-size: 1.5rem;
-      flex-shrink: 0;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 68, 68, 0.1);
-      border-radius: 12px;
-    }
-
-    .problem-card h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .problem-card p {
-      font-size: 0.9rem;
-      color: var(--text-dim);
-      line-height: 1.5;
-    }
-
-    .problem-right {
-      position: relative;
-    }
-
-    .problem-big-number {
-      font-size: clamp(6rem, 12vw, 10rem);
-      font-weight: 900;
-      font-family: 'JetBrains Mono', monospace;
-      color: rgba(255, 68, 68, 0.08);
-      line-height: 1;
-      position: absolute;
-      top: -20px;
-      right: 0;
-    }
-
-    .problem-quote {
-      font-size: 1.8rem;
-      font-weight: 700;
-      line-height: 1.3;
-      margin-top: 60px;
-    }
-
-    .problem-quote span {
-      color: #ff6b6b;
-    }
-
-    .problem-footer {
-      font-size: 1rem;
-      color: var(--text-dim);
-      margin-top: 20px;
-      font-style: italic;
-    }
-
-    /* ═══════════════════════════════════════
-     DEMO - phone UI
-  ═══════════════════════════════════════ */
-    .demo-wrap {
-      text-align: center;
-      padding: 100px 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .demo-phone-outer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .demo-phone-rel {
-      position: relative;
-      display: inline-block;
-    }
-
-    .demo-glow {
-      position: absolute;
-      width: 360px;
-      height: 360px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(160, 217, 17, 0.15) 0%, transparent 70%);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-    }
-
-    .mb-phone {
-      width: 300px;
-      height: 520px;
-      background: #fdf6f0;
-      border-radius: 40px;
-      border: 7px solid #1a1a1a;
-      box-shadow: 0 0 0 1px #2a2a2a, 0 32px 64px rgba(0, 0, 0, 0.5), 0 0 40px rgba(160, 217, 17, 0.12);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      z-index: 1;
-    }
-
-    .mb-sbar {
-      flex-shrink: 0;
-      height: 28px;
-      background: #1a1a1a;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 18px;
-    }
-
-    .mb-sbar span {
-      color: #888;
-      font-size: 10px;
-      font-weight: 500;
-    }
-
-    /* screen = flex col, steps live inside */
-    .mb-screen {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      min-height: 0;
-    }
-
-    .mb-step {
-      display: none;
-      flex-direction: column;
-      min-height: 0;
-    }
-
-    .mb-step.active {
-      display: flex;
-      flex: 1;
-      flex-direction: column;
-      min-height: 0;
-      overflow: hidden;
-    }
-
-    /* cafe header */
-    .mb-chdr {
-      flex-shrink: 0;
-      background: #fceee2;
-      padding: 10px 16px 9px;
-      border-bottom: 1px solid #e8d4c0;
-    }
-
-    .mb-chdr-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .mb-cname {
-      color: #5a7a00;
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .mb-csub {
-      color: #8a6a4a;
-      font-size: 10px;
-      margin-top: 1px;
-    }
-
-    .mb-wait-lbl {
-      font-size: 9px;
-      color: #a07850;
-      font-weight: 600;
-      text-align: right;
-    }
-
-    .mb-wait-val {
-      font-size: 12px;
-      font-weight: 700;
-      color: #2a1f14;
-      text-align: right;
-    }
-
-    .mb-pow {
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-      margin-top: 6px;
-      background: #f4f9e8;
-      border: 1px solid #c8df7a;
-      border-radius: 4px;
-      padding: 2px 7px;
-    }
-
-    .mb-pow-dot {
-      width: 4px;
-      height: 4px;
-      background: #A0D911;
-      border-radius: 50%;
-    }
-
-    .mb-pow-txt {
-      color: #5a7a00;
-      font-size: 9px;
-      font-weight: 600;
-    }
-
-    /* scroll */
-    .mb-scroll {
-      flex: 1;
-      overflow-y: auto;
-      background: #fdf6f0;
-      min-height: 0;
-    }
-
-    .mb-scroll::-webkit-scrollbar {
-      width: 0;
-    }
-
-    /* category header */
-    .mb-cat {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 7px 14px 4px;
-    }
-
-    .mb-cat-lbl {
-      font-size: 9px;
-      font-weight: 700;
-      color: #a07850;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-    }
-
-    .mb-cat-line {
-      flex: 1;
-      height: 1px;
-      background: #e8d4c0;
-    }
-
-    /* menu item */
-    .mb-item {
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      padding: 7px 14px;
-      border-bottom: 1px solid #e8d4c0;
-      background: #fceee2;
-    }
-
-    .mb-iimg {
-      width: 48px;
-      height: 48px;
-      border-radius: 9px;
-      overflow: hidden;
-      flex-shrink: 0;
-      background: #e8d4c0;
-    }
-
-    .mb-iimg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .mb-iinfo {
-      flex: 1;
-      min-width: 0;
-    }
-
-    .mb-iname {
-      font-size: 12px;
-      font-weight: 600;
-      color: #2a1f14;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      flex-wrap: wrap;
-    }
-
-    .mb-idesc {
-      font-size: 10px;
-      color: #7a5a38;
-      margin-top: 1px;
-      line-height: 1.3;
-    }
-
-    .mb-iprice {
-      font-size: 11px;
-      font-weight: 700;
-      color: #4a3828;
-      margin-top: 2px;
-    }
-
-    .mb-bp {
-      font-size: 8px;
-      background: #fef3cd;
-      color: #a07010;
-      border-radius: 3px;
-      padding: 1px 5px;
-      font-weight: 600;
-    }
-
-    .mb-bs {
-      font-size: 8px;
-      background: #fde8e8;
-      color: #c04040;
-      border-radius: 3px;
-      padding: 1px 5px;
-      font-weight: 600;
-    }
-
-    .mb-bv {
-      font-size: 8px;
-      background: #f4f9e8;
-      color: #5a7a00;
-      border-radius: 3px;
-      padding: 1px 5px;
-      font-weight: 600;
-    }
-
-    .mb-add {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #A0D911;
-      border: none;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: background 0.15s;
-    }
-
-    .mb-add:hover {
-      background: #8ec510;
-    }
-
-    .mb-add.added {
-      background: #7CB305;
-      width: 32px;
-      height: 32px;
-    }
-
-    .mb-add.added::after {
-      content: '✓';
-      color: #fff;
-      font-size: 11px;
-      font-weight: 700;
-    }
-
-    .mb-add.added svg {
-      display: none;
-    }
-
-    /* cart bar */
-    .mb-cartbar {
-      flex-shrink: 0;
-      background: #A0D911;
-      padding: 13px 16px;
-      display: none;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .mb-cartbar:hover {
-      background: #8ec510;
-    }
-
-    .mb-cartbar.show {
-      display: flex;
-    }
-
-    .mb-ci {
-      font-size: 12px;
-      font-weight: 700;
-      color: #1a1a1a;
-    }
-
-    .mb-ca {
-      font-size: 12px;
-      font-weight: 700;
-      color: #1a1a1a;
-    }
-
-    /* checkout step */
-    .mb-cohdr {
-      flex-shrink: 0;
-      background: #fceee2;
-      padding: 11px 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      border-bottom: 1px solid #e8d4c0;
-    }
-
-    .mb-back {
-      color: #7CB305;
-      font-size: 12px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      font-family: 'Outfit', sans-serif;
-      font-weight: 600;
-    }
-
-    .mb-cotitle {
-      color: #2a1f14;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .mb-olist {
-      flex: 1;
-      overflow-y: auto;
-      padding: 6px 14px;
-      background: #fdf6f0;
-      min-height: 0;
-    }
-
-    .mb-olist::-webkit-scrollbar {
-      width: 0;
-    }
-
-    .mb-orow {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 5px 0;
-      border-bottom: 1px solid #e8d4c0;
-    }
-
-    .mb-orow:last-child {
-      border-bottom: none;
-    }
-
-    .mb-oimg {
-      width: 30px;
-      height: 30px;
-      border-radius: 5px;
-      object-fit: cover;
-      flex-shrink: 0;
-      background: #e8d4c0;
-    }
-
-    .mb-oname {
-      font-size: 11px;
-      color: #2a1f14;
-      flex: 1;
-    }
-
-    .mb-oprice {
-      font-size: 11px;
-      color: #8a6a4a;
-    }
-
-    .mb-promo {
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 14px;
-      border-top: 1px solid #e8d4c0;
-      background: #fdf6f0;
-      font-size: 10px;
-      color: #a07850;
-      font-weight: 600;
-    }
-
-    .mb-strow {
-      flex-shrink: 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px 14px;
-      border-top: 1px solid #e8d4c0;
-      background: #fceee2;
-    }
-
-    .mb-stlbl {
-      font-size: 11px;
-      color: #8a6a4a;
-    }
-
-    .mb-stval {
-      font-size: 13px;
-      font-weight: 700;
-      color: #2a1f14;
-    }
-
-    .mb-cobtnarea {
-      flex-shrink: 0;
-      padding: 9px 14px 11px;
-      background: #fceee2;
-      border-top: 1px solid #e8d4c0;
-    }
-
-    .mb-proceed {
-      width: 100%;
-      background: #A0D911;
-      color: #1a1a1a;
-      border: none;
-      border-radius: 10px;
-      padding: 13px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      font-family: 'Outfit', sans-serif;
-      transition: background 0.2s;
-    }
-
-    .mb-proceed:hover {
-      background: #8ec510;
-    }
-
-    .mb-paynote {
-      font-size: 9px;
-      color: #a07850;
-      text-align: center;
-      margin-top: 5px;
-    }
-
-    /* upsell steps */
-    .mb-uphdr {
-      flex-shrink: 0;
-      background: #fceee2;
-      padding: 11px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom: 1px solid #e8d4c0;
-    }
-
-    .mb-uphtitle {
-      color: #2a1f14;
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .mb-upprev {
-      flex: 1;
-      overflow-y: auto;
-      padding: 6px 14px;
-      background: #fdf6f0;
-      opacity: 0.55;
-      min-height: 0;
-    }
-
-    .mb-upprev::-webkit-scrollbar {
-      width: 0;
-    }
-
-    .mb-upsheet {
-      flex-shrink: 0;
-      background: #fceee2;
-      border-radius: 18px 18px 0 0;
-      padding: 13px 14px 14px;
-      border-top: 2px solid #e8d4c0;
-      box-shadow: 0 -6px 20px rgba(180, 140, 100, 0.1);
-    }
-
-    .mb-pill {
-      width: 28px;
-      height: 3px;
-      background: #d4b896;
-      border-radius: 2px;
-      margin: 0 auto 11px;
-    }
-
-    .mb-eyebrow {
-      font-size: 9px;
-      font-weight: 700;
-      color: #7CB305;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 2px;
-    }
-
-    .mb-uptitle {
-      font-size: 13px;
-      font-weight: 700;
-      color: #2a1f14;
-      margin-bottom: 2px;
-    }
-
-    .mb-upsub {
-      font-size: 10px;
-      color: #8a6a4a;
-      margin-bottom: 9px;
-    }
-
-    .mb-upcard {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background: #fdf6f0;
-      border-radius: 10px;
-      padding: 8px;
-      margin-bottom: 9px;
-      border: 1.5px solid #A0D911;
-    }
-
-    .mb-upimg {
-      width: 44px;
-      height: 44px;
-      border-radius: 8px;
-      overflow: hidden;
-      flex-shrink: 0;
-      background: #e8d4c0;
-    }
-
-    .mb-upimg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .mb-upiname {
-      font-size: 12px;
-      font-weight: 700;
-      color: #2a1f14;
-    }
-
-    .mb-upidesc {
-      font-size: 10px;
-      color: #8a6a4a;
-      margin-top: 1px;
-    }
-
-    .mb-upiprice {
-      font-size: 11px;
-      font-weight: 700;
-      color: #5a7a00;
-      margin-top: 2px;
-    }
-
-    .mb-yesbtn {
-      width: 100%;
-      background: #A0D911;
-      color: #1a1a1a;
-      border: none;
-      border-radius: 9px;
-      padding: 12px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      margin-bottom: 6px;
-      font-family: 'Outfit', sans-serif;
-      transition: background 0.2s;
-    }
-
-    .mb-yesbtn:hover {
-      background: #8ec510;
-    }
-
-    .mb-skipbtn {
-      width: 100%;
-      background: none;
-      border: 1px solid #d4b896;
-      border-radius: 9px;
-      color: #8a6a4a;
-      font-size: 11px;
-      cursor: pointer;
-      padding: 10px;
-      font-family: 'Outfit', sans-serif;
-    }
-
-    /* confirm step */
-    .mb-cfhdr {
-      flex-shrink: 0;
-      background: #fceee2;
-      padding: 10px 16px 9px;
-      border-bottom: 1px solid #e8d4c0;
-    }
-
-    .mb-cfcafe {
-      color: #5a7a00;
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .mb-cfsubhdr {
-      color: #8a6a4a;
-      font-size: 10px;
-      margin-top: 1px;
-    }
-
-    .mb-cfbody {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 14px;
-      background: #fdf6f0;
-      overflow-y: auto;
-      min-height: 0;
-    }
-
-    .mb-check {
-      width: 46px;
-      height: 46px;
-      background: #eef6d6;
-      border: 1.5px solid #c8df7a;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 9px;
-    }
-
-    .mb-cftitle {
-      font-size: 14px;
-      font-weight: 700;
-      color: #2a1f14;
-      margin-bottom: 2px;
-    }
-
-    .mb-cfeta {
-      font-size: 10px;
-      color: #a07850;
-      margin-bottom: 10px;
-    }
-
-    .mb-cfmsg {
-      font-size: 10px;
-      color: #8a6a4a;
-      text-align: center;
-      margin-bottom: 10px;
-      line-height: 1.5;
-    }
-
-    .mb-receipt {
-      width: 100%;
-      background: #fceee2;
-      border: 1px solid #e8d4c0;
-      border-radius: 10px;
-      padding: 9px 11px;
-      margin-bottom: 9px;
-    }
-
-    .mb-rrow {
-      display: flex;
-      justify-content: space-between;
-      font-size: 11px;
-      padding: 3px 0;
-      color: #4a3520;
-    }
-
-    .mb-rrow.total {
-      font-weight: 700;
-      font-size: 12px;
-      border-top: 1px solid #e8d4c0;
-      margin-top: 5px;
-      padding-top: 6px;
-    }
-
-    .mb-uplift {
-      background: #eef6d6;
-      border: 1px solid #c8df7a;
-      border-radius: 8px;
-      padding: 6px 10px;
-      display: none;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 8px;
-    }
-
-    .mb-uplift-txt {
-      font-size: 10px;
-      color: #5a7a00;
-      font-weight: 700;
-    }
-
-    .mb-restartbtn {
-      margin-top: 9px;
-      background: none;
-      border: 1px solid #d4b896;
-      color: #8a6a4a;
-      border-radius: 8px;
-      padding: 6px 14px;
-      font-size: 11px;
-      cursor: pointer;
-      font-family: 'Outfit', sans-serif;
-    }
-
-    /* dots */
-    .mb-dots {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .mb-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #d4b896;
-      transition: background 0.3s;
-    }
-
-    .mb-dot.active {
-      background: #A0D911;
-    }
-
-    .mb-hint {
-      font-size: 11px;
-      color: #555;
-      letter-spacing: 0.04em;
-    }
-
-    /* mobile phone resize */
-    @media(max-width:600px) {
-      .mb-phone {
-        width: min(300px, calc(100vw - 48px));
-        height: 500px;
-        border-radius: 34px;
-      }
-
-      .demo-glow {
-        width: 280px;
-        height: 280px;
-      }
-
-      .demo-wrap {
-        padding: 40px 16px;
-      }
-    }
-
-    /* HOW IT WORKS */
-    .how-section {
-      text-align: center;
-    }
-
-    .how-steps {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0;
-      margin-top: 64px;
-      position: relative;
-    }
-
-    .how-steps::before {
-      content: '';
-      position: absolute;
-      top: 44px;
-      left: 10%;
-      right: 10%;
-      height: 2px;
-      background: linear-gradient(90deg, var(--dark-border), var(--green), var(--dark-border));
-    }
-
-    .how-step {
-      text-align: center;
-      position: relative;
-      padding: 0 12px;
-    }
-
-    .step-num {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      background: var(--dark-card);
-      border: 2px solid var(--green);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--green);
-      position: relative;
-      z-index: 2;
-      transition: background 0.3s, color 0.3s;
-    }
-
-    .how-step:hover .step-num {
-      background: var(--green);
-      color: var(--dark);
-    }
-
-    .step-icon {
-      font-size: 2rem;
-      margin-bottom: 12px;
-    }
-
-    .how-step h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .how-step p {
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      line-height: 1.5;
-    }
-
-    /* FEATURES */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 64px;
-    }
-
-    .feature-card {
-      background: var(--dark-card);
-      border: 1px solid var(--dark-border);
-      border-radius: var(--radius);
-      padding: 40px 32px;
-      transition: border-color 0.3s, transform 0.3s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: var(--green);
-      transform: scaleX(0);
-      transition: transform 0.3s;
-    }
-
-    .feature-card:hover {
-      border-color: var(--green);
-      transform: translateY(-4px);
-    }
-
-    .feature-card:hover::before {
-      transform: scaleX(1);
-    }
-
-    .feature-icon {
-      font-size: 2.2rem;
-      margin-bottom: 20px;
-    }
-
-    .feature-card h4 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-
-    .feature-card p {
-      font-size: 0.92rem;
-      color: var(--text-dim);
-      line-height: 1.6;
-    }
-
-    /* CALCULATOR */
-    .calc-section {
-      text-align: center;
-    }
-
-    .calculator {
-      background: var(--dark-card);
-      border: 1px solid var(--dark-border);
-      border-radius: 24px;
-      padding: 48px;
-      margin-top: 48px;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .calc-inputs {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      margin-bottom: 40px;
-    }
-
-    .calc-input-group {
-      text-align: left;
-    }
-
-    .calc-input-group label {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--text-dim);
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 600;
-    }
-
-    .calc-val-display {
-      font-size: 2rem;
-      font-weight: 800;
-      font-family: 'JetBrains Mono', monospace;
-      color: var(--green);
-      margin-bottom: 14px;
-      line-height: 1;
-    }
-
-    .calc-slider {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 100%;
-      height: 4px;
-      border-radius: 2px;
-      background: var(--dark-border);
-      outline: none;
-      cursor: pointer;
-    }
-
-    .calc-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: var(--green);
-      cursor: pointer;
-      border: 3px solid var(--dark);
-      box-shadow: 0 0 0 2px var(--green);
-      transition: transform 0.15s;
-    }
-
-    .calc-slider::-webkit-slider-thumb:hover {
-      transform: scale(1.2);
-    }
-
-    .calc-slider::-moz-range-thumb {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: var(--green);
-      cursor: pointer;
-      border: 3px solid var(--dark);
-      box-shadow: 0 0 0 2px var(--green);
-    }
-
-    .calc-slider-range {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.72rem;
-      color: var(--text-dim);
-      margin-top: 6px;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .calc-divider {
-      height: 1px;
-      background: var(--dark-border);
-      margin-bottom: 40px;
-    }
-
-    .calc-results {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .calc-result {
-      text-align: center;
-    }
-
-    .calc-result-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      color: var(--text-dim);
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-
-    .calc-result-val {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 2rem;
-      font-weight: 800;
-    }
-
-    .calc-result-val.daily {
-      color: var(--text-mid);
-    }
-
-    .calc-result-val.monthly {
-      color: var(--green);
-    }
-
-    .calc-result-val.annual {
-      font-size: 2.5rem;
-      background: linear-gradient(135deg, var(--green), #D3F261);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .calc-note {
-      margin-top: 32px;
-      font-size: 0.85rem;
-      color: var(--text-dim);
-      font-style: italic;
-    }
-
-    /* CTA */
-    .cta-section {
-      text-align: center;
-      padding: 120px 40px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .cta-section::before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, var(--green-glow) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .cta-section .section-title {
-      max-width: 800px;
-      margin: 0 auto 20px;
-      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-    }
-
-    .cta-section .section-desc {
-      max-width: 500px;
-      margin: 0 auto 48px;
-    }
-
-    .cta-whatsapp {
-      background: #25D366;
-      color: #fff;
-      padding: 18px 48px;
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      transition: transform 0.2s, box-shadow 0.2s;
-      border: none;
-      cursor: pointer;
-    }
-
-    .cta-whatsapp:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 30px rgba(37, 211, 102, 0.3);
-    }
-
-    .cta-whatsapp svg {
-      width: 22px;
-      height: 22px;
-      fill: currentColor;
-    }
-
-    /* FOOTER */
-    footer {
-      padding: 40px;
-      text-align: center;
-      border-top: 1px solid var(--dark-border);
-      color: var(--text-dim);
-      font-size: 0.85rem;
-    }
-
-    footer a {
-      color: var(--text-dim);
-      text-decoration: none;
-      margin: 0 16px;
-      transition: color 0.2s;
-    }
-
-    footer a:hover {
-      color: var(--green);
-    }
-
-    /* RESPONSIVE */
-    @media(max-width:900px) {
-      nav {
-        padding: 12px 16px;
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .mobile-toggle {
-        display: flex;
-      }
-
-      .nav-links.active {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: rgba(13, 13, 13, 0.97);
-        padding: 24px;
-        border-bottom: 1px solid var(--dark-border);
-      }
-
-      section {
-        padding: 60px 20px;
-      }
-
-      .hero h1 {
-        letter-spacing: -1px;
-      }
-
-      .hero {
-        padding: 120px 20px 60px;
-      }
-
-      .hero-stats {
-        gap: 16px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .problem-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-
-      .problem-big-number {
-        display: none;
-      }
-
-      .how-steps {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-
-      .how-steps::before {
-        display: none;
-      }
-
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .calc-inputs {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .calc-results {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .calculator {
-        padding: 32px 20px;
-      }
-    }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MenuBase — The AI menu and ordering platform for Malaysian F&B</title>
+<meta name="description" content="The AI waiter that lives in your QR menu. Speaks every language, never forgets the specials, always upsells at the right moment. Sits on top of any POS."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800;900&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  /* ────────────────────────────────────────────────────────────
+     BRAND PALETTE — MenuBase Brand Guide (4 official colors only).
+     Lime #BCF125 · Dark grey #64656A · Light grey #D6D6D4 · Ink.
+     Adapted from meandu-style cream design to MenuBase brand spec.
+     ──────────────────────────────────────────────────────────── */
+  --bg:        #FFFFFF;   /* clean white (was warm cream #F4F0E6) */
+  --bg-soft:   #F5F5F2;   /* near-white toward light-grey */
+  --bg-elev:   #FFFFFF;   /* card surfaces */
+  --line:      #E5E5E2;   /* hairline */
+  --line-2:    #D6D6D4;   /* brand light-grey */
+  --ink:       #1A1A1A;   /* near-black for headings */
+  --ink-2:     #64656A;   /* brand dark grey (RGB 100 101 106) */
+  --grey:      #8C8C90;   /* lighter ink, body subdued */
+  --grey-2:    #B0B0B2;   /* mutest, mono labels */
+  --lime:      #BCF125;
+  --lime-deep: #A6D413;
+  --lime-soft: #F0FBC9;   /* pale lime tint */
+
+  /* Type — Chambers Sans Pro + Cofo Sans Variable required for production.
+     Hanken Grotesk + Geist are licensed FREE substitutes used during build. */
+  --font-display: 'Hanken Grotesk', 'Outfit', system-ui, sans-serif;
+  --font-body:    'Geist', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.005em;
+  overflow-x: hidden;
+  position: relative;
+}
+/* Texture layer A: subtle dot grid */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(circle, rgba(26,26,26,0.06) 1px, transparent 1.5px);
+  background-size: 18px 18px;
+  background-position: 0 0;
+  opacity: 0.7;
+}
+/* Texture layer B: drifting lime pixels — full page, very subtle */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(ellipse 600px 400px at 10% 20%, rgba(188,241,37,0.10) 0%, transparent 60%),
+    radial-gradient(ellipse 500px 300px at 90% 70%, rgba(188,241,37,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 400px 300px at 50% 95%, rgba(188,241,37,0.06) 0%, transparent 60%);
+  animation: bgDrift 24s ease-in-out infinite alternate;
+}
+@keyframes bgDrift {
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(-30px, 20px); }
+  100% { transform: translate(20px, -15px); }
+}
+/* Scrolling lime pixel particle field on top */
+.bg-pixels {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+.bg-pixels span {
+  position: absolute;
+  background: var(--lime);
+  opacity: 0;
+  animation: pxRise 56s linear infinite;
+  box-shadow: 0 0 0 1px rgba(26,26,26,0.04);
+}
+@keyframes pxRise {
+  0%   { opacity: 0; transform: translateY(20px) scale(0.6); }
+  10%  { opacity: 0.4; transform: translateY(0) scale(1); }
+  90%  { opacity: 0.4; transform: translateY(-100vh) scale(1); }
+  100% { opacity: 0; transform: translateY(-110vh) scale(0.6); }
+}
+@media (prefers-reduced-motion: reduce) {
+  body::after, .bg-pixels span { animation: none; }
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
+::selection { background: var(--lime); color: var(--ink); }
+
+/* ─── PRIMITIVES ─── */
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--grey);
+  font-weight: 600;
+}
+.eyebrow::before {
+  content: ''; width: 8px; height: 8px;
+  background: var(--lime-deep);
+  flex-shrink: 0;
+}
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 24px;
+  font-weight: 600; font-size: 14.5px;
+  border: 1.5px solid transparent;
+  transition: transform 120ms, background 150ms, border-color 150ms, color 150ms;
+  cursor: pointer;
+  font-family: var(--font-body);
+  letter-spacing: -0.005em;
+}
+.btn:active { transform: translateY(1px); }
+.btn-dark { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn-dark:hover { background: #000; }
+.btn-lime { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+.btn-lime:hover { background: var(--lime-deep); border-color: var(--lime-deep); }
+.btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
+.btn-ghost:hover { background: var(--ink); color: var(--bg); }
+.btn-lg { padding: 15px 28px; font-size: 15px; }
+
+/* ─── TOP RIBBON (logo only) ─── */
+.top-ribbon {
+  position: sticky;
+  top: 0;
+  z-index: 49;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+/* Make all main content sit above the background texture layers */
+section.hero, section.block, .marquee, .demo, .calc-shell, .cta-shell, .faq-shell, footer.foot, .top-ribbon, nav.top {
+  position: relative;
+  z-index: 2;
+}
+nav.top { z-index: 50; }
+.top-ribbon { z-index: 49; }
+.top-ribbon-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+}
+.top-ribbon .brand { display: inline-flex; align-items: center; }
+.top-ribbon .brand .logo { height: 26px; width: auto; display: block; filter: none; }
+.top-ribbon-login {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+  text-decoration: none;
+  transition: background 150ms, color 150ms;
+  letter-spacing: -0.005em;
+}
+.top-ribbon-login:hover { background: var(--ink); color: var(--bg); }
+.top-ribbon-login .arr { transition: transform 150ms; }
+.top-ribbon-login:hover .arr { transform: translateX(2px); }
+
+/* ─── NAV (floating bottom dock) ─── */
+
+nav.top {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  background: rgba(26,26,26,0.92);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 999px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25), 0 6px 16px rgba(0,0,0,0.15);
+  max-width: calc(100vw - 24px);
+}
+.nav-inner {
+  max-width: none;
+  margin: 0;
+  padding: 4px;
+  display: flex; align-items: center; gap: 6px;
+}
+.nav-links { display: flex; gap: 0; margin-left: 0; padding-left: 8px; }
+.nav-links a {
+  padding: 6px 12px;
+  font-size: 13px; color: rgba(255,255,255,0.7);
+  font-weight: 500;
+  border-radius: 999px;
+  transition: color 120ms, background 120ms;
+  letter-spacing: -0.005em;
+}
+.nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+.nav-cta { margin-left: auto; display: flex; align-items: center; gap: 4px; }
+.nav-cta .btn { padding: 6px 14px; font-size: 12.5px; border-radius: 999px; border-width: 1px; font-weight: 600; }
+.nav-cta .btn-ghost { color: #fff; border-color: rgba(255,255,255,0.20); }
+.nav-cta .btn-ghost:hover { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.35); color: #fff; }
+.nav-cta .btn-dark { background: var(--lime); color: var(--ink); border-color: var(--lime); font-weight: 700; }
+.nav-cta .btn-dark:hover { background: var(--lime-deep); border-color: var(--lime-deep); }
+
+/* Page body padding so floating nav doesn't overlap last content */
+body { padding-bottom: 64px; }
+
+/* ─── HERO ─── */
+
+.hero {
+  padding: 80px 28px 64px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.hero-bg .px {
+  position: absolute;
+  background: var(--lime);
+  opacity: 0;
+  animation: drift 12s ease-in-out infinite;
+}
+@keyframes drift {
+  0%   { opacity: 0; transform: translateY(20px) scale(0.7); }
+  20%  { opacity: 0.55; transform: translateY(0) scale(1); }
+  80%  { opacity: 0.55; transform: translateY(-30px) scale(1); }
+  100% { opacity: 0; transform: translateY(-60px) scale(0.7); }
+}
+.hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
+.hero .eyebrow { margin-bottom: 28px; }
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(48px, 7.5vw, 104px);
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  margin: 0 auto 28px;
+  max-width: 16ch;
+  color: var(--ink);
+}
+.hero h1 em { font-style: normal; color: var(--lime-deep); }
+.hero .sub {
+  font-size: clamp(17px, 1.6vw, 20px);
+  color: var(--grey);
+  max-width: 620px;
+  margin: 0 auto 40px;
+  line-height: 1.55;
+}
+.hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+.hero-micro {
+  font-family: var(--font-mono); font-size: 10.5px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--grey-2);
+}
+.hero-micro span { color: var(--grey-2); margin: 0 8px; opacity: 0.6; }
+
+/* Hero phone showcase */
+.hero-stage {
+  margin-top: 56px;
+  display: flex; justify-content: center; align-items: center;
+  position: relative;
+}
+.hero-stage::before {
+  content: '';
+  position: absolute;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(188,241,37,0.45) 0%, transparent 65%);
+  z-index: 0;
+}
+
+/* ─── MARQUEE / VENUE TYPES ─── */
+.marquee {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 32px 0;
+  overflow: hidden;
+  background: var(--bg-soft);
+}
+.marquee-label {
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 22px;
+  font-weight: 600;
+}
+.marquee-track {
+  display: flex; gap: 64px;
+  white-space: nowrap;
+  animation: mq 40s linear infinite;
+  width: max-content;
+}
+.marquee-track span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 3.4vw, 44px);
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  display: inline-flex; align-items: center; gap: 64px;
+}
+.marquee-track span::after {
+  content: '';
+  width: 10px; height: 10px;
+  background: var(--lime-deep);
+  display: inline-block;
+}
+@keyframes mq {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─── SECTION SHELL ─── */
+section.block {
+  padding: 112px 28px;
+  max-width: 1320px;
+  margin: 0 auto;
+  position: relative;
+}
+section.block.tight { padding: 80px 28px; }
+
+.section-head { max-width: 720px; margin-bottom: 64px; }
+.section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+.section-head.center .eyebrow { justify-content: center; }
+.section-head h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(36px, 5vw, 72px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin: 18px 0 18px;
+  max-width: 16ch;
+  color: var(--ink);
+}
+.section-head.center h2 { margin-left: auto; margin-right: auto; }
+.section-head h2 em { font-style: normal; color: var(--lime-deep); }
+.section-head .lede {
+  font-size: 18px; color: var(--grey);
+  line-height: 1.55; max-width: 600px;
+}
+.section-head.center .lede { margin-left: auto; margin-right: auto; }
+
+/* ─── PHONE FRAME (used everywhere) ─── */
+.phone {
+  background: #1A1A1A;
+  border-radius: 44px;
+  padding: 10px;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.18), 0 8px 20px rgba(0,0,0,0.10);
+  position: relative;
+  z-index: 1;
+}
+.phone .notch {
+  position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+  width: 100px; height: 24px; background: #0a0a0a;
+  border-radius: 999px; z-index: 4;
+}
+.phone iframe {
+  display: block;
+  border: 0;
+  border-radius: 36px;
+  background: var(--bg-elev);
+  width: 100%; height: 100%;
+}
+.phone.lg { width: 380px; height: 740px; }
+.phone.md { width: 280px; height: 540px; }
+.phone.sm { width: 240px; height: 460px; padding: 8px; border-radius: 36px; }
+.phone.sm iframe { border-radius: 30px; }
+.phone.sm .notch { top: 16px; width: 70px; height: 18px; }
+
+/* ─── FEATURE PILLARS (alternating side-by-side) ─── */
+.pillar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 88px;
+  align-items: center;
+  padding: 64px 0;
+  border-top: 1px solid var(--line);
+}
+.pillar:first-child { border-top: none; }
+.pillar.flip { grid-template-areas: "vis txt"; }
+.pillar.flip .pillar-txt { grid-area: txt; }
+.pillar.flip .pillar-vis { grid-area: vis; }
+.pillar:not(.flip) { grid-template-areas: "txt vis"; }
+.pillar:not(.flip) .pillar-txt { grid-area: txt; }
+.pillar:not(.flip) .pillar-vis { grid-area: vis; }
+
+.pillar-txt .num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--lime-deep);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 14px;
+  display: inline-block;
+}
+.pillar-txt h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 4.4vw, 56px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin-bottom: 22px;
+  color: var(--ink);
+}
+.pillar-txt h3 em { font-style: normal; color: var(--lime-deep); }
+.pillar-txt p.lede {
+  font-size: 18px; color: var(--grey);
+  line-height: 1.55; margin-bottom: 26px;
+  max-width: 460px;
+}
+.pillar-txt ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.pillar-txt li {
+  display: flex; gap: 14px; align-items: flex-start;
+  font-size: 15.5px; color: var(--ink-2);
+  line-height: 1.55;
+}
+.pillar-txt li::before {
+  content: ''; width: 8px; height: 8px; background: var(--lime); margin-top: 9px; flex-shrink: 0;
+}
+.pillar-txt li strong { color: var(--ink); font-weight: 600; }
+
+.pillar-vis {
+  display: flex; justify-content: center; align-items: center;
+  position: relative;
+}
+.pillar-vis::before {
+  content: '';
+  position: absolute;
+  width: 360px; height: 360px;
+  background: radial-gradient(circle, rgba(188,241,37,0.35) 0%, transparent 65%);
+  z-index: 0;
+}
+
+/* ─── LIVE DEMO ─── */
+.demo {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 120px 28px;
+  position: relative;
+}
+.demo-inner {
+  max-width: 1320px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 80px;
+  align-items: center;
+}
+.demo-side { color: var(--bg); }
+.demo-side .eyebrow { color: rgba(255,255,255,0.6); }
+.demo-side .eyebrow::before { background: var(--lime); }
+.demo-side h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin: 18px 0 22px;
+  color: var(--bg);
+}
+.demo-side h2 em { font-style: normal; color: var(--lime); }
+.demo-side .lede {
+  font-size: 17px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 32px;
+  max-width: 480px;
+  line-height: 1.55;
+}
+
+.demo-chips {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 28px;
+  max-width: 540px;
+}
+.chip {
+  font-family: var(--font-body);
+  font-size: 13px; font-weight: 500;
+  padding: 10px 18px;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  border: 1.5px solid rgba(255,255,255,0.15);
+  transition: all 150ms;
+  cursor: pointer;
+  white-space: nowrap;
+  letter-spacing: -0.005em;
+}
+.chip:hover { border-color: rgba(255,255,255,0.4); color: var(--bg); }
+.chip.on { background: var(--lime); color: var(--ink); border-color: var(--lime); font-weight: 600; }
+
+.demo-annot {
+  background: rgba(255,255,255,0.04);
+  border-left: 3px solid var(--lime);
+  padding: 22px 26px;
+  max-width: 540px;
+  transition: opacity 200ms;
+}
+.demo-annot .h {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.14em;
+  font-weight: 700;
+  color: var(--lime);
+  margin-bottom: 10px;
+}
+.demo-annot .t {
+  font-family: var(--font-display);
+  font-weight: 600; font-size: 18px;
+  letter-spacing: -0.015em;
+  color: var(--bg);
+  margin-bottom: 8px;
+}
+.demo-annot .d {
+  font-size: 14.5px; color: rgba(255,255,255,0.65);
+  line-height: 1.55;
+}
+
+.demo-stage {
+  display: flex; justify-content: center; align-items: center;
+  position: relative;
+}
+.demo-stage::before {
+  content: '';
+  position: absolute;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(188,241,37,0.25) 0%, transparent 65%);
+  z-index: 0;
+}
+
+/* ─── SERVICE MODES (tabs) ─── */
+.modes-tabs {
+  margin-top: 56px;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  overflow: hidden;
+}
+.modes-rail {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-soft);
+}
+.modes-rail-btn {
+  padding: 24px 26px;
+  text-align: left;
+  background: transparent;
+  border-right: 1px solid var(--line);
+  cursor: pointer;
+  position: relative;
+  transition: background 150ms;
+}
+.modes-rail-btn:last-child { border-right: none; }
+.modes-rail-btn:hover { background: var(--bg-elev); }
+.modes-rail-btn.on { background: var(--bg-elev); }
+.modes-rail-btn.on::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--lime);
+}
+.modes-rail-btn .n {
+  font-family: var(--font-mono);
+  font-size: 10.5px; letter-spacing: 0.14em;
+  color: var(--grey);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.modes-rail-btn.on .n { color: var(--lime-deep); }
+.modes-rail-btn .nm {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 18px;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.modes-rail-btn .nm em { font-style: normal; color: var(--lime-deep); font-weight: 800; }
+
+.modes-panel {
+  display: none;
+  padding: 56px;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.modes-panel.on { display: grid; }
+.modes-panel h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 3.6vw, 44px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  margin-bottom: 18px;
+  color: var(--ink);
+}
+.modes-panel h3 em { font-style: normal; color: var(--lime-deep); }
+.modes-panel p {
+  font-size: 16px; color: var(--grey);
+  line-height: 1.55; margin-bottom: 24px;
+}
+.modes-panel .who { display: flex; gap: 8px; flex-wrap: wrap; }
+.modes-panel .who span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+  padding: 6px 12px;
+  font-weight: 600;
+}
+.modes-vis {
+  display: flex; justify-content: center; align-items: center;
+  position: relative;
+}
+.modes-vis::before {
+  content: '';
+  position: absolute;
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(188,241,37,0.40) 0%, transparent 65%);
+  z-index: 0;
+}
+
+/* ─── CALCULATOR ─── */
+.calc-shell { background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.calc-inner {
+  max-width: 1320px; margin: 0 auto;
+  padding: 112px 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.calc-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  padding: 36px;
+}
+.calc-field { margin-bottom: 22px; }
+.calc-field label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--grey);
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.calc-field .row {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 12px;
+}
+.calc-field .val {
+  font-family: var(--font-mono);
+  font-size: 22px; font-weight: 600;
+  color: var(--ink);
+}
+.calc-field input[type="range"] {
+  -webkit-appearance: none; appearance: none;
+  width: 100%; height: 4px;
+  background: var(--line);
+  outline: none; cursor: pointer;
+}
+.calc-field input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; appearance: none;
+  width: 22px; height: 22px; background: var(--lime); cursor: pointer;
+  border: 3px solid var(--bg-elev);
+  box-shadow: 0 0 0 1.5px var(--lime-deep);
+}
+.calc-field input[type="range"]::-moz-range-thumb {
+  width: 22px; height: 22px; background: var(--lime); cursor: pointer;
+  border: 3px solid var(--bg-elev);
+  box-shadow: 0 0 0 1.5px var(--lime-deep);
+}
+.calc-range-labels {
+  display: flex; justify-content: space-between;
+  margin-top: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px; color: var(--grey-2);
+}
+.calc-divider { height: 1px; background: var(--line); margin: 8px 0 24px; }
+.calc-results { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 18px; }
+.calc-result {
+  padding: 20px;
+  background: var(--bg-soft);
+  border-left: 3px solid var(--lime);
+}
+.calc-result .lbl {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--grey);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.calc-result .num {
+  font-family: var(--font-display);
+  font-weight: 800; font-size: 28px;
+  color: var(--ink);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.calc-result .num.big { font-size: 40px; color: var(--lime-deep); }
+
+/* ─── FOUNDING CTA ─── */
+.cta-shell {
+  background: var(--ink);
+  color: var(--bg);
+  padding: 120px 28px;
+  position: relative;
+  overflow: hidden;
+}
+.cta-shell::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px; height: 700px;
+  background: radial-gradient(ellipse, rgba(188,241,37,0.15) 0%, transparent 65%);
+  pointer-events: none;
+}
+.cta-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+}
+.cta-text .eyebrow { color: var(--lime); }
+.cta-text .eyebrow::before { background: var(--lime); }
+.cta-text h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+  margin: 18px 0 22px;
+  color: var(--bg);
+}
+.cta-text h2 em { font-style: normal; color: var(--lime); }
+.cta-text p {
+  font-size: 17px;
+  color: rgba(255,255,255,0.7);
+  max-width: 480px;
+  line-height: 1.55;
+  margin-bottom: 20px;
+}
+.cta-text .also {
+  margin-top: 18px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.55);
+}
+.cta-text .also a {
+  color: var(--lime);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(188,241,37,0.4);
+}
+
+.founding-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.10);
+  padding: 36px;
+}
+.founding-card .pill {
+  display: inline-block;
+  background: var(--lime);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.14em;
+  padding: 6px 12px;
+  margin-bottom: 22px;
+}
+.founding-card h4 {
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 28px;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  margin-bottom: 14px;
+  color: var(--bg);
+}
+.founding-card h4 em { font-style: normal; color: var(--lime); }
+.founding-card ul { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+.founding-card li {
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 14.5px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.5;
+}
+.founding-card li::before {
+  content: '';
+  width: 8px; height: 8px;
+  background: var(--lime);
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+.founding-card .btn { width: 100%; justify-content: center; }
+.founding-card .micro {
+  margin-top: 14px;
+  font-family: var(--font-mono); font-size: 10px;
+  text-align: center;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+/* ─── FAQ ─── */
+.faq-shell { padding: 112px 28px; max-width: 920px; margin: 0 auto; }
+.faq-list { margin-top: 36px; border-top: 1px solid var(--line); }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 26px 4px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 24px;
+  font-family: var(--font-display);
+  font-size: 20px; font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: '+';
+  font-family: var(--font-mono); font-size: 24px; font-weight: 400;
+  color: var(--grey);
+  transition: transform 200ms;
+  flex-shrink: 0;
+}
+.faq-item[open] summary::after { content: '−'; color: var(--lime-deep); }
+.faq-item summary:hover { color: var(--lime-deep); }
+.faq-answer {
+  padding: 0 4px 26px;
+  font-size: 16px;
+  color: var(--grey);
+  line-height: 1.65;
+  max-width: 740px;
+}
+
+/* ─── FOOTER ─── */
+footer.foot {
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  padding: 64px 28px 28px;
+}
+.foot-inner {
+  max-width: 1320px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.4fr repeat(3, 1fr);
+  gap: 56px;
+}
+.foot-brand p {
+  font-size: 14px;
+  color: var(--grey);
+  margin-top: 14px;
+  max-width: 320px;
+  line-height: 1.55;
+}
+.foot-col h5 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--grey-2);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  font-weight: 700;
+}
+.foot-col a {
+  display: block;
+  font-size: 14px;
+  color: var(--ink-2);
+  padding: 6px 0;
+  transition: color 120ms;
+}
+.foot-col a:hover { color: var(--lime-deep); }
+.foot-bottom {
+  max-width: 1320px;
+  margin: 56px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center;
+  font-family: var(--font-mono);
+  font-size: 11px; color: var(--grey-2);
+  letter-spacing: 0.06em;
+  font-weight: 500;
+}
+
+/* ─── REVEALS ─── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 600ms ease, transform 600ms cubic-bezier(.16,1,.3,1); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ─── RESPONSIVE ─── */
+
+/* Desktop large (1280+) — default styles handle this */
+
+/* Tablet landscape / smaller desktop */
+@media (max-width: 1180px) {
+  section.block { padding: 96px 28px; }
+  .pillar { gap: 56px; padding: 56px 0; }
+  .demo-inner { gap: 56px; }
+  .demo { padding: 96px 28px; }
+  .calc-inner { padding: 96px 28px; gap: 56px; }
+  .cta-shell { padding: 96px 28px; }
+  .cta-inner { gap: 56px; }
+  .phone.lg { width: 340px; height: 660px; border-radius: 40px; padding: 9px; }
+  .phone.lg iframe { border-radius: 32px; }
+  .phone.md { width: 260px; height: 500px; border-radius: 38px; padding: 8px; }
+  .phone.md iframe { border-radius: 30px; }
+}
+
+/* Tablet portrait */
+@media (max-width: 900px) {
+  nav.top { bottom: 12px; }
+  .nav-inner { padding: 6px; gap: 4px; }
+  .nav-links { display: none; }
+  .nav-cta .btn { padding: 9px 14px; font-size: 12.5px; }
+  .top-ribbon-inner { padding: 12px 20px; }
+  .top-ribbon .brand .logo { height: 24px; }
+
+  .hero { padding: 56px 22px 40px; }
+  .hero h1 { font-size: clamp(40px, 9vw, 64px); }
+  .hero .sub { font-size: 16px; margin-bottom: 32px; }
+  .hero-actions .btn { padding: 13px 22px; font-size: 14px; }
+  .hero-stage { margin-top: 40px; }
+
+  .marquee { padding: 24px 0; }
+  .marquee-track { gap: 40px; }
+  .marquee-track span { font-size: 26px; gap: 40px; }
+
+  section.block { padding: 72px 22px; }
+  .section-head { margin-bottom: 48px; }
+  .section-head h2 { font-size: clamp(30px, 6vw, 44px); }
+  .section-head .lede { font-size: 16px; }
+
+  .pillar { grid-template-columns: 1fr; gap: 36px; padding: 48px 0; }
+  .pillar.flip { grid-template-areas: "txt" "vis"; }
+  .pillar-txt h3 { font-size: clamp(28px, 6vw, 40px); }
+  .pillar-txt p.lede { font-size: 16px; }
+  .pillar-vis::before { width: 280px; height: 280px; }
+
+  .demo { padding: 72px 22px; }
+  .demo-inner { grid-template-columns: 1fr; gap: 44px; }
+  .demo-side h2 { font-size: clamp(28px, 6vw, 44px); }
+  .demo-side .lede { font-size: 16px; margin-bottom: 24px; }
+  .demo-stage::before { width: 360px; height: 360px; }
+
+  .modes-rail { grid-template-columns: repeat(2, 1fr); }
+  .modes-rail-btn { padding: 18px 20px; }
+  .modes-rail-btn:nth-child(2) { border-right: none; }
+  .modes-rail-btn:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+  .modes-panel { grid-template-columns: 1fr; padding: 32px; gap: 28px; }
+  .modes-panel h3 { font-size: clamp(26px, 6vw, 36px); }
+
+  .calc-shell .calc-inner { grid-template-columns: 1fr; padding: 72px 22px; gap: 40px; }
+  .calc-card { padding: 28px; }
+  .calc-results { grid-template-columns: 1fr 1fr; }
+
+  .cta-shell { padding: 72px 22px; }
+  .cta-inner { grid-template-columns: 1fr; gap: 36px; }
+  .cta-text h2 { font-size: clamp(30px, 6vw, 44px); }
+  .founding-card { padding: 28px; }
+
+  .faq-shell { padding: 72px 22px; }
+  .faq-item summary { font-size: 18px; padding: 22px 4px; }
+
+  footer.foot { padding: 48px 22px 24px; }
+  .foot-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .foot-bottom { flex-direction: column; gap: 10px; text-align: center; }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  body { padding-bottom: 74px; }
+  nav.top { bottom: 10px; left: 12px; right: 12px; transform: none; max-width: none; width: auto; }
+  .nav-inner { padding: 5px; }
+  .nav-cta { width: 100%; }
+  .nav-cta .btn { flex: 1; justify-content: center; padding: 10px 14px; font-size: 12.5px; }
+  .top-ribbon-inner { padding: 10px 16px; }
+  .top-ribbon .brand .logo { height: 22px; }
+
+  .hero { padding: 40px 18px 32px; }
+  .hero .eyebrow { font-size: 10px; margin-bottom: 22px; }
+  .hero h1 { font-size: clamp(36px, 11vw, 56px); margin-bottom: 22px; max-width: 14ch; }
+  .hero .sub { font-size: 15.5px; margin-bottom: 28px; }
+  .hero-actions { gap: 8px; }
+  .hero-actions .btn { padding: 12px 20px; font-size: 13.5px; }
+  .hero-micro { font-size: 9.5px; letter-spacing: 0.14em; }
+  .hero-micro span { margin: 0 4px; }
+  .hero-stage { margin-top: 32px; }
+  .hero-stage::before { width: 320px; height: 320px; }
+
+  .marquee { padding: 18px 0; }
+  .marquee-label { font-size: 10px; margin-bottom: 14px; }
+  .marquee-track { gap: 28px; animation-duration: 30s; }
+  .marquee-track span { font-size: 22px; gap: 28px; }
+  .marquee-track span::after { width: 7px; height: 7px; }
+
+  section.block { padding: 56px 18px; }
+  .section-head { margin-bottom: 36px; }
+  .section-head h2 { font-size: clamp(28px, 8vw, 36px); }
+  .section-head .lede { font-size: 15px; }
+
+  .pillar { gap: 28px; padding: 36px 0; }
+  .pillar-txt h3 { font-size: clamp(26px, 8vw, 34px); margin-bottom: 16px; }
+  .pillar-txt p.lede { font-size: 15px; margin-bottom: 20px; }
+  .pillar-txt li { font-size: 14.5px; }
+  .pillar-vis::before { width: 220px; height: 220px; }
+
+  .demo { padding: 56px 18px; }
+  .demo-inner { gap: 36px; }
+  .demo-side h2 { font-size: clamp(26px, 8vw, 34px); }
+  .demo-side .lede { font-size: 15px; margin-bottom: 20px; }
+  .demo-chips { gap: 6px; margin-bottom: 22px; }
+  .chip { font-size: 12px; padding: 8px 14px; }
+  .demo-annot { padding: 18px 20px; }
+  .demo-annot .t { font-size: 16px; }
+  .demo-annot .d { font-size: 14px; }
+  .demo-stage::before { width: 280px; height: 280px; }
+
+  .modes-rail { grid-template-columns: 1fr; }
+  .modes-rail-btn { padding: 16px 18px; border-right: none; border-bottom: 1px solid var(--line); }
+  .modes-rail-btn:nth-child(2) { border-bottom: 1px solid var(--line); }
+  .modes-rail-btn:last-child { border-bottom: none; }
+  .modes-rail-btn.on::before { top: 0; left: 0; right: auto; bottom: 0; width: 3px; height: auto; }
+  .modes-panel { padding: 24px; gap: 24px; }
+  .modes-panel h3 { font-size: clamp(22px, 7vw, 30px); margin-bottom: 14px; }
+  .modes-panel p { font-size: 14.5px; }
+  .modes-vis::before { width: 220px; height: 220px; }
+
+  .calc-shell .calc-inner { padding: 56px 18px; gap: 32px; }
+  .calc-card { padding: 22px; }
+  .calc-field .val { font-size: 20px; }
+  .calc-results { grid-template-columns: 1fr; gap: 12px; }
+  .calc-result { padding: 16px; }
+  .calc-result .num { font-size: 24px; }
+  .calc-result .num.big { font-size: 32px; }
+
+  .cta-shell { padding: 56px 18px; }
+  .cta-text h2 { font-size: clamp(26px, 8vw, 38px); }
+  .cta-text p { font-size: 15.5px; }
+  .founding-card { padding: 24px; }
+  .founding-card h4 { font-size: 24px; }
+  .founding-card li { font-size: 14px; }
+
+  .faq-shell { padding: 56px 18px; }
+  .faq-item summary { font-size: 16px; padding: 20px 4px; gap: 16px; }
+  .faq-item summary::after { font-size: 20px; }
+  .faq-answer { font-size: 14.5px; padding-bottom: 20px; }
+
+  footer.foot { padding: 40px 18px 22px; }
+  .foot-inner { grid-template-columns: 1fr; gap: 28px; }
+  .foot-col h5 { margin-bottom: 12px; }
+  .foot-col a { font-size: 13.5px; }
+  .foot-bottom { font-size: 10px; margin-top: 36px; padding-top: 18px; }
+
+  /* Phone frames scale to viewport */
+  .phone.lg {
+    width: min(320px, calc(100vw - 44px));
+    height: calc(min(320px, calc(100vw - 44px)) * 740 / 380);
+    border-radius: calc(min(320px, calc(100vw - 44px)) * 44 / 380);
+    padding: calc(min(320px, calc(100vw - 44px)) * 10 / 380);
+  }
+  .phone.lg .notch {
+    width: calc(min(320px, calc(100vw - 44px)) * 100 / 380);
+    height: calc(min(320px, calc(100vw - 44px)) * 24 / 380);
+    top: calc(min(320px, calc(100vw - 44px)) * 20 / 380);
+  }
+  .phone.lg iframe { border-radius: calc(min(320px, calc(100vw - 44px)) * 36 / 380); }
+
+  .phone.md {
+    width: min(260px, calc(100vw - 44px));
+    height: calc(min(260px, calc(100vw - 44px)) * 540 / 280);
+  }
+  .phone.sm {
+    width: min(220px, calc(100vw - 44px));
+    height: calc(min(220px, calc(100vw - 44px)) * 460 / 240);
+  }
+}
+
+/* Small mobile */
+@media (max-width: 380px) {
+  .nav-cta .btn { padding: 10px 14px; font-size: 13px; }
+  .hero h1 { font-size: 36px; }
+  .marquee-track span { font-size: 20px; }
+  .section-head h2 { font-size: 26px; }
+  .pillar-txt h3 { font-size: 24px; }
+  .modes-rail-btn .nm { font-size: 16px; }
+  .calc-result .num.big { font-size: 28px; }
+}
+
+/* Touch device hover suppression */
+@media (hover: none) {
+  .p-card:hover, .feature-card:hover, .testi-card:hover, .problem-card:hover, .roadmap-tile:hover { transform: none; }
+}
+
+/* ──────────────── PROBLEM SECTION (foreign-worker truth) ──────────────── */
+.problem-block { padding: 96px 28px; max-width: 1320px; margin: 0 auto; }
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 56px;
+}
+.problem-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  padding: 28px;
+  display: flex;
+  gap: 18px;
+  transition: border-color 200ms, transform 200ms;
+}
+.problem-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.problem-icon {
+  width: 44px; height: 44px;
+  background: var(--bg-soft);
+  color: var(--ink);
+  display: grid; place-items: center;
+  flex-shrink: 0;
+}
+.problem-icon svg { width: 22px; height: 22px; }
+.problem-card h4 { font-family: var(--font-display); font-weight: 700; font-size: 18px; margin-bottom: 6px; letter-spacing: -0.015em; line-height: 1.2; }
+.problem-card p { font-size: 14.5px; color: var(--grey); line-height: 1.55; }
+.problem-pull {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  border-left: 3px solid var(--lime-deep);
+  padding: 6px 0 6px 24px;
+  max-width: 820px;
+}
+.problem-pull em { font-style: normal; color: var(--lime-deep); }
+.problem-pull span.foot {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 15px; font-weight: 400;
+  color: var(--grey);
+  margin-top: 14px;
+  letter-spacing: -0.005em;
+}
+@media (max-width: 800px) {
+  .problem-grid { grid-template-columns: 1fr; }
+  .problem-block { padding: 64px 22px; }
+}
+
+/* ──────────────── COMPARISON TABLE ──────────────── */
+.compare-block { padding: 96px 28px; max-width: 1320px; margin: 0 auto; }
+.compare-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  margin-top: 36px;
+}
+.compare-table { width: 100%; border-collapse: collapse; }
+.compare-table th, .compare-table td {
+  padding: 18px 22px;
+  font-size: 14.5px;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+.compare-table thead th {
+  background: var(--bg-soft);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--grey);
+  font-weight: 700;
+  padding: 18px 22px;
+}
+.compare-table thead th:first-child { text-align: left; }
+.compare-table thead th.mb-col {
+  background: var(--ink);
+  color: var(--lime);
+  font-weight: 700;
+  position: relative;
+}
+.compare-table thead th small { display: block; font-size: 9px; font-weight: 500; opacity: 0.7; margin-top: 4px; letter-spacing: 0.08em; }
+.compare-table tr:last-child td { border-bottom: none; }
+.compare-table tbody td { color: var(--grey); }
+.compare-table tbody td.feat { text-align: left; }
+.compare-table tbody td.mb-col { background: var(--lime-soft); color: var(--ink); font-weight: 600; }
+.compare-table .feat strong { display: block; font-weight: 700; color: var(--ink); font-family: var(--font-display); font-size: 15.5px; letter-spacing: -0.005em; }
+.compare-table .feat small { display: block; font-size: 12.5px; color: var(--grey); margin-top: 2px; font-family: var(--font-body); font-weight: 400; }
+.cell-check, .cell-x, .cell-tilde {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px;
+  font-family: var(--font-mono); font-weight: 700; font-size: 14px;
+}
+.cell-check { background: var(--lime); color: var(--ink); }
+.cell-x { background: var(--bg-soft); color: var(--ink); }
+.cell-tilde { background: var(--bg-soft); color: var(--grey); }
+@media (max-width: 700px) {
+  .compare-table { font-size: 12.5px; }
+  .compare-table th, .compare-table td { padding: 12px 14px; }
+  .compare-table .feat strong { font-size: 13.5px; }
+  .compare-table .feat small { display: none; }
+  .compare-block { padding: 64px 22px; }
+}
+
+/* ──────────────── TESTIMONIALS ──────────────── */
+.testi-block { padding: 96px 28px; max-width: 1320px; margin: 0 auto; }
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 40px;
+}
+.testi-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  position: relative;
+  transition: border-color 200ms, transform 200ms;
+}
+.testi-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 32px; right: 32px;
+  height: 3px;
+  background: var(--lime);
+}
+.testi-card:hover { border-color: var(--lime-deep); transform: translateY(-3px); }
+.testi-stat {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 36px;
+  letter-spacing: -0.025em;
+  color: var(--lime-deep);
+  line-height: 1;
+  margin-top: 6px;
+}
+.testi-stat-lbl {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--grey);
+  font-weight: 600;
+  margin-top: 6px;
+  display: block;
+}
+.testi-stars { color: var(--lime-deep); font-size: 13px; letter-spacing: 3px; }
+.testi-quote { font-size: 15.5px; color: var(--ink); line-height: 1.55; }
+.testi-foot {
+  display: flex; align-items: center; gap: 12px;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  margin-top: auto;
+}
+.testi-ava {
+  width: 40px; height: 40px;
+  background: linear-gradient(135deg, var(--lime), var(--lime-deep));
+  display: grid; place-items: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ink);
+}
+.testi-who strong { display: block; font-size: 14px; font-weight: 600; color: var(--ink); }
+.testi-who span { font-size: 12.5px; color: var(--grey); }
+@media (max-width: 900px) {
+  .testi-grid { grid-template-columns: 1fr; }
+  .testi-block { padding: 64px 22px; }
+}
+
+/* ──────────────── ROADMAP ──────────────── */
+.roadmap-block { padding: 96px 28px; max-width: 1320px; margin: 0 auto; }
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+}
+.roadmap-tile {
+  background: var(--bg-soft);
+  border: 1px dashed var(--line-2);
+  padding: 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-style 200ms, border-color 200ms, transform 200ms;
+}
+.roadmap-tile:hover { border-style: solid; border-color: var(--lime-deep); transform: translateY(-2px); }
+.roadmap-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--lime-deep);
+  background: var(--lime-soft);
+  padding: 5px 10px;
+  align-self: flex-start;
+}
+.roadmap-tile .roadmap-icon {
+  width: 36px; height: 36px;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  display: grid; place-items: center;
+  color: var(--ink);
+}
+.roadmap-tile .roadmap-icon svg { width: 18px; height: 18px; }
+.roadmap-tile h4 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+.roadmap-tile p { font-size: 13.5px; color: var(--grey); line-height: 1.5; }
+@media (max-width: 1100px) {
+  .roadmap-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .roadmap-grid { grid-template-columns: 1fr; }
+  .roadmap-block { padding: 64px 22px; }
+}
+
+/* ──────────────── LIME MANIFESTO ──────────────── */
+.manifesto {
+  background: var(--lime);
+  color: var(--ink);
+  padding: 110px 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.manifesto::before,
+.manifesto::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 16px;
+  background-image:
+    linear-gradient(90deg, var(--ink) 50%, transparent 50%),
+    linear-gradient(90deg, transparent 50%, var(--ink) 50%);
+  background-size: 32px 16px, 32px 16px;
+  background-position: 0 0, 16px 8px;
+  background-repeat: repeat-x;
+}
+.manifesto::before { top: 0; }
+.manifesto::after { bottom: 0; }
+.manifesto-inner {
+  max-width: 920px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.manifesto-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: rgba(0,0,0,0.10);
+  padding: 6px 14px;
+  display: inline-block;
+  margin-bottom: 32px;
+}
+.manifesto h2 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(38px, 6.5vw, 78px);
+  line-height: 1.0;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+  margin-bottom: 28px;
+}
+.manifesto h2 em {
+  font-style: normal;
+  color: var(--bg);
+  background: var(--ink);
+  padding: 0 18px;
+  display: inline-block;
+  font-weight: 900;
+  line-height: 1.05;
+}
+.manifesto p {
+  font-size: clamp(16px, 1.8vw, 19px);
+  color: #2a2a2a;
+  max-width: 620px;
+  margin: 0 auto 36px;
+  line-height: 1.55;
+  font-weight: 500;
+}
+.manifesto-tagline {
+  margin-top: 44px;
+  padding-top: 24px;
+  border-top: 1px dashed rgba(0,0,0,0.18);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(18px, 2vw, 22px);
+  letter-spacing: -0.015em;
+}
+.manifesto-tagline strong { font-weight: 900; }
+.manifesto-pixels { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.manifesto-pixels span { position: absolute; background: var(--ink); }
+.manifesto-pixels span:nth-child(1) { top: 14%; left: 6%;  width: 16px; height: 16px; }
+.manifesto-pixels span:nth-child(2) { top: 22%; left: 92%; width: 12px; height: 12px; }
+.manifesto-pixels span:nth-child(3) { top: 76%; left: 4%;  width: 10px; height: 10px; }
+.manifesto-pixels span:nth-child(4) { top: 70%; left: 94%; width: 16px; height: 16px; }
+.manifesto-pixels span:nth-child(5) { top: 50%; left: 96%; width: 8px;  height: 8px;  }
+.manifesto-pixels span:nth-child(6) { top: 32%; left: 8%;  width: 12px; height: 12px; }
+@media (max-width: 700px) {
+  .manifesto { padding: 80px 20px; }
+  .manifesto h2 em { padding: 0 12px; }
+}
+
+/* ──────────────── PRESS STRIP ──────────────── */
+.press-strip {
+  padding: 48px 28px;
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+}
+.press-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--grey-2);
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+.press-logos {
+  display: flex;
+  gap: 56px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.press-logos span {
+  font-size: 22px;
+  color: var(--grey);
+  opacity: 0.7;
+  transition: opacity 200ms, color 200ms;
+  cursor: default;
+}
+.press-logos span:hover { opacity: 1; color: var(--ink); }
+@media (max-width: 900px) {
+  .press-logos { gap: 28px; }
+  .press-logos span { font-size: 17px; }
+}
+
+</style>
 </head>
-
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="https://menubase.io" class="nav-logo">
-      <img src="https://menubase.io/img/menubase_logo_light.png" alt="MenuBase" onerror="this.style.display='none'">
+<div class="bg-pixels" aria-hidden="true">
+  <span style="left:8%;top:100%;width:10px;height:10px;animation-delay:0s"></span>
+  <span style="left:22%;top:100%;width:8px;height:8px;animation-delay:7s"></span>
+  <span style="left:35%;top:100%;width:12px;height:12px;animation-delay:14s"></span>
+  <span style="left:48%;top:100%;width:6px;height:6px;animation-delay:21s"></span>
+  <span style="left:62%;top:100%;width:10px;height:10px;animation-delay:28s"></span>
+  <span style="left:74%;top:100%;width:8px;height:8px;animation-delay:35s"></span>
+  <span style="left:86%;top:100%;width:12px;height:12px;animation-delay:42s"></span>
+  <span style="left:95%;top:100%;width:6px;height:6px;animation-delay:49s"></span>
+</div>
+
+<!-- ─── TOP RIBBON (logo + login) ─── -->
+<div class="top-ribbon">
+  <div class="top-ribbon-inner">
+    <a href="#top" class="brand" aria-label="MenuBase">
+      <img class="logo" src="menubase-logo-dark.png" alt="MenuBase"/>
     </a>
-    <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('active')">☰</button>
-    <ul class="nav-links">
-      <li><a href="#problem">The Problem</a></li>
-      <li><a href="#demo">Live Demo</a></li>
-      <li><a href="#how">How It Works</a></li>
-      <li><a href="#features">Features</a></li>
-      <li><a href="#calculator">Revenue Calculator</a></li>
-      <li><a href="https://menubase.io/procurement.html">Procurement</a></li>
-      <li><a href="#cta" class="nav-cta">Get Started</a></li>
-    </ul>
-  </nav>
+    <a class="top-ribbon-login" href="https://app.menubase.io" target="_blank" rel="noopener">
+      Login <span class="arr" aria-hidden="true">→</span>
+    </a>
+  </div>
+</div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div>
-      <div class="hero-badge">Now Live</div>
-      <h1>Your Menu.<br>Now It <span class="highlight">Sells For You.</span></h1>
-      <p class="hero-sub">QR ordering with built-in smart upselling. No trained waiters needed. Turn every order into
-        incremental revenue - automatically.</p>
-      <div class="hero-actions">
-        <a href="https://wa.me/60175981858?text=Hi%2C%20I'm%20interested%20in%20MenuBase" class="btn-primary"
-          target="_blank">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path
-              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-          </svg>
-          Talk to Us on WhatsApp
-        </a>
-        <a href="#demo" class="btn-secondary">See the Demo ↓</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <div class="hero-stat-val">+20%</div>
-          <div class="hero-stat-label">Upsell Acceptance</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-val">RM8</div>
-          <div class="hero-stat-label">Avg Upsell Value</div>
-        </div>
-        <div class="hero-stat">
-          <div class="hero-stat-val">RM57K</div>
-          <div class="hero-stat-label">Annual Uplift / Outlet</div>
-        </div>
+<!-- ─── NAV (floating bottom dock) ─── -->
+<nav class="top">
+  <div class="nav-inner">
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#demo">Live demo</a>
+      <a href="#modes">For your venue</a>
+      <a href="#calc">Calculator</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-ghost" href="https://wa.me/60175981858" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn btn-dark" href="#book">Talk to sales</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true">
+    <span class="px" style="top:18%;left:7%;width:18px;height:18px;animation-delay:0s"></span>
+    <span class="px" style="top:32%;left:92%;width:14px;height:14px;animation-delay:1.4s"></span>
+    <span class="px" style="top:62%;left:4%;width:10px;height:10px;animation-delay:2.8s"></span>
+    <span class="px" style="top:78%;left:94%;width:16px;height:16px;animation-delay:4.2s"></span>
+    <span class="px" style="top:48%;left:96%;width:8px;height:8px;animation-delay:5.6s"></span>
+    <span class="px" style="top:24%;left:75%;width:12px;height:12px;animation-delay:7.0s"></span>
+    <span class="px" style="top:84%;left:18%;width:10px;height:10px;animation-delay:8.4s"></span>
+    <span class="px" style="top:38%;left:14%;width:8px;height:8px;animation-delay:9.8s"></span>
+    <span class="px" style="top:14%;left:48%;width:6px;height:6px;animation-delay:3.6s"></span>
+    <span class="px" style="top:88%;left:62%;width:14px;height:14px;animation-delay:6.0s"></span>
+    <span class="px" style="top:54%;left:82%;width:6px;height:6px;animation-delay:10.5s"></span>
+    <span class="px" style="top:72%;left:38%;width:8px;height:8px;animation-delay:0.8s"></span>
+  </div>
+  <div class="hero-inner">
+    <span class="eyebrow">THE AI WAITER, LIVE IN MALAYSIA</span>
+    <h1>The waiter you <em>wish</em> you could hire.</h1>
+    <p class="sub">MenuBase is the AI waiter that lives in your QR menu. Speaks every language, never forgets the specials, always upsells at the right moment. Sits on top of any POS, no replacement needed.</p>
+    <div class="hero-actions">
+      <a class="btn btn-dark btn-lg" href="#book">Talk to sales</a>
+      <a class="btn btn-ghost btn-lg" href="#demo">Try the live demo</a>
+    </div>
+    <div class="hero-micro">NO POS REPLACEMENT<span>·</span>SAME-DAY SETUP<span>·</span>ZERO STAFF TRAINING</div>
+
+    <div class="hero-stage reveal">
+      <div class="phone lg">
+        <div class="notch"></div>
+        <iframe src="Customer QR App.html?demo=upsell_popup&items=eb&screen=menu&hour=9&hideDev=1&compact=1" title="MenuBase customer menu" loading="lazy"></iframe>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- PROBLEM -->
-  <section id="problem" class="problem">
-    <div class="section-label">The Problem</div>
-    <div class="section-title">Revenue leakage is systemic in F&B.</div>
-    <div class="section-desc">Every order that goes through without an upsell is money left on the table. And it's
-      happening hundreds of times a day.</div>
-    <div class="problem-grid">
-      <div class="problem-cards">
-        <div class="problem-card">
-          <div class="problem-icon">📋</div>
-          <div>
-            <h4>Orders Are Taken, Not Optimised</h4>
-            <p>Staff take what customers say - they don't guide them toward higher-value combos or add-ons.</p>
-          </div>
-        </div>
-        <div class="problem-card">
-          <div class="problem-icon">🧠</div>
-          <div>
-            <h4>Upselling Relies on Memory</h4>
-            <p>Your best server remembers. Everyone else? They just punch in the order and move on.</p>
-          </div>
-        </div>
-        <div class="problem-card">
-          <div class="problem-icon">📉</div>
-          <div>
-            <h4>Menus Are Static</h4>
-            <p>Same menu, all day - regardless of time, demand patterns, or what's actually selling.</p>
-          </div>
-        </div>
-        <div class="problem-card">
-          <div class="problem-icon">💸</div>
-          <div>
-            <h4>Rising Costs, Flat Revenue</h4>
-            <p>Labour costs keep climbing but revenue per customer stays the same. The math doesn't work.</p>
-          </div>
-        </div>
+<!-- ─── MARQUEE ─── -->
+<div class="marquee">
+  <div class="marquee-label">BUILT FOR THE WAY MALAYSIA EATS</div>
+  <div class="marquee-track">
+    <span>Cafés</span><span>Kopitiams</span><span>Mamak</span><span>Fine dining</span><span>Food courts</span><span>Hawker</span><span>Bars &amp; lounges</span><span>Hotel restaurants</span><span>Cafés</span><span>Kopitiams</span><span>Mamak</span><span>Fine dining</span><span>Food courts</span><span>Hawker</span><span>Bars &amp; lounges</span><span>Hotel restaurants</span>
+  </div>
+</div>
+
+<!-- ─── PROBLEM (foreign-worker truth) ─── -->
+<section class="problem-block" id="problem">
+  <div class="section-head reveal">
+    <span class="eyebrow">THE TRUTH NO ONE WANTS TO SAY</span>
+    <h2>Your staff was never going to <em>upsell.</em></h2>
+    <p class="lede">It's not that they're lazy. It's not that they don't care about your restaurant. The system was always going to fail at the upsell job — and trying to fix it with training, scripts, and "smile more" pep talks has never worked. Anywhere.</p>
+  </div>
+  <div class="problem-grid reveal">
+    <div class="problem-card">
+      <div class="problem-icon">
+        <svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+          <rect x="2" y="1" width="12" height="2"/><rect x="0" y="3" width="2" height="6"/><rect x="14" y="3" width="2" height="4"/><rect x="2" y="9" width="12" height="2"/><rect x="3" y="11" width="3" height="2"/><rect x="4" y="13" width="2" height="2"/><rect x="4" y="5" width="2" height="2"/><rect x="7" y="5" width="2" height="2"/><rect x="10" y="5" width="2" height="2"/>
+        </svg>
       </div>
-      <div class="problem-right">
-        <div class="problem-big-number">0%</div>
-        <div class="problem-quote">This is not a demand problem.<br>It's an <span>execution</span> problem.</div>
-        <p class="problem-footer">You already have the customers. You're just not capturing their full spend.</p>
+      <div>
+        <h4>Language barriers</h4>
+        <p>Your foreign staff can take orders. They can't explain your specials, your story, or why your new dish is worth ordering — in the customer's language.</p>
       </div>
     </div>
-  </section>
-
-  <!-- DEMO -->
-  <div id="demo" class="demo-wrap">
-    <div class="section-label" style="text-align:center;">Live Interactive Demo</div>
-    <div class="section-title" style="text-align:center;margin:0 auto 12px;max-width:600px;">See It Work. Right Now.
-    </div>
-    <p class="section-desc" style="text-align:center;margin:0 auto 40px;">Tap items, build an order, and watch MenuBase
-      suggest the perfect upsell at the right moment.</p>
-
-    <div class="demo-phone-outer">
-      <div class="demo-phone-rel">
-        <div class="demo-glow"></div>
-
-        <div class="mb-phone">
-          <div class="mb-sbar"><span>9:41</span><span>MenuBase</span><span>●●●</span></div>
-
-          <div class="mb-screen">
-
-            <!-- STEP 1: MENU -->
-            <div id="mb-step-menu" class="mb-step active">
-              <div class="mb-chdr">
-                <div class="mb-chdr-row">
-                  <div>
-                    <div class="mb-cname">Biji Coffee Co.</div>
-                    <div class="mb-csub">Table 7 · Dine in</div>
-                  </div>
-                  <div>
-                    <div class="mb-wait-lbl">Est. wait</div>
-                    <div class="mb-wait-val">~12 min</div>
-                  </div>
-                </div>
-                <div class="mb-pow">
-                  <div class="mb-pow-dot"></div><span class="mb-pow-txt">Powered by MenuBase</span>
-                </div>
-              </div>
-              <div class="mb-scroll">
-                <div class="mb-cat"><span class="mb-cat-lbl">☀️ All-day breakfast</span>
-                  <div class="mb-cat-line"></div>
-                </div>
-                <div class="mb-item" id="mb-item-0">
-                  <div class="mb-iimg"><img src="img/menu photos/Eggs Benedict.png" alt="" /></div>
-                  <div class="mb-iinfo">
-                    <div class="mb-iname">Eggs Benedict <span class="mb-bp">POPULAR</span></div>
-                    <div class="mb-idesc">Poached eggs, hollandaise, sourdough</div>
-                    <div class="mb-iprice">RM22</div>
-                  </div><button class="mb-add" onclick="mbAdd(0)"><svg viewBox="0 0 14 14" fill="none" width="12"
-                      height="12">
-                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
-                    </svg></button>
-                </div>
-                <div class="mb-item" id="mb-item-1">
-                  <div class="mb-iimg"><img src="img/menu photos/Smashed Avo Toast.png" alt="" /></div>
-                  <div class="mb-iinfo">
-                    <div class="mb-iname">Smashed Avo Toast</div>
-                    <div class="mb-idesc">Feta, cherry tomato, chilli flakes</div>
-                    <div class="mb-iprice">RM18</div>
-                  </div><button class="mb-add" onclick="mbAdd(1)"><svg viewBox="0 0 14 14" fill="none" width="12"
-                      height="12">
-                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
-                    </svg></button>
-                </div>
-                <div class="mb-item" id="mb-item-2">
-                  <div class="mb-iimg"><img src="img/menu photos/Nasi Lemak Benedict.png" alt="" /></div>
-                  <div class="mb-iinfo">
-                    <div class="mb-iname">Nasi Lemak Benedict <span class="mb-bs">🌶 SPICY</span></div>
-                    <div class="mb-idesc">Local twist, sambal hollandaise</div>
-                    <div class="mb-iprice">RM24</div>
-                  </div><button class="mb-add" onclick="mbAdd(2)"><svg viewBox="0 0 14 14" fill="none" width="12"
-                      height="12">
-                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
-                    </svg></button>
-                </div>
-                <div class="mb-item" id="mb-item-3">
-                  <div class="mb-iimg"><img src="img/menu photos/Banana French Toast.png" alt="" /></div>
-                  <div class="mb-iinfo">
-                    <div class="mb-iname">Banana French Toast</div>
-                    <div class="mb-idesc">Brioche, maple syrup, whipped cream</div>
-                    <div class="mb-iprice">RM19</div>
-                  </div><button class="mb-add" onclick="mbAdd(3)"><svg viewBox="0 0 14 14" fill="none" width="12"
-                      height="12">
-                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
-                    </svg></button>
-                </div>
-                <div class="mb-cat" style="background:#fdf6f0;"><span class="mb-cat-lbl">🍽 Toasties &amp; mains</span>
-                  <div class="mb-cat-line"></div>
-                </div>
-                <div class="mb-item" id="mb-item-4">
-                  <div class="mb-iimg"><img src="img/menu photos/Croque Monsieur.png" alt="" /></div>
-                  <div class="mb-iinfo">
-                    <div class="mb-iname">Croque Monsieur</div>
-                    <div class="mb-idesc">Ham, gruyère, béchamel sauce</div>
-                    <div class="mb-iprice">RM16</div>
-                  </div><button class="mb-add" onclick="mbAdd(4)"><svg viewBox="0 0 14 14" fill="none" width="12"
-                      height="12">
-                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
-                    </svg></button>
-                </div>
-                <div class="mb-item" id="mb-item-5">
-                  <div class="mb-iimg"><img src="img/menu photos/Truffle Mushroom Pasta.png" alt="" /></div>
-                  <div class="mb-iinfo">
-                    <div class="mb-iname">Truffle Mushroom Pasta <span class="mb-bv">VEG</span></div>
-                    <div class="mb-idesc">Wild mushrooms, truffle oil, parmesan</div>
-                    <div class="mb-iprice">RM26</div>
-                  </div><button class="mb-add" onclick="mbAdd(5)"><svg viewBox="0 0 14 14" fill="none" width="12"
-                      height="12">
-                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
-                    </svg></button>
-                </div>
-                <div class="mb-cat" style="background:#fdf6f0;"><span class="mb-cat-lbl">🍰 Sweets</span>
-                  <div class="mb-cat-line"></div>
-                </div>
-                <div class="mb-item" id="mb-item-6">
-                  <div class="mb-iimg"><img src="img/menu photos/Basque Cheesecake.png" alt="" /></div>
-                  <div class="mb-iinfo">
-                    <div class="mb-iname">Basque Cheesecake <span class="mb-bp">POPULAR</span></div>
-                    <div class="mb-idesc">Burnt top, jiggly creamy centre</div>
-                    <div class="mb-iprice">RM14</div>
-                  </div><button class="mb-add" onclick="mbAdd(6)"><svg viewBox="0 0 14 14" fill="none" width="12"
-                      height="12">
-                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
-                    </svg></button>
-                </div>
-                <div class="mb-item" id="mb-item-7">
-                  <div class="mb-iimg"><img src="img/menu photos/Matcha Tiramisu.png" alt="" /></div>
-                  <div class="mb-iinfo">
-                    <div class="mb-iname">Matcha Tiramisu</div>
-                    <div class="mb-idesc">Ladyfinger, matcha cream, cocoa dust</div>
-                    <div class="mb-iprice">RM16</div>
-                  </div><button class="mb-add" onclick="mbAdd(7)"><svg viewBox="0 0 14 14" fill="none" width="12"
-                      height="12">
-                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
-                    </svg></button>
-                </div>
-                <div class="mb-cat" style="background:#fdf6f0;"><span class="mb-cat-lbl">☕ Drinks</span>
-                  <div class="mb-cat-line"></div>
-                </div>
-                <div class="mb-item" id="mb-item-8">
-                  <div class="mb-iimg"><img src="img/menu photos/White Coffee.png" alt="" /></div>
-                  <div class="mb-iinfo">
-                    <div class="mb-iname">White Coffee <span class="mb-bp">POPULAR</span></div>
-                    <div class="mb-idesc">Creamy, smooth house blend</div>
-                    <div class="mb-iprice">RM9</div>
-                  </div><button class="mb-add" onclick="mbAdd(8)"><svg viewBox="0 0 14 14" fill="none" width="12"
-                      height="12">
-                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
-                    </svg></button>
-                </div>
-                <div class="mb-item" style="border-bottom:none;" id="mb-item-9">
-                  <div class="mb-iimg"><img src="img/menu photos/Matcha Latte.png" alt="" /></div>
-                  <div class="mb-iinfo">
-                    <div class="mb-iname">Matcha Latte</div>
-                    <div class="mb-idesc">Ceremonial grade, oat milk</div>
-                    <div class="mb-iprice">RM12</div>
-                  </div><button class="mb-add" onclick="mbAdd(9)"><svg viewBox="0 0 14 14" fill="none" width="12"
-                      height="12">
-                      <path d="M7 2v10M2 7h10" stroke="#fff" stroke-width="2.2" stroke-linecap="round" />
-                    </svg></button>
-                </div>
-              </div>
-              <div id="mb-cart-bar" class="mb-cartbar" onclick="mbGoCheckout()">
-                <div id="mb-cart-info" class="mb-ci">0 items</div>
-                <div id="mb-cart-action" class="mb-ca">View order →</div>
-              </div>
-            </div>
-
-            <!-- STEP 2: CHECKOUT -->
-            <div id="mb-step-checkout" class="mb-step">
-              <div class="mb-cohdr">
-                <button class="mb-back" onclick="mbGoMenu()">← Back</button>
-                <div class="mb-cotitle">Your order</div>
-              </div>
-              <div id="mb-order-list" class="mb-olist"></div>
-              <div class="mb-promo">🏷 Add promo code</div>
-              <div class="mb-strow">
-                <div class="mb-stlbl">Subtotal</div>
-                <div id="mb-subtotal" class="mb-stval">RM0</div>
-              </div>
-              <div class="mb-cobtnarea">
-                <button class="mb-proceed" onclick="mbShowUpsell1()">Proceed to checkout</button>
-                <div class="mb-paynote">Cash · Card · E-wallet accepted</div>
-              </div>
-            </div>
-
-            <!-- STEP 3: UPSELL DRINK -->
-            <div id="mb-step-upsell1" class="mb-step">
-              <div class="mb-uphdr">
-                <div class="mb-uphtitle">Almost there...</div>
-              </div>
-              <div id="mb-ol-u1" class="mb-upprev"></div>
-              <div class="mb-upsheet">
-                <div class="mb-pill"></div>
-                <div class="mb-eyebrow">MenuBase suggests · 1 of 2</div>
-                <div class="mb-uptitle">Complete your meal?</div>
-                <div class="mb-upsub">89% of customers add a drink ☕</div>
-                <div class="mb-upcard">
-                  <div class="mb-upimg"><img src="img/menu photos/White Coffee.png" alt="" /></div>
-                  <div style="flex:1;">
-                    <div class="mb-upiname">White Coffee</div>
-                    <div class="mb-upidesc">Creamy, smooth - perfect pairing</div>
-                    <div class="mb-upiprice">+ RM9</div>
-                  </div>
-                </div>
-                <button class="mb-yesbtn" onclick="mbAcceptUpsell1()">Yes, add White Coffee - RM9</button>
-                <button class="mb-skipbtn" onclick="mbSkipUpsell1()">No thanks, skip to next</button>
-              </div>
-            </div>
-
-            <!-- STEP 4: UPSELL DESSERT -->
-            <div id="mb-step-upsell2" class="mb-step">
-              <div class="mb-uphdr">
-                <div class="mb-uphtitle">One more thing...</div>
-              </div>
-              <div id="mb-ol-u2" class="mb-upprev"></div>
-              <div class="mb-upsheet">
-                <div class="mb-pill"></div>
-                <div class="mb-eyebrow">MenuBase suggests · 2 of 2</div>
-                <div class="mb-uptitle">End on a sweet note?</div>
-                <div class="mb-upsub">Today's crowd favourite 🏆</div>
-                <div class="mb-upcard">
-                  <div class="mb-upimg"><img src="img/menu photos/Basque Cheesecake.png" alt="" /></div>
-                  <div style="flex:1;">
-                    <div class="mb-upiname">Burnt Basque Cheesecake</div>
-                    <div class="mb-upidesc">Creamy centre, caramelised top</div>
-                    <div class="mb-upiprice">+ RM14</div>
-                  </div>
-                </div>
-                <button class="mb-yesbtn" onclick="mbAcceptUpsell2()">Yes, add Cheesecake - RM14</button>
-                <button class="mb-skipbtn" onclick="mbSkipUpsell2()">No thanks, confirm order</button>
-              </div>
-            </div>
-
-            <!-- STEP 5: CONFIRM -->
-            <div id="mb-step-confirm" class="mb-step">
-              <div class="mb-cfhdr">
-                <div class="mb-cfcafe">Biji Coffee Co.</div>
-                <div class="mb-cfsubhdr">Order confirmed · Table 7</div>
-              </div>
-              <div class="mb-cfbody">
-                <div class="mb-check"><svg width="20" height="20" viewBox="0 0 32 32" fill="none">
-                    <path d="M6 16l7 7 13-13" stroke="#5a7a00" stroke-width="2.5" stroke-linecap="round"
-                      stroke-linejoin="round" />
-                  </svg></div>
-                <div class="mb-cftitle">Order placed!</div>
-                <div class="mb-cfeta">Est. ready in ~12 min</div>
-                <div id="mb-confirm-msg" class="mb-cfmsg">Your order is heading to the kitchen.</div>
-                <div id="mb-receipt" class="mb-receipt"></div>
-                <div id="mb-uplift" class="mb-uplift">
-                  <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
-                    <path d="M8 2l1.8 3.6L14 6.3l-3 2.9.7 4.1L8 11.1l-3.7 2.2.7-4.1-3-2.9 4.2-.7z" fill="#7CB305" />
-                  </svg>
-                  <div id="mb-uplift-txt" class="mb-uplift-txt"></div>
-                </div>
-                <button class="mb-restartbtn" onclick="mbRestart()">Try demo again</button>
-              </div>
-            </div>
-
-          </div><!-- end mb-screen -->
-        </div><!-- end mb-phone -->
-      </div><!-- end demo-phone-rel -->
-
-      <div class="mb-dots">
-        <div id="mb-d0" class="mb-dot active"></div>
-        <div id="mb-d1" class="mb-dot"></div>
-        <div id="mb-d2" class="mb-dot"></div>
-        <div id="mb-d3" class="mb-dot"></div>
-        <div id="mb-d4" class="mb-dot"></div>
+    <div class="problem-card">
+      <div class="problem-icon">
+        <svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+          <rect x="4" y="0" width="8" height="2"/><rect x="2" y="2" width="2" height="2"/><rect x="12" y="2" width="2" height="2"/><rect x="0" y="4" width="2" height="8"/><rect x="14" y="4" width="2" height="8"/><rect x="2" y="12" width="2" height="2"/><rect x="12" y="12" width="2" height="2"/><rect x="4" y="14" width="8" height="2"/><rect x="5" y="5" width="2" height="6"/><rect x="7" y="5" width="2" height="2"/><rect x="9" y="5" width="2" height="6"/>
+        </svg>
       </div>
-      <div class="mb-hint">Interactive demo - tap any item to start ordering</div>
+      <div>
+        <h4>Zero incentive to upsell</h4>
+        <p>They get paid hourly to clock in. Pushing your RM14 cheesecake doesn't show up in their paycheck. So they don't push it.</p>
+      </div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon">
+        <svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+          <rect x="3" y="1" width="8" height="2"/><rect x="11" y="1" width="2" height="2"/><rect x="13" y="3" width="2" height="2"/><rect x="13" y="5" width="2" height="2"/><rect x="9" y="3" width="2" height="2"/><rect x="11" y="5" width="2" height="2"/><rect x="3" y="9" width="2" height="2"/><rect x="5" y="11" width="2" height="2"/><rect x="1" y="11" width="2" height="2"/><rect x="3" y="13" width="2" height="2"/><rect x="5" y="13" width="8" height="2"/><rect x="1" y="9" width="2" height="2"/>
+        </svg>
+      </div>
+      <div>
+        <h4>Transient workforce</h4>
+        <p>By the time you've trained them on the menu, the specials, the upsell scripts — they've already moved to a different job. Then you start over.</p>
+      </div>
+    </div>
+    <div class="problem-card">
+      <div class="problem-icon">
+        <svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+          <rect x="2" y="2" width="12" height="2"/><rect x="2" y="5" width="12" height="2"/><rect x="2" y="8" width="12" height="2"/><rect x="2" y="11" width="12" height="2"/>
+        </svg>
+      </div>
+      <div>
+        <h4>Static menus, static results</h4>
+        <p>Your menu doesn't know it's 9pm and you have 4 lava cakes left. It doesn't know it's Friday. It doesn't know the new arrival ordered last week's special and might like the new one.</p>
+      </div>
+    </div>
+  </div>
+  <div class="problem-pull reveal">
+    This is not a staff problem. It's a <em>system</em> problem.
+    <span class="foot">Stop blaming your team for not doing the impossible. Move the upsell job to the only thing that can actually do it reliably — the screen.</span>
+  </div>
+</section>
+
+<!-- ─── PILLARS (3 features, alternating side-by-side) ─── -->
+<section class="block" id="features">
+  <div class="section-head reveal">
+    <span class="eyebrow">FEATURES</span>
+    <h2>The smartest waiter does <em>three things.</em></h2>
+    <p class="lede">Three jobs that humans struggle to do reliably. Three jobs MenuBase does on every order, in every language, every shift.</p>
+  </div>
+
+  <div class="pillar reveal">
+    <div class="pillar-txt">
+      <span class="num">01 / SMART UPSELL</span>
+      <h3>Suggests the right thing. <em>At the right moment.</em></h3>
+      <p class="lede">No random popups. No tablet that asks "would you like fries with that". MenuBase reads the basket, reads the time, reads what's converted before, and suggests one thing with a real chance of being accepted.</p>
+      <ul>
+        <li><strong>Context-aware:</strong> 9:42am with avo toast suggests White Coffee. 6pm Friday with pasta suggests Truffle Fries.</li>
+        <li><strong>One-tap accept:</strong> Frictionless add. No staff awkwardness, no pressure on the customer.</li>
+        <li><strong>Self-learning:</strong> Suggestions improve on every order, without you writing a single rule.</li>
+      </ul>
+    </div>
+    <div class="pillar-vis">
+      <div class="phone md">
+        <div class="notch"></div>
+        <iframe src="Customer QR App.html?demo=upsell_popup&items=eb&screen=checkout&hour=9&hideDev=1&compact=1" title="Smart upsell example" loading="lazy"></iframe>
+      </div>
     </div>
   </div>
 
-  <!-- HOW IT WORKS -->
-  <section id="how" class="how-section">
-    <div class="section-label">How It Works</div>
-    <div class="section-title" style="margin:0 auto 12px;">Five Steps. Zero Staff Training.</div>
-    <div class="section-desc" style="margin:0 auto;">No app downloads for customers. No POS replacement for you. Just
-      scan, order, and earn more.</div>
-    <div class="how-steps">
-      <div class="how-step">
-        <div class="step-num">1</div>
-        <div class="step-icon">📱</div>
-        <h4>Scan</h4>
-        <p>Customer scans your QR code and opens the digital menu instantly - no app needed.</p>
-      </div>
-      <div class="how-step">
-        <div class="step-num">2</div>
-        <div class="step-icon">🛒</div>
-        <h4>Order</h4>
-        <p>They browse and build their order. MenuBase analyses the basket in real time.</p>
-      </div>
-      <div class="how-step">
-        <div class="step-num">3</div>
-        <div class="step-icon">✨</div>
-        <h4>Suggest</h4>
-        <p>Smart upsell triggers at the perfect moment - add-ons, pairings, bundles, time-based offers.</p>
-      </div>
-      <div class="how-step">
-        <div class="step-num">4</div>
-        <div class="step-icon">👆</div>
-        <h4>Accept</h4>
-        <p>Customer adds the suggestion with one tap. Frictionless, natural, no pressure.</p>
-      </div>
-      <div class="how-step">
-        <div class="step-num">5</div>
-        <div class="step-icon">🍽️</div>
-        <h4>Serve</h4>
-        <p>Order hits your tablet. Staff keys it into POS. Order value is already higher.</p>
+  <div class="pillar flip reveal">
+    <div class="pillar-txt">
+      <span class="num">02 / SMART PROMOTE</span>
+      <h3>Launch a special at 9am. <em>Selling by 9:01.</em></h3>
+      <p class="lede">No printed table tents. No "tell every staff member about the new dessert" briefings. Flag an item as "push this week" and it appears in the suggestion slot on every relevant order across every outlet, instantly.</p>
+      <ul>
+        <li><strong>One-click rollout:</strong> Push a new special across all outlets, all shifts, all languages, instantly.</li>
+        <li><strong>Happy hour automation:</strong> Specials flip on at 5pm. Off at 7pm. Without anyone touching a thing.</li>
+        <li><strong>Move slow stock:</strong> Auto-surface items that haven't moved, paired with baskets where they'd fit.</li>
+      </ul>
+    </div>
+    <div class="pillar-vis">
+      <div class="phone md">
+        <div class="notch"></div>
+        <iframe src="Customer QR App.html?demo=happy_hour&hour=15&day=1&screen=menu&hideDev=1&compact=1" title="Smart promote example" loading="lazy"></iframe>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- FEATURES -->
-  <section id="features">
-    <div style="text-align:center;">
-      <div class="section-label">Features</div>
-      <div class="section-title" style="margin:0 auto 12px;">Your Best Server. Every Table. Every Time.</div>
-      <div class="section-desc" style="margin:0 auto;">An intelligent ordering layer that sits in front of your POS. It
-        handles the soft sell so your staff doesn't have to.</div>
+  <div class="pillar reveal">
+    <div class="pillar-txt">
+      <span class="num">03 / DYNAMIC MENU</span>
+      <h3>The menu that <em>reads the room.</em></h3>
+      <p class="lede">Your customer should never see "sorry, not available" again. Your breakfast menu shouldn't sell breakfast at 3pm. Your high-margin items should sit at the top when the rush hits.</p>
+      <ul>
+        <li><strong>Daypart-aware:</strong> Breakfast hides at 11am. Lunch combos take over by 11:01.</li>
+        <li><strong>Stock-aware:</strong> Sold-out items vanish live. Last 3 lava cakes? Tag them "almost gone".</li>
+        <li><strong>Language-aware:</strong> Same menu auto-translates into your customer's language, they pick with one tap.</li>
+      </ul>
     </div>
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="feature-icon">🧠</div>
-        <h4>Context-Aware Suggestions</h4>
-        <p>Analyses time of day, basket contents, and ordering patterns to recommend the right upsell - not a random
-          popup.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📲</div>
-        <h4>QR-Based Ordering</h4>
-        <p>Customers scan and order from their own phone. No app install, no queue, no awkward waiter interactions.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">🔌</div>
-        <h4>POS-Agnostic</h4>
-        <p>Works alongside any existing POS. Orders appear on a dedicated tablet - staff just keys them in. No system
-          overhaul.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">📈</div>
-        <h4>Self-Learning Engine</h4>
-        <p>Tracks what converts and what doesn't. Suggestion quality improves automatically over time without manual
-          rules.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">⏱️</div>
-        <h4>Time-Based Offers</h4>
-        <p>Happy hour specials, lunch combos, late-night deals - all triggered automatically based on the clock.</p>
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon">💰</div>
-        <h4>Pure Incremental Revenue</h4>
-        <p>Same kitchen, same staff, same seats, same rent. The uplift goes straight to your margin.</p>
+    <div class="pillar-vis">
+      <div class="phone md">
+        <div class="notch"></div>
+        <iframe src="Customer QR App.html?demo=weather&weather=rain&hour=14&screen=menu&hideDev=1&compact=1" title="Dynamic menu example" loading="lazy"></iframe>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CALCULATOR -->
-  <section id="calculator" class="calc-section">
-    <div class="section-label">Revenue Calculator</div>
-    <div class="section-title" style="margin:0 auto 12px;">How Much Are You Leaving on the Table?</div>
-    <div class="section-desc" style="margin:0 auto;">Drag the numbers. See the impact. These are conservative estimates.
+<!-- ─── LIVE DEMO (dark inverse) ─── -->
+<div class="demo" id="demo">
+  <div class="demo-inner">
+    <div class="demo-side">
+      <span class="eyebrow">TRY IT NOW</span>
+      <h2>This isn't a mock-up. <em>Tap the chips.</em></h2>
+      <p class="lede">The phone on the right is the real MenuBase customer app. Tap any scenario to see a different feature fire live, no signup, no fluff, just the product.</p>
+
+      <div class="demo-chips" id="demo-chips">
+        <button class="chip on" data-scenario="upsell">Smart upsell</button>
+        <button class="chip" data-scenario="threshold">Threshold reward</button>
+        <button class="chip" data-scenario="happy_hour">Happy hour</button>
+        <button class="chip" data-scenario="bundle">Combo deal</button>
+        <button class="chip" data-scenario="spin">Spin &amp; win</button>
+        <button class="chip" data-scenario="mystery">Mystery box</button>
+        <button class="chip" data-scenario="flash">Flash deal</button>
+        <button class="chip" data-scenario="weather">Weather menu</button>
+      </div>
+
+      <div class="demo-annot" id="demo-annot">
+        <div class="h">SMART UPSELL · ON</div>
+        <div class="t">One perfect add-on at the right moment.</div>
+        <div class="d">Order an Eggs Benedict at 9:42am, the system surfaces White Coffee. 89% accept rate on that exact basket. One tap to add, no staff awkwardness, no scripts.</div>
+      </div>
     </div>
-    <div class="calculator">
-      <div class="calc-inputs">
-        <div class="calc-input-group">
-          <label>Orders per day</label>
-          <div class="calc-val-display" id="ordersDisplay">100</div>
-          <input type="range" class="calc-slider" id="ordersPerDay" min="20" max="250" step="10" value="100"
-            oninput="calcRevenue()">
-          <div class="calc-slider-range"><span>20</span><span>250</span></div>
+
+    <div class="demo-stage">
+      <div class="phone lg">
+        <div class="notch"></div>
+        <iframe id="demo-iframe" src="Customer QR App.html?demo=upsell_popup&items=eb&screen=checkout&hour=9&hideDev=1&compact=1" title="MenuBase live demo" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── COMPARISON TABLE (we're not a POS) ─── -->
+<section class="compare-block" id="compare">
+  <div class="section-head reveal">
+    <span class="eyebrow">HOW WE COMPARE</span>
+    <h2>We're not a POS. <em>That's the point.</em></h2>
+    <p class="lede">If you've been comparing us to StoreHub, Slurp! or Loyverse — you've been comparing us to the wrong thing. They're cash registers. We're the AI waiter that sits on top of one.</p>
+  </div>
+  <div class="compare-card reveal">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th class="mb-col">MenuBase<small>★</small></th>
+          <th>Your POS<small>STOREHUB · SLURP · LOYVERSE</small></th>
+          <th>Static QR menu</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="feat"><strong>Records sales · takes payment</strong><small>The actual transaction layer</small></td>
+          <td class="mb-col"><span class="cell-tilde">via</span></td>
+          <td><span class="cell-check">✓</span></td>
+          <td><span class="cell-x">✗</span></td>
+        </tr>
+        <tr>
+          <td class="feat"><strong>Knows when to upsell</strong><small>Context-aware suggestions based on basket + time + history</small></td>
+          <td class="mb-col"><span class="cell-check">✓</span></td>
+          <td><span class="cell-x">✗</span></td>
+          <td><span class="cell-x">✗</span></td>
+        </tr>
+        <tr>
+          <td class="feat"><strong>Pushes new specials automatically</strong><small>Owner flags a dish at 9am, it appears on every menu by 9:01</small></td>
+          <td class="mb-col"><span class="cell-check">✓</span></td>
+          <td><span class="cell-x">✗</span></td>
+          <td><span class="cell-x">✗</span></td>
+        </tr>
+        <tr>
+          <td class="feat"><strong>Adapts menu by time · stock · demand</strong><small>Breakfast hides at 11am. Sold-out items vanish live</small></td>
+          <td class="mb-col"><span class="cell-check">✓</span></td>
+          <td><span class="cell-x">✗</span></td>
+          <td><span class="cell-x">✗</span></td>
+        </tr>
+        <tr>
+          <td class="feat"><strong>Speaks every language your customer does</strong><small>EN · BM · ZH · TA + more on request</small></td>
+          <td class="mb-col"><span class="cell-check">✓</span></td>
+          <td><span class="cell-x">✗</span></td>
+          <td><span class="cell-tilde">~</span></td>
+        </tr>
+        <tr>
+          <td class="feat"><strong>Requires you to replace your POS</strong><small>The painful integration project no one wants</small></td>
+          <td class="mb-col"><strong style="color:var(--lime-deep);font-family:var(--font-mono);">NO</strong></td>
+          <td><span class="cell-x">✗ they ARE the POS</span></td>
+          <td><strong style="color:var(--grey);font-family:var(--font-mono);">no</strong></td>
+        </tr>
+        <tr>
+          <td class="feat"><strong>Installation time</strong><small>How long until your first dollar of uplift</small></td>
+          <td class="mb-col"><strong style="font-family:var(--font-mono);">Same day</strong></td>
+          <td><span style="font-family:var(--font-mono);color:var(--ink-2);font-weight:600;">Weeks</span></td>
+          <td><span style="font-family:var(--font-mono);color:var(--grey);font-weight:600;">Days</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ─── SERVICE MODES (tabs) ─── -->
+<section class="block" id="modes">
+  <div class="section-head reveal">
+    <span class="eyebrow">PAIRS WITH ANY SERVICE STYLE</span>
+    <h2>One AI waiter. <em>Four ways</em> to deploy.</h2>
+    <p class="lede">Every restaurant runs differently. MenuBase fits in next to whatever you already do, casual café, fine dining, kopitiam counter, food court with twelve vendors under one roof.</p>
+  </div>
+
+  <div class="modes-tabs reveal" id="modes-tabs">
+    <div class="modes-rail" role="tablist">
+      <button class="modes-rail-btn on" data-mode="01" role="tab">
+        <div class="n">MODE 01</div>
+        <div class="nm">Self-order &amp; <em>pay</em></div>
+      </button>
+      <button class="modes-rail-btn" data-mode="02" role="tab">
+        <div class="n">MODE 02</div>
+        <div class="nm">Assist <em>mode</em></div>
+      </button>
+      <button class="modes-rail-btn" data-mode="03" role="tab">
+        <div class="n">MODE 03</div>
+        <div class="nm">Counter <em>service</em></div>
+      </button>
+      <button class="modes-rail-btn" data-mode="04" role="tab">
+        <div class="n">MODE 04</div>
+        <div class="nm">Multi-<em>vendor</em></div>
+      </button>
+    </div>
+
+    <div class="modes-panel on" data-panel="01">
+      <div>
+        <h3>Self-order &amp; <em>pay</em></h3>
+        <p>Customer scans the table QR, browses your menu in their language, gets smart upsells, pays from their phone. Order arrives on the waiter tablet. Waiter delivers the food. That's the whole flow.</p>
+        <div class="who"><span>Casual dining</span><span>Cafés</span><span>Quick-service</span></div>
+      </div>
+      <div class="modes-vis">
+        <div class="phone sm">
+          <div class="notch"></div>
+          <iframe src="Customer QR App.html?demo=upsell_popup&items=eb&screen=menu&mode=table&hideDev=1&compact=1" loading="lazy" title="Mode 01"></iframe>
         </div>
-        <div class="calc-input-group">
-          <label>Upsell acceptance %</label>
-          <div class="calc-val-display" id="rateDisplay">20%</div>
-          <input type="range" class="calc-slider" id="acceptRate" min="5" max="50" step="1" value="20"
-            oninput="calcRevenue()">
-          <div class="calc-slider-range"><span>5%</span><span>50%</span></div>
+      </div>
+    </div>
+
+    <div class="modes-panel" data-panel="02">
+      <div>
+        <h3>Assist mode <em>(human-led)</em></h3>
+        <p>Customer keeps the printed menu and the human waiter experience. The waiter's tablet shows real-time suggestions per table, "this guest just ordered steak, suggest the Cab Sauv". Human-delivered, AI-powered.</p>
+        <div class="who"><span>Fine dining</span><span>Chef's table</span><span>Hotel restaurants</span></div>
+      </div>
+      <div class="modes-vis">
+        <div class="phone sm">
+          <div class="notch"></div>
+          <iframe src="Customer QR App.html?demo=upsell_popup&items=eb,nb&screen=cart&hideDev=1&compact=1" loading="lazy" title="Mode 02"></iframe>
         </div>
-        <div class="calc-input-group">
-          <label>Avg upsell value (RM)</label>
-          <div class="calc-val-display" id="valueDisplay">RM8</div>
-          <input type="range" class="calc-slider" id="upsellValue" min="3" max="30" step="1" value="8"
-            oninput="calcRevenue()">
-          <div class="calc-slider-range"><span>RM3</span><span>RM30</span></div>
+      </div>
+    </div>
+
+    <div class="modes-panel" data-panel="03">
+      <div>
+        <h3>Counter <em>service</em></h3>
+        <p>Customer orders at the counter, sees AI suggestions on the customer-facing screen, cashier confirms, payment processes through your existing POS as always. The screen does the upselling job.</p>
+        <div class="who"><span>Kopitiams</span><span>Hawker stalls</span><span>F&amp;B kiosks</span></div>
+      </div>
+      <div class="modes-vis">
+        <div class="phone sm">
+          <div class="notch"></div>
+          <iframe src="Customer QR App.html?demo=flash&hour=15&screen=menu&hideDev=1&compact=1" loading="lazy" title="Mode 03"></iframe>
         </div>
+      </div>
+    </div>
+
+    <div class="modes-panel" data-panel="04">
+      <div>
+        <h3>Multi-<em>vendor</em></h3>
+        <p>One QR. Multiple vendors under one roof. Customer browses every stall, builds a basket across vendors, checks out once. Orders split to the right kitchens automatically. Payment settles per vendor.</p>
+        <div class="who"><span>Food courts</span><span>Food halls</span><span>Ghost kitchens</span></div>
+      </div>
+      <div class="modes-vis">
+        <div class="phone sm">
+          <div class="notch"></div>
+          <iframe src="Customer QR App.html?demo=bundle&items=wc&screen=menu&hideDev=1&compact=1" loading="lazy" title="Mode 04"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section class="testi-block" id="testimonials">
+  <div class="section-head center reveal">
+    <span class="eyebrow">REAL OUTLETS · REAL NUMBERS</span>
+    <h2>What operators say <em>after 30 days.</em></h2>
+    <p class="lede">No paid endorsements. No marketing speak. Just the numbers that showed up after the first month.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stat">+RM4,200<span class="testi-stat-lbl">FIRST 30 DAYS</span></div>
+      <div class="testi-stars">★ ★ ★ ★ ★</div>
+      <p class="testi-quote">"Our team is mostly foreign workers. They take orders well, but can't really explain our specials in English or Mandarin. MenuBase does it for them, in the customer's own language. We stopped trying to train upselling — the system does it."</p>
+      <div class="testi-foot">
+        <div class="testi-ava">BC</div>
+        <div class="testi-who"><strong>Biji Coffee Co.</strong><span>Single outlet · Klang Valley</span></div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stat">+18%<span class="testi-stat-lbl">UPSELL ACCEPTANCE</span></div>
+      <div class="testi-stars">★ ★ ★ ★ ★</div>
+      <p class="testi-quote">"We tried scripts. We tried role-plays. We tried bonuses. Nothing stuck — our staff turnover is just too high. MenuBase doesn't need training. It works on every order from day one. Forever."</p>
+      <div class="testi-foot">
+        <div class="testi-ava">RP</div>
+        <div class="testi-who"><strong>Roti Place</strong><span>3 outlets · KL &amp; Selangor</span></div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stat">0 hours<span class="testi-stat-lbl">STAFF RETRAINING</span></div>
+      <div class="testi-stars">★ ★ ★ ★ ★</div>
+      <p class="testi-quote">"I used to do Sunday menu briefings for new hires every week. Now I just update MenuBase once — and by Monday every outlet, every shift, every language is on the same page. The smartest part of my team is the screen."</p>
+      <div class="testi-foot">
+        <div class="testi-ava">KM</div>
+        <div class="testi-who"><strong>Kopi Mart</strong><span>2 outlets · Petaling Jaya</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CALCULATOR ─── -->
+<div class="calc-shell" id="calc">
+  <div class="calc-inner">
+    <div class="reveal">
+      <span class="eyebrow">UPSELL CALCULATOR</span>
+      <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(34px,5vw,56px);line-height:0.98;letter-spacing:-0.035em;margin:16px 0 18px;max-width:14ch;">Run <em style="font-style:normal;color:var(--lime-deep);">your own</em> numbers.</h2>
+      <p style="font-size:17px;color:var(--grey);max-width:440px;line-height:1.55;margin-bottom:20px;">Most cafes leave 8-12% on the table because their staff doesn't upsell. Move the sliders. See your monthly uplift in real time. No email gate, no signup, just math.</p>
+    </div>
+
+    <div class="calc-card reveal">
+      <div class="calc-field">
+        <div class="row"><label>Daily orders</label><span class="val" id="v-orders">120</span></div>
+        <input id="i-orders" type="range" min="20" max="600" step="5" value="120"/>
+        <div class="calc-range-labels"><span>20</span><span>600 / day</span></div>
+      </div>
+      <div class="calc-field">
+        <div class="row"><label>Avg order value (RM)</label><span class="val" id="v-aov">28</span></div>
+        <input id="i-aov" type="range" min="10" max="120" step="1" value="28"/>
+        <div class="calc-range-labels"><span>RM10</span><span>RM120</span></div>
+      </div>
+      <div class="calc-field">
+        <div class="row"><label>Upsell accept rate</label><span class="val"><span id="v-rate">18</span>%</span></div>
+        <input id="i-rate" type="range" min="5" max="35" step="1" value="18"/>
+        <div class="calc-range-labels"><span>5%</span><span>35%</span></div>
       </div>
       <div class="calc-divider"></div>
       <div class="calc-results">
         <div class="calc-result">
-          <div class="calc-result-label">Daily Uplift</div>
-          <div class="calc-result-val daily" id="dailyResult">RM160</div>
+          <div class="lbl">Per-order uplift</div>
+          <div class="num" id="v-perorder">RM 8.40</div>
         </div>
         <div class="calc-result">
-          <div class="calc-result-label">Monthly Uplift</div>
-          <div class="calc-result-val monthly" id="monthlyResult">RM4,800</div>
-        </div>
-        <div class="calc-result">
-          <div class="calc-result-label">Annual Uplift</div>
-          <div class="calc-result-val annual" id="annualResult">RM57,600</div>
+          <div class="lbl">Monthly uplift</div>
+          <div class="num big" id="v-month">RM 30,240</div>
         </div>
       </div>
-      <p class="calc-note">No more customers. No more staff. No more seats. No more marketing. Just more revenue from
-        the same traffic.</p>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- CTA -->
-  <section id="cta" class="cta-section">
-    <div class="section-label">Ready?</div>
-    <div class="section-title">Stop leaving money on every order.</div>
-    <div class="section-desc">Talk to us. We'll show you exactly how much incremental revenue your outlet is missing -
-      and how to capture it.</div>
-    <a href="https://wa.me/60175981858?text=Hi%2C%20I'm%20interested%20in%20MenuBase%20QR%20Ordering%20%26%20Smart%20Upselling"
-      class="cta-whatsapp" target="_blank">
-      <svg viewBox="0 0 24 24">
-        <path
-          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-      </svg>
-      Chat With Us on WhatsApp
-    </a>
-    <p style="margin-top: 20px; color: var(--text-dim); font-size: 0.85rem;">Or email us at <a
-        href="mailto:contact.menubase@gmail.com"
-        style="color: var(--green); text-decoration: none;">contact.menubase@gmail.com</a>
-    </p>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2026 MenuBase Sdn Bhd</p>
-    <div style="margin-top:12px;">
-      <a href="https://menubase.io">Home</a>
-      <a href="https://menubase.io/privacy-policy.html">Privacy</a>
-      <a href="https://menubase.io/contact-us.html">Contact</a>
+<!-- ─── ROADMAP ─── -->
+<section class="roadmap-block" id="roadmap">
+  <div class="section-head center reveal">
+    <span class="eyebrow">WHAT'S SHIPPING NEXT</span>
+    <h2>Already on its <em>way.</em></h2>
+    <p class="lede">Dates are commitments, not wishes. The first 10 founding outlets get all of this — locked in forever.</p>
+  </div>
+  <div class="roadmap-grid">
+    <div class="roadmap-tile reveal">
+      <span class="roadmap-tag">Q3 · 2026</span>
+      <div class="roadmap-icon">
+        <svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+          <rect x="5" y="0" width="2" height="4"/><rect x="9" y="0" width="2" height="4"/><rect x="3" y="4" width="10" height="4"/><rect x="5" y="8" width="6" height="3"/><rect x="6" y="11" width="4" height="3"/><rect x="7" y="14" width="2" height="2"/>
+        </svg>
+      </div>
+      <h4>Native POS integrations</h4>
+      <p>Direct integration with StoreHub, Slurp!, Loyverse, BIG POS. Orders flow straight in — handoff goes from 8 seconds to 0.</p>
     </div>
-  </footer>
+    <div class="roadmap-tile reveal">
+      <span class="roadmap-tag">Q4 · 2026</span>
+      <div class="roadmap-icon">
+        <svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+          <rect x="2" y="11" width="2" height="3"/><rect x="5" y="8" width="2" height="6"/><rect x="8" y="5" width="2" height="9"/><rect x="11" y="2" width="2" height="12"/><rect x="0" y="14" width="16" height="2"/>
+        </svg>
+      </div>
+      <h4>Real-time analytics dashboard</h4>
+      <p>Live uplift, top-converting upsells, daypart performance, lost revenue from skipped suggestions. All on one screen.</p>
+    </div>
+    <div class="roadmap-tile reveal">
+      <span class="roadmap-tag">Q1 · 2027</span>
+      <div class="roadmap-icon">
+        <svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+          <rect x="2" y="2" width="4" height="2"/><rect x="10" y="2" width="4" height="2"/><rect x="0" y="4" width="6" height="2"/><rect x="10" y="4" width="6" height="2"/><rect x="0" y="6" width="16" height="2"/><rect x="2" y="8" width="12" height="2"/><rect x="4" y="10" width="8" height="2"/><rect x="6" y="12" width="4" height="2"/>
+        </svg>
+      </div>
+      <h4>Loyalty + CRM layer</h4>
+      <p>The AI waiter remembers everyone. Auto "welcome back" suggestions, birthday offers, tier perks. No manual list-building.</p>
+    </div>
+    <div class="roadmap-tile reveal">
+      <span class="roadmap-tag">Q2 · 2027</span>
+      <div class="roadmap-icon">
+        <svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
+          <rect x="0" y="1" width="16" height="2"/><rect x="2" y="3" width="12" height="2"/><rect x="4" y="5" width="8" height="2"/><rect x="6" y="7" width="4" height="6"/><rect x="4" y="13" width="8" height="1"/>
+        </svg>
+      </div>
+      <h4>Dietary + allergen filters</h4>
+      <p>One tap: show me only Halal · Vegan · Pork-free · Gluten-free. Built for Malaysia's diverse customer base.</p>
+    </div>
+  </div>
+</section>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-  <script>
-    /* CALCULATOR */
-    function calcRevenue() {
-      var orders = parseInt(document.getElementById('ordersPerDay').value) || 0;
-      var rate = parseInt(document.getElementById('acceptRate').value) || 0;
-      var value = parseInt(document.getElementById('upsellValue').value) || 0;
-      document.getElementById('ordersDisplay').textContent = orders;
-      document.getElementById('rateDisplay').textContent = rate + '%';
-      document.getElementById('valueDisplay').textContent = 'RM' + value;
-      var daily = Math.round(orders * (rate / 100) * value);
-      var monthly = Math.round(daily * 30);
-      var annual = Math.round(daily * 365);
-      document.getElementById('dailyResult').textContent = 'RM' + daily.toLocaleString('en-MY');
-      document.getElementById('monthlyResult').textContent = 'RM' + monthly.toLocaleString('en-MY');
-      document.getElementById('annualResult').textContent = 'RM' + annual.toLocaleString('en-MY');
+<!-- ─── FOUNDING CTA ─── -->
+<div class="cta-shell" id="book">
+  <div class="cta-inner">
+    <div class="cta-text reveal">
+      <span class="eyebrow">FOUNDING OUTLETS</span>
+      <h2>The first <em>10 outlets</em> in Klang Valley.</h2>
+      <p>We're hand-picking the first 10 Malaysian F&amp;B operators to launch on MenuBase. Locked-in pricing forever. White-glove setup. Direct line to the founding team.</p>
+      <p>If your venue is in Klang Valley and you're tired of begging your team to upsell, book a 15-minute call. We'll show you the system on a real menu, and you decide.</p>
+      <div class="also">
+        Or <a href="https://wa.me/60175981858" target="_blank" rel="noopener">WhatsApp us directly</a>, we reply within an hour.
+      </div>
+    </div>
+
+    <div class="founding-card reveal">
+      <span class="pill">FOUNDING · 10 SPOTS</span>
+      <h4>What you get if you're <em>in.</em></h4>
+      <ul>
+        <li>Locked-in founding pricing, forever, even after launch</li>
+        <li>White-glove setup. We build your menu, your campaigns, your QRs</li>
+        <li>Direct WhatsApp to the founding team, no support tickets</li>
+        <li>First access to every new mechanic we ship</li>
+        <li>Free until we prove uplift, pay only on results</li>
+      </ul>
+      <a class="btn btn-lime btn-lg" href="https://wa.me/60175981858?text=I'm%20interested%20in%20MenuBase%20founding%20outlets" target="_blank" rel="noopener">Book a 15-min demo →</a>
+      <div class="micro">15 MIN · NO COMMITMENT · WE ANSWER WITHIN AN HOUR</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── LIME MANIFESTO ─── -->
+<section class="manifesto reveal" id="manifesto">
+  <div class="manifesto-pixels" aria-hidden="true">
+    <span></span><span></span><span></span><span></span><span></span><span></span>
+  </div>
+  <div class="manifesto-inner">
+    <div class="manifesto-eyebrow">The bottom line</div>
+    <h2>Stop blaming your staff.<br/>Move the upsell job to the <em>screen.</em></h2>
+    <p>Get back to running a restaurant — the food, the experience, the room. We'll handle the part that humans were never going to do reliably anyway.</p>
+    <div class="hero-actions" style="justify-content:center;">
+      <a class="btn btn-dark btn-lg" href="#book">Audition the smartest waiter →</a>
+      <a class="btn btn-ghost btn-lg" href="#demo">Try the live demo</a>
+    </div>
+    <div class="manifesto-tagline">Business is easy with <strong>MenuBase</strong>.</div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<div class="faq-shell" id="faq">
+  <div class="reveal">
+    <span class="eyebrow">COMMON QUESTIONS</span>
+    <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(34px,5vw,60px);line-height:0.98;letter-spacing:-0.035em;margin:16px 0 18px;">Things operators ask.</h2>
+  </div>
+
+  <div class="faq-list">
+    <details class="faq-item">
+      <summary>Do I need to replace my POS?</summary>
+      <div class="faq-answer">No. MenuBase sits on top of whatever you already use, StoreHub, Slurp!, Loyverse, Zeoniq, IRC, anything. Orders come out on a waiter tablet, and the waiter types them into the POS exactly the way they do today. Your billing, sales reports and accounting stay where they are.</div>
+    </details>
+    <details class="faq-item">
+      <summary>How long does setup take?</summary>
+      <div class="faq-answer">For founding outlets: same day. We come in with your existing menu PDF, build the digital version in MenuBase, generate your table QR codes and walk your team through the waiter tablet. You're live by end of service.</div>
+    </details>
+    <details class="faq-item">
+      <summary>Do my customers need to download an app?</summary>
+      <div class="faq-answer">Never. MenuBase opens in the browser the moment they scan the QR. Works on every smartphone made in the last decade. No login, no signup, no email capture, just the menu and an upsell that doesn't feel like one.</div>
+    </details>
+    <details class="faq-item">
+      <summary>What languages does the AI waiter speak?</summary>
+      <div class="faq-answer">English, Bahasa Malaysia, Mandarin and Tamil out of the box. Customer picks once, the whole menu and every suggestion auto-translates. We can add Arabic, Vietnamese, Burmese, Tagalog, most launch-ready within a week.</div>
+    </details>
+    <details class="faq-item">
+      <summary>How does the upsell actually work?</summary>
+      <div class="faq-answer">It's a single suggestion shown at the right moment, not random popups. We look at the items already in the basket, the time of day, and what has actually converted on similar baskets before. Then we surface one item. Customer taps to add. No staff awkwardness, no pressure on the customer.</div>
+    </details>
+    <details class="faq-item">
+      <summary>What does it cost?</summary>
+      <div class="faq-answer">Founding outlets pay nothing until we prove uplift on their own menu. After that, transparent monthly pricing, locked in for life. We'll cover the numbers on the demo call.</div>
+    </details>
+    <details class="faq-item">
+      <summary>What if my team isn't tech-savvy?</summary>
+      <div class="faq-answer">Then MenuBase is built for you. The waiter only ever sees a list of items on a tablet and types it into the POS, the same job they already do. We're explicitly designed so foreign-worker, transient and shift-rotation staff need zero training to operate it.</div>
+    </details>
+  </div>
+</div>
+
+<!-- ─── PRESS STRIP ─── -->
+<div class="press-strip reveal">
+  <div class="press-label">AS FEATURED IN</div>
+  <div class="press-logos">
+    <span>Vulcan Post</span>
+    <span>Tech in Asia</span>
+    <span>The Edge</span>
+    <span>KL Foodie</span>
+    <span>F&amp;B Asia</span>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer class="foot">
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <a href="#top" class="brand">
+        <img class="logo" src="menubase-logo-dark.png" alt="MenuBase"/>
+      </a>
+      <p>The AI waiter that lives in your QR menu. Speaks every language, never forgets the specials, always upsells at the right moment.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Product</h5>
+      <a href="#features">Features</a>
+      <a href="#demo">Live demo</a>
+      <a href="#modes">Service modes</a>
+      <a href="#calc">Calculator</a>
+    </div>
+    <div class="foot-col">
+      <h5>Company</h5>
+      <a href="#book">Founding outlets</a>
+      <a href="https://wa.me/60175981858" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="mailto:hello@menubase.io">hello@menubase.io</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 MENUBASE SDN BHD · KUALA LUMPUR</span>
+    <span>BUSINESS IS EASY WITH MENUBASE</span>
+  </div>
+</footer>
+
+<script>
+// Scroll reveals
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      io.unobserve(e.target);
     }
+  });
+}, { threshold: 0.01, rootMargin: '0px 0px -10px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+setTimeout(() => {
+  document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
+}, 1500);
 
-    /* DEMO */
-    (function () {
-      var MB = {
-        prices: [22, 18, 24, 19, 16, 26, 14, 16, 9, 12],
-        names: ['Eggs Benedict', 'Smashed Avo Toast', 'Nasi Lemak Benedict', 'Banana French Toast', 'Croque Monsieur', 'Truffle Mushroom Pasta', 'Basque Cheesecake', 'Matcha Tiramisu', 'White Coffee', 'Matcha Latte'],
-        imgs: ['img/menu photos/Eggs Benedict.png', 'img/menu photos/Smashed Avo Toast.png', 'img/menu photos/Nasi Lemak Benedict.png', 'img/menu photos/Banana French Toast.png', 'img/menu photos/Croque Monsieur.png', 'img/menu photos/Truffle Mushroom Pasta.png', 'img/menu photos/Basque Cheesecake.png', 'img/menu photos/Matcha Tiramisu.png', 'img/menu photos/White Coffee.png', 'img/menu photos/Matcha Latte.png'],
-        cart: {}, upsell1: null, upsell2: null, upsellAdded1: null, upsellAdded2: null
-      };
+// Modes tabs
+(function(){
+  const tabs = document.querySelectorAll('#modes-tabs .modes-rail-btn');
+  const panels = document.querySelectorAll('#modes-tabs .modes-panel');
+  tabs.forEach(t => {
+    t.addEventListener('click', () => {
+      const m = t.dataset.mode;
+      tabs.forEach(b => b.classList.toggle('on', b === t));
+      panels.forEach(p => p.classList.toggle('on', p.dataset.panel === m));
+    });
+  });
+})();
 
-      function total() { return Object.keys(MB.cart).reduce(function (s, k) { return s + MB.prices[parseInt(k)]; }, 0); }
+// Calculator
+(function(){
+  const orders = document.getElementById('i-orders');
+  const aov = document.getElementById('i-aov');
+  const rate = document.getElementById('i-rate');
+  if (!orders) return;
+  const vO = document.getElementById('v-orders');
+  const vA = document.getElementById('v-aov');
+  const vR = document.getElementById('v-rate');
+  const vPer = document.getElementById('v-perorder');
+  const vMonth = document.getElementById('v-month');
+  function update() {
+    const o = +orders.value;
+    const a = +aov.value;
+    const r = +rate.value / 100;
+    vO.textContent = o;
+    vA.textContent = a;
+    vR.textContent = +rate.value;
+    const upsellSize = a * 0.30;
+    const perOrder = upsellSize * r;
+    const monthly = perOrder * o * 30;
+    vPer.textContent = 'RM ' + perOrder.toFixed(2);
+    vMonth.textContent = 'RM ' + Math.round(monthly).toLocaleString();
+  }
+  [orders, aov, rate].forEach(i => i.addEventListener('input', update));
+  update();
+})();
 
-      function updateCart() {
-        var keys = Object.keys(MB.cart);
-        var bar = document.getElementById('mb-cart-bar');
-        if (keys.length > 0) {
-          bar.classList.add('show');
-          document.getElementById('mb-cart-info').textContent = keys.length + ' item' + (keys.length > 1 ? 's' : '');
-          document.getElementById('mb-cart-action').textContent = 'RM' + total() + ' · View order →';
-        } else {
-          bar.classList.remove('show');
-        }
+// Demo scenarios
+(function(){
+  const SCENARIOS = {
+    upsell: {
+      h: 'SMART UPSELL · ON',
+      t: 'One perfect add-on at the right moment.',
+      d: 'Order an Eggs Benedict at 9:42am, the system surfaces White Coffee. 89% accept rate on that exact basket. One tap to add, no staff awkwardness, no scripts.',
+      qs: 'demo=upsell_popup&items=eb&screen=checkout&hour=9'
+    },
+    threshold: {
+      h: 'THRESHOLD REWARD · UNLOCKED',
+      t: 'Spend a target, unlock a free item, automatically.',
+      d: 'Cart at RM34 of RM50, progress bar appears. Cross the line and a pre-priced RM0 reward SKU drops into the order. Waiter rings it as a normal line at zero.',
+      qs: 'demo=threshold&items=eb,ml,ac&screen=cart&hour=12'
+    },
+    happy_hour: {
+      h: 'HAPPY HOUR · LIVE',
+      t: 'A pre-priced menu category, revealed inside the window.',
+      d: 'At 3pm on a Tuesday a "Happy Hour Drinks" category appears with discounted twin SKUs. Window closes at 5pm and the category vanishes. Live countdown on every order.',
+      qs: 'demo=happy_hour&hour=15&day=1'
+    },
+    bundle: {
+      h: 'COMBO DEAL · SUGGESTED',
+      t: 'Pair items, suggest the combo SKU at a cheaper price.',
+      d: 'Customer taps a coffee, popup asks "make it a combo with a pastry, save RM3?" One tap swaps two lines for one pre-priced combo SKU. POS rings the combo once.',
+      qs: 'demo=bundle&items=wc&screen=menu&hour=10'
+    },
+    spin: {
+      h: 'SPIN & WIN · AT CHECKOUT',
+      t: 'A wheel of pre-priced discounted SKUs at checkout.',
+      d: 'After basket is built, customer spins once. Lands on "Nasi Lemak for RM5 (regular RM12)". Tap to add, tap to skip. Owner sets prize conditions and pricing.',
+      qs: 'demo=spin_wheel&items=eb,wc&screen=checkout&hour=12'
+    },
+    mystery: {
+      h: 'MYSTERY BOX · OPT-IN',
+      t: 'A flat-price RM5 SKU. Chef rotates contents daily.',
+      d: 'Card at checkout: add a mystery box for RM5. Customer adds, MenuBase logs it, kitchen consults the daily rotation list. One real SKU in your POS at RM5.',
+      qs: 'demo=mystery&items=eb&screen=checkout'
+    },
+    flash: {
+      h: 'FLASH DEAL · COUNTDOWN',
+      t: 'A 5-minute window reveals a Flash category.',
+      d: 'Owner hits "start flash". A countdown banner appears on every active session. A pre-priced Flash category becomes visible. When the timer hits zero, the category vanishes.',
+      qs: 'demo=flash&items=ac,bc&screen=menu&hour=15'
+    },
+    weather: {
+      h: 'WEATHER · RAINY DAY',
+      t: 'Real weather reveals a context menu, automatically.',
+      d: 'When OpenWeatherMap says it\'s raining at the outlet, "Rainy Day Specials" goes live with prefixed SKUs at a discount. Stops raining, category hides. Zero merchant input.',
+      qs: 'demo=weather&weather=rain&items=wc,ml&screen=menu'
+    }
+  };
+
+  const iframe = document.getElementById('demo-iframe');
+  const chips = document.querySelectorAll('#demo-chips .chip');
+  const annot = document.getElementById('demo-annot');
+  if (!iframe || !chips.length) return;
+
+  chips.forEach(c => {
+    c.addEventListener('click', () => {
+      const s = SCENARIOS[c.dataset.scenario]; if (!s) return;
+      chips.forEach(b => b.classList.toggle('on', b === c));
+      annot.style.opacity = '0';
+      setTimeout(() => {
+        annot.innerHTML = '<div class="h">' + s.h + '</div><div class="t">' + s.t + '</div><div class="d">' + s.d + '</div>';
+        annot.style.opacity = '1';
+      }, 180);
+      // Navigate via location.replace to avoid preview-token mismatch on iframe.src set
+      try {
+        iframe.contentWindow.location.replace('Customer QR App.html?' + s.qs + '&hideDev=1&compact=1');
+      } catch (e) {
+        iframe.src = 'Customer QR App.html?' + s.qs + '&hideDev=1&compact=1';
       }
+    });
+  });
+})();
+</script>
 
-      function renderList(elId) {
-        var el = document.getElementById(elId); if (!el) return; el.innerHTML = '';
-        Object.keys(MB.cart).forEach(function (k) {
-          var i = parseInt(k), row = document.createElement('div'); row.className = 'mb-orow';
-          row.innerHTML = '<img class="mb-oimg" src="' + MB.imgs[i] + '" alt=""/><span class="mb-oname">' + MB.names[i] + '</span><span class="mb-oprice">RM' + MB.prices[i] + '</span>';
-          el.appendChild(row);
-        });
-        if (MB.drinkAdded) {
-          var r = document.createElement('div'); r.className = 'mb-orow';
-          r.innerHTML = '<img class="mb-oimg" src="img/menu photos/White Coffee.png" alt=""/><span class="mb-oname" style="color:#5a7a00;">White Coffee</span><span class="mb-oprice" style="color:#5a7a00;">RM9</span>';
-          el.appendChild(r);
-        }
-      }
-
-      function show(name) {
-        ['menu', 'checkout', 'upsell1', 'upsell2', 'confirm'].forEach(function (s, i) {
-          var el = document.getElementById('mb-step-' + s);
-          var dot = document.getElementById('mb-d' + i);
-          if (el) el.classList.toggle('active', s === name);
-          if (dot) dot.classList.toggle('active', s === name);
-        });
-      }
-
-      window.mbAdd = function (idx) {
-        if (MB.cart[idx]) {
-          delete MB.cart[idx];
-          var b = document.querySelector('#mb-item-' + idx + ' .mb-add');
-          if (b) b.classList.remove('added');
-        } else {
-          MB.cart[idx] = true;
-          var b = document.querySelector('#mb-item-' + idx + ' .mb-add');
-          if (b) b.classList.add('added');
-        }
-        updateCart();
-      };
-
-      window.mbGoMenu = function () { show('menu'); };
-      window.mbGoCheckout = function () {
-        if (!Object.keys(MB.cart).length) return;
-        show('checkout');
-        renderList('mb-order-list');
-        document.getElementById('mb-subtotal').textContent = 'RM' + total();
-      };
-      // Full pool of all items available for upsell
-      var POOL = [
-        { idx: 0, name: 'Eggs Benedict', desc: 'Poached eggs, hollandaise, sourdough', price: 22, img: 'img/menu photos/Eggs Benedict.png', tag: 'food' },
-        { idx: 1, name: 'Smashed Avo Toast', desc: 'Feta, cherry tomato, chilli flakes', price: 18, img: 'img/menu photos/Smashed Avo Toast.png', tag: 'food' },
-        { idx: 2, name: 'Nasi Lemak Benedict', desc: 'Local twist, sambal hollandaise', price: 24, img: 'img/menu photos/Nasi Lemak Benedict.png', tag: 'food' },
-        { idx: 3, name: 'Banana French Toast', desc: 'Brioche, maple syrup, whipped cream', price: 19, img: 'img/menu photos/Banana French Toast.png', tag: 'food' },
-        { idx: 4, name: 'Croque Monsieur', desc: 'Ham, gruyère, béchamel sauce', price: 16, img: 'img/menu photos/Croque Monsieur.png', tag: 'food' },
-        { idx: 5, name: 'Truffle Mushroom Pasta', desc: 'Wild mushrooms, truffle oil, parmesan', price: 26, img: 'img/menu photos/Truffle Mushroom Pasta.png', tag: 'food' },
-        { idx: 6, name: 'Basque Cheesecake', desc: 'Burnt top, jiggly creamy centre', price: 14, img: 'img/menu photos/Basque Cheesecake.png', tag: 'dessert' },
-        { idx: 7, name: 'Matcha Tiramisu', desc: 'Ladyfinger, matcha cream, cocoa dust', price: 16, img: 'img/menu photos/Matcha Tiramisu.png', tag: 'dessert' },
-        { idx: 8, name: 'White Coffee', desc: 'Creamy, smooth house blend', price: 9, img: 'img/menu photos/White Coffee.png', tag: 'drink' },
-        { idx: 9, name: 'Matcha Latte', desc: 'Ceremonial grade, oat milk', price: 12, img: 'img/menu photos/Matcha Latte.png', tag: 'drink' }
-      ];
-
-      function pickUpsell(exclude) {
-        // exclude = array of idx already in cart or already picked
-        var available = POOL.filter(function (p) { return exclude.indexOf(p.idx) === -1; });
-        if (!available.length) return null;
-        return available[Math.floor(Math.random() * available.length)];
-      }
-
-      function populateUpsellCard(stepNum, item) {
-        // stepNum = 1 or 2
-        var s = stepNum === 1 ? 'u1' : 'u2';
-        var card = document.querySelector('#mb-step-upsell' + stepNum + ' .mb-upcard');
-        var yesbtn = document.querySelector('#mb-step-upsell' + stepNum + ' .mb-yesbtn');
-        if (!card || !yesbtn || !item) return;
-        card.querySelector('img').src = item.img;
-        card.querySelector('.mb-upiname').textContent = item.name;
-        card.querySelector('.mb-upidesc').textContent = item.desc;
-        card.querySelector('.mb-upiprice').textContent = '+ RM' + item.price;
-        yesbtn.textContent = 'Yes, add ' + item.name + ' - RM' + item.price;
-      }
-
-      window.mbShowUpsell1 = function () {
-        var cartIdxs = Object.keys(MB.cart).map(function (k) { return parseInt(k); });
-        MB.upsell1 = pickUpsell(cartIdxs);
-        populateUpsellCard(1, MB.upsell1);
-        show('upsell1');
-        renderList('mb-ol-u1');
-      };
-
-      window.mbAcceptUpsell1 = function () {
-        MB.upsellAdded1 = MB.upsell1;
-        var cartIdxs = Object.keys(MB.cart).map(function (k) { return parseInt(k); });
-        var exclude = cartIdxs.concat(MB.upsell1 ? [MB.upsell1.idx] : []);
-        MB.upsell2 = pickUpsell(exclude);
-        populateUpsellCard(2, MB.upsell2);
-        show('upsell2');
-        renderList('mb-ol-u2');
-      };
-
-      window.mbSkipUpsell1 = function () {
-        MB.upsellAdded1 = null;
-        var cartIdxs = Object.keys(MB.cart).map(function (k) { return parseInt(k); });
-        var exclude = cartIdxs.concat(MB.upsell1 ? [MB.upsell1.idx] : []);
-        MB.upsell2 = pickUpsell(exclude);
-        populateUpsellCard(2, MB.upsell2);
-        show('upsell2');
-        renderList('mb-ol-u2');
-      };
-
-      window.mbAcceptUpsell2 = function () { MB.upsellAdded2 = MB.upsell2; showConfirm(); };
-      window.mbSkipUpsell2 = function () { MB.upsellAdded2 = null; showConfirm(); };
-
-      // Keep old names as aliases for safety
-      window.mbAcceptDrink = window.mbAcceptUpsell1;
-      window.mbSkipDrink = window.mbSkipUpsell1;
-      window.mbAcceptDessert = window.mbAcceptUpsell2;
-      window.mbSkipDessert = window.mbSkipUpsell2;
-
-      function showConfirm() {
-        show('confirm');
-        var u1 = MB.upsellAdded1, u2 = MB.upsellAdded2;
-        var uplift = (u1 ? u1.price : 0) + (u2 ? u2.price : 0);
-        var fin = total() + uplift;
-        var box = document.getElementById('mb-receipt'); box.innerHTML = '';
-        Object.keys(MB.cart).forEach(function (k) {
-          var row = document.createElement('div'); row.className = 'mb-rrow';
-          row.innerHTML = '<span style="color:#7a5a38;">' + MB.names[parseInt(k)] + '</span><span style="color:#4a3828;">RM' + MB.prices[parseInt(k)] + '</span>';
-          box.appendChild(row);
-        });
-        if (u1) { var r1 = document.createElement('div'); r1.className = 'mb-rrow'; r1.innerHTML = '<span style="color:#5a7a00;">' + u1.name + '</span><span style="color:#5a7a00;">RM' + u1.price + '</span>'; box.appendChild(r1); }
-        if (u2) { var r2 = document.createElement('div'); r2.className = 'mb-rrow'; r2.innerHTML = '<span style="color:#5a7a00;">' + u2.name + '</span><span style="color:#5a7a00;">RM' + u2.price + '</span>'; box.appendChild(r2); }
-        var tot = document.createElement('div'); tot.className = 'mb-rrow total'; tot.innerHTML = '<span>Total</span><span>RM' + fin + '</span>'; box.appendChild(tot);
-        var added = [u1, u2].filter(Boolean).map(function (u) { return u.name; });
-        document.getElementById('mb-confirm-msg').textContent =
-          (added.length ? added.join(' + ') + ' added! ' : '') + 'Your order is heading to the kitchen.';
-        var badge = document.getElementById('mb-uplift');
-        if (uplift > 0) { badge.style.display = 'flex'; document.getElementById('mb-uplift-txt').textContent = 'RM' + uplift + ' incremental revenue captured by MenuBase'; }
-        else { badge.style.display = 'none'; }
-      }
-
-      window.mbRestart = function () {
-        MB.cart = {};
-        MB.upsell1 = null; MB.upsell2 = null;
-        MB.upsellAdded1 = null; MB.upsellAdded2 = null;
-        document.querySelectorAll('.mb-add').forEach(function (b) { b.classList.remove('added'); });
-        updateCart();
-        show('menu');
-      };
-
-    })();
-  </script>
 </body>
-
 </html>
