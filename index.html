@@ -167,6 +167,24 @@ nav.top { z-index: 50; }
 }
 .top-ribbon .brand { display: inline-flex; align-items: center; }
 .top-ribbon .brand .logo { height: 26px; width: auto; display: block; filter: none; }
+.top-ribbon-login {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+  text-decoration: none;
+  transition: background 150ms, color 150ms;
+  letter-spacing: -0.005em;
+}
+.top-ribbon-login:hover { background: var(--ink); color: var(--bg); }
+.top-ribbon-login .arr { transition: transform 150ms; }
+.top-ribbon-login:hover .arr { transform: translateX(2px); }
 
 /* ─── NAV (floating bottom dock) ─── */
 
@@ -1485,11 +1503,14 @@ footer.foot {
   <span style="left:95%;top:100%;width:6px;height:6px;animation-delay:49s"></span>
 </div>
 
-<!-- ─── TOP RIBBON (logo only) ─── -->
+<!-- ─── TOP RIBBON (logo + login) ─── -->
 <div class="top-ribbon">
   <div class="top-ribbon-inner">
     <a href="#top" class="brand" aria-label="MenuBase">
       <img class="logo" src="menubase-logo-dark.png" alt="MenuBase"/>
+    </a>
+    <a class="top-ribbon-login" href="https://app.menubase.io" target="_blank" rel="noopener">
+      Login <span class="arr" aria-hidden="true">→</span>
     </a>
   </div>
 </div>
