@@ -1,4 +1,4 @@
-// MenuBase Campaign Engine — POS-INDEPENDENT MODEL
+// MenuBase Campaign Engine - POS-INDEPENDENT MODEL
 // ─────────────────────────────────────────────────────────────────────────
 // FOUNDATIONAL CONSTRAINT (read first):
 //
@@ -9,14 +9,14 @@
 //
 // Every campaign reduces to ONE of FOUR POS-safe operations:
 //
-//   1. ADD_LINE        — auto-add a pre-made RM0/flat-price SKU to cart
+//   1. ADD_LINE        - auto-add a pre-made RM0/flat-price SKU to cart
 //                        (threshold reward, spin win, mystery box, birthday)
-//   2. REVEAL_CATEGORY — show/hide a campaign-controlled category of
+//   2. REVEAL_CATEGORY - show/hide a campaign-controlled category of
 //                        pre-discounted twin SKUs (happy hour, flash, weather, off-peak)
-//   3. SWAP_SKU        — hide regular SKU, reveal a clearance/combo twin
+//   3. SWAP_SKU        - hide regular SKU, reveal a clearance/combo twin
 //                        (inventory clearance, bundle suggestion)
-//   4. SUGGEST_LINE    — UX prompt to add an existing SKU at face price
-//                        (smart upsell — already POS-safe)
+//   4. SUGGEST_LINE    - UX prompt to add an existing SKU at face price
+//                        (smart upsell - already POS-safe)
 //
 // The engine NEVER produces percent-off or fixed-RM-off math. Discounts
 // live in the SKU prices the merchant pre-created, not in engine arithmetic.
@@ -183,7 +183,7 @@ function evalThreshold(c, cart) {
 // ── 2. HAPPY HOUR → REVEAL_CATEGORY ────────────────────────────────────
 function evalHappyHour(c, cart, ctx) {
   // Reveals a campaign_controlled category. The category's twin SKUs are
-  // pre-priced in the merchant's POS — engine just toggles visibility.
+  // pre-priced in the merchant's POS - engine just toggles visibility.
   const categoryId = c.config?.categoryId || 'Happy Hour';
   const value = estimateSavings('reveal_category', { categoryId });
   return {
@@ -281,7 +281,7 @@ function evalBirthday(c, cart, ctx) {
     eligible: true,
     op: 'add_line',
     payload: { skuId: rewardSku, equivalentSkuId: sku?.twinOf || 'bc', displayPrice: 0 },
-    ui: { headline: '🎂 Happy birthday — free cheesecake', accent: 'lime' },
+    ui: { headline: '🎂 Happy birthday - free cheesecake', accent: 'lime' },
     value: estimateSavings('add_line', { skuId: rewardSku, equivalentSkuId: sku?.twinOf }),
     reason: 'birthday match',
   };
@@ -304,7 +304,7 @@ function evalOffpeak(c, cart, ctx) {
 // ── 8. FLASH → REVEAL_CATEGORY ─────────────────────────────────────────
 function evalFlash(c, cart) {
   const cfg = c.config || {};
-  // Flash is time-bound separately — check endsAt
+  // Flash is time-bound separately - check endsAt
   if (cfg.endsAt && Date.now() > cfg.endsAt) return { eligible: false, value: 0, reason: 'flash ended' };
   const categoryId = cfg.categoryId || 'Flash';
   return {
@@ -550,7 +550,7 @@ function removeFromCart(cart, itemId, guestId = 'me') {
   return recomputeCart({ ...cart, items });
 }
 
-// Apply auto-add lines to cart (idempotent — won't double-add same campaign).
+// Apply auto-add lines to cart (idempotent - won't double-add same campaign).
 function applyAutoAdds(cart, autoAddLines) {
   let next = { ...cart, items: [...cart.items] };
   for (const line of autoAddLines) {

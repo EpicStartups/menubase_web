@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MenuBase — The AI menu and ordering platform for Malaysian F&B</title>
+<title>MenuBase - The AI menu and ordering platform for Malaysian F&B</title>
 <meta name="description" content="The AI waiter that lives in your QR menu. Speaks every language, never forgets the specials, always upsells at the right moment. Sits on top of any POS."/>
 <link rel="icon" href="img/menubase_logo_icon.png" type="image/png"/>
 <link rel="apple-touch-icon" href="img/menubase_logo_icon.png"/>
@@ -13,7 +13,7 @@
 <style>
 :root {
   /* ────────────────────────────────────────────────────────────
-     BRAND PALETTE — MenuBase Brand Guide (4 official colors only).
+     BRAND PALETTE - MenuBase Brand Guide (4 official colors only).
      Lime #BCF125 · Dark grey #64656A · Light grey #D6D6D4 · Ink.
      Adapted from meandu-style cream design to MenuBase brand spec.
      ──────────────────────────────────────────────────────────── */
@@ -30,7 +30,7 @@
   --lime-deep: #A6D413;
   --lime-soft: #F0FBC9;   /* pale lime tint */
 
-  /* Type — Chambers Sans Pro + Cofo Sans Variable required for production.
+  /* Type - Chambers Sans Pro + Cofo Sans Variable required for production.
      Hanken Grotesk + Geist are licensed FREE substitutes used during build. */
   --font-display: 'Hanken Grotesk', 'Outfit', system-ui, sans-serif;
   --font-body:    'Geist', system-ui, sans-serif;
@@ -40,7 +40,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
-/* ─── SCROLL-SNAP MOMENTS — desktop only, proximity (not mandatory) ───
+/* ─── SCROLL-SNAP MOMENTS - desktop only, proximity (not mandatory) ───
    Creates gentle "pause here" anchors on the four most important sections:
    hero, live demo, lime manifesto, founding CTA. Uses proximity not
    mandatory so the user is never fought; scroll-snap-stop: normal lets
@@ -72,7 +72,7 @@ body {
 }
 /* ─── BACKGROUND SYSTEM (multi-layer ambient · cinematic v2) ─── */
 
-/* Animatable custom props — enable smooth composition of keyframe motion + mouse parallax.
+/* Animatable custom props - enable smooth composition of keyframe motion + mouse parallax.
    Without @property, custom-prop transitions are step-like. With @property, they interpolate. */
 @property --ax { syntax: '<length>'; initial-value: 0px; inherits: false; }
 @property --ay { syntax: '<length>'; initial-value: 0px; inherits: false; }
@@ -96,7 +96,7 @@ body::before {
   opacity: 0.7;
 }
 
-/* Layer B: primary aurora — 5 lime/grey blobs · faster · bigger amplitude · mouse parallax */
+/* Layer B: primary aurora - 5 lime/grey blobs · faster · bigger amplitude · mouse parallax */
 body::after {
   content: '';
   position: fixed;
@@ -122,7 +122,7 @@ body::after {
   100% { --ax: -30px;  --ay: -55px;  --as: 1.04; }
 }
 
-/* Layer C: secondary aurora — counter-rotates · faster · opposite mouse direction */
+/* Layer C: secondary aurora - counter-rotates · faster · opposite mouse direction */
 .bg-aurora-2 {
   position: fixed;
   inset: -20%;
@@ -144,7 +144,7 @@ body::after {
   100% { --bx: -55px;  --by: 70px;   --br: -6deg; }
 }
 
-/* Layer D: gradient mesh — additional color depth via screen blend mode */
+/* Layer D: gradient mesh - additional color depth via screen blend mode */
 .bg-mesh {
   position: fixed;
   inset: -10%;
@@ -176,7 +176,7 @@ body::after {
   background-size: 240px 240px;
 }
 
-/* Layer F: rising lime pixel particles — denser, faster cycle */
+/* Layer F: rising lime pixel particles - denser, faster cycle */
 .bg-pixels {
   position: fixed;
   inset: 0;
@@ -205,7 +205,7 @@ body::after {
   body::after, .bg-aurora-2 { transform: none; }
 }
 
-/* ─── PIXEL MOTIF — pixel-rain section dividers ─── */
+/* ─── PIXEL MOTIF - pixel-rain section dividers ─── */
 .pix-rain {
   position: relative;
   height: 56px;
@@ -229,7 +229,7 @@ body::after {
   100% { opacity: 0;    transform: translateY(140%)  scale(0.7); }
 }
 
-/* ─── PIXEL MOTIF — subtle pattern on dark sections (demo, founding CTA) ─── */
+/* ─── PIXEL MOTIF - subtle pattern on dark sections (demo, founding CTA) ─── */
 .demo::after, .cta-shell::after {
   content: '';
   position: absolute;
@@ -244,7 +244,7 @@ body::after {
 .demo, .cta-shell { position: relative; }
 .demo > *, .cta-shell > * { position: relative; z-index: 1; }
 
-/* ─── PIXEL MOTIF — pixel-M flourish next to section headings ─── */
+/* ─── PIXEL MOTIF - pixel-M flourish next to section headings ─── */
 .pix-flourish {
   display: inline-flex;
   align-items: center;
@@ -256,7 +256,7 @@ body::after {
   flex-shrink: 0;
 }
 
-/* ─── PIXEL MOTIF — calculator slider thumb as sharp pixel ─── */
+/* ─── PIXEL MOTIF - calculator slider thumb as sharp pixel ─── */
 .calc-field input[type="range"]::-webkit-slider-thumb {
   border-radius: 0 !important;
   width: 18px !important; height: 18px !important;
@@ -270,7 +270,7 @@ body::after {
   box-shadow: 0 0 0 2px var(--lime-deep);
 }
 
-/* ─── PIXEL MOTIF — gentle lime-deep border on hover for cards ─── */
+/* ─── PIXEL MOTIF - gentle lime-deep border on hover for cards ─── */
 .testi-card, .roadmap-tile, .problem-card {
   transition: border-color 250ms ease, transform 250ms ease, box-shadow 250ms ease;
 }
@@ -567,7 +567,7 @@ section.block.tight { padding: 80px 28px; }
   box-shadow: 0 30px 60px rgba(0,0,0,0.18), 0 8px 20px rgba(0,0,0,0.10);
   position: relative;
   z-index: 1;
-  /* Scroll parallax — JS sets --py based on element position in viewport */
+  /* Scroll parallax - JS sets --py based on element position in viewport */
   transform: translateY(var(--py, 0px));
   will-change: transform;
 }
@@ -1177,7 +1177,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
 
 /* ─── RESPONSIVE ─── */
 
-/* Desktop large (1280+) — default styles handle this */
+/* Desktop large (1280+) - default styles handle this */
 
 /* Tablet landscape / smaller desktop */
 @media (max-width: 1180px) {
@@ -1860,7 +1860,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
   <div class="section-head reveal">
     <span class="eyebrow">THE TRUTH NO ONE WANTS TO SAY</span>
     <h2>Your staff was never going to <em>upsell.</em></h2>
-    <p class="lede">It's not that they're lazy. It's not that they don't care about your restaurant. The system was always going to fail at the upsell job — and trying to fix it with training, scripts, and "smile more" pep talks has never worked. Anywhere.</p>
+    <p class="lede">It's not that they're lazy. It's not that they don't care about your restaurant. The system was always going to fail at the upsell job - and trying to fix it with training, scripts, and "smile more" pep talks has never worked. Anywhere.</p>
   </div>
   <div class="problem-grid reveal">
     <div class="problem-card">
@@ -1871,7 +1871,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
       </div>
       <div>
         <h4>Language barriers</h4>
-        <p>Your foreign staff can take orders. They can't explain your specials, your story, or why your new dish is worth ordering — in the customer's language.</p>
+        <p>Your foreign staff can take orders. They can't explain your specials, your story, or why your new dish is worth ordering - in the customer's language.</p>
       </div>
     </div>
     <div class="problem-card">
@@ -1893,7 +1893,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
       </div>
       <div>
         <h4>Transient workforce</h4>
-        <p>By the time you've trained them on the menu, the specials, the upsell scripts — they've already moved to a different job. Then you start over.</p>
+        <p>By the time you've trained them on the menu, the specials, the upsell scripts - they've already moved to a different job. Then you start over.</p>
       </div>
     </div>
     <div class="problem-card">
@@ -1910,7 +1910,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
   </div>
   <div class="problem-pull reveal">
     This is not a staff problem. It's a <em>system</em> problem.
-    <span class="foot">Stop blaming your team for not doing the impossible. Move the upsell job to the only thing that can actually do it reliably — the screen.</span>
+    <span class="foot">Stop blaming your team for not doing the impossible. Move the upsell job to the only thing that can actually do it reliably - the screen.</span>
   </div>
 </section>
 
@@ -2020,7 +2020,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
   <div class="section-head reveal">
     <span class="eyebrow">HOW WE COMPARE</span>
     <h2>We're not a POS. <em>That's the point.</em></h2>
-    <p class="lede">If you've been comparing us to StoreHub, Slurp! or Loyverse — you've been comparing us to the wrong thing. They're cash registers. We're the AI waiter that sits on top of one.</p>
+    <p class="lede">If you've been comparing us to StoreHub, Slurp! or Loyverse - you've been comparing us to the wrong thing. They're cash registers. We're the AI waiter that sits on top of one.</p>
   </div>
   <div class="compare-card reveal">
     <table class="compare-table">
@@ -2177,7 +2177,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
     <div class="testi-card reveal">
       <div class="testi-stat"><span class="num" data-count="4200" data-prefix="+RM " data-format="comma">+RM 0</span><span class="testi-stat-lbl">FIRST 30 DAYS</span></div>
       <div class="testi-stars">★ ★ ★ ★ ★</div>
-      <p class="testi-quote">"Our team is mostly foreign workers. They take orders well, but can't really explain our specials in English or Mandarin. MenuBase does it for them, in the customer's own language. We stopped trying to train upselling — the system does it."</p>
+      <p class="testi-quote">"Our team is mostly foreign workers. They take orders well, but can't really explain our specials in English or Mandarin. MenuBase does it for them, in the customer's own language. We stopped trying to train upselling - the system does it."</p>
       <div class="testi-foot">
         <div class="testi-ava">BC</div>
         <div class="testi-who"><strong>Biji Coffee Co.</strong><span>Single outlet · Klang Valley</span></div>
@@ -2186,7 +2186,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
     <div class="testi-card reveal">
       <div class="testi-stat"><span class="num" data-count="18" data-prefix="+" data-suffix="%">+0%</span><span class="testi-stat-lbl">UPSELL ACCEPTANCE</span></div>
       <div class="testi-stars">★ ★ ★ ★ ★</div>
-      <p class="testi-quote">"We tried scripts. We tried role-plays. We tried bonuses. Nothing stuck — our staff turnover is just too high. MenuBase doesn't need training. It works on every order from day one. Forever."</p>
+      <p class="testi-quote">"We tried scripts. We tried role-plays. We tried bonuses. Nothing stuck - our staff turnover is just too high. MenuBase doesn't need training. It works on every order from day one. Forever."</p>
       <div class="testi-foot">
         <div class="testi-ava">RP</div>
         <div class="testi-who"><strong>Roti Place</strong><span>3 outlets · KL &amp; Selangor</span></div>
@@ -2195,7 +2195,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
     <div class="testi-card reveal">
       <div class="testi-stat"><span class="num" data-count="0" data-suffix=" hours" data-start="40">40 hours</span><span class="testi-stat-lbl">STAFF RETRAINING</span></div>
       <div class="testi-stars">★ ★ ★ ★ ★</div>
-      <p class="testi-quote">"I used to do Sunday menu briefings for new hires every week. Now I just update MenuBase once — and by Monday every outlet, every shift, every language is on the same page. The smartest part of my team is the screen."</p>
+      <p class="testi-quote">"I used to do Sunday menu briefings for new hires every week. Now I just update MenuBase once - and by Monday every outlet, every shift, every language is on the same page. The smartest part of my team is the screen."</p>
       <div class="testi-foot">
         <div class="testi-ava">KM</div>
         <div class="testi-who"><strong>Kopi Mart</strong><span>2 outlets · Petaling Jaya</span></div>
@@ -2249,7 +2249,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
   <div class="section-head center reveal">
     <span class="eyebrow">WHAT'S SHIPPING NEXT</span>
     <h2>Already on its <em>way.</em></h2>
-    <p class="lede">Dates are commitments, not wishes. The first 10 founding outlets get all of this — locked in forever.</p>
+    <p class="lede">Dates are commitments, not wishes. The first 10 founding outlets get all of this - locked in forever.</p>
   </div>
   <div class="roadmap-grid">
     <div class="roadmap-tile reveal">
@@ -2260,7 +2260,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
         </svg>
       </div>
       <h4>Native POS integrations</h4>
-      <p>Direct integration with StoreHub, Slurp!, Loyverse, BIG POS. Orders flow straight in — handoff goes from 8 seconds to 0.</p>
+      <p>Direct integration with StoreHub, Slurp!, Loyverse, BIG POS. Orders flow straight in - handoff goes from 8 seconds to 0.</p>
     </div>
     <div class="roadmap-tile reveal">
       <span class="roadmap-tag">Q4 · 2026</span>
@@ -2348,7 +2348,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
   <div class="manifesto-inner">
     <div class="manifesto-eyebrow">The bottom line</div>
     <h2>Stop blaming your staff.<br/>Move the upsell job to the <em>screen.</em></h2>
-    <p>Get back to running a restaurant — the food, the experience, the room. We'll handle the part that humans were never going to do reliably anyway.</p>
+    <p>Get back to running a restaurant - the food, the experience, the room. We'll handle the part that humans were never going to do reliably anyway.</p>
     <div class="hero-actions" style="justify-content:center;">
       <a class="btn btn-dark btn-lg" href="#book">Audition the smartest waiter →</a>
       <a class="btn btn-ghost btn-lg" href="#demo">Try the live demo</a>
@@ -2588,7 +2588,7 @@ setTimeout(() => {
   });
 })();
 
-/* ─── Counter animations — count up to data-count when card enters viewport ─── */
+/* ─── Counter animations - count up to data-count when card enters viewport ─── */
 (function(){
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var nums = document.querySelectorAll('.num[data-count]');
@@ -2633,7 +2633,7 @@ setTimeout(() => {
   nums.forEach(function(el){ io.observe(el); });
 })();
 
-/* ─── Hero entrance choreography — first visit per session.
+/* ─── Hero entrance choreography - first visit per session.
        Splits H1 into word spans, adds .mb-entry then .mb-go to <body>,
        then the CSS block above handles staggered transitions.
        After 3.5s, classes are cleared and sessionStorage flags the visit. ─── */
@@ -2666,7 +2666,7 @@ setTimeout(() => {
   });
 })();
 
-/* ─── Phone parallax — each .phone gets a translateY based on its position
+/* ─── Phone parallax - each .phone gets a translateY based on its position
        relative to viewport center. Creates depth illusion without breaking
        containing-block positioning. Hero phones move most (lg ±40px),
        pillar phones less (md ±25px), mode phones least (sm ±18px). ─── */
@@ -2699,14 +2699,14 @@ setTimeout(() => {
   update();
 })();
 
-/* ─── Mouse parallax — drives --mx, --my on :root (fine pointers only) ─── */
+/* ─── Mouse parallax - drives --mx, --my on :root (fine pointers only) ─── */
 (function(){
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   if (window.matchMedia && !window.matchMedia('(pointer: fine)').matches) return;
   var root = document.documentElement;
   var tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
   function tick(){
-    // ease toward target — smoother than raw cursor jitter
+    // ease toward target - smoother than raw cursor jitter
     cx += (tx - cx) * 0.06;
     cy += (ty - cy) * 0.06;
     root.style.setProperty('--mx', cx.toFixed(3));

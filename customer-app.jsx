@@ -1,8 +1,8 @@
-// Customer QR App — POS-INDEPENDENT model
+// Customer QR App - POS-INDEPENDENT model
 // ─────────────────────────────────────────────────────────────────────────
 // Every "discount" is a real SKU at a real price the merchant pre-created
 // in their POS. The customer sees face prices only. The cart total is
-// just the sum of line items — no discount math, no −RM rows.
+// just the sum of line items - no discount math, no −RM rows.
 //
 // Campaigns produce one of four operations:
 //   add_line        → auto-adds a RM0/flat-price reward SKU to cart
@@ -101,7 +101,7 @@ const CustomerApp = () => {
     });
   }, [resolution.applied?.campaign?.id, mutations.autoAddLines.length]);
 
-  // Cart total = pure sum of line items (face prices only — no discount math)
+  // Cart total = pure sum of line items (face prices only - no discount math)
   const grandTotal = cart.subtotal;
 
   const addItem = (item) => setCart(c => E.addToCart(c, item, 'me'));
@@ -223,7 +223,7 @@ const MenuScreen = ({ cart, addItem, applied, alternates, blocked, mutations, on
         </div>
       </div>
 
-      {/* HERO BANNER — winning campaign */}
+      {/* HERO BANNER - winning campaign */}
       {applied && <HeroBanner applied={applied}/>}
       {!applied && thresholdProgress && <ProgressBanner block={thresholdProgress}/>}
       {alternates.length > 0 && applied && (
@@ -439,7 +439,7 @@ const CheckoutScreen = ({ cart, mutations, grandTotal, onBack, onComplete, spinR
         {spinCampaign && !spinResult && (
           <div className="addon-card spin">
             <h4>🎰 {spinCampaign.name}</h4>
-            <p>Spin once for a free item — slot lands on a real RM0 SKU added to your cart.</p>
+            <p>Spin once for a free item - slot lands on a real RM0 SKU added to your cart.</p>
             <SpinWheel slotSkuIds={spinCampaign.config?.slotSkuIds || ['r-ac', 'r-wc', 'r-bc']} onResult={onSpinResult}/>
           </div>
         )}
@@ -461,11 +461,11 @@ const CheckoutScreen = ({ cart, mutations, grandTotal, onBack, onComplete, spinR
         {mysteryAdded && (
           <div className="addon-card mystery added">
             <h4>📦 Mystery Box added · RM5</h4>
-            <span className="lime">✓ Will be revealed on the tablet — kitchen picks today's pick</span>
+            <span className="lime">✓ Will be revealed on the tablet - kitchen picks today's pick</span>
           </div>
         )}
 
-        {/* Order summary — face prices only */}
+        {/* Order summary - face prices only */}
         <div className="checkout-summary">
           <h4>Order summary</h4>
           {cart.items.map((i, k) => (
@@ -539,7 +539,7 @@ const SuccessScreen = ({ total, cart, confetti, onNew, tableMode }) => (
     <p>Sent to the <strong>waiter's tablet</strong> at {tableMode ? 'Table T-04' : 'Counter'}</p>
     <p className="muted" style={{fontSize:13}}>Pickup ready in ~8 min · pay at counter</p>
 
-    {/* Waiter ticket — exact list of SKUs the waiter will key into the POS */}
+    {/* Waiter ticket - exact list of SKUs the waiter will key into the POS */}
     <div className="waiter-ticket">
       <div className="wt-head">
         <span className="wt-tag">WAITER TABLET · KOT</span>
@@ -560,7 +560,7 @@ const SuccessScreen = ({ total, cart, confetti, onNew, tableMode }) => (
         <strong>RM{total.toFixed(2)}</strong>
       </div>
       <div className="wt-note">
-        Every line is a real SKU at face price. Waiter rings 1-to-1 — no manager codes, no discount math.
+        Every line is a real SKU at face price. Waiter rings 1-to-1 - no manager codes, no discount math.
       </div>
     </div>
 
@@ -633,7 +633,7 @@ const DevPanel = ({ ctx, setCtx, tableMode, setTableMode, resolution, cart }) =>
           <div className="dev-section dev-engine">
             <div className="dev-label">Engine output</div>
             <div className="engine-mini">
-              <strong>{resolution.applied?.campaign?.name || '— no campaign active —'}</strong>
+              <strong>{resolution.applied?.campaign?.name || '- no campaign active -'}</strong>
               {resolution.applied && (
                 <>
                   <span className="lime" style={{fontSize:11, fontFamily:'var(--mono)', marginTop:4, display:'block'}}>

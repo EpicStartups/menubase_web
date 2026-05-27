@@ -291,7 +291,7 @@ window.DAY_PRESETS = DAY_PRESETS;
 window.SAMPLE_CAMPAIGNS = SAMPLE_CAMPAIGNS;
 
 // ── DEMO CAMPAIGNS ────────────────────────────────────────────────
-// One self-contained, ALWAYS-ON campaign per mechanic — so the embedded
+// One self-contained, ALWAYS-ON campaign per mechanic - so the embedded
 // Mechanics demos always show that exact mechanic firing, regardless of
 // time/day/state. Each is whitelisted into the customer app when ?demo=<id>.
 
