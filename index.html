@@ -547,6 +547,12 @@ section.block.tight { padding: 80px 28px; }
   box-shadow: 0 30px 60px rgba(0,0,0,0.18), 0 8px 20px rgba(0,0,0,0.10);
   position: relative;
   z-index: 1;
+  /* Scroll parallax — JS sets --py based on element position in viewport */
+  transform: translateY(var(--py, 0px));
+  will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) {
+  .phone { transform: none !important; will-change: auto; }
 }
 .phone .notch {
   position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
@@ -2558,6 +2564,39 @@ setTimeout(() => {
     });
   }, { threshold: 0.4, rootMargin: '0px 0px -10% 0px' });
   nums.forEach(function(el){ io.observe(el); });
+})();
+
+/* ─── Phone parallax — each .phone gets a translateY based on its position
+       relative to viewport center. Creates depth illusion without breaking
+       containing-block positioning. Hero phones move most (lg ±40px),
+       pillar phones less (md ±25px), mode phones least (sm ±18px). ─── */
+(function(){
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var phones = document.querySelectorAll('.phone');
+  if (!phones.length) return;
+  var raf = 0;
+  function update() {
+    var vh = window.innerHeight;
+    var halfVh = vh / 2;
+    for (var i = 0; i < phones.length; i++) {
+      var p = phones[i];
+      var rect = p.getBoundingClientRect();
+      if (rect.bottom < -200 || rect.top > vh + 200) continue;
+      var center = rect.top + rect.height / 2;
+      var progress = (center - halfVh) / vh;            // -1 .. +1
+      if (progress < -1) progress = -1;
+      else if (progress > 1) progress = 1;
+      var factor = p.classList.contains('lg') ? -40
+                 : p.classList.contains('md') ? -25
+                 : -18;
+      p.style.setProperty('--py', (progress * factor).toFixed(1) + 'px');
+    }
+    raf = 0;
+  }
+  function onScroll() { if (!raf) raf = requestAnimationFrame(update); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  update();
 })();
 
 /* ─── Mouse parallax — drives --mx, --my on :root (fine pointers only) ─── */
