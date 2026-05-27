@@ -50,9 +50,18 @@ body {
   overflow-x: hidden;
   position: relative;
 }
-/* ─── BACKGROUND SYSTEM (multi-layer ambient) ─── */
+/* ─── BACKGROUND SYSTEM (multi-layer ambient · cinematic v2) ─── */
 
-/* Layer A: dot grid, vignette-masked so it fades toward edges */
+/* Animatable custom props — enable smooth composition of keyframe motion + mouse parallax.
+   Without @property, custom-prop transitions are step-like. With @property, they interpolate. */
+@property --ax { syntax: '<length>'; initial-value: 0px; inherits: false; }
+@property --ay { syntax: '<length>'; initial-value: 0px; inherits: false; }
+@property --as { syntax: '<number>'; initial-value: 1;   inherits: false; }
+@property --bx { syntax: '<length>'; initial-value: 0px; inherits: false; }
+@property --by { syntax: '<length>'; initial-value: 0px; inherits: false; }
+@property --br { syntax: '<angle>';  initial-value: 0deg; inherits: false; }
+
+/* Layer A: dot grid, vignette-masked (unchanged) */
 body::before {
   content: '';
   position: fixed;
@@ -67,7 +76,7 @@ body::before {
   opacity: 0.7;
 }
 
-/* Layer B: primary aurora — 5 lime/grey blobs slowly drifting & scaling */
+/* Layer B: primary aurora — 5 lime/grey blobs · faster · bigger amplitude · mouse parallax */
 body::after {
   content: '';
   position: fixed;
@@ -81,17 +90,19 @@ body::after {
     radial-gradient(ellipse 520px 420px at 18% 92%, rgba(100,101,106,0.10) 0%, transparent 55%),
     radial-gradient(ellipse 460px 380px at 58% 55%, rgba(188,241,37,0.07) 0%, transparent 60%);
   filter: blur(18px);
-  animation: auroraDrift 32s ease-in-out infinite alternate;
+  transform: translate3d(calc(var(--ax) + var(--mx, 0) * -22px), calc(var(--ay) + var(--my, 0) * -22px), 0) scale(var(--as));
+  animation: auroraDrift 18s ease-in-out infinite alternate;
   will-change: transform;
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 @keyframes auroraDrift {
-  0%   { transform: translate3d(0, 0, 0) scale(1); }
-  33%  { transform: translate3d(-2%, 1.5%, 0) scale(1.04); }
-  66%  { transform: translate3d(2.5%, -1%, 0) scale(0.98); }
-  100% { transform: translate3d(-1%, -2%, 0) scale(1.02); }
+  0%   { --ax: 0px;    --ay: 0px;    --as: 1;    }
+  33%  { --ax: -60px;  --ay: 38px;   --as: 1.08; }
+  66%  { --ax: 50px;   --ay: -30px;  --as: 0.94; }
+  100% { --ax: -30px;  --ay: -55px;  --as: 1.04; }
 }
 
-/* Layer C: secondary aurora — slower, softer, counter-rotates for parallax depth */
+/* Layer C: secondary aurora — counter-rotates · faster · opposite mouse direction */
 .bg-aurora-2 {
   position: fixed;
   inset: -20%;
@@ -101,17 +112,39 @@ body::after {
     radial-gradient(ellipse 900px 700px at 72% 32%, rgba(188,241,37,0.10) 0%, transparent 60%),
     radial-gradient(ellipse 700px 550px at 28% 68%, rgba(100,101,106,0.08) 0%, transparent 60%);
   filter: blur(40px);
-  animation: auroraDrift2 52s ease-in-out infinite alternate-reverse;
-  opacity: 0.85;
+  opacity: 0.9;
+  transform: translate3d(calc(var(--bx) + var(--mx, 0) * 28px), calc(var(--by) + var(--my, 0) * 28px), 0) rotate(var(--br));
+  animation: auroraDrift2 28s ease-in-out infinite alternate-reverse;
   will-change: transform;
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 @keyframes auroraDrift2 {
-  0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
-  50%  { transform: translate3d(3%, -2%, 0) rotate(6deg); }
-  100% { transform: translate3d(-2%, 3%, 0) rotate(-4deg); }
+  0%   { --bx: 0px;    --by: 0px;    --br: 0deg;  }
+  50%  { --bx: 75px;   --by: -50px;  --br: 8deg;  }
+  100% { --bx: -55px;  --by: 70px;   --br: -6deg; }
 }
 
-/* Layer D: film grain noise — subtle tactile feel via SVG turbulence */
+/* Layer D: gradient mesh — additional color depth via screen blend mode */
+.bg-mesh {
+  position: fixed;
+  inset: -10%;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 700px 500px at 30% 80%, rgba(188,241,37,0.16) 0%, transparent 55%),
+    radial-gradient(ellipse 600px 450px at 80% 25%, rgba(26,26,26,0.06)  0%, transparent 55%);
+  mix-blend-mode: screen;
+  filter: blur(60px);
+  opacity: 0.85;
+  animation: meshFloat 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes meshFloat {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(-40px, 30px, 0) scale(1.06); }
+}
+
+/* Layer E: film grain (unchanged) */
 .bg-grain {
   position: fixed;
   inset: 0;
@@ -123,7 +156,7 @@ body::after {
   background-size: 240px 240px;
 }
 
-/* Layer E: rising lime pixel particles (above bg layers, behind content) */
+/* Layer F: rising lime pixel particles — denser, faster cycle */
 .bg-pixels {
   position: fixed;
   inset: 0;
@@ -135,20 +168,21 @@ body::after {
   position: absolute;
   background: var(--lime);
   opacity: 0;
-  animation: pxRise 56s linear infinite;
+  animation: pxRise 28s linear infinite;
   box-shadow: 0 0 8px rgba(188,241,37,0.55), 0 0 0 1px rgba(26,26,26,0.04);
   border-radius: 1px;
 }
 @keyframes pxRise {
   0%   { opacity: 0;    transform: translateY(20px) scale(0.6); }
-  10%  { opacity: 0.5;  transform: translateY(0) scale(1); }
-  50%  { opacity: 0.45; }
-  90%  { opacity: 0.4;  transform: translateY(-100vh) scale(1); }
+  8%   { opacity: 0.55; transform: translateY(0) scale(1); }
+  50%  { opacity: 0.5;  }
+  92%  { opacity: 0.45; transform: translateY(-100vh) scale(1); }
   100% { opacity: 0;    transform: translateY(-110vh) scale(0.6); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body::after, .bg-aurora-2, .bg-pixels span { animation: none; }
+  body::after, .bg-aurora-2, .bg-mesh, .bg-pixels span { animation: none; }
+  body::after, .bg-aurora-2 { transform: none; }
 }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
@@ -344,6 +378,15 @@ body { padding-bottom: 64px; }
   width: 480px; height: 480px;
   background: radial-gradient(circle, rgba(188,241,37,0.45) 0%, transparent 65%);
   z-index: 0;
+  animation: heroHaloBreath 4s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+@keyframes heroHaloBreath {
+  0%, 100% { transform: scale(1);    opacity: 0.85; }
+  50%      { transform: scale(1.06); opacity: 1;    }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-stage::before { animation: none; }
 }
 
 /* ─── MARQUEE / VENUE TYPES ─── */
@@ -1541,16 +1584,27 @@ footer.foot {
 <body>
 
 <div class="bg-aurora-2" aria-hidden="true"></div>
-<div class="bg-grain" aria-hidden="true"></div>
+<div class="bg-mesh"     aria-hidden="true"></div>
+<div class="bg-grain"    aria-hidden="true"></div>
 <div class="bg-pixels" aria-hidden="true">
-  <span style="left:8%;top:100%;width:10px;height:10px;animation-delay:0s"></span>
-  <span style="left:22%;top:100%;width:8px;height:8px;animation-delay:7s"></span>
-  <span style="left:35%;top:100%;width:12px;height:12px;animation-delay:14s"></span>
-  <span style="left:48%;top:100%;width:6px;height:6px;animation-delay:21s"></span>
-  <span style="left:62%;top:100%;width:10px;height:10px;animation-delay:28s"></span>
-  <span style="left:74%;top:100%;width:8px;height:8px;animation-delay:35s"></span>
-  <span style="left:86%;top:100%;width:12px;height:12px;animation-delay:42s"></span>
-  <span style="left:95%;top:100%;width:6px;height:6px;animation-delay:49s"></span>
+  <span style="left:4%;top:100%;width:10px;height:10px;animation-delay:0s"></span>
+  <span style="left:11%;top:100%;width:6px;height:6px;animation-delay:1.6s"></span>
+  <span style="left:18%;top:100%;width:14px;height:14px;animation-delay:3.2s"></span>
+  <span style="left:24%;top:100%;width:8px;height:8px;animation-delay:4.8s"></span>
+  <span style="left:31%;top:100%;width:10px;height:10px;animation-delay:6.4s"></span>
+  <span style="left:38%;top:100%;width:6px;height:6px;animation-delay:8s"></span>
+  <span style="left:44%;top:100%;width:12px;height:12px;animation-delay:9.6s"></span>
+  <span style="left:51%;top:100%;width:8px;height:8px;animation-delay:11.2s"></span>
+  <span style="left:57%;top:100%;width:14px;height:14px;animation-delay:12.8s"></span>
+  <span style="left:64%;top:100%;width:6px;height:6px;animation-delay:14.4s"></span>
+  <span style="left:70%;top:100%;width:10px;height:10px;animation-delay:16s"></span>
+  <span style="left:77%;top:100%;width:8px;height:8px;animation-delay:17.6s"></span>
+  <span style="left:83%;top:100%;width:12px;height:12px;animation-delay:19.2s"></span>
+  <span style="left:89%;top:100%;width:6px;height:6px;animation-delay:20.8s"></span>
+  <span style="left:95%;top:100%;width:14px;height:14px;animation-delay:22.4s"></span>
+  <span style="left:14%;top:100%;width:4px;height:4px;animation-delay:24s"></span>
+  <span style="left:48%;top:100%;width:4px;height:4px;animation-delay:25.6s"></span>
+  <span style="left:80%;top:100%;width:4px;height:4px;animation-delay:27.2s"></span>
 </div>
 
 <!-- ─── TOP RIBBON (logo + login) ─── -->
@@ -2322,6 +2376,32 @@ setTimeout(() => {
       }
     });
   });
+})();
+
+/* ─── Mouse parallax — drives --mx, --my on :root (fine pointers only) ─── */
+(function(){
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia && !window.matchMedia('(pointer: fine)').matches) return;
+  var root = document.documentElement;
+  var tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
+  function tick(){
+    // ease toward target — smoother than raw cursor jitter
+    cx += (tx - cx) * 0.06;
+    cy += (ty - cy) * 0.06;
+    root.style.setProperty('--mx', cx.toFixed(3));
+    root.style.setProperty('--my', cy.toFixed(3));
+    if (Math.abs(tx - cx) > 0.001 || Math.abs(ty - cy) > 0.001) {
+      raf = requestAnimationFrame(tick);
+    } else {
+      raf = 0;
+    }
+  }
+  window.addEventListener('mousemove', function(e){
+    // normalize to -1 .. 1 around viewport center
+    tx = (e.clientX / window.innerWidth)  * 2 - 1;
+    ty = (e.clientY / window.innerHeight) * 2 - 1;
+    if (!raf) raf = requestAnimationFrame(tick);
+  }, { passive: true });
 })();
 </script>
 
