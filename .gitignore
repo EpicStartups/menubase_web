@@ -63,3 +63,8 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+# Local agent + archive folders (never pushed to live)
+.claude/
+_archive/
+.DS_Store
