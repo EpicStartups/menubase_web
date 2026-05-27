@@ -38,6 +38,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  position: relative; /* anchor for absolutely-positioned cart bar */
 }
 
 .cust-status {
@@ -169,6 +170,7 @@
   flex: 1;
   overflow-y: auto;
   min-height: 0;
+  padding-bottom: 68px; /* reserve room for the absolutely-positioned cart bar */
 }
 
 .cust-menu {
@@ -231,8 +233,10 @@
 }
 
 .cust-cart-bar {
-  position: sticky;
+  position: absolute;
   bottom: 0;
+  left: 0;
+  right: 0;
   margin: 0;
   padding: 16px 18px;
   background: var(--ink);
@@ -246,7 +250,7 @@
   align-items: center;
   font-family: var(--font-sans);
   z-index: 20;
-  box-shadow: 0 -10px 30px rgba(0,0,0,0.18);
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.22);
 }
 
 /* CART SCREEN */
@@ -401,7 +405,7 @@
   font-family: var(--font-sans);
 }
 
-/* SPIN WHEEL */
+/* SPIN WHEEL — conic-gradient slices + counter-rotated labels */
 .spin-wrap {
   position: relative;
   width: 220px;
@@ -416,6 +420,7 @@
   z-index: 2;
   font-size: 24px;
   color: var(--ink);
+  text-shadow: 0 1px 0 var(--bg-elev);
 }
 .spin-wheel {
   width: 100%; height: 100%;
@@ -424,23 +429,25 @@
   overflow: hidden;
   box-shadow: 0 8px 24px oklch(0 0 0 / 0.2);
   border: 4px solid var(--ink);
+  /* background set inline via conic-gradient based on slot count */
 }
-.spin-slice {
+.spin-label {
   position: absolute;
-  top: 0; left: 50%;
-  width: 50%; height: 50%;
-  transform-origin: 0 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  padding-top: 20px;
-  font-size: 11px;
-  font-weight: 600;
-  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  top: 50%; left: 50%;
+  width: 0; height: 0;
+  pointer-events: none;
 }
-.spin-slice span {
-  display: block;
+.spin-label > .lbl {
+  position: absolute;
+  bottom: 70px;          /* radius from center where label sits (wheel radius ~106px) */
+  left: 0;
   white-space: nowrap;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: center;
+  /* Inline style adds: transform: translateX(-50%) rotate(-midAngle)
+     which centers horizontally + keeps text upright after parent rotation */
 }
 .spin-btn {
   position: absolute;

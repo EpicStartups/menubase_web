@@ -512,15 +512,38 @@ const SpinWheel = ({ slotSkuIds, onResult }) => {
     setTimeout(() => onResult(slots[idx].id), 3200);
   };
 
+  const sliceDeg = 360 / slots.length;
+  // Brand-aligned slice colors: lime / ink / lime-deep / brand-grey, alternating
+  const palette = ['#BCF125', '#1A1A1A', '#A6D413', '#64656A'];
+  // Conic gradient produces clean pie slices. Start at -sliceDeg/2 so the first
+  // slice is centered at the top (0deg), pointing at the pointer.
+  const gradient = slots.map((s, i) => {
+    const start = i * sliceDeg;
+    const end   = start + sliceDeg;
+    return `${palette[i % palette.length]} ${start}deg ${end}deg`;
+  }).join(', ');
+  const wheelStyle = {
+    transform: `rotate(${angle}deg)`,
+    transition: spinning ? 'transform 3s cubic-bezier(0.2, 0.7, 0.2, 1)' : 'none',
+    background: `conic-gradient(from -${sliceDeg/2}deg, ${gradient})`,
+  };
+
   return (
     <div className="spin-wrap">
       <div className="spin-pointer">▼</div>
-      <div className="spin-wheel" style={{transform: `rotate(${angle}deg)`, transition: spinning ? 'transform 3s cubic-bezier(0.2, 0.7, 0.2, 1)' : 'none'}}>
+      <div className="spin-wheel" style={wheelStyle}>
         {slots.map((s, i) => {
-          const slice = 360 / slots.length;
+          // Place label at midpoint of slice. Counter-rotate inner text to stay upright.
+          const midAngle = i * sliceDeg;
+          const textColor = i % 2 ? '#FFFFFF' : '#1A1A1A';
           return (
-            <div key={i} className="spin-slice" style={{transform: `rotate(${i * slice}deg) skewY(${90 - slice}deg)`, background: i % 2 ? 'var(--lime)' : 'var(--plum)'}}>
-              <span style={{transform: `skewY(-${90 - slice}deg) rotate(${slice/2}deg)`, color: i % 2 ? 'var(--ink)' : 'white'}}>{s.emoji} {s.name.replace('Promo ','')}</span>
+            <div key={i} className="spin-label" style={{transform: `rotate(${midAngle}deg)`}}>
+              <span className="lbl" style={{
+                transform: `translateX(-50%) rotate(${-midAngle}deg)`,
+                color: textColor
+              }}>
+                {s.emoji} {s.name.replace('Promo ','')}
+              </span>
             </div>
           );
         })}
