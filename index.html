@@ -1090,6 +1090,53 @@ footer.foot {
   font-weight: 500;
 }
 
+/* ─── HERO ENTRANCE CHOREOGRAPHY (first visit per session only) ───
+   JS adds .mb-entry to body on first visit, then .mb-go a frame later.
+   3.5s after, both classes are removed and sessionStorage flags the visit.
+   Subsequent visits skip the entrance entirely. */
+body.mb-entry .top-ribbon            { opacity: 0; transform: translateY(-12px); }
+body.mb-entry .hero .eyebrow         { opacity: 0; }
+body.mb-entry .hero h1 .mb-word      { opacity: 0; transform: translateY(14px); display: inline-block; }
+body.mb-entry .hero .sub             { opacity: 0; transform: translateY(8px); }
+body.mb-entry .hero-actions .btn     { opacity: 0; transform: scale(0.94); }
+body.mb-entry .hero-micro            { opacity: 0; }
+body.mb-entry .hero-stage            { opacity: 0; transform: translateY(50px) scale(0.92); }
+body.mb-entry nav.top                { transform: translate(-50%, 90px); }
+
+body.mb-entry .top-ribbon,
+body.mb-entry .hero .eyebrow,
+body.mb-entry .hero h1 .mb-word,
+body.mb-entry .hero .sub,
+body.mb-entry .hero-actions .btn,
+body.mb-entry .hero-micro,
+body.mb-entry .hero-stage,
+body.mb-entry nav.top {
+  transition: opacity 700ms ease, transform 800ms cubic-bezier(.16,1,.3,1);
+}
+
+body.mb-entry.mb-go .top-ribbon                       { opacity: 1; transform: translateY(0);  transition-delay: 150ms; }
+body.mb-entry.mb-go .hero .eyebrow                    { opacity: 1; transition-delay: 300ms; }
+body.mb-entry.mb-go .hero h1 .mb-word                 { opacity: 1; transform: translateY(0); }
+body.mb-entry.mb-go .hero h1 .mb-word:nth-of-type(1)  { transition-delay: 550ms;  }
+body.mb-entry.mb-go .hero h1 .mb-word:nth-of-type(2)  { transition-delay: 640ms;  }
+body.mb-entry.mb-go .hero h1 .mb-word:nth-of-type(3)  { transition-delay: 730ms;  }
+body.mb-entry.mb-go .hero h1 .mb-word:nth-of-type(4)  { transition-delay: 820ms;  }
+body.mb-entry.mb-go .hero h1 .mb-word:nth-of-type(5)  { transition-delay: 910ms;  }
+body.mb-entry.mb-go .hero h1 .mb-word:nth-of-type(6)  { transition-delay: 1000ms; }
+body.mb-entry.mb-go .hero h1 .mb-word:nth-of-type(7)  { transition-delay: 1090ms; }
+body.mb-entry.mb-go .hero .sub                        { opacity: 1; transform: translateY(0); transition-delay: 1350ms; }
+body.mb-entry.mb-go .hero-actions .btn:nth-of-type(1) { opacity: 1; transform: scale(1); transition-delay: 1700ms; }
+body.mb-entry.mb-go .hero-actions .btn:nth-of-type(2) { opacity: 1; transform: scale(1); transition-delay: 1800ms; }
+body.mb-entry.mb-go .hero-micro                       { opacity: 1; transition-delay: 1900ms; }
+body.mb-entry.mb-go .hero-stage                       { opacity: 1; transform: translateY(0) scale(1); transition-delay: 2100ms; }
+body.mb-entry.mb-go nav.top                           { transform: translate(-50%, 0); transition-delay: 2200ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  body.mb-entry, body.mb-entry.mb-go,
+  body.mb-entry *, body.mb-entry.mb-go * { transition: none !important; opacity: 1 !important; transform: none !important; }
+  body.mb-entry nav.top, body.mb-entry.mb-go nav.top { transform: translate(-50%, 0) !important; }
+}
+
 /* ─── REVEALS ─── */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 600ms ease, transform 600ms cubic-bezier(.16,1,.3,1); }
 .reveal.in { opacity: 1; transform: translateY(0); }
@@ -2564,6 +2611,39 @@ setTimeout(() => {
     });
   }, { threshold: 0.4, rootMargin: '0px 0px -10% 0px' });
   nums.forEach(function(el){ io.observe(el); });
+})();
+
+/* ─── Hero entrance choreography — first visit per session.
+       Splits H1 into word spans, adds .mb-entry then .mb-go to <body>,
+       then the CSS block above handles staggered transitions.
+       After 3.5s, classes are cleared and sessionStorage flags the visit. ─── */
+(function(){
+  try { if (sessionStorage.getItem('mb_entered_v2')) return; } catch(e) {}
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    try { sessionStorage.setItem('mb_entered_v2', '1'); } catch(e) {}
+    return;
+  }
+
+  // Wrap H1 words in spans for staggered reveal. Keeps <em>...</em> intact.
+  var h1 = document.querySelector('.hero h1');
+  if (h1) {
+    var html = h1.innerHTML;
+    var tokens = html.match(/<em[^>]*>[^<]*<\/em>|\S+|\s+/g) || [];
+    h1.innerHTML = tokens.map(function(t) {
+      return /^\s+$/.test(t) ? ' ' : '<span class="mb-word">' + t + '</span>';
+    }).join('');
+  }
+
+  document.body.classList.add('mb-entry');
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      document.body.classList.add('mb-go');
+      setTimeout(function() {
+        document.body.classList.remove('mb-entry', 'mb-go');
+        try { sessionStorage.setItem('mb_entered_v2', '1'); } catch(e) {}
+      }, 3500);
+    });
+  });
 })();
 
 /* ─── Phone parallax — each .phone gets a translateY based on its position
