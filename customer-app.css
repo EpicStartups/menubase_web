@@ -1,5 +1,8 @@
 /* Customer QR App-specific styles */
 
+/* Constrain root viewport so embedded compact mode + standalone both work */
+html, body { height: 100%; }
+
 .cust-app-root {
   min-height: 100vh;
   background: transparent;
@@ -736,11 +739,12 @@
 /* Compact mode for embedded mechanic demo viewports */
 .cust-app-root.compact {
   min-height: 100%;
-  height: 100%;
+  height: 100dvh;
   background: transparent;
   padding: 0;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 [data-theme="dark"] .cust-app-root.compact {
   background: transparent;
