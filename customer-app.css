@@ -408,7 +408,7 @@ html, body { height: 100%; }
   font-family: var(--font-sans);
 }
 
-/* SPIN WHEEL — conic-gradient slices + counter-rotated labels */
+/* SPIN WHEEL - conic-gradient slices + counter-rotated labels */
 .spin-wrap {
   position: relative;
   width: 220px;
