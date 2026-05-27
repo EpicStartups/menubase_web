@@ -39,6 +39,26 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+
+/* ─── SCROLL-SNAP MOMENTS — desktop only, proximity (not mandatory) ───
+   Creates gentle "pause here" anchors on the four most important sections:
+   hero, live demo, lime manifesto, founding CTA. Uses proximity not
+   mandatory so the user is never fought; scroll-snap-stop: normal lets
+   fast scrolls fly past. Gated to (hover: hover) so iOS Safari, which
+   handles snap inconsistently on touch, is unaffected. */
+@media (hover: hover) and (min-width: 901px) {
+  html {
+    scroll-snap-type: y proximity;
+    scroll-padding-top: 56px; /* top-ribbon height */
+  }
+  .hero, .demo, .manifesto, .cta-shell {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-snap-type: none; }
+}
 body {
   font-family: var(--font-body);
   background: var(--bg);
