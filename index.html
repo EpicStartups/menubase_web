@@ -319,8 +319,19 @@ button { font-family: inherit; cursor: pointer; border: 0; background: none; col
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
 }
-/* Make all main content sit above the background texture layers */
-section.hero, section.block, .marquee, .demo, .calc-shell, .cta-shell, .faq-shell, footer.foot, .top-ribbon, nav.top {
+/* Make all main content sit above the background texture layers.
+   The .bg-pixels container is z-index: 2, so all sections must also be
+   z-index: 2 (with position: relative establishing a stacking context)
+   so lime particles don't drift over their text. */
+section.hero,
+section.block,
+section.problem-block,
+section.compare-block,
+section.testi-block,
+section.roadmap-block,
+section.manifesto,
+.marquee, .demo, .calc-shell, .cta-shell, .faq-shell,
+footer.foot, .top-ribbon, nav.top {
   position: relative;
   z-index: 2;
 }
