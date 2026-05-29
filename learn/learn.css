@@ -77,8 +77,8 @@ main, .top-ribbon, nav.top, footer.foot { position: relative; z-index: 1; }
 }
 .has-bg-scrim.scrim-dark::before {
   background: radial-gradient(120% 130% at 50% 50%,
-    var(--ink) 45%,
-    color-mix(in oklab, var(--ink) 55%, transparent) 72%,
+    var(--ink-deep) 45%,
+    color-mix(in oklab, var(--ink-deep) 55%, transparent) 72%,
     transparent 100%);
 }
 

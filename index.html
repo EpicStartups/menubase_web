@@ -274,11 +274,13 @@ body::before, body::after { display: none !important; }
     color-mix(in oklab, var(--bg) 55%, transparent) 72%,
     transparent 100%);
 }
-/* Dark-section variant: scrim uses ink so dark sections stay legible */
+/* Dark-section variant: scrim must be deep dark so light text over dark
+   spot sections (.demo, .cta-shell) stays legible. var(--ink) flipped to
+   light in dark mode, so we use --ink-deep here. */
 .has-bg-scrim.scrim-dark::before {
   background: radial-gradient(120% 130% at 50% 50%,
-    var(--ink) 45%,
-    color-mix(in oklab, var(--ink) 55%, transparent) 72%,
+    var(--ink-deep) 45%,
+    color-mix(in oklab, var(--ink-deep) 55%, transparent) 72%,
     transparent 100%);
 }
 /* Lime-section variant: scrim uses lime for the manifesto */
@@ -1039,8 +1041,8 @@ section.block.tight { padding: 80px 28px; }
   gap: 80px;
   align-items: center;
 }
-.demo-side { color: var(--bg); }
-.demo-side .eyebrow { color: rgba(255,255,255,0.6); }
+.demo-side { color: #F2F2EE; }
+.demo-side .eyebrow { color: rgba(242,242,238,0.65); }
 .demo-side .eyebrow::before { background: var(--lime); }
 .demo-side h2 {
   font-family: var(--font-display);
@@ -1049,7 +1051,7 @@ section.block.tight { padding: 80px 28px; }
   line-height: 0.98;
   letter-spacing: -0.035em;
   margin: 18px 0 22px;
-  color: var(--bg);
+  color: #F2F2EE;
 }
 .demo-side h2 em { font-style: normal; color: var(--lime); }
 .demo-side .lede {
@@ -1078,7 +1080,7 @@ section.block.tight { padding: 80px 28px; }
   white-space: nowrap;
   letter-spacing: -0.005em;
 }
-.chip:hover { border-color: rgba(255,255,255,0.4); color: var(--bg); }
+.chip:hover { border-color: rgba(255,255,255,0.4); color: #F2F2EE; }
 .chip.on { background: var(--lime); color: #1A1A1A; border-color: var(--lime); font-weight: 600; }
 
 .demo-annot {
@@ -1099,7 +1101,7 @@ section.block.tight { padding: 80px 28px; }
   font-family: var(--font-display);
   font-weight: 600; font-size: 18px;
   letter-spacing: -0.015em;
-  color: var(--bg);
+  color: #F2F2EE;
   margin-bottom: 8px;
 }
 .demo-annot .d {
@@ -1266,7 +1268,7 @@ section.block.tight { padding: 80px 28px; }
   line-height: 0.96;
   letter-spacing: -0.035em;
   margin: 18px 0 22px;
-  color: var(--bg);
+  color: #F2F2EE;
 }
 .cta-text h2 em { font-style: normal; color: var(--lime); }
 .cta-text p {
@@ -1295,7 +1297,7 @@ section.block.tight { padding: 80px 28px; }
 .founding-card .pill {
   display: inline-block;
   background: var(--lime);
-  color: var(--ink);
+  color: #1A1A1A;
   font-family: var(--font-mono);
   font-size: 10px; font-weight: 700;
   letter-spacing: 0.14em;
@@ -1308,7 +1310,7 @@ section.block.tight { padding: 80px 28px; }
   letter-spacing: -0.025em;
   line-height: 1.05;
   margin-bottom: 14px;
-  color: var(--bg);
+  color: #F2F2EE;
 }
 .founding-card h4 em { font-style: normal; color: var(--lime); }
 .founding-card ul { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
