@@ -12,9 +12,27 @@
     </image:image>
   </url>
   <url>
-    <loc>https://menubase.io/contact-us.html</loc>
+    <loc>https://menubase.io/learn/</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://menubase.io/learn/why-restaurant-staff-dont-upsell.html</loc>
+    <lastmod>2026-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://menubase.io/learn/how-to-increase-average-order-value-malaysia.html</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://menubase.io/contact-us.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://menubase.io/privacy-policy.html</loc>
