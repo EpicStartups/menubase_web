@@ -41,8 +41,34 @@ a { color: inherit; text-decoration: none; }
 ::selection { background: var(--lime); color: var(--ink); }
 
 /* ─── ANIMATED CANVAS BG (menubase-bg.js) ─── */
-#mb-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; display: block; }
+#mb-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; display: block; opacity: 0.7; }
 main, .top-ribbon, nav.top, footer.foot { position: relative; z-index: 1; }
+
+/* ─── LEGIBILITY SCRIM ─── */
+.has-bg-scrim { position: relative; z-index: 1; }
+.has-bg-scrim::before {
+  content: '';
+  position: absolute;
+  inset: -24px -36px;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(120% 130% at 50% 50%,
+    var(--bg) 45%,
+    color-mix(in oklab, var(--bg) 55%, transparent) 72%,
+    transparent 100%);
+}
+.has-bg-scrim.scrim-soft::before {
+  background: radial-gradient(120% 130% at 50% 50%,
+    var(--bg-soft) 45%,
+    color-mix(in oklab, var(--bg-soft) 55%, transparent) 72%,
+    transparent 100%);
+}
+.has-bg-scrim.scrim-dark::before {
+  background: radial-gradient(120% 130% at 50% 50%,
+    var(--ink) 45%,
+    color-mix(in oklab, var(--ink) 55%, transparent) 72%,
+    transparent 100%);
+}
 
 /* ─── BUTTONS (mirror main site) ─── */
 .btn {

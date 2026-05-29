@@ -246,10 +246,45 @@ body::before {
 }
 
 /* ─── ANIMATED CANVAS BG (menubase-bg.js, replaces the old aurora layers) ─── */
-#mb-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; display: block; }
+#mb-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; display: block; opacity: 0.7; }
 
 /* Old aurora pseudo-element is now redundant - canvas draws the background. */
 body::before, body::after { display: none !important; }
+
+/* ─── LEGIBILITY SCRIM (sits between bg canvas and primary text blocks) ─── */
+.has-bg-scrim { position: relative; z-index: 1; }
+.has-bg-scrim::before {
+  content: '';
+  position: absolute;
+  inset: -24px -36px;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(120% 130% at 50% 50%,
+    var(--bg) 45%,
+    color-mix(in oklab, var(--bg) 55%, transparent) 72%,
+    transparent 100%);
+}
+/* Dark-section variant: scrim uses ink so dark sections stay legible */
+.has-bg-scrim.scrim-dark::before {
+  background: radial-gradient(120% 130% at 50% 50%,
+    var(--ink) 45%,
+    color-mix(in oklab, var(--ink) 55%, transparent) 72%,
+    transparent 100%);
+}
+/* Lime-section variant: scrim uses lime for the manifesto */
+.has-bg-scrim.scrim-lime::before {
+  background: radial-gradient(120% 130% at 50% 50%,
+    var(--lime) 45%,
+    color-mix(in oklab, var(--lime) 55%, transparent) 72%,
+    transparent 100%);
+}
+/* Soft-bg variant: scrim uses bg-soft to match calc + trust strip panels */
+.has-bg-scrim.scrim-soft::before {
+  background: radial-gradient(120% 130% at 50% 50%,
+    var(--bg-soft) 45%,
+    color-mix(in oklab, var(--bg-soft) 55%, transparent) 72%,
+    transparent 100%);
+}
 
 /* Layer B: primary aurora - LEGACY, hidden by the override above */
 body::after {
@@ -1821,7 +1856,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
 <section class="hero hero-grid" id="top">
   <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-inner">
-    <div class="hero-text reveal">
+    <div class="hero-text reveal has-bg-scrim">
       <span class="eyebrow">THE AI WAITER, LIVE IN MALAYSIA</span>
       <h1>The waiter you <em>wish</em> you could hire.</h1>
       <p class="sub">Lifts revenue on every order. Speaks every Malaysian language. Sits on top of any POS you already use.</p>
@@ -1867,7 +1902,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
 
 <!-- ─── PROBLEM (foreign-worker truth) ─── -->
 <section class="problem-block" id="problem">
-  <div class="section-head reveal">
+  <div class="section-head reveal has-bg-scrim">
     <span class="eyebrow">WHERE THE REVENUE GOES MISSING</span>
     <h2>Upselling was never going to be a <em>human job.</em></h2>
     <p class="lede">Your team runs service, handles chaos, takes care of guests. Asking them to also do perfect upselling - in every language, on every check, every shift - was never realistic. Four reasons it leaks revenue everywhere.</p>
@@ -1926,7 +1961,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
 
 <!-- ─── PILLARS (3 features, alternating side-by-side) ─── -->
 <section class="block" id="features">
-  <div class="section-head reveal">
+  <div class="section-head reveal has-bg-scrim">
     <span class="eyebrow">WHAT WE TAKE OFF YOUR PLATE</span>
     <h2>The smartest waiter does <em>three things.</em></h2>
     <p class="lede">Three jobs that need perfect timing, perfect language, every single check. Three jobs MenuBase does automatically - so your team gets to focus on the room.</p>
@@ -1993,7 +2028,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
 <!-- ─── LIVE DEMO (dark inverse) ─── -->
 <div class="demo" id="demo">
   <div class="demo-inner">
-    <div class="demo-side">
+    <div class="demo-side has-bg-scrim scrim-dark">
       <span class="eyebrow">TRY IT NOW</span>
       <h2>This isn't a mock-up. <em>Try every feature.</em></h2>
       <p class="lede">The phone on the right is the real MenuBase customer app. Tap any scenario to see a different feature fire live, no signup, no fluff, just the product.</p>
@@ -2026,7 +2061,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
 
 <!-- ─── COMPARISON TABLE (we're not a POS) ─── -->
 <section class="compare-block" id="compare">
-  <div class="section-head reveal">
+  <div class="section-head reveal has-bg-scrim">
     <span class="eyebrow">HOW WE COMPARE</span>
     <h2>We're not a POS. <em>That's the point.</em></h2>
     <p class="lede">If you've been comparing us to your cash register, you've been comparing us to the wrong thing. Your POS records sales. MenuBase is the AI waiter that sits on top of it.</p>
@@ -2092,7 +2127,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
 
 <!-- ─── TESTIMONIALS ─── -->
 <section class="testi-block" id="testimonials">
-  <div class="section-head center reveal">
+  <div class="section-head center reveal has-bg-scrim">
     <span class="eyebrow">FROM OUR DISCOVERY INTERVIEWS</span>
     <h2>What operators kept <em>telling us.</em></h2>
     <p class="lede">Before writing a single line of code, we sat down with café, kopitiam and mamak operators across Klang Valley. The same three problems came up in every conversation.</p>
@@ -2128,7 +2163,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
 <!-- ─── CALCULATOR ─── -->
 <div class="calc-shell" id="calc">
   <div class="calc-inner">
-    <div class="reveal">
+    <div class="reveal has-bg-scrim scrim-soft">
       <span class="eyebrow">UPSELL CALCULATOR</span>
       <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(34px,5vw,56px);line-height:0.98;letter-spacing:-0.035em;margin:16px 0 18px;max-width:14ch;">Run <em style="font-style:normal;color:var(--lime-deep);">your own</em> numbers.</h2>
       <p style="font-size:17px;color:var(--grey);max-width:440px;line-height:1.55;margin-bottom:20px;">Most cafes leave 8-12% on the table because the upsell job slips through every shift. Move the sliders. See your monthly uplift in real time. No email gate, no signup, just math.</p>
@@ -2168,7 +2203,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
 <!-- ─── FOUNDING CTA ─── -->
 <div class="cta-shell" id="book">
   <div class="cta-inner">
-    <div class="cta-text reveal">
+    <div class="cta-text reveal has-bg-scrim scrim-dark">
       <span class="eyebrow">TALK TO US</span>
       <h2>More revenue per order. <em>Same team you have today.</em></h2>
       <p>Show us your menu. We'll model the revenue uplift on your real basket and walk through how MenuBase runs alongside your team.</p>
@@ -2208,7 +2243,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
   <div class="manifesto-pixels" aria-hidden="true">
     <span></span><span></span><span></span><span></span><span></span><span></span>
   </div>
-  <div class="manifesto-inner">
+  <div class="manifesto-inner has-bg-scrim scrim-lime">
     <div class="manifesto-eyebrow">The bottom line</div>
     <h2>Run the room. <br/>Let the screen run the <em>suggestions.</em></h2>
     <p>Restaurants live or die on the food, the room, the regulars. That's where your team's attention belongs. We'll handle the part nobody enjoyed doing anyway - perfect upselling, every check, every shift.</p>
@@ -2228,31 +2263,31 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
   </div>
 
   <div class="faq-list">
-    <details class="faq-item">
+    <details class="faq-item has-bg-scrim">
       <summary>Do I need to replace my POS?</summary>
       <div class="faq-answer">No. MenuBase sits on top of whatever POS you already use - orders come out on a waiter tablet, and the waiter types them into the POS exactly the way they do today. Your billing, sales reports and accounting stay where they are.</div>
     </details>
-    <details class="faq-item">
+    <details class="faq-item has-bg-scrim">
       <summary>How long does setup take?</summary>
       <div class="faq-answer">Same day. We come in with your existing menu PDF, build the digital version in MenuBase, generate your table QR codes and walk your team through the waiter tablet. You're live by end of service.</div>
     </details>
-    <details class="faq-item">
+    <details class="faq-item has-bg-scrim">
       <summary>Do my customers need to download an app?</summary>
       <div class="faq-answer">Never. MenuBase opens in the browser the moment they scan the QR. Works on every smartphone made in the last decade. No login, no signup, no email capture, just the menu and an upsell that doesn't feel like one.</div>
     </details>
-    <details class="faq-item">
+    <details class="faq-item has-bg-scrim">
       <summary>What languages does the AI waiter speak?</summary>
       <div class="faq-answer">English, Bahasa Malaysia, Mandarin and Tamil out of the box. Customer picks once, the whole menu and every suggestion auto-translates. We can add Arabic, Vietnamese, Burmese, Tagalog, most launch-ready within a week.</div>
     </details>
-    <details class="faq-item">
+    <details class="faq-item has-bg-scrim">
       <summary>How does the upsell actually work?</summary>
       <div class="faq-answer">It's a single suggestion shown at the right moment, not random popups. We look at the items already in the basket, the time of day, and what has actually converted on similar baskets before. Then we surface one item. Customer taps to add. No staff awkwardness, no pressure on the customer.</div>
     </details>
-    <details class="faq-item">
+    <details class="faq-item has-bg-scrim">
       <summary>What does it cost?</summary>
       <div class="faq-answer">Free until we prove the revenue lift on your own menu. Pay only on results. After uplift is proven, transparent monthly pricing locked in for the life of your account. We'll cover the numbers on the demo call.</div>
     </details>
-    <details class="faq-item">
+    <details class="faq-item has-bg-scrim">
       <summary>What if my team isn't tech-savvy?</summary>
       <div class="faq-answer">Then MenuBase is built for you. The waiter only ever sees a list of items on a tablet and types it into the POS, the same job they already do. We're explicitly designed so foreign-worker, transient and shift-rotation staff need zero training to operate it.</div>
     </details>
@@ -2262,7 +2297,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
 </main>
 
 <!-- ─── FOOTER ─── -->
-<footer class="foot">
+<footer class="foot has-bg-scrim scrim-soft">
   <div class="foot-inner">
     <div class="foot-brand">
       <a href="#top" class="brand" aria-label="MenuBase">
@@ -2563,6 +2598,9 @@ setTimeout(() => {
   }, { passive: true });
 })();
 </script>
+
+<!-- ─── INK SPOTLIGHT on the dark Try-it-now #demo section ─── -->
+<script src="/menubase-ink.js" data-target="#demo"></script>
 
 </body>
 </html>
