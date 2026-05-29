@@ -318,19 +318,8 @@ nav.top { z-index: 50; }
   display: flex;
   align-items: center;
 }
-.top-ribbon .brand { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; }
-.top-ribbon .brand .logo-mark { height: 26px; width: auto; display: block; flex-shrink: 0; color: var(--lime-deep); }
-.top-ribbon .brand .logo-mark svg { height: 100%; width: auto; display: block; }
-.top-ribbon .brand .logo-text {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 22px;
-  letter-spacing: -0.035em;
-  line-height: 1;
-  color: var(--ink-2);
-  font-feature-settings: 'kern' 1;
-}
-.top-ribbon .brand .logo-text em { font-style: normal; color: var(--lime-deep); font-weight: 800; }
+.top-ribbon .brand { display: inline-flex; align-items: center; text-decoration: none; }
+.top-ribbon .brand .brand-lockup { height: 26px; width: auto; display: block; }
 .top-ribbon-login {
   margin-left: auto;
   display: inline-flex;
@@ -990,19 +979,8 @@ footer.foot {
   grid-template-columns: 1.4fr repeat(3, 1fr);
   gap: 56px;
 }
-.foot-brand .brand { display: inline-flex; align-items: center; gap: 9px; text-decoration: none; }
-.foot-brand .brand .logo-mark { height: 26px; width: auto; display: block; flex-shrink: 0; color: var(--lime-deep); }
-.foot-brand .brand .logo-mark svg { height: 100%; width: auto; display: block; }
-.foot-brand .brand .logo-text {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 22px;
-  letter-spacing: -0.035em;
-  line-height: 1;
-  color: var(--ink-2);
-  font-feature-settings: 'kern' 1;
-}
-.foot-brand .brand .logo-text em { font-style: normal; color: var(--lime-deep); font-weight: 800; }
+.foot-brand .brand { display: inline-flex; align-items: center; text-decoration: none; }
+.foot-brand .brand .brand-lockup { height: 30px; width: auto; display: block; }
 .foot-brand p {
   font-size: 14px;
   color: var(--grey);
@@ -1126,8 +1104,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
   .nav-links { display: none; }
   .nav-cta .btn { padding: 9px 14px; font-size: 12.5px; }
   .top-ribbon-inner { padding: 12px 20px; }
-  .top-ribbon .brand .logo-mark { height: 24px; }
-  .top-ribbon .brand .logo-text { font-size: 20px; }
+  .top-ribbon .brand .brand-lockup { height: 24px; }
 
   .hero { padding: 56px 22px 40px; }
   .hero h1 { font-size: clamp(40px, 9vw, 64px); }
@@ -1181,8 +1158,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
   .nav-cta { width: 100%; }
   .nav-cta .btn { flex: 1; justify-content: center; padding: 10px 14px; font-size: 12.5px; }
   .top-ribbon-inner { padding: 10px 16px; }
-  .top-ribbon .brand .logo-mark { height: 22px; }
-  .top-ribbon .brand .logo-text { font-size: 18px; }
+  .top-ribbon .brand .brand-lockup { height: 22px; }
 
   .hero { padding: 40px 18px 32px; }
   .hero .eyebrow { font-size: 10px; margin-bottom: 22px; }
@@ -1572,17 +1548,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
 <div class="top-ribbon">
   <div class="top-ribbon-inner">
     <a href="#top" class="brand" aria-label="MenuBase">
-      <span class="logo-mark">
-        <svg viewBox="0 0 36 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="28" y="0" width="8" height="8"/>
-          <rect x="0" y="8" width="12" height="4"/>
-          <rect x="16" y="8" width="12" height="4"/>
-          <rect x="0" y="8" width="8" height="24"/>
-          <rect x="24" y="8" width="8" height="24"/>
-          <rect x="12" y="12" width="8" height="4"/>
-        </svg>
-      </span>
-      <span class="logo-text">Menu<em>Base</em></span>
+      <img class="brand-lockup" src="menubase-logo-dark.png" alt="MenuBase" width="144" height="26"/>
     </a>
     <a class="top-ribbon-login" href="https://app.menubase.io" target="_blank" rel="noopener">
       Login <span class="arr" aria-hidden="true">→</span>
@@ -2059,17 +2025,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
   <div class="foot-inner">
     <div class="foot-brand">
       <a href="#top" class="brand" aria-label="MenuBase">
-        <span class="logo-mark">
-          <svg viewBox="0 0 36 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="28" y="0" width="8" height="8"/>
-            <rect x="0" y="8" width="12" height="4"/>
-            <rect x="16" y="8" width="12" height="4"/>
-            <rect x="0" y="8" width="8" height="24"/>
-            <rect x="24" y="8" width="8" height="24"/>
-            <rect x="12" y="12" width="8" height="4"/>
-          </svg>
-        </span>
-        <span class="logo-text">Menu<em>Base</em></span>
+        <img class="brand-lockup" src="menubase-logo-dark.png" alt="MenuBase" width="166" height="30"/>
       </a>
       <p>The AI waiter that lives in your QR menu. Speaks every language, never forgets the specials, always upsells at the right moment.</p>
     </div>
