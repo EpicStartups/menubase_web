@@ -2115,23 +2115,25 @@ footer.foot {
 <div class="top-ribbon">
   <div class="top-ribbon-inner">
     <a href="#top" class="brand" aria-label="MenuBase">
-      <svg class="brand-lockup" viewBox="0 0 260 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MenuBase">
-        <!-- M icon: two outer lime bars, lime top horns, dark grey shoulders + center -->
+      <svg class="brand-lockup" viewBox="0 0 280 44" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MenuBase">
+        <!-- M icon: thicker outer lime bars + horns, light-grey shoulders + center
+             (light grey replaces the original dark grey, which was the correct color
+             for the dark-on-light brand variant but invisible on the dark page) -->
         <g>
-          <!-- Outer lime vertical bars -->
-          <rect x="0"  y="4"  width="6" height="32" rx="1" fill="#BCF125"/>
-          <rect x="24" y="4"  width="6" height="32" rx="1" fill="#BCF125"/>
+          <!-- Outer lime vertical bars (thicker) -->
+          <rect x="0"  y="2"  width="9" height="40" rx="1.5" fill="#BCF125"/>
+          <rect x="29" y="2"  width="9" height="40" rx="1.5" fill="#BCF125"/>
           <!-- Top lime horns -->
-          <rect x="6"  y="4"  width="6" height="6" rx="1" fill="#BCF125"/>
-          <rect x="18" y="4"  width="6" height="6" rx="1" fill="#BCF125"/>
-          <!-- Dark grey shoulders -->
-          <rect x="6"  y="10" width="6" height="6" rx="1" fill="#6E6E72"/>
-          <rect x="18" y="10" width="6" height="6" rx="1" fill="#6E6E72"/>
-          <!-- Dark grey center V -->
-          <rect x="12" y="16" width="6" height="6" rx="1" fill="#6E6E72"/>
+          <rect x="9"  y="2"  width="9" height="9" rx="1.5" fill="#BCF125"/>
+          <rect x="20" y="2"  width="9" height="9" rx="1.5" fill="#BCF125"/>
+          <!-- Light grey shoulders (the M's inner detail) -->
+          <rect x="9"  y="13" width="9" height="9" rx="1.5" fill="#F2F2EE"/>
+          <rect x="20" y="13" width="9" height="9" rx="1.5" fill="#F2F2EE"/>
+          <!-- Light grey center V -->
+          <rect x="14" y="24" width="9" height="9" rx="1.5" fill="#F2F2EE"/>
         </g>
-        <!-- Wordmark text -->
-        <text x="42" y="30" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="800" font-size="28" letter-spacing="-0.02em">
+        <!-- Wordmark text (heavier weight + slightly larger for more presence) -->
+        <text x="48" y="33" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="900" font-size="30" letter-spacing="-0.025em">
           <tspan fill="#F2F2EE">Menu</tspan><tspan fill="#BCF125">Base</tspan>
         </text>
       </svg>
