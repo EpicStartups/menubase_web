@@ -1772,6 +1772,16 @@ footer.foot {
 .cell-check { color: var(--lime); }
 .cell-x { color: var(--ink-2); opacity: 0.55; }
 .cell-tilde { color: var(--grey); opacity: 0.65; }
+.cell-note {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  opacity: 0.5;
+  margin-top: 4px;
+  font-weight: 500;
+}
 @media (max-width: 700px) {
   .compare-table { font-size: 12.5px; }
   .compare-table th, .compare-table td { padding: 12px 14px; }
@@ -2381,7 +2391,7 @@ footer.foot {
         <tr>
           <td class="feat"><strong>Requires you to replace your POS</strong><small>The painful integration project no one wants</small></td>
           <td class="mb-col"><strong style="color:var(--lime-deep);font-family:var(--font-mono);">NO</strong></td>
-          <td><span class="cell-x">✗ they ARE the POS</span></td>
+          <td><span class="cell-x">✗</span><div class="cell-note">they ARE the POS</div></td>
           <td><strong style="color:var(--grey);font-family:var(--font-mono);">no</strong></td>
         </tr>
         <tr>
