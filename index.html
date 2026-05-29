@@ -1166,10 +1166,13 @@ section.block.tight { padding: 80px 28px; }
   stroke-linecap: round;
   stroke-width: 1.8;
 }
+.syn-center-node { opacity: 0; transform-origin: 160px 160px; transform-box: view-box; }
+.syn-glow { opacity: 0; transform-origin: 160px 160px; transform-box: view-box; }
 .syn-result-group { opacity: 0; }
-.syn-center-node, .syn-glow { transform-origin: 160px 160px; transform-box: fill-box; }
 
 /* When .syn-playing class is on the SVG: run the 3-phase sequence */
+
+/* Phase 1: 4 corner aspects fade in, staggered */
 .syn-playing .syn-input {
   animation: syn-fade-in 380ms ease forwards;
 }
@@ -1178,7 +1181,13 @@ section.block.tight { padding: 80px 28px; }
 .syn-playing .syn-input[data-input="2"] { animation-delay: 0.20s; }
 .syn-playing .syn-input[data-input="3"] { animation-delay: 0.30s; }
 
-/* Phase 2: lines draw in after inputs are settled (~600ms) */
+/* Phase 2a: centre node appears just before the lines start drawing */
+.syn-playing .syn-center-node {
+  animation: syn-fade-in 300ms ease forwards;
+  animation-delay: 0.55s;
+}
+
+/* Phase 2b: lines draw in toward centre node */
 .syn-playing .syn-line {
   stroke-opacity: 0.95;
   animation: syn-connect 700ms cubic-bezier(.4, 0, .2, 1) forwards;
@@ -1192,15 +1201,28 @@ section.block.tight { padding: 80px 28px; }
   to   { stroke-dashoffset: 0;   }
 }
 
-/* Phase 3: result block pops in after lines arrive (~1.6s) */
+/* Phase 3a: glow flashes ON at convergence moment, then fades away.
+   This is the "data arrived" pulse - it does NOT persist through the
+   hold phase, so the intermediate states stay clean. */
+.syn-playing .syn-glow {
+  animation: syn-glow-burst 1.4s cubic-bezier(.4, 0, .2, 1) forwards;
+  animation-delay: 1.55s;
+}
+@keyframes syn-glow-burst {
+  0%   { opacity: 0;    transform: scale(0.7); }
+  25%  { opacity: 0.55; transform: scale(1.25); }
+  100% { opacity: 0;    transform: scale(1.4); }
+}
+
+/* Phase 3b: result text appears as glow peaks */
 .syn-playing .syn-result-group {
   animation: syn-result-pop 500ms cubic-bezier(.34, 1.56, .64, 1) forwards;
-  animation-delay: 1.6s;
+  animation-delay: 1.65s;
 }
 @keyframes syn-result-pop {
-  0%   { opacity: 0; transform: scale(0.85); transform-origin: 160px 160px; transform-box: view-box; }
+  0%   { opacity: 0; }
   60%  { opacity: 1; }
-  100% { opacity: 1; transform: scale(1); transform-origin: 160px 160px; transform-box: view-box; }
+  100% { opacity: 1; }
 }
 
 @keyframes syn-fade-in {
@@ -2731,14 +2753,14 @@ footer.foot {
             <text x="300" y="294" text-anchor="end" fill="#F2F2EE" font-weight="700" data-syn="day-v">FRIDAY</text>
           </g>
         </g>
-        <!-- Center result group - glow + node + text, appears last -->
-        <g class="syn-result-group">
-          <circle cx="160" cy="160" r="50" fill="#BCF125" opacity="0.30" filter="url(#g1)" class="syn-glow"/>
-          <rect x="155" y="155" width="10" height="10" fill="#BCF125" class="syn-center-node"/>
-          <g font-family="JetBrains Mono, monospace" font-weight="700" class="syn-result">
-            <text x="180" y="160" font-size="13" fill="#F2F2EE" data-syn="result">&#8594; WHITE COFFEE</text>
-            <text x="180" y="178" font-size="11" fill="#BCF125" data-syn="accept">89% ACCEPT</text>
-          </g>
+        <!-- Glow - only flashes briefly at the moment of convergence -->
+        <circle cx="160" cy="160" r="50" fill="#BCF125" filter="url(#g1)" class="syn-glow"/>
+        <!-- Center node - appears as the lines start drawing (with Phase 2) -->
+        <rect x="155" y="155" width="10" height="10" fill="#BCF125" class="syn-center-node"/>
+        <!-- Result text - appears when lines have fully converged (Phase 3) -->
+        <g font-family="JetBrains Mono, monospace" font-weight="700" class="syn-result-group">
+          <text x="180" y="160" font-size="13" fill="#F2F2EE" data-syn="result">&#8594; WHITE COFFEE</text>
+          <text x="180" y="178" font-size="11" fill="#BCF125" data-syn="accept">89% ACCEPT</text>
         </g>
       </svg>
     </div>
