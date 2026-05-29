@@ -1863,11 +1863,13 @@ footer.foot {
   .testi-block { padding: 64px 22px; }
 }
 
-/* ──────────────── LIME MANIFESTO ──────────────── */
+/* ──────────────── DARK MANIFESTO with LIME SPOTLIGHT ──────────────── */
 .manifesto {
-  background: var(--lime);
-  color: var(--ink);
-  padding: 110px 28px;
+  background:
+    radial-gradient(ellipse 1200px 700px at 50% 50%, rgba(188,241,37,0.22) 0%, transparent 62%),
+    var(--ink-deep);
+  color: #F2F2EE;
+  padding: 140px 28px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -1879,16 +1881,17 @@ footer.foot {
   left: 0; right: 0;
   height: 16px;
   background-image:
-    linear-gradient(90deg, #1A1A1A 50%, transparent 50%),
-    linear-gradient(90deg, transparent 50%, #1A1A1A 50%);
+    linear-gradient(90deg, var(--lime) 50%, transparent 50%),
+    linear-gradient(90deg, transparent 50%, var(--lime) 50%);
   background-size: 32px 16px, 32px 16px;
   background-position: 0 0, 16px 8px;
   background-repeat: repeat-x;
+  z-index: 3;
 }
 .manifesto::before { top: 0; }
 .manifesto::after { bottom: 0; }
 .manifesto-inner {
-  max-width: 920px;
+  max-width: 960px;
   margin: 0 auto;
   position: relative;
   z-index: 2;
@@ -1896,11 +1899,12 @@ footer.foot {
 .manifesto-eyebrow {
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   font-weight: 700;
   text-transform: uppercase;
-  color: #1A1A1A;
-  background: rgba(0,0,0,0.10);
+  color: var(--lime);
+  background: rgba(188, 241, 37, 0.10);
+  border: 1px solid rgba(188, 241, 37, 0.30);
   padding: 6px 14px;
   display: inline-block;
   margin-bottom: 32px;
@@ -1908,43 +1912,43 @@ footer.foot {
 .manifesto h2 {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(38px, 6.5vw, 78px);
-  line-height: 1.0;
-  letter-spacing: -0.035em;
-  color: #1A1A1A;
+  font-size: clamp(46px, 7.8vw, 96px);
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  color: #F2F2EE;
   margin-bottom: 28px;
 }
 .manifesto h2 em {
   font-style: normal;
-  color: #F2F2EE;
-  background: #1A1A1A;
-  padding: 0 18px;
+  color: #0A0A0C;
+  background: var(--lime);
+  padding: 0 22px;
   display: inline-block;
   font-weight: 900;
   line-height: 1.05;
+  box-shadow: 0 0 80px rgba(188,241,37,0.55);
 }
 .manifesto p {
   font-size: clamp(16px, 1.8vw, 19px);
-  color: #1A1A1A;
-  max-width: 620px;
+  color: rgba(242, 242, 238, 0.75);
+  max-width: 640px;
   margin: 0 auto 36px;
-  line-height: 1.55;
+  line-height: 1.6;
   font-weight: 500;
 }
-.manifesto-tagline { color: #1A1A1A; }
-.manifesto-tagline strong { color: #1A1A1A; }
 .manifesto-tagline {
   margin-top: 44px;
   padding-top: 24px;
-  border-top: 1px dashed rgba(0,0,0,0.18);
+  border-top: 1px dashed rgba(188, 241, 37, 0.22);
   font-family: var(--font-display);
   font-weight: 600;
   font-size: clamp(18px, 2vw, 22px);
   letter-spacing: -0.015em;
+  color: rgba(242, 242, 238, 0.85);
 }
-.manifesto-tagline strong { font-weight: 900; }
+.manifesto-tagline strong { font-weight: 900; color: var(--lime); }
 .manifesto-pixels { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
-.manifesto-pixels span { position: absolute; background: #1A1A1A; }
+.manifesto-pixels span { position: absolute; background: rgba(188, 241, 37, 0.55); }
 .manifesto-pixels span:nth-child(1) { top: 14%; left: 6%;  width: 16px; height: 16px; }
 .manifesto-pixels span:nth-child(2) { top: 22%; left: 92%; width: 12px; height: 12px; }
 .manifesto-pixels span:nth-child(3) { top: 76%; left: 4%;  width: 10px; height: 10px; }
@@ -2529,7 +2533,7 @@ footer.foot {
     <h2>Run the room. <br/>Let the screen run the <em>suggestions.</em></h2>
     <p>Restaurants live or die on the food, the room, the regulars. That's where your team's attention belongs. We'll handle the part nobody enjoyed doing anyway - perfect upselling, every check, every shift.</p>
     <div class="hero-actions" style="justify-content:center;gap:28px;">
-      <a class="btn btn-dark btn-lg" href="https://wa.me/60175981858" target="_blank" rel="noopener">WhatsApp us &rarr;</a>
+      <a class="btn btn-lime btn-lg" href="https://wa.me/60175981858" target="_blank" rel="noopener">WhatsApp us &rarr;</a>
       <a class="hero-watch" href="#demo">Watch it work</a>
     </div>
     <div class="manifesto-tagline">Business is easy with <strong>MenuBase</strong>.</div>
