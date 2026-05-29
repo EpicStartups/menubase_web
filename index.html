@@ -1763,7 +1763,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
     <div class="hero-stage reveal">
       <div class="phone lg">
         <div class="notch"></div>
-        <iframe src="Customer QR App.html?demo=upsell_popup&items=eb&screen=menu&hour=9&hideDev=1&compact=1&cb=20260529p" title="MenuBase customer menu" loading="lazy"></iframe>
+        <iframe src="Customer QR App.html?demo=upsell_popup&items=eb&screen=menu&hour=9&hideDev=1&compact=1&cb=20260529v" title="MenuBase customer menu" loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1870,7 +1870,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
     <div class="pillar-vis">
       <div class="phone md">
         <div class="notch"></div>
-        <iframe src="Customer QR App.html?demo=upsell_popup&items=eb&screen=checkout&hour=9&hideDev=1&compact=1&cb=20260529p" title="Smart upsell example" loading="lazy"></iframe>
+        <iframe src="Customer QR App.html?demo=upsell_popup&items=eb&screen=checkout&hour=9&hideDev=1&compact=1&cb=20260529v" title="Smart upsell example" loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1889,7 +1889,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
     <div class="pillar-vis">
       <div class="phone md">
         <div class="notch"></div>
-        <iframe src="Customer QR App.html?demo=happy_hour&hour=15&day=1&screen=menu&hideDev=1&compact=1&cb=20260529p" title="Smart promote example" loading="lazy"></iframe>
+        <iframe src="Customer QR App.html?demo=happy_hour&hour=15&day=1&screen=menu&hideDev=1&compact=1&cb=20260529v" title="Smart promote example" loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1908,7 +1908,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
     <div class="pillar-vis">
       <div class="phone md">
         <div class="notch"></div>
-        <iframe src="Customer QR App.html?demo=weather&weather=rain&hour=14&screen=menu&hideDev=1&compact=1&cb=20260529p" title="Dynamic menu example" loading="lazy"></iframe>
+        <iframe src="Customer QR App.html?demo=weather&weather=rain&hour=14&screen=menu&hideDev=1&compact=1&cb=20260529v" title="Dynamic menu example" loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -1942,7 +1942,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
     <div class="demo-stage">
       <div class="phone lg">
         <div class="notch"></div>
-        <iframe id="demo-iframe" src="Customer QR App.html?demo=upsell_popup&items=eb&screen=checkout&hour=9&hideDev=1&compact=1&cb=20260529p" title="MenuBase live demo" loading="lazy"></iframe>
+        <iframe id="demo-iframe" src="Customer QR App.html?demo=upsell_popup&items=eb&screen=checkout&hour=9&hideDev=1&compact=1&cb=20260529v" title="MenuBase live demo" loading="lazy"></iframe>
       </div>
     </div>
   </div>
@@ -2286,7 +2286,7 @@ setTimeout(() => {
       h: 'THRESHOLD REWARD · UNLOCKED',
       t: 'Spend the target, unlock a free item, automatically.',
       d: 'Cart crosses RM50 - a free Almond Croissant drops into the order at RM0. Your waiter rings it through the POS like any normal line. No code, no voucher, no math at the counter.',
-      qs: 'demo=threshold&items=eb,ml,tp&screen=cart&hour=12'
+      qs: 'demo=threshold&items=eb,ml,tp&screen=menu&hour=12'
     },
     happy_hour: {
       h: 'HAPPY HOUR · LIVE',
@@ -2336,9 +2336,9 @@ setTimeout(() => {
       }, 180);
       // Navigate via location.replace to avoid preview-token mismatch on iframe.src set
       try {
-        iframe.contentWindow.location.replace('Customer QR App.html?' + s.qs + '&hideDev=1&compact=1&cb=20260529p');
+        iframe.contentWindow.location.replace('Customer QR App.html?' + s.qs + '&hideDev=1&compact=1&cb=20260529v');
       } catch (e) {
-        iframe.src = 'Customer QR App.html?' + s.qs + '&hideDev=1&compact=1&cb=20260529p';
+        iframe.src = 'Customer QR App.html?' + s.qs + '&hideDev=1&compact=1&cb=20260529v';
       }
     });
   });

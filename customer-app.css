@@ -194,32 +194,32 @@ html, body { height: 100%; }
 }
 
 .cust-menu {
-  padding: 0 14px 14px;
+  padding: 0 12px 12px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 }
 
 .cust-item-row {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px;
+  gap: 9px;
+  padding: 8px 9px;
   background: var(--bg-elev);
   border: 1px solid var(--line);
   border-radius: var(--r-md);
 }
-.cust-item-emoji { font-size: 24px; flex-shrink: 0; }
+.cust-item-emoji { font-size: 20px; flex-shrink: 0; }
 .cust-item-info { flex: 1; min-width: 0; }
-.cust-item-info strong { display: block; font-size: 12.5px; line-height: 1.2; }
-.cust-item-cat { font-size: 10px; color: var(--ink-3); }
+.cust-item-info strong { display: block; font-size: 11px; line-height: 1.2; }
+.cust-item-cat { font-size: 9px; color: var(--ink-3); }
 .cust-item-price {
   display: flex;
   align-items: center;
-  gap: 5px;
-  margin-top: 3px;
+  gap: 4px;
+  margin-top: 2px;
   font-family: var(--font-mono);
-  font-size: 11.5px;
+  font-size: 10.5px;
   flex-wrap: wrap;
 }
 .cust-item-price s { color: var(--ink-4); }
@@ -244,9 +244,9 @@ html, body { height: 100%; }
   background: var(--ink);
   color: var(--bg-elev);
   border: none;
-  width: 36px; height: 36px;
+  width: 28px; height: 28px;
   border-radius: 50%;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   flex-shrink: 0;
@@ -259,18 +259,18 @@ html, body { height: 100%; }
   align-items: center;
   background: var(--ink);
   border-radius: 999px;
-  padding: 3px;
+  padding: 2px;
   flex-shrink: 0;
-  gap: 2px;
+  gap: 1px;
 }
 .qty-step-btn {
-  width: 30px;
-  height: 30px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: transparent;
   color: var(--bg-elev);
   border: none;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 700;
   line-height: 1;
   cursor: pointer;
@@ -283,9 +283,9 @@ html, body { height: 100%; }
 .qty-step-btn:hover { background: rgba(255, 255, 255, 0.12); }
 .qty-step-btn:active { background: rgba(255, 255, 255, 0.22); }
 .qty-step-num {
-  min-width: 20px;
+  min-width: 16px;
   text-align: center;
-  font-size: 13px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--bg-elev);
   font-family: var(--font-mono);
