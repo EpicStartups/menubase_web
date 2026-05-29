@@ -1046,6 +1046,16 @@ section.block.tight { padding: 80px 28px; }
   display: flex; justify-content: center; align-items: center;
   position: relative;
 }
+.pillar-illust {
+  width: min(380px, 100%);
+  height: auto;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  z-index: 1;
+}
+.pillar-illust rect[fill="#BCF125"] { animation: pi-pulse 3.4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
+@keyframes pi-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+@media (prefers-reduced-motion: reduce) { .pillar-illust rect[fill="#BCF125"] { animation: none; } }
 .pillar-vis::before {
   content: '';
   position: absolute;
@@ -2414,10 +2424,42 @@ footer.foot {
       </ul>
     </div>
     <div class="pillar-vis">
-      <div class="phone md">
-        <div class="notch"></div>
-        <iframe src="Customer QR App.html?demo=upsell_popup&items=eb&screen=checkout&hour=9&hideDev=1&compact=1&cb=20260529x" title="Smart upsell example" loading="lazy"></iframe>
-      </div>
+      <svg class="pillar-illust" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <filter id="g1" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="14"/>
+          </filter>
+        </defs>
+        <!-- Connection lines from inputs to result -->
+        <g stroke="#BCF125" stroke-width="1" stroke-opacity="0.55" fill="none">
+          <line x1="50" y1="70" x2="160" y2="160"/>
+          <line x1="270" y1="70" x2="160" y2="160"/>
+          <line x1="50" y1="250" x2="160" y2="160"/>
+          <line x1="270" y1="250" x2="160" y2="160"/>
+        </g>
+        <!-- Input nodes -->
+        <g font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.12em">
+          <rect x="46" y="66" width="8" height="8" fill="#F2F2EE"/>
+          <text x="20" y="50" fill="#7E7E82">BASKET</text>
+          <text x="20" y="62" fill="#F2F2EE" font-weight="700">EGGS BENEDICT</text>
+          <rect x="266" y="66" width="8" height="8" fill="#F2F2EE"/>
+          <text x="300" y="50" text-anchor="end" fill="#7E7E82">TIME</text>
+          <text x="300" y="62" text-anchor="end" fill="#F2F2EE" font-weight="700">9:42 AM</text>
+          <rect x="46" y="246" width="8" height="8" fill="#F2F2EE"/>
+          <text x="20" y="282" fill="#7E7E82">HISTORY</text>
+          <text x="20" y="294" fill="#F2F2EE" font-weight="700">LOVES SPICY</text>
+          <rect x="266" y="246" width="8" height="8" fill="#F2F2EE"/>
+          <text x="300" y="282" text-anchor="end" fill="#7E7E82">DAY</text>
+          <text x="300" y="294" text-anchor="end" fill="#F2F2EE" font-weight="700">FRIDAY</text>
+        </g>
+        <!-- Center result + lime glow -->
+        <circle cx="160" cy="160" r="50" fill="#BCF125" opacity="0.30" filter="url(#g1)"/>
+        <rect x="155" y="155" width="10" height="10" fill="#BCF125"/>
+        <g font-family="JetBrains Mono, monospace" font-weight="700">
+          <text x="180" y="160" font-size="13" fill="#F2F2EE">&#8594; WHITE COFFEE</text>
+          <text x="180" y="178" font-size="11" fill="#BCF125">89% ACCEPT</text>
+        </g>
+      </svg>
     </div>
   </div>
 
@@ -2433,10 +2475,62 @@ footer.foot {
       </ul>
     </div>
     <div class="pillar-vis">
-      <div class="phone md">
-        <div class="notch"></div>
-        <iframe src="Customer QR App.html?demo=happy_hour&hour=15&day=1&screen=menu&hideDev=1&compact=1&cb=20260529x" title="Smart promote example" loading="lazy"></iframe>
-      </div>
+      <svg class="pillar-illust" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <filter id="g2" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="10"/>
+          </filter>
+        </defs>
+        <!-- Source lime push button -->
+        <circle cx="160" cy="60" r="40" fill="#BCF125" opacity="0.22" filter="url(#g2)"/>
+        <rect x="120" y="40" width="80" height="44" rx="6" fill="#BCF125"/>
+        <g font-family="JetBrains Mono, monospace" font-weight="700" text-anchor="middle">
+          <text x="160" y="56" font-size="9" fill="#0A0A0C" letter-spacing="0.14em">9:00 AM</text>
+          <text x="160" y="74" font-size="13" fill="#0A0A0C">PUSH</text>
+        </g>
+        <!-- Fan-out lines -->
+        <g stroke="#BCF125" stroke-width="1" stroke-dasharray="3,4" stroke-opacity="0.5" fill="none">
+          <path d="M 140 82 L 50 200"/>
+          <path d="M 150 82 L 115 200"/>
+          <path d="M 170 82 L 195 200"/>
+          <path d="M 180 82 L 260 200"/>
+        </g>
+        <!-- Outlet tiles -->
+        <g font-family="JetBrains Mono, monospace" font-size="8" letter-spacing="0.1em" text-anchor="middle">
+          <g transform="translate(30, 200)">
+            <rect width="40" height="60" rx="4" fill="rgba(242,242,238,0.04)" stroke="#2E2E36"/>
+            <text x="20" y="22" fill="#BDBDBE">KL 01</text>
+            <rect x="8" y="32" width="24" height="2" fill="#BCF125"/>
+            <rect x="8" y="38" width="20" height="2" fill="rgba(242,242,238,0.3)"/>
+            <rect x="8" y="44" width="16" height="2" fill="rgba(242,242,238,0.3)"/>
+          </g>
+          <g transform="translate(95, 200)">
+            <rect width="40" height="60" rx="4" fill="rgba(242,242,238,0.04)" stroke="#2E2E36"/>
+            <text x="20" y="22" fill="#BDBDBE">KL 02</text>
+            <rect x="8" y="32" width="24" height="2" fill="#BCF125"/>
+            <rect x="8" y="38" width="20" height="2" fill="rgba(242,242,238,0.3)"/>
+            <rect x="8" y="44" width="16" height="2" fill="rgba(242,242,238,0.3)"/>
+          </g>
+          <g transform="translate(175, 200)">
+            <rect width="40" height="60" rx="4" fill="rgba(242,242,238,0.04)" stroke="#2E2E36"/>
+            <text x="20" y="22" fill="#BDBDBE">PJ 01</text>
+            <rect x="8" y="32" width="24" height="2" fill="#BCF125"/>
+            <rect x="8" y="38" width="20" height="2" fill="rgba(242,242,238,0.3)"/>
+            <rect x="8" y="44" width="16" height="2" fill="rgba(242,242,238,0.3)"/>
+          </g>
+          <g transform="translate(240, 200)">
+            <rect width="40" height="60" rx="4" fill="rgba(242,242,238,0.04)" stroke="#2E2E36"/>
+            <text x="20" y="22" fill="#BDBDBE">SHAH</text>
+            <rect x="8" y="32" width="24" height="2" fill="#BCF125"/>
+            <rect x="8" y="38" width="20" height="2" fill="rgba(242,242,238,0.3)"/>
+            <rect x="8" y="44" width="16" height="2" fill="rgba(242,242,238,0.3)"/>
+          </g>
+        </g>
+        <!-- 9:00:05 LIVE EVERYWHERE label -->
+        <g font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.14em" text-anchor="middle">
+          <text x="160" y="290" fill="#BCF125" font-weight="700">9:00:05 AM &middot; LIVE EVERYWHERE</text>
+        </g>
+      </svg>
     </div>
   </div>
 
@@ -2452,10 +2546,53 @@ footer.foot {
       </ul>
     </div>
     <div class="pillar-vis">
-      <div class="phone md">
-        <div class="notch"></div>
-        <iframe src="Customer QR App.html?demo=weather&weather=rain&hour=14&screen=menu&hideDev=1&compact=1&cb=20260529x" title="Dynamic menu example" loading="lazy"></iframe>
-      </div>
+      <svg class="pillar-illust" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <defs>
+          <filter id="g3" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="12"/>
+          </filter>
+        </defs>
+        <!-- Lime spotlight behind active row -->
+        <ellipse cx="160" cy="160" rx="160" ry="40" fill="#BCF125" opacity="0.18" filter="url(#g3)"/>
+        <!-- Timeline label -->
+        <g font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.14em" text-anchor="middle">
+          <text x="160" y="22" fill="#7E7E82">MENU READS THE CLOCK</text>
+        </g>
+        <!-- Row 1: BREAKFAST (faded) -->
+        <g transform="translate(20, 50)">
+          <rect width="280" height="56" rx="6" fill="rgba(242,242,238,0.04)" stroke="#2E2E36"/>
+          <rect x="14" y="22" width="6" height="14" fill="#BCF125" opacity="0.5"/>
+          <g font-family="JetBrains Mono, monospace">
+            <text x="30" y="24" font-size="9" letter-spacing="0.14em" fill="#7E7E82">07:00 &mdash; 11:00</text>
+            <text x="30" y="42" font-size="13" font-weight="700" fill="#BDBDBE">BREAKFAST</text>
+            <text x="266" y="34" font-size="9" letter-spacing="0.1em" fill="#7E7E82" text-anchor="end">OFF</text>
+          </g>
+        </g>
+        <!-- Row 2: LUNCH RUSH (active, lime tint) -->
+        <g transform="translate(20, 132)">
+          <rect width="280" height="56" rx="6" fill="rgba(188,241,37,0.10)" stroke="#BCF125" stroke-width="1.5"/>
+          <rect x="14" y="22" width="6" height="14" fill="#BCF125"/>
+          <g font-family="JetBrains Mono, monospace">
+            <text x="30" y="24" font-size="9" letter-spacing="0.14em" fill="#BCF125">11:00 &mdash; 15:00</text>
+            <text x="30" y="42" font-size="13" font-weight="700" fill="#F2F2EE">LUNCH RUSH</text>
+            <text x="266" y="34" font-size="9" letter-spacing="0.1em" fill="#BCF125" font-weight="700" text-anchor="end">LIVE NOW</text>
+          </g>
+        </g>
+        <!-- Row 3: DINNER (faded) -->
+        <g transform="translate(20, 214)">
+          <rect width="280" height="56" rx="6" fill="rgba(242,242,238,0.04)" stroke="#2E2E36"/>
+          <rect x="14" y="22" width="6" height="14" fill="#BCF125" opacity="0.5"/>
+          <g font-family="JetBrains Mono, monospace">
+            <text x="30" y="24" font-size="9" letter-spacing="0.14em" fill="#7E7E82">18:00 &mdash; 22:00</text>
+            <text x="30" y="42" font-size="13" font-weight="700" fill="#BDBDBE">DINNER RUSH</text>
+            <text x="266" y="34" font-size="9" letter-spacing="0.1em" fill="#7E7E82" text-anchor="end">QUEUED</text>
+          </g>
+        </g>
+        <!-- Bottom signal -->
+        <g font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.14em" text-anchor="middle">
+          <text x="160" y="296" fill="#BDBDBE">LANG &middot; STOCK &middot; DAYPART</text>
+        </g>
+      </svg>
     </div>
   </div>
 </section>
