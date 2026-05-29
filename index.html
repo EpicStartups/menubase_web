@@ -707,15 +707,28 @@ body { padding-bottom: 64px; }
   font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.04em;
-  background: rgba(255,255,255,0.96);
+  background: #fff;
   border: 1px solid var(--line);
   padding: 8px 14px;
   border-radius: 999px;
   box-shadow: 0 10px 28px rgba(0,0,0,0.10);
   color: var(--ink);
   white-space: nowrap;
-  -webkit-backdrop-filter: blur(8px);
-          backdrop-filter: blur(8px);
+  isolation: isolate;
+}
+/* Soft cream halo around each chip so canvas particles do not sit visually attached
+   to the chip edges. Pseudo-element radiates outward, fades to transparent. */
+.hero-chip::before {
+  content: '';
+  position: absolute;
+  inset: -14px -22px;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: 999px;
+  background: radial-gradient(120% 130% at 50% 50%,
+    var(--bg) 38%,
+    color-mix(in oklab, var(--bg) 55%, transparent) 68%,
+    transparent 100%);
 }
 .hero-chip-1 { top: -4%;  left: -8%; }
 .hero-chip-2 { top: 40%; right: -8%; }
