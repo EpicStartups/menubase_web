@@ -3544,25 +3544,30 @@ setTimeout(() => {
     if (el) el.textContent = val;
   }
   function play(e) {
-    // Reset to clear current state (everything goes invisible)
+    // 1. Remove the playing class - elements return to invisible defaults
     svg.classList.remove('syn-playing');
-    // Update text content while invisible
+    // 2. Update text content while everything is invisible
     setTxt('basket-k', e.basket[0]); setTxt('basket-v', e.basket[1]);
     setTxt('time-k',   e.time[0]);   setTxt('time-v',   e.time[1]);
     setTxt('hist-k',   e.hist[0]);   setTxt('hist-v',   e.hist[1]);
     setTxt('day-k',    e.day[0]);    setTxt('day-v',    e.day[1]);
     setTxt('result', '→ ' + e.result);
     setTxt('accept', e.accept);
-    // Force reflow + re-add class so animations retrigger
-    void svg.offsetWidth;
-    svg.classList.add('syn-playing');
+    // 3. Double requestAnimationFrame so the browser actually applies
+    //    the "no class" state before we re-add it. void offsetWidth
+    //    isn't reliable in every browser for restarting CSS animations.
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        svg.classList.add('syn-playing');
+      });
+    });
   }
   var idx = 0;
   function rotate() {
     idx = (idx + 1) % EXAMPLES.length;
     play(EXAMPLES[idx]);
   }
-  // Play the first example on initial load (idx stays at 0)
+  // Play the first example on initial load
   setTimeout(function(){ play(EXAMPLES[0]); }, 200);
   // Only cycle while the upsell tab is active + section is in viewport
   var io = ('IntersectionObserver' in window) && new IntersectionObserver(function(entries){
