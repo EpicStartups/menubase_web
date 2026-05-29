@@ -520,13 +520,14 @@ nav.top { z-index: 50; }
 }
 .top-ribbon .brand { display: inline-flex; align-items: center; text-decoration: none; }
 .top-ribbon .brand .brand-lockup {
-  height: 38px;
+  height: 40px;
   width: auto;
   display: block;
-  /* The wordmark asset is the dark-on-light variant. On the dark page bg
-     we invert it. hue-rotate keeps the lime accent roughly lime instead of
-     flipping it through magenta. Provide a proper light asset to remove this. */
-  filter: invert(1) hue-rotate(180deg);
+  /* The wordmark PNG is the dark-on-light variant. On the dark page we
+     invert + hue-rotate so it reads as light wordmark with lime accent
+     instead of magenta. brightness+saturate bumped for visibility against
+     the deep dark bg. Long term needs a real light-variant asset. */
+  filter: invert(1) hue-rotate(180deg) brightness(1.5) saturate(1.4);
 }
 .top-ribbon-login {
   margin-left: auto;
@@ -1086,6 +1087,7 @@ section.block.tight { padding: 80px 28px; }
 .demo-annot {
   background: rgba(255,255,255,0.04);
   border-left: 3px solid var(--lime);
+  border-radius: 0 14px 14px 0;
   padding: 22px 26px;
   max-width: 540px;
   transition: opacity 200ms;
@@ -1134,6 +1136,7 @@ section.block.tight { padding: 80px 28px; }
 .calc-card {
   background: var(--bg-elev);
   border: 1px solid var(--line);
+  border-radius: 16px;
   padding: 36px;
 }
 .calc-field { margin-bottom: 22px; }
@@ -1292,6 +1295,7 @@ section.block.tight { padding: 80px 28px; }
 .founding-card {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 16px;
   padding: 36px;
 }
 .founding-card .pill {
@@ -1624,6 +1628,7 @@ footer.foot {
 .problem-card {
   background: var(--bg-elev);
   border: 1px solid var(--line);
+  border-radius: 14px;
   padding: 28px;
   display: flex;
   gap: 18px;
@@ -1634,6 +1639,7 @@ footer.foot {
   width: 44px; height: 44px;
   background: var(--bg-soft);
   color: var(--ink);
+  border-radius: 10px;
   display: grid; place-items: center;
   flex-shrink: 0;
 }
@@ -1670,10 +1676,12 @@ footer.foot {
 .compare-card {
   background: var(--bg-elev);
   border: 1px solid var(--line);
-  overflow-x: auto;
+  border-radius: 14px;
+  overflow: hidden;
   -webkit-overflow-scrolling: touch;
   margin-top: 36px;
 }
+.compare-card { overflow-x: auto; }
 .compare-table { width: 100%; min-width: 720px; border-collapse: collapse; }
 .compare-table th, .compare-table td {
   padding: 18px 22px;
@@ -1750,12 +1758,14 @@ footer.foot {
 .testi-card {
   background: var(--bg-elev);
   border: 1px solid var(--line);
+  border-radius: 14px;
   padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 18px;
   position: relative;
   transition: border-color 200ms, transform 200ms;
+  overflow: hidden;
 }
 .testi-card::before {
   content: '';
