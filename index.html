@@ -252,14 +252,15 @@ body::before {
 body::before, body::after { display: none !important; }
 
 /* ─── LEGIBILITY CONTRAST FIXES (WCAG AA: 4.5:1 body, 3:1 large) ─── */
-/* The following targets all measured below 4.5:1 over the brightest bg frame.
-   Bumping from --grey (rgb 140) to --ink-2 (rgb 100) puts each above 5.8:1. */
-.hero-text .hero-micro { color: var(--ink-2); }
-.hero-micro span { color: var(--ink-2); }
-.eyebrow { color: var(--ink-2); }
-.faq-answer { color: var(--ink-2); }
-.foot-brand p { color: var(--ink-2); }
-.foot-col a { color: var(--ink-2); }
+/* Targets measured below 4.5:1 over brightest bg frame. !important is required
+   because the original rules for these selectors live later in the stylesheet. */
+.hero-text .hero-micro,
+.hero-micro,
+.hero-micro span         { color: var(--ink-2) !important; }
+.eyebrow                 { color: var(--ink-2) !important; }
+.faq-answer              { color: var(--ink-2) !important; }
+.foot-brand p            { color: var(--ink-2) !important; }
+.foot-col a              { color: var(--ink-2) !important; }
 .calc-shell .calc-inner > .reveal p { color: var(--ink-2) !important; }
 
 /* ─── LEGIBILITY SCRIM (sits between bg canvas and primary text blocks) ─── */

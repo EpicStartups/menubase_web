@@ -45,13 +45,15 @@ a { color: inherit; text-decoration: none; }
 main, .top-ribbon, nav.top, footer.foot { position: relative; z-index: 1; }
 
 /* ─── LEGIBILITY CONTRAST FIXES (WCAG AA: 4.5:1 body, 3:1 large) ─── */
-.eyebrow { color: var(--ink-2); }
-.hub-intro p { color: var(--ink-2); }
-.article-wrap p, .article-wrap ul, .article-wrap ol { color: var(--ink-2); }
-.foot-brand p { color: var(--ink-2); }
-.foot-col a { color: var(--ink-2); }
-.article-card p { color: var(--ink-2); }
-.article-card .card-meta { color: var(--ink-2); }
+.eyebrow                                        { color: var(--ink-2) !important; }
+.hub-intro p                                    { color: var(--ink-2) !important; }
+.article-wrap p,
+.article-wrap ul,
+.article-wrap ol                                { color: var(--ink-2) !important; }
+.foot-brand p                                   { color: var(--ink-2) !important; }
+.foot-col a                                     { color: var(--ink-2) !important; }
+.article-card p                                 { color: var(--ink-2) !important; }
+.article-card .card-meta                        { color: var(--ink-2) !important; }
 
 /* ─── LEGIBILITY SCRIM ─── */
 .has-bg-scrim { position: relative; z-index: 1; }
