@@ -1570,8 +1570,9 @@ footer.foot {
   .demo-inner { gap: 36px; }
   .demo-side h2 { font-size: clamp(26px, 8vw, 34px); }
   .demo-side .lede { font-size: 15px; margin-bottom: 20px; }
-  .demo-chips { gap: 6px; margin-bottom: 22px; }
-  .chip { font-size: 12px; padding: 8px 14px; }
+  .demo-chips { gap: 8px; margin-bottom: 22px; }
+  /* Demo scenario chips: bump to 44px tap target for Apple HIG / Material */
+  .demo-chips .chip { font-size: 13px; padding: 11px 16px; min-height: 44px; }
   .demo-annot { padding: 18px 20px; }
   .demo-annot .t { font-size: 16px; }
   .demo-annot .d { font-size: 14px; }
@@ -1602,6 +1603,23 @@ footer.foot {
   .foot-col h5 { margin-bottom: 12px; }
   .foot-col a { font-size: 13.5px; }
   .foot-bottom { font-size: 10px; margin-top: 36px; padding-top: 18px; }
+
+  /* Disable backdrop-filter blur on mobile - the GPU cost per card adds up
+     quickly with multiple cards stacked + the canvas drift behind. Keeps
+     the same alpha so the synthesis still bleeds through, just no blur. */
+  .problem-card, .testi-card, .calc-card, .compare-card,
+  .playbook-card, .pillar-txt ul {
+    -webkit-backdrop-filter: none;
+            backdrop-filter: none;
+  }
+
+  /* Demo and manifesto sections paint below the fold on mobile - content-visibility
+     lets the browser skip layout/paint of off-screen content for a smoother scroll. */
+  .demo, .manifesto, .calc-shell, .cta-shell, .faq-shell, footer.foot,
+  .playbook-cta, .compare-block, .testi-block {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 600px;
+  }
 
   /* Phone frames scale to viewport - bigger on mobile so menu items are readable */
   .phone.lg {
