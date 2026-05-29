@@ -831,7 +831,7 @@ body { padding-bottom: 64px; }
 }
 @media (max-width: 560px) {
   .hero { padding: 48px 22px 44px; gap: 26px; }
-  .col-l h1 { font-size: clamp(38px, 11vw, 56px); }
+  .col-l h1 { font-size: clamp(32px, 10vw, 52px); letter-spacing: -0.035em; }
   .status { font-size: 11px; gap: 8px; padding: 7px 12px; }
   .greet { font-size: 13px; }
   .col-l .sub { font-size: 15.5px; }
@@ -1538,7 +1538,17 @@ footer.foot {
 
 /* Mobile */
 @media (max-width: 640px) {
-  body { padding-bottom: 74px; }
+  body { padding-bottom: 86px; }
+  /* Hero v2 elements need a soft cap on mobile so long live text wraps cleanly */
+  .status { max-width: 100%; }
+  .greet { font-size: 13px; }
+  .leak { font-size: 11.5px; align-items: flex-start; }
+  .col-l .sub { font-size: 15px; max-width: 100%; }
+  /* Comparison table - hint at horizontal scroll with a subtle right-edge fade */
+  .compare-card {
+    -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 24px), transparent 100%);
+            mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 24px), transparent 100%);
+  }
   nav.top {
     bottom: 14px;
     left: 10px;
@@ -2003,7 +2013,10 @@ footer.foot {
 .manifesto-pixels span:nth-child(6) { top: 32%; left: 8%;  width: 12px; height: 12px; }
 @media (max-width: 700px) {
   .manifesto { padding: 80px 20px; }
-  .manifesto h2 em { padding: 0 12px; }
+  .manifesto h2 { font-size: clamp(32px, 9vw, 46px); letter-spacing: -0.035em; }
+  .manifesto h2 em { padding: 0 12px; box-shadow: 0 0 50px rgba(188,241,37,0.4); }
+  .manifesto p { font-size: 15px; }
+  .manifesto-tagline { font-size: 16px; }
 }
 
 /* ─── PLAYBOOK CTA (sits between the manifesto and FAQ) ─── */
