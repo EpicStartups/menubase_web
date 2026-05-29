@@ -1,5 +1,5 @@
 # Auto-deploys menubase.io when code lands on the v2 branch
-# (v2 is the production branch — see project memory)
+# (v2 is the production branch, see project memory)
 name: Deploy to Firebase Hosting on merge
 on:
   push:

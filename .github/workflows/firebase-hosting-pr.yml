@@ -1,4 +1,4 @@
-# Creates a preview deploy on every PR — comments the preview URL on the PR
+# Creates a preview deploy on every PR. Comments the preview URL on the PR
 # Lets you click around the new code before merging to v2 (= live)
 name: Deploy preview on PR
 on: pull_request
