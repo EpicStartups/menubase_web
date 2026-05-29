@@ -511,6 +511,11 @@ body { padding-bottom: 64px; }
   line-height: 1;
   letter-spacing: -0.035em;
   color: var(--ink);
+  white-space: nowrap;
+}
+.stat-cell .num.txt {
+  font-size: clamp(28px, 3.6vw, 44px);
+  letter-spacing: -0.025em;
 }
 .stat-cell .num em {
   font-style: normal;
@@ -1845,11 +1850,11 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
       <div class="lbl">POS replacement</div>
     </div>
     <div class="stat-cell">
-      <div class="num">Same-day</div>
+      <div class="num txt">Same-day</div>
       <div class="lbl">Setup, no training</div>
     </div>
     <div class="stat-cell">
-      <div class="num"><em>Every</em></div>
+      <div class="num txt"><em>Every</em></div>
       <div class="lbl">Malaysian language</div>
     </div>
   </div>
