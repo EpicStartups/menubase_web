@@ -1105,7 +1105,9 @@ section.block.tight { padding: 80px 28px; }
 .chip.on { background: var(--lime); color: #1A1A1A; border-color: var(--lime); font-weight: 600; }
 
 .demo-annot {
-  background: rgba(255,255,255,0.04);
+  background: rgba(255,255,255,0.015);
+  -webkit-backdrop-filter: blur(6px);
+          backdrop-filter: blur(6px);
   border-left: 3px solid var(--lime);
   border-radius: 0 14px 14px 0;
   padding: 22px 26px;
@@ -2069,11 +2071,20 @@ footer.foot {
 .manifesto-pixels span:nth-child(5) { top: 50%; left: 96%; width: 8px;  height: 8px;  }
 .manifesto-pixels span:nth-child(6) { top: 32%; left: 8%;  width: 12px; height: 12px; }
 @media (max-width: 700px) {
-  .manifesto { padding: 80px 20px; }
+  /* On small viewports the 1200x700 lime radial used to cover the entire
+     viewport, washing the bg toward lime and hurting white-text contrast.
+     Tighten the ellipse to a contained spotlight at the top, leave the
+     rest as deep dark so all text reads cleanly. */
+  .manifesto {
+    background:
+      radial-gradient(ellipse 380px 260px at 50% 30%, rgba(188,241,37,0.20) 0%, transparent 65%),
+      var(--ink-deep);
+    padding: 80px 20px;
+  }
   .manifesto h2 { font-size: clamp(32px, 9vw, 46px); letter-spacing: -0.035em; }
-  .manifesto h2 em { padding: 0 12px; box-shadow: 0 0 50px rgba(188,241,37,0.4); }
-  .manifesto p { font-size: 15px; }
-  .manifesto-tagline { font-size: 16px; }
+  .manifesto h2 em { padding: 0 12px; box-shadow: 0 0 36px rgba(188,241,37,0.45); }
+  .manifesto p { font-size: 15px; color: rgba(242,242,238,0.85); }
+  .manifesto-tagline { font-size: 16px; color: rgba(242,242,238,0.92); }
 }
 
 /* ─── PLAYBOOK CTA (sits between the manifesto and FAQ) ─── */
