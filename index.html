@@ -1151,33 +1151,30 @@ section.block.tight { padding: 80px 28px; }
   to { stroke-dashoffset: -18; }
 }
 
-/* Smart Upsell: each line draws itself FROM the corner input TOWARD
-   the center result. Solid line, no dashes - just a clean "growing"
-   line that extends inward, holds at full length, then fades.
-   Lines are ~142px; using 150 as the dash length so the full line
-   is one dash with a safety margin. */
+/* Smart Upsell: short lime line SEGMENTS travel along each path from
+   corner toward center result. The segment IS the line - no static
+   guide, no pulse head. Each line is ~142px; dash 36 + gap 230 (period
+   266) leaves one visible segment per line, with a brief "no segment"
+   gap before the next one starts at the corner. */
 .syn-line {
-  stroke-dasharray: 150;
-  stroke-dashoffset: 150;
-  stroke-opacity: 0;
+  stroke-dasharray: 36 230;
+  stroke-opacity: 0.95;
   stroke-linecap: round;
-  animation: syn-draw 2.6s cubic-bezier(.4, 0, .2, 1) infinite;
+  stroke-width: 1.6;
+  animation: syn-travel 1.8s linear infinite;
 }
-.syn-line[data-line="0"] { animation-delay: 0s;    }
-.syn-line[data-line="1"] { animation-delay: -0.65s; }
-.syn-line[data-line="2"] { animation-delay: -1.30s; }
-.syn-line[data-line="3"] { animation-delay: -1.95s; }
-@keyframes syn-draw {
-  0%   { stroke-dashoffset: 150; stroke-opacity: 0;    }
-  12%  {                         stroke-opacity: 0.95; }
-  42%  { stroke-dashoffset: 0;   stroke-opacity: 0.95; }
-  78%  { stroke-dashoffset: 0;   stroke-opacity: 0.95; }
-  100% { stroke-dashoffset: 0;   stroke-opacity: 0;    }
+.syn-line[data-line="0"] { animation-delay: 0s;     }
+.syn-line[data-line="1"] { animation-delay: -0.45s; }
+.syn-line[data-line="2"] { animation-delay: -0.90s; }
+.syn-line[data-line="3"] { animation-delay: -1.35s; }
+@keyframes syn-travel {
+  from { stroke-dashoffset: 0;    }
+  to   { stroke-dashoffset: -266; }
 }
-/* Lime halo trailing each line so the drawing motion feels glowing */
-.syn-converge { filter: drop-shadow(0 0 5px rgba(188,241,37,0.45)); }
-/* Text-swap moment: brief thickness pulse on all four lines */
-.syn-swapping .syn-line { stroke-width: 2; }
+/* Lime halo around the group so the travelling segments glow */
+.syn-converge { filter: drop-shadow(0 0 6px rgba(188,241,37,0.55)); }
+/* Text-swap moment: brief thicker stroke so the swap reads on the wires */
+.syn-swapping .syn-line { stroke-width: 2.6; }
 .syn-outlet .syn-outlet-mark {
   transform-origin: center;
   transform-box: fill-box;
