@@ -523,6 +523,14 @@ nav.top { z-index: 50; }
   height: 40px;
   width: auto;
   display: block;
+  /* The PNG is the dark-on-light brand lockup. On the dark page:
+     - invert(1) flips dark grey "Menu" text to light grey (visible),
+       and lime to violet
+     - hue-rotate(180deg) shifts violet back toward yellow-green,
+       roughly to lime
+     - saturate(2) and brightness(1.15) push the result closer to brand lime
+     Long term replace with a true light variant PNG/SVG from brand pack. */
+  filter: invert(1) hue-rotate(180deg) saturate(2) brightness(1.15);
 }
 .top-ribbon-login {
   margin-left: auto;
@@ -2055,19 +2063,7 @@ footer.foot {
 <div class="top-ribbon">
   <div class="top-ribbon-inner">
     <a href="#top" class="brand" aria-label="MenuBase">
-      <svg class="brand-lockup" viewBox="0 0 230 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="MenuBase">
-        <g fill="#BCF125" shape-rendering="crispEdges">
-          <rect x="0"  y="4"  width="5" height="28"/>
-          <rect x="22" y="4"  width="5" height="28"/>
-          <rect x="5"  y="4"  width="5" height="5"/>
-          <rect x="17" y="4"  width="5" height="5"/>
-          <rect x="10" y="9"  width="5" height="5"/>
-          <rect x="12" y="14" width="5" height="5"/>
-        </g>
-        <text x="36" y="29" font-family="Hanken Grotesk, system-ui, sans-serif" font-weight="800" font-size="26" letter-spacing="-0.02em">
-          <tspan fill="#F2F2EE">Menu</tspan><tspan fill="#BCF125">Base</tspan>
-        </text>
-      </svg>
+      <img class="brand-lockup" src="menubase-logo-dark.png" alt="MenuBase" width="188" height="34"/>
     </a>
     <a class="top-ribbon-login" href="https://app.menubase.io" target="_blank" rel="noopener">
       Login <span class="arr" aria-hidden="true">→</span>
