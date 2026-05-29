@@ -751,99 +751,6 @@ section.block.tight { padding: 80px 28px; }
   z-index: 0;
 }
 
-/* ─── SERVICE MODES (tabs) ─── */
-.modes-tabs {
-  margin-top: 56px;
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  overflow: hidden;
-}
-.modes-rail {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-bottom: 1px solid var(--line);
-  background: var(--bg-soft);
-}
-.modes-rail-btn {
-  padding: 24px 26px;
-  text-align: left;
-  background: transparent;
-  border-right: 1px solid var(--line);
-  cursor: pointer;
-  position: relative;
-  transition: background 150ms;
-}
-.modes-rail-btn:last-child { border-right: none; }
-.modes-rail-btn:hover { background: var(--bg-elev); }
-.modes-rail-btn.on { background: var(--bg-elev); }
-.modes-rail-btn.on::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--lime);
-}
-.modes-rail-btn .n {
-  font-family: var(--font-mono);
-  font-size: 10.5px; letter-spacing: 0.14em;
-  color: var(--grey);
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-.modes-rail-btn.on .n { color: var(--lime-deep); }
-.modes-rail-btn .nm {
-  font-family: var(--font-display);
-  font-weight: 700; font-size: 18px;
-  letter-spacing: -0.015em;
-  color: var(--ink);
-}
-.modes-rail-btn .nm em { font-style: normal; color: var(--lime-deep); font-weight: 800; }
-
-.modes-panel {
-  display: none;
-  padding: 56px;
-  grid-template-columns: 1fr 1fr;
-  gap: 72px;
-  align-items: center;
-}
-.modes-panel.on { display: grid; }
-.modes-panel h3 {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(28px, 3.6vw, 44px);
-  line-height: 1;
-  letter-spacing: -0.035em;
-  margin-bottom: 18px;
-  color: var(--ink);
-}
-.modes-panel h3 em { font-style: normal; color: var(--lime-deep); }
-.modes-panel p {
-  font-size: 16px; color: var(--grey);
-  line-height: 1.55; margin-bottom: 24px;
-}
-.modes-panel .who { display: flex; gap: 8px; flex-wrap: wrap; }
-.modes-panel .who span {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-  border: 1px solid var(--line);
-  background: var(--bg-soft);
-  padding: 6px 12px;
-  font-weight: 600;
-}
-.modes-vis {
-  display: flex; justify-content: center; align-items: center;
-  position: relative;
-}
-.modes-vis::before {
-  content: '';
-  position: absolute;
-  width: 320px; height: 320px;
-  background: radial-gradient(circle, rgba(188,241,37,0.40) 0%, transparent 65%);
-  z-index: 0;
-}
-
 /* ─── CALCULATOR ─── */
 .calc-shell { background: var(--bg-soft); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .calc-inner {
@@ -1275,13 +1182,6 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
   .demo-side .lede { font-size: 16px; margin-bottom: 24px; }
   .demo-stage::before { width: 360px; height: 360px; }
 
-  .modes-rail { grid-template-columns: repeat(2, 1fr); }
-  .modes-rail-btn { padding: 18px 20px; }
-  .modes-rail-btn:nth-child(2) { border-right: none; }
-  .modes-rail-btn:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
-  .modes-panel { grid-template-columns: 1fr; padding: 32px; gap: 28px; }
-  .modes-panel h3 { font-size: clamp(26px, 6vw, 36px); }
-
   .calc-shell .calc-inner { grid-template-columns: 1fr; padding: 72px 22px; gap: 40px; }
   .calc-card { padding: 28px; }
   .calc-results { grid-template-columns: 1fr 1fr; }
@@ -1351,16 +1251,6 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
   .demo-annot .d { font-size: 14px; }
   .demo-stage::before { width: 280px; height: 280px; }
 
-  .modes-rail { grid-template-columns: 1fr; }
-  .modes-rail-btn { padding: 16px 18px; border-right: none; border-bottom: 1px solid var(--line); }
-  .modes-rail-btn:nth-child(2) { border-bottom: 1px solid var(--line); }
-  .modes-rail-btn:last-child { border-bottom: none; }
-  .modes-rail-btn.on::before { top: 0; left: 0; right: auto; bottom: 0; width: 3px; height: auto; }
-  .modes-panel { padding: 24px; gap: 24px; }
-  .modes-panel h3 { font-size: clamp(22px, 7vw, 30px); margin-bottom: 14px; }
-  .modes-panel p { font-size: 14.5px; }
-  .modes-vis::before { width: 220px; height: 220px; }
-
   .calc-shell .calc-inner { padding: 56px 18px; gap: 32px; }
   .calc-card { padding: 22px; }
   .calc-field .val { font-size: 20px; }
@@ -1418,7 +1308,6 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
   .stat-cell .num { font-size: 32px; }
   .section-head h2 { font-size: 26px; }
   .pillar-txt h3 { font-size: 24px; }
-  .modes-rail-btn .nm { font-size: 16px; }
   .calc-result .num.big { font-size: 28px; }
 }
 
@@ -1792,7 +1681,6 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
     <div class="nav-links">
       <a href="#features">Features</a>
       <a href="#demo">Live demo</a>
-      <a href="#modes">For your venue</a>
       <a href="#calc">Calculator</a>
       <a href="#faq">FAQ</a>
     </div>
@@ -2093,91 +1981,6 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
   </div>
 </section>
 
-<!-- ─── SERVICE MODES (tabs) ─── -->
-<section class="block" id="modes">
-  <div class="section-head reveal">
-    <span class="eyebrow">PAIRS WITH ANY SERVICE STYLE</span>
-    <h2>One AI waiter. <em>Four ways</em> to deploy.</h2>
-    <p class="lede">Every restaurant runs differently. MenuBase fits in next to whatever you already do, casual café, fine dining, kopitiam counter, food court with twelve vendors under one roof.</p>
-  </div>
-
-  <div class="modes-tabs reveal" id="modes-tabs">
-    <div class="modes-rail" role="tablist">
-      <button class="modes-rail-btn on" data-mode="01" role="tab">
-        <div class="n">MODE 01</div>
-        <div class="nm">Self-order &amp; <em>pay</em></div>
-      </button>
-      <button class="modes-rail-btn" data-mode="02" role="tab">
-        <div class="n">MODE 02</div>
-        <div class="nm">Assist <em>mode</em></div>
-      </button>
-      <button class="modes-rail-btn" data-mode="03" role="tab">
-        <div class="n">MODE 03</div>
-        <div class="nm">Counter <em>service</em></div>
-      </button>
-      <button class="modes-rail-btn" data-mode="04" role="tab">
-        <div class="n">MODE 04</div>
-        <div class="nm">Multi-<em>vendor</em></div>
-      </button>
-    </div>
-
-    <div class="modes-panel on" data-panel="01">
-      <div>
-        <h3>Self-order &amp; <em>pay</em></h3>
-        <p>Customer scans the table QR, browses your menu in their language, gets smart upsells, pays from their phone. Order arrives on the waiter tablet. Waiter delivers the food. That's the whole flow.</p>
-        <div class="who"><span>Casual dining</span><span>Cafés</span><span>Quick-service</span></div>
-      </div>
-      <div class="modes-vis">
-        <div class="phone sm">
-          <div class="notch"></div>
-          <iframe src="Customer QR App.html?demo=upsell_popup&items=eb&screen=menu&mode=table&hideDev=1&compact=1&cb=20260529c" loading="lazy" title="Mode 01"></iframe>
-        </div>
-      </div>
-    </div>
-
-    <div class="modes-panel" data-panel="02">
-      <div>
-        <h3>Assist mode <em>(human-led)</em></h3>
-        <p>Customer keeps the printed menu and the human waiter experience. The waiter's tablet shows real-time suggestions per table, "this guest just ordered steak, suggest the Cab Sauv". Human-delivered, AI-powered.</p>
-        <div class="who"><span>Fine dining</span><span>Chef's table</span><span>Hotel restaurants</span></div>
-      </div>
-      <div class="modes-vis">
-        <div class="phone sm">
-          <div class="notch"></div>
-          <iframe src="Customer QR App.html?demo=upsell_popup&items=eb,nb&screen=cart&hideDev=1&compact=1&cb=20260529c" loading="lazy" title="Mode 02"></iframe>
-        </div>
-      </div>
-    </div>
-
-    <div class="modes-panel" data-panel="03">
-      <div>
-        <h3>Counter <em>service</em></h3>
-        <p>Customer orders at the counter, sees AI suggestions on the customer-facing screen, cashier confirms, payment processes through your existing POS as always. The screen does the upselling job.</p>
-        <div class="who"><span>Kopitiams</span><span>Hawker stalls</span><span>F&amp;B kiosks</span></div>
-      </div>
-      <div class="modes-vis">
-        <div class="phone sm">
-          <div class="notch"></div>
-          <iframe src="Customer QR App.html?demo=flash&hour=15&screen=menu&hideDev=1&compact=1&cb=20260529c" loading="lazy" title="Mode 03"></iframe>
-        </div>
-      </div>
-    </div>
-
-    <div class="modes-panel" data-panel="04">
-      <div>
-        <h3>Multi-<em>vendor</em></h3>
-        <p>One QR. Multiple vendors under one roof. Customer browses every stall, builds a basket across vendors, checks out once. Orders split to the right kitchens automatically. Payment settles per vendor.</p>
-        <div class="who"><span>Food courts</span><span>Food halls</span><span>Ghost kitchens</span></div>
-      </div>
-      <div class="modes-vis">
-        <div class="phone sm">
-          <div class="notch"></div>
-          <iframe src="Customer QR App.html?demo=bundle&items=wc&screen=menu&hideDev=1&compact=1&cb=20260529c" loading="lazy" title="Mode 04"></iframe>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ─── TESTIMONIALS ─── -->
 <section class="testi-block" id="testimonials">
@@ -2422,7 +2225,6 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
       <h5>Product</h5>
       <a href="#features">Features</a>
       <a href="#demo">Live demo</a>
-      <a href="#modes">Service modes</a>
       <a href="#calc">Calculator</a>
     </div>
     <div class="foot-col">
@@ -2452,19 +2254,6 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 setTimeout(() => {
   document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
 }, 1500);
-
-// Modes tabs
-(function(){
-  const tabs = document.querySelectorAll('#modes-tabs .modes-rail-btn');
-  const panels = document.querySelectorAll('#modes-tabs .modes-panel');
-  tabs.forEach(t => {
-    t.addEventListener('click', () => {
-      const m = t.dataset.mode;
-      tabs.forEach(b => b.classList.toggle('on', b === t));
-      panels.forEach(p => p.classList.toggle('on', p.dataset.panel === m));
-    });
-  });
-})();
 
 // Calculator
 (function(){
