@@ -245,7 +245,13 @@ body::before {
   opacity: 0.7;
 }
 
-/* Layer B: primary aurora - gentle lime/grey wash, calm motion, mouse parallax */
+/* ─── ANIMATED CANVAS BG (menubase-bg.js, replaces the old aurora layers) ─── */
+#mb-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; display: block; }
+
+/* Old aurora pseudo-element is now redundant - canvas draws the background. */
+body::before, body::after { display: none !important; }
+
+/* Layer B: primary aurora - LEGACY, hidden by the override above */
 body::after {
   content: '';
   position: fixed;
@@ -536,14 +542,17 @@ nav.top {
 /* Page body padding so floating nav doesn't overlap last content */
 body { padding-bottom: 64px; }
 
-/* ─── HERO ─── */
+/* ─── HERO (asymmetric 2-col: text + phone) ─── */
 
 .hero {
-  padding: 112px 28px 84px;
-  text-align: center;
   position: relative;
   overflow: hidden;
   isolation: isolate;
+}
+.hero.hero-grid {
+  min-height: 100svh;
+  padding: 96px 28px 64px;
+  display: flex; align-items: center;
 }
 .hero-bg {
   position: absolute;
@@ -552,39 +561,61 @@ body { padding-bottom: 64px; }
   z-index: 0;
   overflow: hidden;
 }
-.hero-bg .px {
-  position: absolute;
-  background: var(--lime);
-  opacity: 0;
-  animation: drift 12s ease-in-out infinite;
+.hero-bg .px { display: none; }  /* canvas bg replaces these */
+
+.hero-inner {
+  max-width: 1320px; margin: 0 auto;
+  position: relative; z-index: 1;
+  width: 100%;
 }
-@keyframes drift {
-  0%   { opacity: 0; transform: translateY(20px) scale(0.7); }
-  20%  { opacity: 0.55; transform: translateY(0) scale(1); }
-  80%  { opacity: 0.55; transform: translateY(-30px) scale(1); }
-  100% { opacity: 0; transform: translateY(-60px) scale(0.7); }
+.hero.hero-grid .hero-inner {
+  display: grid;
+  grid-template-columns: 46% 54%;
+  gap: 48px;
+  align-items: center;
 }
-.hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; }
-.hero .eyebrow { margin-bottom: 28px; }
-.hero h1 {
+
+/* Hero left column: text */
+.hero-text { text-align: left; }
+.hero-text .eyebrow { margin-bottom: 22px; }
+.hero-text h1 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(48px, 7.5vw, 104px);
-  line-height: 0.96;
-  letter-spacing: -0.04em;
-  margin: 0 auto 28px;
-  max-width: 16ch;
+  font-size: clamp(40px, 5.2vw, 78px);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin: 0 0 22px;
   color: var(--ink);
 }
-.hero h1 em { font-style: normal; color: var(--lime-deep); }
-.hero .sub {
-  font-size: clamp(17px, 1.6vw, 20px);
-  color: var(--grey);
-  max-width: 620px;
-  margin: 0 auto 40px;
-  line-height: 1.55;
+.hero-text h1 em { font-style: normal; color: var(--lime-deep); }
+.hero-text .sub {
+  font-size: clamp(16px, 1.3vw, 19px);
+  color: var(--ink-2);
+  max-width: 44ch;
+  margin: 0 0 32px;
+  line-height: 1.5;
 }
-.hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 32px; }
+.hero-text .hero-actions {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  margin-bottom: 26px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.hero-watch {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  color: var(--ink);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+  text-decoration-color: var(--lime-deep);
+  text-decoration-thickness: 2px;
+  transition: color 120ms;
+}
+.hero-watch:hover { color: var(--lime-deep); }
+.hero-text .hero-micro { text-align: left; }
 .hero-micro {
   font-family: var(--font-mono); font-size: 10.5px;
   letter-spacing: 0.18em; text-transform: uppercase;
@@ -592,24 +623,81 @@ body { padding-bottom: 64px; }
 }
 .hero-micro span { color: var(--grey-2); margin: 0 8px; opacity: 0.6; }
 
-/* Hero phone showcase */
-.hero-stage {
-  margin-top: 56px;
-  display: flex; justify-content: center; align-items: center;
+/* Hero right column: phone with tilt, glow, floating annotation chips */
+.hero-phone-col {
   position: relative;
+  display: flex; align-items: center; justify-content: center;
 }
-.hero-stage::before {
+.hero-phone-wrap {
+  position: relative;
+  display: inline-block;
+  isolation: isolate;
+}
+.hero-phone-wrap::before {
   content: '';
   position: absolute;
-  width: 480px; height: 480px;
-  background: radial-gradient(circle, rgba(188,241,37,0.45) 0%, transparent 65%);
+  inset: -18%;
+  background: radial-gradient(circle at 50% 50%, rgba(188,241,37,0.42) 0%, transparent 60%);
+  filter: blur(28px);
   z-index: 0;
   animation: heroHaloBreath 4s ease-in-out infinite;
   will-change: transform, opacity;
 }
 @keyframes heroHaloBreath {
   0%, 100% { transform: scale(1);    opacity: 0.85; }
-  50%      { transform: scale(1.06); opacity: 1;    }
+  50%      { transform: scale(1.05); opacity: 1;    }
+}
+.hero-phone-tilt {
+  transform: rotate(-3deg);
+  filter: drop-shadow(0 30px 50px rgba(0,0,0,0.20));
+  position: relative;
+  z-index: 1;
+}
+.hero-chip {
+  position: absolute;
+  z-index: 2;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: rgba(255,255,255,0.96);
+  border: 1px solid var(--line);
+  padding: 8px 14px;
+  border-radius: 999px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.10);
+  color: var(--ink);
+  white-space: nowrap;
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+}
+.hero-chip-1 { top: 8%;  left: -10%; }
+.hero-chip-2 { top: 42%; right: -12%; }
+.hero-chip-3 { bottom: 14%; left: -8%; }
+
+@media (max-width: 900px) {
+  .hero.hero-grid {
+    min-height: auto;
+    padding: 72px 22px 56px;
+  }
+  .hero.hero-grid .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .hero-text, .hero-text .hero-micro { text-align: center; }
+  .hero-text h1, .hero-text .sub { margin-left: auto; margin-right: auto; }
+  .hero-text .sub { max-width: 56ch; }
+  .hero-text .hero-actions { justify-content: center; }
+}
+@media (max-width: 640px) {
+  .hero-chip { display: none; }
+  .hero-phone-tilt { transform: rotate(0deg); }
+}
+@media (max-width: 360px) {
+  .hero-text h1 { font-size: 30px; line-height: 1.05; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-phone-tilt { transform: none; }
+  .hero-phone-wrap::before { animation: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-stage::before { animation: none; }
@@ -1479,10 +1567,11 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
 .compare-card {
   background: var(--bg-elev);
   border: 1px solid var(--line);
-  overflow: hidden;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   margin-top: 36px;
 }
-.compare-table { width: 100%; border-collapse: collapse; }
+.compare-table { width: 100%; min-width: 720px; border-collapse: collapse; }
 .compare-table th, .compare-table td {
   padding: 18px 22px;
   font-size: 14.5px;
@@ -1694,16 +1783,9 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
 </head>
 <body>
 
-<div class="bg-mesh"     aria-hidden="true"></div>
-<div class="bg-grain"    aria-hidden="true"></div>
-<div class="bg-pixels" aria-hidden="true">
-  <span style="left:9%;top:100%;width:6px;height:6px;animation-delay:0s"></span>
-  <span style="left:27%;top:100%;width:5px;height:5px;animation-delay:8s"></span>
-  <span style="left:44%;top:100%;width:7px;height:7px;animation-delay:16s"></span>
-  <span style="left:61%;top:100%;width:5px;height:5px;animation-delay:24s"></span>
-  <span style="left:78%;top:100%;width:6px;height:6px;animation-delay:32s"></span>
-  <span style="left:92%;top:100%;width:4px;height:4px;animation-delay:40s"></span>
-</div>
+<!-- ─── ANIMATED CANVAS BACKGROUND (drifts everywhere, synthesis mode on home hero) ─── -->
+<canvas id="mb-bg" aria-hidden="true"></canvas>
+<script src="/menubase-bg.js" data-theme="light" data-mode="synthesis"></script>
 
 <!-- ─── TOP RIBBON (logo + login) ─── -->
 <div class="top-ribbon">
@@ -1736,35 +1818,28 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
 <main>
 
 <!-- ─── HERO ─── -->
-<section class="hero" id="top">
-  <div class="hero-bg" aria-hidden="true">
-    <span class="px" style="top:18%;left:7%;width:18px;height:18px;animation-delay:0s"></span>
-    <span class="px" style="top:32%;left:92%;width:14px;height:14px;animation-delay:1.4s"></span>
-    <span class="px" style="top:62%;left:4%;width:10px;height:10px;animation-delay:2.8s"></span>
-    <span class="px" style="top:78%;left:94%;width:16px;height:16px;animation-delay:4.2s"></span>
-    <span class="px" style="top:48%;left:96%;width:8px;height:8px;animation-delay:5.6s"></span>
-    <span class="px" style="top:24%;left:75%;width:12px;height:12px;animation-delay:7.0s"></span>
-    <span class="px" style="top:84%;left:18%;width:10px;height:10px;animation-delay:8.4s"></span>
-    <span class="px" style="top:38%;left:14%;width:8px;height:8px;animation-delay:9.8s"></span>
-    <span class="px" style="top:14%;left:48%;width:6px;height:6px;animation-delay:3.6s"></span>
-    <span class="px" style="top:88%;left:62%;width:14px;height:14px;animation-delay:6.0s"></span>
-    <span class="px" style="top:54%;left:82%;width:6px;height:6px;animation-delay:10.5s"></span>
-    <span class="px" style="top:72%;left:38%;width:8px;height:8px;animation-delay:0.8s"></span>
-  </div>
+<section class="hero hero-grid" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
   <div class="hero-inner">
-    <span class="eyebrow">THE AI WAITER, LIVE IN MALAYSIA</span>
-    <h1>The waiter you <em>wish</em> you could hire.</h1>
-    <p class="sub">MenuBase is the AI waiter inside your QR menu, built to lift revenue on every order. Speaks every language. Surfaces the right add-on at the right moment. The order arrives on a waiter tablet - your team rings it through your existing POS like any other check.</p>
-    <div class="hero-actions">
-      <a class="btn btn-dark btn-lg" href="#book">TALK TO SALES</a>
-      <a class="btn btn-ghost btn-lg" href="#demo">WATCH IT WORK</a>
+    <div class="hero-text reveal">
+      <span class="eyebrow">THE AI WAITER, LIVE IN MALAYSIA</span>
+      <h1>The waiter you <em>wish</em> you could hire.</h1>
+      <p class="sub">Lifts revenue on every order. Speaks every Malaysian language. Sits on top of any POS you already use.</p>
+      <div class="hero-actions">
+        <a class="btn btn-lime btn-lg" href="https://wa.me/60175981858" target="_blank" rel="noopener">WhatsApp us &rarr;</a>
+        <a class="hero-watch" href="#demo">Watch it work</a>
+      </div>
+      <div class="hero-micro">NO POS REPLACEMENT<span>·</span>SAME-DAY SETUP<span>·</span>ZERO STAFF TRAINING</div>
     </div>
-    <div class="hero-micro">NO POS REPLACEMENT<span>·</span>SAME-DAY SETUP<span>·</span>ZERO STAFF TRAINING</div>
-
-    <div class="hero-stage reveal">
-      <div class="phone lg">
-        <div class="notch"></div>
-        <iframe src="Customer QR App.html?demo=upsell_popup&items=eb&screen=menu&hour=9&hideDev=1&compact=1&cb=20260529x" title="MenuBase customer menu" loading="lazy"></iframe>
+    <div class="hero-phone-col reveal">
+      <div class="hero-phone-wrap">
+        <span class="hero-chip hero-chip-1" aria-hidden="true">+RM 8.40 / order</span>
+        <span class="hero-chip hero-chip-2" aria-hidden="true">89% accept</span>
+        <span class="hero-chip hero-chip-3" aria-hidden="true">EN &middot; BM &middot; ZH &middot; TA</span>
+        <div class="phone lg hero-phone-tilt">
+          <div class="notch"></div>
+          <iframe src="Customer QR App.html?demo=upsell_popup&items=eb&screen=menu&hour=9&hideDev=1&compact=1&cb=20260529x" title="MenuBase customer menu" loading="lazy"></iframe>
+        </div>
       </div>
     </div>
   </div>
@@ -2113,8 +2188,8 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
         <li>Locked-in pricing, no surprise hikes</li>
         <li>Free until we prove the revenue lift. Pay only on results.</li>
       </ul>
-      <a class="btn btn-lime btn-lg" href="https://wa.me/60175981858?text=I'd%20like%20to%20see%20MenuBase%20on%20our%20menu" target="_blank" rel="noopener">See it on your menu →</a>
-      <div class="micro">15 MIN · NO COMMITMENT · WE REPLY WITHIN AN HOUR</div>
+      <a class="btn btn-lime btn-lg" href="https://wa.me/60175981858?text=I'd%20like%20to%20see%20MenuBase%20on%20our%20menu" target="_blank" rel="noopener">WhatsApp us &rarr;</a>
+      <div class="micro">15 MIN &middot; NO COMMITMENT &middot; WE REPLY WITHIN AN HOUR</div>
     </div>
   </div>
 </div>
@@ -2137,9 +2212,9 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
     <div class="manifesto-eyebrow">The bottom line</div>
     <h2>Run the room. <br/>Let the screen run the <em>suggestions.</em></h2>
     <p>Restaurants live or die on the food, the room, the regulars. That's where your team's attention belongs. We'll handle the part nobody enjoyed doing anyway - perfect upselling, every check, every shift.</p>
-    <div class="hero-actions" style="justify-content:center;">
-      <a class="btn btn-dark btn-lg" href="#book">See it on your menu →</a>
-      <a class="btn btn-ghost btn-lg" href="#demo">Watch it work</a>
+    <div class="hero-actions" style="justify-content:center;gap:28px;">
+      <a class="btn btn-dark btn-lg" href="https://wa.me/60175981858" target="_blank" rel="noopener">WhatsApp us &rarr;</a>
+      <a class="hero-watch" href="#demo">Watch it work</a>
     </div>
     <div class="manifesto-tagline">Business is easy with <strong>MenuBase</strong>.</div>
   </div>

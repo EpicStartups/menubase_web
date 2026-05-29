@@ -99,6 +99,10 @@
   </head>
 
   <body>
+<canvas id="mb-bg" aria-hidden="true"></canvas>
+<script src="/menubase-bg.js" data-theme="light" data-mode="ambient"></script>
+<style>#mb-bg{position:fixed;inset:0;z-index:0;pointer-events:none;display:block;}body>*:not(canvas):not(script){position:relative;z-index:1;}</style>
+
     <!-- Nav -->
     <header class="nav">
       <div class="container nav-inner">

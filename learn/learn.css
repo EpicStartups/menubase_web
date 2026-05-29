@@ -40,6 +40,10 @@ body {
 a { color: inherit; text-decoration: none; }
 ::selection { background: var(--lime); color: var(--ink); }
 
+/* ─── ANIMATED CANVAS BG (menubase-bg.js) ─── */
+#mb-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; display: block; }
+main, .top-ribbon, nav.top, footer.foot { position: relative; z-index: 1; }
+
 /* ─── BUTTONS (mirror main site) ─── */
 .btn {
   display: inline-flex; align-items: center; gap: 8px;
