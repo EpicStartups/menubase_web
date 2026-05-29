@@ -1606,20 +1606,25 @@ footer.foot {
   .leak { font-size: 11.5px; align-items: flex-start; }
   .col-l .sub { font-size: 15px; max-width: 100%; }
   /* Comparison table - stack vertically on mobile, no horizontal scroll.
-     Each row becomes a block: feature title + description on top, then the
-     three column verdicts below, each labelled with its column name. */
+     The base .compare-card and .compare-table rules live later in the
+     stylesheet than this @media block, so !important is needed to win
+     the cascade. */
+  .compare-block { overflow-x: clip; max-width: 100%; }
   .compare-card {
-    overflow: visible;
-    overflow-x: visible;
-    -webkit-mask-image: none;
-            mask-image: none;
+    overflow: visible !important;
+    overflow-x: clip !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 24px;
+    -webkit-mask-image: none !important;
+            mask-image: none !important;
   }
-  /* Mobile compare table: each row becomes a self-contained card.
-     - feat title + description on top
-     - three column verdicts as labelled rows below
-     - MenuBase row tinted lime, others muted, so the "winner" pops */
-  .compare-card { margin-top: 24px; }
-  .compare-table { min-width: 0; display: block; }
+  .compare-table {
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: block !important;
+  }
   .compare-table thead { display: none; }
   .compare-table tbody, .compare-table tr { display: block; }
   .compare-table tbody tr {
