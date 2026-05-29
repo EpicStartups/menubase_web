@@ -3544,18 +3544,24 @@ setTimeout(() => {
     if (el) el.textContent = val;
   }
   function play(e) {
-    // 1. Remove the playing class - elements return to invisible defaults
+    // 1. Cancel any running animations (browser caches kill class-toggle
+    //    retriggers - getAnimations().cancel() is the bulletproof reset)
+    if (svg.getAnimations) {
+      try {
+        svg.getAnimations({ subtree: true }).forEach(function(a){ a.cancel(); });
+      } catch (err) {}
+    }
+    // 2. Remove the playing class so elements return to invisible defaults
     svg.classList.remove('syn-playing');
-    // 2. Update text content while everything is invisible
+    // 3. Update text content while everything is invisible
     setTxt('basket-k', e.basket[0]); setTxt('basket-v', e.basket[1]);
     setTxt('time-k',   e.time[0]);   setTxt('time-v',   e.time[1]);
     setTxt('hist-k',   e.hist[0]);   setTxt('hist-v',   e.hist[1]);
     setTxt('day-k',    e.day[0]);    setTxt('day-v',    e.day[1]);
     setTxt('result', '→ ' + e.result);
     setTxt('accept', e.accept);
-    // 3. Double requestAnimationFrame so the browser actually applies
-    //    the "no class" state before we re-add it. void offsetWidth
-    //    isn't reliable in every browser for restarting CSS animations.
+    // 4. Double rAF so the browser flushes the cleared state before we
+    //    re-add the class. Now every example plays the full sequence.
     requestAnimationFrame(function(){
       requestAnimationFrame(function(){
         svg.classList.add('syn-playing');
