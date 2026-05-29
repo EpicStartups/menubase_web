@@ -806,48 +806,13 @@ body { padding-bottom: 64px; }
   background: #fff;
 }
 
-/* floating annotation chips - boxed cards, 2-line (label / value) */
-.chip {
-  position: absolute;
-  z-index: 3;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  font-weight: 600;
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 9px 13px;
-  box-shadow: 0 10px 30px rgba(26,26,26,0.12);
-  white-space: nowrap;
-}
-.chip .k {
-  color: var(--grey-2);
-  font-size: 9.5px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  display: block;
-  margin-bottom: 2px;
-}
-.chip .v { color: var(--ink); }
-.chip .v em { font-style: normal; color: var(--lime-deep); }
-.chip.c1 { top: 14%; left: -6%; animation: bob 6s ease-in-out infinite; }
-.chip.c2 { top: 46%; right: -9%; animation: bob 6s ease-in-out 0.8s infinite; }
-.chip.c3 { bottom: 11%; left: -3%; animation: bob 6s ease-in-out 1.6s infinite; }
-@keyframes bob {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-8px); }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .glow, .chip, .status .dot::after { animation: none; }
+  .glow, .status .dot::after { animation: none; }
 }
 
 /* ---- hero v2 responsive ---- */
 @media (max-width: 1100px) {
   .hero { gap: 36px; }
-  .chip.c1 { left: -2%; }
-  .chip.c2 { right: -4%; }
-  .chip.c3 { left: 0; }
 }
 @media (max-width: 920px) {
   .hero {
@@ -860,7 +825,6 @@ body { padding-bottom: 64px; }
   .col-l { order: 1; }
   .col-r { order: 2; }
   .col-l::before { inset: -20px -24px; }
-  .chip { display: none; }
   .col-r .phone { width: min(330px, 72vw); }
   .glow { width: min(440px, 80%); }
   .col-l .sub { max-width: 46ch; }
@@ -1105,6 +1069,7 @@ section.block.tight { padding: 80px 28px; }
   background: transparent;
   color: rgba(255,255,255,0.7);
   border: 1.5px solid rgba(255,255,255,0.15);
+  border-radius: 999px;
   transition: all 150ms;
   cursor: pointer;
   white-space: nowrap;
@@ -1986,9 +1951,6 @@ footer.foot {
       <div class="notch"></div>
       <iframe src="Customer QR App.html?demo=upsell_popup&items=eb&screen=checkout&hour=9&hideDev=1&compact=1&cb=20260529x" title="MenuBase live app" loading="eager"></iframe>
     </div>
-    <div class="chip c1"><span class="k">Per order</span><span class="v">+RM 8.40 <em>uplift</em></span></div>
-    <div class="chip c2"><span class="k">Accept rate</span><span class="v"><em>89%</em> this basket</span></div>
-    <div class="chip c3"><span class="k">Languages</span><span class="v">EN &middot; BM &middot; ZH &middot; TA</span></div>
   </div>
 </section>
 
