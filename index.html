@@ -1540,24 +1540,43 @@ footer.foot {
 @media (max-width: 640px) {
   body { padding-bottom: 74px; }
   nav.top {
-    bottom: 18px;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
+    bottom: 14px;
+    left: 10px;
+    right: 10px;
+    transform: none;
     width: auto;
     max-width: none;
-    /* slight lime aura so the only CTA on mobile has more presence */
     box-shadow: 0 20px 50px rgba(0,0,0,0.4),
                 0 6px 16px rgba(0,0,0,0.25),
-                0 0 0 1px rgba(188,241,37,0.18),
-                0 0 32px rgba(188,241,37,0.18);
+                0 0 0 1px rgba(188,241,37,0.14),
+                0 0 24px rgba(188,241,37,0.14);
   }
-  .nav-inner { padding: 5px; }
-  /* hide all nav-links on mobile - WA icon is the only CTA */
-  .nav-links { display: none; }
-  .nav-cta { width: auto; margin-left: 0; }
-  .nav-cta .btn.nav-wa-icon { flex: 0 0 auto; width: 52px; height: 52px; padding: 0; }
-  .nav-cta .btn.nav-wa-icon svg { width: 23px; height: 23px; }
+  .nav-inner {
+    padding: 4px;
+    gap: 0;
+    justify-content: space-between;
+    align-items: center;
+  }
+  /* Show all 5 nav-links on mobile, distributed across the bar */
+  .nav-links {
+    display: flex;
+    padding-left: 4px;
+    gap: 0;
+    flex: 1;
+    justify-content: space-around;
+  }
+  .nav-links a {
+    padding: 8px 4px;
+    font-size: 10.5px;
+    letter-spacing: -0.01em;
+    text-align: center;
+    flex: 1;
+    white-space: nowrap;
+  }
+  .nav-links a[href="#calc"] { display: flex; }
+  .nav-cta { width: auto; margin-left: 0; flex: 0 0 auto; }
+  .nav-cta .btn.nav-wa-icon { flex: 0 0 auto; width: 38px; height: 38px; padding: 0; }
+  .nav-cta .btn.nav-wa-icon svg { width: 18px; height: 18px; }
   .top-ribbon-inner { padding: 10px 16px; }
   .top-ribbon .brand .brand-lockup { height: 28px; }
 
