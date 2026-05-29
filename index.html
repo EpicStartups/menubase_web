@@ -1053,6 +1053,92 @@ section.block.tight { padding: 80px 28px; }
   position: relative;
   z-index: 1;
 }
+
+/* ─── PILLAR TABS (3 features combined into one tabbed section) ─── */
+.pillar-tabs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 0 auto 48px;
+  flex-wrap: wrap;
+  max-width: 920px;
+}
+.ptab {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 18px 26px;
+  background: rgba(30, 30, 36, 0.30);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 220ms cubic-bezier(.16,1,.3,1);
+  color: var(--ink-2);
+  font-family: inherit;
+  min-width: 180px;
+}
+.ptab-num {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--grey);
+  margin-bottom: 6px;
+}
+.ptab-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+.ptab:hover {
+  background: rgba(30, 30, 36, 0.55);
+  border-color: var(--lime-deep);
+  transform: translateY(-2px);
+}
+.ptab.on {
+  background: rgba(188,241,37, 0.10);
+  border-color: var(--lime);
+  box-shadow: 0 0 0 4px rgba(188,241,37,0.10), 0 12px 32px rgba(188,241,37,0.18);
+  transform: translateY(-2px);
+}
+.ptab.on .ptab-num { color: var(--lime); }
+
+.pillar-panels { position: relative; }
+.ppanel {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  padding: 48px 0;
+}
+.ppanel.on {
+  display: grid;
+  animation: ppanel-in 460ms cubic-bezier(.16,1,.3,1);
+}
+@keyframes ppanel-in {
+  0% { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ppanel.on { animation: none; }
+  .ptab { transition: none; }
+}
+@media (max-width: 920px) {
+  .ppanel { grid-template-columns: 1fr; gap: 32px; padding: 24px 0; }
+  .pillar-tabs { gap: 6px; margin-bottom: 32px; }
+  .ptab { padding: 14px 18px; flex: 1 1 0; min-width: 0; }
+  .ptab-num { font-size: 9px; margin-bottom: 4px; }
+  .ptab-name { font-size: 14px; }
+}
+@media (max-width: 560px) {
+  .pillar-tabs { gap: 6px; padding: 0 4px; }
+  .ptab { padding: 12px 10px; }
+  .ptab-num { font-size: 9px; }
+  .ptab-name { font-size: 12.5px; }
+}
 .pillar-illust rect[fill="#BCF125"] { animation: pi-pulse 3.4s ease-in-out infinite; transform-origin: center; transform-box: fill-box; }
 @keyframes pi-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
 @media (prefers-reduced-motion: reduce) { .pillar-illust rect[fill="#BCF125"] { animation: none; } }
@@ -2488,7 +2574,23 @@ footer.foot {
     <p class="lede">Three jobs that need perfect timing, perfect language, every single check. Three jobs MenuBase does automatically - so your team gets to focus on the room.</p>
   </div>
 
-  <div class="pillar reveal">
+  <div class="pillar-tabs reveal">
+    <button class="ptab on" data-pillar="upsell" type="button">
+      <span class="ptab-num">01 / FEATURE</span>
+      <span class="ptab-name">Smart Upsell</span>
+    </button>
+    <button class="ptab" data-pillar="promote" type="button">
+      <span class="ptab-num">02 / FEATURE</span>
+      <span class="ptab-name">Smart Promote</span>
+    </button>
+    <button class="ptab" data-pillar="dynamic" type="button">
+      <span class="ptab-num">03 / FEATURE</span>
+      <span class="ptab-name">Dynamic Menu</span>
+    </button>
+  </div>
+
+  <div class="pillar-panels reveal">
+  <div class="ppanel on" data-pillar="upsell">
     <div class="pillar-txt">
       <span class="num">01 / SMART UPSELL</span>
       <h3>Never miss the right add-on. <em>On every order.</em></h3>
@@ -2539,7 +2641,7 @@ footer.foot {
     </div>
   </div>
 
-  <div class="pillar flip reveal">
+  <div class="ppanel" data-pillar="promote">
     <div class="pillar-txt">
       <span class="num">02 / SMART PROMOTE</span>
       <h3>Launch a special at 9am. <em>Selling by 9:01.</em></h3>
@@ -2610,7 +2712,7 @@ footer.foot {
     </div>
   </div>
 
-  <div class="pillar reveal">
+  <div class="ppanel" data-pillar="dynamic">
     <div class="pillar-txt">
       <span class="num">03 / DYNAMIC MENU</span>
       <h3>The menu that <em>reads the room.</em></h3>
@@ -2671,6 +2773,7 @@ footer.foot {
       </svg>
     </div>
   </div>
+  </div><!-- end pillar-panels -->
 </section>
 
 <!-- ─── LIVE DEMO (dark inverse) ─── -->
@@ -3317,6 +3420,23 @@ setTimeout(() => {
     ty = (e.clientY / window.innerHeight) * 2 - 1;
     if (!raf) raf = requestAnimationFrame(tick);
   }, { passive: true });
+})();
+
+/* ─── Pillar tabs - 3 features combined into one tabbed section ─── */
+(function(){
+  var tabs = document.querySelectorAll('.ptab');
+  var panels = document.querySelectorAll('.ppanel');
+  if (!tabs.length || !panels.length) return;
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var target = tab.dataset.pillar;
+      tabs.forEach(function(t){ t.classList.remove('on'); });
+      panels.forEach(function(p){ p.classList.remove('on'); });
+      tab.classList.add('on');
+      var panel = document.querySelector('.ppanel[data-pillar="' + target + '"]');
+      if (panel) panel.classList.add('on');
+    });
+  });
 })();
 
 /* ─── Manifesto kinetic moment - the "suggestions" word morphs through
