@@ -1151,32 +1151,35 @@ section.block.tight { padding: 80px 28px; }
   to { stroke-dashoffset: -18; }
 }
 
-/* Smart Upsell: lines only appear when a new example loads. Lines
-   draw from corner toward center, hold briefly, then fade out before
-   the next example. Between examples the wires are invisible - the
-   inputs + result speak for themselves. */
+/* Smart Upsell: lines connect ONCE on initial load and stay connected.
+   Text continues to cycle through examples but the lines remain - no
+   redraw, no fade out between examples. Just a subtle thickness pulse
+   on each text swap so the wires "react" to the new recommendation. */
 .syn-line {
   stroke-dasharray: 150;
   stroke-dashoffset: 150;
   stroke-opacity: 0;
   stroke-linecap: round;
   stroke-width: 1.8;
-  transition: stroke-opacity 500ms ease;
 }
-.syn-swapping .syn-line {
-  stroke-opacity: 1;
-  animation: syn-connect 700ms cubic-bezier(.4, 0, .2, 1) forwards;
+/* Once connected, stays connected for the lifetime of the page */
+.syn-connected .syn-line {
+  stroke-opacity: 0.95;
+  animation: syn-connect 800ms cubic-bezier(.4, 0, .2, 1) forwards;
 }
-.syn-swapping .syn-line[data-line="0"] { animation-delay: 0s;    }
-.syn-swapping .syn-line[data-line="1"] { animation-delay: 0.08s; }
-.syn-swapping .syn-line[data-line="2"] { animation-delay: 0.16s; }
-.syn-swapping .syn-line[data-line="3"] { animation-delay: 0.24s; }
+.syn-connected .syn-line[data-line="0"] { animation-delay: 0s;    }
+.syn-connected .syn-line[data-line="1"] { animation-delay: 0.10s; }
+.syn-connected .syn-line[data-line="2"] { animation-delay: 0.20s; }
+.syn-connected .syn-line[data-line="3"] { animation-delay: 0.30s; }
 @keyframes syn-connect {
   from { stroke-dashoffset: 150; }
   to   { stroke-dashoffset: 0;   }
 }
 /* Lime halo around the group so the connecting lines glow */
 .syn-converge { filter: drop-shadow(0 0 6px rgba(188,241,37,0.55)); }
+/* Brief thickness pulse on each text swap so the wires "react" to
+   the new recommendation without redrawing */
+.syn-swapping .syn-line { stroke-width: 2.6; }
 .syn-outlet .syn-outlet-mark {
   transform-origin: center;
   transform-box: fill-box;
@@ -3504,9 +3507,8 @@ setTimeout(() => {
   function rotate() {
     idx = (idx + 1) % EXAMPLES.length;
     var e = EXAMPLES[idx];
-    // Lines connect from corners toward center result
+    // Lines are already connected - just brief thickness pulse + text swap
     svg.classList.add('syn-swapping');
-    // Text swaps mid-connection
     setTimeout(function(){
       setTxt('basket-k', e.basket[0]); setTxt('basket-v', e.basket[1]);
       setTxt('time-k',   e.time[0]);   setTxt('time-v',   e.time[1]);
@@ -3514,19 +3516,12 @@ setTimeout(() => {
       setTxt('day-k',    e.day[0]);    setTxt('day-v',    e.day[1]);
       setTxt('result', '→ ' + e.result);
       setTxt('accept', e.accept);
-    }, 380);
-    // Hold lines visible briefly, then disconnect (fade lines out)
-    setTimeout(function(){
       svg.classList.remove('syn-swapping');
-    }, 1700);
+    }, 280);
   }
-  // Trigger an initial connect animation on load so the first example
-  // shows the lines connecting too (otherwise it sits invisible until
-  // the first rotation 3.6s in)
-  setTimeout(function(){
-    svg.classList.add('syn-swapping');
-    setTimeout(function(){ svg.classList.remove('syn-swapping'); }, 1700);
-  }, 250);
+  // Trigger the connect animation ONCE on load - lines draw in and
+  // stay for the lifetime of the page. Text rotates underneath.
+  setTimeout(function(){ svg.classList.add('syn-connected'); }, 250);
   // Only cycle while the upsell tab is active + section is in viewport
   var io = ('IntersectionObserver' in window) && new IntersectionObserver(function(entries){
     entries.forEach(function(ent){
