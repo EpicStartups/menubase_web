@@ -2833,8 +2833,6 @@ footer.foot {
             <feGaussianBlur stdDeviation="12"/>
           </filter>
         </defs>
-        <!-- Lime spotlight behind active row -->
-        <ellipse cx="160" cy="160" rx="160" ry="40" fill="#BCF125" opacity="0.18" filter="url(#g3)"/>
         <!-- Timeline label -->
         <g font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.14em" text-anchor="middle">
           <text x="160" y="22" fill="#7E7E82">MENU READS THE CLOCK</text>
@@ -2849,9 +2847,9 @@ footer.foot {
             <text x="266" y="34" font-size="9" letter-spacing="0.1em" fill="#7E7E82" text-anchor="end">OFF</text>
           </g>
         </g>
-        <!-- Row 2: LUNCH RUSH (active, lime tint) -->
+        <!-- Row 2: LUNCH RUSH (active - just a lime border glow, no fill tint) -->
         <g transform="translate(20, 132)">
-          <rect width="280" height="56" rx="6" fill="rgba(188,241,37,0.10)" stroke="#BCF125" stroke-width="1.5"/>
+          <rect width="280" height="56" rx="6" fill="rgba(242,242,238,0.04)" stroke="#BCF125" stroke-width="1.5" style="filter: drop-shadow(0 0 10px rgba(188,241,37,0.65));"/>
           <rect x="14" y="22" width="6" height="14" fill="#BCF125"/>
           <g font-family="JetBrains Mono, monospace">
             <text x="30" y="24" font-size="9" letter-spacing="0.14em" fill="#BCF125">11:00 &mdash; 15:00</text>
