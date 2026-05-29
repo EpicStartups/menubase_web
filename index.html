@@ -158,7 +158,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800;900&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800;900&family=Geist:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@700&family=Noto+Sans+Tamil:wght@700&display=swap" rel="stylesheet"/>
 <style>
 :root {
   /* ────────────────────────────────────────────────────────────
@@ -254,9 +254,6 @@ body::before, body::after { display: none !important; }
 /* ─── LEGIBILITY CONTRAST FIXES (WCAG AA: 4.5:1 body, 3:1 large) ─── */
 /* Targets measured below 4.5:1 over brightest bg frame. !important is required
    because the original rules for these selectors live later in the stylesheet. */
-.hero-text .hero-micro,
-.hero-micro,
-.hero-micro span         { color: var(--ink-2) !important; }
 .eyebrow                 { color: var(--ink-2) !important; }
 .faq-answer              { color: var(--ink-2) !important; }
 .foot-brand p            { color: var(--ink-2) !important; }
@@ -591,65 +588,284 @@ body { padding-bottom: 64px; }
 
 /* ─── HERO (asymmetric 2-col: text + phone) ─── */
 
+/* ─── HERO v2 "Reads the Room" - live clock + multilingual greeting + loss counter ─── */
 .hero {
   position: relative;
-  overflow: hidden;
+  z-index: 2;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1.02fr 0.98fr;
+  align-items: center;
+  gap: 48px;
+  padding: 120px 5vw 60px;
+  max-width: 1500px;
+  margin: 0 auto;
   isolation: isolate;
 }
-.hero.hero-grid {
-  min-height: 100svh;
-  padding: 96px 28px 64px;
-  display: flex; align-items: center;
-}
-.hero-bg {
+.col-l { position: relative; z-index: 2; }
+/* legibility scrim - radial fade to keep text on cream while bg drifts behind */
+.col-l::before {
+  content: '';
   position: absolute;
-  inset: 0;
+  inset: -30px -44px;
+  z-index: -1;
   pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
+  background: radial-gradient(125% 130% at 32% 48%,
+    var(--bg) 46%,
+    color-mix(in oklab, var(--bg) 55%, transparent) 72%,
+    transparent 100%);
 }
-.hero-bg .px { display: none; }  /* canvas bg replaces these */
 
-.hero-inner {
-  max-width: 1320px; margin: 0 auto;
-  position: relative; z-index: 1;
-  width: 100%;
-}
-.hero.hero-grid .hero-inner {
-  display: grid;
-  grid-template-columns: 46% 54%;
-  gap: 48px;
+/* live status chip - reads the room */
+.status {
+  display: inline-flex;
   align-items: center;
+  gap: 11px;
+  flex-wrap: wrap;
+  max-width: 100%;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 8px 15px 8px 12px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 18px rgba(26,26,26,0.05);
 }
+.status .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--lime-deep);
+  position: relative;
+  flex: 0 0 auto;
+}
+.status .dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: var(--lime-deep);
+  opacity: 0.35;
+  animation: ping 1.8s ease-out infinite;
+}
+@keyframes ping {
+  0%   { transform: scale(0.6); opacity: 0.5; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+.status b { font-weight: 600; }
+.status .push { color: var(--ink); font-weight: 600; }
+.status .push em { font-style: normal; color: var(--lime-deep); font-weight: 700; }
 
-/* Hero left column: text */
-.hero-text { text-align: left; }
-.hero-text .eyebrow { margin-bottom: 22px; }
-.hero-text h1 {
+.col-l h1 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(40px, 5.2vw, 78px);
-  line-height: 1.02;
-  letter-spacing: -0.035em;
-  margin: 0 0 22px;
+  font-size: clamp(44px, 5.6vw, 84px);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin-bottom: 22px;
   color: var(--ink);
 }
-.hero-text h1 em { font-style: normal; color: var(--lime-deep); }
-.hero-text .sub {
-  font-size: clamp(16px, 1.3vw, 19px);
-  color: var(--ink-2);
-  max-width: 44ch;
-  margin: 0 0 32px;
-  line-height: 1.5;
-}
-.hero-text .hero-actions {
+.col-l h1 em { font-style: normal; color: var(--lime-deep); }
+
+/* multilingual greeting strip - cycles Welcome / Selamat datang / 欢迎光临 / வரவேற்கிறோம் */
+.greet {
+  font-family: var(--font-mono);
+  font-size: clamp(14px, 1.5vw, 16px);
+  color: var(--grey);
+  margin-bottom: 18px;
+  height: 1.5em;
   display: flex;
-  gap: 24px;
   align-items: center;
-  margin-bottom: 26px;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  gap: 10px;
 }
+.greet .g {
+  position: relative;
+  min-width: 8ch;
+  color: var(--ink);
+  font-weight: 600;
+}
+.greet .g span {
+  position: absolute;
+  left: 0; top: 0;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+.greet .g span.on { opacity: 1; transform: none; }
+.greet .g .zh { font-family: 'Noto Sans SC', var(--font-mono); }
+.greet .g .ta { font-family: 'Noto Sans Tamil', var(--font-mono); }
+
+.col-l .sub {
+  font-size: clamp(16px, 1.4vw, 18.5px);
+  color: var(--ink-2);
+  max-width: 34ch;
+  line-height: 1.55;
+  margin-bottom: 30px;
+}
+.col-l .cta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+.col-l .link {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+  border-bottom: 1.5px solid var(--lime-deep);
+  padding-bottom: 2px;
+  text-decoration: none;
+  transition: color 120ms;
+}
+.col-l .link:hover { color: var(--lime-deep); }
+
+/* living loss counter - ticks up from calculator math */
+.leak {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-2);
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.leak .dot { width: 8px; height: 8px; border-radius: 50%; flex: 0 0 auto; background: #c0392b; }
+.leak .amt { color: var(--ink); font-weight: 600; }
+.leak .amt b { color: #c0392b; }
+
+/* phone column - upright + static (no tilt, no float per brief) */
+.col-r {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.glow {
+  position: absolute;
+  width: min(560px, 90%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(188,241,37,0.42) 0%, transparent 62%);
+  filter: blur(8px);
+  z-index: 0;
+  animation: glowf 7s ease-in-out infinite;
+}
+@keyframes glowf {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-12px) scale(1.04); }
+}
+.col-r .phone {
+  position: relative;
+  z-index: 1;
+  width: min(370px, 82vw);
+  aspect-ratio: 380/780;
+  background: #1A1A1A;
+  border-radius: 44px;
+  padding: 10px;
+  box-shadow: 0 50px 90px -30px rgba(26,26,26,0.5),
+              0 0 0 1px rgba(26,26,26,0.06);
+}
+.col-r .phone .notch {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 24px;
+  background: #0a0a0a;
+  border-radius: 999px;
+  z-index: 4;
+}
+.col-r .phone iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 36px;
+  display: block;
+  background: #fff;
+}
+
+/* floating annotation chips - boxed cards, 2-line (label / value) */
+.chip {
+  position: absolute;
+  z-index: 3;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 9px 13px;
+  box-shadow: 0 10px 30px rgba(26,26,26,0.12);
+  white-space: nowrap;
+}
+.chip .k {
+  color: var(--grey-2);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 2px;
+}
+.chip .v { color: var(--ink); }
+.chip .v em { font-style: normal; color: var(--lime-deep); }
+.chip.c1 { top: 14%; left: -6%; animation: bob 6s ease-in-out infinite; }
+.chip.c2 { top: 46%; right: -9%; animation: bob 6s ease-in-out 0.8s infinite; }
+.chip.c3 { bottom: 11%; left: -3%; animation: bob 6s ease-in-out 1.6s infinite; }
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow, .chip, .status .dot::after { animation: none; }
+}
+
+/* ---- hero v2 responsive ---- */
+@media (max-width: 1100px) {
+  .hero { gap: 36px; }
+  .chip.c1 { left: -2%; }
+  .chip.c2 { right: -4%; }
+  .chip.c3 { left: 0; }
+}
+@media (max-width: 920px) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: left;
+    padding: 96px 6vw 56px;
+    min-height: auto;
+  }
+  .col-l { order: 1; }
+  .col-r { order: 2; }
+  .col-l::before { inset: -20px -24px; }
+  .chip { display: none; }
+  .col-r .phone { width: min(330px, 72vw); }
+  .glow { width: min(440px, 80%); }
+  .col-l .sub { max-width: 46ch; }
+}
+@media (max-width: 560px) {
+  .hero { padding: 88px 22px 44px; gap: 26px; }
+  .col-l h1 { font-size: clamp(38px, 11vw, 56px); }
+  .status { font-size: 11px; gap: 8px; padding: 7px 12px; }
+  .greet { font-size: 13px; }
+  .col-l .sub { font-size: 15.5px; }
+  .leak { font-size: 11px; }
+  .col-r .phone { width: min(300px, 80vw); }
+}
+/* short / landscape screens: breathe and scroll instead of clipping */
+@media (max-height: 560px) and (min-width: 921px) {
+  .hero { min-height: auto; padding-top: 108px; padding-bottom: 48px; }
+}
+
+/* legacy secondary text-link (used in the manifesto section) */
 .hero-watch {
   font-family: var(--font-body);
   font-size: 14.5px;
@@ -662,71 +878,6 @@ body { padding-bottom: 64px; }
   transition: color 120ms;
 }
 .hero-watch:hover { color: var(--lime-deep); }
-.hero-text .hero-micro { text-align: left; }
-.hero-micro {
-  font-family: var(--font-mono); font-size: 10.5px;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--grey-2);
-}
-.hero-micro span { color: var(--grey-2); margin: 0 8px; opacity: 0.6; }
-
-/* Hero right column: phone with tilt, glow, floating annotation chips */
-.hero-phone-col {
-  position: relative;
-  display: flex; align-items: center; justify-content: center;
-}
-.hero-phone-wrap {
-  position: relative;
-  display: inline-block;
-  isolation: isolate;
-}
-.hero-phone-wrap::before {
-  content: '';
-  position: absolute;
-  inset: -18%;
-  background: radial-gradient(circle at 50% 50%, rgba(188,241,37,0.42) 0%, transparent 60%);
-  filter: blur(28px);
-  z-index: 0;
-  animation: heroHaloBreath 4s ease-in-out infinite;
-  will-change: transform, opacity;
-}
-@keyframes heroHaloBreath {
-  0%, 100% { transform: scale(1);    opacity: 0.85; }
-  50%      { transform: scale(1.05); opacity: 1;    }
-}
-.hero-phone-tilt {
-  transform: rotate(-3deg);
-  filter: drop-shadow(0 30px 50px rgba(0,0,0,0.20));
-  position: relative;
-  z-index: 1;
-}
-@media (max-width: 900px) {
-  .hero.hero-grid {
-    min-height: auto;
-    padding: 72px 22px 56px;
-  }
-  .hero.hero-grid .hero-inner {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-  .hero-text, .hero-text .hero-micro { text-align: center; }
-  .hero-text h1, .hero-text .sub { margin-left: auto; margin-right: auto; }
-  .hero-text .sub { max-width: 56ch; }
-  .hero-text .hero-actions { justify-content: center; }
-}
-@media (max-width: 640px) {
-  .hero-phone-tilt { transform: rotate(0deg); }
-}
-@media (max-width: 360px) {
-  .hero-text h1 { font-size: 30px; line-height: 1.05; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-phone-tilt { transform: none; }
-  .hero-phone-wrap::before { animation: none; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-stage::before { animation: none; }
-}
 
 /* ─── TRUST STRIP (subtle one-line fact strip below hero) ─── */
 .trust-strip {
@@ -1291,53 +1442,6 @@ footer.foot {
   font-weight: 500;
 }
 
-/* ─── HERO ENTRANCE CHOREOGRAPHY (first visit per session only) ───
-   JS adds .mb-entry to body on first visit, then .mb-go a frame later.
-   3.5s after, both classes are removed and sessionStorage flags the visit.
-   Subsequent visits skip the entrance entirely. */
-body.mb-entry .top-ribbon            { opacity: 0; transform: translateY(-12px); }
-body.mb-entry .hero .eyebrow         { opacity: 0; }
-body.mb-entry .hero h1 .mb-word      { opacity: 0; transform: translateY(14px); display: inline-block; }
-body.mb-entry .hero .sub             { opacity: 0; transform: translateY(8px); }
-body.mb-entry .hero-actions .btn     { opacity: 0; transform: scale(0.94); }
-body.mb-entry .hero-micro            { opacity: 0; }
-body.mb-entry .hero-stage            { opacity: 0; transform: translateY(50px) scale(0.92); }
-body.mb-entry nav.top                { transform: translate(-50%, 90px); }
-
-body.mb-entry .top-ribbon,
-body.mb-entry .hero .eyebrow,
-body.mb-entry .hero h1 .mb-word,
-body.mb-entry .hero .sub,
-body.mb-entry .hero-actions .btn,
-body.mb-entry .hero-micro,
-body.mb-entry .hero-stage,
-body.mb-entry nav.top {
-  transition: opacity 700ms ease, transform 800ms cubic-bezier(.16,1,.3,1);
-}
-
-body.mb-entry.mb-go .top-ribbon                       { opacity: 1; transform: translateY(0);  transition-delay: 150ms; }
-body.mb-entry.mb-go .hero .eyebrow                    { opacity: 1; transition-delay: 300ms; }
-body.mb-entry.mb-go .hero h1 .mb-word                 { opacity: 1; transform: translateY(0); }
-body.mb-entry.mb-go .hero h1 .mb-word:nth-of-type(1)  { transition-delay: 550ms;  }
-body.mb-entry.mb-go .hero h1 .mb-word:nth-of-type(2)  { transition-delay: 640ms;  }
-body.mb-entry.mb-go .hero h1 .mb-word:nth-of-type(3)  { transition-delay: 730ms;  }
-body.mb-entry.mb-go .hero h1 .mb-word:nth-of-type(4)  { transition-delay: 820ms;  }
-body.mb-entry.mb-go .hero h1 .mb-word:nth-of-type(5)  { transition-delay: 910ms;  }
-body.mb-entry.mb-go .hero h1 .mb-word:nth-of-type(6)  { transition-delay: 1000ms; }
-body.mb-entry.mb-go .hero h1 .mb-word:nth-of-type(7)  { transition-delay: 1090ms; }
-body.mb-entry.mb-go .hero .sub                        { opacity: 1; transform: translateY(0); transition-delay: 1350ms; }
-body.mb-entry.mb-go .hero-actions .btn:nth-of-type(1) { opacity: 1; transform: scale(1); transition-delay: 1700ms; }
-body.mb-entry.mb-go .hero-actions .btn:nth-of-type(2) { opacity: 1; transform: scale(1); transition-delay: 1800ms; }
-body.mb-entry.mb-go .hero-micro                       { opacity: 1; transition-delay: 1900ms; }
-body.mb-entry.mb-go .hero-stage                       { opacity: 1; transform: translateY(0) scale(1); transition-delay: 2100ms; }
-body.mb-entry.mb-go nav.top                           { transform: translate(-50%, 0); transition-delay: 2200ms; }
-
-@media (prefers-reduced-motion: reduce) {
-  body.mb-entry, body.mb-entry.mb-go,
-  body.mb-entry *, body.mb-entry.mb-go * { transition: none !important; opacity: 1 !important; transform: none !important; }
-  body.mb-entry nav.top, body.mb-entry.mb-go nav.top { transform: translate(-50%, 0) !important; }
-}
-
 /* ─── REVEALS ─── */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 600ms ease, transform 600ms cubic-bezier(.16,1,.3,1); }
 .reveal.in { opacity: 1; transform: translateY(0); }
@@ -1380,11 +1484,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
   .top-ribbon-inner { padding: 12px 20px; }
   .top-ribbon .brand .brand-lockup { height: 30px; }
 
-  .hero { padding: 56px 22px 40px; }
-  .hero h1 { font-size: clamp(40px, 9vw, 64px); }
-  .hero .sub { font-size: 16px; margin-bottom: 32px; }
   .hero-actions .btn { padding: 13px 22px; font-size: 14px; }
-  .hero-stage { margin-top: 40px; }
 
   .trust-strip { padding: 16px 22px; }
   .trust-strip-inner { gap: 12px 22px; font-size: 11px; letter-spacing: 0.12em; }
@@ -1434,16 +1534,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
   .top-ribbon-inner { padding: 10px 16px; }
   .top-ribbon .brand .brand-lockup { height: 28px; }
 
-  .hero { padding: 40px 18px 32px; }
-  .hero .eyebrow { font-size: 10px; margin-bottom: 22px; }
-  .hero h1 { font-size: clamp(36px, 11vw, 56px); margin-bottom: 22px; max-width: 14ch; }
-  .hero .sub { font-size: 15.5px; margin-bottom: 28px; }
-  .hero-actions { gap: 8px; }
   .hero-actions .btn { padding: 12px 20px; font-size: 13.5px; }
-  .hero-micro { font-size: 9.5px; letter-spacing: 0.14em; }
-  .hero-micro span { margin: 0 4px; }
-  .hero-stage { margin-top: 32px; }
-  .hero-stage::before { width: 320px; height: 320px; }
 
   .trust-strip { padding: 14px 18px; }
   .trust-strip-inner { gap: 10px 18px; font-size: 10.5px; letter-spacing: 0.1em; }
@@ -1842,28 +1933,45 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
 
 <main>
 
-<!-- ─── HERO ─── -->
-<section class="hero hero-grid" id="top">
-  <div class="hero-bg" aria-hidden="true"></div>
-  <div class="hero-inner">
-    <div class="hero-text reveal has-bg-scrim">
-      <span class="eyebrow">THE AI WAITER, LIVE IN MALAYSIA</span>
-      <h1>The waiter you <em>wish</em> you could hire.</h1>
-      <p class="sub">Lifts revenue on every order. Speaks every Malaysian language. Sits on top of any POS you already use.</p>
-      <div class="hero-actions">
-        <a class="btn btn-lime btn-lg" href="https://wa.me/60175981858" target="_blank" rel="noopener">WhatsApp us &rarr;</a>
-        <a class="hero-watch" href="#demo">Watch it work</a>
-      </div>
-      <div class="hero-micro">NO POS REPLACEMENT<span>·</span>SAME-DAY SETUP<span>·</span>ZERO STAFF TRAINING</div>
+<!-- ─── HERO v2 "Reads the Room" - live clock + multilingual greeting + loss counter ─── -->
+<section class="hero" id="top">
+  <div class="col-l">
+    <div class="status">
+      <span class="dot"></span>
+      <span><b id="st-time">KL · --:--</b> &middot; <span id="st-part">READING THE ROOM</span></span>
+      <span class="push">&rarr; pushing <em id="st-push">&hellip;</em></span>
     </div>
-    <div class="hero-phone-col reveal">
-      <div class="hero-phone-wrap">
-        <div class="phone lg hero-phone-tilt">
-          <div class="notch"></div>
-          <iframe src="Customer QR App.html?demo=upsell_popup&items=eb&screen=menu&hour=9&hideDev=1&compact=1&cb=20260529x" title="MenuBase customer menu" loading="lazy"></iframe>
-        </div>
-      </div>
+
+    <h1>The waiter you<br/><em>wish</em> you could hire.</h1>
+
+    <div class="greet">Greets every guest:&nbsp;
+      <span class="g" id="greet">
+        <span class="on">Welcome.</span>
+        <span>Selamat datang.</span>
+        <span class="zh">&#27426;&#36814;&#20809;&#20020;&#12290;</span>
+        <span class="ta">&#2997;&#3008;&#2986;&#2997;&#3015;&#2993;&#3021;&#2965;&#3007;&#2993;&#3019;&#3019;&#2990;&#3021;.</span>
+      </span>
     </div>
+
+    <p class="sub">The AI waiter inside your QR menu. Reads the basket, the time, the weather, then surfaces the one add-on worth showing. Sits on top of any POS.</p>
+
+    <div class="cta">
+      <a class="btn btn-lime" href="https://wa.me/60175981858" target="_blank" rel="noopener">WhatsApp us &rarr;</a>
+      <a class="link" href="#demo">Watch it work</a>
+    </div>
+
+    <div class="leak"><span class="dot"></span><span class="amt">Since you opened this page, an average KL caf&eacute; left <b id="leak">RM 0.00</b> on the table.</span></div>
+  </div>
+
+  <div class="col-r">
+    <div class="glow"></div>
+    <div class="phone">
+      <div class="notch"></div>
+      <iframe src="Customer QR App.html?demo=upsell_popup&items=eb&screen=checkout&hour=9&hideDev=1&compact=1&cb=20260529x" title="MenuBase live app" loading="eager"></iframe>
+    </div>
+    <div class="chip c1"><span class="k">Per order</span><span class="v">+RM 8.40 <em>uplift</em></span></div>
+    <div class="chip c2"><span class="k">Accept rate</span><span class="v"><em>89%</em> this basket</span></div>
+    <div class="chip c3"><span class="k">Languages</span><span class="v">EN &middot; BM &middot; ZH &middot; TA</span></div>
   </div>
 </section>
 
@@ -2493,37 +2601,72 @@ setTimeout(() => {
   nums.forEach(function(el){ io.observe(el); });
 })();
 
-/* ─── Hero entrance choreography - first visit per session.
-       Splits H1 into word spans, adds .mb-entry then .mb-go to <body>,
-       then the CSS block above handles staggered transitions.
-       After 3.5s, classes are cleared and sessionStorage flags the visit. ─── */
+/* ─── Hero v2 "Reads the Room" - 3 live signals ─── */
+
+// 1. Live KL clock + daypart (forces Asia/Kuala_Lumpur so overseas visitors still see KL time)
 (function(){
-  try { if (sessionStorage.getItem('mb_entered_v2')) return; } catch(e) {}
-  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    try { sessionStorage.setItem('mb_entered_v2', '1'); } catch(e) {}
-    return;
+  function dayparts(h){
+    if(h < 11) return ['BREAKFAST',   'Kopi + Half-boiled Eggs'];
+    if(h < 15) return ['LUNCH RUSH',  'Set Lunch + Iced Lemon Tea'];
+    if(h < 18) return ['TEA TIME',    'Teh Tarik + Karipap'];
+    if(h < 22) return ['DINNER RUSH', 'Nasi Goreng + Teh O Ais'];
+    return            ['SUPPER',      'Maggi Goreng + Milo Ais'];
   }
-
-  // Wrap H1 words in spans for staggered reveal. Keeps <em>...</em> intact.
-  var h1 = document.querySelector('.hero h1');
-  if (h1) {
-    var html = h1.innerHTML;
-    var tokens = html.match(/<em[^>]*>[^<]*<\/em>|\S+|\s+/g) || [];
-    h1.innerHTML = tokens.map(function(t) {
-      return /^\s+$/.test(t) ? ' ' : '<span class="mb-word">' + t + '</span>';
-    }).join('');
+  var stTime = document.getElementById('st-time');
+  var stPart = document.getElementById('st-part');
+  var stPush = document.getElementById('st-push');
+  if(!stTime) return;
+  function klNow(){
+    try {
+      var parts = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Asia/Kuala_Lumpur',
+        hour: 'numeric', minute: '2-digit', hour12: false
+      }).formatToParts(new Date());
+      var h = parseInt(parts.find(function(p){ return p.type === 'hour';   }).value, 10);
+      var m = parts.find(function(p){ return p.type === 'minute'; }).value;
+      return { h: h, m: m };
+    } catch(e) {
+      var d = new Date();
+      return { h: d.getHours(), m: String(d.getMinutes()).padStart(2, '0') };
+    }
   }
+  function tick(){
+    var t = klNow();
+    var ap = t.h < 12 ? 'AM' : 'PM';
+    var h12 = ((t.h + 11) % 12) + 1;
+    stTime.textContent = 'KL · ' + h12 + ':' + t.m + ap;
+    var dp = dayparts(t.h);
+    stPart.textContent = dp[0];
+    stPush.textContent = dp[1];
+  }
+  tick();
+  setInterval(tick, 10000);
+})();
 
-  document.body.classList.add('mb-entry');
-  requestAnimationFrame(function() {
-    requestAnimationFrame(function() {
-      document.body.classList.add('mb-go');
-      setTimeout(function() {
-        document.body.classList.remove('mb-entry', 'mb-go');
-        try { sessionStorage.setItem('mb_entered_v2', '1'); } catch(e) {}
-      }, 3500);
-    });
-  });
+// 2. Multilingual greeting cycle - cycles every 2.2s
+(function(){
+  var els = document.querySelectorAll('#greet span');
+  if(!els.length) return;
+  var i = 0;
+  setInterval(function(){
+    els[i].classList.remove('on');
+    i = (i + 1) % els.length;
+    els[i].classList.add('on');
+  }, 2200);
+})();
+
+// 3. Living loss counter - RM30,240/mo divided over ~12h shifts, tied to calculator default
+(function(){
+  var el = document.getElementById('leak');
+  if(!el) return;
+  var perSec = 30240 / 30 / 12 / 3600;
+  var start = performance.now();
+  function run(){
+    var secs = (performance.now() - start) / 1000;
+    el.textContent = 'RM ' + (secs * perSec).toFixed(2);
+    requestAnimationFrame(run);
+  }
+  requestAnimationFrame(run);
 })();
 
 /* ─── Phone parallax - each .phone gets a translateY based on its position
