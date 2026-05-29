@@ -1534,12 +1534,17 @@ footer.foot {
 /* Mobile */
 @media (max-width: 640px) {
   body { padding-bottom: 74px; }
-  nav.top { bottom: 10px; left: 12px; right: 12px; transform: none; max-width: none; width: auto; }
-  .nav-inner { padding: 5px; }
-  .nav-cta { width: 100%; justify-content: center; }
-  .nav-cta .btn { flex: 1; justify-content: center; padding: 10px 14px; font-size: 12.5px; }
-  /* icon-only WA stays compact + centered, doesn't stretch with flex:1 */
-  .nav-cta .btn.nav-wa-icon { flex: 0 0 auto; width: 44px; height: 44px; padding: 0; }
+  nav.top {
+    bottom: 14px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: auto;
+    max-width: none;
+  }
+  .nav-inner { padding: 4px; }
+  .nav-cta { width: auto; margin-left: 0; }
+  .nav-cta .btn.nav-wa-icon { flex: 0 0 auto; width: 48px; height: 48px; padding: 0; }
   .nav-cta .btn.nav-wa-icon svg { width: 22px; height: 22px; }
   .top-ribbon-inner { padding: 10px 16px; }
   .top-ribbon .brand .brand-lockup { height: 28px; }
