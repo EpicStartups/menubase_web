@@ -700,40 +700,6 @@ body { padding-bottom: 64px; }
   position: relative;
   z-index: 1;
 }
-.hero-chip {
-  position: absolute;
-  z-index: 2;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  background: #fff;
-  border: 1px solid var(--line);
-  padding: 8px 14px;
-  border-radius: 999px;
-  box-shadow: 0 10px 28px rgba(0,0,0,0.10);
-  color: var(--ink);
-  white-space: nowrap;
-  isolation: isolate;
-}
-/* Soft cream halo around each chip so canvas particles do not sit visually attached
-   to the chip edges. Pseudo-element radiates outward, fades to transparent. */
-.hero-chip::before {
-  content: '';
-  position: absolute;
-  inset: -14px -22px;
-  z-index: -1;
-  pointer-events: none;
-  border-radius: 999px;
-  background: radial-gradient(120% 130% at 50% 50%,
-    var(--bg) 38%,
-    color-mix(in oklab, var(--bg) 55%, transparent) 68%,
-    transparent 100%);
-}
-.hero-chip-1 { top: -4%;  left: -8%; }
-.hero-chip-2 { top: 40%; right: -8%; }
-.hero-chip-3 { bottom: 8%; left: -6%; }
-
 @media (max-width: 900px) {
   .hero.hero-grid {
     min-height: auto;
@@ -749,7 +715,6 @@ body { padding-bottom: 64px; }
   .hero-text .hero-actions { justify-content: center; }
 }
 @media (max-width: 640px) {
-  .hero-chip { display: none; }
   .hero-phone-tilt { transform: rotate(0deg); }
 }
 @media (max-width: 360px) {
@@ -1893,9 +1858,6 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
     </div>
     <div class="hero-phone-col reveal">
       <div class="hero-phone-wrap">
-        <span class="hero-chip hero-chip-1" aria-hidden="true">+RM 8.40 / order</span>
-        <span class="hero-chip hero-chip-2" aria-hidden="true">89% accept</span>
-        <span class="hero-chip hero-chip-3" aria-hidden="true">EN &middot; BM &middot; ZH &middot; TA</span>
         <div class="phone lg hero-phone-tilt">
           <div class="notch"></div>
           <iframe src="Customer QR App.html?demo=upsell_popup&items=eb&screen=menu&hour=9&hideDev=1&compact=1&cb=20260529x" title="MenuBase customer menu" loading="lazy"></iframe>
