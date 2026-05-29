@@ -517,11 +517,12 @@ nav.top { z-index: 50; }
 }
 .top-ribbon .brand { display: inline-flex; align-items: center; text-decoration: none; }
 .top-ribbon .brand .brand-lockup {
-  height: 34px;
+  height: 38px;
   width: auto;
   display: block;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
+  /* image-rendering removed - crisp-edges is for pixel art, makes
+     typography look jagged. Browser default bilinear interpolation
+     gives the cleanest result for a wordmark PNG. */
 }
 .top-ribbon-login {
   margin-left: auto;
