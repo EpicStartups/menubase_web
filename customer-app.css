@@ -448,10 +448,21 @@ html, body { height: 100%; }
   border: 1px solid var(--line);
 }
 .addon-card.spin { background: linear-gradient(135deg, oklch(0.93 0.10 125), oklch(0.95 0.06 340)); border-color: var(--lime-deep); }
+.addon-card.spin.pending { background: linear-gradient(135deg, oklch(0.97 0.10 125), oklch(0.99 0.04 95)); border-color: var(--lime-deep); }
+.addon-card.spin.skipped { background: var(--bg-soft); border-color: var(--line); opacity: 0.85; }
+.addon-card.spin.skipped h4 { color: var(--ink-3); }
 .addon-card h4 { margin: 0 0 4px; font-size: 15px; }
 .addon-card p { margin: 0 0 10px; font-size: 12.5px; color: var(--ink-2); }
 .addon-card.won { text-align: center; padding: 24px; }
 .addon-card.won strong { font-family: var(--font-display); font-style: italic; font-size: 28px; }
+
+/* Spin-wheel decision actions: side-by-side Add / Skip */
+.spin-actions {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+.spin-actions .reveal-btn { flex: 1; }
 
 .reveal-btn {
   background: var(--ink);
@@ -462,7 +473,22 @@ html, body { height: 100%; }
   font-size: 13px;
   cursor: pointer;
   font-family: var(--font-sans);
+  font-weight: 600;
 }
+.skip-btn {
+  background: transparent;
+  color: var(--ink-2);
+  border: 1px solid var(--line-2);
+  padding: 10px 16px;
+  border-radius: var(--r-md);
+  font-size: 13px;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  min-width: 80px;
+  transition: background 120ms, border-color 120ms;
+}
+.skip-btn:hover { background: var(--bg-soft); border-color: var(--ink-3); }
 
 /* SPIN WHEEL - conic-gradient slices + counter-rotated labels */
 .spin-wrap {

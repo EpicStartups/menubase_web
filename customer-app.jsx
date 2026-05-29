@@ -64,6 +64,7 @@ const CustomerApp = () => {
   });
   const [showSwitch, setShowSwitch] = useState(false);
   const [spinResult, setSpinResult] = useState(null);
+  const [spinDecision, setSpinDecision] = useState(null); // null | 'accepted' | 'skipped'
   const [confetti, setConfetti] = useState(false);
   const [dismissedSwaps, setDismissedSwaps] = useState({});
 
@@ -126,6 +127,7 @@ const CustomerApp = () => {
     setCart(E.emptyCart());
     setScreen('menu');
     setSpinResult(null);
+    setSpinDecision(null);
     setConfetti(false);
   };
 
@@ -162,6 +164,7 @@ const CustomerApp = () => {
               onBack={() => setScreen('cart')}
               onComplete={completeOrder}
               spinResult={spinResult} setSpinResult={setSpinResult}
+              spinDecision={spinDecision} setSpinDecision={setSpinDecision}
               setCart={setCart}
               campaigns={active}
             />
@@ -384,20 +387,28 @@ const CartScreen = ({ cart, addItem, removeItem, applied, alternates, mutations,
 };
 
 // ─── CHECKOUT SCREEN ───────────────────────────────────────────────────
-const CheckoutScreen = ({ cart, mutations, grandTotal, onBack, onComplete, spinResult, setSpinResult, setCart, campaigns }) => {
+const CheckoutScreen = ({ cart, mutations, grandTotal, onBack, onComplete, spinResult, setSpinResult, spinDecision, setSpinDecision, setCart, campaigns }) => {
   const spinCampaign = campaigns.find(c => c.type === 'spin_wheel' && c.status === 'active');
   const upsellSuggestions = mutations.suggestions.filter(s => s.kind === 'add');
 
+  // Wheel lands - just record the slot, don't add to cart yet (let user decide)
   const onSpinResult = (slotSkuId) => {
     setSpinResult(slotSkuId);
-    // Add the won RM0 SKU as an auto-add line
-    const sku = window.ITEM_BY_ID[slotSkuId];
-    if (sku) {
+  };
+
+  const acceptSpinPrize = () => {
+    const sku = window.ITEM_BY_ID[spinResult];
+    if (sku && spinCampaign) {
       setCart(c => E.recomputeCart({
         ...c,
         items: [...c.items, { ...sku, qty: 1, guestId: 'me', _campaignId: spinCampaign.id, _isReward: true }],
       }));
     }
+    setSpinDecision('accepted');
+  };
+
+  const skipSpinPrize = () => {
+    setSpinDecision('skipped');
   };
 
   const acceptUpsell = (sug) => {
@@ -426,18 +437,34 @@ const CheckoutScreen = ({ cart, mutations, grandTotal, onBack, onComplete, spinR
           );
         })}
 
-        {/* Spin wheel addon */}
+        {/* Spin wheel addon - 3 states: not spun, awaiting decision, decided */}
         {spinCampaign && !spinResult && (
           <div className="addon-card spin">
             <h4>🎰 {spinCampaign.name}</h4>
-            <p>Spin once for a free item - slot lands on a real RM0 SKU added to your cart.</p>
+            <p>Spin once for a free item. Lands on a real RM0 SKU you can add to your cart.</p>
             <SpinWheel slotSkuIds={spinCampaign.config?.slotSkuIds || ['r-ac', 'r-wc', 'r-bc']} onResult={onSpinResult}/>
           </div>
         )}
-        {spinResult && (
+        {spinResult && spinDecision === null && (
+          <div className="addon-card spin pending">
+            <h4>🎉 You landed on {window.ITEM_BY_ID[spinResult]?.name || 'a reward'}!</h4>
+            <p>Free, at RM0. Add it to your order, or skip and check out without.</p>
+            <div className="spin-actions">
+              <button className="reveal-btn" onClick={acceptSpinPrize}>+ Add to cart</button>
+              <button className="skip-btn" onClick={skipSpinPrize}>Skip</button>
+            </div>
+          </div>
+        )}
+        {spinDecision === 'accepted' && (
           <div className="addon-card spin won">
-            <h4>🎰 You won!</h4>
+            <h4>🎰 Prize added</h4>
             <strong>{window.ITEM_BY_ID[spinResult]?.name || 'Reward'} · added at RM0</strong>
+          </div>
+        )}
+        {spinDecision === 'skipped' && (
+          <div className="addon-card spin skipped">
+            <h4>🎰 Prize skipped</h4>
+            <p>No worries. {window.ITEM_BY_ID[spinResult]?.name || 'The reward'} stays in the wheel.</p>
           </div>
         )}
 
