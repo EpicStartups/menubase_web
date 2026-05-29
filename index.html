@@ -235,10 +235,10 @@ body::after {
    input rules earlier in the file (.calc-field input[type=range]::*). */
 
 /* ─── PIXEL MOTIF - gentle lime-deep border on hover for cards ─── */
-.testi-card, .roadmap-tile, .problem-card {
+.testi-card, .problem-card {
   transition: border-color 250ms ease, transform 250ms ease, box-shadow 250ms ease;
 }
-.testi-card:hover, .roadmap-tile:hover, .problem-card:hover {
+.testi-card:hover, .problem-card:hover {
   border-color: var(--lime-deep);
 }
 
@@ -303,7 +303,6 @@ section.block,
 section.problem-block,
 section.compare-block,
 section.testi-block,
-section.roadmap-block,
 section.manifesto,
 .stat-row, .demo, .calc-shell, .cta-shell, .faq-shell,
 footer.foot, .top-ribbon, nav.top {
@@ -1112,18 +1111,14 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 600ms ease, transform 600ms cubic-bezier(.16,1,.3,1); }
 .reveal.in { opacity: 1; transform: translateY(0); }
 
-/* Staggered cascade for grid-children reveals (roadmap tiles, testimonial cards) */
-.roadmap-grid > .reveal:nth-child(1),
+/* Staggered cascade for grid-children reveals (testimonial cards) */
 .testi-grid > .reveal:nth-child(1) { transition-delay: 0ms; }
-.roadmap-grid > .reveal:nth-child(2),
 .testi-grid > .reveal:nth-child(2) { transition-delay: 90ms; }
-.roadmap-grid > .reveal:nth-child(3),
 .testi-grid > .reveal:nth-child(3) { transition-delay: 180ms; }
-.roadmap-grid > .reveal:nth-child(4) { transition-delay: 270ms; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  .roadmap-grid > .reveal, .testi-grid > .reveal { transition-delay: 0ms; }
+  .testi-grid > .reveal { transition-delay: 0ms; }
 }
 
 /* ─── RESPONSIVE ─── */
@@ -1313,7 +1308,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
 
 /* Touch device hover suppression */
 @media (hover: none) {
-  .p-card:hover, .feature-card:hover, .testi-card:hover, .problem-card:hover, .roadmap-tile:hover { transform: none; }
+  .p-card:hover, .feature-card:hover, .testi-card:hover, .problem-card:hover { transform: none; }
 }
 
 /* ──────────────── PROBLEM SECTION (foreign-worker truth) ──────────────── */
@@ -1490,60 +1485,6 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
 @media (max-width: 900px) {
   .testi-grid { grid-template-columns: 1fr; }
   .testi-block { padding: 64px 22px; }
-}
-
-/* ──────────────── ROADMAP ──────────────── */
-.roadmap-block { padding: 96px 28px; max-width: 1320px; margin: 0 auto; }
-.roadmap-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-top: 40px;
-}
-.roadmap-tile {
-  background: var(--bg-soft);
-  border: 1px dashed var(--line-2);
-  padding: 26px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  transition: border-style 200ms, border-color 200ms, transform 200ms;
-}
-.roadmap-tile:hover { border-style: solid; border-color: var(--lime-deep); transform: translateY(-2px); }
-.roadmap-tag {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: var(--lime-deep);
-  background: var(--lime-soft);
-  padding: 5px 10px;
-  align-self: flex-start;
-}
-.roadmap-tile .roadmap-icon {
-  width: 36px; height: 36px;
-  background: var(--bg-elev);
-  border: 1px solid var(--line);
-  display: grid; place-items: center;
-  color: var(--ink);
-}
-.roadmap-tile .roadmap-icon svg { width: 18px; height: 18px; }
-.roadmap-tile h4 {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 18px;
-  line-height: 1.2;
-  letter-spacing: -0.015em;
-  color: var(--ink);
-}
-.roadmap-tile p { font-size: 13.5px; color: var(--grey); line-height: 1.5; }
-@media (max-width: 1100px) {
-  .roadmap-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 600px) {
-  .roadmap-grid { grid-template-columns: 1fr; }
-  .roadmap-block { padding: 64px 22px; }
 }
 
 /* ──────────────── LIME MANIFESTO ──────────────── */
@@ -2056,57 +1997,6 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
     </div>
   </div>
 </div>
-
-<!-- ─── ROADMAP ─── -->
-<section class="roadmap-block" id="roadmap">
-  <div class="section-head center reveal">
-    <span class="eyebrow">WHAT'S SHIPPING NEXT</span>
-    <h2>Already on its <em>way.</em></h2>
-    <p class="lede">Dates are commitments, not wishes. The first 10 founding outlets get all of this - locked in forever.</p>
-  </div>
-  <div class="roadmap-grid">
-    <div class="roadmap-tile reveal">
-      <span class="roadmap-tag">Q3 · 2026</span>
-      <div class="roadmap-icon">
-        <svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
-          <rect x="5" y="0" width="2" height="4"/><rect x="9" y="0" width="2" height="4"/><rect x="3" y="4" width="10" height="4"/><rect x="5" y="8" width="6" height="3"/><rect x="6" y="11" width="4" height="3"/><rect x="7" y="14" width="2" height="2"/>
-        </svg>
-      </div>
-      <h4>Native POS integrations</h4>
-      <p>Direct integration with StoreHub, Slurp!, Loyverse, BIG POS. Orders flow straight in - handoff goes from 8 seconds to 0.</p>
-    </div>
-    <div class="roadmap-tile reveal">
-      <span class="roadmap-tag">Q4 · 2026</span>
-      <div class="roadmap-icon">
-        <svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
-          <rect x="2" y="11" width="2" height="3"/><rect x="5" y="8" width="2" height="6"/><rect x="8" y="5" width="2" height="9"/><rect x="11" y="2" width="2" height="12"/><rect x="0" y="14" width="16" height="2"/>
-        </svg>
-      </div>
-      <h4>Real-time analytics dashboard</h4>
-      <p>Live uplift, top-converting upsells, daypart performance, lost revenue from skipped suggestions. All on one screen.</p>
-    </div>
-    <div class="roadmap-tile reveal">
-      <span class="roadmap-tag">Q1 · 2027</span>
-      <div class="roadmap-icon">
-        <svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
-          <rect x="2" y="2" width="4" height="2"/><rect x="10" y="2" width="4" height="2"/><rect x="0" y="4" width="6" height="2"/><rect x="10" y="4" width="6" height="2"/><rect x="0" y="6" width="16" height="2"/><rect x="2" y="8" width="12" height="2"/><rect x="4" y="10" width="8" height="2"/><rect x="6" y="12" width="4" height="2"/>
-        </svg>
-      </div>
-      <h4>Loyalty + CRM layer</h4>
-      <p>The AI waiter remembers everyone. Auto "welcome back" suggestions, birthday offers, tier perks. No manual list-building.</p>
-    </div>
-    <div class="roadmap-tile reveal">
-      <span class="roadmap-tag">Q2 · 2027</span>
-      <div class="roadmap-icon">
-        <svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
-          <rect x="0" y="1" width="16" height="2"/><rect x="2" y="3" width="12" height="2"/><rect x="4" y="5" width="8" height="2"/><rect x="6" y="7" width="4" height="6"/><rect x="4" y="13" width="8" height="1"/>
-        </svg>
-      </div>
-      <h4>Dietary + allergen filters</h4>
-      <p>One tap: show me only Halal · Vegan · Pork-free · Gluten-free. Built for Malaysia's diverse customer base.</p>
-    </div>
-  </div>
-</section>
 
 <!-- ─── FOUNDING CTA ─── -->
 <div class="cta-shell" id="book">
