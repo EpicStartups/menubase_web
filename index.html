@@ -2089,20 +2089,35 @@ footer.foot {
 .manifesto-pixels span:nth-child(5) { top: 50%; left: 96%; width: 8px;  height: 8px;  }
 .manifesto-pixels span:nth-child(6) { top: 32%; left: 8%;  width: 12px; height: 12px; }
 @media (max-width: 700px) {
-  /* On small viewports the 1200x700 lime radial used to cover the entire
-     viewport, washing the bg toward lime and hurting white-text contrast.
-     Tighten the ellipse to a contained spotlight at the top, leave the
-     rest as deep dark so all text reads cleanly. */
+  /* Mobile: ditch the dark stage + lime spotlight (the radial blew out on
+     small viewports and dragged contrast below readable). Use solid lime
+     bg with literal dark text - high contrast, brand-bold billboard. */
   .manifesto {
-    background:
-      radial-gradient(ellipse 380px 260px at 50% 30%, rgba(188,241,37,0.20) 0%, transparent 65%),
-      var(--ink-deep);
+    background: var(--lime);
     padding: 80px 20px;
   }
-  .manifesto h2 { font-size: clamp(32px, 9vw, 46px); letter-spacing: -0.035em; }
-  .manifesto h2 em { padding: 0 12px; box-shadow: 0 0 36px rgba(188,241,37,0.45); }
-  .manifesto p { font-size: 15px; color: rgba(242,242,238,0.85); }
-  .manifesto-tagline { font-size: 16px; color: rgba(242,242,238,0.92); }
+  .manifesto-eyebrow { color: #1A1A1A; background: rgba(0,0,0,0.10); border-color: rgba(0,0,0,0.25); }
+  .manifesto h2 { font-size: clamp(32px, 9vw, 46px); letter-spacing: -0.035em; color: #1A1A1A; }
+  .manifesto h2 em {
+    color: #BCF125;
+    background: #1A1A1A;
+    box-shadow: 0 6px 28px rgba(0,0,0,0.25);
+    padding: 0 14px;
+  }
+  .manifesto p { font-size: 15px; color: #1A1A1A; }
+  .manifesto-tagline {
+    font-size: 16px;
+    color: #1A1A1A;
+    border-top-color: rgba(0,0,0,0.22);
+  }
+  .manifesto-tagline strong { color: #1A1A1A; }
+  /* Barcode strips: invert so dark pieces show on lime instead of lime on dark */
+  .manifesto::before, .manifesto::after {
+    background-image:
+      linear-gradient(90deg, #1A1A1A 50%, transparent 50%),
+      linear-gradient(90deg, transparent 50%, #1A1A1A 50%);
+  }
+  .manifesto-pixels span { background: #1A1A1A; }
 }
 
 /* ─── PLAYBOOK CTA (sits between the manifesto and FAQ) ─── */
