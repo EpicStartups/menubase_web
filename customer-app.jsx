@@ -189,7 +189,7 @@ const CustStatus = ({ ctx }) => (
 );
 
 // ─── MENU SCREEN ───────────────────────────────────────────────────────
-const MenuScreen = ({ cart, addItem, applied, alternates, blocked, mutations, onCart, tableMode, campaigns }) => {
+const MenuScreen = ({ cart, addItem, removeItem, applied, alternates, blocked, mutations, onCart, tableMode, campaigns }) => {
   // Apply visibility mutations to derive what items the customer can browse
   const visible = E.visibleMenu(window.MENU_ITEMS, mutations);
 
@@ -258,9 +258,15 @@ const MenuScreen = ({ cart, addItem, applied, alternates, blocked, mutations, on
                         })()}
                       </div>
                     </div>
-                    <button className="add-btn" onClick={() => addItem(it)}>
-                      {inCart ? `×${inCart.qty}` : '+'}
-                    </button>
+                    {inCart ? (
+                      <div className="qty-stepper">
+                        <button className="qty-step-btn" onClick={() => removeItem(it.id)} aria-label="Remove one">−</button>
+                        <span className="qty-step-num">{inCart.qty}</span>
+                        <button className="qty-step-btn" onClick={() => addItem(it)} aria-label="Add one">+</button>
+                      </div>
+                    ) : (
+                      <button className="add-btn" onClick={() => addItem(it)} aria-label="Add to cart">+</button>
+                    )}
                   </div>
                 );
               })}
