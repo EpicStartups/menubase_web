@@ -305,7 +305,7 @@ section.compare-block,
 section.testi-block,
 section.roadmap-block,
 section.manifesto,
-.marquee, .demo, .calc-shell, .cta-shell, .faq-shell,
+.stat-row, .demo, .calc-shell, .cta-shell, .faq-shell,
 footer.foot, .top-ribbon, nav.top {
   position: relative;
   z-index: 2;
@@ -396,7 +396,7 @@ body { padding-bottom: 64px; }
 /* ─── HERO ─── */
 
 .hero {
-  padding: 80px 28px 64px;
+  padding: 112px 28px 84px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -472,49 +472,59 @@ body { padding-bottom: 64px; }
   .hero-stage::before { animation: none; }
 }
 
-/* ─── MARQUEE / VENUE TYPES ─── */
-.marquee {
+/* ─── STAT ROW (below hero - 4 concrete proof points) ─── */
+.stat-row {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  padding: 32px 0;
-  overflow: hidden;
+  padding: 44px 28px;
   background: var(--bg-soft);
+  position: relative;
 }
-.marquee-label {
-  text-align: center;
+.stat-row-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+.stat-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 14px;
+  position: relative;
+}
+.stat-cell + .stat-cell::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--line);
+}
+.stat-cell .num {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(42px, 5.4vw, 64px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+.stat-cell .num em {
+  font-style: normal;
+  color: var(--lime-deep);
+}
+.stat-cell .lbl {
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--grey);
-  margin-bottom: 22px;
   font-weight: 600;
+  margin-top: 6px;
 }
-.marquee-track {
-  display: flex; gap: 64px;
-  white-space: nowrap;
-  animation: mq 40s linear infinite;
-  width: max-content;
-}
-.marquee-track span {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(28px, 3.4vw, 44px);
-  letter-spacing: -0.025em;
-  color: var(--ink);
-  display: inline-flex; align-items: center; gap: 64px;
-}
-.marquee-track span::after {
-  content: '';
-  width: 10px; height: 10px;
-  background: var(--lime-deep);
-  display: inline-block;
-}
-@keyframes mq {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
 /* ─── SECTION SHELL ─── */
 section.block {
   padding: 112px 28px;
@@ -1239,9 +1249,9 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
   .hero-actions .btn { padding: 13px 22px; font-size: 14px; }
   .hero-stage { margin-top: 40px; }
 
-  .marquee { padding: 24px 0; }
-  .marquee-track { gap: 40px; }
-  .marquee-track span { font-size: 26px; gap: 40px; }
+  .stat-row { padding: 36px 22px; }
+  .stat-row-inner { gap: 20px; }
+  .stat-cell { padding: 0 8px; }
 
   section.block { padding: 72px 22px; }
   .section-head { margin-bottom: 48px; }
@@ -1306,11 +1316,13 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
   .hero-stage { margin-top: 32px; }
   .hero-stage::before { width: 320px; height: 320px; }
 
-  .marquee { padding: 18px 0; }
-  .marquee-label { font-size: 10px; margin-bottom: 14px; }
-  .marquee-track { gap: 28px; animation-duration: 30s; }
-  .marquee-track span { font-size: 22px; gap: 28px; }
-  .marquee-track span::after { width: 7px; height: 7px; }
+  .stat-row { padding: 28px 18px; }
+  .stat-row-inner { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
+  .stat-cell { padding: 0 6px; }
+  .stat-cell + .stat-cell::before { display: none; }
+  .stat-cell:nth-child(2n)::before { display: block; left: -8px; top: 4px; bottom: 4px; }
+  .stat-cell .num { font-size: 38px; }
+  .stat-cell .lbl { font-size: 10px; letter-spacing: 0.14em; }
 
   section.block { padding: 56px 18px; }
   .section-head { margin-bottom: 36px; }
@@ -1398,7 +1410,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
 @media (max-width: 380px) {
   .nav-cta .btn { padding: 10px 14px; font-size: 13px; }
   .hero h1 { font-size: 36px; }
-  .marquee-track span { font-size: 20px; }
+  .stat-cell .num { font-size: 32px; }
   .section-head h2 { font-size: 26px; }
   .pillar-txt h3 { font-size: 24px; }
   .modes-rail-btn .nm { font-size: 16px; }
@@ -1781,7 +1793,7 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
     </div>
     <div class="nav-cta">
       <a class="btn btn-ghost" href="https://wa.me/60175981858" target="_blank" rel="noopener">WhatsApp</a>
-      <a class="btn btn-dark" href="#book">Talk to sales</a>
+      <a class="btn btn-dark" href="#book">TALK TO SALES</a>
     </div>
   </div>
 </nav>
@@ -1807,8 +1819,8 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
     <h1>The waiter you <em>wish</em> you could hire.</h1>
     <p class="sub">MenuBase is the AI waiter that lives in your QR menu. Speaks every language, never forgets the specials, always upsells at the right moment. Sits on top of any POS, no replacement needed.</p>
     <div class="hero-actions">
-      <a class="btn btn-dark btn-lg" href="#book">Talk to sales</a>
-      <a class="btn btn-ghost btn-lg" href="#demo">Try the live demo</a>
+      <a class="btn btn-dark btn-lg" href="#book">TALK TO SALES</a>
+      <a class="btn btn-ghost btn-lg" href="#demo">WATCH IT WORK</a>
     </div>
     <div class="hero-micro">NO POS REPLACEMENT<span>·</span>SAME-DAY SETUP<span>·</span>ZERO STAFF TRAINING</div>
 
@@ -1821,11 +1833,25 @@ body.mb-entry.mb-go nav.top                           { transform: translate(-50
   </div>
 </section>
 
-<!-- ─── MARQUEE ─── -->
-<div class="marquee">
-  <div class="marquee-label">BUILT FOR THE WAY MALAYSIA EATS</div>
-  <div class="marquee-track">
-    <span>Cafés</span><span>Kopitiams</span><span>Mamak</span><span>Fine dining</span><span>Food courts</span><span>Hawker</span><span>Bars &amp; lounges</span><span>Hotel restaurants</span><span>Cafés</span><span>Kopitiams</span><span>Mamak</span><span>Fine dining</span><span>Food courts</span><span>Hawker</span><span>Bars &amp; lounges</span><span>Hotel restaurants</span>
+<!-- ─── STAT ROW (replaced the marquee with concrete proof) ─── -->
+<div class="stat-row">
+  <div class="stat-row-inner">
+    <div class="stat-cell">
+      <div class="num">4</div>
+      <div class="lbl">Ways to deploy</div>
+    </div>
+    <div class="stat-cell">
+      <div class="num">0</div>
+      <div class="lbl">POS replacement</div>
+    </div>
+    <div class="stat-cell">
+      <div class="num">Same-day</div>
+      <div class="lbl">Setup, no training</div>
+    </div>
+    <div class="stat-cell">
+      <div class="num"><em>Every</em></div>
+      <div class="lbl">Malaysian language</div>
+    </div>
   </div>
 </div>
 
