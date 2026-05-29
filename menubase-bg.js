@@ -38,9 +38,12 @@
     for(const p of pts){ let l=0; if(mouse.active){ const dx=p.x-mouse.x,dy=p.y-mouse.y; l=Math.exp(-Math.hypot(dx,dy)/180); }
       ctx.fillStyle=rgba(mix(INK,LIME,Math.min(1,l*1.2)),.18+l*.7); ctx.fillRect(p.x-p.s/2,p.y-p.s/2,p.s,p.s); }
     if(MODE==='synthesis' && !reduce){
-      if(!ev && t>nextAt){ nextAt===0?(nextAt=t+600):startEv(t); }
+      // Synthesis only fires while the hero is in view. Below the hero the labels
+      // (WEATHER, TIME, etc.) would land on body copy. Constellation drift continues regardless.
+      const nearTop = (scrollY||0) < (innerHeight * 0.55);
+      if(!ev && t>nextAt && nearTop){ nextAt===0?(nextAt=t+600):startEv(t); }
       if(ev){ const p=(t-ev.t0)/ev.DUR;
-        if(p>=1){ ev=null; nextAt=t+900+Math.random()*1200; }
+        if(p>=1 || !nearTop){ ev=null; nextAt=t+900+Math.random()*1200; }
         else{ const ein=Math.min(1,p/.22), eout=p>.82?Math.max(0,1-(p-.82)/.18):1, grow=Math.min(1,p/.34), bloom=Math.max(0,Math.min(1,(p-.30)/.22)), env=ein*eout, lab=!small();
           ctx.font='600 11px "JetBrains Mono",ui-monospace,monospace'; ctx.textBaseline='middle';
           for(const nd of ev.nodes){ const lx=nd.x+(ev.fx-nd.x)*grow, ly=nd.y+(ev.fy-nd.y)*grow;
