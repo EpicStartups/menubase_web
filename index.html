@@ -1151,32 +1151,33 @@ section.block.tight { padding: 80px 28px; }
   to { stroke-dashoffset: -18; }
 }
 
-/* Smart Upsell: a bright lime streak travels along each connection line
-   FROM the corner input TOWARD the center result. Long gap in the dash
-   pattern leaves only one visible streak per line at a time, so the
-   direction of travel reads unambiguously. Each line is ~142px - the
-   28px streak + 130px gap (period 158) almost exactly fits one cycle. */
+/* Smart Upsell: each line draws itself FROM the corner input TOWARD
+   the center result. Solid line, no dashes - just a clean "growing"
+   line that extends inward, holds at full length, then fades.
+   Lines are ~142px; using 150 as the dash length so the full line
+   is one dash with a safety margin. */
 .syn-line {
-  stroke-dasharray: 28 130;
-  stroke-opacity: 0.95;
+  stroke-dasharray: 150;
+  stroke-dashoffset: 150;
+  stroke-opacity: 0;
   stroke-linecap: round;
-  animation: syn-converge 1.6s linear infinite;
+  animation: syn-draw 2.6s cubic-bezier(.4, 0, .2, 1) infinite;
 }
-.syn-line[data-line="0"] { animation-delay: 0s;     }
-.syn-line[data-line="1"] { animation-delay: -0.40s; }
-.syn-line[data-line="2"] { animation-delay: -0.80s; }
-.syn-line[data-line="3"] { animation-delay: -1.20s; }
-@keyframes syn-converge {
-  from { stroke-dashoffset: 0;    }
-  to   { stroke-dashoffset: -158; }
+.syn-line[data-line="0"] { animation-delay: 0s;    }
+.syn-line[data-line="1"] { animation-delay: -0.65s; }
+.syn-line[data-line="2"] { animation-delay: -1.30s; }
+.syn-line[data-line="3"] { animation-delay: -1.95s; }
+@keyframes syn-draw {
+  0%   { stroke-dashoffset: 150; stroke-opacity: 0;    }
+  12%  {                         stroke-opacity: 0.95; }
+  42%  { stroke-dashoffset: 0;   stroke-opacity: 0.95; }
+  78%  { stroke-dashoffset: 0;   stroke-opacity: 0.95; }
+  100% { stroke-dashoffset: 0;   stroke-opacity: 0;    }
 }
-/* Faint underlying line stays visible at low opacity so the path is
-   readable between streaks - rendered by giving the parent group its
-   own subtle stroke wash */
-.syn-converge { filter: drop-shadow(0 0 4px rgba(188,241,37,0.35)); }
-/* During a text swap, briefly intensify so the moment of "new
-   recommendation" reads as a pulse on all four wires */
-.syn-swapping .syn-line { stroke-width: 1.8; stroke-opacity: 1; }
+/* Lime halo trailing each line so the drawing motion feels glowing */
+.syn-converge { filter: drop-shadow(0 0 5px rgba(188,241,37,0.45)); }
+/* Text-swap moment: brief thickness pulse on all four lines */
+.syn-swapping .syn-line { stroke-width: 2; }
 .syn-outlet .syn-outlet-mark {
   transform-origin: center;
   transform-box: fill-box;
