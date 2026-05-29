@@ -1514,7 +1514,7 @@ footer.foot {
   .section-head .lede { font-size: 16px; }
 
   .pillar { grid-template-columns: 1fr; gap: 36px; padding: 48px 0; }
-  .pillar.flip { grid-template-areas: "txt" "vis"; }
+  .pillar.flip, .pillar:not(.flip) { grid-template-areas: "txt" "vis"; }
   .pillar-txt h3 { font-size: clamp(28px, 6vw, 40px); }
   .pillar-txt p.lede { font-size: 16px; }
   .pillar-vis::before { width: 280px; height: 280px; }
