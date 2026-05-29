@@ -1483,10 +1483,16 @@ footer.foot {
 
 /* Tablet portrait */
 @media (max-width: 900px) {
-  nav.top { bottom: 12px; }
-  .nav-inner { padding: 6px; gap: 4px; }
-  .nav-links { display: none; }
-  .nav-cta .btn { padding: 9px 14px; font-size: 12.5px; }
+  nav.top { bottom: 14px; }
+  .nav-inner { padding: 5px; gap: 4px; }
+  /* Keep nav-links on tablet, just compress - the dock has room */
+  .nav-links { display: flex; padding-left: 6px; gap: 0; }
+  .nav-links a { padding: 6px 10px; font-size: 12.5px; }
+  /* Trim two less-critical links on tablet so the dock doesn't overflow */
+  .nav-links a[href="#calc"] { display: none; }
+  .nav-cta .btn { padding: 8px 14px; font-size: 12.5px; }
+  .nav-cta .btn.nav-wa-icon { width: 40px; height: 40px; padding: 0; }
+  .nav-cta .btn.nav-wa-icon svg { width: 19px; height: 19px; }
   .top-ribbon-inner { padding: 12px 20px; }
   .top-ribbon .brand .brand-lockup { height: 30px; }
 
@@ -1534,17 +1540,24 @@ footer.foot {
 @media (max-width: 640px) {
   body { padding-bottom: 74px; }
   nav.top {
-    bottom: 14px;
+    bottom: 18px;
     left: 50%;
     right: auto;
     transform: translateX(-50%);
     width: auto;
     max-width: none;
+    /* slight lime aura so the only CTA on mobile has more presence */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4),
+                0 6px 16px rgba(0,0,0,0.25),
+                0 0 0 1px rgba(188,241,37,0.18),
+                0 0 32px rgba(188,241,37,0.18);
   }
-  .nav-inner { padding: 4px; }
+  .nav-inner { padding: 5px; }
+  /* hide all nav-links on mobile - WA icon is the only CTA */
+  .nav-links { display: none; }
   .nav-cta { width: auto; margin-left: 0; }
-  .nav-cta .btn.nav-wa-icon { flex: 0 0 auto; width: 48px; height: 48px; padding: 0; }
-  .nav-cta .btn.nav-wa-icon svg { width: 22px; height: 22px; }
+  .nav-cta .btn.nav-wa-icon { flex: 0 0 auto; width: 52px; height: 52px; padding: 0; }
+  .nav-cta .btn.nav-wa-icon svg { width: 23px; height: 23px; }
   .top-ribbon-inner { padding: 10px 16px; }
   .top-ribbon .brand .brand-lockup { height: 28px; }
 
