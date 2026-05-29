@@ -6,19 +6,19 @@
    ──────────────────────────────────────────────────────────── */
 
 :root {
-  --bg:        #0E0E10;
-  --bg-soft:   #16161A;
-  --bg-elev:   #1C1C20;
-  --line:      #2A2A2E;
-  --line-2:    #3A3A3E;
+  --bg:        #0A0A0C;
+  --bg-soft:   #15151A;
+  --bg-elev:   #1E1E24;
+  --line:      #2E2E36;
+  --line-2:    #3E3E48;
   --ink:       #F2F2EE;
-  --ink-2:     #B5B5B7;
+  --ink-2:     #BDBDBE;
   --ink-3:     #8C8C90;
-  --grey:      #7E7E82;
-  --grey-2:    #5A5A5E;
+  --grey:      #8C8C90;
+  --grey-2:    #6E6E72;
   --lime:      #BCF125;
   --lime-deep: #A6D413;
-  --lime-soft: #1E2810;
+  --lime-soft: #2A3E18;
   --ink-deep:  #050507;
   --font-display: 'Hanken Grotesk', system-ui, sans-serif;
   --font-body:    'Geist', system-ui, sans-serif;
