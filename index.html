@@ -1008,16 +1008,26 @@ section.block.tight { padding: 80px 28px; }
   line-height: 1.55; margin-bottom: 26px;
   max-width: 460px;
 }
-.pillar-txt ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+.pillar-txt ul { list-style: none; display: flex; flex-direction: column; gap: 18px; }
 .pillar-txt li {
-  display: flex; gap: 14px; align-items: flex-start;
+  position: relative;
+  padding-left: 22px;
   font-size: 15.5px; color: var(--ink-2);
   line-height: 1.55;
 }
 .pillar-txt li::before {
-  content: ''; width: 8px; height: 8px; background: var(--lime); margin-top: 9px; flex-shrink: 0;
+  content: '';
+  position: absolute;
+  left: 0; top: 9px;
+  width: 8px; height: 8px;
+  background: var(--lime);
 }
-.pillar-txt li strong { color: var(--ink); font-weight: 600; }
+.pillar-txt li strong {
+  display: block;
+  color: var(--ink);
+  font-weight: 600;
+  margin-bottom: 2px;
+}
 
 .pillar-vis {
   display: flex; justify-content: center; align-items: center;
