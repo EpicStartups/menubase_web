@@ -551,7 +551,7 @@ const SpinWheel = ({ slotSkuIds, onResult }) => {
           );
         })}
       </div>
-      <button className="spin-btn" onClick={spin} disabled={spinning}>{spinning ? 'Spinning…' : 'Spin'}</button>
+      <button className="spin-btn" onClick={spin} disabled={spinning}>{spinning ? 'Wait…' : 'Spin'}</button>
     </div>
   );
 };
