@@ -6,19 +6,20 @@
    ──────────────────────────────────────────────────────────── */
 
 :root {
-  --bg:        #FFFFFF;
-  --bg-soft:   #F5F5F2;
-  --bg-elev:   #FFFFFF;
-  --line:      #E5E5E2;
-  --line-2:    #D6D6D4;
-  --ink:       #1A1A1A;
-  --ink-2:     #64656A;
+  --bg:        #0E0E10;
+  --bg-soft:   #16161A;
+  --bg-elev:   #1C1C20;
+  --line:      #2A2A2E;
+  --line-2:    #3A3A3E;
+  --ink:       #F2F2EE;
+  --ink-2:     #B5B5B7;
   --ink-3:     #8C8C90;
-  --grey:      #8C8C90;
-  --grey-2:    #B0B0B2;
+  --grey:      #7E7E82;
+  --grey-2:    #5A5A5E;
   --lime:      #BCF125;
   --lime-deep: #A6D413;
-  --lime-soft: #E8F8AC;
+  --lime-soft: #1E2810;
+  --ink-deep:  #050507;
   --font-display: 'Hanken Grotesk', system-ui, sans-serif;
   --font-body:    'Geist', system-ui, sans-serif;
   --font-mono:    'JetBrains Mono', ui-monospace, monospace;
@@ -38,7 +39,7 @@ body {
   letter-spacing: -0.005em;
 }
 a { color: inherit; text-decoration: none; }
-::selection { background: var(--lime); color: var(--ink); }
+::selection { background: var(--lime); color: #1A1A1A; }
 
 /* ─── ANIMATED CANVAS BG (menubase-bg.js) ─── */
 #mb-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; display: block; opacity: 0.7; }
@@ -93,9 +94,9 @@ main, .top-ribbon, nav.top, footer.foot { position: relative; z-index: 1; }
   letter-spacing: -0.005em;
 }
 .btn:active { transform: translateY(1px); }
-.btn-dark  { background: var(--ink);  color: var(--bg);  border-color: var(--ink); }
+.btn-dark  { background: var(--ink-deep); color: var(--ink); border-color: var(--ink-deep); }
 .btn-dark:hover { background: #000; }
-.btn-lime  { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+.btn-lime  { background: var(--lime); color: #1A1A1A; border-color: var(--lime); }
 .btn-lime:hover { background: var(--lime-deep); border-color: var(--lime-deep); }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
 .btn-ghost:hover { background: var(--ink); color: var(--bg); }
@@ -120,11 +121,10 @@ main, .top-ribbon, nav.top, footer.foot { position: relative; z-index: 1; }
 }
 .top-ribbon .brand { display: inline-flex; align-items: center; text-decoration: none; }
 .top-ribbon .brand .brand-lockup {
-  height: 34px;
+  height: 38px;
   width: auto;
   display: block;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
+  filter: invert(1) hue-rotate(180deg);
 }
 .top-ribbon-login {
   margin-left: auto;
@@ -174,7 +174,7 @@ nav.top {
   letter-spacing: -0.005em;
 }
 .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
-.nav-links a.current { color: var(--ink); background: var(--lime); }
+.nav-links a.current { color: #1A1A1A; background: var(--lime); }
 .nav-links a.current:hover { background: var(--lime-deep); }
 .nav-cta { display: flex; align-items: center; gap: 4px; }
 .nav-cta .btn {
@@ -390,8 +390,8 @@ nav.top {
 
 /* ─── INLINE CTA BLOCK (dark, brand-consistent with cta-shell on main) ─── */
 .cta-block {
-  background: var(--ink);
-  color: #fff;
+  background: var(--ink-deep);
+  color: var(--ink);
   padding: 40px 32px;
   border-radius: var(--r-md);
   margin: 56px 0 24px;
@@ -428,8 +428,7 @@ footer.foot {
 .foot-brand .brand { display: inline-flex; align-items: center; text-decoration: none; }
 .foot-brand .brand .brand-lockup {
   height: 38px; width: auto; display: block;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
+  filter: invert(1) hue-rotate(180deg);
 }
 .foot-brand p {
   font-size: 14px;

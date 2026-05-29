@@ -166,18 +166,19 @@
      Lime #BCF125 · Dark grey #64656A · Light grey #D6D6D4 · Ink.
      Adapted from meandu-style cream design to MenuBase brand spec.
      ──────────────────────────────────────────────────────────── */
-  --bg:        #FFFFFF;   /* clean white (was warm cream #F4F0E6) */
-  --bg-soft:   #F5F5F2;   /* near-white toward light-grey */
-  --bg-elev:   #FFFFFF;   /* card surfaces */
-  --line:      #E5E5E2;   /* hairline */
-  --line-2:    #D6D6D4;   /* brand light-grey */
-  --ink:       #1A1A1A;   /* near-black for headings */
-  --ink-2:     #64656A;   /* brand dark grey (RGB 100 101 106) */
-  --grey:      #8C8C90;   /* lighter ink, body subdued */
-  --grey-2:    #B0B0B2;   /* mutest, mono labels */
+  --bg:        #0E0E10;   /* dark mode - page bg */
+  --bg-soft:   #16161A;   /* slightly elevated dark */
+  --bg-elev:   #1C1C20;   /* card / panel surfaces */
+  --line:      #2A2A2E;   /* hairline */
+  --line-2:    #3A3A3E;   /* slightly stronger hairline */
+  --ink:       #F2F2EE;   /* primary text - off-white */
+  --ink-2:     #B5B5B7;   /* secondary text */
+  --grey:      #7E7E82;   /* mid grey */
+  --grey-2:    #5A5A5E;   /* muted mono labels */
   --lime:      #BCF125;
   --lime-deep: #A6D413;
-  --lime-soft: #F0FBC9;   /* pale lime tint */
+  --lime-soft: #1E2810;   /* dark lime tint for highlights */
+  --ink-deep:  #050507;   /* deeper than bg - for spot sections, dark buttons */
 
   /* Type - Chambers Sans Pro + Cofo Sans Variable required for production.
      Hanken Grotesk + Geist are licensed FREE substitutes used during build. */
@@ -447,7 +448,7 @@ body::after {
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 button { font-family: inherit; cursor: pointer; border: 0; background: none; color: inherit; }
-::selection { background: var(--lime); color: var(--ink); }
+::selection { background: var(--lime); color: #1A1A1A; }
 
 /* ─── PRIMITIVES ─── */
 
@@ -475,9 +476,9 @@ button { font-family: inherit; cursor: pointer; border: 0; background: none; col
   letter-spacing: -0.005em;
 }
 .btn:active { transform: translateY(1px); }
-.btn-dark { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn-dark { background: var(--ink-deep); color: var(--ink); border-color: var(--ink-deep); }
 .btn-dark:hover { background: #000; }
-.btn-lime { background: var(--lime); color: var(--ink); border-color: var(--lime); }
+.btn-lime { background: var(--lime); color: #1A1A1A; border-color: var(--lime); }
 .btn-lime:hover { background: var(--lime-deep); border-color: var(--lime-deep); }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
 .btn-ghost:hover { background: var(--ink); color: var(--bg); }
@@ -520,9 +521,10 @@ nav.top { z-index: 50; }
   height: 38px;
   width: auto;
   display: block;
-  /* image-rendering removed - crisp-edges is for pixel art, makes
-     typography look jagged. Browser default bilinear interpolation
-     gives the cleanest result for a wordmark PNG. */
+  /* The wordmark asset is the dark-on-light variant. On the dark page bg
+     we invert it. hue-rotate keeps the lime accent roughly lime instead of
+     flipping it through magenta. Provide a proper light asset to remove this. */
+  filter: invert(1) hue-rotate(180deg);
 }
 .top-ribbon-login {
   margin-left: auto;
@@ -595,7 +597,7 @@ nav.top {
 }
 .nav-cta .btn-ghost { color: #fff; border-color: rgba(255,255,255,0.20); }
 .nav-cta .btn-ghost:hover { background: rgba(255,255,255,0.10); border-color: rgba(255,255,255,0.35); color: #fff; }
-.nav-cta .btn-dark { background: var(--lime); color: var(--ink); border-color: var(--lime); font-weight: 700; }
+.nav-cta .btn-dark { background: var(--lime); color: #1A1A1A; border-color: var(--lime); font-weight: 700; }
 .nav-cta .btn-dark:hover { background: var(--lime-deep); border-color: var(--lime-deep); }
 
 /* Page body padding so floating nav doesn't overlap last content */
@@ -648,7 +650,7 @@ body { padding-bottom: 64px; }
   border-radius: 18px;
   padding: 8px 15px 8px 12px;
   margin-bottom: 30px;
-  box-shadow: 0 4px 18px rgba(26,26,26,0.05);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.4);
 }
 .status .dot {
   width: 8px; height: 8px;
@@ -1025,8 +1027,8 @@ section.block.tight { padding: 80px 28px; }
 
 /* ─── LIVE DEMO ─── */
 .demo {
-  background: var(--ink);
-  color: var(--bg);
+  background: var(--ink-deep);
+  color: #F2F2EE;
   padding: 120px 28px;
   position: relative;
 }
@@ -1077,7 +1079,7 @@ section.block.tight { padding: 80px 28px; }
   letter-spacing: -0.005em;
 }
 .chip:hover { border-color: rgba(255,255,255,0.4); color: var(--bg); }
-.chip.on { background: var(--lime); color: var(--ink); border-color: var(--lime); font-weight: 600; }
+.chip.on { background: var(--lime); color: #1A1A1A; border-color: var(--lime); font-weight: 600; }
 
 .demo-annot {
   background: rgba(255,255,255,0.04);
@@ -1232,8 +1234,8 @@ section.block.tight { padding: 80px 28px; }
 
 /* ─── FOUNDING CTA ─── */
 .cta-shell {
-  background: var(--ink);
-  color: var(--bg);
+  background: var(--ink-deep);
+  color: #F2F2EE;
   padding: 120px 28px;
   position: relative;
   overflow: hidden;
@@ -1690,7 +1692,7 @@ footer.foot {
 }
 .compare-table thead th:first-child { text-align: left; }
 .compare-table thead th.mb-col {
-  background: var(--ink);
+  background: var(--ink-deep);
   color: var(--lime);
   font-weight: 700;
   position: relative;
@@ -1707,7 +1709,7 @@ footer.foot {
   width: 28px; height: 28px;
   font-family: var(--font-mono); font-weight: 700; font-size: 14px;
 }
-.cell-check { background: var(--lime); color: var(--ink); }
+.cell-check { background: var(--lime); color: #1A1A1A; }
 .cell-x { background: var(--bg-soft); color: var(--ink); }
 .cell-tilde { background: var(--bg-soft); color: var(--grey); }
 @media (max-width: 700px) {
@@ -1777,7 +1779,7 @@ footer.foot {
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: 13px;
-  color: var(--ink);
+  color: #1A1A1A;
 }
 .testi-who strong { display: block; font-size: 14px; font-weight: 600; color: var(--ink); }
 .testi-who span { font-size: 12.5px; color: var(--grey); }
@@ -1802,8 +1804,8 @@ footer.foot {
   left: 0; right: 0;
   height: 16px;
   background-image:
-    linear-gradient(90deg, var(--ink) 50%, transparent 50%),
-    linear-gradient(90deg, transparent 50%, var(--ink) 50%);
+    linear-gradient(90deg, #1A1A1A 50%, transparent 50%),
+    linear-gradient(90deg, transparent 50%, #1A1A1A 50%);
   background-size: 32px 16px, 32px 16px;
   background-position: 0 0, 16px 8px;
   background-repeat: repeat-x;
@@ -1822,7 +1824,7 @@ footer.foot {
   letter-spacing: 0.16em;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--ink);
+  color: #1A1A1A;
   background: rgba(0,0,0,0.10);
   padding: 6px 14px;
   display: inline-block;
@@ -1834,13 +1836,13 @@ footer.foot {
   font-size: clamp(38px, 6.5vw, 78px);
   line-height: 1.0;
   letter-spacing: -0.035em;
-  color: var(--ink);
+  color: #1A1A1A;
   margin-bottom: 28px;
 }
 .manifesto h2 em {
   font-style: normal;
-  color: var(--bg);
-  background: var(--ink);
+  color: #F2F2EE;
+  background: #1A1A1A;
   padding: 0 18px;
   display: inline-block;
   font-weight: 900;
@@ -1848,12 +1850,14 @@ footer.foot {
 }
 .manifesto p {
   font-size: clamp(16px, 1.8vw, 19px);
-  color: #2a2a2a;
+  color: #1A1A1A;
   max-width: 620px;
   margin: 0 auto 36px;
   line-height: 1.55;
   font-weight: 500;
 }
+.manifesto-tagline { color: #1A1A1A; }
+.manifesto-tagline strong { color: #1A1A1A; }
 .manifesto-tagline {
   margin-top: 44px;
   padding-top: 24px;
@@ -1865,7 +1869,7 @@ footer.foot {
 }
 .manifesto-tagline strong { font-weight: 900; }
 .manifesto-pixels { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
-.manifesto-pixels span { position: absolute; background: var(--ink); }
+.manifesto-pixels span { position: absolute; background: #1A1A1A; }
 .manifesto-pixels span:nth-child(1) { top: 14%; left: 6%;  width: 16px; height: 16px; }
 .manifesto-pixels span:nth-child(2) { top: 22%; left: 92%; width: 12px; height: 12px; }
 .manifesto-pixels span:nth-child(3) { top: 76%; left: 4%;  width: 10px; height: 10px; }
@@ -1959,7 +1963,7 @@ footer.foot {
 .playbook-card:hover {
   border-color: var(--lime-deep);
   transform: translateX(4px);
-  box-shadow: 0 12px 32px rgba(26,26,26,0.08);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.5);
 }
 .playbook-card:hover::before { transform: scaleY(1); transform-origin: top; }
 .playbook-card .card-meta {
@@ -2008,7 +2012,7 @@ footer.foot {
 
 <!-- ─── ANIMATED CANVAS BACKGROUND (drifts everywhere, synthesis mode on home hero) ─── -->
 <canvas id="mb-bg" aria-hidden="true"></canvas>
-<script src="/menubase-bg.js" data-theme="light" data-mode="synthesis"></script>
+<script src="/menubase-bg.js" data-theme="dark" data-mode="synthesis"></script>
 
 <!-- ─── TOP RIBBON (logo + login) ─── -->
 <div class="top-ribbon">
