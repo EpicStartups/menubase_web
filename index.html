@@ -1544,11 +1544,57 @@ footer.foot {
   .greet { font-size: 13px; }
   .leak { font-size: 11.5px; align-items: flex-start; }
   .col-l .sub { font-size: 15px; max-width: 100%; }
-  /* Comparison table - hint at horizontal scroll with a subtle right-edge fade */
+  /* Comparison table - stack vertically on mobile, no horizontal scroll.
+     Each row becomes a block: feature title + description on top, then the
+     three column verdicts below, each labelled with its column name. */
   .compare-card {
-    -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 24px), transparent 100%);
-            mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 24px), transparent 100%);
+    overflow: visible;
+    overflow-x: visible;
+    -webkit-mask-image: none;
+            mask-image: none;
   }
+  .compare-table { min-width: 0; display: block; }
+  .compare-table thead { display: none; }
+  .compare-table tbody, .compare-table tr { display: block; }
+  .compare-table tbody tr {
+    padding: 18px 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .compare-table tbody tr:last-child { border-bottom: none; }
+  .compare-table tbody td {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 6px 0;
+    border: none !important;
+    text-align: left !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  .compare-table tbody td.feat {
+    display: block;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line) !important;
+  }
+  /* Column-name pseudo-labels so the user knows which option each cell describes */
+  .compare-table tbody td.mb-col::before,
+  .compare-table tbody td:nth-of-type(3)::before,
+  .compare-table tbody td:nth-of-type(4)::before {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    min-width: 84px;
+    display: inline-block;
+  }
+  .compare-table tbody td.mb-col::before { content: 'MenuBase'; color: var(--lime); }
+  .compare-table tbody td:nth-of-type(3)::before { content: 'Your POS'; color: var(--ink-2); }
+  .compare-table tbody td:nth-of-type(4)::before { content: 'Static QR'; color: var(--ink-2); }
+  /* Cell content stays compact - the marker symbols stay 32x32 but inline now */
+  .cell-check, .cell-x, .cell-tilde { width: auto; height: auto; }
+  .cell-note { margin-top: 0; margin-left: 0; display: inline; font-size: 10px; }
   nav.top {
     bottom: 14px;
     left: 10px;
@@ -1655,12 +1701,17 @@ footer.foot {
   }
 
   /* Demo and manifesto sections paint below the fold on mobile - content-visibility
-     lets the browser skip layout/paint of off-screen content for a smoother scroll. */
+     lets the browser skip layout/paint of off-screen content for a smoother scroll.
+     auto width + height estimate so the placeholder doesn't inject a 1px-wide column. */
   .demo, .manifesto, .calc-shell, .cta-shell, .faq-shell, footer.foot,
   .playbook-cta, .compare-block, .testi-block {
     content-visibility: auto;
-    contain-intrinsic-size: 1px 600px;
+    contain-intrinsic-size: auto 800px;
   }
+
+  /* Belt-and-suspenders horizontal overflow lock - no element on mobile
+     should ever introduce a horizontal scrollbar. */
+  html, body { overflow-x: clip; max-width: 100vw; }
 
   /* Phone frames scale to viewport - bigger on mobile so menu items are readable */
   .phone.lg {
