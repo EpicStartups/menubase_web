@@ -1151,30 +1151,32 @@ section.block.tight { padding: 80px 28px; }
   to { stroke-dashoffset: -18; }
 }
 
-/* Smart Upsell: short lime line SEGMENTS travel along each path from
-   corner toward center result. The segment IS the line - no static
-   guide, no pulse head. Each line is ~142px; dash 36 + gap 230 (period
-   266) leaves one visible segment per line, with a brief "no segment"
-   gap before the next one starts at the corner. */
+/* Smart Upsell: lines only appear when a new example loads. Lines
+   draw from corner toward center, hold briefly, then fade out before
+   the next example. Between examples the wires are invisible - the
+   inputs + result speak for themselves. */
 .syn-line {
-  stroke-dasharray: 36 230;
-  stroke-opacity: 0.95;
+  stroke-dasharray: 150;
+  stroke-dashoffset: 150;
+  stroke-opacity: 0;
   stroke-linecap: round;
-  stroke-width: 1.6;
-  animation: syn-travel 1.8s linear infinite;
+  stroke-width: 1.8;
+  transition: stroke-opacity 500ms ease;
 }
-.syn-line[data-line="0"] { animation-delay: 0s;     }
-.syn-line[data-line="1"] { animation-delay: -0.45s; }
-.syn-line[data-line="2"] { animation-delay: -0.90s; }
-.syn-line[data-line="3"] { animation-delay: -1.35s; }
-@keyframes syn-travel {
-  from { stroke-dashoffset: 0;    }
-  to   { stroke-dashoffset: -266; }
+.syn-swapping .syn-line {
+  stroke-opacity: 1;
+  animation: syn-connect 700ms cubic-bezier(.4, 0, .2, 1) forwards;
 }
-/* Lime halo around the group so the travelling segments glow */
+.syn-swapping .syn-line[data-line="0"] { animation-delay: 0s;    }
+.syn-swapping .syn-line[data-line="1"] { animation-delay: 0.08s; }
+.syn-swapping .syn-line[data-line="2"] { animation-delay: 0.16s; }
+.syn-swapping .syn-line[data-line="3"] { animation-delay: 0.24s; }
+@keyframes syn-connect {
+  from { stroke-dashoffset: 150; }
+  to   { stroke-dashoffset: 0;   }
+}
+/* Lime halo around the group so the connecting lines glow */
 .syn-converge { filter: drop-shadow(0 0 6px rgba(188,241,37,0.55)); }
-/* Text-swap moment: brief thicker stroke so the swap reads on the wires */
-.syn-swapping .syn-line { stroke-width: 2.6; }
 .syn-outlet .syn-outlet-mark {
   transform-origin: center;
   transform-box: fill-box;
@@ -3502,7 +3504,9 @@ setTimeout(() => {
   function rotate() {
     idx = (idx + 1) % EXAMPLES.length;
     var e = EXAMPLES[idx];
+    // Lines connect from corners toward center result
     svg.classList.add('syn-swapping');
+    // Text swaps mid-connection
     setTimeout(function(){
       setTxt('basket-k', e.basket[0]); setTxt('basket-v', e.basket[1]);
       setTxt('time-k',   e.time[0]);   setTxt('time-v',   e.time[1]);
@@ -3510,9 +3514,19 @@ setTimeout(() => {
       setTxt('day-k',    e.day[0]);    setTxt('day-v',    e.day[1]);
       setTxt('result', '→ ' + e.result);
       setTxt('accept', e.accept);
+    }, 380);
+    // Hold lines visible briefly, then disconnect (fade lines out)
+    setTimeout(function(){
       svg.classList.remove('syn-swapping');
-    }, 300);
+    }, 1700);
   }
+  // Trigger an initial connect animation on load so the first example
+  // shows the lines connecting too (otherwise it sits invisible until
+  // the first rotation 3.6s in)
+  setTimeout(function(){
+    svg.classList.add('syn-swapping');
+    setTimeout(function(){ svg.classList.remove('syn-swapping'); }, 1700);
+  }, 250);
   // Only cycle while the upsell tab is active + section is in viewport
   var io = ('IntersectionObserver' in window) && new IntersectionObserver(function(entries){
     entries.forEach(function(ent){
