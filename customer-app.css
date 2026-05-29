@@ -408,7 +408,6 @@ html, body { height: 100%; }
   border: 1px solid var(--line);
 }
 .addon-card.spin { background: linear-gradient(135deg, oklch(0.93 0.10 125), oklch(0.95 0.06 340)); border-color: var(--lime-deep); }
-.addon-card.mystery { background: linear-gradient(135deg, oklch(0.94 0.04 340), oklch(0.96 0.04 280)); border-color: var(--plum); }
 .addon-card h4 { margin: 0 0 4px; font-size: 15px; }
 .addon-card p { margin: 0 0 10px; font-size: 12.5px; color: var(--ink-2); }
 .addon-card.won { text-align: center; padding: 24px; }

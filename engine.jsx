@@ -10,7 +10,7 @@
 // Every campaign reduces to ONE of FOUR POS-safe operations:
 //
 //   1. ADD_LINE        - auto-add a pre-made RM0/flat-price SKU to cart
-//                        (threshold reward, spin win, mystery box, birthday)
+//                        (threshold reward, spin win, birthday)
 //   2. REVEAL_CATEGORY - show/hide a campaign-controlled category of
 //                        pre-discounted twin SKUs (happy hour, flash, weather, off-peak)
 //   3. SWAP_SKU        - hide regular SKU, reveal a clearance/combo twin
@@ -82,7 +82,6 @@ function estimateSavings(op, payload) {
   switch (op) {
     case 'add_line': {
       // Free item = its full menu-equivalent price the customer would have paid.
-      // Mystery box at RM5 = no "savings" in cart math sense.
       const sku = item(payload.skuId);
       if (!sku) return 0;
       // If this is a reward twin (e.g. r-ac), find its non-reward equivalent.
@@ -137,7 +136,6 @@ function evaluate(campaign, cart, ctx) {
     case 'birthday':     return evalBirthday(campaign, cart, ctx);
     case 'offpeak':      return evalOffpeak(campaign, cart, ctx);
     case 'flash':        return evalFlash(campaign, cart);
-    case 'mystery':      return evalMystery(campaign, cart);
     case 'spin_wheel':   return evalSpin(campaign, cart);
     case 'referral':     return evalReferral(campaign, cart, ctx);
     case 'upsell_popup': return evalUpsell(campaign, cart);
@@ -317,22 +315,7 @@ function evalFlash(c, cart) {
   };
 }
 
-// ── 9. MYSTERY → ADD_LINE (flat-price SKU at RM5) ──────────────────────
-function evalMystery(c, cart) {
-  if (cart.subtotal === 0) return { eligible: false, value: 0, reason: 'empty cart' };
-  const skuId = c.config?.skuId || 'r-mb';
-  const sku = item(skuId);
-  return {
-    eligible: true,
-    op: 'add_line',
-    payload: { skuId, displayPrice: sku?.price || 5, mode: 'opt_in' },
-    ui: { headline: `Add mystery box · RM${(sku?.price || 5).toFixed(2)}`, accent: 'plum' },
-    value: 0, // not a saving; opt-in upside
-    reason: 'mystery available',
-  };
-}
-
-// ── 10. SPIN → ADD_LINE (winning slot maps to RM0 SKU) ─────────────────
+// ── 9. SPIN → ADD_LINE (winning slot maps to RM0 SKU) ─────────────────
 function evalSpin(c, cart) {
   if (cart.subtotal === 0) return { eligible: false, value: 0, reason: 'empty cart' };
   // Spin slots are all RM0 SKUs the merchant pre-created.

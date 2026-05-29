@@ -31,12 +31,6 @@ const CAMPAIGN_TYPES = [
     sub: 'Surprise reward wheel',
   },
   {
-    id: 'mystery',
-    icon: '🎁',
-    name: 'Mystery Box',
-    sub: 'Surprise add-on at checkout',
-  },
-  {
     id: 'flash',
     icon: '🔥',
     name: 'Flash Deal',
@@ -109,9 +103,6 @@ const MENU_ITEMS = [
   { id: 'r-ac', name: 'Promo Almond Croissant', emoji: '🥐', price: 0, cat: 'Promo', visibility: 'reward_only', isReward: true },
   { id: 'r-bc', name: 'Promo Cheesecake', emoji: '🍰', price: 0, cat: 'Promo', visibility: 'reward_only', isReward: true },
   { id: 'r-wc', name: 'Promo White Coffee', emoji: '☕', price: 0, cat: 'Promo', visibility: 'reward_only', isReward: true },
-
-  // ── Mystery box (flat-price SKU at RM5) ──────────────────────────
-  { id: 'r-mb', name: 'Mystery Box', emoji: '📦', price: 5, cat: 'Promo', visibility: 'reward_only' },
 
   // ── Happy Hour twins (campaign_controlled, pre-discounted) ───────
   { id: 'hh-wc', name: 'Happy Hour White Coffee', emoji: '☕', price: 6.30, cat: 'Happy Hour', visibility: 'campaign_controlled', twinOf: 'wc' },
@@ -318,12 +309,6 @@ const DEMO_CAMPAIGNS = {
     id: 'd-spin', type: 'spin_wheel', name: 'Spin & Win',
     status: 'active', activeDays: [1,1,1,1,1,1,1], startTime: '00:00', endTime: '23:59',
     config: { prizes: 6 },
-    priority: 10,
-  }],
-  mystery: [{
-    id: 'd-mystery', type: 'mystery', name: 'Mystery Box · RM5',
-    status: 'active', activeDays: [1,1,1,1,1,1,1], startTime: '00:00', endTime: '23:59',
-    config: { price: 5, label: 'Pick of the day' },
     priority: 10,
   }],
   flash: [{

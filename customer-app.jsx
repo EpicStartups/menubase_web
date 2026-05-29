@@ -64,7 +64,6 @@ const CustomerApp = () => {
   });
   const [showSwitch, setShowSwitch] = useState(false);
   const [spinResult, setSpinResult] = useState(null);
-  const [mysteryAdded, setMysteryAdded] = useState(false);
   const [confetti, setConfetti] = useState(false);
   const [dismissedSwaps, setDismissedSwaps] = useState({});
 
@@ -127,7 +126,6 @@ const CustomerApp = () => {
     setCart(E.emptyCart());
     setScreen('menu');
     setSpinResult(null);
-    setMysteryAdded(false);
     setConfetti(false);
   };
 
@@ -165,7 +163,6 @@ const CustomerApp = () => {
               onComplete={completeOrder}
               spinResult={spinResult} setSpinResult={setSpinResult}
               setCart={setCart}
-              mysteryAdded={mysteryAdded} setMysteryAdded={setMysteryAdded}
               campaigns={active}
             />
           )}
@@ -381,9 +378,8 @@ const CartScreen = ({ cart, addItem, removeItem, applied, alternates, mutations,
 };
 
 // ─── CHECKOUT SCREEN ───────────────────────────────────────────────────
-const CheckoutScreen = ({ cart, mutations, grandTotal, onBack, onComplete, spinResult, setSpinResult, setCart, mysteryAdded, setMysteryAdded, campaigns }) => {
+const CheckoutScreen = ({ cart, mutations, grandTotal, onBack, onComplete, spinResult, setSpinResult, setCart, campaigns }) => {
   const spinCampaign = campaigns.find(c => c.type === 'spin_wheel' && c.status === 'active');
-  const mysteryCampaign = campaigns.find(c => c.type === 'mystery' && c.status === 'active');
   const upsellSuggestions = mutations.suggestions.filter(s => s.kind === 'add');
 
   const onSpinResult = (slotSkuId) => {
@@ -394,17 +390,6 @@ const CheckoutScreen = ({ cart, mutations, grandTotal, onBack, onComplete, spinR
       setCart(c => E.recomputeCart({
         ...c,
         items: [...c.items, { ...sku, qty: 1, guestId: 'me', _campaignId: spinCampaign.id, _isReward: true }],
-      }));
-    }
-  };
-
-  const addMysteryBox = () => {
-    setMysteryAdded(true);
-    const sku = window.ITEM_BY_ID['r-mb'];
-    if (sku) {
-      setCart(c => E.recomputeCart({
-        ...c,
-        items: [...c.items, { ...sku, qty: 1, guestId: 'me', _campaignId: mysteryCampaign.id }],
       }));
     }
   };
@@ -447,21 +432,6 @@ const CheckoutScreen = ({ cart, mutations, grandTotal, onBack, onComplete, spinR
           <div className="addon-card spin won">
             <h4>🎰 You won!</h4>
             <strong>{window.ITEM_BY_ID[spinResult]?.name || 'Reward'} · added at RM0</strong>
-          </div>
-        )}
-
-        {/* Mystery box add-on */}
-        {mysteryCampaign && !mysteryAdded && (
-          <div className="addon-card mystery">
-            <h4>📦 {mysteryCampaign.name}</h4>
-            <p>One flat-priced SKU. Chef rotates contents daily.</p>
-            <button className="reveal-btn" onClick={addMysteryBox}>+ Add Mystery Box · RM5.00</button>
-          </div>
-        )}
-        {mysteryAdded && (
-          <div className="addon-card mystery added">
-            <h4>📦 Mystery Box added · RM5</h4>
-            <span className="lime">✓ Will be revealed on the tablet - kitchen picks today's pick</span>
           </div>
         )}
 
