@@ -1696,21 +1696,38 @@ footer.foot {
   color: var(--lime);
   font-weight: 700;
   position: relative;
+  box-shadow: 0 0 28px rgba(188,241,37,0.18);
+}
+.compare-table thead th.mb-col::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 3px;
+  background: var(--lime);
 }
 .compare-table thead th small { display: block; font-size: 9px; font-weight: 500; opacity: 0.7; margin-top: 4px; letter-spacing: 0.08em; }
 .compare-table tr:last-child td { border-bottom: none; }
-.compare-table tbody td { color: var(--grey); }
+.compare-table tbody td { color: var(--grey); transition: background 180ms; }
 .compare-table tbody td.feat { text-align: left; }
-.compare-table tbody td.mb-col { background: var(--lime-soft); color: var(--ink); font-weight: 600; }
+.compare-table tbody td.mb-col {
+  background: var(--lime-soft);
+  color: var(--ink);
+  font-weight: 600;
+  box-shadow: 1px 0 0 0 rgba(188,241,37,0.35) inset, -1px 0 0 0 rgba(188,241,37,0.35) inset;
+}
+.compare-table tbody tr:hover td:not(.mb-col) { background: rgba(255,255,255,0.025); }
+.compare-table tbody tr:hover td.mb-col { background: rgba(188,241,37,0.16); }
 .compare-table .feat strong { display: block; font-weight: 700; color: var(--ink); font-family: var(--font-display); font-size: 15.5px; letter-spacing: -0.005em; }
-.compare-table .feat small { display: block; font-size: 12.5px; color: var(--grey); margin-top: 2px; font-family: var(--font-body); font-weight: 400; }
+.compare-table .feat small { display: block; font-size: 12.5px; color: var(--ink-2); margin-top: 2px; font-family: var(--font-body); font-weight: 400; }
 .cell-check, .cell-x, .cell-tilde {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 28px; height: 28px;
-  font-family: var(--font-mono); font-weight: 700; font-size: 14px;
+  width: 32px; height: 32px;
+  font-family: var(--font-mono); font-weight: 700; font-size: 16px;
+  transition: transform 200ms cubic-bezier(.16,1,.3,1);
 }
-.cell-check { background: var(--lime); color: #1A1A1A; }
-.cell-x { background: var(--bg-soft); color: var(--ink); }
+.compare-table tbody tr:hover .cell-check { transform: scale(1.12); }
+.cell-check { background: var(--lime); color: #1A1A1A; box-shadow: 0 0 0 1px var(--lime-deep) inset; }
+.cell-x { background: var(--bg-soft); color: var(--ink-2); }
 .cell-tilde { background: var(--bg-soft); color: var(--grey); }
 @media (max-width: 700px) {
   .compare-table { font-size: 12.5px; }
@@ -1879,6 +1896,29 @@ footer.foot {
 @media (max-width: 700px) {
   .manifesto { padding: 80px 20px; }
   .manifesto h2 em { padding: 0 12px; }
+}
+
+/* ─── CURSOR TRAIL (premium polish, fine pointers only, blend-mode lights it
+   against any bg so it reads on dark page, lime mb-col, and dark spot sections) ─── */
+#cursor-trail {
+  position: fixed;
+  top: 0; left: 0;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  margin-top: -8px;
+  border: 1.5px solid var(--lime);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  opacity: 0;
+  transition: opacity 220ms;
+  mix-blend-mode: difference;
+  will-change: transform;
+}
+#cursor-trail.on { opacity: 0.85; }
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  #cursor-trail { display: none; }
 }
 
 /* ─── PLAYBOOK CTA (sits between the manifesto and FAQ) ─── */
@@ -2863,6 +2903,32 @@ setTimeout(() => {
     ty = (e.clientY / window.innerHeight) * 2 - 1;
     if (!raf) raf = requestAnimationFrame(tick);
   }, { passive: true });
+})();
+
+/* ─── Cursor trail - small lime ring follows cursor with ease delay.
+       mix-blend-mode: difference keeps it readable against any bg. ─── */
+(function(){
+  if (!window.matchMedia) return;
+  if (!matchMedia('(pointer: fine)').matches) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var dot = document.createElement('div');
+  dot.id = 'cursor-trail';
+  document.body.appendChild(dot);
+  var tx = 0, ty = 0, cx = 0, cy = 0, raf = 0;
+  function tick(){
+    cx += (tx - cx) * 0.20;
+    cy += (ty - cy) * 0.20;
+    dot.style.transform = 'translate3d(' + cx.toFixed(1) + 'px, ' + cy.toFixed(1) + 'px, 0)';
+    if (Math.abs(tx - cx) > 0.3 || Math.abs(ty - cy) > 0.3) {
+      raf = requestAnimationFrame(tick);
+    } else { raf = 0; }
+  }
+  window.addEventListener('mousemove', function(e){
+    tx = e.clientX; ty = e.clientY;
+    if (!dot.classList.contains('on')) dot.classList.add('on');
+    if (!raf) raf = requestAnimationFrame(tick);
+  }, { passive: true });
+  window.addEventListener('mouseleave', function(){ dot.classList.remove('on'); });
 })();
 
 /* ─── Manifesto kinetic moment - the "suggestions" word morphs through
