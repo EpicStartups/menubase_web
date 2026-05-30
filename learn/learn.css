@@ -177,17 +177,18 @@ body { padding-bottom: 84px; }
   padding: 4px;
   display: flex; align-items: center; gap: 6px;
 }
-.nav-links { display: flex; gap: 2px; padding-left: 6px; }
+.nav-links { display: flex; gap: 1px; padding-left: 4px; flex-wrap: nowrap; min-width: 0; }
 .nav-links a {
-  padding: 7px 11px;
-  font-size: 13px; color: rgba(255,255,255,0.78);
+  padding: 6px 9px;
+  font-size: 12px; color: rgba(255,255,255,0.78);
   font-weight: 500;
   border-radius: 999px;
   transition: color 120ms, background 120ms;
   letter-spacing: -0.005em;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
+  white-space: nowrap;
 }
 .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.10); }
 /* Active 'current' state: subtle lime tint, no dominating pill */
@@ -198,9 +199,9 @@ body { padding-bottom: 84px; }
 }
 .nav-links a.current:hover { background: rgba(188,241,37,0.14); color: var(--lime); }
 .nav-links .nav-ico {
-  width: 14px;
-  height: 14px;
-  flex: 0 0 14px;
+  width: 13px;
+  height: 13px;
+  flex: 0 0 13px;
   opacity: 0.85;
   display: block;
 }
@@ -786,14 +787,12 @@ footer.foot {
 @media (max-width: 900px) {
   .foot-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
   .foot-col:nth-child(2) { grid-column: auto; }
-  /* Tablet-tier nav compression so the WhatsApp icon does not
-     get clipped at intermediate widths (between mobile breakpoint
-     and full desktop). Matches the index.html tablet rule. */
+  /* Tablet-tier nav compression to fit 9 nav links + WhatsApp icon */
   body nav.top { bottom: 14px; }
-  nav.top .nav-inner { padding: 5px; gap: 4px; }
-  nav.top .nav-links { gap: 0; padding-left: 6px; }
-  nav.top .nav-links a { padding: 6px 9px; font-size: 12px; gap: 5px; }
-  nav.top .nav-links .nav-ico { width: 13px; height: 13px; flex: 0 0 13px; }
+  nav.top .nav-inner { padding: 4px; gap: 3px; }
+  nav.top .nav-links { gap: 0; padding-left: 4px; }
+  nav.top .nav-links a { padding: 5px 7px; font-size: 11px; gap: 4px; }
+  nav.top .nav-links .nav-ico { width: 12px; height: 12px; flex: 0 0 12px; }
   nav.top .nav-cta .btn.nav-wa-icon { width: 34px; height: 34px; }
   nav.top .nav-cta .btn.nav-wa-icon svg { width: 16px; height: 16px; }
 }
@@ -819,30 +818,36 @@ footer.foot {
   }
   body { padding-bottom: 96px; }
   .nav-inner { padding: 4px; gap: 4px; justify-content: space-between; align-items: center; }
-  /* Show all 5 nav-links on mobile, icon stacked above label */
+  /* Mobile: 9 nav-links in a horizontal scroll strip with WhatsApp pinned right */
   .nav-links {
     display: flex;
     padding-left: 0;
     gap: 0;
     flex: 1 1 auto;
     min-width: 0;
-    justify-content: space-around;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
   }
+  .nav-links::-webkit-scrollbar { display: none; }
   .nav-links a {
     flex-direction: column;
     gap: 2px;
-    padding: 5px 2px;
-    font-size: 9px;
+    padding: 4px 6px;
+    font-size: 8.5px;
     letter-spacing: 0.01em;
     text-align: center;
-    flex: 1 1 0;
-    min-width: 0;
+    flex: 0 0 auto;
+    min-width: 44px;
     white-space: nowrap;
+    scroll-snap-align: start;
   }
   /* Subtle current state on mobile - no full lime pill */
   .nav-links a.current { background: rgba(188,241,37,0.10); color: var(--lime); border-radius: 12px; }
   .nav-links a.current .nav-ico { color: var(--lime); }
-  .nav-links .nav-ico { width: 16px; height: 16px; flex: 0 0 16px; opacity: 0.92; }
+  .nav-links .nav-ico { width: 15px; height: 15px; flex: 0 0 15px; opacity: 0.92; }
   .nav-cta { width: auto; margin-left: 0; flex: 0 0 auto; }
   .nav-cta .btn.nav-wa-icon { flex: 0 0 auto; width: 36px; height: 36px; padding: 0; }
   .nav-cta .btn.nav-wa-icon svg { width: 16px; height: 16px; }
