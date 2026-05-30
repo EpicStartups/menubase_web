@@ -164,24 +164,50 @@ nav.top {
   padding: 4px;
   display: flex; align-items: center; gap: 6px;
 }
-.nav-links { display: flex; gap: 0; padding-left: 8px; }
+.nav-links { display: flex; gap: 2px; padding-left: 6px; }
 .nav-links a {
-  padding: 6px 12px;
-  font-size: 13px; color: rgba(255,255,255,0.7);
+  padding: 7px 11px;
+  font-size: 13px; color: rgba(255,255,255,0.78);
   font-weight: 500;
   border-radius: 999px;
   transition: color 120ms, background 120ms;
   letter-spacing: -0.005em;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
-.nav-links a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+.nav-links a:hover { color: #fff; background: rgba(255,255,255,0.10); }
 .nav-links a.current { color: #1A1A1A; background: var(--lime); }
 .nav-links a.current:hover { background: var(--lime-deep); }
+.nav-links .nav-ico {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  opacity: 0.85;
+  display: block;
+}
+.nav-links a:hover .nav-ico { opacity: 1; color: var(--lime); }
+.nav-links a.current .nav-ico { opacity: 1; color: #1A1A1A; }
 .nav-cta { display: flex; align-items: center; gap: 4px; }
 .nav-cta .btn {
   padding: 6px 14px; font-size: 12.5px;
   border-radius: 999px; border-width: 1px;
   font-weight: 600;
-  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.nav-cta .btn.nav-wa-icon {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+.nav-cta .btn.nav-wa-icon svg {
+  width: 18px;
+  height: 18px;
+  display: block;
 }
 
 /* ─── EYEBROW (mirror main site) ─── */
@@ -508,10 +534,37 @@ footer.foot {
   .top-ribbon .brand .brand-lockup { height: 30px; }
   .top-ribbon-login { padding: 8px 14px; font-size: 12.5px; }
 
-  nav.top { bottom: 12px; left: 12px; right: 12px; transform: none; max-width: none; }
-  .nav-links { display: none; }
-  .nav-cta { width: 100%; margin: 0; }
-  .nav-cta .btn { flex: 1; justify-content: center; }
+  nav.top {
+    bottom: 12px; left: 10px; right: 10px;
+    transform: none; max-width: none;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4),
+                0 6px 16px rgba(0,0,0,0.25),
+                0 0 0 1px rgba(188,241,37,0.14),
+                0 0 24px rgba(188,241,37,0.14);
+  }
+  .nav-inner { padding: 4px; gap: 0; justify-content: space-between; align-items: center; }
+  /* Show all 5 nav-links on mobile, icon stacked above label */
+  .nav-links {
+    display: flex;
+    padding-left: 4px;
+    gap: 0;
+    flex: 1;
+    justify-content: space-around;
+  }
+  .nav-links a {
+    flex-direction: column;
+    gap: 2px;
+    padding: 6px 4px;
+    font-size: 9.5px;
+    letter-spacing: 0.01em;
+    text-align: center;
+    flex: 1;
+    white-space: nowrap;
+  }
+  .nav-links .nav-ico { width: 16px; height: 16px; flex: 0 0 16px; opacity: 0.92; }
+  .nav-cta { width: auto; margin-left: 0; flex: 0 0 auto; }
+  .nav-cta .btn.nav-wa-icon { flex: 0 0 auto; width: 38px; height: 38px; padding: 0; }
+  .nav-cta .btn.nav-wa-icon svg { width: 18px; height: 18px; }
 
   .hub-intro { padding: 56px 18px 24px; }
   .hub-grid { grid-template-columns: 1fr; padding: 16px 18px 120px; gap: 14px; }
