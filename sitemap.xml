@@ -338,47 +338,57 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/when-to-add-second-outlet-malaysian-fb.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/learn/when-to-add-second-outlet-malaysian-fb.html"/>
   </url>
-  <url>
+    <url>
     <loc>https://menubase.io/learn/restaurant-inventory-management-malaysia.html</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/restaurant-inventory-management-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/restaurant-inventory-management-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/restaurant-inventory-management-malaysia.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/learn/restaurant-inventory-management-malaysia.html"/>
   </url>
   <url>
     <loc>https://menubase.io/learn/how-to-forecast-restaurant-revenue-malaysia.html</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
   </url>
   <url>
     <loc>https://menubase.io/learn/restaurant-food-waste-malaysia.html</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/restaurant-food-waste-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/restaurant-food-waste-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/restaurant-food-waste-malaysia.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/learn/restaurant-food-waste-malaysia.html"/>
   </url>
   <url>
     <loc>https://menubase.io/learn/restaurant-sop-template-malaysia.html</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/restaurant-sop-template-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/restaurant-sop-template-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/restaurant-sop-template-malaysia.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/learn/restaurant-sop-template-malaysia.html"/>
   </url>
   <url>
     <loc>https://menubase.io/learn/restaurant-tech-stack-malaysia-2026.html</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/restaurant-tech-stack-malaysia-2026.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/restaurant-tech-stack-malaysia-2026.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/restaurant-tech-stack-malaysia-2026.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/learn/restaurant-tech-stack-malaysia-2026.html"/>
   </url>
-  <url>
+<url>
     <loc>https://menubase.io/use-cases/lift-aov-fast.html</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -529,5 +539,95 @@
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/how-to-increase-restaurant-sales-malaysia.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/learn/how-to-increase-restaurant-sales-malaysia.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/ms/learn/restaurant-inventory-management-malaysia.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/restaurant-inventory-management-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/restaurant-inventory-management-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/restaurant-inventory-management-malaysia.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/zh/learn/restaurant-inventory-management-malaysia.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/restaurant-inventory-management-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/restaurant-inventory-management-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/restaurant-inventory-management-malaysia.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/ms/learn/restaurant-food-waste-malaysia.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/restaurant-food-waste-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/restaurant-food-waste-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/restaurant-food-waste-malaysia.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/zh/learn/restaurant-food-waste-malaysia.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/restaurant-food-waste-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/restaurant-food-waste-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/restaurant-food-waste-malaysia.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/ms/learn/restaurant-sop-template-malaysia.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/restaurant-sop-template-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/restaurant-sop-template-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/restaurant-sop-template-malaysia.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/zh/learn/restaurant-sop-template-malaysia.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/restaurant-sop-template-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/restaurant-sop-template-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/restaurant-sop-template-malaysia.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/ms/learn/restaurant-tech-stack-malaysia-2026.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/restaurant-tech-stack-malaysia-2026.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/restaurant-tech-stack-malaysia-2026.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/restaurant-tech-stack-malaysia-2026.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/zh/learn/restaurant-tech-stack-malaysia-2026.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/restaurant-tech-stack-malaysia-2026.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/restaurant-tech-stack-malaysia-2026.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/restaurant-tech-stack-malaysia-2026.html"/>
   </url>
 </urlset>
