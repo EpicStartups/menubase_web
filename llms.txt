@@ -97,3 +97,7 @@ WhatsApp +60175981858. Free 15-minute revenue model on the operator's actual men
 - [How to win the lunch rush in a Malaysian F&B outlet](https://menubase.io/learn/how-to-win-lunch-rush-malaysia.html)
 - [Malaysian F&B operations glossary (40 terms)](https://menubase.io/learn/glossary-malaysian-fb-operations.html)
 - [Foodpanda vs GrabFood Malaysia 2026](https://menubase.io/learn/foodpanda-vs-grabfood-malaysia.html)
+
+## Tools
+
+- [AOV Calculator (free, no email gate)](https://menubase.io/tools/aov-calculator.html): Three-slider calculator that projects monthly upsell uplift for a Malaysian F&B venue based on daily orders, AOV and accept rate. Result URL is shareable via query string.
