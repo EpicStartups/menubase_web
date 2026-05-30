@@ -152,6 +152,46 @@ main, .top-ribbon, footer.foot { position: relative; z-index: 1; }
 .top-ribbon-login .arr { transition: transform 150ms; }
 .top-ribbon-login:hover .arr { transform: translateX(2px); }
 
+/* ─── LANGUAGE PILL (minimal: 3 tiny labels in the top ribbon) ─── */
+.lang-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
+  margin-left: auto;
+  margin-right: 10px;
+  background: rgba(0,0,0,0.04);
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 999px;
+  padding: 2px;
+}
+.lang-pill a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  height: 22px;
+  padding: 0 8px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--ink-2);
+  text-decoration: none;
+  border-radius: 999px;
+  transition: color 180ms, background 180ms;
+  font-weight: 600;
+}
+.lang-pill a:hover { color: var(--ink); }
+.lang-pill a.active {
+  background: var(--lime);
+  color: #0A0A0C;
+  font-weight: 700;
+}
+.top-ribbon-inner .lang-pill + .top-ribbon-login { margin-left: 0; }
+@media (max-width: 560px) {
+  .lang-pill { margin-right: 6px; }
+  .lang-pill a { min-width: 24px; padding: 0 6px; font-size: 9.5px; height: 20px; }
+}
+
 /* ─── FLOATING BOTTOM DOCK (sticky at viewport bottom) ─── */
 /* Use !important to win against the line-46 rule that sets nav.top to
    position:relative for z-index stacking against the canvas bg. */

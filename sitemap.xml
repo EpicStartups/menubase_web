@@ -174,6 +174,24 @@
     <priority>0.95</priority>
   </url>
   <url>
+    <loc>https://menubase.io/ms/</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/zh/</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/" xmlns:xhtml="http://www.w3.org/1999/xhtml"/>
+  </url>
+  <url>
     <loc>https://menubase.io/for-restaurants.html</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
