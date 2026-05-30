@@ -278,6 +278,37 @@ nav.top {
   color: var(--ink);
 }
 
+/* ─── ARTICLE: RELATED GUIDES (at the bottom of each /learn article) ─── */
+.article-related {
+  max-width: 1100px;
+  margin: 48px auto 0;
+  padding: 56px 24px 80px;
+  border-top: 1px solid var(--line);
+}
+.article-related .related-heading {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(26px, 3.4vw, 36px);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin: 0 0 28px;
+  color: var(--ink);
+  text-align: left;
+}
+.article-related .hub-grid {
+  padding: 0;
+  margin: 0;
+  grid-template-columns: repeat(3, 1fr);
+}
+.article-related .article-card { padding: 24px 22px; }
+.article-related .article-card h2 { font-size: 18px; line-height: 1.2; }
+.article-related .article-card p { font-size: 13.5px; margin-bottom: 18px; }
+.article-related .article-card .card-cta { font-size: 13px; margin-top: auto; }
+@media (max-width: 900px) {
+  .article-related .hub-grid { grid-template-columns: 1fr; gap: 14px; }
+  .article-related { padding: 40px 18px 60px; margin-top: 36px; }
+}
+
 /* ─── ARTICLE LAYOUT ─── */
 .article-wrap {
   max-width: 760px;
