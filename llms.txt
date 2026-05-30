@@ -81,6 +81,8 @@ WhatsApp +60175981858. Free 15-minute revenue model on the operator's actual men
 - [Bahasa Malaysia homepage](https://menubase.io/ms/): Versi Bahasa Malaysia laman utama MenuBase. Lengkap dengan tiga fungsi teras, framing job-design, jadual harga ikut saiz menu, dan butang WhatsApp dalam BM.
 - [Mandarin Chinese homepage](https://menubase.io/zh/): MenuBase 简体中文版主页。包含三项核心功能、岗位设计框架、按菜单规模的定价表，以及中文 WhatsApp 联络。
 - [About](https://menubase.io/about.html): About MenuBase - the team, what was learned from 100+ Malaysian F&B operator discovery interviews, the three structural problems MenuBase is built around, what MenuBase deliberately does not do, the trust signals (Sdn Bhd registered, monthly cancellation, no data resale, WhatsApp number).
+- [Bahasa Malaysia pricing](https://menubase.io/ms/pricing.html): Versi BM halaman harga. 4 tier (30/60/90/120 menu) di RM28/54/78/99 sebulan, jadual included/never-charged, 10 soalan FAQ dalam BM.
+- [Mandarin Chinese pricing](https://menubase.io/zh/pricing.html): 简体中文价格页。4 个套餐（30/60/90/120 道菜），每月 RM28/54/78/99，年付节省 2 个月，包含/永不收取列表，10 个中文 FAQ。
 - [Contact](https://menubase.io/contact-us.html)
 - [Privacy](https://menubase.io/privacy-policy.html)
 
