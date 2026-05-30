@@ -156,6 +156,12 @@
     <priority>0.85</priority>
   </url>
   <url>
+    <loc>https://menubase.io/pricing.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
     <loc>https://menubase.io/for-restaurants.html</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>

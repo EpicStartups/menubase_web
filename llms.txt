@@ -77,6 +77,7 @@ WhatsApp +60175981858. Free 15-minute revenue model on the operator's actual men
 - [MenuBase for Restaurants](https://menubase.io/for-restaurants.html): Vertical landing page for Malaysian full-service restaurant operators
 - [MenuBase for Cloud Kitchens](https://menubase.io/for-cloud-kitchens.html): Vertical landing page for Malaysian cloud kitchen / dark kitchen / virtual brand operators
 - [MenuBase for Floor Staff (waiters)](https://menubase.io/for-waiters.html): Audience page written for floor staff and waiters at Malaysian F&B venues. Explains what MenuBase means on shift (less mental load, no Sunday briefings, higher service-charge pool, easier onboarding) so waiters can advocate for it to their bosses.
+- [Pricing](https://menubase.io/pricing.html): MenuBase pricing model and venue-tier positioning. Pay-on-results: free until the AOV lift hits the operator's numbers. After that, transparent monthly per-outlet rate tiered by venue type. No setup fee, no per-language fee, no per-revision fee. Lists 5 tiers (kopitiams, cafes/bubble tea, restaurants, cloud kitchens, enterprise).
 - [Contact](https://menubase.io/contact-us.html)
 - [Privacy](https://menubase.io/privacy-policy.html)
 
