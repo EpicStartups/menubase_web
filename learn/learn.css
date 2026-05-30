@@ -662,6 +662,7 @@ body { padding-bottom: 84px; }
 }
 .article-meta {
   display: flex; gap: 16px; flex-wrap: wrap;
+  align-items: center;
   font-family: var(--font-mono);
   font-size: 11px;
   letter-spacing: 0.14em;
@@ -670,6 +671,18 @@ body { padding-bottom: 84px; }
   margin-bottom: 40px;
   padding-bottom: 24px;
   border-bottom: 1px solid var(--line);
+}
+.meta-with-ico {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.meta-ico {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  color: var(--lime);
+  opacity: 0.85;
 }
 .lede {
   font-size: 20px;
@@ -1033,13 +1046,17 @@ footer.foot {
 }
 /* ─── BOTTOM-OF-ARTICLE WHATSAPP CTA BLOCK ─── */
 .article-cta {
-  margin: 64px 0 32px;
+  max-width: 1180px;
+  margin: 64px auto 32px;
   padding: 48px 36px;
   background: linear-gradient(135deg, var(--ink) 0%, var(--bg-soft) 100%);
   border: 1px solid rgba(188, 241, 37, 0.22);
   border-radius: 20px;
   position: relative;
   overflow: hidden;
+}
+@media (max-width: 1240px) {
+  .article-cta { margin-left: 28px; margin-right: 28px; }
 }
 .article-cta::before {
   content: '';
@@ -1104,7 +1121,7 @@ footer.foot {
   color: rgba(255, 255, 255, 0.55);
 }
 @media (max-width: 720px) {
-  .article-cta { padding: 36px 26px; margin: 48px 0 24px; border-radius: 16px; }
+  .article-cta { padding: 36px 26px; margin: 48px 18px 24px; border-radius: 16px; }
   .article-cta p { font-size: 15px; }
 }
 
