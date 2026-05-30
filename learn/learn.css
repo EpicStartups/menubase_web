@@ -331,7 +331,30 @@ nav.top {
 .article-related .article-card p { font-size: 13.5px; margin-bottom: 18px; }
 .article-related .article-card .card-cta { font-size: 13px; margin-top: auto; }
 @media (max-width: 900px) {
-  .article-related .hub-grid { grid-template-columns: 1fr; gap: 14px; }
+  /* Horizontal scroll carousel for the 3 related-article cards */
+  .article-related .hub-grid {
+    grid-template-columns: none;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    gap: 14px;
+    padding: 4px 18px 16px;
+    margin: 0 -18px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(188,241,37,0.45) transparent;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-inline: 18px;
+  }
+  .article-related .hub-grid::-webkit-scrollbar { height: 6px; }
+  .article-related .hub-grid::-webkit-scrollbar-track { background: transparent; }
+  .article-related .hub-grid::-webkit-scrollbar-thumb { background: rgba(188,241,37,0.45); border-radius: 6px; }
+  .article-related .article-card {
+    scroll-snap-align: start;
+    flex: 0 0 78%;
+    min-width: 260px;
+    max-width: 320px;
+  }
   .article-related { padding: 40px 18px 60px; margin-top: 36px; }
 }
 
@@ -567,8 +590,32 @@ footer.foot {
   .nav-cta .btn.nav-wa-icon svg { width: 18px; height: 18px; }
 
   .hub-intro { padding: 56px 18px 24px; }
-  .hub-grid { grid-template-columns: 1fr; padding: 16px 18px 120px; gap: 14px; }
-  .article-card { padding: 26px 22px; }
+  /* Horizontal scroll carousel for the 8 hub article cards.
+     8 stacked cards would force a long vertical scroll on mobile. */
+  .hub-grid {
+    grid-template-columns: none;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    gap: 14px;
+    padding: 16px 18px 32px;
+    margin: 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(188,241,37,0.45) transparent;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding-inline: 18px;
+  }
+  .hub-grid::-webkit-scrollbar { height: 6px; }
+  .hub-grid::-webkit-scrollbar-track { background: transparent; }
+  .hub-grid::-webkit-scrollbar-thumb { background: rgba(188,241,37,0.45); border-radius: 6px; }
+  .article-card {
+    scroll-snap-align: start;
+    flex: 0 0 82%;
+    min-width: 280px;
+    max-width: 360px;
+    padding: 26px 22px;
+  }
   .article-card h2 { font-size: 22px; }
 
   .article-wrap { padding: 32px 18px 120px; }
