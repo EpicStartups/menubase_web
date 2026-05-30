@@ -1056,11 +1056,12 @@ footer.foot {
   max-width: 1180px;
   margin: 64px auto 32px;
   padding: 48px 36px;
-  background: linear-gradient(135deg, var(--ink) 0%, var(--bg-soft) 100%);
-  border: 1px solid rgba(188, 241, 37, 0.22);
+  background: linear-gradient(135deg, #1A1A20 0%, #0A0A0C 100%);
+  border: 1px solid rgba(188, 241, 37, 0.28);
   border-radius: 20px;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
 }
 @media (max-width: 1240px) {
   .article-cta { margin-left: 28px; margin-right: 28px; }
@@ -1095,8 +1096,8 @@ footer.foot {
 .article-cta h3 em { font-style: normal; color: var(--lime); }
 .article-cta p {
   font-size: 16px;
-  line-height: 1.55;
-  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.92);
   margin: 0 0 26px;
   max-width: 580px;
 }
