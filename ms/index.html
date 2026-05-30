@@ -1140,19 +1140,20 @@ body { padding-bottom: 84px; }
 }
 .col-l { position: relative; z-index: 2; }
 /* legibility card - rounded translucent panel with backdrop blur so the
-   text reads cleanly while the bg drifts behind */
+   text reads cleanly while the bg drifts behind. Tuned for transparency:
+   lower opacity so the animated background shows through more. */
 .col-l::before {
   content: '';
   position: absolute;
   inset: -28px -36px;
   z-index: -1;
   pointer-events: none;
-  background: rgba(13, 13, 16, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(13, 13, 16, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 24px;
-  -webkit-backdrop-filter: blur(14px);
-          backdrop-filter: blur(14px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.22);
 }
 
 /* live status chip - reads the room */
