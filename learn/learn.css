@@ -182,6 +182,13 @@ main, .top-ribbon, footer.foot { position: relative; z-index: 1; }
   box-shadow: 0 6px 16px rgba(188, 241, 37, 0.4);
 }
 .lang-switch:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.lang-globe {
+  width: 13px;
+  height: 13px;
+  flex-shrink: 0;
+  opacity: 0.78;
+}
+.lang-switch:hover .lang-globe { opacity: 1; }
 .lang-switch .lang-arr {
   display: inline-flex;
   align-items: center;
