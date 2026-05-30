@@ -27,16 +27,50 @@
     ev={fx,fy,nodes,result:RESULTS[Math.random()*RESULTS.length|0],t0:t,DUR:4200}; }
   function frame(t){
     ctx.fillStyle=BG; ctx.fillRect(0,0,W,H);
-    const R=150;
+    const R=150, MR=small()?220:320; // ambient + mouse constellation radius
     for(const p of pts){ p.x+=p.vx; p.y+=p.vy; if(p.x<-20)p.x=W+20; if(p.x>W+20)p.x=-20; if(p.y<-20)p.y=H+20; if(p.y>H+20)p.y=-20; }
+    // Identify which points are inside the mouse's constellation radius
+    // so we can also draw point-to-point links between them (true constellation feel)
+    const near=[];
+    if(mouse.active){
+      for(let i=0;i<pts.length;i++){
+        const dx=pts[i].x-mouse.x, dy=pts[i].y-mouse.y, d=Math.hypot(dx,dy);
+        if(d<MR) near.push({i,d});
+      }
+    }
     for(let i=0;i<pts.length;i++){
       for(let j=i+1;j<pts.length;j++){ const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.hypot(dx,dy);
         if(d<R){ ctx.strokeStyle=rgba(INK,.05*(1-d/R)); ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(pts[j].x,pts[j].y); ctx.stroke(); } }
       if(mouse.active){ const dx=pts[i].x-mouse.x,dy=pts[i].y-mouse.y,d=Math.hypot(dx,dy);
-        if(d<220){ ctx.strokeStyle=rgba(LIMED,.5*(1-d/220)); ctx.lineWidth=1.2; ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(mouse.x,mouse.y); ctx.stroke(); } }
+        if(d<MR){ const f=1-d/MR; ctx.strokeStyle=rgba(LIMED,.78*f); ctx.lineWidth=1.4; ctx.beginPath(); ctx.moveTo(pts[i].x,pts[i].y); ctx.lineTo(mouse.x,mouse.y); ctx.stroke(); } }
     }
-    for(const p of pts){ let l=0; if(mouse.active){ const dx=p.x-mouse.x,dy=p.y-mouse.y; l=Math.exp(-Math.hypot(dx,dy)/180); }
-      ctx.fillStyle=rgba(mix(INK,LIME,Math.min(1,l*1.2)),.18+l*.7); ctx.fillRect(p.x-p.s/2,p.y-p.s/2,p.s,p.s); }
+    // Constellation: extra point-to-point links among points within the mouse radius
+    if(mouse.active && near.length){
+      const PR=Math.min(R*1.4,220);
+      for(let a=0;a<near.length;a++){
+        for(let b=a+1;b<near.length;b++){
+          const pa=pts[near[a].i], pb=pts[near[b].i];
+          const dx=pa.x-pb.x, dy=pa.y-pb.y, d=Math.hypot(dx,dy);
+          if(d<PR){
+            const fAvg=1-((near[a].d+near[b].d)/(2*MR));
+            const lf=fAvg*(1-d/PR);
+            if(lf>0.02){
+              ctx.strokeStyle=rgba(LIME,.45*lf);
+              ctx.lineWidth=1.1;
+              ctx.beginPath(); ctx.moveTo(pa.x,pa.y); ctx.lineTo(pb.x,pb.y); ctx.stroke();
+            }
+          }
+        }
+      }
+      // Soft glow ring around the cursor
+      const gr=ctx.createRadialGradient(mouse.x,mouse.y,0,mouse.x,mouse.y,MR*0.55);
+      gr.addColorStop(0,rgba(LIME,.10));
+      gr.addColorStop(1,rgba(LIME,0));
+      ctx.fillStyle=gr;
+      ctx.fillRect(mouse.x-MR,mouse.y-MR,MR*2,MR*2);
+    }
+    for(const p of pts){ let l=0; if(mouse.active){ const dx=p.x-mouse.x,dy=p.y-mouse.y; l=Math.exp(-Math.hypot(dx,dy)/200); }
+      ctx.fillStyle=rgba(mix(INK,LIME,Math.min(1,l*1.4)),.20+l*.85); ctx.fillRect(p.x-p.s/2,p.y-p.s/2,p.s,p.s); }
     if(MODE==='synthesis' && !reduce){
       // Synthesis fires across the whole page, not just hero. The has-bg-scrim system
       // behind each text container is the backstop for legibility.
