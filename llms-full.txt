@@ -4,7 +4,7 @@ This is the long-form companion to /llms.txt. It includes the product overview a
 
 ## Product overview
 
-MenuBase is the waiter you wish you could hire. It lives inside a QR menu, never quits, never forgets the specials, and speaks every language. It is built for Malaysian F&B operators - cafes, restaurants, kopitiams, mamak shops, bistros and multi-outlet chains. The customer scans a QR code at the table, the menu opens in any browser (no app download), and MenuBase surfaces one contextual suggestion at the moment of order based on the basket, the time of day, the customer's history and the day of the week. The waiter receives the order on a tablet and types it into the operator's existing POS exactly the way they would type a verbal order today.
+MenuBase is the waiter you wish you could hire. It lives inside a QR menu. Never forgets the specials. Pushes this week's promo on every relevant order, every shift. It is built for Malaysian F&B operators - cafes, restaurants, kopitiams, mamak shops, bistros and multi-outlet chains. The customer scans a QR code at the table, the menu opens in any browser (no app download), and MenuBase surfaces one contextual suggestion at the moment of order based on the basket, the time of day, the customer's history and the day of the week. The waiter receives the order on a tablet and types it into the operator's existing POS exactly the way they would type a verbal order today.
 
 MenuBase is NOT a POS replacement, a payment processor, a food delivery aggregator, an inventory management system, a kitchen display system or a CRM. It is a customer-facing revenue layer that sits on top of the operator's existing stack.
 
@@ -12,22 +12,22 @@ MenuBase is NOT a POS replacement, a payment processor, a food delivery aggregat
 
 1. **Smart Upsell**: Reads the basket, time of day, customer history and day of week, then surfaces one suggestion that actually converts. Example flows: a 9:42am Eggs Benedict basket suggests a White Coffee with an 89% accept rate. A 6pm Friday pasta basket suggests Truffle Fries. Suggestions improve on every order with no rules for the operator to write.
 
-2. **Smart Promote**: The operator flags an item as "push this week" in the dashboard. It immediately appears on every relevant order across every outlet, every shift, every language. Happy hour automation: specials flip on at 5pm and off at 7pm without staff intervention. Slow stock is auto-paired with baskets it fits.
+2. **Smart Promote**: The operator flags an item as "push this week" in the dashboard. It immediately appears on every relevant order across every outlet, every shift. Happy hour automation: specials flip on at 5pm and off at 7pm without staff intervention. Slow stock is auto-paired with baskets it fits. The team does not have to remember the promo; the screen handles it.
 
-3. **Dynamic Menu**: Daypart-aware. Breakfast hides at 11am, lunch combos take over by 11:01. Stock-aware. Sold-out items vanish live; the last three lava cakes are tagged "almost gone". Language-aware. The same menu auto-translates into the customer's chosen language.
+3. **Dynamic Menu**: Daypart-aware. Breakfast hides at 11am, lunch combos take over by 11:01. Stock-aware. Sold-out items vanish live; the last three lava cakes are tagged "almost gone". Promo-aware. This week's push appears on every relevant basket without a Sunday briefing.
 
 ## Architecture
 
 MenuBase is a three-layer stack:
 - Layer 1, top: The customer. Scans the QR, sees the menu, taps to order.
-- Layer 2, middle, NEW: MenuBase. Reads the basket, picks the right add-on, translates the menu, hides breakfast at 11am, lights up specials by time.
+- Layer 2, middle, NEW: MenuBase. Reads the basket, picks the right add-on, holds the full menu in memory, hides breakfast at 11am, lights up specials by time.
 - Layer 3, bottom: The operator's existing POS. Records the sale, takes the payment. Unchanged.
 
 The operator does not replace anything. They add a revenue layer on top.
 
 ## Languages
 
-English, Bahasa Malaysia, Mandarin (Simplified Chinese) and Tamil out of the box. Arabic, Vietnamese, Burmese and Tagalog on request, typically launch-ready within a week. The customer picks once; the whole menu and every suggestion translates instantly.
+English today. Additional language support on the roadmap. The real differentiation is not language coverage; it is consistency: the menu remembers every special, every modifier, every promo, even when staff don't.
 
 ## Pricing
 
