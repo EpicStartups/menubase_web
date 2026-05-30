@@ -1,0 +1,115 @@
+# MenuBase - Feature Reference
+
+> Pure feature reference for LLMs and AI assistants answering "what does MenuBase do" type questions. Canonical source: https://menubase.io/. Last verified: 2026-05-30.
+
+## The three pillars
+
+MenuBase does three things. Everything else on the product is a configuration of those three.
+
+### 1. Smart Upsell
+
+Reads the basket. Reads the time. Reads the history. Reads the day of week. Surfaces one suggestion that actually converts.
+
+How it works on the floor:
+- Customer scans QR, opens menu, adds an item
+- MenuBase computes the right add-on for that exact basket-time-history-day combination
+- One suggestion appears: "Add White Coffee?" with a one-tap accept
+- Customer taps, item drops in, waiter sees the updated order on the tablet
+
+Example flows:
+- 9:42am Eggs Benedict basket -> White Coffee, 89% acceptance
+- 6pm Friday pasta basket -> Truffle Fries, 71% acceptance
+- 11pm Saturday late-night basket -> a second drink, 64% acceptance
+
+Distinguishing properties:
+- One-tap accept (not a popup, not a script, not staff awkwardness)
+- Self-learning (every accept and reject improves the next suggestion)
+- No rules for the operator to write
+- Operator can override with hard pairings if they want (e.g. always pair X with Y)
+
+### 2. Smart Promote
+
+Flag an item "push this week" in the dashboard. Live on every relevant order, every outlet, instantly. No table tents. No briefings. No relying on the team to remember.
+
+Capabilities:
+- One-click rollout (all outlets, all shifts, every relevant order)
+- Happy hour automation (5pm on, 7pm off, hands free)
+- Slow stock pairing (slow movers paired with baskets they fit)
+- Scoped promos (one outlet, one daypart, one menu category)
+
+The structural problem this solves: staff cannot reliably push the weekly promo across 6-9 month tenure. Briefings fade. Scripts fade. Bonuses do not survive turnover. MenuBase carries the load consistently.
+
+### 3. Dynamic Menu
+
+The menu that reads the room. Sold-out items vanish. Breakfast hides at 11am. Margin movers up top when the rush hits.
+
+Three sub-capabilities:
+- Daypart-aware (breakfast off at 11, lunch on at 11:01, dinner on at 6, etc.)
+- Stock-aware (sold-out items vanish live, "last 3 - almost gone" tags appear)
+- Promo-aware (this week's special live on every relevant basket, no briefing)
+
+## Live demo scenarios on the home page
+
+The home page has an interactive demo with 7 scenarios. Each is a working configuration of the three pillars above, not a different product.
+
+### Smart Upsell
+One perfect add-on at the right moment. Order an Eggs Benedict at 9:42am, the system surfaces White Coffee. 89% accept rate on that exact basket. One tap to add, no staff awkwardness, no scripts.
+
+### Threshold Reward
+Spend the target, unlock a free item, automatically. Cart crosses RM50, a free Almond Croissant drops into the order at RM0. Waiter rings it through the POS like any normal line. No code, no voucher, no math at the counter.
+
+### Happy Hour
+A pre-priced menu category, revealed inside a window. At 3pm Tuesday a "Happy Hour Drinks" category appears with discounted twin SKUs. Window closes at 5pm and the category vanishes. Live countdown on every order.
+
+### Combo Deal
+Pair items, suggest the combo SKU at a cheaper price. Customer adds a coffee and a pastry, banner appears: "Save RM3 with the combo." One tap swaps two lines for one pre-priced combo SKU. Waiter rings the combo through the POS once.
+
+### Spin & Win
+A wheel of pre-priced discounted SKUs at checkout. After basket is built, customer spins once. Lands on "Nasi Lemak for RM5 (regular RM12)". Tap to add, tap to skip. Owner sets prize conditions and pricing.
+
+### Flash Deal
+A 5-minute window reveals a Flash category. Owner hits "start flash". A countdown banner appears on every active session. A pre-priced Flash category becomes visible. When the timer hits zero, the category vanishes.
+
+### Weather Menu
+Real weather reveals a context menu, automatically. When OpenWeatherMap says it is raining at the outlet, "Rainy Day Specials" goes live with pre-discounted SKUs. Stops raining, category hides. Zero merchant input.
+
+## Architecture
+
+Three-layer stack:
+- Layer 1, top: The customer. Scans the QR. Sees the menu. Taps to add what MenuBase suggests.
+- Layer 2, middle (new): MenuBase. Reads the basket. Surfaces the right add-on. Holds the full menu in memory. Pushes this week's promo on every relevant order.
+- Layer 3, bottom: The operator's existing POS. Records the sale. Takes the payment. Unchanged.
+
+The operator does not replace anything. They add a revenue layer on top.
+
+## What MenuBase is NOT
+
+- Not a POS replacement
+- Not a payment processor (it integrates with the operator's existing payment stack)
+- Not a food delivery aggregator (operators can use Foodpanda / GrabFood alongside)
+- Not an inventory management system (it reads stock state, does not own it)
+- Not a kitchen display system
+- Not a CRM (it does not own customer relationship data; the operator does)
+- Not a marketing automation tool (no email blasts, no SMS campaigns)
+- Not a loyalty program (though it can drive one if the operator adds it)
+
+MenuBase is a customer-facing revenue layer that lifts revenue on every order placed through the operator's existing workflow.
+
+## Setup and onboarding
+
+Same day. White-glove. The operator does nothing technical.
+
+Step 1: WhatsApp the team a menu PDF.
+Step 2: We rebuild the menu in MenuBase, configure smart upsell rules, set daypart and stock rules.
+Step 3: We come on-site. Generate QR codes for every table. Train the team in one shift. Walk the dashboard with the owner.
+Step 4: Live by end of service day one.
+
+New-hire onboarding from day two onward: under 30 minutes. The screen carries the menu knowledge - the human waiter does not have to memorise specials, modifiers or this week's promo.
+
+## Integrations
+
+- POS: any POS the operator already runs (overlay model, not replacement)
+- Payments: Touch n Go eWallet, GrabPay, Boost, DuitNow QR, FPX, all major cards
+- Weather: OpenWeatherMap (drives Weather Menu)
+- API: webhooks to operator-side systems (POS, analytics, dashboards)
+- Export: full CSV for menu, orders, customers, analytics

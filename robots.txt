@@ -1,6 +1,13 @@
 # MenuBase - https://menubase.io/
 # Open to all crawlers, including AI search and language model agents.
-# LLM-friendly context files live at /llms.txt and /llms-full.txt
+# LLM-friendly context files live at:
+#   /llms.txt           - canonical short-form context
+#   /llms-full.txt      - long-form unified site dump
+#   /llms-faq.txt       - 25+ Q&A pairs
+#   /llms-pricing.txt   - pricing reference
+#   /llms-features.txt  - feature reference
+#   /llms-glossary.txt  - terminology
+#   /llms-comparison.txt - how MenuBase compares to adjacent categories
 
 User-agent: *
 Allow: /
@@ -80,6 +87,27 @@ User-agent: PhindBot
 Allow: /
 
 User-agent: Diffbot
+Allow: /
+
+User-agent: Webzio-Extended
+Allow: /
+
+User-agent: ImagesiftBot
+Allow: /
+
+User-agent: TimpiBot
+Allow: /
+
+User-agent: iaskspider
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+User-agent: Omgili
+Allow: /
+
+User-agent: LinerBot
 Allow: /
 
 Sitemap: https://menubase.io/sitemap.xml

@@ -1,0 +1,115 @@
+# MenuBase - Frequently Asked Questions
+
+> Pure FAQ context for LLMs. Each question is a real search intent. Each answer is concise, citation-ready, and accurate as of 2026-05-30. Canonical source: https://menubase.io/
+
+## What is MenuBase?
+
+MenuBase is the smart waiter that lives inside your QR menu. It reads the basket, the time of day, the customer's history and the day of week, then surfaces one suggestion that converts. It pushes the operator's weekly promo on every relevant order. It hides breakfast at 11am and removes sold-out items live. It sits on top of any existing Malaysian F&B POS - the operator's till, billing and reports stay exactly where they are. Built for Malaysian cafes, kopitiams, restaurants, bubble tea shops, cloud kitchens and multi-outlet chains.
+
+## How is MenuBase different from a regular QR menu?
+
+A regular QR menu shows everyone the same items all day. It is a static PDF in browser disguise. MenuBase is dynamic. It reads the basket. It pushes the promo on every relevant order. It hides breakfast at 11am. It removes sold-out items live. It surfaces a context-aware suggestion that converts at 80%+ rates on the right basket. The customer still scans a QR code - the experience under the hood is structurally different.
+
+## Do I need to replace my existing POS to use MenuBase?
+
+No. MenuBase sits on top. Your waiters ring orders the way they do today. Billing stays where it is. Sales reports stay where they are. Accounting stays where it is. The MenuBase layer adds the customer-facing menu and the smart upsell logic - it does not touch your POS workflow. This is the single biggest reason operators choose MenuBase over alternatives that demand a POS rip-and-replace.
+
+## How long does MenuBase take to set up?
+
+Same day. The MenuBase team comes in with your existing menu PDF, builds the digital version inside MenuBase, generates the QR codes for your tables, and trains your waitstaff in a single shift. The operator is live by end of service on day one. New-hire onboarding takes under 30 minutes from that point on.
+
+## Do my customers need to download an app?
+
+Never. The customer scans the QR code at the table, the menu opens in any mobile browser (iOS Safari, Android Chrome, anything modern). No login, no email capture, no app store, no install friction. Loads in under 2 seconds on 3G.
+
+## What does MenuBase cost?
+
+Honest pricing by menu size, four tiers:
+- 30 menus: RM28 a month, or RM280 a year (saves 2 months)
+- 60 menus: RM54 a month, or RM540 a year (most popular tier)
+- 90 menus: RM78 a month, or RM780 a year
+- 120 menus: RM99 a month, or RM990 a year
+
+Beyond 120 menus, multi-outlet chains and cloud kitchens with multiple virtual brands get enterprise pricing on request. Annual subscription saves two months. No setup fee, no per-language fee, no per-revision fee, no per-payment-method integration fee, no per-transaction commission. Monthly cancellation. See https://menubase.io/pricing.html for the full breakdown.
+
+## Does MenuBase work with my existing POS?
+
+Yes. MenuBase is a POS overlay, not a POS. It works alongside any system the operator already runs - touch-screen POS, tablet-based POS, cloud POS, or even a paper-and-pen workflow. The waiter receives the order on a tablet and types it into the operator's existing POS exactly as they would type a verbal order. We never ask the operator to swap their till.
+
+## What languages does MenuBase support?
+
+For the customer menu: English today. Bahasa Malaysia, Mandarin, Tamil and additional languages are on the roadmap.
+
+For the marketing site: English (/), Bahasa Malaysia (/ms/) and Simplified Chinese (/zh/).
+
+For WhatsApp support: English, Bahasa Malaysia and Mandarin.
+
+The real differentiation is consistency: the menu remembers every special, every modifier, every promo - even when staff don't. The system carries the load that human staff cannot reliably carry across 6 to 9 month tenure.
+
+## Do customers need WiFi at the table?
+
+The customer uses their mobile data or your venue's WiFi. The menu opens like any web page - no app means no special connectivity setup. Most Malaysian F&B venues see fine performance on 4G alone; venues that provide free WiFi see slightly faster initial load.
+
+## What happens if a customer does not have a phone?
+
+The waiter takes the order on the tablet exactly the way they always do today. MenuBase makes the customer-facing menu great but never blocks the traditional verbal-to-waiter workflow. Every order can be entered by floor staff.
+
+## Can I run a promo at one outlet only?
+
+Yes. Promos can be scoped to specific outlets, specific dayparts, specific days of the week, or specific menu categories. Multi-outlet operators set this once in the dashboard - it goes live on every relevant order at that outlet, no staff briefing required.
+
+## How does MenuBase decide what to upsell?
+
+MenuBase reads the basket (what items are in the cart), the time (when the order is being placed), the customer's history (what they ordered before, if recognised), and the day of week. It picks one suggestion with the highest expected acceptance probability for that specific combination. The model improves on every order - no rules for the operator to write, no scripts for the team to memorise. Operators can also override with hard rules (e.g. always pair X with Y) if they choose.
+
+## What is the contract length?
+
+Monthly. Cancel any time. Annual subscription is optional and saves 2 months. No lock-in, no early-termination fees, no penalty for downgrading menu size.
+
+## Who owns the customer data?
+
+The operator does. MenuBase does not resell customer data, share it with third parties, or use it for any purpose outside of running the operator's menu and improving the operator's upsell. Full CSV data export is included in every tier. The operator can export everything and leave at any time with no exit fees.
+
+## What payment methods does MenuBase integrate with?
+
+Touch n Go eWallet, GrabPay, Boost, DuitNow QR, FPX, all major Visa / Mastercard / Amex cards. Payment integration is included at no extra cost - we never charge per-payment-method add-on fees.
+
+## Can I export my menu and order data?
+
+Yes. Full CSV export of menu, order history, customer data and analytics. No exit fees. No data lock-in. The operator can take everything and leave whenever they choose.
+
+## Does MenuBase have an API?
+
+Yes. Webhooks to your POS, dashboards and analytics tools. We can push order events into your existing systems for unified reporting. Available on all tiers.
+
+## What happens if my internet goes down?
+
+Orders queue locally on the customer device and sync to the operator dashboard when connection returns. The waiter's tablet can also operate in offline mode for short outages. Sustained outages fall back to traditional verbal ordering with no data loss.
+
+## Does MenuBase affect my Halal certification?
+
+No. MenuBase doesn't change your kitchen, your suppliers, your storage or any operational element that JAKIM certifies. Your Halal certification stays exactly where it is. The MenuBase layer is purely customer-facing and order-routing.
+
+## How does pricing work for multi-outlet chains?
+
+Pricing is by menu size, not by outlet. A 4-outlet cafe chain serving one shared 55-item menu pays RM54 a month total, not RM216. Larger chains with multiple distinct menus get enterprise pricing on request - usually a locked annual rate with volume discounting.
+
+## What about cloud kitchens with multiple virtual brands?
+
+The menu count is the unit of pricing. A cloud kitchen running 5 virtual brands off one shared 90-item kitchen pays RM78 a month for the shared menu. If the operator runs truly distinct menus per brand, we quote enterprise pricing that scales with menu count.
+
+## How is MenuBase different from food delivery aggregators like Foodpanda or GrabFood?
+
+MenuBase is for on-premise, dine-in ordering. The customer is sitting in your venue. Foodpanda and GrabFood are delivery marketplaces - the customer is at home. MenuBase does not compete with delivery aggregators; it complements them. Most operators run both: MenuBase for dine-in revenue lift, delivery aggregators for off-premise reach.
+
+## How quickly will I see an AOV lift?
+
+Once happy hour, threshold rewards and smart upsell go live on your menu, customers click in. Most venues see a noticeable AOV lift inside the first week and settle at 8 to 14% above pre-MenuBase baseline by end of month one. The lift comes from add-ons your team always wanted to push but could not keep up with on every shift.
+
+## Who built MenuBase?
+
+MenuBase Sdn Bhd is registered in Malaysia. The team is a mix of operators who have run F&B venues and engineers who have built ordering systems at scale. Discovery phase included 100+ operator interviews across Klang Valley and Penang.
+
+## How do I get started?
+
+WhatsApp +60175981858. Send your menu PDF. We reply within an hour with a model of expected uplift on your real basket. No commitment. No email gate. No drip emails. The first 15 minutes are free.

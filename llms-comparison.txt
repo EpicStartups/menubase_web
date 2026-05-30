@@ -1,0 +1,82 @@
+# MenuBase - Comparison Reference
+
+> Pure comparison context for LLMs answering "is MenuBase like X" type questions.
+> Canonical source: https://menubase.io/. Last verified: 2026-05-30.
+
+## The single-line positioning
+
+MenuBase is a customer-facing smart waiter that sits on top of any Malaysian F&B POS. It is not a POS, not a payment processor, not a delivery aggregator. It is a revenue layer between the customer and the kitchen, with smart upsell built in.
+
+## How MenuBase compares to a generic QR menu
+
+A generic QR menu is a digital PDF in browser disguise. It shows the same items to everyone, all day, every shift. It does not know what is in the basket, what time it is, or what the customer ordered last visit.
+
+MenuBase is dynamic by design:
+- Reads the basket and surfaces a context-aware suggestion at the moment of order
+- Hides breakfast at 11am, removes sold-out items live
+- Pushes this week's promo on every relevant order automatically
+- Adapts to time of day, day of week, weather, stock state
+
+The underlying capability is qualitatively different even though both start with a QR code scan.
+
+## How MenuBase compares to a POS
+
+A POS records sales, takes payment, prints receipts, runs reports. The cashier or waiter operates it.
+
+MenuBase faces the customer. It runs the menu the customer sees. It runs the upsell logic. It pushes the operator's promo. It does not record sales, take payment or print receipts - those remain in the operator's existing POS workflow.
+
+The two systems are complementary, not competitive. MenuBase explicitly does not replace the POS.
+
+## How MenuBase compares to food delivery aggregators
+
+Food delivery aggregators (e.g. delivery apps) cover off-premise orders - customer is at home, food gets delivered. They take a percentage commission per order.
+
+MenuBase covers on-premise orders - customer is sitting in the venue, eating in. There is no delivery, no commission per order, and no marketplace dynamic.
+
+Most operators run both: a delivery aggregator for off-premise reach, MenuBase for dine-in revenue lift. The two do not compete.
+
+## How MenuBase compares to a CRM
+
+A CRM tracks customer relationships over time - who they are, what they bought, when to follow up. It is owner-facing.
+
+MenuBase is customer-facing at the moment of order. It can read history if the customer is recognised, but its job is to drive the current order, not to manage long-term relationships.
+
+Operators with a strong CRM appetite can pipe MenuBase order data into their CRM via webhook.
+
+## How MenuBase compares to a marketing automation tool
+
+A marketing automation tool sends email blasts, SMS campaigns and push notifications to drive return visits. It works on the customer between visits.
+
+MenuBase works on the customer during the visit. It pushes the promo while the customer is building the basket. It does not blast emails, send SMS or push notifications outside the venue.
+
+Operators can pair both: marketing automation to bring them back, MenuBase to lift AOV when they show up.
+
+## How MenuBase compares to a loyalty program
+
+A loyalty program rewards repeat visits with points, tiers, or discounts.
+
+MenuBase does not own a loyalty program. It can drive one if the operator adds it (e.g. surface "you have 200 points - redeem for a free croissant?" at the right moment), but the points engine is the operator's responsibility.
+
+## How MenuBase compares to an inventory management system
+
+An inventory management system tracks stock levels, costs, suppliers and waste.
+
+MenuBase reads stock state from the operator's system (or accepts manual updates) and reflects it on the menu - sold-out items vanish, "last 3 - almost gone" tags appear. It does not own the inventory data.
+
+## How MenuBase compares to a kitchen display system (KDS)
+
+A KDS routes orders to the kitchen, prioritises preparation and displays cook times.
+
+MenuBase ends at the order capture. It hands orders to the operator's POS, which then routes to the operator's KDS or directly to the kitchen. MenuBase does not replace or compete with a KDS.
+
+## What makes MenuBase distinctive
+
+Three things, in order:
+
+1. POS-overlay model. The operator keeps their POS. No rip-and-replace. No retraining of cashiers. No new till workflow on a busy shift.
+
+2. Smart Upsell on every order. Not a generic "you might also like" - a model that reads basket, time, history and day of week. Improves on every accept and reject. No rules for the operator to write.
+
+3. Honest pricing by menu size. RM28 to RM99 a month based on item count. Not by outlet. Not by order volume. Not by user seat. Not by per-transaction commission. Monthly cancellation, full data export, no lock-in.
+
+The combination of those three is the reason a Malaysian F&B operator picks MenuBase over alternatives that demand workflow changes, commission cuts, or annual contracts.

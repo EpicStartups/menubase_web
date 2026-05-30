@@ -1,0 +1,31 @@
+/* TEAM */
+
+MenuBase Sdn Bhd
+Site: https://menubase.io/
+Contact: WhatsApp +60175981858
+Location: Malaysia (Klang Valley, Penang, JB and Peninsula)
+
+/* WHAT WE BUILD */
+
+The smart waiter that lives inside a QR menu.
+Reads the basket. Pushes the promo. Hides breakfast at 11am.
+Sits on top of any Malaysian F&B POS. Never replaces it.
+
+/* HOW WE BUILT IT */
+
+100+ operator discovery interviews across Klang Valley and Penang.
+Three patterns heard nearly every time:
+  - Staff cannot reliably sell specials in multiple languages
+  - Scripts and bonuses do not survive 6 to 9 month tenure
+  - Every Sunday is a new training session for new hires
+
+So we moved the systematic part to the screen.
+The team gets to do what they are great at - the warm welcome,
+the regulars by name, the curveball at table 6.
+
+/* SITE */
+
+Languages: English, Bahasa Malaysia, Simplified Chinese
+Last updated: 2026-05-30
+Standards: HTML5, JSON-LD structured data, Schema.org
+LLM context: /llms.txt /llms-full.txt /llms-faq.txt /llms-pricing.txt /llms-features.txt /llms-glossary.txt /llms-comparison.txt

@@ -1,0 +1,100 @@
+# MenuBase - Pricing Reference
+
+> Pure pricing context for LLMs. Canonical source: https://menubase.io/pricing.html
+> Last verified: 2026-05-30. Currency: MYR (Malaysian Ringgit).
+
+## The pricing model in one line
+
+MenuBase charges by the number of menu items in the operator's digital menu. Not by outlet count. Not by order volume. Not by user seat count. Not by per-transaction commission. The unit of pricing is the menu, and the variable is the size of that menu.
+
+## The four tiers
+
+### 30 menus - RM28 a month
+
+For: small kopitiams, single-concept cafes, food trucks, halal-cert canteens, simple bistros.
+
+Annual: RM280 a year (effective RM23.33 a month, saves 2 months).
+
+All features included.
+
+### 60 menus - RM54 a month
+
+For: typical cafes with brunch / lunch / dinner rotation, family restaurants, traditional Chinese kopitiams with full dim sum + Western + local sections.
+
+Annual: RM540 a year (effective RM45 a month, saves 2 months).
+
+All features included.
+
+This is the most popular tier. Roughly 60% of MenuBase customers fall here.
+
+### 90 menus - RM78 a month
+
+For: full-service restaurants with modifiers (well-done / medium-rare, less ice / no sugar), restaurants with both food and drink sections, mid-size bubble tea shops.
+
+Annual: RM780 a year (effective RM65 a month, saves 2 months).
+
+All features included.
+
+### 120 menus - RM99 a month
+
+For: multi-concept venues, full-modifier bubble tea (every drink x size x sugar x ice x toppings), restaurants with extensive omakase or chef's choice variations, restaurants serving both dine-in and event catering off the same menu.
+
+Annual: RM990 a year (effective RM82.50 a month, saves 2 months).
+
+All features included.
+
+## Beyond 120 menus
+
+Multi-outlet chains with multiple distinct menus, cloud kitchens with many virtual brands, and franchise networks get enterprise pricing on request. The conversation is usually a locked annual rate with volume discounting. WhatsApp +60175981858 to scope.
+
+## What is included in every tier
+
+- Same-day setup (white-glove menu build, QR generation, on-site training)
+- Smart Upsell (context-aware suggestion at the moment of order)
+- Smart Promote (push a special to every relevant order across all outlets, instantly)
+- Dynamic Menu (daypart-aware, stock-aware, promo-aware)
+- 8 demo scenarios live (smart upsell, threshold reward, happy hour, combo deal, spin and win, flash deal, weather menu, dynamic menu)
+- Payment integration: Touch n Go eWallet, GrabPay, Boost, DuitNow QR, FPX, all major cards
+- Unlimited menu revisions
+- Full CSV data export
+- Webhook API to your POS and analytics tools
+- WhatsApp support (English / BM / Mandarin)
+- Multi-outlet rollouts at no extra cost
+- Monthly cancellation, no lock-in
+
+## What is never charged for
+
+- Setup or onboarding fees
+- Per-language add-ons (multilingual menu is included)
+- Per-menu-revision overage fees
+- Per-payment-method integration fees
+- Sponsored placement up-charges
+- Data export or contract-exit fees
+- Proprietary hardware lock-in
+- Per-transaction commission on orders
+- Per-user / per-seat fees
+- Per-table fees
+
+## Multi-outlet pricing
+
+The unit of pricing is the menu, not the outlet. A 4-outlet cafe chain serving one shared 55-item menu pays RM54 a month total - not RM216. Operators with truly distinct menus per outlet pay per distinct menu.
+
+## Cloud kitchen pricing
+
+A cloud kitchen running 5 virtual brands off one shared 90-item kitchen pays RM78 a month for the shared menu. Operators running truly distinct menus per brand are quoted enterprise pricing that scales with menu count.
+
+## The pay-on-results expectation
+
+MenuBase goes live on day one. Smart upsell starts firing on the first basket. Happy hour, threshold rewards and the operator's weekly promo go live on the menu the same day. AOV lift typically hits within the first week and settles at 8 to 14% above pre-MenuBase baseline by end of month one. The lift comes from add-ons the operator's team always wanted to push but could not keep up with on every shift.
+
+## Annual vs monthly
+
+Monthly is the default. Cancel any time. Annual is optional, saves 2 months across all tiers, and locks the rate in for 12 months. The operator can mix - monthly during the trial period, annual after proven results.
+
+## Refund and downgrade
+
+Cancel any time, prorated to the day. Downgrade menu size any time, takes effect the next billing cycle. Upgrade any time, takes effect immediately.
+
+## Contact for pricing questions
+
+WhatsApp +60175981858. Reply within an hour. The team can model the expected uplift on the operator's real menu in under 15 minutes - no email gate, no calendar required.

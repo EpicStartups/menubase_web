@@ -1,0 +1,104 @@
+# MenuBase - Malaysian F&B Operator Glossary
+
+> Definitions for terms used across MenuBase product copy and Malaysian F&B operations.
+> Canonical source: https://menubase.io/learn/glossary-malaysian-fb-operations.html
+> Last updated: 2026-05-30.
+
+## Core product terms
+
+### MenuBase
+The smart waiter that lives inside a QR menu. Sits on top of any existing POS. Reads basket, time, history and day of week to surface one converting suggestion per order. Pushes the operator's weekly promo on every relevant order. Hides breakfast at 11am, removes sold-out items live. Built for Malaysian F&B.
+
+### Smart Upsell
+MenuBase capability that reads basket, time, history and day of week, then surfaces one suggestion at the moment of order. Improves on every order. No rules for the operator to write. Acceptance rates typically 60 to 90 percent on well-matched suggestions.
+
+### Smart Promote
+MenuBase capability where the operator flags an item "push this week" in the dashboard. It appears on every relevant order across every outlet, every shift, instantly. No table tents, no Sunday briefings, no relying on staff memory.
+
+### Dynamic Menu
+Menu that adapts in real time. Daypart-aware (breakfast hides at 11am, lunch combos take over at 11:01). Stock-aware (sold-out items vanish live, "last 3 - almost gone" tags appear). Promo-aware (this week's special live on every relevant basket).
+
+### Threshold Reward
+Promo that auto-drops a free item into the basket when total crosses a target. Example: cart hits RM50, a free Almond Croissant drops in at RM0. The waiter rings the freebie through the POS as a normal line item. No code, no voucher, no math at the counter.
+
+### Happy Hour Automation
+Menu category that auto-flips on at a scheduled time (e.g. 3pm Tuesday) and off at another (e.g. 5pm Tuesday). Live countdown on every active order. No staff briefing required - the system handles the timing.
+
+### Combo Deal
+Pre-priced bundle of two or more menu items at a discount. MenuBase detects matching items in basket and suggests the combo SKU swap with one tap. Waiter rings the combo as a single line in the POS.
+
+### Spin & Win
+Wheel of pre-priced discounted SKUs at checkout. Customer spins once, lands on a prize (e.g. Nasi Lemak RM5 vs regular RM12), taps to add or skip. Owner sets prize odds and pricing.
+
+### Flash Deal
+Time-bound surprise discount that appears for a short window (typically 5 minutes) on every active customer session. Owner triggers it manually. A countdown banner appears, a pre-priced Flash category becomes visible, the category vanishes when the timer expires.
+
+### Weather Menu
+Menu category that auto-reveals based on real outlet weather via OpenWeatherMap. Raining at the outlet activates "Rainy Day Specials" with pre-discounted SKUs; clear weather hides them. Zero merchant input required.
+
+### POS Overlay
+Software layer that sits on top of an existing point-of-sale without replacing it. MenuBase is a POS overlay. Your floor team keeps using your POS for billing, payments and reports exactly as they do today. The overlay adds the customer-facing menu and the upsell logic.
+
+## Malaysian F&B venue types
+
+### Kopitiam
+Traditional Malaysian Chinese coffee shop. Lower AOV (RM8-18), faster table turn (25-45 minutes), older regulars with 30-84 month tenure, brutal 6.30-9.30am rush. Multi-language ordering norm (English, Mandarin, dialect, Malay). One of MenuBase's core verticals.
+
+### Mamak
+Malaysian Indian-Muslim restaurant. 24-hour operation, multi-language ordering, all-day-breakfast menus, strong roti and teh tarik culture. Strong daypart and language fit for MenuBase.
+
+### Cafe (Malaysian context)
+Casual cafe with brunch / lunch / dinner rotation. AOV typically RM22-38. Weekly specials common. Skews younger, more digital-native customer base. MenuBase's most common deployment.
+
+### Bubble tea shop
+Boba / milk tea / pearl-drink venue. Heavy modifier matrix (size x sugar x ice x toppings x flavour) - often 100+ combinations off 20 base recipes. Throughput-driven, 7-10pm peak rush. MenuBase handles the modifier matrix as a first-class menu primitive.
+
+### Cloud kitchen
+Delivery-only venue running one kitchen with one or many virtual brands. No dine-in. MenuBase's role is around order intake, brand-aware promo push and unified analytics across virtual brands.
+
+### Bistro
+Mid-scale full-service restaurant. AOV RM35-80. Modifiers common (cooking temperature, dressing on the side, allergen notes). Lunch and dinner peaks separated by quiet afternoon - prime daypart-rule territory.
+
+## Operations terms
+
+### AOV (Average Order Value)
+Total revenue divided by total number of orders over a period. The headline metric MenuBase lifts by 8 to 14% in month one through smart upsell and consistent promo push.
+
+### Daypart
+A time-window menu segment. Common dayparts in Malaysian F&B: breakfast (7-11am), brunch (10am-2pm), lunch rush (12-2pm), tea time (3-6pm), dinner (6-10pm), late-night (10pm-2am). MenuBase activates and deactivates dayparts automatically.
+
+### Table turn
+Average time a table is occupied by one party from sit-down to bill-paid. Lower table turn = more parties served per shift = more revenue per square foot. Kopitiams target 25-45 min; bistros 60-90 min.
+
+### Service charge
+The 10% charge added to most Malaysian sit-down F&B bills, typically pooled and split among floor staff. Does not function as a commission - waiters rarely have a personal upside for upselling any specific item.
+
+### Multi-outlet
+F&B operator running more than one location. MenuBase pricing is by menu size, not by outlet - one shared menu serving 4 outlets pays as 1 menu.
+
+### Staff turnover
+Rate at which floor staff leave and are replaced. Malaysian F&B labour market sees 6-9 month tenure as typical. The structural challenge MenuBase addresses: menu knowledge and promo discipline cannot reliably survive that tenure window.
+
+### Memory ceiling
+The structural limit on how much menu detail a human waiter can hold reliably across an 8-hour shift. A 60-item menu memorised in week 1 fades by week 8. MenuBase carries the load the human waiter cannot.
+
+### Promo push
+The discipline of getting the operator's current promotion in front of every relevant customer order. Manually, this requires Sunday briefings, table tents, scripts and constant reminding. With MenuBase, it is automatic on every relevant basket.
+
+### Modifier matrix
+The combinatorial space of menu customisations. A bubble tea menu with 20 base drinks x 3 sizes x 5 sugar levels x 4 ice levels x 6 toppings = 7,200 possible orders. MenuBase models this matrix as a first-class menu primitive rather than as freeform notes.
+
+### CSV export
+Comma-separated-values export of menu, orders, customers and analytics. Standard for every MenuBase tier, no exit fee. Allows the operator to take all their data and leave whenever they choose.
+
+### Webhook
+A push notification from one system to another when an event happens (e.g. an order is placed). MenuBase exposes webhooks so the operator's POS, dashboards or analytics tools can listen for live order events.
+
+### DuitNow QR
+Malaysian national real-time retail payment QR standard. Accepted by every Malaysian bank and most eWallets. MenuBase integrates DuitNow QR alongside Touch n Go eWallet, GrabPay, Boost and FPX.
+
+### SST
+Sales and Service Tax. Malaysian indirect tax that applies to most F&B sales above the SST threshold. MenuBase displays tax-inclusive prices to the customer; tax-exclusive breakdowns are available in the dashboard.
+
+### Halal certification
+JAKIM-issued certification verifying that an F&B venue's kitchen, suppliers and storage comply with Islamic dietary law. MenuBase does not affect the operator's Halal certification - the certification covers kitchen operations, MenuBase covers customer-facing menu and upsell logic.

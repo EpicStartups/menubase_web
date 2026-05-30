@@ -1,0 +1,9 @@
+# MenuBase security disclosure
+# https://menubase.io/.well-known/security.txt
+
+Contact: https://wa.me/60175981858
+Contact: mailto:security@menubase.io
+Preferred-Languages: en, ms, zh
+Canonical: https://menubase.io/.well-known/security.txt
+Policy: https://menubase.io/privacy-policy.html
+Expires: 2027-05-30T00:00:00.000Z
