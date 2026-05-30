@@ -370,12 +370,14 @@
         }
 
         @media (max-width:720px) {
-            nav.top { margin: 18px 10px 28px; width: auto; max-width: none; }
-            nav.top .nav-inner { padding: 4px; gap: 0; justify-content: space-between; }
-            nav.top .nav-links { flex: 1; padding-left: 4px; gap: 0; justify-content: space-around; }
-            nav.top .nav-links a { flex-direction: column; gap: 2px; padding: 6px 4px; font-size: 9.5px; text-align: center; flex: 1; }
+            nav.top { margin: 18px 10px 28px; width: calc(100% - 20px); max-width: calc(100% - 20px); box-sizing: border-box; }
+            nav.top .nav-inner { padding: 4px; gap: 4px; justify-content: space-between; }
+            nav.top .nav-links { flex: 1 1 auto; min-width: 0; padding-left: 0; gap: 0; justify-content: space-around; }
+            nav.top .nav-links a { flex-direction: column; gap: 2px; padding: 5px 2px; font-size: 9px; text-align: center; flex: 1 1 0; min-width: 0; }
             nav.top .nav-links .nav-ico { width: 16px; height: 16px; flex: 0 0 16px; opacity: 0.92; }
             nav.top .nav-cta { flex: 0 0 auto; }
+            nav.top .nav-cta .btn.nav-wa-icon { width: 36px; height: 36px; }
+            nav.top .nav-cta .btn.nav-wa-icon svg { width: 16px; height: 16px; }
         }
     </style>
 </head>

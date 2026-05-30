@@ -177,8 +177,13 @@ nav.top {
   gap: 6px;
 }
 .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.10); }
-.nav-links a.current { color: #1A1A1A; background: var(--lime); }
-.nav-links a.current:hover { background: var(--lime-deep); }
+/* Active 'current' state: subtle lime tint, no dominating pill */
+.nav-links a.current {
+  color: var(--lime);
+  background: rgba(188,241,37,0.08);
+  position: relative;
+}
+.nav-links a.current:hover { background: rgba(188,241,37,0.14); color: var(--lime); }
 .nav-links .nav-ico {
   width: 14px;
   height: 14px;
@@ -187,7 +192,7 @@ nav.top {
   display: block;
 }
 .nav-links a:hover .nav-ico { opacity: 1; color: var(--lime); }
-.nav-links a.current .nav-ico { opacity: 1; color: #1A1A1A; }
+.nav-links a.current .nav-ico { opacity: 1; color: var(--lime); }
 .nav-cta { display: flex; align-items: center; gap: 4px; }
 .nav-cta .btn {
   padding: 6px 14px; font-size: 12.5px;
@@ -582,37 +587,43 @@ footer.foot {
   .top-ribbon-login { padding: 8px 14px; font-size: 12.5px; }
 
   nav.top {
-    margin: 18px 10px 0;
-    width: auto;
-    max-width: none;
+    margin: 18px 10px 28px;
+    width: calc(100% - 20px);
+    max-width: calc(100% - 20px);
+    box-sizing: border-box;
     box-shadow: 0 20px 50px rgba(0,0,0,0.4),
                 0 6px 16px rgba(0,0,0,0.25),
                 0 0 0 1px rgba(188,241,37,0.14),
                 0 0 24px rgba(188,241,37,0.14);
   }
-  .nav-inner { padding: 4px; gap: 0; justify-content: space-between; align-items: center; }
+  .nav-inner { padding: 4px; gap: 4px; justify-content: space-between; align-items: center; }
   /* Show all 5 nav-links on mobile, icon stacked above label */
   .nav-links {
     display: flex;
-    padding-left: 4px;
+    padding-left: 0;
     gap: 0;
-    flex: 1;
+    flex: 1 1 auto;
+    min-width: 0;
     justify-content: space-around;
   }
   .nav-links a {
     flex-direction: column;
     gap: 2px;
-    padding: 6px 4px;
-    font-size: 9.5px;
+    padding: 5px 2px;
+    font-size: 9px;
     letter-spacing: 0.01em;
     text-align: center;
-    flex: 1;
+    flex: 1 1 0;
+    min-width: 0;
     white-space: nowrap;
   }
+  /* Subtle current state on mobile - no full lime pill */
+  .nav-links a.current { background: rgba(188,241,37,0.10); color: var(--lime); border-radius: 12px; }
+  .nav-links a.current .nav-ico { color: var(--lime); }
   .nav-links .nav-ico { width: 16px; height: 16px; flex: 0 0 16px; opacity: 0.92; }
   .nav-cta { width: auto; margin-left: 0; flex: 0 0 auto; }
-  .nav-cta .btn.nav-wa-icon { flex: 0 0 auto; width: 38px; height: 38px; padding: 0; }
-  .nav-cta .btn.nav-wa-icon svg { width: 18px; height: 18px; }
+  .nav-cta .btn.nav-wa-icon { flex: 0 0 auto; width: 36px; height: 36px; padding: 0; }
+  .nav-cta .btn.nav-wa-icon svg { width: 16px; height: 16px; }
 
   .hub-intro { padding: 56px 18px 24px; }
   /* Horizontal scroll carousel for the 8 hub article cards.
