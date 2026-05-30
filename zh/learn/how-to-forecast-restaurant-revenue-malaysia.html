@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>怎样在马来西亚预测餐厅营收：经营者用的 5 变量模型 | MenuBase</title>
+<meta name="description" content="多数餐厅营收预测是披着模型外衣的猜测。这是马来西亚经营者实际在用的 5 变量模型：客流、AOV、平日/周末分布、时段、季节。"/>
+<meta name="keywords" content="马来西亚餐厅营收预测, F&amp;B 销售预测, 马来西亚餐厅预算, 时段营收结构, KL 餐厅平日周末分布, 斋月 F&amp;B 季节性"/>
+<meta name="author" content="MenuBase"/>
+<meta name="theme-color" content="#BCF125"/>
+<meta name="robots" content="index, follow, max-image-preview:large"/>
+<link rel="canonical" href="https://menubase.io/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
+<!-- HREFLANG ALTERNATES (i18n signal for Google) -->
+<link rel="alternate" hreflang="en" href="https://menubase.io/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
+<link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
+<link rel="alternate" hreflang="x-default" href="https://menubase.io/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
+
+
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="MenuBase"/>
+<meta property="og:url" content="https://menubase.io/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
+<meta property="og:title" content="怎样在马来西亚预测餐厅营收：5 变量模型"/>
+<meta property="og:description" content="多数预测是披着模型外衣的猜测。马来西亚经营者实际在用的 5 变量模型：客流、AOV、平日/周末分布、时段、季节。"/>
+<meta property="og:image" content="https://menubase.io/menubase-logo-dark.png"/>
+<meta property="og:image:width" content="3026"/>
+<meta property="og:image:height" content="548"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:locale" content="zh_MY"/>
+<meta property="article:published_time" content="2026-05-30"/>
+<meta property="article:modified_time" content="2026-05-30"/>
+<meta property="article:author" content="MenuBase"/>
+<meta property="article:section" content="财务"/>
+<meta property="article:tag" content="餐厅财务"/>
+<meta property="article:tag" content="营收预测"/>
+<meta property="article:tag" content="马来西亚 F&amp;B"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="怎样在马来西亚预测餐厅营收：5 变量模型"/>
+<meta name="twitter:description" content="马来西亚经营者实际在用的 5 变量预测模型。"/>
+<meta name="twitter:image" content="https://menubase.io/menubase-logo-dark.png"/>
+
+<link rel="icon" href="/img/menubase_logo_icon.png" type="image/png"/>
+<link rel="apple-touch-icon" href="/img/menubase_logo_icon.png"/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "怎样在马来西亚预测餐厅营收：5 变量模型",
+  "description": "多数餐厅营收预测是披着模型外衣的猜测。这是马来西亚经营者实际在用的 5 变量模型：客流、AOV、平日/周末分布、时段、季节。",
+  "image": "https://menubase.io/menubase-logo-dark.png",
+  "author": {
+    "@type": "Organization",
+    "name": "MenuBase",
+    "url": "https://menubase.io/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "MenuBase",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://menubase.io/menubase-logo-dark.png"
+    }
+  },
+  "datePublished": "2026-05-30",
+  "dateModified": "2026-05-30",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://menubase.io/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html"
+  },
+  "wordCount": 2480,
+  "inLanguage": "zh-Hans",
+  "about": [
+    { "@type": "Thing", "name": "餐厅营收预测" },
+    { "@type": "Thing", "name": "马来西亚 F&B 财务" },
+    { "@type": "Thing", "name": "时段营收规划" }
+  ],
+  "learningResourceType": "Practical guide",
+  "educationalLevel": "Professional",
+  "audience": {
+  "@type": "BusinessAudience",
+  "audienceType": "马来西亚 F&B 经营者（咖啡馆、餐厅、茶餐室、连锁多门店）"
+  },
+  "accessibilityFeature": ["readingOrder", "structuralNavigation", "tableOfContents"],
+  "accessMode": ["textual", "visual"],
+  "accessModeSufficient": ["textual"],
+  "copyrightYear": 2026,
+  "copyrightHolder": { "@id": "https://menubase.io/#organization" },
+  "articleSection": "财务",
+    "keywords": ["马来西亚餐厅营收预测", "5 变量 F&B 预测模型", "KL 时段分布", "斋月 F&B 季节性", "马来西亚平日周末营收分布", "PJ 咖啡馆预测案例"],
+    "mentions": [
+      { "@id": "https://menubase.io/#software" },
+      { "@id": "https://menubase.io/#organization" }
+    ],
+    "isAccessibleForFree": true,
+  "isPartOf": { "@id": "https://menubase.io/learn/#collection" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800;900&amp;family=Geist:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/learn/learn.css?v=20260530mga"/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://menubase.io/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "首页",
+      "item": "https://menubase.io/zh/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "实战手册",
+      "item": "https://menubase.io/zh/learn/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "怎样在马来西亚预测餐厅营收：5 变量模型",
+      "item": "https://menubase.io/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "相关指南",
+  "description": "MenuBase F&B 实战手册中适合马来西亚经营者的三篇相关指南。",
+  "itemListOrder": "https://schema.org/ItemListOrderAscending",
+  "numberOfItems": 3,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "url": "https://menubase.io/learn/how-to-read-weekly-pnl-malaysian-fb.html",
+      "name": "怎样读懂马来西亚 F&B 门店的周度损益表"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "url": "https://menubase.io/learn/customer-lifetime-value-malaysian-fb.html",
+      "name": "马来西亚 F&B 顾客生命周期价值数学"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "url": "https://menubase.io/zh/learn/how-to-increase-average-order-value-malaysia.html",
+      "name": "提升马来西亚 F&B 平均客单价的 9 个策略"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://menubase.io/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html#webpage",
+  "url": "https://menubase.io/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html",
+  "name": "怎样在马来西亚预测餐厅营收：5 变量模型",
+  "description": "马来西亚 F&B 经营者用合理精度规划营收的 5 变量预测模型：客流、AOV、平日/周末、时段、季节。",
+  "isPartOf": { "@id": "https://menubase.io/#website" },
+  "about": { "@id": "https://menubase.io/#organization" },
+  "breadcrumb": { "@id": "https://menubase.io/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html#breadcrumb" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://menubase.io/menubase-logo-dark.png",
+    "contentUrl": "https://menubase.io/menubase-logo-dark.png",
+    "caption": "MenuBase wordmark"
+  },
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", ".lede", "h2"]
+  },
+  "inLanguage": "zh-Hans"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "怎样为马来西亚 F&B 门店建一个 5 变量营收预测",
+  "description": "为马来西亚餐厅、咖啡馆和茶餐室建的 5 变量预测模型。把单变量猜测（客流 x AOV）换成一个会拆分平日/周末、时段贡献和马来西亚季节性的模型。",
+  "totalTime": "PT3H",
+  "inLanguage": "zh-Hans",
+  "mainEntityOfPage": { "@id": "https://menubase.io/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html#webpage" },
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "根据容量、翻台和利用率估算每日客流",
+      "text": "从座位开始，按时段乘以现实的翻台次数，再应用利用率系数。多数 KL 全服务门店在普通日子坐在 55 到 75% 利用率。"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "按时段和平日/周末拆分 AOV",
+      "text": "早餐客和晚餐客的 RM 数字不同。至少用 4 个 AOV：早餐、午餐、下午茶、晚餐。然后给每个加一层周末提升。"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "套用巴生谷的平日/周末分布",
+      "text": "典型 KL 模式：周一到周四大约平均日的 60%，周五约 75%，周六约 90%，周日约 80%。有自己的 POS 历史时用自己的。"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "在 5 个时段间分配营收",
+      "text": "早餐 15%、午餐 35%、下午茶 10%、晚餐 35%、深夜 5% 是全服务的起步框架。按门店实际结构调。"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 5,
+      "name": "在月度总额上加一层马来西亚季节性",
+      "text": "斋月、开斋节、新年、屠妖节、学校假期和第四季度每个都把基线移 10 到 35%。按月建一个倍数日历，而不是用一个年度数字。"
+    }
+  ]
+}
+</script>
+
+<!-- ARTICLE STRUCTURED DATA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://menubase.io/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html#article",
+      "headline": "怎样在马来西亚预测餐厅营收：5 变量模型",
+      "name": "怎样在马来西亚预测餐厅营收：5 变量模型",
+      "description": "多数餐厅营收预测是披着模型外衣的猜测。这是马来西亚经营者实际在用的 5 变量模型：客流、AOV、平日/周末分布、时段、季节。",
+      "url": "https://menubase.io/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://menubase.io/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html" },
+      "datePublished": "2026-05-30",
+      "dateModified": "2026-05-30",
+      "inLanguage": "zh-Hans",
+      "articleSection": "财务",
+      "wordCount": 2480,
+      "timeRequired": "PT12M",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://menubase.io/#organization",
+        "name": "MenuBase",
+        "url": "https://menubase.io/"
+      },
+      "publisher": { "@id": "https://menubase.io/#organization" },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://menubase.io/menubase-logo-dark.png",
+        "width": 3026,
+        "height": 548
+      },
+      "isPartOf": { "@id": "https://menubase.io/learn/#collection" },
+      "about": { "@id": "https://menubase.io/#organization" },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", ".lede", ".article-wrap h2", ".article-wrap p"]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://menubase.io/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://menubase.io/zh/" },
+        { "@type": "ListItem", "position": 2, "name": "实战手册", "item": "https://menubase.io/zh/learn/" },
+        { "@type": "ListItem", "position": 3, "name": "怎样在马来西亚预测餐厅营收：5 变量模型", "item": "https://menubase.io/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<canvas id="mb-bg" aria-hidden="true"></canvas>
+<script src="/menubase-bg.js" data-theme="dark" data-mode="synthesis" defer></script>
+
+<!-- TOP RIBBON (logo + Login - matches main site) -->
+<div class="top-ribbon">
+  <div class="top-ribbon-inner">
+    <a href="/zh/" class="brand" aria-label="MenuBase home">
+      <img class="brand-lockup" src="/menubase-logo-dark.png" alt="MenuBase" width="188" height="34" fetchpriority="high" decoding="async"/>
+    </a>
+<a class="lang-switch" href="/learn/how-to-forecast-restaurant-revenue-malaysia.html" hreflang="en" role="button" aria-label="Switch to English (tap to cycle language)" data-current-lang="zh"><svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19"/><path d="M12 2.5c2.7 3 4 6.2 4 9.5s-1.3 6.5-4 9.5c-2.7-3-4-6.2-4-9.5s1.3-6.5 4-9.5z"/></svg><span class="lang-current">ZH</span><span class="lang-arr" aria-hidden="true">&#8634;</span></a>
+        <a class="top-ribbon-login" href="https://app.menubase.io" target="_blank" rel="noopener">
+      登录 <span class="arr" aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</div>
+
+<main>
+<article class="article-wrap has-bg-scrim">
+
+<div class="crumb"><a href="/zh/learn/">实战手册</a> &nbsp;/&nbsp; 财务</div>
+
+<h1>怎样在马来西亚预测餐厅营收：5 变量模型</h1>
+
+<div class="article-meta">
+  <span class="meta-with-ico"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>MenuBase 出品</span></span>
+  <span class="meta-with-ico"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>阅读 12 分钟</span></span>
+</div>
+
+<p class="lede">多数马来西亚 F&amp;B 预测是披着模型外衣的猜测。经营者把预期客流乘以预期客单价，落到一个月度的整数，然后把它当作计划。等到 4 月份实际跑出 RM48,000，而预算里写的是 RM65,000 时，没人能解释为什么。这份指南是经营者在不再把一次乘法当成预测之后实际在用的 5 变量模型。</p>
+
+<p>这里的论点很直白。一个有用的马来西亚咖啡馆、茶餐室或餐厅的营收预测，必须考虑五个独立输入：客流、平均客单价、平日 vs 周末分布、时段贡献、和当月的季节倍数。少一个，预测在第一个意外面前就退化为乱猜。五个都留住，你就有了一个可以争论、可以在投资人面前辩护、现实漂移时可以修正的模型。</p>
+
+<h2>为什么单变量预测会失败</h2>
+
+<p>马来西亚 F&amp;B 最常见的预测结构是一行：<em>预期每日客流，乘以预期每客平均消费，乘以月营业天数。</em>一家 PJ 的 60 座位咖啡馆假设 90 客/日、平均 RM38、给自己 28 天营业，把 RM95,760 写进计划。整齐。看起来站得住脚。几乎总是错的。</p>
+
+<p>第一个问题是周一客和周六客不是同一种动物。同一家咖啡馆周一午餐客花 RM32，因为那是一个人开着笔记本点了三明治加咖啡。周六早午餐客花 RM52，因为那是三个人分两份主菜、两杯饮料、一份小菜、一份甜品。把它们平均成一个 RM38，掩盖了你需要同时拿到高的周末和过得去的平日才能打到目标的事实。如果其中一个掉了，平均值不会告诉你是哪一个。</p>
+
+<p>第二个问题是只看客流的模型对时段没态度。时段是厨房实际执行的工作单元。早餐客、午餐客、下午茶客和晚餐客有不同的成本结构、不同的翻台时长、不同的加单上限。不拆分时段的预测，不能告诉你和预算的差距在咖啡早晨还是在晚餐服务上，也就是说你修不了对的东西。</p>
+
+<p>第三个问题是日历。马来西亚 F&amp;B 营收一年里不是平的。斋月压缩午餐爆出 pre-buka 的高峰。开斋节那一周平日客流减半。农历新年把华人为主的门店往一个方向推、把印度和马来门店往另一个方向推。3 月、6 月、8 月、12 月的学校假期改变家庭模式。假装日历不存在的意思是，你 1 月和 6 月的预测用同一套逻辑，其中至少一个月会在中旬就偏离 RM30,000。</p>
+
+<h2>5 变量模型</h2>
+
+<p>转变不是从一变到十。十个变量是学术。转变是从一变到五。下面每一个都对应经营者必须做的真实决策：多少座位、菜单怎么定价、什么时候门口忙、哪个时段印钱、当下是哪个月份。</p>
+
+<h3>变量 1：每日客流（容量 x 翻台 x 利用率）</h3>
+
+<p>从物理上限开始。每日客流不是愿望，是三个子数字的乘积：座位、翻台、利用率。</p>
+
+<p><strong>座位</strong>是合法容量和当班团队能实际服务的桌数中的较低值。周二午餐 60 座的咖啡馆，只有一个服务员和一个咖啡师，实际能跑 40 客，不是 60，因为 7 桌和 8 桌会被忽略。用有人手的座位数，不要用执照上的。</p>
+
+<p><strong>翻台</strong>是一个时段内一个座位被卖出几次。我们在多数经营者那里看到的 KL 基准：早餐咖啡馆座位在早餐时段翻 1.4 次，午餐 11:30 到 14:30 翻 1.8 到 2.2，下午茶 0.8，晚餐 18:30 到 21:30 翻 1.6 到 2.0。茶餐室翻得更快（午餐 2.5 到 3.0，因为单价更短）。全服务西餐翻得更慢（午餐 1.2 到 1.5，因为主菜更慢）。</p>
+
+<p><strong>利用率</strong>是你实际填满理论容量的百分比。新店头 90 天 35 到 45%。稳定门店一周里 55 到 70%。周六早午餐高峰 85 到 95%。每个时段、每个平日、每个周末用一个不同的利用率。整周一个数字是模型里的第一个谎言。</p>
+
+<p>那么每日客流就是座位 x 翻台 x 利用率，按时段算并加总。一家 PJ 60 座咖啡馆有 40 人手座，早餐 1.4 翻 60% 利用、午餐 2.0 翻 75%、下午茶 0.8 翻 40%、晚餐 1.8 翻 70%，普通周三的每日客流大概是 167。</p>
+
+<h3>变量 2：平均客单价</h3>
+
+<p>AOV 不是一个门店一个数字。至少四个，最好再拆得更细。每个时段一个 AOV，再给每个加一层周末提升。从 MenuBase 产品上一组有代表性的巴生谷咖啡馆和休闲餐厅来看，大致形状是：</p>
+
+<ul>
+  <li><strong>早餐 AOV：</strong>平日 RM18 到 RM26，周末 RM26 到 RM38。平日单人订单为主。周末有情侣和小组。</li>
+  <li><strong>午餐 AOV：</strong>平日 RM28 到 RM42，周末 RM38 到 RM58。套餐和组合驱动平日基线。分享和加菜抬周末。</li>
+  <li><strong>下午茶 AOV：</strong>整周 RM14 到 RM22。通常最低。一杯饮料加一份甜点。</li>
+  <li><strong>晚餐 AOV：</strong>平日 RM42 到 RM68，周末 RM58 到 RM95。日内最大波动，因为团体大小变动最大。</li>
+  <li><strong>深夜 AOV：</strong>RM18 到 RM32。通常重饮料、轻食物。</li>
+</ul>
+
+<p>纪律不是给每个格子挑一个精确数字。是拒绝整月用一个 AOV。如果你有 12 周 POS 历史，用你的真实数据建表。如果没有，先用上面的区间，90 天后再调。目的是阻止模型悄悄假设一个在你门店里根本不存在的 RM38 平均。</p>
+
+<h3>变量 3：平日 vs 周末分布</h3>
+
+<p>取一个抽象的"平均日"，模型就很脆。更诚实的版本是给每一天对比平均做一个指数，让日历自己说话。我们在咖啡馆和休闲餐厅里看到的巴生谷模式平均是这样的：</p>
+
+<ul>
+  <li><strong>周一到周四：</strong>每天约平均日的 60%。办公室锚定的门店周二和周三高一些，周一和周四低一些。</li>
+  <li><strong>周五：</strong>75%。周五午餐由职场驱动。周五晚餐在办公室人群留下时上抬。</li>
+  <li><strong>周六：</strong>90%。多数咖啡馆和休闲餐厅的高峰日。早午餐是单日最大时段。</li>
+  <li><strong>周日：</strong>80%。早午餐稳定，晚餐软掉因为周一要来了。</li>
+</ul>
+
+<p>把这些加起来（60 x 4 + 75 + 90 + 80）除以 7，得到平均日。注意这个模式。周末两天的营收权重大致等于三个平日加起来。如果你的预测悄悄假设周二和周六一样，你给周六定的预算太低，给周二定的太高。第一个会看起来像超额，第二个会看起来像问题。两者都不是真的。</p>
+
+<p>这些数字按门店类型会移。商场内的茶餐室会压缩差距，因为客流更均匀。办公塔楼内的咖啡馆放大差距，因为周六空荡。用框架，然后用 POS 数据在开业 60 天内或周边建筑发生结构变化后 30 天内重新拟合百分比。</p>
+
+<h3>变量 4：时段贡献</h3>
+
+<p>下一层是一天怎么分。全服务门店的一个有用框架：</p>
+
+<ul>
+  <li><strong>早餐（7am 到 11am）：</strong>日营收 15%。单价低，翻得快。</li>
+  <li><strong>午餐（11:30am 到 2:30pm）：</strong>35%。可靠的营收块。办公室和走客混合。</li>
+  <li><strong>下午茶（3pm 到 5:30pm）：</strong>10%。常常是最漏的时段，那个在交租的时段。值得<a href="/learn/how-to-activate-dead-dayparts-malaysian-fb.html">单独看怎么激活</a>。</li>
+  <li><strong>晚餐（6pm 到 10pm）：</strong>35%。另一个可靠块。AOV 更高，翻台更慢。</li>
+  <li><strong>深夜（10pm 之后）：</strong>5%。只对嘛嘛档、深夜茶餐室和酒吧型门店有意义。</li>
+</ul>
+
+<p>6pm 关门的咖啡馆把早餐块推高（常 25 到 30%），没有晚餐。锚定午餐的茶餐室可能坐在 45% 午餐。只做晚餐的门店反过来。把时段贡献放进模型的意义在于，它告诉你预测偏离时去哪里找。如果你给晚餐预算 35% 跑出来 22%，差距不是"整家餐厅"，是晚餐。</p>
+
+<h3>变量 5：季节性</h3>
+
+<p>最后一层是马来西亚日历。每个月用一个倍数，不要把每个月当成平均。这是一年里大致的形状，每个月相对 1.0 基线做指数：</p>
+
+<ul>
+  <li><strong>1 月：</strong>1.05 到 1.10。新年决心推高健身和健康咖啡馆。下半月华人新年预期拉抬华人为主的门店。</li>
+  <li><strong>2 月：</strong>0.90 到 1.20 看华人新年。门店在华人新年前后关 3 到 7 天。前一周高峰，后一周低谷。</li>
+  <li><strong>3 月：</strong>0.95 到 1.00。学校假期拉动家庭客流。办公室锚定门店略软。</li>
+  <li><strong>4 月 / 斋月：</strong>非清真门店 0.65 到 0.85。清真门店有强 pre-buka 和斋月夜市溢出的 1.10 到 1.35。午餐生意整体压缩 30 到 50%。</li>
+  <li><strong>5 月 / 开斋节：</strong>0.70 到 0.90。开斋节那一周对多数门店很安静。之后的周末会反弹。</li>
+  <li><strong>6 月：</strong>0.95 到 1.05。学校假期在月中。商场门店看到家庭客流，办公室门店软。</li>
+  <li><strong>7 月：</strong>1.00。最可靠的预测月。用 7 月校准模型。</li>
+  <li><strong>8 月：</strong>1.00 到 1.05。国庆长周末拉动早午餐和晚餐。</li>
+  <li><strong>9 月：</strong>0.95 到 1.00。马来西亚日长周末给一次提升。</li>
+  <li><strong>10 月：</strong>1.00 到 1.10。屠妖节明显拉动印度为主的门店。办公室年底冲刺开始。</li>
+  <li><strong>11 月：</strong>1.05 到 1.15。年底办公室晚餐开始。团体预订增加。</li>
+  <li><strong>12 月：</strong>1.15 到 1.30。休闲餐厅和咖啡馆门店最强的月份。圣诞、年底办公室派对、学校假期、F&amp;B 送礼。</li>
+</ul>
+
+<p>用一个平的月度数字跑过这个日历的预测，一年下来在某个方向上会错 RM50,000 或更多。建一次季节性表，每年用上一年的 POS 数据重调，月度计划在多数月份能保持在 10% 差异以内。</p>
+
+<p class="pullquote">单变量预测是猜。5 变量预测是一个可以检验的假设。</p>
+
+<h2>实例：为 PJ 白沙罗一家 60 座咖啡馆预测 2026 年 7 月</h2>
+
+<p>来个真实形状。PJ 白沙罗一家 60 座咖啡馆，人手能服务 40 座，营业时间 7:30am 到 10pm，一周七天。老板想要 2026 年 7 月的营收预测。7 月是 1.0 季节性月份，31 天，这让它成为理想的第一次测试。</p>
+
+<p><strong>第一步，平均日的每日客流。</strong>套用变量 1 的时段翻台和利用率：</p>
+
+<ul>
+  <li>早餐：40 座 x 1.4 翻 x 60% 利用率 = 33 客</li>
+  <li>午餐：40 x 2.0 x 75% = 60 客</li>
+  <li>下午茶：40 x 0.8 x 40% = 13 客</li>
+  <li>晚餐：40 x 1.8 x 70% = 50 客</li>
+  <li><strong>平均日客流：</strong>156</li>
+</ul>
+
+<p><strong>第二步，按时段加权 AOV。</strong>老板从 12 周 POS 历史拉出来：早餐 RM22、午餐 RM34、下午茶 RM18、晚餐 RM52。按客流权重加权的日内混合 AOV 落在 RM34。但模型不用混合值，每行单独用。</p>
+
+<ul>
+  <li>早餐每平均日营收：33 x RM22 = RM726</li>
+  <li>午餐：60 x RM34 = RM2,040</li>
+  <li>下午茶：13 x RM18 = RM234</li>
+  <li>晚餐：50 x RM52 = RM2,600</li>
+  <li><strong>平均日合计：</strong>RM5,600</li>
+</ul>
+
+<p><strong>第三步，平日/周末分布。</strong>套用 60/60/60/60/75/90/80 权重。一周加起来是平均日的 485%。2026 年 7 月有 4 个完整周加 3 天（周三 29 日、周四 30 日、周五 31 日）。权重数学：</p>
+
+<ul>
+  <li>4 周 x 485% 平均日 = 1,940%</li>
+  <li>3 个额外平日（周三、周四、周五）= 60 + 60 + 75 = 195%</li>
+  <li><strong>总日等量：</strong>21.35 平均日</li>
+</ul>
+
+<p><strong>第四步，基线月度合计。</strong>21.35 x RM5,600 = <strong>RM119,560</strong>。</p>
+
+<p><strong>第五步，季节性。</strong>7 月是 1.0 基线月，不调整。2026 年 7 月预测是 RM119,560。</p>
+
+<p>如果老板用单变量模型（156 客 x RM34 x 31 天），会得到 RM164,424。高出 RM44,864，因为单变量模型假设每天都是平均日，而周六和周一非常不是。5 变量模型离真相近 RM45,000，更重要的是，如果 7 月偏离，它告诉老板该拉哪根杆。如果早餐不达标，看早上的营销。如果晚餐不达标，看晚餐菜单的加单。如果周六不达标，看早午餐的排班。单变量模型只会说"我们没打到"。</p>
+
+<h2>预测 vs 实际对账：周度差异回顾</h2>
+
+<p>这个模型只有跑实际数字时才有用。和团队设一个 30 分钟的周度回顾。把上周 POS 数据拉出来，按预测同样的五种方式拆分，做对比。</p>
+
+<p>回顾要回答三个问题。第一，差异在营收上还是毛利上？12% 营收下降配健康毛利，和 4% 营收下降配 20% 毛利冲击不一样。第二，差异在客流、AOV，还是结构上？如果客流稳但 AOV 跌了，你的加单坏了。如果客流跌了 AOV 稳，你的客流坏了。第三，差异在某个特定时段吗？多数周度差异住在 5 变量表的 1 到 2 个格子里，不是均匀散布。</p>
+
+<p>留一个滚动日志。8 到 12 周差异回顾之后，月度损益表看不到的模式会浮上来。周二午餐可能一直差 8%。周五晚餐可能一直超 12%。这些是要喂回下个月预测和菜单定价回顾的信号。差异日志也是当投资人和合伙人问生意是否在轨时你拿出来给他们看的。4% 有已知原因的差异，比 1% 无解释的超额更健康。</p>
+
+<h2>什么时候重建模型</h2>
+
+<p>模型会漂移。正确响应不是每月重建，那会过度拟合噪音。正确响应是按信号重建。三个信号值得重建模型：</p>
+
+<p><strong>信号 1：连续 3 周同方向差异超过 15%。</strong>一坏周是天气。两坏周是运气。三连是模型。输入表里有东西错了。最常见的是 AOV 假设因为菜单调价漂移了而模型没跟上。有时是时段贡献变了，因为附近开了或关了一家竞争对手。一个个走过五个变量，找出哪一个不再匹配现场。</p>
+
+<p><strong>信号 2：周边商圈出现结构变化。</strong>路对面新开门店。一段路封闭打断客流。两扇门外新办公楼填满。学校搬走。任何一件都重置变量 1 的利用率，有时单方向 15 到 25%。不要等差异证明它。在变化的第一周重建模型。</p>
+
+<p><strong>信号 3：菜单调价。</strong>任何时候你把一个类别的价格上调 5% 或以上，AOV 假设会变，客流假设也可能变（一些价格敏感顾客离开，一些加单提升）。调价 3 周后用 POS 数据重建 AOV 表。下一个预测周期用新数字。不要假设涨价干净地传导过去。</p>
+
+<h2>MenuBase 的数据怎么喂进模型</h2>
+
+<p>我们一起工作的多数经营者，第一版 5 变量模型是在纸上建的，然后意识到光靠 POS 导出，输入很难一致地拿到。时段级 AOV 麻烦。周末提升要按天拆账单。促销有效性埋在行项里。</p>
+
+<p>MenuBase 产品坐在顾客手机和 POS 之间，意味着时段级 AOV、加单建议的接受率、团体大小模式、促销兑换都按账单逐张随事件捕获。经营者把这些作为月度导出拉出来，直接喂进预测输入。差异回顾就变成 20 分钟的拉数据对比，而不是手工对账三份报表。</p>
+
+<p>无论数据是不是来自 MenuBase，模型一样。只是当数字菜单已经在按段捕获，输入变得不那么痛苦地保持新鲜。预测的意义在于现场变了就修正。数据层的意义在于让修正成为 20 分钟的活，而不是 4 小时。</p>
+
+<div class="cta-block has-bg-scrim scrim-dark">
+  <h3>如果 5 变量模型 6 周后差异仍然高于 15%</h3>
+  <p>常见卡点是变量 2（AOV），因为经营者从 POS 拉的是混合数字而不是按时段拆的。模型只有在 AOV 表诚实的时候才管用。</p>
+  <p>如果你想要帮助把输入接到你实际 POS 数据上，WhatsApp 团队。15 分钟。我们会看你完整一周的 POS 导出，告诉你 5 个变量里哪一个是差异的最大来源。如果 MenuBase 不适合你，我们会直说。</p>
+  <a class="btn btn-lime btn-lg" href="https://wa.me/60175981858?text=%E5%98%BFMenuBase%EF%BC%81%20%5B%E6%9D%A5%E8%87%AA%EF%BC%9A%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B%E6%96%87%E7%AB%A0%5D%20%E6%83%B3%E8%A6%81%E5%B8%AE%E5%8A%A9%E6%8A%8A%205%20%E5%8F%98%E9%87%8F%E9%A2%84%E6%B5%8B%E6%8B%9F%E5%90%88%E5%88%B0%E6%88%91%E4%BB%AC%E9%97%A8%E5%BA%97%E3%80%82" target="_blank" rel="noopener">WhatsApp 团队 &rarr;</a>
+</div>
+
+
+
+<!-- Vertical cross-link callout -->
+<aside class="vertical-callout">
+  <p class="vc-eyebrow">为你的门店类型而建</p>
+  <h2>看看在你的门店类型里是怎么跑的</h2>
+  <p>MenuBase 产品对所有门店都一样。它打的经营者痛点不一样。挑你自己那一页：</p>
+  <div class="vc-grid">
+    <a href="/for-restaurants.html"><span>餐厅</span><strong>不催客也能压缩翻台</strong></a>
+    <a href="/for-cafes.html"><span>咖啡馆</span><strong>永远不忘记特价菜</strong></a>
+    <a href="/for-kopitiams.html"><span>茶餐室</span><strong>扛得住 6 到 9 个月的员工轮换</strong></a>
+  </div>
+</aside>
+
+<aside class="article-related" aria-labelledby="related-heading">
+    <h2 id="related-heading" class="related-heading">下一篇</h2>
+    <div class="hub-grid">
+      <a class="article-card" href="/learn/how-to-read-weekly-pnl-malaysian-fb.html">
+        <span class="card-eyebrow">财务</span>
+        <h2>怎样读懂马来西亚 F&B 门店的周度损益表</h2>
+        <p>真正重要的五行和会分散注意力的三行。30 分钟做完周度损益回顾。</p>
+        <span class="card-cta">阅读 &rarr;</span>
+      </a>
+      <a class="article-card" href="/learn/customer-lifetime-value-malaysian-fb.html">
+        <span class="card-eyebrow">财务</span>
+        <h2>马来西亚 F&B 顾客生命周期价值数学</h2>
+        <p>一位孟沙咖啡馆常客值 RM3,042。LTV 数学一行一行讲。</p>
+        <span class="card-cta">阅读 &rarr;</span>
+      </a>
+      <a class="article-card" href="/zh/learn/how-to-increase-average-order-value-malaysia.html">
+        <span class="card-eyebrow">营收</span>
+        <h2>提升马来西亚 F&B 平均客单价的 9 个策略</h2>
+        <p>9 个具体策略，按从最容易到最难排序。附每笔账单的 RM 提升区间。</p>
+        <span class="card-cta">阅读 &rarr;</span>
+      </a>
+    </div>
+  </aside>
+</article>
+
+<!-- RELATED GUIDES -->
+<section class="related-guides" aria-labelledby="rel-h">
+  <div class="rel-head">
+    <span class="eyebrow">相关指南</span>
+    <h2 id="rel-h">继续读。</h2>
+  </div>
+  <div class="rel-grid">
+      <a class="rel-card" href="/learn/how-to-read-weekly-pnl-malaysian-fb.html">
+        <div class="rel-meta"><span class="meta-with-ico"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>阅读 11 分钟</span></span></div>
+        <h3>30 分钟读懂周度损益表</h3>
+        <p>马来西亚 F&B 门店真正重要的五行损益。以及会分散注意力的三行。</p>
+        <span class="rel-cta">阅读指南 &rarr;</span>
+      </a>
+      <a class="rel-card" href="/learn/customer-lifetime-value-malaysian-fb.html">
+        <div class="rel-meta"><span class="meta-with-ico"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>阅读 10 分钟</span></span></div>
+        <h3>顾客生命周期价值数学</h3>
+        <p>一位孟沙咖啡馆常客值 RM3,042。LTV 数学一行一行讲。</p>
+        <span class="rel-cta">阅读指南 &rarr;</span>
+      </a>
+      <a class="rel-card" href="/zh/learn/how-to-increase-average-order-value-malaysia.html">
+        <div class="rel-meta"><span class="meta-with-ico"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>阅读 9 分钟</span></span></div>
+        <h3>提升平均客单价</h3>
+        <p>9 个具体策略，按从最容易到最难排序。附 RM 提升区间。</p>
+        <span class="rel-cta">阅读指南 &rarr;</span>
+      </a>
+  </div>
+</section>
+
+<!-- BOTTOM-OF-ARTICLE WHATSAPP CTA -->
+<section class="article-cta" aria-labelledby="cta-article-h">
+  <span class="eyebrow">想把这套搬到你的菜单上？</span>
+  <h3 id="cta-article-h">发你的菜单。拿 15 分钟<em>提升模型</em>。</h3>
+  <p>我们在 MenuBase 上重建你的菜单，按你的厨房现实配置 smart upsell、时段规则和库存规则。手把手。第一天服务结束前上线。按菜单大小每月 RM28 到 RM99，无设置费，按月可取消。</p>
+  <a class="btn" href="https://wa.me/60175981858?text=%E5%98%BFMenuBase%EF%BC%81%20%5B%E6%9D%A5%E8%87%AA%E6%96%87%E7%AB%A0%EF%BC%9A%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B%5D%E3%80%82%E5%88%9A%E8%AF%BB%E5%AE%8C%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B%E6%8C%87%E5%8D%97%E3%80%82%E6%83%B3%E8%A6%81%E5%B8%AE%E5%8A%A9%E6%8A%8A%205%20%E5%8F%98%E9%87%8F%E6%A8%A1%E5%9E%8B%E6%8B%9F%E5%90%88%E5%88%B0%E6%88%91%E4%BB%AC%E9%97%A8%E5%BA%97%E3%80%82%E7%8E%B0%E5%9C%A8%E5%8F%91%20POS%20%E5%AF%BC%E5%87%BA%E3%80%82" target="_blank" rel="noopener">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:18px;height:18px;flex-shrink:0;"><path d="M27.04 4.95C24.07 1.97 20.12.33 15.92.33 7.27.33.23 7.37.23 16.02c0 2.77.72 5.47 2.1 7.85L.1 31.67l8.02-2.1c2.3 1.25 4.88 1.91 7.5 1.91h.01c8.65 0 15.69-7.04 15.69-15.69 0-4.19-1.63-8.13-4.28-11.09zm-11.12 24.13h-.01c-2.34 0-4.63-.63-6.62-1.81l-.47-.28-4.92 1.29 1.31-4.79-.31-.49a13.04 13.04 0 0 1-2-6.97c0-7.21 5.87-13.07 13.08-13.07 3.5 0 6.78 1.36 9.25 3.83a13.01 13.01 0 0 1 3.83 9.25c.01 7.2-5.86 13.04-13.07 13.04zm7.14-9.78c-.39-.2-2.32-1.14-2.68-1.27-.36-.13-.62-.2-.89.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.46.29-.85.1-.39-.2-1.65-.61-3.15-1.95-1.16-1.04-1.95-2.32-2.18-2.71-.23-.39-.02-.6.17-.8.18-.18.39-.46.59-.69.2-.23.26-.39.39-.65.13-.26.07-.49-.03-.69-.1-.2-.89-2.15-1.22-2.93-.32-.77-.65-.67-.89-.68-.23-.01-.49-.01-.76-.01s-.69.1-1.06.49c-.36.39-1.39 1.36-1.39 3.3 0 1.95 1.42 3.83 1.62 4.09.2.26 2.79 4.27 6.77 5.99.95.41 1.69.65 2.27.84.95.3 1.82.26 2.5.16.76-.11 2.32-.95 2.65-1.87.33-.92.33-1.71.23-1.87-.1-.16-.36-.26-.75-.46z" fill="currentColor"/></svg>
+    发你的菜单 &rarr;
+  </a>
+  <div class="micro">15 分钟 &middot; 无承诺 &middot; 一小时内回复</div>
+</section>
+</main>
+
+<!-- FOOTER (matches main site structure) -->
+<footer class="foot has-bg-scrim scrim-soft">
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <a href="/zh/" class="brand" aria-label="MenuBase home">
+        <img class="brand-lockup" src="/menubase-logo-dark.png" alt="MenuBase" width="210" height="38" loading="lazy" decoding="async"/>
+      </a>
+      <p>你希望能聘到的那位服务员。住在你的扫码菜单里。永远不忘记特价菜。每个班次推促销。坐在任何 POS 之上。</p>
+    </div>
+    <div class="foot-col">
+      <h5>产品</h5>
+      <a href="/#features">功能</a>
+      <a href="/#demo">演示</a>
+      <a href="/#calc">计算器</a>
+      <a href="/pricing.html">定价</a>
+    </div>
+    <div class="foot-col">
+      <h5>门店类型</h5>
+      <a href="/for-kopitiams.html">茶餐室</a>
+      <a href="/for-cafes.html">咖啡馆</a>
+      <a href="/for-bubble-tea-shops.html">珍珠奶茶</a>
+      <a href="/for-restaurants.html">餐厅</a>
+      <a href="/for-cloud-kitchens.html">云厨房</a>
+      <a href="/for-waiters.html">服务员</a>
+    </div>
+    <div class="foot-col">
+      <h5>实战手册</h5>
+      <a href="/zh/learn/">全部指南</a>
+      <a href="/zh/learn/how-to-forecast-restaurant-revenue-malaysia.html">预测营收（5 变量）</a>
+      <a href="/zh/learn/how-to-increase-average-order-value-malaysia.html">提升马来西亚 AOV</a>
+    </div>
+    <div class="foot-col">
+      <h5>公司</h5>
+      <a href="/about.html">关于</a>
+      <a href="/#book">聊一聊</a>
+      <a href="https://wa.me/60175981858?text=%E5%98%BFMenuBase%EF%BC%81%20%5B%E6%9D%A5%E8%87%AA%EF%BC%9A%E5%BA%95%E9%83%A8%E5%AF%BC%E8%88%AA%20-%20%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B%E6%96%87%E7%AB%A0%5D%20%E6%83%B3%E4%BA%86%E8%A7%A3%E5%A6%82%E4%BD%95%E6%94%B9%E8%BF%9B%E6%88%91%E4%BB%AC%E7%9A%84%E9%A2%84%E6%B5%8B%E3%80%82" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; 2026 MENUBASE SDN BHD</span>
+    <span>用 MENUBASE 做生意简单</span>
+  </div>
+</footer>
+
+
+
+<!-- BOTTOM NAV (scrolls inline at end of body) -->
+<!-- FLOATING BOTTOM DOCK (matches main site) -->
+<nav class="top">
+  <div class="nav-inner">
+    <div class="nav-links">
+      <a href="/#problem"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>痛点</span></a>
+      <a href="/#features"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>功能</span></a>
+      <a href="/#demo"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg><span>演示</span></a>
+      <a href="/#compare"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5"/><path d="M21 3l-7 7"/><path d="M8 21H3v-5"/><path d="M3 21l7-7"/></svg><span>对比</span></a>
+      <a href="/#testimonials"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>评价</span></a>
+      <a href="/#calc"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="9" y2="11"/><line x1="12" y1="11" x2="13" y2="11"/><line x1="16" y1="11" x2="16.01" y2="11"/><line x1="8" y1="15" x2="9" y2="15"/><line x1="12" y1="15" x2="13" y2="15"/><line x1="16" y1="15" x2="16.01" y2="15"/></svg><span>计算</span></a>
+      <a href="/zh/learn/" class="current"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>手册</span></a>
+      <a href="/#venues-teaser"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1-5h16l1 5"/><path d="M3 9v11a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9"/><path d="M9 21v-7h6v7"/></svg><span>门店</span></a>
+      <a href="/#faq"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>FAQ</span></a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-lime nav-wa-icon" href="https://wa.me/60175981858?text=%E5%98%BFMenuBase%EF%BC%81%20%5B%E6%9D%A5%E8%87%AA%EF%BC%9A%E5%BA%95%E9%83%A8%E5%AF%BC%E8%88%AA%20-%20%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B%E6%96%87%E7%AB%A0%5D%20%E6%83%B3%E4%BA%86%E8%A7%A3%E5%A6%82%E4%BD%95%E6%94%B9%E8%BF%9B%E6%88%91%E4%BB%AC%E7%9A%84%E9%A2%84%E6%B5%8B%E3%80%82" target="_blank" rel="noopener" aria-label="WhatsApp us"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.95.41 1.69.65 2.27.84.95.3 1.82.26 2.5.16.76-.11 2.32-.95 2.65-1.87.33-.92.33-1.71.23-1.87-.1-.16-.36-.26-.75-.46z" fill="currentColor"/></svg></a>
+    </div>
+  </div>
+</nav>
+</body>
+</html>

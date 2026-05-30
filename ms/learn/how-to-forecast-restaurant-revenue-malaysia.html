@@ -1,0 +1,626 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Cara Ramal Revenue Restoran Di Malaysia: Model 5-Variabel Untuk Operator | MenuBase</title>
+<meta name="description" content="Kebanyakan ramalan revenue restoran adalah tekaan berbalut model. Inilah model 5-variabel yang operator Malaysia betul-betul guna: covers, AOV, split weekday/weekend, daypart, musim."/>
+<meta name="keywords" content="ramalan revenue restoran Malaysia, forecast jualan F&amp;B, belanjawan restoran Malaysia, mix revenue daypart, split weekday weekend restoran KL, musim Ramadan F&amp;B"/>
+<meta name="author" content="MenuBase"/>
+<meta name="theme-color" content="#BCF125"/>
+<meta name="robots" content="index, follow, max-image-preview:large"/>
+<link rel="canonical" href="https://menubase.io/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
+<!-- HREFLANG ALTERNATES (i18n signal for Google) -->
+<link rel="alternate" hreflang="en" href="https://menubase.io/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
+<link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
+<link rel="alternate" hreflang="x-default" href="https://menubase.io/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
+
+
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="MenuBase"/>
+<meta property="og:url" content="https://menubase.io/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html"/>
+<meta property="og:title" content="Cara Ramal Revenue Restoran Di Malaysia: Model 5-Variabel"/>
+<meta property="og:description" content="Kebanyakan ramalan adalah tekaan berbalut model. Model 5-variabel yang operator Malaysia betul-betul guna: covers, AOV, split weekday/weekend, daypart, musim."/>
+<meta property="og:image" content="https://menubase.io/menubase-logo-dark.png"/>
+<meta property="og:image:width" content="3026"/>
+<meta property="og:image:height" content="548"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:locale" content="ms_MY"/>
+<meta property="article:published_time" content="2026-05-30"/>
+<meta property="article:modified_time" content="2026-05-30"/>
+<meta property="article:author" content="MenuBase"/>
+<meta property="article:section" content="Kewangan"/>
+<meta property="article:tag" content="kewangan restoran"/>
+<meta property="article:tag" content="ramalan revenue"/>
+<meta property="article:tag" content="F&amp;B Malaysia"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Cara Ramal Revenue Restoran Di Malaysia: Model 5-Variabel"/>
+<meta name="twitter:description" content="Model ramalan 5-variabel yang operator Malaysia betul-betul guna."/>
+<meta name="twitter:image" content="https://menubase.io/menubase-logo-dark.png"/>
+
+<link rel="icon" href="/img/menubase_logo_icon.png" type="image/png"/>
+<link rel="apple-touch-icon" href="/img/menubase_logo_icon.png"/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Cara Ramal Revenue Restoran Di Malaysia: Model 5-Variabel",
+  "description": "Kebanyakan ramalan revenue restoran adalah tekaan berbalut model. Inilah model 5-variabel yang operator Malaysia betul-betul guna: covers, AOV, split weekday/weekend, daypart, musim.",
+  "image": "https://menubase.io/menubase-logo-dark.png",
+  "author": {
+    "@type": "Organization",
+    "name": "MenuBase",
+    "url": "https://menubase.io/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "MenuBase",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://menubase.io/menubase-logo-dark.png"
+    }
+  },
+  "datePublished": "2026-05-30",
+  "dateModified": "2026-05-30",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://menubase.io/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html"
+  },
+  "wordCount": 2480,
+  "inLanguage": "ms",
+  "about": [
+    { "@type": "Thing", "name": "Ramalan revenue restoran" },
+    { "@type": "Thing", "name": "Kewangan F&B Malaysia" },
+    { "@type": "Thing", "name": "Perancangan revenue daypart" }
+  ],
+  "learningResourceType": "Panduan praktikal",
+  "educationalLevel": "Professional",
+  "audience": {
+  "@type": "BusinessAudience",
+  "audienceType": "Operator F&B Malaysia (cafe, restoran, kopitiam, rangkaian berbilang outlet)"
+  },
+  "accessibilityFeature": ["readingOrder", "structuralNavigation", "tableOfContents"],
+  "accessMode": ["textual", "visual"],
+  "accessModeSufficient": ["textual"],
+  "copyrightYear": 2026,
+  "copyrightHolder": { "@id": "https://menubase.io/#organization" },
+  "articleSection": "Kewangan",
+    "keywords": ["ramalan revenue restoran Malaysia", "model ramalan F&B 5 variabel", "split daypart KL", "musim Ramadan F&B", "split revenue weekday weekend Malaysia", "contoh ramalan cafe PJ"],
+    "mentions": [
+      { "@id": "https://menubase.io/#software" },
+      { "@id": "https://menubase.io/#organization" }
+    ],
+    "isAccessibleForFree": true,
+  "isPartOf": { "@id": "https://menubase.io/learn/#collection" }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800;900&amp;family=Geist:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="/learn/learn.css?v=20260530mga"/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "https://menubase.io/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html#breadcrumb",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Laman Utama",
+      "item": "https://menubase.io/ms/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Playbook",
+      "item": "https://menubase.io/ms/learn/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Cara Ramal Revenue Restoran Di Malaysia: Model 5-Variabel",
+      "item": "https://menubase.io/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Panduan berkaitan",
+  "description": "Tiga panduan berkaitan dari MenuBase F&B Playbook untuk operator Malaysia.",
+  "itemListOrder": "https://schema.org/ItemListOrderAscending",
+  "numberOfItems": 3,
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "url": "https://menubase.io/learn/how-to-read-weekly-pnl-malaysian-fb.html",
+      "name": "Cara Baca P&L Mingguan Untuk Outlet F&B Malaysia"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "url": "https://menubase.io/learn/customer-lifetime-value-malaysian-fb.html",
+      "name": "Matematik Customer Lifetime Value Untuk F&B Malaysia"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "url": "https://menubase.io/ms/learn/how-to-increase-average-order-value-malaysia.html",
+      "name": "9 Taktik Untuk Naikkan Average Order Value Di F&B Malaysia"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://menubase.io/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html#webpage",
+  "url": "https://menubase.io/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html",
+  "name": "Cara Ramal Revenue Restoran Di Malaysia: Model 5-Variabel",
+  "description": "Model ramalan 5-variabel yang operator F&B Malaysia guna untuk rancang revenue dengan ketepatan munasabah: covers, AOV, weekday/weekend, daypart, musim.",
+  "isPartOf": { "@id": "https://menubase.io/#website" },
+  "about": { "@id": "https://menubase.io/#organization" },
+  "breadcrumb": { "@id": "https://menubase.io/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html#breadcrumb" },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://menubase.io/menubase-logo-dark.png",
+    "contentUrl": "https://menubase.io/menubase-logo-dark.png",
+    "caption": "Wordmark MenuBase"
+  },
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", ".lede", "h2"]
+  },
+  "inLanguage": "ms"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Cara bina ramalan revenue restoran 5-variabel untuk outlet F&B Malaysia",
+  "description": "Model ramalan 5-variabel untuk restoran, cafe dan kopitiam Malaysia. Ganti tekaan satu-variabel (covers x AOV) dengan model yang split weekday/weekend, sumbangan daypart dan musim Malaysia.",
+  "totalTime": "PT3H",
+  "inLanguage": "ms",
+  "mainEntityOfPage": { "@id": "https://menubase.io/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html#webpage" },
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Anggar covers harian dari kapasiti, table turn dan utilisation",
+      "text": "Mula dengan kerusi, darab dengan table turn realistik per daypart, kemudian apply utilisation factor. Kebanyakan premis full-service KL duduk pada 55 hingga 75 peratus utilisation pada hari biasa."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Split AOV ikut daypart dan weekday lawan weekend",
+      "text": "Cover breakfast dan cover dinner bukan RM yang sama. Guna sekurang-kurangnya 4 angka AOV: breakfast, lunch, tea, dinner. Kemudian lapis weekend uplift atas setiap satu."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Apply taburan weekday/weekend Klang Valley",
+      "text": "Corak KL biasa: Isnin hingga Khamis lebih kurang 60 peratus hari purata, Jumaat lebih kurang 75 peratus, Sabtu lebih kurang 90 peratus, Ahad lebih kurang 80 peratus. Guna sejarah POS sendiri bila ada."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Agih revenue merentas 5 daypart",
+      "text": "Breakfast 15 peratus, lunch 35 peratus, tea time 10 peratus, dinner 35 peratus, late-night 5 peratus adalah rangka permulaan untuk full-service. Tala kepada mix sebenar premis anda."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 5,
+      "name": "Lapis musim Malaysia atas jumlah bulanan",
+      "text": "Ramadan, Hari Raya, CNY, Deepavali, cuti sekolah dan Q4 setiap satu gerakkan baseline sebanyak 10 hingga 35 peratus. Bina kalendar pendarab per bulan bukannya satu angka tahunan."
+    }
+  ]
+}
+</script>
+
+<!-- ARTICLE STRUCTURED DATA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://menubase.io/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html#article",
+      "headline": "Cara Ramal Revenue Restoran Di Malaysia: Model 5-Variabel",
+      "name": "Cara Ramal Revenue Restoran Di Malaysia: Model 5-Variabel",
+      "description": "Kebanyakan ramalan revenue restoran adalah tekaan berbalut model. Inilah model 5-variabel yang operator Malaysia betul-betul guna: covers, AOV, split weekday/weekend, daypart, musim.",
+      "url": "https://menubase.io/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://menubase.io/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html" },
+      "datePublished": "2026-05-30",
+      "dateModified": "2026-05-30",
+      "inLanguage": "ms",
+      "articleSection": "Kewangan",
+      "wordCount": 2480,
+      "timeRequired": "PT12M",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://menubase.io/#organization",
+        "name": "MenuBase",
+        "url": "https://menubase.io/"
+      },
+      "publisher": { "@id": "https://menubase.io/#organization" },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://menubase.io/menubase-logo-dark.png",
+        "width": 3026,
+        "height": 548
+      },
+      "isPartOf": { "@id": "https://menubase.io/learn/#collection" },
+      "about": { "@id": "https://menubase.io/#organization" },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", ".lede", ".article-wrap h2", ".article-wrap p"]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://menubase.io/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Laman Utama", "item": "https://menubase.io/ms/" },
+        { "@type": "ListItem", "position": 2, "name": "Playbook", "item": "https://menubase.io/ms/learn/" },
+        { "@type": "ListItem", "position": 3, "name": "Cara Ramal Revenue Restoran Di Malaysia: Model 5-Variabel", "item": "https://menubase.io/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<canvas id="mb-bg" aria-hidden="true"></canvas>
+<script src="/menubase-bg.js" data-theme="dark" data-mode="synthesis" defer></script>
+
+<!-- TOP RIBBON (logo + Login - matches main site) -->
+<div class="top-ribbon">
+  <div class="top-ribbon-inner">
+    <a href="/ms/" class="brand" aria-label="MenuBase home">
+      <img class="brand-lockup" src="/menubase-logo-dark.png" alt="MenuBase" width="188" height="34" fetchpriority="high" decoding="async"/>
+    </a>
+<a class="lang-switch" href="/zh/" hreflang="zh-Hans" role="button" aria-label="Tukar ke Bahasa Cina (tap untuk tukar bahasa)" data-current-lang="ms"><svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19"/><path d="M12 2.5c2.7 3 4 6.2 4 9.5s-1.3 6.5-4 9.5c-2.7-3-4-6.2-4-9.5s1.3-6.5 4-9.5z"/></svg><span class="lang-current">BM</span><span class="lang-arr" aria-hidden="true">&#8634;</span></a>
+        <a class="top-ribbon-login" href="https://app.menubase.io" target="_blank" rel="noopener">
+      Login <span class="arr" aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</div>
+
+<main>
+<article class="article-wrap has-bg-scrim">
+
+<div class="crumb"><a href="/learn/">Playbook</a> &nbsp;/&nbsp; Kewangan</div>
+
+<h1>Cara Ramal Revenue Restoran Di Malaysia: Model 5-Variabel</h1>
+
+<div class="article-meta">
+  <span class="meta-with-ico"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>Oleh MenuBase</span></span>
+  <span class="meta-with-ico"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Bacaan 12 minit</span></span>
+</div>
+
+<p class="lede">Kebanyakan ramalan F&amp;B Malaysia adalah tekaan berbalut model. Operator darab covers yang dijangka dengan purata belanja, sampai pada nombor bulat untuk bulan tu, dan anggap itu sebagai plan. Kemudian April mendarat pada RM48,000 bukannya RM65,000 dalam belanjawan dan tiada siapa boleh terangkan kenapa. Panduan ini adalah model 5-variabel yang operator betul-betul guna sebaik mereka berhenti anggap satu pendaraban sebagai ramalan.</p>
+
+<p>Cadangan di sini mudah. Ramalan revenue yang berguna untuk cafe, kopitiam atau restoran Malaysia kena kira lima input bebas: covers, average order value, mix weekday lawan weekend, sumbangan daypart, dan pendarab musim untuk bulan kalendar. Tinggalkan mana-mana satu dan ramalan jadi tekaan masa kejutan pertama. Kekalkan semua lima dan anda ada model yang anda boleh bahas, pertahankan di depan pelabur, dan revise bila realiti drift.</p>
+
+<h2>Kenapa ramalan satu-variabel gagal</h2>
+
+<p>Struktur ramalan paling biasa dalam F&amp;B Malaysia adalah satu baris: <em>covers harian yang dijangka, darab purata belanja per cover yang dijangka, darab hari berniaga per bulan.</em> Cafe 60-seat di PJ anggap 90 covers sehari pada RM38 purata, beri diri sendiri 28 hari berniaga, dan tulis RM95,760 dalam plan. Kemas. Nampak boleh dipertahankan. Hampir selalu salah.</p>
+
+<p>Masalah pertama ialah cover Isnin dan cover Sabtu bukan haiwan yang sama. Cover lunch Isnin di cafe yang sama belanja RM32 sebab seorang dengan laptop order sandwich dan kopi. Cover brunch Sabtu belanja RM52 sebab kumpulan tiga, kongsi dua main, dua minuman, satu side, dan satu dessert. Purata mereka jadi satu angka RM38 sembunyikan fakta yang anda perlukan kedua-dua weekend tinggi dan weekday yang boleh berfungsi untuk capai nombor tu. Kalau satu tergelincir, purata sahaja takkan beritahu anda yang mana.</p>
+
+<p>Masalah kedua ialah model cover-sahaja tiada pendapat tentang waktu. Daypart adalah unit kerja yang dapur sebenarnya buat. Cover breakfast, cover lunch, cover tea dan cover dinner bawa struktur kos berbeza, masa table turn berbeza, dan siling upsell berbeza. Ramalan yang tak split mereka tak boleh beritahu anda sama ada jurang ke belanjawan ada di pagi kopi atau di servis dinner, yang bermakna anda tak boleh baiki perkara yang betul.</p>
+
+<p>Masalah ketiga ialah kalendar. Revenue F&amp;B Malaysia tak jalan rata sepanjang tahun. Ramadan mampatkan lunch dan letupkan jam pre-buka. Hari Raya potong trafik weekday separuh untuk seminggu. CNY gerakkan outlet majoriti Cina dalam satu arah dan outlet India dan Melayu dalam arah lain. Cuti sekolah pada Mac, Jun, Ogos dan Disember tukar corak keluarga. Berpura-pura kalendar tak wujud bermakna ramalan Januari anda dan ramalan Jun anda bawa logik yang sama, dan salah satunya akan tersasar RM30,000 sebelum pertengahan bulan.</p>
+
+<h2>Model 5-variabel</h2>
+
+<p>Peralihan bukan dari satu variabel ke sepuluh. Sepuluh variabel adalah akademik. Peralihan adalah dari satu ke lima. Setiap satu lima di bawah peta kepada keputusan sebenar yang operator kena buat: berapa kerusi, berapa menu caj, bila pintu sibuk, waktu apa cetak duit, dan bulan apa.</p>
+
+<h3>Variabel 1: Covers harian (kapasiti x table turn x utilisation)</h3>
+
+<p>Mula dengan siling fizikal. Covers harian bukan harapan, ia produk tiga sub-nombor: kerusi, table turn, dan utilisation.</p>
+
+<p><strong>Kerusi</strong> adalah yang lebih rendah antara kapasiti sah dan bilangan meja yang floor boleh sebenarnya jalankan dengan team on shift. Cafe 60-seat dengan satu waiter dan satu barista pada Selasa lunch boleh sebenarnya jalankan 40 covers, bukan 60, sebab meja 7 dan 8 akan duduk tak dipedulikan. Guna kiraan kerusi yang ada staff, bukan yang dilesen.</p>
+
+<p><strong>Table turn</strong> ialah berapa kali kerusi dijual dalam daypart. Benchmark KL yang berfungsi merentas kebanyakan operator yang kami lihat: kerusi cafe breakfast turn 1.4 kali merentas blok breakfast, lunch turn 1.8 hingga 2.2 kali merentas blok 11.30 hingga 2.30, tea adalah 0.8, dinner adalah 1.6 hingga 2.0 merentas 6.30 hingga 9.30. Kopitiam turn lebih cepat (lunch pada 2.5 hingga 3.0 sebab tiket lebih pendek). Restoran Western full-service turn lebih perlahan (lunch pada 1.2 hingga 1.5 sebab main ambil masa lebih lama).</p>
+
+<p><strong>Utilisation</strong> ialah peratusan kapasiti teori yang anda sebenarnya isi. Outlet baru jalan pada 35 hingga 45 peratus dalam 90 hari pertama. Outlet stabil jalan pada 55 hingga 70 peratus merentas minggu. Brunch Sabtu puncak kena 85 hingga 95 peratus. Guna angka utilisation berbeza per daypart, per weekday, per weekend. Satu nombor untuk seluruh minggu adalah pembohongan pertama dalam model.</p>
+
+<p>Covers harian, jadi, sama dengan kerusi x table turn x utilisation, dikira per daypart dan dijumlahkan. Untuk cafe PJ 60-seat staffed untuk 40, jalankan breakfast pada turn 1.4 dan utilisation 60 peratus, lunch pada turn 2.0 dan 75 peratus, tea pada turn 0.8 dan 40 peratus, dinner pada turn 1.8 dan 70 peratus, angka cover harian pada Rabu biasa adalah lebih kurang 167.</p>
+
+<h3>Variabel 2: Average order value</h3>
+
+<p>AOV bukan satu nombor per outlet. Ia sekurang-kurangnya empat, dan idealnya split lagi. Guna satu AOV per daypart, kemudian lapis weekend uplift atas setiap satu. Tarik dari spread cafe dan operator casual-dining Klang Valley yang mewakili pada produk MenuBase, bentuk kasar nampak macam:</p>
+
+<ul>
+  <li><strong>AOV breakfast:</strong> RM18 hingga RM26 weekday, RM26 hingga RM38 weekend. Order solo dominasi weekday. Pasangan dan kumpulan kecil sampai weekend.</li>
+  <li><strong>AOV lunch:</strong> RM28 hingga RM42 weekday, RM38 hingga RM58 weekend. Set dan combo pacu baseline weekday. Kongsi dan item tambahan angkat weekend.</li>
+  <li><strong>AOV tea time:</strong> RM14 hingga RM22 merentas minggu. Selalunya paling rendah. Minuman dan satu manisan.</li>
+  <li><strong>AOV dinner:</strong> RM42 hingga RM68 weekday, RM58 hingga RM95 weekend. Swing terbesar dalam hari sebab saiz kumpulan bergerak paling banyak.</li>
+  <li><strong>AOV late-night:</strong> RM18 hingga RM32. Selalunya banyak minuman, sedikit makanan.</li>
+</ul>
+
+<p>Disiplin bukan pilih nombor tepat untuk setiap cell. Ia menolak guna satu AOV untuk seluruh bulan. Kalau anda ada sejarah POS 12 minggu, bina table dari data sebenar anda. Kalau tidak, mula dengan julat di atas dan tala semula dalam 90 hari. Tujuannya adalah hentikan model dari diam-diam anggap purata RM38 yang tak wujud di mana-mana di floor anda.</p>
+
+<h3>Variabel 3: Split weekday lawan weekend</h3>
+
+<p>Ambil "hari purata" sembarangan dan model jadi rapuh. Versi yang lebih jujur ialah indeks setiap hari terhadap purata dan biar kalendar bercakap. Corak Klang Valley, purata merentas outlet cafe dan casual-dining yang kami lihat, nampak macam ni:</p>
+
+<ul>
+  <li><strong>Isnin hingga Khamis:</strong> 60 peratus hari purata setiap satu. Premis berlabuh-pejabat condong lebih tinggi pada Selasa dan Rabu, lebih rendah pada Isnin dan Khamis.</li>
+  <li><strong>Jumaat:</strong> 75 peratus. Lunch Jumaat dipacu tempat kerja. Dinner Jumaat angkat bila orang pejabat tinggal.</li>
+  <li><strong>Sabtu:</strong> 90 peratus. Hari puncak untuk kebanyakan outlet cafe dan casual-dining. Brunch adalah daypart tunggal terbesar.</li>
+  <li><strong>Ahad:</strong> 80 peratus. Brunch tahan, dinner perlahan sebab Isnin datang.</li>
+</ul>
+
+<p>Kalau anda jumlahkan tu (60 x 4 + 75 + 90 + 80) dan bahagi dengan 7, anda dapat hari purata. Perhatikan coraknya. Hari weekend bawa lebih kurang berat revenue yang sama dengan tiga hari weekday digabungkan. Kalau ramalan anda diam-diam anggap Selasa dan Sabtu cetak sama, anda budget Sabtu terlalu rendah dan Selasa terlalu tinggi. Yang pertama akan nampak macam outperformance, yang kedua akan nampak macam masalah. Tiada yang benar.</p>
+
+<p>Angka ni berubah ikut jenis premis. Kopitiam berlabuh-mall mampatkan spread sebab trafik kaki lebih sama rata. Cafe menara-pejabat tinggikan ia sebab Sabtu kosong. Guna rangka, kemudian fit semula peratusan kepada data POS anda dalam 60 hari buka atau dalam 30 hari sebarang perubahan struktur dalam bangunan sekeliling.</p>
+
+<h3>Variabel 4: Sumbangan daypart</h3>
+
+<p>Lapisan seterusnya ialah bagaimana hari pecah. Rangka berguna untuk premis full-service:</p>
+
+<ul>
+  <li><strong>Breakfast (7 pagi hingga 11 pagi):</strong> 15 peratus revenue harian. Tiket lebih rendah, turn lebih cepat.</li>
+  <li><strong>Lunch (11.30 pagi hingga 2.30 petang):</strong> 35 peratus. Blok revenue yang boleh diharap. Mix pejabat dan walk-in.</li>
+  <li><strong>Tea time (3 petang hingga 5.30 petang):</strong> 10 peratus. Selalunya daypart paling bocor, yang bocor rental. Berbaloi <a href="/learn/how-to-activate-dead-dayparts-malaysian-fb.html">lihat berasingan cara aktifkan</a>.</li>
+  <li><strong>Dinner (6 petang hingga 10 malam):</strong> 35 peratus. Blok lain yang boleh diharap. AOV lebih tinggi, turn lebih perlahan.</li>
+  <li><strong>Late-night (selepas 10 malam):</strong> 5 peratus. Hanya bermakna untuk mamak, kopitiam lewat dan premis format bar.</li>
+</ul>
+
+<p>Cafe yang tutup pukul 6 petang tolak blok breakfast lebih tinggi (selalunya 25 hingga 30 peratus) dan tiada dinner. Kopitiam yang berlabuh lunch mungkin duduk pada 45 peratus lunch. Premis dinner-sahaja terbalikkan keluk. Tujuan letak sumbangan daypart dalam model ialah ia beritahu anda di mana nak tengok bila ramalan tersasar. Kalau anda budget 35 peratus dinner dan jalankan 22 peratus, jurang bukan "restoran tu", ia adalah dinner.</p>
+
+<h3>Variabel 5: Musim</h3>
+
+<p>Lapisan terakhir ialah kalendar Malaysia. Apply pendarab per bulan bukan rawat setiap bulan sebagai purata. Inilah bentuk kasar merentas satu tahun berniaga, dengan setiap bulan diindeks kepada baseline 1.0:</p>
+
+<ul>
+  <li><strong>Januari:</strong> 1.05 hingga 1.10. Resolusi tahun baru tolak cafe gym-dan-sihat naik. Antisipasi CNY angkat outlet majoriti Cina dalam separuh kedua bulan.</li>
+  <li><strong>Februari:</strong> 0.90 hingga 1.20 bergantung pada CNY. Outlet tutup 3 hingga 7 hari sekitar CNY. Minggu sebelumnya adalah puncak, minggu selepasnya adalah palung.</li>
+  <li><strong>Mac:</strong> 0.95 hingga 1.00. Cuti sekolah pacu trafik keluarga. Sedikit perlahan dalam premis berlabuh-pejabat.</li>
+  <li><strong>April / Ramadan:</strong> 0.65 hingga 0.85 untuk premis bukan halal. 1.10 hingga 1.35 untuk premis halal dengan pre-buka kuat dan limpahan bazaar ramadan. Perdagangan lunch mampat 30 hingga 50 peratus merentas papan.</li>
+  <li><strong>Mei / Hari Raya:</strong> 0.70 hingga 0.90. Minggu Raya sendiri tenang untuk kebanyakan premis. Hujung minggu selepas adalah rebound.</li>
+  <li><strong>Jun:</strong> 0.95 hingga 1.05. Cuti sekolah pertengahan bulan. Premis mall nampak trafik keluarga, premis pejabat perlahan.</li>
+  <li><strong>Julai:</strong> 1.00. Bulan ramalan paling boleh dipercayai. Guna Julai untuk kalibrate model.</li>
+  <li><strong>Ogos:</strong> 1.00 hingga 1.05. Hujung minggu panjang Merdeka angkat brunch dan dinner.</li>
+  <li><strong>September:</strong> 0.95 hingga 1.00. Hujung minggu panjang Hari Malaysia bagi satu uplift.</li>
+  <li><strong>Oktober:</strong> 1.00 hingga 1.10. Deepavali angkat outlet majoriti India dengan bermakna. Ramp hujung tahun pejabat mula.</li>
+  <li><strong>November:</strong> 1.05 hingga 1.15. Dinner pejabat hujung tahun mula. Booking kumpulan naik.</li>
+  <li><strong>Disember:</strong> 1.15 hingga 1.30. Bulan terkuat untuk premis casual-dining dan cafe. Krismas, parti pejabat hujung tahun, cuti sekolah, gifting F&amp;B.</li>
+</ul>
+
+<p>Ramalan yang jalankan angka bulanan rata merentas kalendar ini tersasar RM50,000 atau lebih dalam mana-mana arah sepanjang tahun. Bina table musim sekali, tala semula tahunan guna data POS tahun lepas, dan plan bulanan akan kekal dalam 10 peratus variance untuk kebanyakan bulan.</p>
+
+<p class="pullquote">Ramalan satu-variabel adalah tekaan. Ramalan 5-variabel adalah hipotesis yang anda boleh uji.</p>
+
+<h2>Contoh berjalan: ramal cafe 60-seat di PJ Damansara untuk Julai 2026</h2>
+
+<p>Ambil bentuk sebenar. Cafe 60-seat di PJ Damansara, staffed untuk 40 kerusi berfungsi, buka 7.30 pagi hingga 10 malam tujuh hari seminggu. Tauke nak ramalan revenue Julai 2026. Julai adalah bulan musim 1.0 dan kalendar 31-hari, yang jadikannya ujian pertama ideal.</p>
+
+<p><strong>Langkah 1, covers harian pada hari purata.</strong> Apply angka turn daypart dan utilisation dari Variabel 1:</p>
+
+<ul>
+  <li>Breakfast: 40 kerusi x 1.4 turn x 60 peratus utilisation = 33 covers</li>
+  <li>Lunch: 40 x 2.0 x 75 peratus = 60 covers</li>
+  <li>Tea: 40 x 0.8 x 40 peratus = 13 covers</li>
+  <li>Dinner: 40 x 1.8 x 70 peratus = 50 covers</li>
+  <li><strong>Covers harian purata:</strong> 156</li>
+</ul>
+
+<p><strong>Langkah 2, AOV berwajaran ikut daypart.</strong> Tauke tarik dari sejarah POS 12 minggu: breakfast RM22, lunch RM34, tea RM18, dinner RM52. AOV diblend merentas hari, ditimbang ikut share cover, mendarat pada RM34. Tapi model tak guna blend, ia guna setiap baris berasingan.</p>
+
+<ul>
+  <li>Revenue breakfast per hari purata: 33 x RM22 = RM726</li>
+  <li>Lunch: 60 x RM34 = RM2,040</li>
+  <li>Tea: 13 x RM18 = RM234</li>
+  <li>Dinner: 50 x RM52 = RM2,600</li>
+  <li><strong>Jumlah hari purata:</strong> RM5,600</li>
+</ul>
+
+<p><strong>Langkah 3, taburan weekday/weekend.</strong> Apply pemberat 60/60/60/60/75/90/80. Jumlahnya 485 peratus hari purata merentas 7 hari seminggu. Julai 2026 ada 4 minggu penuh tambah 3 hari tambahan (Rabu 29, Khamis 30, Jumaat 31). Matematik pemberat:</p>
+
+<ul>
+  <li>4 minggu x 485 peratus hari purata = 1,940 peratus</li>
+  <li>3 hari weekday tambahan (Rabu, Kha, Jum) = 60 + 60 + 75 = 195 peratus</li>
+  <li><strong>Jumlah day-equivalents:</strong> 21.35 hari purata</li>
+</ul>
+
+<p><strong>Langkah 4, jumlah bulanan pada baseline.</strong> 21.35 x RM5,600 = <strong>RM119,560</strong>.</p>
+
+<p><strong>Langkah 5, musim.</strong> Julai adalah bulan baseline 1.0, jadi tiada pelarasan. Ramalan untuk Julai 2026 adalah RM119,560.</p>
+
+<p>Kalau tauke guna model satu-variabel (156 covers x RM34 x 31 hari), ia akan hasilkan RM164,424. Itu RM44,864 terlalu tinggi, sebab model satu-variabel anggap setiap hari adalah hari purata, yang Sabtu dan Isnin pasti bukan. Model 5-variabel RM45,000 lebih dekat pada kebenaran, dan yang lebih penting, ia beritahu tauke lever mana nak tarik kalau Julai tersasar. Kalau breakfast underperform, tengok marketing pagi. Kalau dinner underperform, tengok upsell pada menu dinner. Kalau Sabtu underperform, tengok staffing brunch. Model satu-variabel hanya kata "kami tersasar."</p>
+
+<h2>Rekonsiliasi ramalan lawan sebenar: tinjauan variance mingguan</h2>
+
+<p>Model hanya berguna kalau anda jalankan ia terhadap nombor sebenar setiap minggu. Set tinjauan 30-minit berulang dengan team. Tarik data POS minggu lepas, segmentkan dengan lima cara yang sama ramalan buat, dan banding.</p>
+
+<p>Tinjauan patut jawab tiga soalan. Pertama, adakah variance dalam revenue, atau dalam margin? Miss revenue 12 peratus dengan margin sihat berbeza daripada miss revenue 4 peratus dengan hentakan margin 20 peratus. Kedua, adakah miss dalam covers, AOV, atau mix? Kalau covers tahan tapi AOV jatuh, upsell anda pecah. Kalau covers jatuh tapi AOV tahan, trafik anda pecah. Ketiga, adakah miss dalam daypart spesifik? Kebanyakan variance mingguan hidup dalam satu atau dua cell table 5-variabel, bukan tersebar sama rata.</p>
+
+<p>Simpan log berjalan. Selepas 8 hingga 12 minggu tinjauan variance, corak muncul yang tiada P&amp;L bulanan akan tunjuk. Lunch Selasa mungkin secara konsisten miss 8 peratus. Dinner Jumaat mungkin secara konsisten beat 12 peratus. Itu signal untuk suap balik ke ramalan bulan depan dan ke tinjauan harga menu. Log variance juga adalah apa yang anda bawa kepada pelabur dan rakan kongsi bila mereka tanya sama ada perniagaan on track. Variance 4 peratus dengan sebab diketahui adalah cerita lebih sihat daripada beat 1 peratus tanpa penjelasan.</p>
+
+<h2>Bila perlu revise model</h2>
+
+<p>Model drift. Respons yang betul bukan revise setiap bulan, yang over-fit kepada noise. Respons yang betul ialah revise atas signal. Tiga signal justify rebuild model:</p>
+
+<p><strong>Signal 1: Tiga minggu berturut-turut variance lebih 15 peratus dalam arah yang sama.</strong> Satu minggu buruk adalah cuaca. Dua minggu buruk adalah nasib buruk. Tiga berturut-turut adalah model. Sesuatu dalam table input salah. Paling biasa anggapan AOV dah drift sebab harga menu berubah dan model tak kejar. Kadangkala sumbangan daypart beralih sebab pesaing berdekatan buka atau tutup. Berjalan setiap lima variabel dan cari satu yang tak lagi padan floor.</p>
+
+<p><strong>Signal 2: Perubahan struktur dalam kawasan perdagangan sekeliling.</strong> Outlet baru buka di seberang jalan. Penutupan jalan yang pecahkan trafik kaki. Bangunan pejabat baru isi penuh dua pintu jauh. Sekolah berpindah. Mana-mana ni reset angka utilisation dalam Variabel 1, kadangkala 15 hingga 25 peratus dalam mana-mana arah. Jangan tunggu variance buktikannya. Rebuild model dalam minggu 1 perubahan.</p>
+
+<p><strong>Signal 3: Perubahan harga menu.</strong> Bila-bila anda tolak harga naik 5 peratus atau lebih merentas kategori, anggapan AOV beralih dan anggapan cover juga mungkin beralih (sesetengah pelanggan sensitif-harga keluar, sesetengah uplift upsell). Rebuild table AOV dari data POS 3 minggu selepas perubahan. Guna angka baru untuk kitaran ramalan seterusnya. Jangan anggap kenaikan harga mengalir bersih.</p>
+
+<h2>Bagaimana data MenuBase suap model</h2>
+
+<p>Kebanyakan operator yang kami kerja dengan bina versi pertama model 5-variabel atas kertas, kemudian sedar input susah disumber konsisten dari eksport POS sahaja. AOV tahap daypart adalah rumit. Weekend uplift perlukan segmenting tiket ikut hari. Keberkesanan promo tertimbus dalam line item.</p>
+
+<p>Produk MenuBase duduk antara telefon pelanggan dan POS, yang bermakna AOV tahap daypart, kadar terima atas cadangan upsell, corak saiz kumpulan, dan tebusan promo ditangkap per tiket sambil mereka berlaku. Operator tarik ini keluar sebagai eksport bulanan dan suap terus ke input ramalan. Tinjauan variance kemudian jadi tarik dan banding 20-minit, bukan rekonsiliasi manual tiga laporan.</p>
+
+<p>Model sama sama ada data datang dari MenuBase atau tidak. Input hanya jadi jauh kurang sakit untuk kekal terkini bila menu digital sudah menangkap segmen. Tujuan ramalan adalah untuk direvise bila floor berubah. Tujuan lapisan data adalah jadikan revision tu kerja 20-minit, bukan 4-jam.</p>
+
+<div class="cta-block has-bg-scrim scrim-dark">
+  <h3>Kalau model 5-variabel masih mendarat atas 15 peratus variance selepas 6 minggu</h3>
+  <p>Titik tersangkut biasa adalah Variabel 2 (AOV), sebab operator tarik angka diblend dari POS bukannya yang disegmen daypart. Model hanya berfungsi kalau table AOV jujur.</p>
+  <p>Kalau anda nak bantuan wire input dari data POS sebenar anda, WhatsApp team. 15 minit. Kami akan tengok satu minggu penuh eksport POS anda dan beritahu yang mana satu daripada lima variabel adalah sumber variance terbesar. Kalau MenuBase bukan jawapan yang betul untuk anda, kami akan kata begitu.</p>
+  <a class="btn btn-lime btn-lg" href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bdari%3A%20artikel%20model%20ramalan%5D%20Nak%20bantuan%20fit%20model%20ramalan%205-variabel%20pada%20outlet%20kami." target="_blank" rel="noopener">WhatsApp team &rarr;</a>
+</div>
+
+
+
+<!-- Vertical cross-link callout -->
+<aside class="vertical-callout">
+  <p class="vc-eyebrow">DIBINA UNTUK PREMIS ANDA</p>
+  <h2>Lihat bagaimana ini berlaku di jenis premis anda</h2>
+  <p>Produk MenuBase sama merentas premis. Yang berbeza ialah jenis kepayahan operator yang diserangnya. Pilih halaman yang ditala untuk anda:</p>
+  <div class="vc-grid">
+    <a href="/for-restaurants.html"><span>UNTUK RESTORAN</span><strong>Mampatkan table turn tanpa tergesa-gesa tetamu</strong></a>
+    <a href="/for-cafes.html"><span>UNTUK CAFE</span><strong>Tak pernah lupa specials</strong></a>
+    <a href="/for-kopitiams.html"><span>UNTUK KOPITIAM</span><strong>Tahan rotasi staff 6 hingga 9 bulan</strong></a>
+  </div>
+</aside>
+
+<aside class="article-related" aria-labelledby="related-heading">
+    <h2 id="related-heading" class="related-heading">Baca seterusnya</h2>
+    <div class="hub-grid">
+      <a class="article-card" href="/learn/how-to-read-weekly-pnl-malaysian-fb.html">
+        <span class="card-eyebrow">KEWANGAN</span>
+        <h2>Cara Baca P&L Mingguan Untuk Outlet F&B Malaysia</h2>
+        <p>Lima baris yang penting dan tiga yang ganggu. Tinjauan P&L mingguan dalam 30 minit.</p>
+        <span class="card-cta">Baca panduan &rarr;</span>
+      </a>
+      <a class="article-card" href="/learn/customer-lifetime-value-malaysian-fb.html">
+        <span class="card-eyebrow">KEWANGAN</span>
+        <h2>Matematik Customer Lifetime Value Untuk F&B Malaysia</h2>
+        <p>Regular cafe Bangsar bernilai RM3,042. Matematik LTV baris demi baris.</p>
+        <span class="card-cta">Baca panduan &rarr;</span>
+      </a>
+      <a class="article-card" href="/ms/learn/how-to-increase-average-order-value-malaysia.html">
+        <span class="card-eyebrow">REVENUE</span>
+        <h2>9 Taktik Untuk Naikkan Average Order Value Di F&B Malaysia</h2>
+        <p>Sembilan taktik konkrit disusun dari paling senang ke paling sukar. Julat uplift RM per check disertakan.</p>
+        <span class="card-cta">Baca panduan &rarr;</span>
+      </a>
+    </div>
+  </aside>
+</article>
+
+<!-- RELATED GUIDES -->
+<section class="related-guides" aria-labelledby="rel-h">
+  <div class="rel-head">
+    <span class="eyebrow">Panduan berkaitan</span>
+    <h2 id="rel-h">Terus baca.</h2>
+  </div>
+  <div class="rel-grid">
+      <a class="rel-card" href="/learn/how-to-read-weekly-pnl-malaysian-fb.html">
+        <div class="rel-meta"><span class="meta-with-ico"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Bacaan 11 minit</span></span></div>
+        <h3>Baca P&L Mingguan Dalam 30 Minit</h3>
+        <p>Lima baris P&L yang penting untuk outlet F&B Malaysia. Dan tiga yang ganggu.</p>
+        <span class="rel-cta">Baca panduan &rarr;</span>
+      </a>
+      <a class="rel-card" href="/learn/customer-lifetime-value-malaysian-fb.html">
+        <div class="rel-meta"><span class="meta-with-ico"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Bacaan 10 minit</span></span></div>
+        <h3>Matematik Customer Lifetime Value</h3>
+        <p>Regular cafe Bangsar bernilai RM3,042. Matematik LTV baris demi baris.</p>
+        <span class="rel-cta">Baca panduan &rarr;</span>
+      </a>
+      <a class="rel-card" href="/ms/learn/how-to-increase-average-order-value-malaysia.html">
+        <div class="rel-meta"><span class="meta-with-ico"><svg class="meta-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Bacaan 9 minit</span></span></div>
+        <h3>Naikkan Average Order Value</h3>
+        <p>Sembilan taktik konkrit disusun dari paling senang ke paling sukar. Julat uplift RM disertakan.</p>
+        <span class="rel-cta">Baca panduan &rarr;</span>
+      </a>
+  </div>
+</section>
+
+<!-- BOTTOM-OF-ARTICLE WHATSAPP CTA -->
+<section class="article-cta" aria-labelledby="cta-article-h">
+  <span class="eyebrow">Nak ini pada menu anda?</span>
+  <h3 id="cta-article-h">Hantar menu anda. Dapat <em>model uplift</em> 15 minit.</h3>
+  <p>Kami bina semula menu anda dalam MenuBase, setup smart upsell, daypart dan peraturan stok untuk padan realiti dapur anda. White-glove. Live menjelang hujung servis hari pertama. RM28 hingga RM99 sebulan ikut saiz menu, tanpa yuran setup, batal bulanan.</p>
+  <a class="btn" href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bdari%3A%20artikel%20-%20how-to-forecast-restaurant-revenue-malaysia%5D.%20Baru%20baca%20panduan%20model%20ramalan.%20Nak%20bantuan%20fit%20model%205-variabel%20pada%20outlet%20kami.%20Hantar%20eksport%20POS%20sekarang." target="_blank" rel="noopener">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:18px;height:18px;flex-shrink:0;"><path d="M27.04 4.95C24.07 1.97 20.12.33 15.92.33 7.27.33.23 7.37.23 16.02c0 2.77.72 5.47 2.1 7.85L.1 31.67l8.02-2.1c2.3 1.25 4.88 1.91 7.5 1.91h.01c8.65 0 15.69-7.04 15.69-15.69 0-4.19-1.63-8.13-4.28-11.09zm-11.12 24.13h-.01c-2.34 0-4.63-.63-6.62-1.81l-.47-.28-4.92 1.29 1.31-4.79-.31-.49a13.04 13.04 0 0 1-2-6.97c0-7.21 5.87-13.07 13.08-13.07 3.5 0 6.78 1.36 9.25 3.83a13.01 13.01 0 0 1 3.83 9.25c.01 7.2-5.86 13.04-13.07 13.04zm7.14-9.78c-.39-.2-2.32-1.14-2.68-1.27-.36-.13-.62-.2-.89.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.46.29-.85.1-.39-.2-1.65-.61-3.15-1.95-1.16-1.04-1.95-2.32-2.18-2.71-.23-.39-.02-.6.17-.8.18-.18.39-.46.59-.69.2-.23.26-.39.39-.65.13-.26.07-.49-.03-.69-.1-.2-.89-2.15-1.22-2.93-.32-.77-.65-.67-.89-.68-.23-.01-.49-.01-.76-.01s-.69.1-1.06.49c-.36.39-1.39 1.36-1.39 3.3 0 1.95 1.42 3.83 1.62 4.09.2.26 2.79 4.27 6.77 5.99.95.41 1.69.65 2.27.84.95.3 1.82.26 2.5.16.76-.11 2.32-.95 2.65-1.87.33-.92.33-1.71.23-1.87-.1-.16-.36-.26-.75-.46z" fill="currentColor"/></svg>
+    Hantar menu anda &rarr;
+  </a>
+  <div class="micro">15 MINIT &middot; TANPA KOMITMEN &middot; KAMI BALAS DALAM SEJAM</div>
+</section>
+</main>
+
+<!-- FOOTER (matches main site structure) -->
+<footer class="foot has-bg-scrim scrim-soft">
+  <div class="foot-inner">
+    <div class="foot-brand">
+      <a href="/ms/" class="brand" aria-label="MenuBase home">
+        <img class="brand-lockup" src="/menubase-logo-dark.png" alt="MenuBase" width="210" height="38" loading="lazy" decoding="async"/>
+      </a>
+      <p>Waiter yang anda harap boleh ambil. Tinggal dalam menu QR anda. Tak pernah lupa specials. Tolak promo setiap shift. Duduk atas mana-mana POS.</p>
+    </div>
+    <div class="foot-col">
+      <h5>Produk</h5>
+      <a href="/ms/#features">Ciri</a>
+      <a href="/ms/#demo">Demo</a>
+      <a href="/ms/#calc">Kalkulator</a>
+      <a href="/ms/pricing.html">Harga</a>
+    </div>
+    <div class="foot-col">
+      <h5>Premis</h5>
+      <a href="/for-kopitiams.html">Kopitiam</a>
+      <a href="/for-cafes.html">Cafe</a>
+      <a href="/for-bubble-tea-shops.html">Bubble tea</a>
+      <a href="/for-restaurants.html">Restoran</a>
+      <a href="/for-cloud-kitchens.html">Cloud kitchen</a>
+      <a href="/for-waiters.html">Staff floor</a>
+    </div>
+    <div class="foot-col">
+      <h5>Playbook</h5>
+      <a href="/learn/">Semua panduan</a>
+      <a href="/ms/learn/how-to-forecast-restaurant-revenue-malaysia.html">Ramal revenue (5-var)</a>
+      <a href="/ms/learn/how-to-increase-average-order-value-malaysia.html">Naikkan AOV di Malaysia</a>
+    </div>
+    <div class="foot-col">
+      <h5>Syarikat</h5>
+      <a href="/about.html">Tentang</a>
+      <a href="/ms/#book">Berbual dengan kami</a>
+      <a href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bdari%3A%20nav%20dock%20-%20artikel%20model%20ramalan%5D%20Nak%20teroka%20lebih%20bagaimana%20kami%20boleh%20baiki%20ramalan%20kami." target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>&copy; 2026 MENUBASE SDN BHD</span>
+    <span>BUSINESS IS EASY WITH MENUBASE</span>
+  </div>
+</footer>
+
+
+
+<!-- BOTTOM NAV (scrolls inline at end of body) -->
+<!-- FLOATING BOTTOM DOCK (matches main site) -->
+<nav class="top">
+  <div class="nav-inner">
+    <div class="nav-links">
+      <a href="/ms/#problem"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>Masalah</span></a>
+      <a href="/ms/#features"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>Ciri</span></a>
+      <a href="/ms/#demo"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 4 20 12 6 20 6 4"/></svg><span>Demo</span></a>
+      <a href="/ms/#compare"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5"/><path d="M21 3l-7 7"/><path d="M8 21H3v-5"/><path d="M3 21l7-7"/></svg><span>Banding</span></a>
+      <a href="/ms/#testimonials"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Kata</span></a>
+      <a href="/ms/#calc"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="11" x2="9" y2="11"/><line x1="12" y1="11" x2="13" y2="11"/><line x1="16" y1="11" x2="16.01" y2="11"/><line x1="8" y1="15" x2="9" y2="15"/><line x1="12" y1="15" x2="13" y2="15"/><line x1="16" y1="15" x2="16.01" y2="15"/></svg><span>Calc</span></a>
+      <a href="/learn/" class="current"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>Playbook</span></a>
+      <a href="/ms/#venues-teaser"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1-5h16l1 5"/><path d="M3 9v11a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9"/><path d="M9 21v-7h6v7"/></svg><span>Premis</span></a>
+      <a href="/ms/#faq"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg><span>FAQ</span></a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-lime nav-wa-icon" href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bdari%3A%20nav%20dock%20-%20artikel%20model%20ramalan%5D%20Nak%20teroka%20lebih%20bagaimana%20kami%20boleh%20baiki%20ramalan%20kami." target="_blank" rel="noopener" aria-label="WhatsApp us"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.95.41 1.69.65 2.27.84.95.3 1.82.26 2.5.16.76-.11 2.32-.95 2.65-1.87.33-.92.33-1.71.23-1.87-.1-.16-.36-.26-.75-.46z" fill="currentColor"/></svg></a>
+    </div>
+  </div>
+</nav>
+</body>
+</html>
