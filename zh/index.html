@@ -2972,6 +2972,56 @@ footer.foot {
   .rc-next { right: 4px; }
   .rc-arrow { width: 36px; height: 36px; font-size: 18px; }
 }
+
+/* Problem carousel - reuses the rc-track / rc-arrow / rc-dots primitives */
+.problem-carousel {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto 48px;
+  padding: 0 8px;
+}
+.problem-carousel .rc-track { padding: 12px 8px; }
+.problem-carousel .problem-card {
+  flex: 0 0 calc(50% - 12px);
+  scroll-snap-align: start;
+  min-height: 200px;
+}
+@media (max-width: 900px) {
+  .problem-carousel .problem-card { flex-basis: calc(60% - 12px); }
+}
+@media (max-width: 720px) {
+  .problem-carousel .problem-card { flex-basis: 90%; }
+}
+
+/* Testimonial carousel - 1 card at a time, autoplays every 6s */
+.testi-carousel {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 8px;
+}
+.testi-carousel .rc-track { padding: 12px 8px; }
+.testi-carousel .testi-card {
+  flex: 0 0 calc(100% - 16px);
+  scroll-snap-align: start;
+  margin: 0;
+}
+@media (min-width: 900px) {
+  .testi-carousel { max-width: 760px; }
+}
+
+/* FAQ 2-column on desktop */
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 40px;
+  margin-top: 36px;
+  border-top: 1px solid var(--line);
+}
+.faq-grid .faq-item:nth-child(odd) { border-right: none; }
+@media (max-width: 760px) {
+  .faq-grid { grid-template-columns: 1fr; column-gap: 0; }
+}
 .reassure-card h4 {
   font-family: var(--font-display);
   font-weight: 700;
@@ -3634,8 +3684,10 @@ footer.foot {
     <h2>加点推荐本来就不是<em>人能完美做到的活儿。</em></h2>
     <p class="lede">完美的时机,每张账单,每个班次。漏掉营收有四个结构性原因。</p>
   </div>
-  <div class="problem-grid reveal">
-    <div class="problem-card">
+  <div class="problem-carousel reveal" data-carousel>
+    <button class="rc-arrow rc-prev" type="button" aria-label="上一个">&lsaquo;</button>
+    <div class="rc-track">
+      <article class="problem-card">
       <div class="problem-icon">
         <svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
           <rect x="2" y="1" width="12" height="2"/><rect x="0" y="3" width="2" height="6"/><rect x="14" y="3" width="2" height="4"/><rect x="2" y="9" width="12" height="2"/><rect x="3" y="11" width="3" height="2"/><rect x="4" y="13" width="2" height="2"/><rect x="4" y="5" width="2" height="2"/><rect x="7" y="5" width="2" height="2"/><rect x="10" y="5" width="2" height="2"/>
@@ -3645,8 +3697,8 @@ footer.foot {
         <h4>记忆上限</h4>
         <p>第一周背熟的 60 项菜单,第八周就模糊。没有人能每个班次都扛得住这种记忆量。</p>
       </div>
-    </div>
-    <div class="problem-card">
+    </article>
+    <article class="problem-card">
       <div class="problem-icon">
         <svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
           <rect x="4" y="0" width="8" height="2"/><rect x="2" y="2" width="2" height="2"/><rect x="12" y="2" width="2" height="2"/><rect x="0" y="4" width="2" height="8"/><rect x="14" y="4" width="2" height="8"/><rect x="2" y="12" width="2" height="2"/><rect x="12" y="12" width="2" height="2"/><rect x="4" y="14" width="8" height="2"/><rect x="5" y="5" width="2" height="6"/><rect x="7" y="5" width="2" height="2"/><rect x="9" y="5" width="2" height="6"/>
@@ -3656,8 +3708,8 @@ footer.foot {
         <h4>没有个人激励</h4>
         <p>服务费均分、按时薪、没有提成。没有个人动力推那块 RM14 的芝士蛋糕。</p>
       </div>
-    </div>
-    <div class="problem-card">
+    </article>
+    <article class="problem-card">
       <div class="problem-icon">
         <svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
           <rect x="3" y="1" width="8" height="2"/><rect x="11" y="1" width="2" height="2"/><rect x="13" y="3" width="2" height="2"/><rect x="13" y="5" width="2" height="2"/><rect x="9" y="3" width="2" height="2"/><rect x="11" y="5" width="2" height="2"/><rect x="3" y="9" width="2" height="2"/><rect x="5" y="11" width="2" height="2"/><rect x="1" y="11" width="2" height="2"/><rect x="3" y="13" width="2" height="2"/><rect x="5" y="13" width="8" height="2"/><rect x="1" y="9" width="2" height="2"/>
@@ -3667,8 +3719,8 @@ footer.foot {
         <h4>6 到 9 个月的在职期</h4>
         <p>把菜单训练到位,团队为了 RM200 的加薪跳去对面街。又重新开始。</p>
       </div>
-    </div>
-    <div class="problem-card">
+    </article>
+    <article class="problem-card">
       <div class="problem-icon">
         <svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">
           <rect x="2" y="2" width="12" height="2"/><rect x="2" y="5" width="12" height="2"/><rect x="2" y="8" width="12" height="2"/><rect x="2" y="11" width="12" height="2"/>
@@ -3678,6 +3730,14 @@ footer.foot {
         <h4>静态菜单</h4>
         <p>您的菜单不知道现在已是晚上 9 点,只剩 4 块熔岩蛋糕,而且外面在下雨。</p>
       </div>
+    </article>
+    </div>
+    <button class="rc-arrow rc-next" type="button" aria-label="下一个">&rsaquo;</button>
+    <div class="rc-dots" role="tablist" aria-label="问题导航">
+      <button class="rc-dot active" type="button" data-idx="0" aria-label="卡 1"></button>
+      <button class="rc-dot" type="button" data-idx="1" aria-label="卡 2"></button>
+      <button class="rc-dot" type="button" data-idx="2" aria-label="卡 3"></button>
+      <button class="rc-dot" type="button" data-idx="3" aria-label="卡 4"></button>
     </div>
   </div>
   <div class="problem-pull reveal">
@@ -4057,30 +4117,39 @@ footer.foot {
     <h2>运营者反复<em>告诉我们的事。</em></h2>
     <p class="lede">我们和吉隆坡的咖啡馆、茶餐室、嘛嘛档运营者面对面聊过。每次都是同样的三个问题。</p>
   </div>
-  <div class="testi-grid">
-    <div class="testi-card reveal">
+    <div class="testi-carousel reveal" data-carousel data-autoplay="6000">
+    <button class="rc-arrow rc-prev" type="button" aria-label="上一句">&lsaquo;</button>
+    <div class="rc-track">
+      <article class="testi-card">
       <div class="testi-stat">语言问题。<span class="testi-stat-lbl">每次都聊到</span></div>
       <p class="testi-quote">「团队点单没问题。但用英文或华语推特价菜就推不动。顾客点头,照旧点老样子。每桌都漏了钱。」</p>
       <div class="testi-foot">
         <div class="testi-ava">//</div>
         <div class="testi-who"><strong>咖啡馆老板</strong><span>梳邦再也 &middot; 1 家门店</span></div>
       </div>
-    </div>
-    <div class="testi-card reveal">
+    </article>
+    <article class="testi-card">
       <div class="testi-stat">人员流动问题。<span class="testi-stat-lbl">每位多店运营者</span></div>
       <p class="testi-quote">「写话术、演练、推特价奖金,样样试过。什么都留不住。等他们终于学会,人也走了。」</p>
       <div class="testi-foot">
         <div class="testi-ava">//</div>
         <div class="testi-who"><strong>多店运营者</strong><span>吉隆坡 &amp; 雪兰莪 &middot; 3 家门店</span></div>
       </div>
-    </div>
-    <div class="testi-card reveal">
+    </article>
+    <article class="testi-card">
       <div class="testi-stat">培训问题。<span class="testi-stat-lbl">看来每个周日都在做</span></div>
       <p class="testi-quote">「每个周日我都在给新人开会。一到周一,班上又换了人。我开的是茶餐室,不是培训公司。」</p>
       <div class="testi-foot">
         <div class="testi-ava">//</div>
         <div class="testi-who"><strong>茶餐室经理</strong><span>八打灵再也 &middot; 2 家门店</span></div>
       </div>
+    </article>
+    </div>
+    <button class="rc-arrow rc-next" type="button" aria-label="下一句">&rsaquo;</button>
+    <div class="rc-dots" role="tablist" aria-label="评价导航">
+      <button class="rc-dot active" type="button" data-idx="0" aria-label="评价 1"></button>
+      <button class="rc-dot" type="button" data-idx="1" aria-label="评价 2"></button>
+      <button class="rc-dot" type="button" data-idx="2" aria-label="评价 3"></button>
     </div>
   </div>
 </section>
@@ -4253,7 +4322,7 @@ footer.foot {
     <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(34px,5vw,60px);line-height:0.98;letter-spacing:-0.035em;margin:16px 0 18px;">运营者会问的事。</h2>
   </div>
 
-  <div class="faq-list">
+  <div class="faq-grid">
     <details class="faq-item has-bg-scrim">
       <summary>什么是 MenuBase?</summary>
       <div class="faq-answer">The best waiter you can hire. Lives in your QR menu. Reads the basket and the moment, surfaces one suggestion that converts. Built for 马来西亚 F&amp;B.</div>
@@ -4370,15 +4439,19 @@ setTimeout(() => {
   document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
 }, 1500);
 
-// Reassurance carousel
+// Generic carousel (reassure, problem, testi)
 (function () {
   document.querySelectorAll('[data-carousel]').forEach(function (carousel) {
     var track = carousel.querySelector('.rc-track');
-    var cards = carousel.querySelectorAll('.reassure-card');
+    if (!track) return;
+    var cards = track.children;
+    if (!cards || cards.length === 0) return;
     var dots = carousel.querySelectorAll('.rc-dot');
     var prev = carousel.querySelector('.rc-prev');
     var next = carousel.querySelector('.rc-next');
-    if (!track || cards.length === 0) return;
+    var autoplayMs = parseInt(carousel.getAttribute('data-autoplay') || '0', 10);
+    var autoTimer = null;
+    var userInteracted = false;
 
     function activeIndex() {
       var sl = track.scrollLeft;
@@ -4394,17 +4467,34 @@ setTimeout(() => {
       idx = Math.max(0, Math.min(cards.length - 1, idx));
       cards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
     }
+    function nextOrWrap() {
+      var idx = activeIndex();
+      go(idx >= cards.length - 1 ? 0 : idx + 1);
+    }
+    function startAutoplay() {
+      if (autoplayMs > 0 && !userInteracted) {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(nextOrWrap, autoplayMs);
+      }
+    }
+    function stopAutoplay() {
+      userInteracted = true;
+      clearInterval(autoTimer);
+    }
     dots.forEach(function (d, i) {
-      d.addEventListener('click', function () { go(i); });
+      d.addEventListener('click', function () { stopAutoplay(); go(i); });
     });
-    if (prev) prev.addEventListener('click', function () { go(activeIndex() - 1); });
-    if (next) next.addEventListener('click', function () { go(activeIndex() + 1); });
+    if (prev) prev.addEventListener('click', function () { stopAutoplay(); go(activeIndex() - 1); });
+    if (next) next.addEventListener('click', function () { stopAutoplay(); go(activeIndex() + 1); });
+    track.addEventListener('touchstart', stopAutoplay, { passive: true });
+    track.addEventListener('wheel', stopAutoplay, { passive: true });
     var raf;
     track.addEventListener('scroll', function () {
       cancelAnimationFrame(raf);
       raf = requestAnimationFrame(function () { setActive(activeIndex()); });
     });
     setActive(0);
+    startAutoplay();
   });
 })();
 
