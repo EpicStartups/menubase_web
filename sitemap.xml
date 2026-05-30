@@ -388,12 +388,14 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/restaurant-tech-stack-malaysia-2026.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/learn/restaurant-tech-stack-malaysia-2026.html"/>
   </url>
-<url>
+  <url>
     <loc>https://menubase.io/use-cases/lift-aov-fast.html</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/lift-aov-fast.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/lift-aov-fast.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/lift-aov-fast.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/lift-aov-fast.html"/>
   </url>
   <url>
@@ -402,6 +404,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/cut-training-time.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/cut-training-time.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/cut-training-time.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/cut-training-time.html"/>
   </url>
   <url>
@@ -410,9 +414,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/multi-outlet-promo-discipline.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/multi-outlet-promo-discipline.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/multi-outlet-promo-discipline.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/multi-outlet-promo-discipline.html"/>
   </url>
-  <url>
+<url>
     <loc>https://menubase.io/cities/kuala-lumpur.html</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -452,12 +458,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/cities/subang-jaya.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/cities/subang-jaya.html"/>
   </url>
-  <url>
+    <url>
     <loc>https://menubase.io/use-cases/cloud-kitchen-multi-brand.html</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/cloud-kitchen-multi-brand.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/cloud-kitchen-multi-brand.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/cloud-kitchen-multi-brand.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/cloud-kitchen-multi-brand.html"/>
   </url>
   <url>
@@ -466,6 +474,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/halal-certified-venue.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/halal-certified-venue.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/halal-certified-venue.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/halal-certified-venue.html"/>
   </url>
   <url>
@@ -474,6 +484,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/food-truck-pop-up.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/food-truck-pop-up.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/food-truck-pop-up.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/food-truck-pop-up.html"/>
   </url>
   <url>
@@ -482,6 +494,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/school-canteen-cashless.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/school-canteen-cashless.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/school-canteen-cashless.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/school-canteen-cashless.html"/>
   </url>
   <url>
@@ -490,9 +504,11 @@
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/hotel-in-room-dining.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/hotel-in-room-dining.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/hotel-in-room-dining.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/hotel-in-room-dining.html"/>
   </url>
-  <url>
+<url>
     <loc>https://menubase.io/cities/ipoh.html</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -532,15 +548,17 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/cities/kuching.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/cities/kuching.html"/>
   </url>
-  <url>
+    <url>
     <loc>https://menubase.io/learn/how-to-increase-restaurant-sales-malaysia.html</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/how-to-increase-restaurant-sales-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/how-to-increase-restaurant-sales-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/how-to-increase-restaurant-sales-malaysia.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/learn/how-to-increase-restaurant-sales-malaysia.html"/>
   </url>
-  <url>
+<url>
     <loc>https://menubase.io/ms/learn/restaurant-inventory-management-malaysia.html</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -717,5 +735,167 @@
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/case-studies/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/case-studies/"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/ms/learn/how-to-increase-restaurant-sales-malaysia.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/how-to-increase-restaurant-sales-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/how-to-increase-restaurant-sales-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/how-to-increase-restaurant-sales-malaysia.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/zh/learn/how-to-increase-restaurant-sales-malaysia.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/how-to-increase-restaurant-sales-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/how-to-increase-restaurant-sales-malaysia.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/how-to-increase-restaurant-sales-malaysia.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/ms/use-cases/lift-aov-fast.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/lift-aov-fast.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/lift-aov-fast.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/lift-aov-fast.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/zh/use-cases/lift-aov-fast.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/lift-aov-fast.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/lift-aov-fast.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/lift-aov-fast.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/ms/use-cases/cut-training-time.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/cut-training-time.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/cut-training-time.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/cut-training-time.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/zh/use-cases/cut-training-time.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/cut-training-time.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/cut-training-time.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/cut-training-time.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/ms/use-cases/multi-outlet-promo-discipline.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/multi-outlet-promo-discipline.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/multi-outlet-promo-discipline.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/multi-outlet-promo-discipline.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/zh/use-cases/multi-outlet-promo-discipline.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/multi-outlet-promo-discipline.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/multi-outlet-promo-discipline.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/multi-outlet-promo-discipline.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/ms/use-cases/cloud-kitchen-multi-brand.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/cloud-kitchen-multi-brand.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/cloud-kitchen-multi-brand.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/cloud-kitchen-multi-brand.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/zh/use-cases/cloud-kitchen-multi-brand.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/cloud-kitchen-multi-brand.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/cloud-kitchen-multi-brand.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/cloud-kitchen-multi-brand.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/ms/use-cases/halal-certified-venue.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/halal-certified-venue.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/halal-certified-venue.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/halal-certified-venue.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/zh/use-cases/halal-certified-venue.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/halal-certified-venue.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/halal-certified-venue.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/halal-certified-venue.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/ms/use-cases/food-truck-pop-up.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/food-truck-pop-up.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/food-truck-pop-up.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/food-truck-pop-up.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/zh/use-cases/food-truck-pop-up.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/food-truck-pop-up.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/food-truck-pop-up.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/food-truck-pop-up.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/ms/use-cases/school-canteen-cashless.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/school-canteen-cashless.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/school-canteen-cashless.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/school-canteen-cashless.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/zh/use-cases/school-canteen-cashless.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/school-canteen-cashless.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/school-canteen-cashless.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/school-canteen-cashless.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/ms/use-cases/hotel-in-room-dining.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/hotel-in-room-dining.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/hotel-in-room-dining.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/hotel-in-room-dining.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/zh/use-cases/hotel-in-room-dining.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/hotel-in-room-dining.html"/>
+    <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/use-cases/hotel-in-room-dining.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/use-cases/hotel-in-room-dining.html"/>
   </url>
 </urlset>
