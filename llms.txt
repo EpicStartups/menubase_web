@@ -70,7 +70,8 @@ WhatsApp +60175981858. Free 15-minute revenue model on the operator's actual men
 ## Key pages
 
 - [Home](https://menubase.io/): Live interactive demo, ROI calculator, comparison table, FAQ
-- [Playbook](https://menubase.io/learn/): F&B operator content hub - 8 articles answering real operator questions
+- [Playbook](https://menubase.io/learn/): F&B operator content hub
+- [MenuBase for Kopitiams](https://menubase.io/for-kopitiams.html): Vertical landing page for Malaysian kopitiam operators
 - [Contact](https://menubase.io/contact-us.html)
 - [Privacy](https://menubase.io/privacy-policy.html)
 
