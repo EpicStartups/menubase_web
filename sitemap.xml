@@ -442,4 +442,84 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/cities/subang-jaya.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/cities/subang-jaya.html"/>
   </url>
+  <url>
+    <loc>https://menubase.io/use-cases/cloud-kitchen-multi-brand.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/cloud-kitchen-multi-brand.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/cloud-kitchen-multi-brand.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/use-cases/halal-certified-venue.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/halal-certified-venue.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/halal-certified-venue.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/use-cases/food-truck-pop-up.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/food-truck-pop-up.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/food-truck-pop-up.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/use-cases/school-canteen-cashless.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/school-canteen-cashless.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/school-canteen-cashless.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/use-cases/hotel-in-room-dining.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/hotel-in-room-dining.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/hotel-in-room-dining.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/cities/ipoh.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/cities/ipoh.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/cities/ipoh.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/cities/shah-alam.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/cities/shah-alam.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/cities/shah-alam.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/cities/klang.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/cities/klang.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/cities/klang.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/cities/kota-kinabalu.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/cities/kota-kinabalu.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/cities/kota-kinabalu.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/cities/kuching.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/cities/kuching.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/cities/kuching.html"/>
+  </url>
 </urlset>
