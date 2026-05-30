@@ -3016,6 +3016,62 @@ footer.foot {
   .playbook-card .card-title { font-size: 17px; }
 }
 
+/* ─── VENUES CTA (5 vertical pages, sits between playbook teaser and FAQ) ─── */
+.venues-cta { padding: 64px 28px 88px; position: relative; }
+.venues-cta-inner { max-width: 1240px; margin: 0 auto; }
+.venues-cta-head { text-align: center; max-width: 640px; margin: 0 auto 36px; }
+.venues-cta-head .eyebrow {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.18em; color: var(--ink-2); text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.venues-cta-head h2 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(28px, 3.6vw, 42px); letter-spacing: -0.02em;
+  line-height: 1.05; color: var(--ink); margin: 0 0 14px;
+}
+.venues-cta-head h2 em { font-style: normal; color: var(--lime-deep); }
+.venues-cta-head .lede {
+  font-size: 15.5px; color: var(--ink-2); line-height: 1.5; margin: 0;
+}
+.venues-cta-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+.venue-pill {
+  display: flex; flex-direction: column; gap: 10px;
+  padding: 22px 22px;
+  background: rgba(30, 30, 36, 0.18);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: border-color 220ms, transform 220ms, background 220ms;
+}
+.venue-pill:hover {
+  border-color: var(--lime); transform: translateY(-4px);
+  background: rgba(30, 30, 36, 0.40);
+}
+.venue-pill .pill-eyebrow {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lime); font-weight: 700;
+}
+.venue-pill .pill-title {
+  font-family: var(--font-display); font-weight: 600; font-size: 15.5px;
+  color: var(--ink); line-height: 1.25;
+}
+@media (max-width: 1100px) {
+  .venues-cta-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px) {
+  .venues-cta { padding: 56px 18px 72px; }
+  .venues-cta-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 460px) {
+  .venues-cta-grid { grid-template-columns: 1fr; }
+}
+
 </style>
 </head>
 <body>
@@ -3691,6 +3747,44 @@ footer.foot {
         <span class="card-meta">TEAM</span>
         <span class="card-title">Why restaurant staff don't upsell.</span>
         <span class="card-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+      <a class="playbook-card" href="/learn/foodpanda-vs-grabfood-malaysia.html">
+        <span class="card-meta">DISTRIBUTION</span>
+        <span class="card-title">Foodpanda vs GrabFood: which one for you.</span>
+        <span class="card-arrow" aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── VENUES CTA (5 verticals) ─── -->
+<section class="venues-cta" id="venues-teaser">
+  <div class="venues-cta-inner reveal">
+    <div class="venues-cta-head">
+      <span class="eyebrow">BY VENUE TYPE</span>
+      <h2>The page tuned to <em>your venue.</em></h2>
+      <p class="lede">Five Malaysian F&amp;B verticals. Same product, different angle on what matters in yours.</p>
+    </div>
+    <div class="venues-cta-grid">
+      <a class="venue-pill" href="/for-kopitiams.html">
+        <span class="pill-eyebrow">FOR KOPITIAMS</span>
+        <span class="pill-title">The waiter who never forgets the order.</span>
+      </a>
+      <a class="venue-pill" href="/for-cafes.html">
+        <span class="pill-eyebrow">FOR CAFES</span>
+        <span class="pill-title">Never forgets the specials.</span>
+      </a>
+      <a class="venue-pill" href="/for-bubble-tea-shops.html">
+        <span class="pill-eyebrow">FOR BUBBLE TEA</span>
+        <span class="pill-title">Modifier matrix, solved.</span>
+      </a>
+      <a class="venue-pill" href="/for-restaurants.html">
+        <span class="pill-eyebrow">FOR RESTAURANTS</span>
+        <span class="pill-title">Compress table turns without rushing guests.</span>
+      </a>
+      <a class="venue-pill" href="/for-cloud-kitchens.html">
+        <span class="pill-eyebrow">FOR CLOUD KITCHENS</span>
+        <span class="pill-title">One kitchen, many brands, one menu layer.</span>
       </a>
     </div>
   </div>
