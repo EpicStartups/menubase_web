@@ -2119,6 +2119,151 @@ footer.foot {
 
 /* ──────────────── COMPARISON TABLE ──────────────── */
 .compare-block { padding: 96px 28px; max-width: 1320px; margin: 0 auto; }
+
+/* ─── ARCHITECTURE STACK (replaces the row-by-row compare table) ─── */
+.arch-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 6px;
+  max-width: 760px;
+  margin: 56px auto 0;
+}
+.arch-layer {
+  position: relative;
+  padding: 28px 32px;
+  background: rgba(30, 30, 36, 0.32);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 220ms, transform 220ms cubic-bezier(.16,1,.3,1);
+}
+.arch-layer:hover { border-color: var(--lime-deep); transform: translateY(-2px); }
+.arch-layer.arch-menubase {
+  background: rgba(188, 241, 37, 0.06);
+  border-color: var(--lime);
+  box-shadow:
+    0 0 0 4px rgba(188, 241, 37, 0.08),
+    0 0 36px rgba(188, 241, 37, 0.18);
+}
+.arch-layer-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.arch-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--grey);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.arch-menubase .arch-num { background: rgba(188, 241, 37, 0.14); color: var(--lime); }
+.arch-role {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--ink-2);
+  text-transform: uppercase;
+}
+.arch-menubase .arch-role { color: var(--lime); }
+.arch-role em {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--grey);
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+.arch-menubase .arch-role em { color: rgba(188, 241, 37, 0.7); }
+.arch-line {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0;
+}
+.arch-menubase .arch-line { font-size: 21px; }
+.arch-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+.arch-tags span {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--lime);
+  background: rgba(188, 241, 37, 0.12);
+  border: 1px solid rgba(188, 241, 37, 0.30);
+  padding: 4px 9px;
+  border-radius: 999px;
+}
+.arch-flow {
+  width: 24px;
+  height: 36px;
+  margin: 0 auto;
+  color: var(--lime);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.arch-flow svg { width: 100%; height: 100%; animation: arch-flow-pulse 2.2s ease-in-out infinite; }
+@keyframes arch-flow-pulse {
+  0%, 100% { opacity: 0.55; transform: translateY(0); }
+  50%      { opacity: 1;    transform: translateY(3px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .arch-flow svg { animation: none; opacity: 0.85; }
+}
+.arch-summary {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 22px 28px;
+  margin-top: 14px;
+  border-top: 1px dashed rgba(188, 241, 37, 0.25);
+  flex-wrap: wrap;
+}
+.arch-summary-k {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--lime);
+  text-transform: uppercase;
+  flex: 0 0 auto;
+}
+.arch-summary-v {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+@media (max-width: 700px) {
+  .arch-layer { padding: 22px 22px; }
+  .arch-line { font-size: 17px; }
+  .arch-menubase .arch-line { font-size: 18px; }
+  .arch-summary-v { font-size: 15.5px; }
+  .arch-tags span { font-size: 9.5px; padding: 3px 8px; }
+}
+@media (max-width: 640px) {
+  .arch-layer { -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
 .compare-card {
   background: rgba(30, 30, 36, 0.22);
   -webkit-backdrop-filter: blur(12px);
@@ -2971,61 +3116,51 @@ footer.foot {
     <h2>We're not a POS. <em>That's the point.</em></h2>
     <p class="lede">If you've been comparing us to your cash register, you've been comparing us to the wrong thing. Your POS records sales. MenuBase is the AI waiter that sits on top of it.</p>
   </div>
-  <div class="compare-card reveal">
-    <table class="compare-table">
-      <thead>
-        <tr>
-          <th>Capability</th>
-          <th class="mb-col">MenuBase<small>★</small></th>
-          <th>Your POS<small>WHATEVER YOU ALREADY USE</small></th>
-          <th>Static QR menu</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="feat"><strong>Records sales · takes payment</strong><small>The actual transaction layer</small></td>
-          <td class="mb-col"><span class="cell-tilde">via</span></td>
-          <td><span class="cell-check">✓</span></td>
-          <td><span class="cell-x">✗</span></td>
-        </tr>
-        <tr>
-          <td class="feat"><strong>Knows when to upsell</strong><small>Context-aware suggestions based on basket + time + history</small></td>
-          <td class="mb-col"><span class="cell-check">✓</span></td>
-          <td><span class="cell-x">✗</span></td>
-          <td><span class="cell-x">✗</span></td>
-        </tr>
-        <tr>
-          <td class="feat"><strong>Pushes new specials automatically</strong><small>Owner flags a dish at 9am, it appears on every menu by 9:01</small></td>
-          <td class="mb-col"><span class="cell-check">✓</span></td>
-          <td><span class="cell-x">✗</span></td>
-          <td><span class="cell-x">✗</span></td>
-        </tr>
-        <tr>
-          <td class="feat"><strong>Adapts menu by time · stock · demand</strong><small>Breakfast hides at 11am. Sold-out items vanish live</small></td>
-          <td class="mb-col"><span class="cell-check">✓</span></td>
-          <td><span class="cell-x">✗</span></td>
-          <td><span class="cell-x">✗</span></td>
-        </tr>
-        <tr>
-          <td class="feat"><strong>Speaks every language your customer does</strong><small>EN · BM · ZH · TA + more on request</small></td>
-          <td class="mb-col"><span class="cell-check">✓</span></td>
-          <td><span class="cell-x">✗</span></td>
-          <td><span class="cell-tilde">~</span></td>
-        </tr>
-        <tr>
-          <td class="feat"><strong>Requires you to replace your POS</strong><small>The painful integration project no one wants</small></td>
-          <td class="mb-col"><strong style="color:var(--lime-deep);font-family:var(--font-mono);">NO</strong></td>
-          <td><span class="cell-x">✗</span><div class="cell-note">they ARE the POS</div></td>
-          <td><strong style="color:var(--grey);font-family:var(--font-mono);">no</strong></td>
-        </tr>
-        <tr>
-          <td class="feat"><strong>Installation time</strong><small>How long until your first dollar of uplift</small></td>
-          <td class="mb-col"><strong style="font-family:var(--font-mono);">Same day</strong></td>
-          <td><span style="font-family:var(--font-mono);color:var(--ink-2);font-weight:600;">Weeks</span></td>
-          <td><span style="font-family:var(--font-mono);color:var(--grey);font-weight:600;">Days</span></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="arch-stack reveal" aria-label="How MenuBase sits in your existing stack">
+    <div class="arch-layer arch-customer">
+      <div class="arch-layer-head">
+        <span class="arch-num">01</span>
+        <span class="arch-role">YOUR CUSTOMER</span>
+      </div>
+      <p class="arch-line">Scans the QR. Sees the menu. Taps to add what MenuBase suggests.</p>
+    </div>
+    <div class="arch-flow" aria-hidden="true">
+      <svg viewBox="0 0 24 40" xmlns="http://www.w3.org/2000/svg">
+        <line x1="12" y1="2" x2="12" y2="34" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <polyline points="6,28 12,36 18,28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="arch-layer arch-menubase">
+      <div class="arch-layer-head">
+        <span class="arch-num">02</span>
+        <span class="arch-role">MENUBASE <em>(this is the new layer)</em></span>
+      </div>
+      <p class="arch-line">Reads the basket. Picks the right add-on. Translates the menu. Hides breakfast at 11am.</p>
+      <div class="arch-tags">
+        <span>SMART UPSELL</span>
+        <span>MULTILINGUAL</span>
+        <span>DAYPART</span>
+        <span>STOCK</span>
+        <span>HAPPY HOUR</span>
+      </div>
+    </div>
+    <div class="arch-flow" aria-hidden="true">
+      <svg viewBox="0 0 24 40" xmlns="http://www.w3.org/2000/svg">
+        <line x1="12" y1="2" x2="12" y2="34" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 4"/>
+        <polyline points="6,28 12,36 18,28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="arch-layer arch-pos">
+      <div class="arch-layer-head">
+        <span class="arch-num">03</span>
+        <span class="arch-role">YOUR EXISTING POS <em>(unchanged)</em></span>
+      </div>
+      <p class="arch-line">Records the sale. Takes the payment. Same workflow your team uses today.</p>
+    </div>
+    <div class="arch-summary">
+      <span class="arch-summary-k">Net</span>
+      <span class="arch-summary-v">You add a revenue layer. You don't replace anything underneath.</span>
+    </div>
   </div>
 </section>
 
