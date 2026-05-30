@@ -630,4 +630,92 @@
     <xhtml:link rel="alternate" hreflang="ms" href="https://menubase.io/ms/learn/restaurant-tech-stack-malaysia-2026.html"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/restaurant-tech-stack-malaysia-2026.html"/>
   </url>
+  <url>
+    <loc>https://menubase.io/cities/melaka.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/cities/melaka.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/cities/melaka.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/cities/putrajaya.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/cities/putrajaya.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/cities/putrajaya.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/cities/cyberjaya.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/cities/cyberjaya.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/cities/cyberjaya.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/cities/seremban.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/cities/seremban.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/cities/seremban.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/cities/kuantan.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/cities/kuantan.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/cities/kuantan.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/use-cases/catering-event-fb.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/catering-event-fb.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/catering-event-fb.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/use-cases/bistro-casual-fine-dining.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/bistro-casual-fine-dining.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/bistro-casual-fine-dining.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/use-cases/mamak-24-hour.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/mamak-24-hour.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/mamak-24-hour.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/use-cases/drive-thru-pickup.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/drive-thru-pickup.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/drive-thru-pickup.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/use-cases/corporate-office-cafe.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/corporate-office-cafe.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/corporate-office-cafe.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/case-studies/</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/case-studies/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/case-studies/"/>
+  </url>
 </urlset>

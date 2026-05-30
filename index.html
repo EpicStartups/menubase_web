@@ -2427,7 +2427,9 @@ footer.foot {
   /* Hero v2 elements need a soft cap on mobile so long live text wraps cleanly */
   .status { max-width: 100%; }
   .greet { font-size: 13px; }
-  .leak { font-size: 11.5px; align-items: flex-start; }
+  .leak { font-size: 11px; align-items: flex-start; opacity: 0.72; margin-top: 8px; }
+  /* On mobile, the leak counter feels manipulative if it's between hero and CTAs.
+     Order in source = CTAs first then leak. Keep the leak visible but dimmer + smaller. */
   .col-l .sub { font-size: 15px; max-width: 100%; }
   /* Comparison table - stack vertically on mobile, no horizontal scroll.
      The base .compare-card and .compare-table rules live later in the
@@ -4199,9 +4201,9 @@ footer.foot {
 <!-- ─── TESTIMONIALS ─── -->
 <section class="testi-block" id="testimonials">
   <div class="section-head center reveal has-bg-scrim">
-    <span class="eyebrow">FROM OUR DISCOVERY INTERVIEWS</span>
+    <span class="eyebrow">FINDINGS FROM 100+ OPERATOR INTERVIEWS</span>
     <h2>What operators kept <em>telling us.</em></h2>
-    <p class="lede">We sat down with KL cafe, kopitiam and mamak operators. Same three problems every time.</p>
+    <p class="lede">We sat down with 100+ KL cafe, kopitiam and mamak operators across Klang Valley and Penang. The same three patterns came up every time.</p>
   </div>
   <div class="testi-carousel reveal" data-carousel data-autoplay="6000">
     <button class="rc-arrow rc-prev" type="button" aria-label="Previous quote">&lsaquo;</button>
