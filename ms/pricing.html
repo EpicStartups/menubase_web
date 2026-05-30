@@ -44,7 +44,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800;900&amp;family=Geist:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="/learn/learn.css?v=20260530langpill"/>
+<link rel="stylesheet" href="/learn/learn.css?v=20260530uifix"/>
 
 <style>
   .pricing-hero { max-width: 1100px; margin: 0 auto; padding: 80px 28px 40px; text-align: left; }
@@ -115,11 +115,7 @@
 <div class="top-ribbon">
   <div class="top-ribbon-inner">
     <a href="/ms/" class="brand" aria-label="MenuBase laman utama"><img class="brand-lockup" src="/menubase-logo-dark.png" alt="MenuBase" width="188" height="34" fetchpriority="high" decoding="async"/></a>
-    <nav class="lang-pill" aria-label="Bahasa">
-      <a href="/pricing.html" lang="en" hreflang="en">EN</a>
-      <a href="/ms/pricing.html" class="active" lang="ms" hreflang="ms">BM</a>
-      <a href="/zh/pricing.html" lang="zh-Hans" hreflang="zh-Hans">&#20013;</a>
-    </nav>
+    <div class="lang-switch" tabindex="0" role="button" aria-label="Language">BM<div class="lang-dd"><a href="/pricing.html" hreflang="en">EN</a><a href="/zh/pricing.html" hreflang="zh-Hans">&#20013;</a></div></div>
     <a class="top-ribbon-login" href="https://app.menubase.io/" target="_blank" rel="noopener">Log masuk <span class="arr" aria-hidden="true">&rarr;</span></a>
   </div>
 </div>

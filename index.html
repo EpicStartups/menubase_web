@@ -676,45 +676,75 @@ nav.top { z-index: 50; }
 .top-ribbon-login .arr { transition: transform 150ms; }
 .top-ribbon-login:hover .arr { transform: translateX(2px); }
 
-/* ─── LANGUAGE PILL (minimal: 3 tiny labels in the top ribbon) ─── */
-.lang-pill {
+/* ─── LANGUAGE TOGGLE (single pill, dropdown reveal) ─── */
+.lang-switch {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0;
   margin-left: auto;
   margin-right: 10px;
-  background: rgba(0,0,0,0.04);
-  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.12);
   border-radius: 999px;
-  padding: 2px;
-}
-.lang-pill a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 28px;
-  height: 22px;
-  padding: 0 8px;
+  padding: 5px 11px 5px 14px;
+  cursor: pointer;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11.5px;
   letter-spacing: 0.06em;
-  color: var(--ink-2);
-  text-decoration: none;
-  border-radius: 999px;
-  transition: color 180ms, background 180ms;
-  font-weight: 600;
+  font-weight: 700;
+  color: var(--ink);
+  user-select: none;
+  outline: none;
 }
-.lang-pill a:hover { color: var(--ink); }
-.lang-pill a.active {
+.lang-switch::after {
+  content: '';
+  display: inline-block;
+  width: 0; height: 0;
+  margin-left: 7px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid var(--ink);
+  transition: transform 180ms;
+}
+.lang-switch:hover, .lang-switch:focus-within { background: rgba(0,0,0,0.10); }
+.lang-switch:hover::after, .lang-switch:focus-within::after { transform: rotate(180deg); }
+.lang-switch .lang-dd {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 4px;
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+  min-width: 84px;
+  z-index: 100;
+}
+.lang-switch:hover .lang-dd,
+.lang-switch:focus-within .lang-dd { display: flex; }
+.lang-switch .lang-dd a {
+  padding: 9px 14px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: left;
+  transition: background 150ms, color 150ms;
+}
+.lang-switch .lang-dd a:hover {
   background: var(--lime);
   color: #0A0A0C;
-  font-weight: 700;
 }
-/* When the pill is present, the login button no longer needs auto-margin */
-.top-ribbon-inner .lang-pill + .top-ribbon-login { margin-left: 0; }
+.top-ribbon-inner .lang-switch + .top-ribbon-login { margin-left: 0; }
 @media (max-width: 560px) {
-  .lang-pill { margin-right: 6px; }
-  .lang-pill a { min-width: 24px; padding: 0 6px; font-size: 9.5px; height: 20px; }
+  .lang-switch { margin-right: 6px; padding: 4px 9px 4px 11px; font-size: 11px; }
+  .lang-switch::after { margin-left: 5px; }
 }
 
 /* ─── NAV (floating bottom dock) ─── */
@@ -1952,9 +1982,9 @@ footer.foot {
   nav.top { bottom: 14px; }
   .nav-inner { padding: 4px; gap: 3px; }
   /* Tablet: tighter spacing, still horizontal */
-  .nav-links { display: flex; padding-left: 4px; gap: 0; }
-  .nav-links a { padding: 5px 7px; font-size: 11px; gap: 4px; }
-  .nav-links .nav-ico { width: 12px; height: 12px; flex: 0 0 12px; }
+  .nav-links { display: flex; padding-left: 4px; gap: 1px; }
+  .nav-links a { padding: 6px 9px; font-size: 12px; gap: 5px; }
+  .nav-links .nav-ico { width: 14px; height: 14px; flex: 0 0 14px; }
   .nav-cta .btn { padding: 8px 14px; font-size: 12.5px; }
   .nav-cta .btn.nav-wa-icon { width: 38px; height: 38px; padding: 0; }
   .nav-cta .btn.nav-wa-icon svg { width: 18px; height: 18px; }
@@ -2124,17 +2154,17 @@ footer.foot {
   .nav-links::-webkit-scrollbar { display: none; }
   .nav-links a {
     flex-direction: column;
-    gap: 2px;
-    padding: 4px 6px;
-    font-size: 8.5px;
+    gap: 3px;
+    padding: 6px 9px;
+    font-size: 10.5px;
     letter-spacing: 0.01em;
     text-align: center;
     flex: 0 0 auto;
-    min-width: 44px;
+    min-width: 52px;
     white-space: nowrap;
     scroll-snap-align: start;
   }
-  .nav-links .nav-ico { width: 15px; height: 15px; flex: 0 0 15px; opacity: 0.92; }
+  .nav-links .nav-ico { width: 18px; height: 18px; flex: 0 0 18px; opacity: 0.92; }
   .nav-cta { width: auto; margin-left: 0; flex: 0 0 auto; }
   .nav-cta .btn.nav-wa-icon { flex: 0 0 auto; width: 36px; height: 36px; padding: 0; }
   .nav-cta .btn.nav-wa-icon svg { width: 16px; height: 16px; }
@@ -3117,11 +3147,7 @@ footer.foot {
     <a href="#top" class="brand" aria-label="MenuBase">
       <img class="brand-lockup" src="img/menubase_logo_light.png" alt="MenuBase" width="220" height="40" fetchpriority="high" decoding="async"/>
     </a>
-<nav class="lang-pill" aria-label="Language">
-      <a href="/" class="active" lang="en" hreflang="en">EN</a>
-      <a href="/ms/" lang="ms" hreflang="ms">BM</a>
-      <a href="/zh/" lang="zh-Hans" hreflang="zh-Hans">&#20013;</a>
-    </nav>
+<div class="lang-switch" tabindex="0" role="button" aria-label="Language">EN<div class="lang-dd"><a href="/ms/" hreflang="ms">BM</a><a href="/zh/" hreflang="zh-Hans">&#20013;</a></div></div>
         <a class="top-ribbon-login" href="https://app.menubase.io" target="_blank" rel="noopener">
       Login <span class="arr" aria-hidden="true">→</span>
     </a>
@@ -3880,13 +3906,13 @@ footer.foot {
       <a href="/pricing.html">Pricing</a>
     </div>
     <div class="foot-col">
-      <h5>By venue type</h5>
-      <a href="/for-kopitiams.html">For kopitiams</a>
-      <a href="/for-cafes.html">For cafes</a>
-      <a href="/for-bubble-tea-shops.html">For bubble tea shops</a>
-      <a href="/for-restaurants.html">For restaurants</a>
-      <a href="/for-cloud-kitchens.html">For cloud kitchens</a>
-      <a href="/for-waiters.html">For floor staff</a>
+      <h5>Venues</h5>
+      <a href="/for-kopitiams.html">Kopitiams</a>
+      <a href="/for-cafes.html">Cafes</a>
+      <a href="/for-bubble-tea-shops.html">Bubble tea</a>
+      <a href="/for-restaurants.html">Restaurants</a>
+      <a href="/for-cloud-kitchens.html">Cloud kitchens</a>
+      <a href="/for-waiters.html">Floor staff</a>
     </div>
     <div class="foot-col">
       <h5>Playbook</h5>

@@ -152,44 +152,75 @@ main, .top-ribbon, footer.foot { position: relative; z-index: 1; }
 .top-ribbon-login .arr { transition: transform 150ms; }
 .top-ribbon-login:hover .arr { transform: translateX(2px); }
 
-/* ─── LANGUAGE PILL (minimal: 3 tiny labels in the top ribbon) ─── */
-.lang-pill {
+/* ─── LANGUAGE TOGGLE (single pill, dropdown reveal) ─── */
+.lang-switch {
+  position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0;
   margin-left: auto;
   margin-right: 10px;
-  background: rgba(0,0,0,0.04);
-  border: 1px solid rgba(0,0,0,0.10);
+  background: rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.12);
   border-radius: 999px;
-  padding: 2px;
-}
-.lang-pill a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 28px;
-  height: 22px;
-  padding: 0 8px;
+  padding: 5px 11px 5px 14px;
+  cursor: pointer;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11.5px;
   letter-spacing: 0.06em;
-  color: var(--ink-2);
-  text-decoration: none;
-  border-radius: 999px;
-  transition: color 180ms, background 180ms;
-  font-weight: 600;
+  font-weight: 700;
+  color: var(--ink);
+  user-select: none;
+  outline: none;
 }
-.lang-pill a:hover { color: var(--ink); }
-.lang-pill a.active {
+.lang-switch::after {
+  content: '';
+  display: inline-block;
+  width: 0; height: 0;
+  margin-left: 7px;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid var(--ink);
+  transition: transform 180ms;
+}
+.lang-switch:hover, .lang-switch:focus-within { background: rgba(0,0,0,0.10); }
+.lang-switch:hover::after, .lang-switch:focus-within::after { transform: rotate(180deg); }
+.lang-switch .lang-dd {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 4px;
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+  min-width: 84px;
+  z-index: 100;
+}
+.lang-switch:hover .lang-dd,
+.lang-switch:focus-within .lang-dd { display: flex; }
+.lang-switch .lang-dd a {
+  padding: 9px 14px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: left;
+  transition: background 150ms, color 150ms;
+}
+.lang-switch .lang-dd a:hover {
   background: var(--lime);
   color: #0A0A0C;
-  font-weight: 700;
 }
-.top-ribbon-inner .lang-pill + .top-ribbon-login { margin-left: 0; }
+.top-ribbon-inner .lang-switch + .top-ribbon-login { margin-left: 0; }
 @media (max-width: 560px) {
-  .lang-pill { margin-right: 6px; }
-  .lang-pill a { min-width: 24px; padding: 0 6px; font-size: 9.5px; height: 20px; }
+  .lang-switch { margin-right: 6px; padding: 4px 9px 4px 11px; font-size: 11px; }
+  .lang-switch::after { margin-left: 5px; }
 }
 
 /* ─── FLOATING BOTTOM DOCK (sticky at viewport bottom) ─── */
@@ -827,14 +858,14 @@ footer.foot {
 @media (max-width: 900px) {
   .foot-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
   .foot-col:nth-child(2) { grid-column: auto; }
-  /* Tablet-tier nav compression to fit 9 nav links + WhatsApp icon */
+  /* Tablet-tier nav: slightly tighter but still readable */
   body nav.top { bottom: 14px; }
-  nav.top .nav-inner { padding: 4px; gap: 3px; }
-  nav.top .nav-links { gap: 0; padding-left: 4px; }
-  nav.top .nav-links a { padding: 5px 7px; font-size: 11px; gap: 4px; }
-  nav.top .nav-links .nav-ico { width: 12px; height: 12px; flex: 0 0 12px; }
-  nav.top .nav-cta .btn.nav-wa-icon { width: 34px; height: 34px; }
-  nav.top .nav-cta .btn.nav-wa-icon svg { width: 16px; height: 16px; }
+  nav.top .nav-inner { padding: 5px; gap: 4px; }
+  nav.top .nav-links { gap: 1px; padding-left: 4px; }
+  nav.top .nav-links a { padding: 6px 9px; font-size: 12px; gap: 5px; }
+  nav.top .nav-links .nav-ico { width: 14px; height: 14px; flex: 0 0 14px; }
+  nav.top .nav-cta .btn.nav-wa-icon { width: 36px; height: 36px; }
+  nav.top .nav-cta .btn.nav-wa-icon svg { width: 17px; height: 17px; }
 }
 @media (max-width: 720px) {
   .top-ribbon-inner { padding: 12px 18px; }
@@ -874,20 +905,20 @@ footer.foot {
   .nav-links::-webkit-scrollbar { display: none; }
   .nav-links a {
     flex-direction: column;
-    gap: 2px;
-    padding: 4px 6px;
-    font-size: 8.5px;
+    gap: 3px;
+    padding: 6px 9px;
+    font-size: 10.5px;
     letter-spacing: 0.01em;
     text-align: center;
     flex: 0 0 auto;
-    min-width: 44px;
+    min-width: 52px;
     white-space: nowrap;
     scroll-snap-align: start;
   }
   /* Subtle current state on mobile - no full lime pill */
   .nav-links a.current { background: rgba(188,241,37,0.10); color: var(--lime); border-radius: 12px; }
   .nav-links a.current .nav-ico { color: var(--lime); }
-  .nav-links .nav-ico { width: 15px; height: 15px; flex: 0 0 15px; opacity: 0.92; }
+  .nav-links .nav-ico { width: 18px; height: 18px; flex: 0 0 18px; opacity: 0.92; }
   .nav-cta { width: auto; margin-left: 0; flex: 0 0 auto; }
   .nav-cta .btn.nav-wa-icon { flex: 0 0 auto; width: 36px; height: 36px; padding: 0; }
   .nav-cta .btn.nav-wa-icon svg { width: 16px; height: 16px; }
