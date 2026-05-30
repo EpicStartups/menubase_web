@@ -1,11 +1,12 @@
 # MenuBase - https://menubase.io/
 # Open to all crawlers, including AI search and language model agents.
+# LLM-friendly context files live at /llms.txt and /llms-full.txt
 
 User-agent: *
 Allow: /
 Disallow: /_archive/
 
-# Specific allows for AI search engines (let them index everything)
+# Specific allows for AI search engines and LLM crawlers
 User-agent: GPTBot
 Allow: /
 
@@ -21,16 +22,64 @@ Allow: /
 User-agent: Claude-Web
 Allow: /
 
+User-agent: anthropic-ai
+Allow: /
+
 User-agent: PerplexityBot
 Allow: /
 
+User-agent: Perplexity-User
+Allow: /
+
 User-agent: Google-Extended
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: Applebot
 Allow: /
 
 User-agent: Applebot-Extended
 Allow: /
 
 User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: AI2Bot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: PhindBot
+Allow: /
+
+User-agent: Diffbot
 Allow: /
 
 Sitemap: https://menubase.io/sitemap.xml
