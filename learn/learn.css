@@ -146,11 +146,10 @@ main, .top-ribbon, nav.top, footer.foot { position: relative; z-index: 1; }
 .top-ribbon-login:hover .arr { transform: translateX(2px); }
 
 /* ─── FLOATING BOTTOM DOCK (exact mirror of main site) ─── */
+/* Bottom nav: scrolls with the page (was fixed, now inline) */
 nav.top {
-  position: fixed;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: static;
+  margin: 22px auto 0;
   z-index: 50;
   background: rgba(26,26,26,0.92);
   backdrop-filter: blur(20px) saturate(180%);
@@ -158,7 +157,8 @@ nav.top {
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 999px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.25), 0 6px 16px rgba(0,0,0,0.15);
-  max-width: calc(100vw - 24px);
+  max-width: fit-content;
+  width: max-content;
 }
 .nav-inner {
   padding: 4px;
@@ -220,7 +220,8 @@ nav.top {
 }
 .eyebrow::before {
   content: ''; width: 8px; height: 8px;
-  background: var(--lime-deep);
+  background: var(--lime);
+  box-shadow: 0 0 10px rgba(188,241,37,0.45);
   flex-shrink: 0;
 }
 
@@ -239,7 +240,7 @@ nav.top {
   margin: 0 0 24px;
   max-width: 18ch;
 }
-.hub-intro h1 em { font-style: normal; color: var(--lime-deep); }
+.hub-intro h1 em { font-style: normal; color: var(--lime); }
 .hub-intro p {
   font-size: 18px;
   color: var(--grey);
@@ -259,19 +260,41 @@ nav.top {
   background: var(--bg-elev);
   border: 1px solid var(--line);
   border-radius: var(--r-md);
-  padding: 32px 28px;
+  padding: 32px 28px 30px;
   display: flex; flex-direction: column;
   transition: border-color 250ms ease, transform 250ms ease, box-shadow 250ms ease;
+  position: relative;
 }
-.article-card:hover { border-color: var(--lime-deep); transform: translateY(-2px); }
+/* Menu-card style: lime square corner mark, top-left, like a chef's stamp */
+.article-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 14px; height: 14px;
+  background: var(--lime);
+  transform: translate(-1px, -1px);
+  box-shadow: 0 0 14px rgba(188,241,37,0.55);
+}
+.article-card:hover { border-color: var(--lime); transform: translateY(-2px); box-shadow: 0 12px 32px -16px rgba(188,241,37,0.35); }
 .article-card .card-eyebrow {
   font-family: var(--font-mono);
   font-size: 10.5px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--lime-deep);
+  color: var(--lime);
   font-weight: 700;
   margin-bottom: 14px;
+  text-shadow: 0 0 12px rgba(188,241,37,0.20);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+/* Dotted leader line like a tasting menu */
+.article-card .card-eyebrow::after {
+  content: '';
+  flex: 1;
+  border-top: 1.5px dotted rgba(188,241,37,0.45);
+  margin-top: 2px;
 }
 .article-card h2 {
   font-family: var(--font-display);
@@ -372,7 +395,7 @@ nav.top {
   color: var(--grey);
   margin-bottom: 28px;
 }
-.crumb a { color: var(--lime-deep); font-weight: 600; }
+.crumb a { color: var(--lime); font-weight: 600; }
 .article-wrap h1 {
   font-family: var(--font-display);
   font-weight: 700;
@@ -438,7 +461,7 @@ nav.top {
 .pullquote {
   margin: 36px 0;
   padding: 24px 28px;
-  border-left: 4px solid var(--lime-deep);
+  border-left: 4px solid var(--lime);
   background: var(--bg-soft);
   font-family: var(--font-display);
   font-weight: 700;
@@ -446,6 +469,7 @@ nav.top {
   line-height: 1.3;
   letter-spacing: -0.015em;
   color: var(--ink);
+  box-shadow: -4px 0 16px -8px rgba(188,241,37,0.40);
 }
 .formula {
   background: var(--bg-soft);
@@ -459,7 +483,7 @@ nav.top {
 }
 .tactic-test {
   background: var(--lime-soft);
-  border-left: 4px solid var(--lime-deep);
+  border-left: 4px solid var(--lime);
   padding: 14px 18px;
   margin: 14px 0 22px;
   font-size: 15px;
@@ -558,8 +582,9 @@ footer.foot {
   .top-ribbon-login { padding: 8px 14px; font-size: 12.5px; }
 
   nav.top {
-    bottom: 12px; left: 10px; right: 10px;
-    transform: none; max-width: none;
+    margin: 18px 10px 0;
+    width: auto;
+    max-width: none;
     box-shadow: 0 20px 50px rgba(0,0,0,0.4),
                 0 6px 16px rgba(0,0,0,0.25),
                 0 0 0 1px rgba(188,241,37,0.14),

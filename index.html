@@ -701,11 +701,10 @@ nav.top { z-index: 50; }
 
 /* ─── NAV (floating bottom dock) ─── */
 
+/* Bottom nav: scrolls with the page (was fixed, now inline) */
 nav.top {
-  position: fixed;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
+  position: static;
+  margin: 22px auto 0;
   z-index: 50;
   background: rgba(26,26,26,0.92);
   backdrop-filter: blur(20px) saturate(180%);
@@ -713,7 +712,8 @@ nav.top {
   border: 1px solid rgba(255,255,255,0.08);
   border-radius: 999px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.25), 0 6px 16px rgba(0,0,0,0.15);
-  max-width: calc(100vw - 24px);
+  max-width: fit-content;
+  width: max-content;
 }
 .nav-inner {
   max-width: none;
@@ -766,7 +766,7 @@ nav.top {
 .nav-cta .btn-dark:hover { background: var(--lime-deep); border-color: var(--lime-deep); }
 
 /* Page body padding so floating nav doesn't overlap last content */
-body { padding-bottom: 64px; }
+/* nav.top now scrolls inline, body padding hack removed */
 
 /* ─── HERO (asymmetric 2-col: text + phone) ─── */
 
@@ -1916,7 +1916,7 @@ footer.foot {
 
 /* Tablet portrait */
 @media (max-width: 900px) {
-  nav.top { bottom: 14px; }
+  nav.top { margin: 18px 14px 0; }
   .nav-inner { padding: 5px; gap: 4px; }
   /* Keep nav-links on tablet, just compress - the dock has room */
   .nav-links { display: flex; padding-left: 6px; gap: 0; }
@@ -2054,10 +2054,7 @@ footer.foot {
   .cell-x, .cell-tilde { opacity: 0.55; }
   .cell-note { margin-top: 0; margin-left: 6px; display: inline; font-size: 10.5px; letter-spacing: 0.08em; }
   nav.top {
-    bottom: 14px;
-    left: 10px;
-    right: 10px;
-    transform: none;
+    margin: 18px 10px 0;
     width: auto;
     max-width: none;
     box-shadow: 0 20px 50px rgba(0,0,0,0.4),
