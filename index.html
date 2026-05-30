@@ -764,17 +764,20 @@ body { padding-bottom: 84px; }
   isolation: isolate;
 }
 .col-l { position: relative; z-index: 2; }
-/* legibility scrim - radial fade to keep text on cream while bg drifts behind */
+/* legibility card - rounded translucent panel with backdrop blur so the
+   text reads cleanly while the bg drifts behind */
 .col-l::before {
   content: '';
   position: absolute;
-  inset: -30px -44px;
+  inset: -28px -36px;
   z-index: -1;
   pointer-events: none;
-  background: radial-gradient(125% 130% at 32% 48%,
-    var(--bg) 46%,
-    color-mix(in oklab, var(--bg) 55%, transparent) 72%,
-    transparent 100%);
+  background: rgba(13, 13, 16, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  -webkit-backdrop-filter: blur(14px);
+          backdrop-filter: blur(14px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
 }
 
 /* live status chip - reads the room */
@@ -977,6 +980,7 @@ body { padding-bottom: 84px; }
 }
 @media (max-width: 560px) {
   .hero { padding: 48px 22px 44px; gap: 26px; }
+  .col-l::before { inset: -16px -18px; border-radius: 20px; }
   .col-l h1 { font-size: clamp(32px, 10vw, 52px); letter-spacing: -0.035em; }
   .status { font-size: 11px; gap: 8px; padding: 7px 12px; }
   .greet { font-size: 13px; }
@@ -1423,42 +1427,42 @@ section.block.tight { padding: 80px 28px; }
   -webkit-backdrop-filter: blur(6px);
           backdrop-filter: blur(6px);
   color: #F2F2EE;
-  padding: 120px 28px;
+  padding: 72px 28px;
   position: relative;
 }
 .demo-inner {
   max-width: 1320px; margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  gap: 80px;
+  gap: 56px;
   align-items: center;
 }
 .demo-side { color: #F2F2EE; }
-.demo-side .eyebrow { color: rgba(242,242,238,0.65); }
+.demo-side .eyebrow { color: rgba(242,242,238,0.65); margin-bottom: 12px; }
 .demo-side .eyebrow::before { background: var(--lime); }
 .demo-side h2 {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: clamp(36px, 5vw, 64px);
-  line-height: 0.98;
-  letter-spacing: -0.035em;
-  margin: 18px 0 22px;
+  font-size: clamp(28px, 3.6vw, 44px);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin: 12px 0 14px;
   color: #F2F2EE;
 }
 .demo-side h2 em { font-style: normal; color: var(--lime); }
 .demo-side .lede {
-  font-size: 17px;
+  font-size: 15.5px;
   color: rgba(255,255,255,0.7);
-  margin-bottom: 32px;
+  margin-bottom: 22px;
   max-width: 480px;
-  line-height: 1.55;
+  line-height: 1.5;
 }
 
 .demo-chips {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-bottom: 28px;
+  gap: 10px;
+  margin-bottom: 20px;
   max-width: 560px;
 }
 .chip-group {
@@ -1515,28 +1519,28 @@ section.block.tight { padding: 80px 28px; }
   -webkit-backdrop-filter: blur(6px);
           backdrop-filter: blur(6px);
   border-left: 3px solid var(--lime);
-  border-radius: 0 14px 14px 0;
-  padding: 22px 26px;
+  border-radius: 0 12px 12px 0;
+  padding: 16px 20px;
   max-width: 540px;
   transition: opacity 200ms;
 }
 .demo-annot .h {
   font-family: var(--font-mono);
-  font-size: 11px; letter-spacing: 0.14em;
+  font-size: 10.5px; letter-spacing: 0.14em;
   font-weight: 700;
   color: var(--lime);
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 .demo-annot .t {
   font-family: var(--font-display);
-  font-weight: 600; font-size: 18px;
+  font-weight: 600; font-size: 16px;
   letter-spacing: -0.015em;
   color: #F2F2EE;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 .demo-annot .d {
-  font-size: 14.5px; color: rgba(255,255,255,0.65);
-  line-height: 1.55;
+  font-size: 13.5px; color: rgba(255,255,255,0.65);
+  line-height: 1.5;
 }
 
 .demo-stage {
@@ -2740,11 +2744,11 @@ footer.foot {
 
 /* ──────────────── DARK MANIFESTO with LIME SPOTLIGHT ──────────────── */
 .manifesto {
-  background:
-    radial-gradient(ellipse 1200px 700px at 50% 50%, rgba(188,241,37,0.22) 0%, transparent 62%),
-    var(--ink-deep);
-  color: #F2F2EE;
-  padding: 140px 28px;
+  /* Solid lime billboard with literal dark text. High-contrast, brand-bold,
+     readable across viewports and lighting conditions. */
+  background: var(--lime);
+  color: #0A0A0C;
+  padding: 110px 28px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -2754,12 +2758,12 @@ footer.foot {
   content: '';
   position: absolute;
   left: 0; right: 0;
-  height: 16px;
+  height: 14px;
   background-image:
-    linear-gradient(90deg, var(--lime) 50%, transparent 50%),
-    linear-gradient(90deg, transparent 50%, var(--lime) 50%);
-  background-size: 32px 16px, 32px 16px;
-  background-position: 0 0, 16px 8px;
+    linear-gradient(90deg, #1A1A1A 50%, transparent 50%),
+    linear-gradient(90deg, transparent 50%, #1A1A1A 50%);
+  background-size: 28px 14px, 28px 14px;
+  background-position: 0 0, 14px 7px;
   background-repeat: repeat-x;
   z-index: 3;
 }
@@ -2777,53 +2781,53 @@ footer.foot {
   letter-spacing: 0.18em;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--lime);
-  background: rgba(188, 241, 37, 0.10);
-  border: 1px solid rgba(188, 241, 37, 0.30);
+  color: #1A1A1A;
+  background: rgba(0, 0, 0, 0.10);
+  border: 1px solid rgba(0, 0, 0, 0.25);
   padding: 6px 14px;
   display: inline-block;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
 }
 .manifesto h2 {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(46px, 7.8vw, 96px);
+  font-size: clamp(42px, 6.6vw, 84px);
   line-height: 0.98;
   letter-spacing: -0.04em;
-  color: #F2F2EE;
-  margin-bottom: 28px;
+  color: #0A0A0C;
+  margin-bottom: 24px;
 }
 .manifesto h2 em {
   font-style: normal;
-  color: #0A0A0C;
-  background: var(--lime);
+  color: var(--lime);
+  background: #0A0A0C;
   padding: 0 22px;
   display: inline-block;
   font-weight: 900;
   line-height: 1.05;
-  box-shadow: 0 0 80px rgba(188,241,37,0.55);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 .manifesto p {
-  font-size: clamp(16px, 1.8vw, 19px);
-  color: rgba(242, 242, 238, 0.75);
+  font-size: clamp(15px, 1.7vw, 18px);
+  color: rgba(10, 10, 12, 0.82);
   max-width: 640px;
-  margin: 0 auto 36px;
-  line-height: 1.6;
+  margin: 0 auto 32px;
+  line-height: 1.55;
   font-weight: 500;
 }
 .manifesto-tagline {
-  margin-top: 44px;
-  padding-top: 24px;
-  border-top: 1px dashed rgba(188, 241, 37, 0.22);
+  margin-top: 36px;
+  padding-top: 22px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.28);
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: clamp(18px, 2vw, 22px);
+  font-size: clamp(16px, 1.8vw, 20px);
   letter-spacing: -0.015em;
-  color: rgba(242, 242, 238, 0.85);
+  color: rgba(10, 10, 12, 0.88);
 }
-.manifesto-tagline strong { font-weight: 900; color: var(--lime); }
+.manifesto-tagline strong { font-weight: 900; color: #0A0A0C; }
 .manifesto-pixels { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
-.manifesto-pixels span { position: absolute; background: rgba(188, 241, 37, 0.55); }
+.manifesto-pixels span { position: absolute; background: rgba(0, 0, 0, 0.32); }
 .manifesto-pixels span:nth-child(1) { top: 14%; left: 6%;  width: 16px; height: 16px; }
 .manifesto-pixels span:nth-child(2) { top: 22%; left: 92%; width: 12px; height: 12px; }
 .manifesto-pixels span:nth-child(3) { top: 76%; left: 4%;  width: 10px; height: 10px; }
@@ -2831,34 +2835,13 @@ footer.foot {
 .manifesto-pixels span:nth-child(5) { top: 50%; left: 96%; width: 8px;  height: 8px;  }
 .manifesto-pixels span:nth-child(6) { top: 32%; left: 8%;  width: 12px; height: 12px; }
 @media (max-width: 700px) {
-  /* Mobile: ditch the dark stage + lime spotlight (the radial blew out on
-     small viewports and dragged contrast below readable). Use solid lime
-     bg with literal dark text - high contrast, brand-bold billboard. */
-  .manifesto {
-    background: var(--lime);
-    padding: 80px 20px;
-  }
-  .manifesto-eyebrow { color: #1A1A1A; background: rgba(0,0,0,0.10); border-color: rgba(0,0,0,0.25); }
-  .manifesto h2 { font-size: clamp(32px, 9vw, 46px); letter-spacing: -0.035em; color: #1A1A1A; }
-  .manifesto h2 em {
-    color: #BCF125;
-    background: #1A1A1A;
-    box-shadow: 0 6px 28px rgba(0,0,0,0.25);
-    padding: 0 14px;
-  }
-  .manifesto p { font-size: 15px; color: #1A1A1A; }
-  .manifesto-tagline {
-    font-size: 16px;
-    color: #1A1A1A;
-    border-top-color: rgba(0,0,0,0.22);
-  }
-  .manifesto-tagline strong { color: #1A1A1A; }
-  /* Barcode strips: invert so dark pieces show on lime instead of lime on dark */
-  .manifesto::before, .manifesto::after {
-    background-image:
-      linear-gradient(90deg, #1A1A1A 50%, transparent 50%),
-      linear-gradient(90deg, transparent 50%, #1A1A1A 50%);
-  }
+  /* Mobile: compress padding + scale type. Lime+dark already inherited
+     from the desktop styles above, so no color overrides needed. */
+  .manifesto { padding: 64px 20px; }
+  .manifesto h2 { font-size: clamp(30px, 9vw, 44px); letter-spacing: -0.035em; }
+  .manifesto h2 em { padding: 0 14px; }
+  .manifesto p { font-size: 14.5px; }
+  .manifesto-tagline { font-size: 15.5px; }
   .manifesto-pixels span { background: #1A1A1A; }
 }
 
