@@ -2442,6 +2442,112 @@ footer.foot {
 @media (max-width: 640px) {
   .arch-layer { -webkit-backdrop-filter: none; backdrop-filter: none; }
 }
+
+/* ─── REASSURANCE GRID (after arch stack: 'we won't kacau you') ─── */
+.reassure-grid {
+  max-width: 1100px;
+  margin: 56px auto 0;
+  padding: 48px 28px 24px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+.reassure-head { max-width: 760px; margin: 0 auto 36px; text-align: center; }
+.reassure-head h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(26px, 3.4vw, 38px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 14px 0 14px;
+}
+.reassure-head h3 em { font-style: normal; color: var(--lime); }
+.reassure-head p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  margin: 0 auto;
+  max-width: 58ch;
+}
+.reassure-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.reassure-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 24px 22px;
+  display: flex; flex-direction: column;
+  gap: 10px;
+  transition: border-color 200ms, transform 220ms, box-shadow 220ms;
+}
+.reassure-card:hover {
+  border-color: var(--lime);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px -14px rgba(188,241,37,0.32);
+}
+.reassure-card .rc-ico {
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(188,241,37,0.10);
+  border: 1px solid rgba(188,241,37,0.30);
+  border-radius: 999px;
+  color: var(--lime);
+  margin-bottom: 4px;
+}
+.reassure-card .rc-ico svg { width: 18px; height: 18px; }
+.reassure-card h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+  margin: 0;
+}
+.reassure-card p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: 0;
+}
+.reassure-foot {
+  display: flex; align-items: center; gap: 16px;
+  padding: 18px 24px;
+  background: rgba(188,241,37,0.06);
+  border: 1px dashed rgba(188,241,37,0.30);
+  border-radius: var(--r-md);
+  flex-wrap: wrap;
+}
+.rf-pill {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #1A1A1A;
+  background: var(--lime);
+  padding: 6px 12px;
+  font-weight: 700;
+  flex: 0 0 auto;
+}
+.reassure-foot span:last-child {
+  font-size: 14.5px;
+  color: var(--ink-2);
+  line-height: 1.55;
+  flex: 1 1 auto;
+  min-width: 240px;
+}
+@media (max-width: 900px) {
+  .reassure-cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .reassure-grid { padding: 36px 20px 16px; }
+  .reassure-cards { grid-template-columns: 1fr; gap: 12px; }
+  .reassure-card { padding: 20px 18px; }
+  .reassure-foot { padding: 16px 18px; flex-direction: column; align-items: flex-start; }
+}
 .compare-card {
   background: rgba(30, 30, 36, 0.22);
   -webkit-backdrop-filter: blur(12px);
@@ -3337,7 +3443,7 @@ footer.foot {
   <div class="section-head reveal has-bg-scrim">
     <span class="eyebrow">HOW WE COMPARE</span>
     <h2>We're not a POS. <em>That's the point.</em></h2>
-    <p class="lede">Your POS records sales. MenuBase is the waiter sitting on top of it. Doesn't quit. Doesn't take leave. Doesn't forget the specials.</p>
+    <p class="lede">Your POS records sales. MenuBase is the waiter sitting on top of it. Never gets distracted on a busy shift. Never forgets this week's promo. Same workflow your team already runs.</p>
   </div>
   <div class="arch-stack reveal" aria-label="How MenuBase sits in your existing stack">
     <div class="arch-layer arch-customer">
@@ -3358,10 +3464,11 @@ footer.foot {
         <span class="arch-num">02</span>
         <span class="arch-role">MENUBASE <em>(this is the new layer)</em></span>
       </div>
-      <p class="arch-line">Reads the basket. Picks the right add-on. Translates the menu. Hides breakfast at 11am.</p>
+      <p class="arch-line">Reads the basket. Surfaces the right add-on. Holds the full menu in memory. Pushes this week's promo on every relevant order.</p>
       <div class="arch-tags">
         <span>SMART UPSELL</span>
-        <span>MULTILINGUAL</span>
+        <span>MENU KNOWLEDGE</span>
+        <span>PROMO PUSH</span>
         <span>DAYPART</span>
         <span>STOCK</span>
         <span>HAPPY HOUR</span>
@@ -3383,6 +3490,49 @@ footer.foot {
     <div class="arch-summary">
       <span class="arch-summary-k">Net</span>
       <span class="arch-summary-v">Add a revenue layer. Replace nothing underneath.</span>
+    </div>
+  </div>
+
+  <!-- "What this actually means" reassurance grid -->
+  <div class="reassure-grid reveal">
+    <div class="reassure-head">
+      <span class="eyebrow">WHAT THIS ACTUALLY MEANS</span>
+      <h3>Same team. Same flow. <em>Just more revenue per check.</em></h3>
+      <p>We are not asking your team to learn a new POS, change how they ring orders, or memorise a script. We are not replacing anyone. We are not breaking the regular Sunday flow. Here is what changes, and what does not.</p>
+    </div>
+    <div class="reassure-cards">
+      <div class="reassure-card">
+        <div class="rc-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h4>No workflow change</h4>
+        <p>Your waiter rings orders the way they do today. Same POS. Same till. Same hand on the receipt printer. We add the customer-facing menu and the upsell logic. We touch nothing they touch.</p>
+      </div>
+      <div class="reassure-card">
+        <div class="rc-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h4>Training under 30 minutes</h4>
+        <p>Same-day setup. We come in with your existing menu, build the digital version, generate the QR codes, walk the team through it in a single shift. New hires onboard in under 30 minutes. No mafan, no Sunday briefings.</p>
+      </div>
+      <div class="reassure-card">
+        <div class="rc-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h4>No kacau on busy shifts</h4>
+        <p>The system handles the upsell prompt and the promo push. Your team handles the floor, the food, the regulars. On a Friday rush, nobody has to remember to mention the cheesecake. The screen already did.</p>
+      </div>
+      <div class="reassure-card">
+        <div class="rc-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h4>Revenue lift, week 1</h4>
+        <p>Most venues see a noticeable AOV lift in the first week and settle at an 8 to 14% lift by end of month one. Mostly from the add-ons your team would have wanted to push but did not get the chance to, every shift.</p>
+      </div>
+    </div>
+    <div class="reassure-foot">
+      <span class="rf-pill">FREE UNTIL WE PROVE THE LIFT</span>
+      <span>Pay only after we prove the AOV uplift on your actual menu, on your actual basket data. If we cannot show a lift, you owe nothing.</span>
     </div>
   </div>
 </section>
