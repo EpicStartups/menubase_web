@@ -80,6 +80,7 @@ WhatsApp +60175981858. Free 15-minute revenue model on the operator's actual men
 - [Pricing](https://menubase.io/pricing.html): MenuBase pricing model. Subscription priced by menu size. Four tiers: 30 menus at RM28/month, 60 menus at RM54/month, 90 menus at RM78/month, 120 menus at RM99/month. Annual saves 2 months. Beyond 120 menus or multi-outlet runs to enterprise quote. No setup fee, no per-language fee, no per-revision fee, no per-transaction commission. Monthly cancellation.
 - [Bahasa Malaysia homepage](https://menubase.io/ms/): Versi Bahasa Malaysia laman utama MenuBase. Lengkap dengan tiga fungsi teras, framing job-design, jadual harga ikut saiz menu, dan butang WhatsApp dalam BM.
 - [Mandarin Chinese homepage](https://menubase.io/zh/): MenuBase 简体中文版主页。包含三项核心功能、岗位设计框架、按菜单规模的定价表，以及中文 WhatsApp 联络。
+- [About](https://menubase.io/about.html): About MenuBase - the team, what was learned from 100+ Malaysian F&B operator discovery interviews, the three structural problems MenuBase is built around, what MenuBase deliberately does not do, the trust signals (Sdn Bhd registered, monthly cancellation, no data resale, WhatsApp number).
 - [Contact](https://menubase.io/contact-us.html)
 - [Privacy](https://menubase.io/privacy-policy.html)
 
