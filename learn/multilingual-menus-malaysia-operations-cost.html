@@ -143,12 +143,12 @@
 </head>
 <body>
 <canvas id="mb-bg" aria-hidden="true"></canvas>
-<script src="/menubase-bg.js" data-theme="dark" data-mode="ambient"></script>
+<script src="/menubase-bg.js" data-theme="dark" data-mode="ambient" defer></script>
 
 <div class="top-ribbon">
   <div class="top-ribbon-inner">
     <a href="/" class="brand" aria-label="MenuBase home">
-      <img class="brand-lockup" src="../menubase-logo-dark.png" alt="MenuBase" width="188" height="34"/>
+      <img class="brand-lockup" src="../menubase-logo-dark.png" alt="MenuBase" width="188" height="34" fetchpriority="high" decoding="async"/>
     </a>
     <a class="top-ribbon-login" href="https://app.menubase.io" target="_blank" rel="noopener">
       Login <span class="arr" aria-hidden="true">&rarr;</span>
@@ -310,7 +310,7 @@
   <div class="foot-inner">
     <div class="foot-brand">
       <a href="/" class="brand" aria-label="MenuBase home">
-        <img class="brand-lockup" src="../menubase-logo-dark.png" alt="MenuBase" width="210" height="38"/>
+        <img class="brand-lockup" src="../menubase-logo-dark.png" alt="MenuBase" width="210" height="38" loading="lazy" decoding="async"/>
       </a>
       <p>The AI waiter inside your QR menu. Built to lift revenue on every order. Speaks every language. Sits on top of any POS.</p>
     </div>
