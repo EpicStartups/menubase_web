@@ -109,10 +109,8 @@ main, .top-ribbon, footer.foot { position: relative; z-index: 1; }
   position: sticky;
   top: 0;
   z-index: 49;
-  background: rgba(255,255,255,0.40);
-  backdrop-filter: blur(22px) saturate(160%);
-  -webkit-backdrop-filter: blur(22px) saturate(160%);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: transparent;
+  border-bottom: none;
 }
 .top-ribbon-inner {
   max-width: 1320px;
@@ -123,13 +121,11 @@ main, .top-ribbon, footer.foot { position: relative; z-index: 1; }
 }
 .top-ribbon .brand { display: inline-flex; align-items: center; text-decoration: none; }
 .top-ribbon .brand .brand-lockup {
-  height: 38px;
+  height: 40px;
   width: auto;
   display: block;
-  /* No filter - the PNG has dark grey letterforms + bright lime accents
-     and the top-ribbon background is light, so the brand renders correctly
-     as authored. The previous invert+hue-rotate was corrupting the brand
-     lime (#BCF125) into a darker olive green. */
+  /* No filter - PNG renders directly on the transparent dark page bg
+     (dark grey 'Menu' reads as medium grey, lime M + 'Base' stay bright). */
 }
 .top-ribbon-login {
   margin-left: auto;
