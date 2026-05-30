@@ -395,6 +395,7 @@ body { padding-bottom: 84px; }
   .article-related .hub-grid::-webkit-scrollbar-thumb { background: rgba(188,241,37,0.45); border-radius: 6px; }
   .article-related .article-card {
     scroll-snap-align: start;
+    scroll-snap-stop: always;
     flex: 0 0 78%;
     min-width: 260px;
     max-width: 320px;
@@ -686,6 +687,9 @@ footer.foot {
   .hub-grid::-webkit-scrollbar-thumb { background: rgba(188,241,37,0.45); border-radius: 6px; }
   .article-card {
     scroll-snap-align: start;
+    /* Force the browser to stop at every card, even on a fast flick,
+       so a swipe always lands on the next card instead of skipping past. */
+    scroll-snap-stop: always;
     flex: 0 0 82%;
     min-width: 280px;
     max-width: 360px;
