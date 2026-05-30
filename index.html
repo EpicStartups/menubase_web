@@ -604,8 +604,17 @@ button { font-family: inherit; cursor: pointer; border: 0; background: none; col
 .btn:active { transform: translateY(1px); }
 .btn-dark { background: var(--ink-deep); color: var(--ink); border-color: var(--ink-deep); }
 .btn-dark:hover { background: #000; }
-.btn-lime { background: var(--lime); color: #1A1A1A; border-color: var(--lime); }
-.btn-lime:hover { background: var(--lime-deep); border-color: var(--lime-deep); }
+.btn-lime {
+  background: var(--lime); color: #1A1A1A; border-color: var(--lime);
+  transition: background 200ms, border-color 200ms, box-shadow 240ms, transform 200ms;
+  box-shadow: 0 0 0 0 rgba(188,241,37,0);
+}
+.btn-lime:hover {
+  background: var(--lime-deep); border-color: var(--lime-deep);
+  box-shadow: 0 12px 32px -10px rgba(188,241,37,0.55), 0 0 0 4px rgba(188,241,37,0.12);
+  transform: translateY(-1px);
+}
+.btn-lime:active { transform: translateY(0); }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--ink); }
 .btn-ghost:hover { background: var(--ink); color: var(--bg); }
 .btn-lg { padding: 15px 28px; font-size: 15px; }
@@ -1024,13 +1033,20 @@ body { padding-bottom: 84px; }
   align-items: center;
   gap: 8px;
   white-space: nowrap;
+  transition: color 200ms;
+  cursor: default;
 }
+.trust-strip-inner span:hover { color: var(--ink); }
 .trust-strip-inner .ts-ico {
   width: 14px;
   height: 14px;
   color: var(--lime);
   flex: 0 0 auto;
   display: block;
+  transition: transform 320ms cubic-bezier(.34,1.6,.64,1);
+}
+.trust-strip-inner span:hover .ts-ico {
+  transform: scale(1.25) rotate(-6deg);
 }
 .trust-strip-inner span:not(:last-child)::after {
   content: '';
