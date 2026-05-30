@@ -42,16 +42,95 @@
       "@type": "Organization",
       "@id": "https://menubase.io/#organization",
       "name": "MenuBase",
+      "alternateName": "MenuBase AI Waiter",
       "url": "https://menubase.io/",
-      "logo": "https://menubase.io/menubase-logo-dark.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://menubase.io/img/menubase_logo_light.png",
+        "contentUrl": "https://menubase.io/img/menubase_logo_light.png",
+        "width": 1500,
+        "height": 260,
+        "caption": "MenuBase wordmark - pixel-grid M monogram in lime with grey inner detail"
+      },
+      "image": "https://menubase.io/img/menubase_logo_light.png",
       "description": "MenuBase is the AI waiter inside your QR menu, built to lift revenue on every order for Malaysian F&B operators. Speaks every language, never forgets the specials, sits on top of any existing POS.",
+      "knowsAbout": [
+        "AI waiter",
+        "QR menu ordering",
+        "Restaurant upsell automation",
+        "Multilingual restaurant menus",
+        "Dynamic menu by time / stock / weather",
+        "Multi-outlet F&B operations",
+        "Average order value uplift",
+        "Malaysian F&B operations"
+      ],
+      "areaServed": [
+        { "@type": "Country", "name": "Malaysia" },
+        { "@type": "AdministrativeArea", "name": "Klang Valley" },
+        { "@type": "AdministrativeArea", "name": "Penang" },
+        { "@type": "AdministrativeArea", "name": "Johor Bahru" }
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+60175981858",
+          "contactType": "sales",
+          "contactOption": "TollFree",
+          "areaServed": "MY",
+          "availableLanguage": ["English", "Malay", "Mandarin", "Tamil"]
+        },
+        {
+          "@type": "ContactPoint",
+          "telephone": "+60175981858",
+          "contactType": "customer support",
+          "areaServed": "MY",
+          "availableLanguage": ["English", "Malay", "Mandarin", "Tamil"]
+        }
+      ],
+      "sameAs": [
+        "https://wa.me/60175981858"
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://menubase.io/#service",
+      "name": "MenuBase AI Waiter Service",
+      "serviceType": "Restaurant ordering and upsell automation",
+      "provider": { "@id": "https://menubase.io/#organization" },
       "areaServed": { "@type": "Country", "name": "Malaysia" },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+60175981858",
-        "contactType": "sales",
-        "areaServed": "MY",
-        "availableLanguage": ["English", "Malay", "Mandarin", "Tamil"]
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Malaysian F&B operators (cafes, restaurants, kopitiams, multi-outlet chains)"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "MenuBase capabilities",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Smart Upsell",
+              "description": "Context-aware suggestion at the moment of order, based on basket, time, history and day of week."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Smart Promote",
+              "description": "Push a special to every relevant order across all outlets, all shifts, all languages, instantly."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Dynamic Menu",
+              "description": "Daypart-aware, stock-aware, language-aware menu that adapts in real time."
+            }
+          }
+        ]
       }
     },
     {
