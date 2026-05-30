@@ -43,7 +43,9 @@ a { color: inherit; text-decoration: none; }
 
 /* ─── ANIMATED CANVAS BG (menubase-bg.js) ─── */
 #mb-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; display: block; opacity: 0.7; }
-main, .top-ribbon, nav.top, footer.foot { position: relative; z-index: 1; }
+/* nav.top is omitted from this list because it uses position: fixed with its
+   own z-index 50 below (canvas bg sits at z-index 0 so the dock stays above). */
+main, .top-ribbon, footer.foot { position: relative; z-index: 1; }
 
 /* ─── LEGIBILITY CONTRAST FIXES (WCAG AA: 4.5:1 body, 3:1 large) ─── */
 .eyebrow                                        { color: var(--ink-2) !important; }
@@ -149,12 +151,14 @@ main, .top-ribbon, nav.top, footer.foot { position: relative; z-index: 1; }
 .top-ribbon-login:hover .arr { transform: translateX(2px); }
 
 /* ─── FLOATING BOTTOM DOCK (sticky at viewport bottom) ─── */
-nav.top {
-  position: fixed;
+/* Use !important to win against the line-46 rule that sets nav.top to
+   position:relative for z-index stacking against the canvas bg. */
+body nav.top {
+  position: fixed !important;
   bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 50;
+  z-index: 50 !important;
   background: rgba(26,26,26,0.92);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
@@ -162,6 +166,8 @@ nav.top {
   border-radius: 999px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.25), 0 6px 16px rgba(0,0,0,0.15);
   max-width: calc(100vw - 24px);
+  margin: 0;
+  width: auto;
 }
 /* Content padding so the sticky dock does not cover the last bit of page */
 body { padding-bottom: 84px; }
@@ -591,7 +597,8 @@ footer.foot {
   .top-ribbon .brand .brand-lockup { height: 30px; }
   .top-ribbon-login { padding: 8px 14px; font-size: 12.5px; }
 
-  nav.top {
+  body nav.top {
+    position: fixed !important;
     bottom: 12px;
     left: 10px;
     right: 10px;
