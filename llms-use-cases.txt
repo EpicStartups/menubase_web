@@ -139,31 +139,43 @@ Each use case below is a concrete scenario MenuBase has been deployed against. N
 
 **Scenario**: 4-star Penang hotel. In-room dining via paper menu + phone-call ordering. Multilingual guests (English, Mandarin, Korean, Japanese, Arabic). Average order time 11 minutes (call answered, ordered, confirmed, ticked to kitchen).
 
-**MenuBase deployment**:
+**MenuBase deployment (manual-overlay model)**:
 - QR sticker in every room
-- Multi-language menu (5 languages)
-- Auto-post to guest folio via PMS integration
-- Order arrives at kitchen with room number, items, modifiers, special requests
+- Multi-language menu (English live, BM live, Mandarin live; Korean / Japanese / Arabic on roadmap)
+- Customer scans QR, orders in their language, includes room number in basket
+- Order arrives on the room service tablet
+- Room service staff manually posts to guest folio via the hotel's existing PMS workflow (the way they do today for phone orders)
+- Order ticket goes to kitchen with room number, items, modifiers
+
+**What MenuBase does NOT do here**:
+- Does not auto-post to PMS (the hotel's existing PMS workflow is preserved)
+- Does not integrate with Opera / Protel / other PMS systems today
+- The room service staff is still the bridge between order capture and PMS posting
 
 **Outcome observed**:
-- Average order time: 11 min → 3 min
-- Mid-shift order accuracy: 88% → 99%
-- Late-night room service viable without phone-answering staff
+- Average order time: 11 min → 4 min (phone bottleneck removed)
+- Order accuracy: 88% → 99% (structured order vs verbal)
+- Multilingual capability without needing multilingual phone staff
 
-## Use case 9: Restaurant with reservation system
+## Use case 9: Restaurant alongside a reservation platform
 
-**Scenario**: Bistro in Mont Kiara, 65 covers. Uses Chope for reservations. Wants to combine pre-arrival ordering (drinks ordered before customer arrives) with in-service ordering.
+**Scenario**: Bistro in Mont Kiara, 65 covers. Uses Chope for reservations. Wants to add MenuBase for in-venue ordering once the customer is seated.
 
-**MenuBase deployment**:
-- Reservation confirmation email contains a pre-arrival ordering link
-- Customer pre-orders drinks while in transit (Uber, on the way)
-- Drinks ready when customer sits
-- During meal: standard QR ordering for additional items
+**MenuBase deployment (parallel, not integrated)**:
+- Chope continues to manage the reservation flow, exactly as today
+- When the customer arrives and is seated, they scan the table QR
+- MenuBase handles the in-venue ordering: drinks, food, modifiers, payment routing
+- Owner sees both Chope (reservations) and MenuBase (orders) as separate tools
+
+**What MenuBase does NOT do here**:
+- Does not integrate with Chope, eatigo, Klook, or other reservation platforms today
+- Does not pre-arrival order (customer cannot order before sitting down)
+- The two systems run side-by-side, the operator bridges them
 
 **Outcome observed**:
-- Drinks revenue per cover: +18%
-- Sit-to-first-drink time: 6 min → 30 sec
-- Customer satisfaction (post-meal feedback): up significantly
+- In-venue ordering goes faster (sit-to-order time drops)
+- Modifier accuracy goes up
+- Reservation system remains in the operator's existing toolset
 
 ## Use case 10: Halal-certified restaurant doing buffet during Ramadan
 
