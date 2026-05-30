@@ -3,75 +3,77 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://menubase.io/</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://menubase.io/menubase-logo-dark.png</image:loc>
+      <image:loc>https://menubase.io/img/menubase_logo_light.png</image:loc>
       <image:title>MenuBase - AI waiter inside your QR menu</image:title>
     </image:image>
   </url>
   <url>
     <loc>https://menubase.io/learn/</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://menubase.io/learn/why-restaurant-staff-dont-upsell.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://menubase.io/learn/how-to-increase-average-order-value-malaysia.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://menubase.io/learn/how-to-handle-staff-turnover-malaysian-fb.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://menubase.io/learn/multilingual-menus-malaysia-operations-cost.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://menubase.io/learn/qr-menu-vs-printed-menu-malaysia.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://menubase.io/learn/why-is-my-cafe-losing-money-malaysia.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://menubase.io/learn/cost-to-open-cafe-klang-valley-malaysia.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://menubase.io/learn/how-to-get-more-repeat-customers-malaysian-cafe.html</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://menubase.io/contact-us.html</loc>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://menubase.io/privacy-policy.html</loc>
+    <lastmod>2026-05-30</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

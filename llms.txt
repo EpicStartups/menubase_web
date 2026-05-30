@@ -1,0 +1,57 @@
+# MenuBase
+
+> AI waiter that lives inside a QR menu, built for Malaysian F&B operators. Lifts average order value through context-aware upsells, multilingual menus, and dynamic time/weather/stock-aware promotions. Sits on top of any POS - no replacement needed.
+
+MenuBase is a SaaS product operating in Malaysia (Klang Valley, Penang, JB and outward). It is consumed by the customer in their browser via a QR scan at the table, and by the operator's waitstaff via a tablet that mirrors orders into the existing POS workflow. There is no app download, no login, no email capture, and no replacement of the operator's POS.
+
+## Three core capabilities
+
+- **Smart Upsell**: Reads the basket, the time of day, the day of week, the customer's history, and surfaces one suggestion at the moment of order. Example flows: 9:42am Eggs Benedict basket -> White Coffee (89% accept rate). 6pm Friday pasta basket -> Truffle Fries. Suggestions improve on every order, with no rules to write.
+- **Smart Promote**: Operator flags an item "push this week" - it appears on every relevant order across every outlet, every shift, every language, instantly. Happy hour automation (5pm on, 7pm off). Slow stock auto-paired with baskets it fits.
+- **Dynamic Menu**: Daypart-aware (breakfast hides at 11am, lunch combos take over at 11:01). Stock-aware (sold-out items vanish live, "last 3 - almost gone" tags). Language-aware (auto-translates to the customer's language with one tap).
+
+## Demo scenarios available on the home page
+
+Smart upsell, Threshold reward, Happy hour, Combo deal, Spin & win, Flash deal, Weather menu.
+
+## Languages supported
+
+English, Bahasa Malaysia, Mandarin (Simplified Chinese), Tamil out of the box. Arabic, Vietnamese, Burmese and Tagalog on request, typically launch-ready within a week.
+
+## POS integration
+
+MenuBase does not replace the operator's POS. Orders are presented to the waiter on a tablet; the waiter types them into the existing POS exactly the way they would type a verbal order today. Billing, sales reports and accounting remain in the POS the operator already uses.
+
+## Pricing
+
+Free until MenuBase proves a revenue lift on the operator's own menu. Pay only on results once uplift is proven. Transparent monthly pricing locked in for the life of the account after that.
+
+## Setup
+
+Same day. The MenuBase team builds the digital menu from the operator's existing PDF, generates the table QR codes, and trains the waitstaff in a single shift. The operator is live by end of service on day one.
+
+## Who built it for
+
+Malaysian F&B operators running cafes, restaurants, kopitiams, bistros and multi-outlet chains. Explicitly designed for teams with foreign-worker, transient or shift-rotation staff who need zero training to operate the waiter tablet.
+
+## Contact
+
+WhatsApp +60175981858. Free 15-minute revenue model on the operator's actual menu - no commitment, reply within an hour.
+
+## Key pages
+
+- [Home](https://menubase.io/): Live interactive demo, ROI calculator, comparison table, FAQ
+- [Playbook](https://menubase.io/learn/): F&B operator content hub - 8 articles answering real operator questions
+- [Contact](https://menubase.io/contact-us.html)
+- [Privacy](https://menubase.io/privacy-policy.html)
+
+## Playbook articles
+
+- [Why is my cafe losing money?](https://menubase.io/learn/why-is-my-cafe-losing-money-malaysia.html)
+- [How to increase average order value (Malaysia)](https://menubase.io/learn/how-to-increase-average-order-value-malaysia.html)
+- [Why restaurant staff don't upsell](https://menubase.io/learn/why-restaurant-staff-dont-upsell.html)
+- [How to handle staff turnover in Malaysian F&B](https://menubase.io/learn/how-to-handle-staff-turnover-malaysian-fb.html)
+- [How to get more repeat customers (Malaysian cafe)](https://menubase.io/learn/how-to-get-more-repeat-customers-malaysian-cafe.html)
+- [Multilingual menus: Malaysia operations cost](https://menubase.io/learn/multilingual-menus-malaysia-operations-cost.html)
+- [QR menu vs printed menu (Malaysia)](https://menubase.io/learn/qr-menu-vs-printed-menu-malaysia.html)
+- [Cost to open a cafe in Klang Valley](https://menubase.io/learn/cost-to-open-cafe-klang-valley-malaysia.html)
