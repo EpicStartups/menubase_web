@@ -2892,6 +2892,86 @@ footer.foot {
   margin-bottom: 4px;
 }
 .reassure-card .rc-ico svg { width: 18px; height: 18px; }
+
+/* Carousel */
+.reassure-carousel {
+  position: relative;
+  margin: 0 -8px 28px;
+}
+.rc-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 8px;
+  scrollbar-width: none;
+}
+.rc-track::-webkit-scrollbar { display: none; }
+.reassure-carousel .reassure-card {
+  flex: 0 0 calc(50% - 12px);
+  scroll-snap-align: start;
+  margin: 0;
+}
+.rc-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--bg-soft);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  font-size: 22px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 150ms, border-color 150ms, transform 150ms;
+  font-family: var(--font-display);
+}
+.rc-arrow:hover {
+  background: var(--lime);
+  color: #0A0A0C;
+  border-color: var(--lime);
+}
+.rc-arrow:disabled { opacity: 0.32; cursor: not-allowed; }
+.rc-arrow:disabled:hover { background: var(--bg-soft); color: var(--ink); border-color: var(--line); }
+.rc-prev { left: -22px; }
+.rc-next { right: -22px; }
+.rc-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 22px;
+}
+.rc-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--ink-2);
+  opacity: 0.35;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 200ms, opacity 200ms, width 200ms;
+}
+.rc-dot.active {
+  background: var(--lime);
+  opacity: 1;
+  width: 24px;
+}
+.rc-dot:hover { opacity: 0.75; }
+@media (max-width: 720px) {
+  .reassure-carousel .reassure-card { flex-basis: 88%; }
+  .rc-prev { left: 4px; }
+  .rc-next { right: 4px; }
+  .rc-arrow { width: 36px; height: 36px; font-size: 18px; }
+}
 .reassure-card h4 {
   font-family: var(--font-display);
   font-weight: 700;
@@ -3928,41 +4008,43 @@ footer.foot {
     <div class="reassure-head">
       <span class="eyebrow">APA INI BERMAKNA SEBENARNYA</span>
       <h3>Team sama. Aliran sama. <em>Cuma lebih revenue per check.</em></h3>
-      <p>Kami tidak minta team anda belajar POS baru, tukar cara ring order, atau hafal skrip. Kami tidak ganti sesiapa. Kami tidak rosakkan aliran Ahad biasa. Ini apa yang berubah, dan apa yang tidak.</p>
+      <p>Ini yang berubah, dan yang tidak.</p>
     </div>
-    <div class="reassure-cards">
-      <div class="reassure-card">
-        <div class="rc-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <h4>Tiada perubahan workflow</h4>
-        <p>Pelayan anda ring order macam mereka buat hari ini. POS sama. Till sama. Tangan sama pada printer resit. Kami tambah menu untuk customer dan logik upsell. Kami tak sentuh apa-apa yang mereka sentuh.</p>
+    <div class="reassure-carousel" data-carousel>
+      <button class="rc-arrow rc-prev" type="button" aria-label="Sebelumnya">&lsaquo;</button>
+      <div class="rc-track">
+        <article class="reassure-card">
+          <div class="rc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h4>Tiada perubahan workflow</h4>
+          <p>POS sama. Till sama. Printer resit sama. Kami tambah menu customer dan logik upsell, kami tak sentuh apa yang team anda sentuh.</p>
+        </article>
+        <article class="reassure-card">
+          <div class="rc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h4>Setup satu shift</h4>
+          <p>Kami bina menu, jana kod QR, train team anda dalam satu shift. New hire onboard dalam bawah 30 minit.</p>
+        </article>
+        <article class="reassure-card">
+          <div class="rc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h4>Team paling baik</h4>
+          <p>Skrin tanggung setiap special, modifier, promo mingguan. Team anda buat bahagian manusia: regular kenal nama, baca meja, urus curveball.</p>
+        </article>
+        <article class="reassure-card">
+          <div class="rc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h4>AOV lift, minggu 1</h4>
+          <p>Happy hour, threshold reward dan smart upsell live pada menu anda hari satu. Kebanyakan venue capai 8 hingga 14% AOV lift menjelang hujung bulan satu.</p>
+        </article>
       </div>
-      <div class="reassure-card">
-        <div class="rc-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <h4>Latihan bawah 30 minit</h4>
-        <p>Setup hari sama. Kami masuk dengan menu sedia ada anda, bina versi digital, jana kod QR, bawa team melaluinya dalam satu shift. Pekerja baru onboard dalam masa kurang 30 minit. Tanpa friction, tiada briefing Ahad.</p>
-      </div>
-      <div class="reassure-card">
-        <div class="rc-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <h4>Team anda pada paras terbaik, setiap shift</h4>
-        <p>Beban mental untuk ingat setiap special, setiap modifier, setiap promo mingguan - skrin tanggung itu. Floor team anda buat apa yang mereka mahir: sambut regular dengan nama, baca meja, urus situasi cabaran. Benda sistematik jalan sendiri di belakang mereka. Mereka nampak lebih tajam. Mereka balik rumah kurang penat.</p>
-      </div>
-      <div class="reassure-card">
-        <div class="rc-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <h4>Revenue lift, minggu pertama</h4>
-        <p>Bila happy hour, threshold reward dan smart upsell go live pada menu anda, customer click masuk. Kebanyakan venue nampak AOV lift yang ketara dalam minggu pertama dan settle pada lift 8 hingga 14% menjelang akhir bulan pertama - semua add-on yang team anda sentiasa mahu push tapi tak sempat ikut pada setiap shift.</p>
+      <button class="rc-arrow rc-next" type="button" aria-label="Seterusnya">&rsaquo;</button>
+      <div class="rc-dots" role="tablist" aria-label="Navigasi kad">
+        <button class="rc-dot active" type="button" data-idx="0" aria-label="Kad 1"></button>
+        <button class="rc-dot" type="button" data-idx="1" aria-label="Kad 2"></button>
+        <button class="rc-dot" type="button" data-idx="2" aria-label="Kad 3"></button>
+        <button class="rc-dot" type="button" data-idx="3" aria-label="Kad 4"></button>
       </div>
     </div>
     <div class="reassure-foot">
       <span class="rf-pill">DARI RM28/BULAN &middot; TIADA FI TERSEMBUNYI</span>
-      <span>Happy hour, threshold reward dan smart upsell go live pada menu anda hari pertama. Customer click masuk. AOV lift sampai dalam minggu pertama. Harga jujur ikut saiz menu dari situ: RM28 hingga RM99 sebulan, annual jimat 2 bulan, tiada fi tersembunyi. Lihat <a href="/pricing.html" style="color: var(--lime);">pricing</a>.</span>
+      <span>Live hari satu. AOV lift dalam minggu satu. RM28 hingga RM99 sebulan ikut saiz menu. <a href="/pricing.html" style="color: var(--lime);">Lihat harga.</a></span>
     </div>
   </div>
 </section>
@@ -4287,6 +4369,44 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 setTimeout(() => {
   document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
 }, 1500);
+
+// Reassurance carousel
+(function () {
+  document.querySelectorAll('[data-carousel]').forEach(function (carousel) {
+    var track = carousel.querySelector('.rc-track');
+    var cards = carousel.querySelectorAll('.reassure-card');
+    var dots = carousel.querySelectorAll('.rc-dot');
+    var prev = carousel.querySelector('.rc-prev');
+    var next = carousel.querySelector('.rc-next');
+    if (!track || cards.length === 0) return;
+
+    function activeIndex() {
+      var sl = track.scrollLeft;
+      var w = cards[0].offsetWidth + 16;
+      return Math.round(sl / w);
+    }
+    function setActive(idx) {
+      dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+      if (prev) prev.disabled = idx <= 0;
+      if (next) next.disabled = idx >= cards.length - 1;
+    }
+    function go(idx) {
+      idx = Math.max(0, Math.min(cards.length - 1, idx));
+      cards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    }
+    dots.forEach(function (d, i) {
+      d.addEventListener('click', function () { go(i); });
+    });
+    if (prev) prev.addEventListener('click', function () { go(activeIndex() - 1); });
+    if (next) next.addEventListener('click', function () { go(activeIndex() + 1); });
+    var raf;
+    track.addEventListener('scroll', function () {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function () { setActive(activeIndex()); });
+    });
+    setActive(0);
+  });
+})();
 
 // Calculator
 (function(){

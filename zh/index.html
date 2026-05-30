@@ -2892,6 +2892,86 @@ footer.foot {
   margin-bottom: 4px;
 }
 .reassure-card .rc-ico svg { width: 18px; height: 18px; }
+
+/* Carousel */
+.reassure-carousel {
+  position: relative;
+  margin: 0 -8px 28px;
+}
+.rc-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 8px;
+  scrollbar-width: none;
+}
+.rc-track::-webkit-scrollbar { display: none; }
+.reassure-carousel .reassure-card {
+  flex: 0 0 calc(50% - 12px);
+  scroll-snap-align: start;
+  margin: 0;
+}
+.rc-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--bg-soft);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  font-size: 22px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 150ms, border-color 150ms, transform 150ms;
+  font-family: var(--font-display);
+}
+.rc-arrow:hover {
+  background: var(--lime);
+  color: #0A0A0C;
+  border-color: var(--lime);
+}
+.rc-arrow:disabled { opacity: 0.32; cursor: not-allowed; }
+.rc-arrow:disabled:hover { background: var(--bg-soft); color: var(--ink); border-color: var(--line); }
+.rc-prev { left: -22px; }
+.rc-next { right: -22px; }
+.rc-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 22px;
+}
+.rc-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--ink-2);
+  opacity: 0.35;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 200ms, opacity 200ms, width 200ms;
+}
+.rc-dot.active {
+  background: var(--lime);
+  opacity: 1;
+  width: 24px;
+}
+.rc-dot:hover { opacity: 0.75; }
+@media (max-width: 720px) {
+  .reassure-carousel .reassure-card { flex-basis: 88%; }
+  .rc-prev { left: 4px; }
+  .rc-next { right: 4px; }
+  .rc-arrow { width: 36px; height: 36px; font-size: 18px; }
+}
 .reassure-card h4 {
   font-family: var(--font-display);
   font-weight: 700;
@@ -3928,41 +4008,43 @@ footer.foot {
     <div class="reassure-head">
       <span class="eyebrow">这对您意味着什么</span>
       <h3>团队不变。流程不变。<em>只是每张账单营收更高。</em></h3>
-      <p>我们不会要求团队去学新 POS、改出单方式、或背话术。我们不替换任何人。我们不打破周日的固定流程。下面是会变的部分,和不会变的部分。</p>
+      <p>下面是会变和不会变的部分。</p>
     </div>
-    <div class="reassure-cards">
-      <div class="reassure-card">
-        <div class="rc-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <h4>工作流程不变</h4>
-        <p>服务员仍然以今天的方式出单。同一套 POS。同一台收银。同一只手按小票打印机。我们只新增面向顾客的菜单和加点逻辑。他们碰的一切,我们都不碰。</p>
+    <div class="reassure-carousel" data-carousel>
+      <button class="rc-arrow rc-prev" type="button" aria-label="上一张">&lsaquo;</button>
+      <div class="rc-track">
+        <article class="reassure-card">
+          <div class="rc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h4>工作流程不变</h4>
+          <p>同一套 POS、同一台收银、同一只手按小票。我们只新增顾客菜单和加点逻辑,团队碰的一切我们都不碰。</p>
+        </article>
+        <article class="reassure-card">
+          <div class="rc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h4>一个班次上线</h4>
+          <p>我们搭好菜单、生成 QR、训练团队,在一个班次内完成。新员工入职不到 30 分钟。</p>
+        </article>
+        <article class="reassure-card">
+          <div class="rc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h4>团队最佳状态</h4>
+          <p>屏幕扛住每一项特价、加料、每周促销。团队负责"人"的部分:叫得出熟客名字、看懂桌面、应付突发。</p>
+        </article>
+        <article class="reassure-card">
+          <div class="rc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <h4>第一周 AOV 提升</h4>
+          <p>Happy Hour、Threshold Reward 和 Smart Upsell 第一天就上线。大部分门店在第一个月末稳定提升 8 到 14% AOV。</p>
+        </article>
       </div>
-      <div class="reassure-card">
-        <div class="rc-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <h4>培训不到 30 分钟</h4>
-        <p>当天上线. We come in with your existing menu, build the digital version, generate the QR codes, walk the team through it in a single shift. New hires onboard in under 30 minutes. No friction, no Sunday briefings.</p>
-      </div>
-      <div class="reassure-card">
-        <div class="rc-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <h4>团队每个班次都处于最佳状态</h4>
-        <p>记每一项特价、每一个加料、每周促销的脑力负担,交给屏幕扛。您的现场团队去做他们最擅长的事:叫得出熟客名字、看懂桌面、应付突发状况。机械重复的部分在他们身后自动完成。他们看起来更专业。下班时也不那么疲惫。</p>
-      </div>
-      <div class="reassure-card">
-        <div class="rc-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <h4>第一周就有营收提升</h4>
-        <p>Happy Hour、Threshold Reward、Smart Upsell 上线到您的菜单后,顾客就会点进来。大部分门店在第一周就能看到 AOV 明显提升,第一个月末稳定在 8 到 14% 的提升 - 全是团队一直想推却来不及在每个班次都推的那些加点。</p>
+      <button class="rc-arrow rc-next" type="button" aria-label="下一张">&rsaquo;</button>
+      <div class="rc-dots" role="tablist" aria-label="卡片导航">
+        <button class="rc-dot active" type="button" data-idx="0" aria-label="卡 1"></button>
+        <button class="rc-dot" type="button" data-idx="1" aria-label="卡 2"></button>
+        <button class="rc-dot" type="button" data-idx="2" aria-label="卡 3"></button>
+        <button class="rc-dot" type="button" data-idx="3" aria-label="卡 4"></button>
       </div>
     </div>
     <div class="reassure-foot">
       <span class="rf-pill">RM28/月起 &middot; 无隐藏费用</span>
-      <span>Happy Hour, threshold rewards and smart upsell go live on your menu day one. Customers click in. The AOV lift hits within the first week. Honest pricing by menu size from there: RM28 to RM99 a month, annual saves 2 months, no hidden fees. See <a href="/pricing.html" style="color: var(--lime);">pricing</a>.</span>
+      <span>第一天上线。第一周 AOV 提升。按菜单规模 RM28 到 RM99 每月。<a href="/pricing.html" style="color: var(--lime);">查看价格。</a></span>
     </div>
   </div>
 </section>
@@ -4287,6 +4369,44 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 setTimeout(() => {
   document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
 }, 1500);
+
+// Reassurance carousel
+(function () {
+  document.querySelectorAll('[data-carousel]').forEach(function (carousel) {
+    var track = carousel.querySelector('.rc-track');
+    var cards = carousel.querySelectorAll('.reassure-card');
+    var dots = carousel.querySelectorAll('.rc-dot');
+    var prev = carousel.querySelector('.rc-prev');
+    var next = carousel.querySelector('.rc-next');
+    if (!track || cards.length === 0) return;
+
+    function activeIndex() {
+      var sl = track.scrollLeft;
+      var w = cards[0].offsetWidth + 16;
+      return Math.round(sl / w);
+    }
+    function setActive(idx) {
+      dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+      if (prev) prev.disabled = idx <= 0;
+      if (next) next.disabled = idx >= cards.length - 1;
+    }
+    function go(idx) {
+      idx = Math.max(0, Math.min(cards.length - 1, idx));
+      cards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    }
+    dots.forEach(function (d, i) {
+      d.addEventListener('click', function () { go(i); });
+    });
+    if (prev) prev.addEventListener('click', function () { go(activeIndex() - 1); });
+    if (next) next.addEventListener('click', function () { go(activeIndex() + 1); });
+    var raf;
+    track.addEventListener('scroll', function () {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function () { setActive(activeIndex()); });
+    });
+    setActive(0);
+  });
+})();
 
 // Calculator
 (function(){

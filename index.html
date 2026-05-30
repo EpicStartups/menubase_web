@@ -2923,6 +2923,86 @@ footer.foot {
   margin-bottom: 4px;
 }
 .reassure-card .rc-ico svg { width: 18px; height: 18px; }
+
+/* Carousel */
+.reassure-carousel {
+  position: relative;
+  margin: 0 -8px 28px;
+}
+.rc-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 8px;
+  scrollbar-width: none;
+}
+.rc-track::-webkit-scrollbar { display: none; }
+.reassure-carousel .reassure-card {
+  flex: 0 0 calc(50% - 12px);
+  scroll-snap-align: start;
+  margin: 0;
+}
+.rc-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--bg-soft);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  font-size: 22px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 2;
+  transition: background 150ms, border-color 150ms, transform 150ms;
+  font-family: var(--font-display);
+}
+.rc-arrow:hover {
+  background: var(--lime);
+  color: #0A0A0C;
+  border-color: var(--lime);
+}
+.rc-arrow:disabled { opacity: 0.32; cursor: not-allowed; }
+.rc-arrow:disabled:hover { background: var(--bg-soft); color: var(--ink); border-color: var(--line); }
+.rc-prev { left: -22px; }
+.rc-next { right: -22px; }
+.rc-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 22px;
+}
+.rc-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--ink-2);
+  opacity: 0.35;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background 200ms, opacity 200ms, width 200ms;
+}
+.rc-dot.active {
+  background: var(--lime);
+  opacity: 1;
+  width: 24px;
+}
+.rc-dot:hover { opacity: 0.75; }
+@media (max-width: 720px) {
+  .reassure-carousel .reassure-card { flex-basis: 88%; }
+  .rc-prev { left: 4px; }
+  .rc-next { right: 4px; }
+  .rc-arrow { width: 36px; height: 36px; font-size: 18px; }
+}
 .reassure-card h4 {
   font-family: var(--font-display);
   font-weight: 700;
@@ -3633,7 +3713,7 @@ footer.foot {
   </div>
   <div class="problem-pull reveal">
     Not a team problem. A <em>job design</em> problem.
-    <span class="foot">Move the systematic stuff to the screen. The team gets to do the parts that need them - the warm welcome, the regulars by name, the curveball at table 6.</span>
+    <span class="foot">Move the systematic stuff to the screen. The team gets to do the human parts - the warm welcome, regulars by name, curveballs at table 6.</span>
   </div>
 </section>
 
@@ -3954,46 +4034,56 @@ footer.foot {
     </div>
   </div>
 
-  <!-- "What this actually means" reassurance grid -->
+  <!-- "What this actually means" carousel -->
   <div class="reassure-grid reveal">
     <div class="reassure-head">
       <span class="eyebrow">WHAT THIS ACTUALLY MEANS</span>
       <h3>Same team. Same flow. <em>Just more revenue per check.</em></h3>
-      <p>We are not asking your team to learn a new POS, change how they ring orders, or memorise a script. We are not replacing anyone. We are not breaking the regular Sunday flow. Here is what changes, and what does not.</p>
+      <p>Here's what changes, and what doesn't.</p>
     </div>
-    <div class="reassure-cards">
-      <div class="reassure-card">
-        <div class="rc-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <h4>No workflow change</h4>
-        <p>Your waiter rings orders the way they do today. Same POS. Same till. Same hand on the receipt printer. We add the customer-facing menu and the upsell logic. We touch nothing they touch.</p>
+    <div class="reassure-carousel" data-carousel>
+      <button class="rc-arrow rc-prev" type="button" aria-label="Previous card">&lsaquo;</button>
+      <div class="rc-track">
+        <article class="reassure-card">
+          <div class="rc-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h4>No workflow change</h4>
+          <p>Same POS. Same till. Same receipt printer. We add the customer menu and the upsell, we touch nothing your team touches.</p>
+        </article>
+        <article class="reassure-card">
+          <div class="rc-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h4>Setup in one shift</h4>
+          <p>We build the menu, generate the QR codes, train your team in one shift. New hires onboard in under 30 minutes.</p>
+        </article>
+        <article class="reassure-card">
+          <div class="rc-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h4>Team at their best</h4>
+          <p>The screen carries every special, every modifier, every weekly promo. Your team does the human bits: regulars by name, read the table, handle the curveballs.</p>
+        </article>
+        <article class="reassure-card">
+          <div class="rc-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h4>AOV lift, week 1</h4>
+          <p>Happy hour, threshold rewards and smart upsell live on your menu day one. Most venues hit an 8 to 14% AOV lift by end of month one.</p>
+        </article>
       </div>
-      <div class="reassure-card">
-        <div class="rc-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <h4>Training under 30 minutes</h4>
-        <p>Same-day setup. We come in with your existing menu, build the digital version, generate the QR codes, walk the team through it in a single shift. New hires onboard in under 30 minutes. No friction, no Sunday briefings.</p>
-      </div>
-      <div class="reassure-card">
-        <div class="rc-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <h4>Your team at their best, every shift</h4>
-        <p>The mental load of remembering every special, every modifier, every weekly promo - the screen carries that. Your floor team gets to do what they are great at: greet the regulars by name, read the table, handle the curveballs. The systematic stuff just happens behind them. They look sharper. They go home less tired.</p>
-      </div>
-      <div class="reassure-card">
-        <div class="rc-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        </div>
-        <h4>Revenue lift, week 1</h4>
-        <p>Once happy hour, threshold rewards and smart upsell go live on your menu, customers click in. Most venues see a noticeable AOV lift in the first week and settle at an 8 to 14% lift by end of month one - all the add-ons your team always wanted to push but could not keep up with on every shift.</p>
+      <button class="rc-arrow rc-next" type="button" aria-label="Next card">&rsaquo;</button>
+      <div class="rc-dots" role="tablist" aria-label="Card navigation">
+        <button class="rc-dot active" type="button" data-idx="0" aria-label="Card 1"></button>
+        <button class="rc-dot" type="button" data-idx="1" aria-label="Card 2"></button>
+        <button class="rc-dot" type="button" data-idx="2" aria-label="Card 3"></button>
+        <button class="rc-dot" type="button" data-idx="3" aria-label="Card 4"></button>
       </div>
     </div>
     <div class="reassure-foot">
       <span class="rf-pill">FROM RM28/MONTH &middot; NO HIDDEN FEES</span>
-      <span>Happy hour, threshold rewards and smart upsell go live on your menu day one. Customers click in. The AOV lift hits within the first week. Honest pricing by menu size from there: RM28 to RM99 a month, annual saves 2 months, no hidden fees. See <a href="/pricing.html" style="color: var(--lime);">pricing</a>.</span>
+      <span>Live day one. AOV lift inside week one. RM28 to RM99 a month by menu size. <a href="/pricing.html" style="color: var(--lime);">See pricing.</a></span>
     </div>
   </div>
 </section>
@@ -4040,7 +4130,7 @@ footer.foot {
     <div class="reveal has-bg-scrim scrim-soft">
       <span class="eyebrow">UPSELL CALCULATOR</span>
       <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(34px,5vw,56px);line-height:0.98;letter-spacing:-0.035em;margin:16px 0 18px;max-width:14ch;">Run <em style="font-style:normal;color:var(--lime-deep);">your own</em> numbers.</h2>
-      <p style="font-size:17px;color:var(--grey);max-width:440px;line-height:1.55;margin-bottom:20px;">Most cafes leave 8-12% on the table. Move the sliders. See your monthly uplift live. No email gate.</p>
+      <p style="font-size:17px;color:var(--grey);max-width:440px;line-height:1.55;margin-bottom:20px;">Most cafes leave 8-12% on the table. Move the sliders. See your uplift live.</p>
     </div>
 
     <div class="calc-card reveal">
@@ -4124,7 +4214,7 @@ footer.foot {
   <div class="manifesto-inner has-bg-scrim scrim-lime">
     <div class="manifesto-eyebrow">The bottom line</div>
     <h2>Run the room. <br/>Let the screen run the <em>suggestions.</em></h2>
-    <p>Restaurants live on the food, the room, the regulars. That is your team's job. We handle the part nobody enjoyed anyway: perfect upselling, every check, every shift.</p>
+    <p>The food, the room, the regulars - your team's job. The systematic upsell on every check - ours.</p>
     <div class="hero-actions" style="justify-content:center;gap:28px;">
       <a class="btn btn-lime btn-lg" href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bfrom%3A%20nav%20dock%20-%20homepage%5D%20Would%20like%20to%20explore%20more%20on%20how%20we%20can%20improve%20our%20sales." target="_blank" rel="noopener">WhatsApp us &rarr;</a>
       <a class="hero-watch" href="#demo">Watch it work</a>
@@ -4323,6 +4413,44 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 setTimeout(() => {
   document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
 }, 1500);
+
+// Reassurance carousel
+(function () {
+  document.querySelectorAll('[data-carousel]').forEach(function (carousel) {
+    var track = carousel.querySelector('.rc-track');
+    var cards = carousel.querySelectorAll('.reassure-card');
+    var dots = carousel.querySelectorAll('.rc-dot');
+    var prev = carousel.querySelector('.rc-prev');
+    var next = carousel.querySelector('.rc-next');
+    if (!track || cards.length === 0) return;
+
+    function activeIndex() {
+      var sl = track.scrollLeft;
+      var w = cards[0].offsetWidth + 16;
+      return Math.round(sl / w);
+    }
+    function setActive(idx) {
+      dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+      if (prev) prev.disabled = idx <= 0;
+      if (next) next.disabled = idx >= cards.length - 1;
+    }
+    function go(idx) {
+      idx = Math.max(0, Math.min(cards.length - 1, idx));
+      cards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    }
+    dots.forEach(function (d, i) {
+      d.addEventListener('click', function () { go(i); });
+    });
+    if (prev) prev.addEventListener('click', function () { go(activeIndex() - 1); });
+    if (next) next.addEventListener('click', function () { go(activeIndex() + 1); });
+    var raf;
+    track.addEventListener('scroll', function () {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(function () { setActive(activeIndex()); });
+    });
+    setActive(0);
+  });
+})();
 
 // Calculator
 (function(){
