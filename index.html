@@ -214,79 +214,47 @@
           "name": "What is MenuBase?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "MenuBase is the best waiter you can hire. Lives inside your QR menu, never quits, never forgets the specials, speaks every language. The customer scans, the menu opens in the browser, and MenuBase surfaces the right add-on at the right moment based on the basket, the time of day, the customer's history and the day of the week. Built for Malaysian cafes, restaurants and kopitiams."
+            "text": "The best waiter you can hire. Lives in your QR menu. Reads the basket and the moment, surfaces one suggestion that converts. Built for Malaysian F&B."
           }
         },
         {
           "@type": "Question",
-          "name": "How is MenuBase different from a regular QR menu?",
+          "name": "How is this different from a regular QR menu?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A regular QR menu shows the same items to everyone, all day. MenuBase reads the basket and the moment, then surfaces one suggestion that actually converts. It also auto-translates to the customer's language, hides breakfast at 11am automatically, removes sold-out items live, and pushes specials across every outlet instantly."
+            "text": "A regular QR menu shows everyone the same items all day. MenuBase reads the basket. Auto-translates. Hides breakfast at 11am. Removes sold-out items live."
           }
         },
         {
           "@type": "Question",
-          "name": "Does MenuBase work for multi-outlet restaurants?",
+          "name": "Do I need to replace my POS?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Push a special once from the operator dashboard and it appears on every relevant order across every outlet, every shift, every language, instantly. Each outlet keeps its own stock signal and daypart rules, while the upsell logic and menu changes roll out centrally across the chain."
+            "text": "No. MenuBase sits on top. Waiters ring orders the way they do today. Billing stays where it is."
           }
         },
         {
           "@type": "Question",
-          "name": "Do I need to replace my POS to use MenuBase?",
+          "name": "How long does setup take?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. MenuBase sits on top of your existing POS. Waiters type orders the way they do today. Billing and accounting stay where they are."
+            "text": "Same day. We build the menu, generate QR codes, train the team. Live by end of service."
           }
         },
         {
           "@type": "Question",
-          "name": "How long does MenuBase setup take?",
+          "name": "Do customers download an app?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Same day. We build your digital menu, generate the QR codes, train your team. Live by end of service."
+            "text": "Never. Scan the QR, the browser opens the menu. No login, no email."
           }
         },
         {
           "@type": "Question",
-          "name": "Do my customers need to download an app?",
+          "name": "What does it cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Never. Scan the QR, the browser opens the menu. No login, no signup, no email capture."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What languages does MenuBase speak?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "English, Bahasa Malaysia, Mandarin and Tamil out of the box. Arabic, Vietnamese, Burmese and Tagalog on request, typically launch-ready within a week."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How does the upsell actually work?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "One suggestion at the right moment, not random popups. Reads the basket, the time, the history. Customer taps to add. No staff awkwardness, no scripts."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What does MenuBase cost?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Free until we prove the lift on your own menu. Pay only on results. Transparent monthly pricing after, locked for the life of your account."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What if my team isn't tech-savvy?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Built for that. The waiter only sees a list of items and types into the POS, same job they already do. Zero training needed, even for foreign-worker, transient and shift-rotation staff."
+            "text": "Free until we prove the lift on your menu. Pay only on results. Locked monthly pricing after."
           }
         }
       ]
@@ -2250,8 +2218,12 @@ footer.foot {
   flex-shrink: 0;
 }
 .problem-icon svg { width: 22px; height: 22px; }
-.problem-card h4 { font-family: var(--font-display); font-weight: 700; font-size: 18px; margin-bottom: 6px; letter-spacing: -0.015em; line-height: 1.2; }
+.problem-card h4 { font-family: var(--font-display); font-weight: 700; font-size: 18px; margin-bottom: 6px; letter-spacing: -0.015em; line-height: 1.2; transition: color 200ms; }
+.problem-card:hover h4 { color: var(--lime); }
 .problem-card p { font-size: 14.5px; color: var(--grey); line-height: 1.55; }
+/* Subtle pulse on the lime icon when card is hovered */
+.problem-card .problem-icon { transition: transform 280ms cubic-bezier(.34,1.4,.64,1), color 200ms; }
+.problem-card:hover .problem-icon { transform: scale(1.10) rotate(-3deg); color: var(--lime); }
 .problem-pull {
   font-family: var(--font-display);
   font-weight: 700;
@@ -2952,7 +2924,7 @@ footer.foot {
       </span>
     </div>
 
-    <p class="sub">Lives inside your QR menu. Never quits, never forgets the specials, speaks every language. Reads the basket and the moment, surfaces the one add-on worth showing. Sits on top of any POS.</p>
+    <p class="sub">Lives in your QR menu. <em>Never quits.</em> <em>Never forgets.</em> Speaks every language. Sits on top of any POS.</p>
 
     <div class="cta">
       <a class="btn btn-lime" href="https://wa.me/60175981858" target="_blank" rel="noopener">WhatsApp us &rarr;</a>
@@ -3015,8 +2987,8 @@ footer.foot {
 <section class="problem-block" id="problem">
   <div class="section-head reveal has-bg-scrim">
     <span class="eyebrow">WHERE THE REVENUE GOES MISSING</span>
-    <h2>Upselling was never going to be a <em>human job.</em></h2>
-    <p class="lede">Your team runs the room. Perfect upselling on every check, every language, every shift was never their job. Four reasons revenue leaks.</p>
+    <h2>Upselling was never a <em>human job.</em></h2>
+    <p class="lede">Perfect timing, every check, every shift, every language. Four structural reasons it leaks.</p>
   </div>
   <div class="problem-grid reveal">
     <div class="problem-card">
@@ -3027,7 +2999,7 @@ footer.foot {
       </div>
       <div>
         <h4>Language barriers</h4>
-        <p>Your foreign staff can take orders. They can't sell your specials in the customer's language.</p>
+        <p>They take orders. They can't sell specials in 4 languages.</p>
       </div>
     </div>
     <div class="problem-card">
@@ -3037,8 +3009,8 @@ footer.foot {
         </svg>
       </div>
       <div>
-        <h4>No upside to push</h4>
-        <p>Staff get paid hourly. Pushing your RM14 cheesecake doesn't show up in their paycheck.</p>
+        <h4>No upside</h4>
+        <p>Hourly pay. Zero commission. Zero reason to push the RM14 cheesecake.</p>
       </div>
     </div>
     <div class="problem-card">
@@ -3048,8 +3020,8 @@ footer.foot {
         </svg>
       </div>
       <div>
-        <h4>Transient workforce</h4>
-        <p>Train them on the menu, the specials, the scripts. They've moved to a different job. Start over.</p>
+        <h4>6-month tenure</h4>
+        <p>Train them on the menu. They move on. Start over.</p>
       </div>
     </div>
     <div class="problem-card">
@@ -3059,14 +3031,14 @@ footer.foot {
         </svg>
       </div>
       <div>
-        <h4>Static menus, static results</h4>
-        <p>Your menu doesn't know it's 9pm with 4 lava cakes left. It doesn't read the room.</p>
+        <h4>Static menus</h4>
+        <p>Your menu doesn't know it's 9pm. With 4 lava cakes left. And it's raining.</p>
       </div>
     </div>
   </div>
   <div class="problem-pull reveal">
-    This is not a staff problem. It's a <em>system</em> problem.
-    <span class="foot">Move the upsell job to the only thing that can actually do it on every check, in every language, every shift - the screen. Your team gets to do what they're great at.</span>
+    Not a staff problem. A <em>system</em> problem.
+    <span class="foot">Move the upsell job to the screen. The team gets to run the room.</span>
   </div>
 </section>
 
@@ -3075,7 +3047,7 @@ footer.foot {
   <div class="section-head reveal has-bg-scrim">
     <span class="eyebrow">WHAT WE TAKE OFF YOUR PLATE</span>
     <h2>The smartest waiter does <em>three things.</em></h2>
-    <p class="lede">Three jobs that need perfect timing, perfect language, every single check. Three jobs MenuBase does automatically - so your team gets to focus on the room.</p>
+    <p class="lede">Three jobs. Perfect timing. Every language. Every check. Automatic.</p>
   </div>
 
   <div class="pillar-tabs reveal">
@@ -3098,7 +3070,7 @@ footer.foot {
     <div class="pillar-txt">
       <span class="num">01 / SMART UPSELL</span>
       <h3>Never miss the right add-on. <em>On every order.</em></h3>
-      <p class="lede">No random popups. MenuBase reads the basket, the time, the history, then surfaces one suggestion that actually converts.</p>
+      <p class="lede">Reads the basket. Reads the time. Reads the history. Surfaces one suggestion that actually converts.</p>
       <ul>
         <li><strong>Context-aware:</strong> 9:42am avo toast &rarr; White Coffee. Friday 6pm pasta &rarr; Truffle Fries.</li>
         <li><strong>One-tap accept:</strong> Customer taps once. Item drops in. No staff awkwardness.</li>
@@ -3160,7 +3132,7 @@ footer.foot {
     <div class="pillar-txt">
       <span class="num">02 / SMART PROMOTE</span>
       <h3>Launch a special at 9am. <em>Selling by 9:01.</em></h3>
-      <p class="lede">Flag an item "push this week". It appears on every relevant order, every outlet, instantly. No table tents, no briefings.</p>
+      <p class="lede">Flag "push this week". Live on every order, every outlet, instantly. No table tents. No briefings.</p>
       <ul>
         <li><strong>One-click rollout:</strong> All outlets, all shifts, all languages, instantly.</li>
         <li><strong>Happy hour automation:</strong> 5pm on. 7pm off. Hands free.</li>
@@ -3231,7 +3203,7 @@ footer.foot {
     <div class="pillar-txt">
       <span class="num">03 / DYNAMIC MENU</span>
       <h3>The menu that <em>reads the room.</em></h3>
-      <p class="lede">No more "sorry, not available". No breakfast at 3pm. Margin movers at the top when the rush hits.</p>
+      <p class="lede">Sold out items vanish. Breakfast hides at 11am. Margin movers up top when the rush hits.</p>
       <ul>
         <li><strong>Daypart-aware:</strong> Breakfast off at 11. Lunch on at 11:01.</li>
         <li><strong>Stock-aware:</strong> Sold-out items vanish. Last 3 tagged "almost gone".</li>
@@ -3295,7 +3267,7 @@ footer.foot {
     <div class="demo-side has-bg-scrim scrim-dark">
       <span class="eyebrow">TRY IT NOW</span>
       <h2>This isn't a mock-up. <em>Try every feature.</em></h2>
-      <p class="lede">The phone on the right is the real app. Tap any scenario to see it fire live.</p>
+      <p class="lede">Real app. Tap any scenario. Watch it fire live.</p>
 
       <div class="demo-chips" id="demo-chips">
         <div class="chip-group">
@@ -3337,7 +3309,7 @@ footer.foot {
   <div class="section-head reveal has-bg-scrim">
     <span class="eyebrow">HOW WE COMPARE</span>
     <h2>We're not a POS. <em>That's the point.</em></h2>
-    <p class="lede">If you've been comparing us to your cash register, you've been comparing us to the wrong thing. Your POS records sales. MenuBase is the waiter that sits on top of it. Doesn't quit, doesn't take leave, doesn't forget the specials.</p>
+    <p class="lede">Your POS records sales. MenuBase is the waiter sitting on top of it. Doesn't quit. Doesn't take leave. Doesn't forget the specials.</p>
   </div>
   <div class="arch-stack reveal" aria-label="How MenuBase sits in your existing stack">
     <div class="arch-layer arch-customer">
@@ -3393,7 +3365,7 @@ footer.foot {
   <div class="section-head center reveal has-bg-scrim">
     <span class="eyebrow">FROM OUR DISCOVERY INTERVIEWS</span>
     <h2>What operators kept <em>telling us.</em></h2>
-    <p class="lede">Before writing a single line of code, we sat down with café, kopitiam and mamak operators across Klang Valley. The same three problems came up in every conversation.</p>
+    <p class="lede">We sat down with KL cafe, kopitiam and mamak operators. Same three problems every time.</p>
   </div>
   <div class="testi-grid">
     <div class="testi-card reveal">
@@ -3468,9 +3440,8 @@ footer.foot {
   <div class="cta-inner">
     <div class="cta-text reveal has-bg-scrim scrim-dark">
       <span class="eyebrow">TALK TO US</span>
-      <h2>More revenue per order. <em>Same team you have today.</em></h2>
-      <p>Show us your menu. We'll model the revenue uplift on your real basket and walk through how MenuBase runs alongside your team.</p>
-      <p>No new hires. No training scripts. No Sunday briefings. The team you have, plus the waiter that handles the upsell job without the staff cost. Faster service, smoother shifts, more revenue out the door.</p>
+      <h2>More revenue per order. <em>Same team.</em></h2>
+      <p>Show us your menu. We will model the uplift on your real basket. No new hires. No scripts. No Sunday briefings.</p>
       <div class="also">
         Or <a href="https://wa.me/60175981858" target="_blank" rel="noopener">WhatsApp us directly</a>, we reply within an hour.
       </div>
@@ -3480,11 +3451,11 @@ footer.foot {
       <span class="pill">WHAT YOU GET</span>
       <h4>What changes <em>once it's live.</em></h4>
       <ul>
-        <li>White-glove setup. We build your menu, your campaigns, your QRs</li>
-        <li>Multi-language menu out of the box. English, Malay, Mandarin, Tamil</li>
-        <li>Direct WhatsApp to the team, no support tickets</li>
-        <li>Locked-in pricing, no surprise hikes</li>
-        <li>Free until we prove the revenue lift. Pay only on results.</li>
+        <li>White-glove setup. We build the menu, the QRs, the campaigns.</li>
+        <li>4 languages out of the box. EN, BM, ZH, TA.</li>
+        <li>WhatsApp to the team. No support tickets.</li>
+        <li>Locked pricing. No surprise hikes.</li>
+        <li>Free until we prove the lift. Pay on results.</li>
       </ul>
       <a class="btn btn-lime btn-lg" href="https://wa.me/60175981858?text=I'd%20like%20to%20see%20MenuBase%20on%20our%20menu" target="_blank" rel="noopener">WhatsApp us &rarr;</a>
       <div class="micro">15 MIN &middot; NO COMMITMENT &middot; WE REPLY WITHIN AN HOUR</div>
@@ -3509,7 +3480,7 @@ footer.foot {
   <div class="manifesto-inner has-bg-scrim scrim-lime">
     <div class="manifesto-eyebrow">The bottom line</div>
     <h2>Run the room. <br/>Let the screen run the <em>suggestions.</em></h2>
-    <p>Restaurants live or die on the food, the room, the regulars. That's where your team's attention belongs. We'll handle the part nobody enjoyed doing anyway - perfect upselling, every check, every shift.</p>
+    <p>Restaurants live on the food, the room, the regulars. That is your team's job. We handle the part nobody enjoyed anyway: perfect upselling, every check, every shift.</p>
     <div class="hero-actions" style="justify-content:center;gap:28px;">
       <a class="btn btn-lime btn-lg" href="https://wa.me/60175981858" target="_blank" rel="noopener">WhatsApp us &rarr;</a>
       <a class="hero-watch" href="#demo">Watch it work</a>
@@ -3524,7 +3495,7 @@ footer.foot {
     <div class="playbook-cta-head">
       <span class="eyebrow">F&amp;B PLAYBOOK</span>
       <h2>Free reads<br/>while you <em>decide.</em></h2>
-      <p class="lede">No signup. No drip emails. Real operator questions, answered plainly. Read three, decide if MenuBase is your kind of thinking.</p>
+      <p class="lede">Real operator questions. Answered plainly. No drip emails.</p>
       <a class="btn btn-lime btn-lg playbook-cta-btn" href="/learn/">Open the Playbook &rarr;</a>
     </div>
     <div class="playbook-cta-grid">
@@ -3557,43 +3528,27 @@ footer.foot {
   <div class="faq-list">
     <details class="faq-item has-bg-scrim">
       <summary>What is MenuBase?</summary>
-      <div class="faq-answer">MenuBase is the best waiter you can hire. Lives inside your QR menu, never quits, never forgets the specials, speaks every language. The customer scans, the menu opens, and MenuBase surfaces the right add-on at the right moment based on the basket, the time, the customer's history and the day of the week. Built for Malaysian cafes, restaurants and kopitiams.</div>
+      <div class="faq-answer">The best waiter you can hire. Lives in your QR menu. Reads the basket and the moment, surfaces one suggestion that converts. Built for Malaysian F&amp;B.</div>
     </details>
     <details class="faq-item has-bg-scrim">
-      <summary>How is MenuBase different from a regular QR menu?</summary>
-      <div class="faq-answer">A regular QR menu shows the same items to everyone, all day. MenuBase reads the basket and the moment, then surfaces one suggestion that actually converts. It also auto-translates, auto-hides breakfast at 11am, removes sold-out items live, and pushes specials across every outlet instantly.</div>
-    </details>
-    <details class="faq-item has-bg-scrim">
-      <summary>Does MenuBase work for multiple outlets?</summary>
-      <div class="faq-answer">Yes. Push a special once and it appears on every relevant order across every outlet, every shift, every language, instantly. Each outlet keeps its own stock signal and daypart rules, but the upsell logic and menu changes roll out centrally.</div>
+      <summary>How is this different from a regular QR menu?</summary>
+      <div class="faq-answer">A regular QR menu shows everyone the same items all day. MenuBase reads the basket. Auto-translates. Hides breakfast at 11am. Removes sold-out items live.</div>
     </details>
     <details class="faq-item has-bg-scrim">
       <summary>Do I need to replace my POS?</summary>
-      <div class="faq-answer">No. MenuBase sits on top of your existing POS. Waiters type orders the way they do today. Billing and accounting stay where they are.</div>
+      <div class="faq-answer">No. MenuBase sits on top. Waiters ring orders the way they do today. Billing stays where it is.</div>
     </details>
     <details class="faq-item has-bg-scrim">
       <summary>How long does setup take?</summary>
-      <div class="faq-answer">Same day. We build your digital menu, generate the QR codes, train your team. Live by end of service.</div>
+      <div class="faq-answer">Same day. We build the menu, generate QR codes, train the team. Live by end of service.</div>
     </details>
     <details class="faq-item has-bg-scrim">
-      <summary>Do my customers need to download an app?</summary>
-      <div class="faq-answer">Never. Scan the QR, the browser opens the menu. No login, no signup, no email capture.</div>
-    </details>
-    <details class="faq-item has-bg-scrim">
-      <summary>What languages does MenuBase speak?</summary>
-      <div class="faq-answer">English, Bahasa Malaysia, Mandarin and Tamil out of the box. Arabic, Vietnamese, Burmese and Tagalog on request.</div>
-    </details>
-    <details class="faq-item has-bg-scrim">
-      <summary>How does the upsell actually work?</summary>
-      <div class="faq-answer">One suggestion at the right moment, not random popups. Reads the basket, the time, the history. Customer taps to add.</div>
+      <summary>Do customers download an app?</summary>
+      <div class="faq-answer">Never. Scan the QR, the browser opens the menu. No login, no email.</div>
     </details>
     <details class="faq-item has-bg-scrim">
       <summary>What does it cost?</summary>
-      <div class="faq-answer">Free until we prove the lift on your own menu. Pay only on results. Transparent monthly pricing after, locked for the life of your account.</div>
-    </details>
-    <details class="faq-item has-bg-scrim">
-      <summary>What if my team isn't tech-savvy?</summary>
-      <div class="faq-answer">Built for that. The waiter only sees a list of items and types into the POS, same job they already do. Zero training needed.</div>
+      <div class="faq-answer">Free until we prove the lift on your menu. Pay only on results. Locked monthly pricing after.</div>
     </details>
   </div>
 </div>
