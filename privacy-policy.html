@@ -236,9 +236,10 @@
         .top-ribbon-login { padding: 8px 14px; font-size: 13px; font-weight: 600; color: var(--text); border-radius: 999px; border: 1px solid var(--border); }
         .top-ribbon-login:hover { background: #F1F5F9; text-decoration: none; }
 
-        /* Floating bottom nav dock (sitewide consistent) */
+        /* Bottom nav (sitewide consistent, scrolls inline at end of body) */
         nav.top {
-            position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
+            position: static;
+            margin: 22px auto 32px;
             z-index: 50;
             background: rgba(26,26,26,0.92);
             backdrop-filter: blur(20px) saturate(180%);
@@ -246,7 +247,8 @@
             border: 1px solid rgba(255,255,255,0.08);
             border-radius: 999px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.25), 0 6px 16px rgba(0,0,0,0.15);
-            max-width: calc(100vw - 24px);
+            max-width: fit-content;
+            width: max-content;
         }
         nav.top .nav-inner { max-width: none; margin: 0; padding: 4px; display: flex; align-items: center; gap: 6px; height: auto; }
         nav.top .nav-links { display: flex; gap: 2px; padding-left: 6px; }
@@ -267,7 +269,7 @@
         }
         nav.top .nav-cta .btn.nav-wa-icon:hover { background: #A9D349; }
         nav.top .nav-cta .btn.nav-wa-icon svg { width: 18px; height: 18px; display: block; }
-        body { padding-bottom: 80px; }
+        /* nav.top scrolls inline at end of body, no padding hack */
 
         footer { border-top: 1px solid var(--border); padding: 40px 0; }
 
@@ -368,13 +370,12 @@
         }
 
         @media (max-width:720px) {
-            nav.top { bottom: 12px; left: 10px; right: 10px; transform: none; max-width: none; }
+            nav.top { margin: 18px 10px 28px; width: auto; max-width: none; }
             nav.top .nav-inner { padding: 4px; gap: 0; justify-content: space-between; }
             nav.top .nav-links { flex: 1; padding-left: 4px; gap: 0; justify-content: space-around; }
             nav.top .nav-links a { flex-direction: column; gap: 2px; padding: 6px 4px; font-size: 9.5px; text-align: center; flex: 1; }
             nav.top .nav-links .nav-ico { width: 16px; height: 16px; flex: 0 0 16px; opacity: 0.92; }
             nav.top .nav-cta { flex: 0 0 auto; }
-            body { padding-bottom: 90px; }
         }
     </style>
 </head>
@@ -969,7 +970,10 @@
     </footer>
 
     <!-- Floating bottom dock (sitewide consistent) -->
-    <nav class="top">
+    
+
+<!-- ─── BOTTOM NAV (scrolls inline at end of body) ─── -->
+<nav class="top">
       <div class="nav-inner">
         <div class="nav-links">
           <a href="https://menubase.io/#features"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>Features</span></a>
@@ -983,6 +987,7 @@
         </div>
       </div>
     </nav>
+
 </body>
 
 </html>
