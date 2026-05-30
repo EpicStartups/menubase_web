@@ -1132,6 +1132,92 @@ footer.foot {
   .article-cta p { font-size: 15px; }
 }
 
+/* ─── RELATED GUIDES ─── */
+.related-guides {
+  max-width: 1180px;
+  margin: 56px auto 24px;
+  padding: 0 28px;
+}
+.rel-head { margin-bottom: 22px; }
+.rel-head .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--ink-2);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+}
+.rel-head h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 3.8vw, 38px);
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0;
+}
+.rel-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.rel-card {
+  display: flex;
+  flex-direction: column;
+  padding: 22px 22px 24px;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: transform 200ms cubic-bezier(.16,1,.3,1), border-color 200ms, background 200ms;
+}
+.rel-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--lime);
+  background: var(--bg-elev);
+}
+.rel-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--ink-2);
+  margin-bottom: 12px;
+}
+.rel-card h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 10px;
+}
+.rel-card:hover h3 { color: var(--lime); }
+.rel-card p {
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  margin: 0 0 16px;
+  flex: 1;
+}
+.rel-cta {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--lime);
+}
+@media (max-width: 900px) {
+  .rel-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .rel-grid { grid-template-columns: 1fr; }
+  .related-guides { padding: 0 22px; margin-top: 44px; }
+}
+
 /* ─── HUB REDESIGN: goal grid + filter tabs + search ─── */
 .hub-goals {
   max-width: 1180px;

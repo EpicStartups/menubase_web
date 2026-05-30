@@ -13,6 +13,10 @@
 <meta name="robots" content="index, follow, max-image-preview:large"/>
 <link rel="canonical" href="https://menubase.io/"/>
 
+<!-- ─── FEED DISCOVERY ─── -->
+<link rel="alternate" type="application/atom+xml" title="MenuBase F&amp;B Playbook (Atom)" href="/playbook.rss"/>
+<link rel="alternate" type="application/feed+json" title="MenuBase F&amp;B Playbook (JSON Feed)" href="/playbook.json"/>
+
 <!-- ─── HREFLANG ALTERNATES (i18n signal for Google) ─── -->
 <link rel="alternate" hreflang="en" href="https://menubase.io/"/>
 <link rel="alternate" hreflang="ms" href="https://menubase.io/ms/"/>
@@ -606,6 +610,49 @@
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://menubase.io/" }
       ]
+    },
+    {
+      "@type": "DataFeed",
+      "@id": "https://menubase.io/#playbook-feed",
+      "name": "MenuBase F&B Playbook (Atom + JSON Feed)",
+      "description": "Practical guides for Malaysian F&B operators. 20+ long-form articles on revenue, cost, team and tech.",
+      "url": "https://menubase.io/learn/",
+      "encoding": [
+        {
+          "@type": "MediaObject",
+          "encodingFormat": "application/atom+xml",
+          "contentUrl": "https://menubase.io/playbook.rss"
+        },
+        {
+          "@type": "MediaObject",
+          "encodingFormat": "application/feed+json",
+          "contentUrl": "https://menubase.io/playbook.json"
+        }
+      ],
+      "publisher": { "@id": "https://menubase.io/#organization" },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://menubase.io/#team",
+      "name": "The MenuBase Team",
+      "description": "Operators and engineers who ran F&B venues, interviewed 100+ Malaysian operators, and built MenuBase around the three patterns heard every time: staff cannot reliably sell specials in multiple languages, scripts and bonuses do not survive 6-9 month tenure, and every Sunday is a new training session for the new hires.",
+      "url": "https://menubase.io/about.html",
+      "worksFor": { "@id": "https://menubase.io/#organization" },
+      "knowsAbout": [
+        "Malaysian F&B operations",
+        "Restaurant POS systems",
+        "QR menu and self-ordering",
+        "Average order value uplift",
+        "Multilingual menu engineering",
+        "F&B labour and turnover"
+      ],
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://menubase.io/menubase-logo-dark.png",
+        "width": 3026,
+        "height": 548
+      }
     }
   ]
 }
