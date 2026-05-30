@@ -152,6 +152,57 @@
     .timeline-row { grid-template-columns: 70px 1fr; gap: 14px; }
     .timeline-time { font-size: 12.5px; }
   }
+
+  /* ─── CROSS-LINK BANNERS + PLAYBOOK DEEP LINKS ─── */
+  .xlink-banner {
+    max-width: 1100px;
+    margin: 32px auto;
+    padding: 28px 28px;
+    background: linear-gradient(180deg, rgba(188,241,37,0.06) 0%, rgba(188,241,37,0.02) 100%);
+    border: 1px solid rgba(188,241,37,0.20);
+    border-radius: var(--r-md);
+  }
+  .xlink-banner h3 { font-family: var(--font-display); font-weight: 600; font-size: 18px; color: var(--ink); margin: 0 0 8px; }
+  .xlink-banner p { font-size: 14.5px; color: var(--ink-2); margin: 0 0 18px; line-height: 1.55; }
+  .xlink-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .xlink-grid a {
+    display: flex; flex-direction: column;
+    padding: 14px 16px;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: border-color 180ms, transform 180ms;
+  }
+  .xlink-grid a:hover { border-color: var(--lime); transform: translateY(-2px); }
+  .xlink-grid a strong { font-family: var(--font-display); font-weight: 600; font-size: 14.5px; color: var(--ink); margin-bottom: 4px; }
+  .xlink-grid a span { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--lime); font-weight: 700; }
+
+  .playbook-deep-links { max-width: 1100px; margin: 32px auto; padding: 0 28px; }
+  .playbook-deep-links h3 { font-family: var(--font-display); font-weight: 700; font-size: 22px; color: var(--ink); margin: 0 0 14px; letter-spacing: -0.02em; }
+  .pdl-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .pdl-grid a {
+    display: flex; flex-direction: column;
+    padding: 22px 22px;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    text-decoration: none;
+    transition: border-color 200ms, transform 220ms;
+  }
+  .pdl-grid a:hover { border-color: var(--lime); transform: translateY(-2px); }
+  .pdl-grid .pdl-eyebrow {
+    font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--lime); font-weight: 700; margin-bottom: 10px;
+  }
+  .pdl-grid strong {
+    font-family: var(--font-display); font-weight: 600; font-size: 16px;
+    color: var(--ink); margin-bottom: 8px; line-height: 1.3;
+  }
+  .pdl-grid span { font-size: 13.5px; color: var(--ink-2); line-height: 1.5; }
+  @media (max-width: 720px) {
+    .xlink-grid, .pdl-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -292,6 +343,41 @@
   <details><summary>We're a multi-outlet chain. Can we push the new flavour to all 8 outlets at once?</summary><div class="faq-body">Yes. Flag the new flavour once. Live on every outlet, every shift, instantly. No need to call eight WhatsApp groups or print eight sets of table tents.</div></details>
   <details><summary>How do we get started?</summary><div class="faq-body">WhatsApp the team a photo of your menu. We will model the AOV lift on your real basket and book a 15-minute call. No deck, no sales script. If MenuBase is not the right fit for your shop, we will say so.</div></details>
 </section>
+
+
+<!-- ─── Playbook deep-links ─── -->
+<section class="playbook-deep-links">
+  <h3>Go deeper on the operator math</h3>
+  <div class="pdl-grid">
+    <a href="/learn/how-to-increase-average-order-value-malaysia.html">
+      <span class="pdl-eyebrow">PLAYBOOK</span>
+      <strong>9 Tactics To Increase AOV</strong>
+      <span>Nine tactics for lifting AOV. Modifier upsells covered in tactic #3.</span>
+    </a>
+    <a href="/learn/qr-menu-pricing-malaysia.html">
+      <span class="pdl-eyebrow">PLAYBOOK</span>
+      <strong>QR Menu Pricing In Malaysia</strong>
+      <span>What fair pricing looks like across the 4 pricing models, by venue type.</span>
+    </a>
+    <a href="/learn/how-to-evaluate-pos-system-malaysia.html">
+      <span class="pdl-eyebrow">PLAYBOOK</span>
+      <strong>How To Evaluate A POS System</strong>
+      <span>12-point vendor-neutral checklist to catch the expensive mistakes before you sign.</span>
+    </a>
+  </div>
+</section>
+
+<!-- ─── Vertical cross-linking banner ─── -->
+<aside class="xlink-banner">
+  <h3>Not a bubble tea shop?</h3>
+  <p>We have pages tuned to other Malaysian F&amp;B venue types. Same product, different angle on what matters in your specific operation.</p>
+  <div class="xlink-grid">
+    <a href="/for-cafes.html"><span>FOR CAFES</span><strong>Never forgets the specials</strong></a>
+    <a href="/for-kopitiams.html"><span>FOR KOPITIAMS</span><strong>The waiter who never forgets the order</strong></a>
+    <a href="/for-restaurants.html"><span>FOR RESTAURANTS</span><strong>Compress table turns without rushing guests</strong></a>
+    <a href="/learn/"><span>F&amp;B PLAYBOOK</span><strong>30-article operator library</strong></a>
+  </div>
+</aside>
 
 <section class="vertical-section">
   <div style="background:var(--bg-elev);border:1px solid rgba(188,241,37,0.20);border-radius:18px;padding:48px 40px;text-align:center;">
