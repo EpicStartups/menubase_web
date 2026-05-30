@@ -124,7 +124,10 @@ main, .top-ribbon, nav.top, footer.foot { position: relative; z-index: 1; }
   height: 38px;
   width: auto;
   display: block;
-  filter: invert(1) hue-rotate(180deg);
+  /* No filter - the PNG has dark grey letterforms + bright lime accents
+     and the top-ribbon background is light, so the brand renders correctly
+     as authored. The previous invert+hue-rotate was corrupting the brand
+     lime (#BCF125) into a darker olive green. */
 }
 .top-ribbon-login {
   margin-left: auto;
