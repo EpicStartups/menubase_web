@@ -676,75 +676,46 @@ nav.top { z-index: 50; }
 .top-ribbon-login .arr { transition: transform 150ms; }
 .top-ribbon-login:hover .arr { transform: translateX(2px); }
 
-/* ─── LANGUAGE TOGGLE (single pill, dropdown reveal) ─── */
+/* ─── LANGUAGE PILL (3-segment, click any to switch) ─── */
 .lang-switch {
-  position: relative;
   display: inline-flex;
   align-items: center;
+  gap: 2px;
   margin-left: auto;
   margin-right: 10px;
   background: rgba(0,0,0,0.05);
   border: 1px solid rgba(0,0,0,0.12);
   border-radius: 999px;
-  padding: 5px 11px 5px 14px;
-  cursor: pointer;
+  padding: 3px;
+}
+.lang-switch a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 24px;
+  padding: 0 10px;
   font-family: var(--font-mono);
   font-size: 11.5px;
   letter-spacing: 0.06em;
-  font-weight: 700;
-  color: var(--ink);
-  user-select: none;
-  outline: none;
-}
-.lang-switch::after {
-  content: '';
-  display: inline-block;
-  width: 0; height: 0;
-  margin-left: 7px;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid var(--ink);
-  transition: transform 180ms;
-}
-.lang-switch:hover, .lang-switch:focus-within { background: rgba(0,0,0,0.10); }
-.lang-switch:hover::after, .lang-switch:focus-within::after { transform: rotate(180deg); }
-.lang-switch .lang-dd {
-  position: absolute;
-  top: calc(100% + 6px);
-  right: 0;
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 4px;
-  display: none;
-  flex-direction: column;
-  gap: 0;
-  box-shadow: 0 12px 32px rgba(0,0,0,0.18);
-  min-width: 84px;
-  z-index: 100;
-}
-.lang-switch:hover .lang-dd,
-.lang-switch:focus-within .lang-dd { display: flex; }
-.lang-switch .lang-dd a {
-  padding: 9px 14px;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.06em;
-  color: var(--ink);
+  color: var(--ink-2);
   text-decoration: none;
-  border-radius: 8px;
+  border-radius: 999px;
+  transition: color 150ms, background 150ms;
   font-weight: 600;
-  text-align: left;
-  transition: background 150ms, color 150ms;
+  cursor: pointer;
 }
-.lang-switch .lang-dd a:hover {
+.lang-switch a:hover { color: var(--ink); background: rgba(0,0,0,0.06); }
+.lang-switch a.active {
   background: var(--lime);
   color: #0A0A0C;
+  font-weight: 700;
 }
+.lang-switch a.active:hover { background: var(--lime); color: #0A0A0C; }
 .top-ribbon-inner .lang-switch + .top-ribbon-login { margin-left: 0; }
 @media (max-width: 560px) {
-  .lang-switch { margin-right: 6px; padding: 4px 9px 4px 11px; font-size: 11px; }
-  .lang-switch::after { margin-left: 5px; }
+  .lang-switch { margin-right: 6px; padding: 2px; }
+  .lang-switch a { min-width: 28px; padding: 0 8px; height: 22px; font-size: 11px; }
 }
 
 /* ─── NAV (floating bottom dock) ─── */
@@ -3147,7 +3118,7 @@ footer.foot {
     <a href="#top" class="brand" aria-label="MenuBase">
       <img class="brand-lockup" src="img/menubase_logo_light.png" alt="MenuBase" width="220" height="40" fetchpriority="high" decoding="async"/>
     </a>
-<div class="lang-switch" tabindex="0" role="button" aria-label="Language">EN<div class="lang-dd"><a href="/ms/" hreflang="ms">BM</a><a href="/zh/" hreflang="zh-Hans">&#20013;</a></div></div>
+<div class="lang-switch" role="group" aria-label="Language"><a href="/" class="active" hreflang="en">EN</a><a href="/ms/" hreflang="ms">BM</a><a href="/zh/" hreflang="zh-Hans">&#20013;</a></div>
         <a class="top-ribbon-login" href="https://app.menubase.io" target="_blank" rel="noopener">
       Login <span class="arr" aria-hidden="true">→</span>
     </a>
