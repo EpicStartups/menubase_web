@@ -2299,7 +2299,12 @@ footer.foot {
   gap: 12px;
   transition: border-color 220ms, transform 220ms cubic-bezier(.16,1,.3,1);
 }
-.arch-layer:hover { border-color: var(--lime-deep); transform: translateY(-2px); }
+.arch-layer { transition: border-color 200ms, transform 220ms, box-shadow 220ms; }
+.arch-layer:hover {
+  border-color: var(--lime);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px -14px rgba(188,241,37,0.32);
+}
 .arch-layer.arch-menubase {
   background: rgba(188, 241, 37, 0.06);
   border-color: var(--lime);
@@ -2538,7 +2543,13 @@ footer.foot {
   height: 3px;
   background: var(--lime);
 }
-.testi-card:hover { border-color: var(--lime-deep); transform: translateY(-3px); }
+.testi-card:hover {
+  border-color: var(--lime);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px -16px rgba(188,241,37,0.30);
+}
+.testi-stat { transition: color 200ms; }
+.testi-card:hover .testi-stat { color: var(--lime); }
 .testi-stat {
   font-family: var(--font-display);
   font-weight: 900;
@@ -2840,8 +2851,9 @@ footer.foot {
   transition: transform 180ms, color 180ms;
 }
 .playbook-card:hover .card-arrow {
-  transform: translateX(4px);
-  color: var(--lime-deep);
+  transform: translateX(6px);
+  color: var(--lime);
+  text-shadow: 0 0 12px rgba(188,241,37,0.55);
 }
 @media (max-width: 920px) {
   .playbook-cta { padding: 88px 22px; }
@@ -3354,7 +3366,7 @@ footer.foot {
     </div>
     <div class="arch-summary">
       <span class="arch-summary-k">Net</span>
-      <span class="arch-summary-v">You add a revenue layer. You don't replace anything underneath.</span>
+      <span class="arch-summary-v">Add a revenue layer. Replace nothing underneath.</span>
     </div>
   </div>
 </section>
@@ -3370,26 +3382,26 @@ footer.foot {
   <div class="testi-grid">
     <div class="testi-card reveal">
       <div class="testi-stat">The language thing.<span class="testi-stat-lbl">EVERY CONVERSATION</span></div>
-      <p class="testi-quote">"Our team is mostly foreign workers. They take orders fine, but they can't really explain our specials in English or Mandarin. The customer just nods and orders what they always order. We're leaving money on every table."</p>
+      <p class="testi-quote">"Our team takes orders fine. They can't sell the specials in EN or Mandarin. Customer nods, orders the usual. Money left on every table."</p>
       <div class="testi-foot">
         <div class="testi-ava">//</div>
-        <div class="testi-who"><strong>Café owner</strong><span>Subang Jaya · single outlet</span></div>
+        <div class="testi-who"><strong>Cafe owner</strong><span>Subang Jaya &middot; 1 outlet</span></div>
       </div>
     </div>
     <div class="testi-card reveal">
       <div class="testi-stat">The turnover thing.<span class="testi-stat-lbl">EVERY MULTI-OUTLET OPERATOR</span></div>
-      <p class="testi-quote">"We tried scripts. We tried role-plays. We tried bonuses for staff who pushed the new menu. Nothing stuck because the staff don't stay long enough. By the time they get it, they've moved on."</p>
+      <p class="testi-quote">"Scripts. Role-plays. Bonuses for pushing specials. Nothing stuck. By the time they get it, they've moved on."</p>
       <div class="testi-foot">
         <div class="testi-ava">//</div>
-        <div class="testi-who"><strong>Multi-outlet operator</strong><span>KL &amp; Selangor · 3 outlets</span></div>
+        <div class="testi-who"><strong>Multi-outlet operator</strong><span>KL &amp; Selangor &middot; 3 outlets</span></div>
       </div>
     </div>
     <div class="testi-card reveal">
       <div class="testi-stat">The training thing.<span class="testi-stat-lbl">EVERY SUNDAY, APPARENTLY</span></div>
-      <p class="testi-quote">"Every Sunday I sit down with new hires for menu briefings. By Monday morning, somebody who wasn't there is on shift. I'm not running a training company - I'm running a kopitiam."</p>
+      <p class="testi-quote">"Every Sunday I brief new hires. By Monday someone else is on shift. I'm not running a training company. I'm running a kopitiam."</p>
       <div class="testi-foot">
         <div class="testi-ava">//</div>
-        <div class="testi-who"><strong>Kopitiam manager</strong><span>Petaling Jaya · 2 outlets</span></div>
+        <div class="testi-who"><strong>Kopitiam manager</strong><span>Petaling Jaya &middot; 2 outlets</span></div>
       </div>
     </div>
   </div>
@@ -3401,7 +3413,7 @@ footer.foot {
     <div class="reveal has-bg-scrim scrim-soft">
       <span class="eyebrow">UPSELL CALCULATOR</span>
       <h2 style="font-family:var(--font-display);font-weight:700;font-size:clamp(34px,5vw,56px);line-height:0.98;letter-spacing:-0.035em;margin:16px 0 18px;max-width:14ch;">Run <em style="font-style:normal;color:var(--lime-deep);">your own</em> numbers.</h2>
-      <p style="font-size:17px;color:var(--grey);max-width:440px;line-height:1.55;margin-bottom:20px;">Most cafes leave 8-12% on the table because the upsell job slips through every shift. Move the sliders. See your monthly uplift in real time. No email gate, no signup, just math.</p>
+      <p style="font-size:17px;color:var(--grey);max-width:440px;line-height:1.55;margin-bottom:20px;">Most cafes leave 8-12% on the table. Move the sliders. See your monthly uplift live. No email gate.</p>
     </div>
 
     <div class="calc-card reveal">
