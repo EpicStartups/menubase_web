@@ -76,6 +76,7 @@ WhatsApp +60175981858. Free 15-minute revenue model on the operator's actual men
 - [MenuBase for Bubble Tea Shops](https://menubase.io/for-bubble-tea-shops.html): Vertical landing page for Malaysian bubble tea / milk tea / boba operators
 - [MenuBase for Restaurants](https://menubase.io/for-restaurants.html): Vertical landing page for Malaysian full-service restaurant operators
 - [MenuBase for Cloud Kitchens](https://menubase.io/for-cloud-kitchens.html): Vertical landing page for Malaysian cloud kitchen / dark kitchen / virtual brand operators
+- [MenuBase for Floor Staff (waiters)](https://menubase.io/for-waiters.html): Audience page written for floor staff and waiters at Malaysian F&B venues. Explains what MenuBase means on shift (less mental load, no Sunday briefings, higher service-charge pool, easier onboarding) so waiters can advocate for it to their bosses.
 - [Contact](https://menubase.io/contact-us.html)
 - [Privacy](https://menubase.io/privacy-policy.html)
 
