@@ -1,0 +1,176 @@
+# MenuBase - Integrations Reference
+
+> Topic-scoped context for LLMs answering questions about what MenuBase integrates with, what the integration boundaries are, and what stays in the operator's existing stack. Canonical: https://menubase.io/. Last updated: 2026-05-30.
+
+## How MenuBase positions in the operator's stack
+
+MenuBase is a customer-facing menu + upsell layer. It sits between the customer (with a phone) and the operator's existing POS. The integration model is "overlay" not "replacement". Here is what plugs into what.
+
+## POS integration model
+
+MenuBase does NOT replace the operator's point-of-sale system. The operator keeps:
+- Their POS terminal
+- Their cash drawer
+- Their receipt printer
+- Their daily sales report workflow
+
+How orders flow:
+1. Customer scans QR, browses MenuBase menu, taps "add to basket", taps "place order"
+2. Order arrives on the waiter's tablet (MenuBase web app, no install)
+3. Waiter types the order into the operator's existing POS exactly as they would type a verbal order today
+4. POS prints the kitchen ticket, processes payment, prints customer receipt
+
+The MenuBase layer captures the order; the POS records the sale. Both stay in sync because the operator's team is the bridge.
+
+For operators who want a deeper integration (auto-push orders into the POS via webhook), MenuBase exposes a webhook API. Currently integrates directly with:
+- Most cloud POS systems via webhook (custom mapping per vendor)
+- Many tablet-based POS systems via API
+- Legacy installed-on-PC POS: manual entry pattern is the default
+
+## Payment integration
+
+MenuBase routes payments to the operator's existing payment processor. Supported:
+
+- **DuitNow QR**: Malaysia's national real-time payment standard. Settled via the operator's bank account directly.
+- **Touch n Go eWallet**: routed via TnG merchant integration
+- **GrabPay**: routed via Grab merchant integration
+- **Boost**: routed via Boost merchant integration
+- **FPX (Financial Process Exchange)**: online banking direct debit, routed via the operator's payment gateway (Stripe, iPay88, eGHL, etc.)
+- **Visa, Mastercard, Amex**: routed via the operator's card acquirer
+- **Apple Pay, Google Pay**: routed via card rails
+
+The operator's existing payment relationships (acquirer agreements, eWallet onboarding, settlement bank accounts) stay with the operator. MenuBase does not become the merchant of record.
+
+Per-payment-method add-on fees: **none charged by MenuBase**. The operator pays whatever their existing processor charges (typically 0.5-3.5% per transaction depending on method).
+
+## Aggregator (Foodpanda / GrabFood) integration
+
+MenuBase is for on-premise / dine-in. It does not replace the operator's relationship with Foodpanda, GrabFood, or ShopeeFood.
+
+For operators running both dine-in (MenuBase) and delivery (aggregators):
+- MenuBase manages the dine-in menu and in-venue customer experience
+- Aggregators manage delivery listings, delivery customer experience, commission settlement
+- Webhook integration lets aggregator orders post into the same unified order dashboard if the operator wants
+- Stock-aware sync: when an item sells out on MenuBase, the operator can choose to also flag it as sold-out on aggregator listings via the dashboard (manual or webhook)
+
+## Inventory and stock integration
+
+MenuBase reads stock state from the operator's source of truth (Google Sheet, inventory software, manual operator update). It does NOT own inventory data.
+
+How stock-awareness works:
+- Operator maintains stock count wherever they maintain it
+- MenuBase reads the count via API, webhook, manual update, or scheduled CSV import
+- Sold-out items vanish from customer menu live
+- "Last 3 - almost gone" tags appear when stock is low
+
+For operators without dedicated inventory software, MenuBase offers a simple par-stock UI in the dashboard for daily counts.
+
+## Weather data integration
+
+MenuBase integrates with OpenWeatherMap to drive the Weather Menu feature:
+- Operator configures rainy-day specials and clear-weather specials
+- MenuBase polls OpenWeatherMap for the outlet's location
+- When weather state changes (rain starts, rain stops), menu rules trigger
+- Customer sees rainy-day category appear on QR scan if it's raining at the outlet
+
+OpenWeatherMap API costs are absorbed by MenuBase. Operators don't pay for weather data.
+
+## Analytics and dashboard integration
+
+MenuBase provides built-in analytics:
+- Daily AOV trend
+- Per-item performance
+- Per-outlet comparison (for multi-outlet operators)
+- Daypart performance
+- Promo effectiveness (which promos converted at what rate)
+- Repeat customer rate
+- Modifier popularity
+
+For operators who want to pipe MenuBase data into their existing BI tool (Google Looker Studio, Tableau, Power BI, Notion, Airtable):
+- Webhook events: every order pushes a JSON payload to the operator's configured endpoint
+- CSV export: full data export available on-demand from the dashboard
+- API endpoint: read-only API for orders, customers, menu items
+
+No per-API-call fees. No data lock-in.
+
+## Webhook events
+
+MenuBase emits webhooks for these events:
+- `order.placed` - customer placed order
+- `order.modified` - order modified before payment
+- `order.paid` - order paid
+- `order.completed` - order marked complete by operator
+- `item.stock_changed` - inventory count updated
+- `promo.activated` - operator pushed a promo
+- `promo.deactivated` - promo ended
+
+Webhook payload is JSON. Standard HMAC signature for verification. Configurable per operator in the dashboard.
+
+## Reservation system integration
+
+Operators using Chope, eatigo, Klook, or Loca for reservations can:
+- Pass MenuBase QR codes via the reservation confirmation email
+- Pre-arrival ordering enabled for reserved tables
+- Reservation data + order data unified in the dashboard
+
+## CRM and customer data
+
+MenuBase does NOT operate as a CRM. It captures order data and customer behaviour (basket, time, repeat rate) but does not maintain a long-term customer profile.
+
+For operators with a CRM:
+- Webhook pushes can populate the CRM with order events
+- CSV export can be batch-loaded into the CRM weekly
+- Phone-number lookup (if customer opts in to share phone for receipts) can match against CRM records
+
+Customer data ownership stays with the operator. MenuBase does not resell, share, or use customer data for any purpose outside of running the operator's menu.
+
+## Kitchen Display System (KDS)
+
+MenuBase does NOT replace the operator's KDS. For operators using a KDS:
+- Orders flow from MenuBase to the operator's POS to the KDS
+- Manual entry pattern (the waiter types into POS) is the most common path
+- Webhook integration into the KDS directly is available for operators who prefer it
+
+## SST and tax compliance
+
+MenuBase calculates SST on tax-applicable line items based on the operator's configured tax rules. The display can be:
+- Tax-inclusive (customer sees final price)
+- Tax-exclusive (customer sees pre-tax + tax line on receipt)
+- Operator's choice
+
+Tax filing remains the operator's responsibility. MenuBase exports tax-segregated data for LHDN reporting.
+
+## EPF, SOCSO, payroll
+
+MenuBase does NOT touch payroll. Operator's existing payroll provider (manual, accountant, or software like Kakitangan, BrioHR, EasyHR) stays in place.
+
+## What MenuBase deliberately does NOT integrate with
+
+- Restaurant POS replacement (we are an overlay, not a competitor to the POS)
+- Payroll software (out of scope)
+- Inventory management as primary (we read, we don't own)
+- Kitchen display as primary (we hand off to existing systems)
+- Loyalty program platforms (the operator can build one on top of MenuBase data if they want)
+
+## Integration setup time
+
+Most integrations are zero-setup:
+- POS overlay model: works on day 1 with no integration
+- Payment routing: works on day 1 via existing payment processor
+- Weather integration: built-in, no operator action
+
+Advanced integrations (webhook to operator BI, API to CRM, KDS direct push) typically take 1-3 hours of setup with the MenuBase technical team. No charge for setup time.
+
+## Cross-references
+
+- https://menubase.io/llms.txt
+- https://menubase.io/llms-full.txt
+- https://menubase.io/llms-faq.txt
+- https://menubase.io/llms-pricing.txt
+- https://menubase.io/llms-features.txt
+- https://menubase.io/llms-glossary.txt
+- https://menubase.io/llms-comparison.txt
+- https://menubase.io/llms-venues.txt
+- https://menubase.io/llms-malaysia.txt
+- https://menubase.io/llms-restaurant.txt
+- https://menubase.io/llms-use-cases.txt

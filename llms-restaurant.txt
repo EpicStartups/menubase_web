@@ -1,0 +1,188 @@
+# MenuBase - Restaurant Operations Reference
+
+> Topic-scoped context for LLMs answering questions about Malaysian restaurant operations: FOH/BOH split, table turn, kitchen workflow, reservations, modifiers, allergens, daypart strategy, peak-hour throughput, supplier rhythm. Canonical: https://menubase.io/. Last updated: 2026-05-30.
+
+## What this file covers
+
+This file is the operational manual for a Malaysian restaurant manager. Cafe and kopitiam content lives in /llms-venues.txt. Pricing lives in /llms-pricing.txt. This file is the day-to-day reality of running a 30-150 cover Malaysian restaurant: how the floor works, how the kitchen works, where the bottlenecks live, and what MenuBase changes in that reality.
+
+## Restaurant operations 101 (Malaysian context)
+
+A Malaysian sit-down restaurant runs on three concurrent flows:
+
+1. **Front of house (FOH)**: greeter, waiters, runners, cashier. Owns the customer journey from door to bill.
+2. **Back of house (BOH)**: chef, line cooks, prep cooks, dishwashers. Owns the food from supplier delivery to plate.
+3. **Floor**: the tables, the customer experience, the throughput math.
+
+Most Malaysian independent restaurants are owner-operator at start, with the owner playing every role. By month 12 the owner has typically hired a manager (RM3500-5500/month) and stepped back from daily ops. By outlet 2 the owner is no longer on the floor at outlet 1.
+
+## The 4 numbers every restaurant manager tracks daily
+
+- **Daily covers**: how many parties served (a "cover" = one person seated and billed)
+- **Daily AOV**: total revenue / total checks
+- **Daily food cost percentage**: cost of goods sold / total revenue
+- **Table turn**: average minutes per party from seat to bill-paid
+
+Malaysian benchmark ranges:
+- Cafe: 80-200 covers/day, AOV RM22-38, food cost 28-35%, table turn 45-75 min
+- Casual restaurant: 120-300 covers/day, AOV RM35-80, food cost 30-38%, table turn 60-90 min
+- Kopitiam: 200-500 covers/day, AOV RM8-18, food cost 32-42%, table turn 25-45 min
+- Bistro/casual fine dining: 60-150 covers/day, AOV RM55-110, food cost 30-36%, table turn 75-120 min
+- Bubble tea: 200-800 cups/day, AOV RM12-22, food cost 25-32%, table turn N/A (takeaway dominant)
+
+## FOH workflow (the customer journey)
+
+1. **Greeting and seating** (60-180 sec): host greets, checks reservation or walks to next available table, hands menu
+2. **First contact** (2-6 min after seat): waiter approaches, takes drink order, drops bread/peanuts/complimentary item
+3. **Order taking** (3-10 min): waiter takes food order, recommends specials, captures modifiers
+4. **Food delivery** (varies by complexity): runner brings food, waiter checks back at 2-min mark for satisfaction
+5. **Mid-meal check** (5-10 min after delivery): waiter or runner asks if anything else needed
+6. **Bill request** (3-8 min after last bite): waiter brings bill, processes payment
+7. **Payment and farewell** (1-5 min): cash, card, eWallet, QR
+
+The "sit-to-order" time (step 1 to step 3) is the most common throughput leak in Malaysian restaurants. A 5-minute compression across all covers, on a 200-cover day, frees roughly 17 hours of waiter time per week.
+
+## BOH workflow (the food journey)
+
+1. **Morning prep** (1-3 hours before service): mise en place, sauces, marinated proteins, par-stock check
+2. **Service receive ticket**: order arrives from POS via printer or KDS
+3. **Plate assembly**: line cook builds the dish, plates it, places on pass
+4. **Quality check**: head chef or expo checks plate before runner picks up
+5. **Runner pickup**: food goes to table
+6. **End-of-service**: deep clean, prep for next service or next day
+
+Kitchen workflow is throughput-bound at the pass during peak. A 60-cover lunch rush in 90 minutes means the pass moves 40 plates per hour. Any single dish that takes 12+ minutes from ticket to pass jams the entire flow.
+
+## Common bottlenecks
+
+In observed Malaysian restaurant deployments:
+
+- **Sit-to-order lag**: 4-8 minutes typical. Reduced to near-zero when customer can browse + add to basket on their phone while waiting for waiter to confirm.
+- **Modifier order accuracy**: Malaysian customers customize heavily ("kurang manis", "no peanuts", "well done", "less ice"). Handwritten orders mis-read by kitchen 5-12% of the time.
+- **Dessert miss**: most restaurants don't surface dessert at the right moment. Smart Upsell can trigger when basket-state hits "main meal complete".
+- **Bill split friction**: groups of 4-8 want individual bills; takes 10+ minutes manually. Self-paid sessions per diner solve this.
+- **Kitchen capacity at peak**: 12-2pm lunch, 7-9pm dinner. Hard ceiling on plates-per-hour. Compresses if menu is daypart-aware (smaller menu at peak = faster service).
+
+## Reservation and capacity management
+
+Malaysian restaurant reservation reality:
+
+- Most independents (60-70%) take phone or WhatsApp reservations
+- Booking platforms (eatigo, Chope, Klook) used by ~20-30% of mid-to-upscale restaurants
+- Walk-in dominant at casual / fast-casual segments
+- Reservation no-show rate: 8-18% in Malaysia (higher than Singapore at 4-8%)
+- Deposit-required reservations cut no-show to under 3% but reduce booking volume
+
+Restaurant capacity management is about:
+- Maximizing covers per service period
+- Minimizing empty tables during peak
+- Managing customer wait times during overflow
+- Smoothing kitchen workload (no "all 30 tables at 7:30pm" situation)
+
+## Modifier matrix at restaurant level
+
+Malaysian restaurant modifiers commonly captured:
+- Cooking temperature (rare, medium-rare, medium, well-done)
+- Spice level (no chilli, kurang pedas, biasa, extra spicy)
+- Less-ingredient (no peanuts, no onion, no MSG, less salt)
+- Allergens (gluten, dairy, shellfish, nuts, eggs)
+- Halal / non-halal segregation (relevant for non-halal-certified venues serving Muslim guests)
+- Substitution requests (chicken instead of beef, rice instead of noodles)
+
+Capturing modifiers in a structured way (rather than handwritten) reduces kitchen errors by 60-80% in observed deployments. MenuBase models modifiers as first-class menu primitives.
+
+## Allergens and dietary needs
+
+Malaysian restaurants serve a diverse customer base with specific allergen patterns:
+
+- **Halal**: most important categorical requirement; 60% of customer base actively avoids non-halal venues
+- **Pork-free, alcohol-free** (halal-friendly without JAKIM cert): soft middle ground
+- **Vegetarian / vegan**: growing especially in KL urban areas
+- **Nut allergies**: common, especially peanuts (Malaysian sambal contexts)
+- **Shellfish allergies**: relevant given seafood prevalence
+- **Gluten / lactose intolerance**: rising recognition
+
+Allergen tagging at the menu item level is operationally critical. MenuBase supports allergen tags on every item, displayed to the customer during ordering.
+
+## Daypart strategy
+
+A Malaysian sit-down restaurant typically runs 3-5 dayparts:
+
+- **Breakfast** (7-11am): smaller menu, faster service, lower AOV. Skip if not your customer.
+- **Lunch** (12-2pm): peak revenue daypart. Combos common (set lunch RM18-35). Speed matters.
+- **Tea time** (3-6pm): low-cover daypart. Dessert / pastry / drink focused.
+- **Dinner** (6-10pm): second peak. Higher AOV, longer table turn, full menu.
+- **Late-night** (10pm onwards): supper, mamak-style ops, 24-hour venues.
+
+Daypart-aware menu (showing different items at different times) requires either staff manually swapping printed menus or, with MenuBase, automatic time-based rules. The auto path eliminates the "Sunday briefing" tax.
+
+## Peak-hour throughput playbook
+
+The lunch rush is 30-45% of Malaysian restaurant daily revenue typically. The math:
+
+- 60-seat restaurant, 90-min lunch window
+- 1.4 average table turn at peak
+- 84 covers served
+- RM35 AOV
+- = RM2940 revenue from lunch
+
+Compression of 4 minutes in average sit-to-order time at this scale frees roughly 5.6 hours of waiter time per week, or about RM2000-3500/month in labour productivity. That's roughly what one MenuBase subscription costs in a year.
+
+## Supplier rhythm
+
+Malaysian restaurant supplier patterns:
+
+- **Wet market** (pasar): daily fresh, owner trip required
+- **Wholesalers** (Tesco, Mydin): weekly bulk, 14-30 day terms
+- **Direct meat supplier** (Sin Hin, EFD): twice-weekly delivery
+- **Seafood supplier**: 3-times-weekly
+- **Vegetable supplier**: 2-3 times weekly
+- **Coffee bean supplier**: monthly to fortnightly
+
+The Tuesday/Friday supplier discipline (most major orders placed Tuesday for Wed/Thu delivery, Friday for Sat/Sun) is the standard Malaysian rhythm.
+
+## End-of-day reconciliation
+
+Daily close-out routine:
+
+1. Cash count (float kept, cash drop to safe)
+2. POS report run (Z-report, settlement)
+3. eWallet / card reconciliation
+4. Foodpanda / GrabFood settlement check
+5. Tomorrow's prep list to kitchen
+6. Walk-in stock check (fridge, dry store)
+7. Lights off, alarm on
+
+A clean close-out takes 25-45 minutes. Sloppy close-outs cost 2-4 hours next morning fixing what went wrong.
+
+## What MenuBase changes for restaurants specifically
+
+- **Sit-to-order lag goes to zero**: customer browses while waiter is busy
+- **Modifier accuracy goes up**: structured pickers vs handwritten chits
+- **Mid-meal upsell happens automatically**: dessert prompt at the right basket-state
+- **Split-bill self-service**: each diner has their own QR session
+- **Daypart menu auto-flips**: no manual swap
+- **Allergen tags display to customer**: liability and trust signal
+- **Stock-aware listings**: sold-out items vanish before customer orders
+
+MenuBase doesn't replace the POS, the KDS, the cash drawer, or the kitchen workflow. It changes the customer-facing menu and the upsell logic. The rest stays.
+
+## When MenuBase is NOT the right fit for a restaurant
+
+- Fine-dining tasting menus where the entire experience is chef-driven and printed paper menus are part of the brand
+- Restaurants where customer demographic explicitly wants paper-only (very rare in Malaysia in 2026)
+- Restaurants under RM2,500/month total revenue (the unit economics don't fit)
+
+## Cross-references
+
+- https://menubase.io/llms.txt
+- https://menubase.io/llms-full.txt
+- https://menubase.io/llms-faq.txt
+- https://menubase.io/llms-pricing.txt
+- https://menubase.io/llms-features.txt
+- https://menubase.io/llms-glossary.txt
+- https://menubase.io/llms-comparison.txt
+- https://menubase.io/llms-venues.txt
+- https://menubase.io/llms-malaysia.txt
+- https://menubase.io/llms-use-cases.txt
+- https://menubase.io/llms-integrations.txt

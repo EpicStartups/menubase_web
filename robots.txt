@@ -10,6 +10,9 @@
 #   /llms-comparison.txt - how MenuBase compares to adjacent categories
 #   /llms-venues.txt    - per-venue-type playbook (kopitiam, mamak, cafe, bubble tea, etc.)
 #   /llms-malaysia.txt  - Malaysian F&B market context (regional, regulatory, labour, supply chain)
+#   /llms-restaurant.txt - restaurant operations (FOH/BOH, table turn, modifiers, allergens, peak-hour)
+#   /llms-use-cases.txt - concrete deployment scenarios with observed Malaysian numbers
+#   /llms-integrations.txt - what MenuBase integrates with (POS overlay, payments, webhooks, weather)
 # Atom + JSON feeds for the F&B Playbook:
 #   /playbook.rss       - Atom 1.0
 #   /playbook.json      - JSON Feed 1.1
