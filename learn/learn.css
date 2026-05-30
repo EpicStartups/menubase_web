@@ -600,6 +600,16 @@ footer.foot {
 @media (max-width: 900px) {
   .foot-inner { grid-template-columns: 1.4fr 1fr 1fr; }
   .foot-col:nth-child(2) { grid-column: 2; }
+  /* Tablet-tier nav compression so the WhatsApp icon does not
+     get clipped at intermediate widths (between mobile breakpoint
+     and full desktop). Matches the index.html tablet rule. */
+  body nav.top { bottom: 14px; }
+  nav.top .nav-inner { padding: 5px; gap: 4px; }
+  nav.top .nav-links { gap: 0; padding-left: 6px; }
+  nav.top .nav-links a { padding: 6px 9px; font-size: 12px; gap: 5px; }
+  nav.top .nav-links .nav-ico { width: 13px; height: 13px; flex: 0 0 13px; }
+  nav.top .nav-cta .btn.nav-wa-icon { width: 34px; height: 34px; }
+  nav.top .nav-cta .btn.nav-wa-icon svg { width: 16px; height: 16px; }
 }
 @media (max-width: 720px) {
   .top-ribbon-inner { padding: 12px 18px; }
