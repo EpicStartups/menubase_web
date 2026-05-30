@@ -5,17 +5,47 @@
   <subtitle>Practical guides for Malaysian F&amp;B operators on lifting revenue, cutting costs, managing turnover, and running tech that actually fits.</subtitle>
   <link rel="alternate" type="text/html" href="https://menubase.io/learn/"/>
   <link rel="self" type="application/atom+xml" href="https://menubase.io/playbook.rss"/>
-  <updated>2026-05-30T12:00:00Z</updated>
+  <updated>2026-05-30T14:00:00Z</updated>
   <generator uri="https://menubase.io/" version="1.0">MenuBase Playbook</generator>
   <rights>Copyright 2026 MenuBase Sdn Bhd</rights>
   <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
   <icon>https://menubase.io/img/menubase_logo_icon.png</icon>
   <entry>
+    <id>https://menubase.io/learn/how-to-write-fb-business-plan-malaysia.html</id>
+    <title>How To Write An F&amp;amp;B Business Plan In Malaysia: A Line-By-Line Template</title>
+    <link rel="alternate" type="text/html" href="https://menubase.io/learn/how-to-write-fb-business-plan-malaysia.html"/>
+    <published>2026-05-30T14:00:00Z</published>
+    <updated>2026-05-30T14:00:00Z</updated>
+    <category term="Finance"/>
+    <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
+    <summary type="text">Most F&amp;amp;B business plans in Malaysia are written for bank loan officers, not for the actual cafe. Here is the operator&#x27;s template: what to include, what to cut, where the unit economics live, plus Malaysian benchmarks.</summary>
+  </entry>
+  <entry>
+    <id>https://menubase.io/learn/pos-subscription-hidden-costs-malaysia.html</id>
+    <title>POS Subscription Hidden Costs In Malaysia: The 10 Fees Vendors Don&#x27;t Show You</title>
+    <link rel="alternate" type="text/html" href="https://menubase.io/learn/pos-subscription-hidden-costs-malaysia.html"/>
+    <published>2026-05-30T14:00:00Z</published>
+    <updated>2026-05-30T14:00:00Z</updated>
+    <category term="Tech"/>
+    <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
+    <summary type="text">Most Malaysian POS vendors quote RM99 to RM399 a month. The real bill is 2 to 4 times that once you add the hidden charges. Here are the 10 hidden fees to inspect before you sign.</summary>
+  </entry>
+  <entry>
+    <id>https://menubase.io/learn/when-to-add-second-outlet-malaysian-fb.html</id>
+    <title>When To Open A Second Outlet In Malaysian F&amp;amp;B: 7 Readiness Signals (And When Not To)</title>
+    <link rel="alternate" type="text/html" href="https://menubase.io/learn/when-to-add-second-outlet-malaysian-fb.html"/>
+    <published>2026-05-30T14:00:00Z</published>
+    <updated>2026-05-30T14:00:00Z</updated>
+    <category term="Revenue"/>
+    <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
+    <summary type="text">Most Malaysian F&amp;amp;B operators open outlet two because they want to grow. The ones who survive open it because seven specific things are true at outlet one. The readiness signal checklist.</summary>
+  </entry>
+  <entry>
     <id>https://menubase.io/learn/how-to-evaluate-pos-system-malaysia.html</id>
     <title>How To Evaluate A POS System For Malaysian F&amp;amp;B (12-Point Checklist)</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/how-to-evaluate-pos-system-malaysia.html"/>
     <published>2026-05-30T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Tech"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">Most Malaysian operators pick a POS in week 1 and regret it in month 6. A 12-point evaluation checklist that catches the expensive mistakes before you sign.</summary>
@@ -25,7 +55,7 @@
     <title>QR Menu Pricing In Malaysia 2026: What Fair Pricing Looks Like</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/qr-menu-pricing-malaysia.html"/>
     <published>2026-05-30T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Tech"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">QR menu pricing in Malaysia ranges from RM39 to RM800 a month per outlet. What you should actually pay, the four pricing models, and the hidden costs operators miss.</summary>
@@ -35,7 +65,7 @@
     <title>How To Activate Dead Dayparts In A Malaysian F&amp;amp;B Outlet</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/how-to-activate-dead-dayparts-malaysian-fb.html"/>
     <published>2026-05-30T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Revenue"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">Most Malaysian cafes, kopitiams and restaurants do 70% of revenue in two 3-hour windows. The other 9 hours bleed rent and salaries. Seven tactics to activate them.</summary>
@@ -45,7 +75,7 @@
     <title>Bubble Tea Modifier Matrix: How To Engineer Your Drinks Menu</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/bubble-tea-modifier-matrix-malaysia.html"/>
     <published>2026-05-30T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Venue"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">Sugar level, ice level, toppings, sizes, milk swaps. The modifier matrix is the operational heart of a bubble tea shop. How to engineer it for throughput, AOV and order accuracy.</summary>
@@ -55,7 +85,7 @@
     <title>Kopitiam Economics: The Throughput Playbook For Malaysian Operators</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/kopitiam-economics-throughput-malaysia.html"/>
     <published>2026-05-30T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Venue"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">Kopitiams run on a different economic model than cafes. Lower AOV, faster turn, older regulars, brutal morning rush. Six rules for engineering kopitiam throughput and margin in 2026.</summary>
@@ -65,7 +95,7 @@
     <title>How To Win The Lunch Rush In A Malaysian F&amp;amp;B Outlet</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/how-to-win-lunch-rush-malaysia.html"/>
     <published>2026-05-30T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Revenue"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">The 12pm to 2pm lunch rush decides whether your F&amp;amp;B venue is profitable. Throughput math, seven tactics to compress order time without rushing customers, Malaysian benchmarks.</summary>
@@ -75,7 +105,7 @@
     <title>Malaysian F&amp;amp;B Operations Glossary: 40 Terms Operators Should Know</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/glossary-malaysian-fb-operations.html"/>
     <published>2026-05-30T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Reference"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">Plain-English definitions of the 40 operational terms Malaysian cafe, kopitiam, restaurant and bubble tea operators encounter weekly. AOV, daypart, modifier matrix, JAKIM halal, BOMBA, KDS, SST, prime cost and more.</summary>
@@ -85,7 +115,7 @@
     <title>Foodpanda vs GrabFood Malaysia 2026: Which One For Your Venue?</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/foodpanda-vs-grabfood-malaysia.html"/>
     <published>2026-05-30T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Tech"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">Foodpanda and GrabFood take 25 to 35% per order. For some Malaysian venues that&#x27;s worth it; for others it&#x27;s margin-negative. The honest operator&#x27;s comparison: commission structures, demographics, where each one wins.</summary>
@@ -95,7 +125,7 @@
     <title>Menu Engineering For Malaysian F&amp;amp;B: The Operator&#x27;s Cheat Sheet</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/menu-engineering-malaysian-fb.html"/>
     <published>2026-05-30T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Revenue"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">Most Malaysian menus are designed for chronology, not profit. Menu engineering is the practice of steering customers toward your highest-margin items by deliberate design. Eight rules with Malaysian-context examples.</summary>
@@ -105,7 +135,7 @@
     <title>How To Read Your Weekly P&amp;amp;L: A Malaysian F&amp;amp;B Operator&#x27;s Guide</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/how-to-read-weekly-pnl-malaysian-fb.html"/>
     <published>2026-05-30T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Finance"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">Most Malaysian F&amp;amp;B operators look at their P&amp;amp;L once a month and only at the bottom line. A weekly P&amp;amp;L read takes 30 minutes and catches problems before they cost RM10K. Line-by-line walkthrough with Malaysian benchmarks.</summary>
@@ -115,7 +145,7 @@
     <title>Customer Lifetime Value In Malaysian F&amp;amp;B: The Math Most Operators Miss</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/customer-lifetime-value-malaysian-fb.html"/>
     <published>2026-05-30T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Finance"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">A regular Malaysian cafe customer is worth RM3,500 to RM8,000 over their lifetime. Most operators chase RM50 acquisitions and ignore the bucket they are leaking. The LTV math, line by line, for Malaysian F&amp;amp;B.</summary>
@@ -125,7 +155,7 @@
     <title>Halal Certification For Malaysian F&amp;amp;B Venues: A Practical Operator&#x27;s Guide</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/halal-certification-malaysian-fb.html"/>
     <published>2026-05-30T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Compliance"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">JAKIM halal certification takes 3-6 months, costs RM2,000-RM5,000, and opens roughly 60% more of the Malaysian customer base. The practical operator&#x27;s guide: when to get it, when to declare halal-friendly, when to stay explicitly non-halal, and what the kitchen audit actually checks.</summary>
@@ -135,7 +165,7 @@
     <title>Why Is My Café Losing Money? A 12-Point Diagnostic</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/why-is-my-cafe-losing-money-malaysia.html"/>
     <published>2026-05-29T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Finance"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">If your cafe or kopitiam isn&#x27;t profitable, it&#x27;s almost always one of 12 things. Diagnostic checklist with specific Malaysian benchmarks, no fluff.</summary>
@@ -145,7 +175,7 @@
     <title>9 Tactics To Increase Average Order Value In Malaysian F&amp;amp;B</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/how-to-increase-average-order-value-malaysia.html"/>
     <published>2026-05-29T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Revenue"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">A 10% AOV lift usually means a 30-40% net profit lift. Nine tactics for Malaysian cafes, kopitiams, restaurants - easiest to hardest to roll out.</summary>
@@ -155,7 +185,7 @@
     <title>Why Restaurant Staff Don&#x27;t Upsell (And How To Fix It)</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/why-restaurant-staff-dont-upsell.html"/>
     <published>2026-05-29T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Team &amp; Operations"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">The reason restaurant staff don&#x27;t upsell isn&#x27;t training. It&#x27;s a four-part system problem: language, incentive, turnover, static menus. What to do.</summary>
@@ -165,7 +195,7 @@
     <title>How To Handle High Staff Turnover In Malaysian F&amp;amp;B</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/how-to-handle-staff-turnover-malaysian-fb.html"/>
     <published>2026-05-29T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Team &amp; Operations"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">Malaysian F&amp;amp;B staff tenure averages 6-9 months. Fix turnover by designing systems so it hurts less, not with retention bonuses. Seven strategies.</summary>
@@ -175,7 +205,7 @@
     <title>How To Get More Repeat Customers At A Malaysian Café</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/how-to-get-more-repeat-customers-malaysian-cafe.html"/>
     <published>2026-05-29T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Revenue"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">A repeat customer is worth 6-12x a first-timer. Most Malaysian cafes pay to acquire customers who never return. Seven tactics, no loyalty app.</summary>
@@ -185,7 +215,7 @@
     <title>Multilingual Menus In Malaysia: The Real Operations Cost</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/multilingual-menus-malaysia-operations-cost.html"/>
     <published>2026-05-29T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Team &amp; Operations"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">Malaysian customers speak EN, BM, ZH, TA, plus dialects. Staff speak one or two. The gap costs revenue per check. A practical guide to fixing it.</summary>
@@ -195,7 +225,7 @@
     <title>QR Menu vs Printed Menu: Decision Guide For Malaysian F&amp;amp;B</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/qr-menu-vs-printed-menu-malaysia.html"/>
     <published>2026-05-29T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Tech"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">QR menus aren&#x27;t a generic upgrade over print - they&#x27;re a different tool. A practical decision guide for Malaysian cafes, kopitiams and restaurants.</summary>
@@ -205,7 +235,7 @@
     <title>How Much Does It Cost To Open A Café In Klang Valley?</title>
     <link rel="alternate" type="text/html" href="https://menubase.io/learn/cost-to-open-cafe-klang-valley-malaysia.html"/>
     <published>2026-05-29T08:00:00Z</published>
-    <updated>2026-05-30T12:00:00Z</updated>
+    <updated>2026-05-30T14:00:00Z</updated>
     <category term="Finance"/>
     <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
     <summary type="text">A realistic Klang Valley cafe budget runs RM150-500k depending on tier. Line-by-line breakdown with Malaysian costs operators usually forget.</summary>
