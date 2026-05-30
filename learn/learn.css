@@ -1029,3 +1029,149 @@ footer.foot {
   .vertical-callout { padding: 26px 22px; margin-top: 40px; }
   .vertical-callout h2 { font-size: 20px; }
 }
+
+/* ─── FLOATING WHATSAPP FAB (lead-gen, sitewide) ─── */
+.wa-fab {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--lime);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  z-index: 950;
+  box-shadow: 0 10px 32px rgba(188, 241, 37, 0.55), 0 4px 12px rgba(0, 0, 0, 0.22);
+  transition: transform 220ms cubic-bezier(.16,1,.3,1), box-shadow 220ms ease;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+}
+.wa-fab:hover, .wa-fab:focus-visible {
+  transform: scale(1.07) translateY(-2px);
+  box-shadow: 0 14px 40px rgba(188, 241, 37, 0.7), 0 6px 16px rgba(0, 0, 0, 0.28);
+  outline: none;
+}
+.wa-fab svg { width: 32px; height: 32px; fill: #0A0A0C; }
+.wa-fab::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid var(--lime);
+  opacity: 0;
+  animation: waFabPulse 2.6s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes waFabPulse {
+  0% { transform: scale(0.95); opacity: 0.55; }
+  70% { transform: scale(1.4); opacity: 0; }
+  100% { transform: scale(1.4); opacity: 0; }
+}
+.wa-fab-label {
+  position: absolute;
+  right: 70px;
+  background: var(--ink);
+  color: #fff;
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: opacity 220ms ease, transform 220ms ease;
+  pointer-events: none;
+}
+.wa-fab:hover .wa-fab-label, .wa-fab:focus-visible .wa-fab-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+@media (max-width: 700px) {
+  .wa-fab { width: 54px; height: 54px; bottom: 88px; right: 14px; }
+  .wa-fab svg { width: 28px; height: 28px; }
+  .wa-fab-label { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wa-fab, .wa-fab::after, .wa-fab-label { animation: none; transition: none; }
+}
+
+/* ─── BOTTOM-OF-ARTICLE WHATSAPP CTA BLOCK ─── */
+.article-cta {
+  margin: 64px 0 32px;
+  padding: 48px 36px;
+  background: linear-gradient(135deg, var(--ink) 0%, var(--bg-soft) 100%);
+  border: 1px solid rgba(188, 241, 37, 0.22);
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.article-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 80% 30%, rgba(188, 241, 37, 0.12), transparent 55%);
+  pointer-events: none;
+}
+.article-cta > * { position: relative; }
+.article-cta .eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--lime);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: block;
+}
+.article-cta h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(24px, 3.4vw, 36px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: #fff;
+  margin: 0 0 16px;
+}
+.article-cta h3 em { font-style: normal; color: var(--lime); }
+.article-cta p {
+  font-size: 16px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.78);
+  margin: 0 0 26px;
+  max-width: 580px;
+}
+.article-cta .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  background: var(--lime);
+  color: #0A0A0C;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+.article-cta .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(188, 241, 37, 0.4);
+}
+.article-cta .micro {
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.55);
+}
+@media (max-width: 720px) {
+  .article-cta { padding: 36px 26px; margin: 48px 0 24px; border-radius: 16px; }
+  .article-cta p { font-size: 15px; }
+}
