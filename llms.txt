@@ -14,6 +14,7 @@ This page is the canonical short-form context for MenuBase. For deeper context, 
 - /llms-venues.txt - per-venue-type playbook (kopitiam, mamak, cafe, bubble tea, restaurant, cloud kitchen, food truck, hotel F&B, school canteen, pasar malam, omakase, buffet)
 - /llms-malaysia.txt - Malaysian F&B market context (regional breakdown, regulatory, labour, supply chain, expansion economics, operator profiles)
 - /llms-restaurant.txt - restaurant operations reference (FOH/BOH split, table turn math, modifier matrix, allergens, reservations, kitchen workflow, daypart strategy, peak-hour throughput)
+- /llms-startup.txt - aspiring F&B operator reference (pre-launch validation, capex benchmarks, working capital math, license roadmap, first-90-days survival, failure mode patterns)
 - /llms-use-cases.txt - concrete deployment scenarios with observed Malaysian numbers (cafe with single outlet, kopitiam multi-outlet, cloud kitchen multi-brand, bubble tea, hotel F&B, food truck, halal-cert Ramadan buffet)
 - /llms-integrations.txt - what MenuBase integrates with (POS overlay model, payment processors, weather data, webhooks, CSV export, analytics, KDS, reservations, PMS)
 
