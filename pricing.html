@@ -4,8 +4,8 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>MenuBase Pricing | Free Until The Lift Hits | Malaysian F&amp;B</title>
-<meta name="description" content="MenuBase pricing for Malaysian F&amp;B venues. Free until the AOV lift hits. After that, transparent monthly pricing tiered by venue type. No setup fee, no per-language fee, no per-revision fee. The hidden costs are not hidden on us."/>
+<title>MenuBase Pricing | From RM28/month | Malaysian F&amp;B</title>
+<meta name="description" content="MenuBase pricing: transparent, by menu size. RM28/mo for 30 menus, RM54/mo for 60, RM78/mo for 90, RM99/mo for 120. Annual saves 2 months. No setup fee, no per-language fee, no per-revision fee, no per-transaction commission."/>
 <meta name="keywords" content="MenuBase pricing Malaysia, QR menu pricing Malaysia, restaurant tech pricing Malaysia, cafe QR menu cost, kopitiam ordering system price"/>
 <meta name="author" content="MenuBase"/>
 <meta name="theme-color" content="#BCF125"/>
@@ -15,8 +15,8 @@
 <meta property="og:type" content="website"/>
 <meta property="og:site_name" content="MenuBase"/>
 <meta property="og:url" content="https://menubase.io/pricing.html"/>
-<meta property="og:title" content="MenuBase Pricing | Free Until The Lift Hits"/>
-<meta property="og:description" content="Free until the AOV lift shows up in your numbers. Then a transparent monthly tier by venue type. No setup fee, no surprises."/>
+<meta property="og:title" content="MenuBase Pricing | From RM28/month"/>
+<meta property="og:description" content="Transparent pricing by menu size. RM28 to RM99 a month. Annual saves 2 months. No hidden fees."/>
 <meta property="og:image" content="https://menubase.io/menubase-logo-dark.png"/>
 <meta property="og:image:width" content="3026"/>
 <meta property="og:image:height" content="548"/>
@@ -25,7 +25,7 @@
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="MenuBase Pricing"/>
-<meta name="twitter:description" content="Free until the lift hits. Then a fair, tiered monthly rate."/>
+<meta name="twitter:description" content="From RM28/month. Pay by menu size. Annual saves 2 months."/>
 <meta name="twitter:image" content="https://menubase.io/menubase-logo-dark.png"/>
 
 <link rel="icon" href="img/menubase_logo_icon.png" type="image/png"/>
@@ -39,8 +39,8 @@
       "@type": "WebPage",
       "@id": "https://menubase.io/pricing.html#webpage",
       "url": "https://menubase.io/pricing.html",
-      "name": "MenuBase Pricing | Free Until The Lift Hits",
-      "description": "MenuBase pricing for Malaysian F&B venues. Pay-on-results model: free until the AOV lift hits your numbers. After that, a transparent monthly rate tiered by venue type with no hidden costs.",
+      "name": "MenuBase Pricing | From RM28/month",
+      "description": "Transparent menu-size pricing for MenuBase. Four tiers (30, 60, 90, 120 menus) at RM28, RM54, RM78 and RM99 a month. Annual subscription saves two months. No setup fee, no per-language fee, no per-revision fee.",
       "inLanguage": "en",
       "isPartOf": { "@id": "https://menubase.io/#website" },
       "about": { "@id": "https://menubase.io/#organization" },
@@ -58,40 +58,89 @@
       ]
     },
     {
-      "@type": "Offer",
-      "@id": "https://menubase.io/pricing.html#offer",
-      "name": "MenuBase pay-on-results offer",
-      "description": "Free until the AOV lift hits the operator's actual numbers. After that, a transparent monthly rate tiered by venue type.",
-      "category": "F&B software subscription",
-      "priceSpecification": {
-        "@type": "PriceSpecification",
-        "priceCurrency": "MYR",
-        "price": "0",
-        "description": "Zero cost until lift hits. After that, tiered monthly pricing per outlet."
-      },
-      "seller": { "@id": "https://menubase.io/#organization" },
-      "areaServed": { "@type": "Country", "name": "Malaysia" }
+      "@type": "Product",
+      "@id": "https://menubase.io/pricing.html#product",
+      "name": "MenuBase",
+      "description": "QR menu, smart upsell, dynamic menu and promo push for Malaysian F&B venues. Sits on top of any POS.",
+      "brand": { "@type": "Brand", "name": "MenuBase" },
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "30 menus - Monthly",
+          "price": "28", "priceCurrency": "MYR",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "price": "28", "priceCurrency": "MYR", "billingDuration": "P1M", "referenceQuantity": { "@type": "QuantitativeValue", "value": "30", "unitText": "menu items" } },
+          "availability": "https://schema.org/InStock",
+          "seller": { "@id": "https://menubase.io/#organization" },
+          "areaServed": { "@type": "Country", "name": "Malaysia" }
+        },
+        {
+          "@type": "Offer",
+          "name": "30 menus - Annual",
+          "price": "280", "priceCurrency": "MYR",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "price": "280", "priceCurrency": "MYR", "billingDuration": "P1Y", "referenceQuantity": { "@type": "QuantitativeValue", "value": "30", "unitText": "menu items" } },
+          "availability": "https://schema.org/InStock",
+          "seller": { "@id": "https://menubase.io/#organization" }
+        },
+        {
+          "@type": "Offer",
+          "name": "60 menus - Monthly",
+          "price": "54", "priceCurrency": "MYR",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "price": "54", "priceCurrency": "MYR", "billingDuration": "P1M", "referenceQuantity": { "@type": "QuantitativeValue", "value": "60", "unitText": "menu items" } }
+        },
+        {
+          "@type": "Offer",
+          "name": "60 menus - Annual",
+          "price": "540", "priceCurrency": "MYR",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "price": "540", "priceCurrency": "MYR", "billingDuration": "P1Y", "referenceQuantity": { "@type": "QuantitativeValue", "value": "60", "unitText": "menu items" } }
+        },
+        {
+          "@type": "Offer",
+          "name": "90 menus - Monthly",
+          "price": "78", "priceCurrency": "MYR",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "price": "78", "priceCurrency": "MYR", "billingDuration": "P1M", "referenceQuantity": { "@type": "QuantitativeValue", "value": "90", "unitText": "menu items" } }
+        },
+        {
+          "@type": "Offer",
+          "name": "90 menus - Annual",
+          "price": "780", "priceCurrency": "MYR",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "price": "780", "priceCurrency": "MYR", "billingDuration": "P1Y", "referenceQuantity": { "@type": "QuantitativeValue", "value": "90", "unitText": "menu items" } }
+        },
+        {
+          "@type": "Offer",
+          "name": "120 menus - Monthly",
+          "price": "99", "priceCurrency": "MYR",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "price": "99", "priceCurrency": "MYR", "billingDuration": "P1M", "referenceQuantity": { "@type": "QuantitativeValue", "value": "120", "unitText": "menu items" } }
+        },
+        {
+          "@type": "Offer",
+          "name": "120 menus - Annual",
+          "price": "990", "priceCurrency": "MYR",
+          "priceSpecification": { "@type": "UnitPriceSpecification", "price": "990", "priceCurrency": "MYR", "billingDuration": "P1Y", "referenceQuantity": { "@type": "QuantitativeValue", "value": "120", "unitText": "menu items" } }
+        }
+      ]
     },
     {
       "@type": "FAQPage",
       "@id": "https://menubase.io/pricing.html#faqpage",
       "mainEntity": [
-        { "@type": "Question", "name": "What does \"free until the lift hits\" actually mean?",
-          "acceptedAnswer": { "@type": "Answer", "text": "You pay zero until the AOV lift shows up in your numbers. Happy hour, threshold rewards, smart upsell and the daypart menu go live on your venue day one. Customers click in. Most venues see the lift within the first week and settle 8 to 14% above their pre-MenuBase AOV by end of month one. Only after that does a monthly bill start. Risk is on us, not you." } },
-        { "@type": "Question", "name": "What is the monthly cost after the lift hits?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Tiered by venue type. Kopitiams and kiosks sit at the lower end of the Malaysian QR menu market range. Cafes and bubble tea shops sit at the middle tier. Full-service restaurants and multi-outlet chains sit at the upper tier. For exact RM figures for your specific venue and outlet count, WhatsApp the team - we quote in writing within 24 hours." } },
+        { "@type": "Question", "name": "How does the menu-size pricing work?",
+          "acceptedAnswer": { "@type": "Answer", "text": "You pay by how many distinct menu items live on your MenuBase menu. 30 menus is RM28 a month. 60 menus is RM54. 90 menus is RM78. 120 menus is RM99. The tier scales with what you actually serve; a kopitiam with 25 items pays RM28, a casual cafe with 55 items also pays RM28 (up to 30 menus), a full-service restaurant with 85 items pays RM78." } },
+        { "@type": "Question", "name": "What does the annual subscription save?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Annual subscription is the equivalent of ten months at the monthly rate. So you get two months free every year. RM280 a year instead of RM336 on the 30-menu tier, RM540 a year instead of RM648 on 60 menus, and so on." } },
+        { "@type": "Question", "name": "What if we have more than 120 menus?",
+          "acceptedAnswer": { "@type": "Answer", "text": "For menus larger than 120 items, multi-outlet chains or cloud kitchens running multiple virtual brands, WhatsApp the team. We quote an enterprise rate in writing within 24 hours, typically with volume discounting and a locked annual price." } },
         { "@type": "Question", "name": "Is there a setup fee?",
           "acceptedAnswer": { "@type": "Answer", "text": "No. Setup is included. We come in with your existing menu, build the digital version, generate the QR codes for every table or counter, and walk the team through the system in one shift. By end of service on day one you are live." } },
         { "@type": "Question", "name": "Are there per-language or per-revision fees?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. Multilingual support (where supported) is included in the base rate. Menu revisions are unlimited - no cap on edits per month. We have written separately on how hidden per-language and per-revision fees inflate the real cost of competing systems; we deliberately do not do that." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "No. Where multilingual support is available, it is included in the base rate. Menu revisions are unlimited - no cap on edits per month. The hidden costs that bite Malaysian operators on competing systems (per-language fees, per-revision overage, per-payment-method fees, sponsored placement up-charges) are deliberately not on our invoice." } },
         { "@type": "Question", "name": "What about hardware?",
           "acceptedAnswer": { "@type": "Answer", "text": "QR codes for the tables come included (printed sticker or table tent options). The customer side requires nothing - no app to download, no hardware to install. The waiter tablet is optional; some venues use it for parallel order receiving, others stick with their existing POS workflow. We discuss the hardware decision in the setup conversation." } },
         { "@type": "Question", "name": "What if we want to cancel?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Monthly cancellation, no lock-in. Your menu, customer data and historical sales export to CSV in standard formats within 24 hours of request. We do not believe in trapping operators in long contracts; if MenuBase is no longer earning its keep at your venue we want you to be free to switch." } },
+          "acceptedAnswer": { "@type": "Answer", "text": "Monthly subscription cancels monthly, no lock-in. Annual subscription cancels at renewal. Your menu, customer data and historical sales export to CSV in standard formats within 24 hours of request. We do not believe in trapping operators." } },
         { "@type": "Question", "name": "Do we need to replace our POS?",
           "acceptedAnswer": { "@type": "Answer", "text": "No. MenuBase sits on top of any POS. Billing, accounting, payment processing and sales reports stay where they are. The waiter rings orders into the existing system the same way." } },
-        { "@type": "Question", "name": "How do we get an actual quote?",
-          "acceptedAnswer": { "@type": "Answer", "text": "WhatsApp the team with your venue type, outlet count, and a photo of your menu. We quote in writing within 24 hours - itemised, no hidden lines, no setup fee, no per-language fee. If MenuBase is not the right fit for your venue, we will say so." } }
+        { "@type": "Question", "name": "How do we get started?",
+          "acceptedAnswer": { "@type": "Answer", "text": "WhatsApp the team with your venue type, outlet count, and a photo of your menu. We will count the menu items, recommend the right tier, and confirm the price in writing within 24 hours. Same-day setup once you confirm." } }
       ]
     }
   ]
@@ -106,94 +155,193 @@
 <style>
   .pricing-hero { max-width: 1100px; margin: 0 auto; padding: 80px 28px 40px; text-align: left; }
   .pricing-hero .eyebrow { margin-bottom: 28px; }
-  .pricing-hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(42px, 6vw, 76px); line-height: 1.0; letter-spacing: -0.035em; color: var(--ink); margin: 0 0 22px; max-width: 16ch; }
+  .pricing-hero h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(40px, 5.8vw, 72px); line-height: 1.02; letter-spacing: -0.035em; color: var(--ink); margin: 0 0 22px; max-width: 18ch; }
   .pricing-hero h1 em { font-style: normal; color: var(--lime); }
-  .pricing-hero .sub { font-size: 19px; line-height: 1.5; color: var(--ink-2); max-width: 60ch; margin: 0 0 32px; }
+  .pricing-hero .sub { font-size: 19px; line-height: 1.5; color: var(--ink-2); max-width: 60ch; margin: 0 0 28px; }
 
   .pricing-section { max-width: 1100px; margin: 56px auto; padding: 0 28px; }
   .pricing-section h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(28px, 3.4vw, 40px); letter-spacing: -0.02em; color: var(--ink); margin: 0 0 16px; }
   .pricing-section h2 em { font-style: normal; color: var(--lime); }
-  .pricing-section p.lead { font-size: 16px; color: var(--ink-2); line-height: 1.55; max-width: 65ch; margin: 0 0 32px; }
+  .pricing-section p.lead { font-size: 16px; color: var(--ink-2); line-height: 1.55; max-width: 65ch; margin: 0 0 24px; }
 
-  /* The "free until lift" headline panel */
-  .free-panel {
-    max-width: 1100px;
-    margin: 24px auto 56px;
-    padding: 40px 36px;
-    background: linear-gradient(180deg, rgba(188,241,37,0.10) 0%, rgba(188,241,37,0.03) 100%);
-    border: 1px solid rgba(188,241,37,0.30);
-    border-radius: 20px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 32px;
-    align-items: center;
-  }
-  .free-panel .fp-head { font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 3vw, 36px); letter-spacing: -0.02em; color: var(--ink); margin: 0 0 12px; line-height: 1.05; }
-  .free-panel .fp-head em { font-style: normal; color: var(--lime); }
-  .free-panel .fp-sub { font-size: 15px; color: var(--ink-2); line-height: 1.55; margin: 0; max-width: 55ch; }
-  .free-panel .fp-cta { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
-  .free-panel .fp-cta .btn { padding: 14px 24px; font-size: 15px; }
-  .free-panel .fp-cta .micro { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); }
-
-  /* Tier grid */
-  .tier-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 14px;
-    margin-top: 32px;
-  }
-  .tier-card {
-    padding: 24px 22px;
+  /* Billing toggle (monthly / annual) */
+  .billing-toggle {
+    display: inline-flex;
     background: var(--bg-elev);
     border: 1px solid var(--line);
-    border-radius: 14px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    border-radius: 999px;
+    padding: 4px;
+    margin: 16px 0 28px;
+    position: relative;
   }
-  .tier-card .tier-label {
+  .billing-toggle button {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink-2);
+    background: transparent;
+    border: none;
+    padding: 9px 22px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: color 180ms, background 180ms;
+    position: relative;
+    z-index: 1;
+  }
+  .billing-toggle button.active {
+    color: #0A0A0C;
+    background: var(--lime);
+  }
+  .billing-toggle .save-pill {
+    margin-left: 14px;
     font-family: var(--font-mono);
     font-size: 10px;
-    letter-spacing: 0.16em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--lime);
+    background: rgba(188,241,37,0.08);
+    border: 1px solid rgba(188,241,37,0.25);
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-weight: 700;
+    align-self: center;
+  }
+
+  /* Tier grid - 4 menu-count tiers */
+  .tier-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .tier-card {
+    padding: 28px 24px;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    position: relative;
+    transition: border-color 220ms, transform 220ms;
+  }
+  .tier-card:hover { border-color: rgba(188,241,37,0.35); transform: translateY(-3px); }
+  .tier-card.popular { border-color: rgba(188,241,37,0.45); background: linear-gradient(180deg, rgba(188,241,37,0.06) 0%, rgba(188,241,37,0.02) 100%); }
+  .tier-card.popular::before {
+    content: 'MOST POPULAR';
+    position: absolute;
+    top: -10px;
+    right: 18px;
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    color: #0A0A0C;
+    background: var(--lime);
+    padding: 4px 10px;
+    border-radius: 999px;
     font-weight: 700;
   }
-  .tier-card h3 {
+  .tier-card .tier-menus {
     font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 18px;
+    font-weight: 800;
+    font-size: 28px;
     color: var(--ink);
+    line-height: 1;
     margin: 0;
-    line-height: 1.2;
   }
-  .tier-card .tier-band {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 14px;
-    color: var(--lime);
-    margin: 0;
-    letter-spacing: -0.01em;
-  }
-  .tier-card .tier-body {
-    font-size: 13.5px;
+  .tier-card .tier-menus-lbl {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
     color: var(--ink-2);
-    line-height: 1.5;
+    margin-top: 4px;
+  }
+  .tier-card .tier-divider {
+    border-top: 1px solid var(--line);
+    margin: 4px 0;
+  }
+  .tier-card .tier-price {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 44px;
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.03em;
     margin: 0;
   }
-  .tier-card a.tier-link {
-    margin-top: auto;
+  .tier-card .tier-price .currency {
+    font-size: 22px;
+    color: var(--ink-2);
+    font-weight: 600;
+    margin-right: 6px;
+    vertical-align: top;
+    position: relative;
+    top: 6px;
+  }
+  .tier-card .tier-period {
     font-family: var(--font-mono);
     font-size: 11px;
     letter-spacing: 0.14em;
     text-transform: uppercase;
+    color: var(--ink-2);
+    margin-top: 4px;
+  }
+  .tier-card .tier-annual-hint {
+    font-size: 12.5px;
     color: var(--lime);
-    font-weight: 700;
-    text-decoration: none;
-    padding-top: 8px;
+    margin: 4px 0 0;
+    font-family: var(--font-mono);
+    letter-spacing: 0.06em;
+  }
+  .tier-card .tier-fit {
+    font-size: 13.5px;
+    color: var(--ink-2);
+    line-height: 1.45;
+    margin: 8px 0 0;
+    padding-top: 14px;
     border-top: 1px solid var(--line);
   }
-  .tier-card a.tier-link:hover { color: var(--lime-deep); }
+  .tier-card .tier-fit strong { color: var(--ink); font-weight: 600; }
+  .tier-card a.tier-cta {
+    margin-top: auto;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    padding: 11px 16px;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 13.5px;
+    transition: border-color 180ms, background 180ms, color 180ms;
+  }
+  .tier-card a.tier-cta:hover { border-color: var(--lime); background: rgba(188,241,37,0.06); color: var(--lime); }
+  .tier-card.popular a.tier-cta { background: var(--lime); color: #0A0A0C; border-color: var(--lime); }
+  .tier-card.popular a.tier-cta:hover { background: var(--lime-deep); border-color: var(--lime-deep); color: #0A0A0C; }
+
+  /* Enterprise call-out below the tier grid */
+  .enterprise-strip {
+    max-width: 1100px;
+    margin: 32px auto 0;
+    padding: 22px 28px;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .enterprise-strip .es-text { font-size: 14.5px; color: var(--ink-2); line-height: 1.5; margin: 0; max-width: 60ch; }
+  .enterprise-strip .es-text strong { color: var(--ink); font-weight: 700; }
+  .enterprise-strip a { font-family: var(--font-display); font-weight: 600; font-size: 14px; padding: 10px 18px; background: var(--lime); color: #0A0A0C; border-radius: 999px; text-decoration: none; }
+  .enterprise-strip a:hover { background: var(--lime-deep); }
 
   /* Included / Not included two-column */
   .include-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 24px; }
@@ -238,19 +386,17 @@
   }
   .closing-cta h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(26px, 3.2vw, 38px); letter-spacing: -0.02em; color: var(--ink); margin: 0 0 14px; }
   .closing-cta h2 em { font-style: normal; color: var(--lime); }
-  .closing-cta p { font-size: 15.5px; color: var(--ink-2); line-height: 1.55; max-width: 56ch; margin: 0 auto 24px; text-align: left; }
+  .closing-cta p { font-size: 15.5px; color: var(--ink-2); line-height: 1.55; max-width: 58ch; margin: 0 auto 24px; text-align: left; }
   .closing-cta .btn { padding: 14px 24px; font-size: 15px; }
 
   @media (max-width: 980px) {
     .tier-grid { grid-template-columns: repeat(2, 1fr); }
-    .free-panel { grid-template-columns: 1fr; gap: 22px; }
-    .free-panel .fp-cta { align-items: flex-start; }
     .include-grid { grid-template-columns: 1fr; }
+    .enterprise-strip { flex-direction: column; align-items: flex-start; }
   }
   @media (max-width: 560px) {
     .tier-grid { grid-template-columns: 1fr; }
     .pricing-hero { padding: 60px 22px 32px; }
-    .free-panel { padding: 28px 22px; }
     .closing-cta { padding: 36px 24px; }
   }
 </style>
@@ -271,61 +417,87 @@
 
 <section class="pricing-hero has-bg-scrim">
   <span class="eyebrow">PRICING</span>
-  <h1>Free until the <em>lift hits.</em></h1>
-  <p class="sub">MenuBase goes live on your menu on day one. Happy hour, threshold rewards, smart upsell and the daypart menu start running immediately. Customers click in. The AOV lift hits within the first week. You only see a bill after that. Risk is on us, not you.</p>
+  <h1>Honest pricing, <em>by menu size.</em></h1>
+  <p class="sub">No setup fee. No per-language fee. No per-revision fee. No per-transaction commission. You pay by how many distinct items live on your menu, monthly or annually. Annual saves you two months a year. That is it. The whole pricing page is below.</p>
 </section>
 
-<aside class="free-panel">
-  <div>
-    <h3 class="fp-head">Zero cost until <em>your numbers lift.</em></h3>
-    <p class="fp-sub">Most venues settle at 8 to 14% above their pre-MenuBase AOV by end of month one. We do not bill you until that lift shows up in your own POS data. If for some reason it does not, you owe nothing and we wrap up clean.</p>
-  </div>
-  <div class="fp-cta">
-    <a class="btn btn-lime btn-lg" href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bfrom%3A%20pricing%20page%20hero%5D%20Would%20like%20to%20explore%20more%20on%20how%20we%20can%20improve%20our%20sales." target="_blank" rel="noopener">WhatsApp for a quote &rarr;</a>
-    <span class="micro">15 min &middot; written quote &middot; no script</span>
-  </div>
-</aside>
-
 <section class="pricing-section">
-  <h2>Tiered by venue type, <em>not by surprise.</em></h2>
-  <p class="lead">Once the lift hits, MenuBase moves to a flat per-outlet monthly rate. The tier depends on your venue type and feature set. We do not run per-language add-ons, per-revision fees or per-transaction charges. The number on the quote is the number on the invoice.</p>
-  <div class="tier-grid">
+  <div class="billing-toggle" role="tablist" aria-label="Billing period">
+    <button class="active" data-period="monthly" type="button" role="tab" aria-selected="true">Monthly</button>
+    <button data-period="annual" type="button" role="tab" aria-selected="false">Annual</button>
+    <span class="save-pill" aria-hidden="true">Annual saves 2 months</span>
+  </div>
+
+  <div class="tier-grid" id="tier-grid">
+    <!-- 30 menus -->
     <div class="tier-card">
-      <span class="tier-label">TIER 1</span>
-      <h3>Kopitiams &amp; kiosks</h3>
-      <p class="tier-band">Lower-band of Malaysian QR menu market</p>
-      <p class="tier-body">Static or near-static menu, low item count, basic order-to-kitchen flow. Includes core order taking, kitchen display, payment integration with the Malaysian rail set.</p>
-      <a class="tier-link" href="/for-kopitiams.html">For kopitiams &rarr;</a>
+      <div>
+        <p class="tier-menus">30</p>
+        <div class="tier-menus-lbl">Menu items</div>
+      </div>
+      <div class="tier-divider"></div>
+      <div>
+        <p class="tier-price"><span class="currency">RM</span><span class="amt" data-monthly="28" data-annual="280">28</span></p>
+        <div class="tier-period"><span class="period">per month</span></div>
+        <p class="tier-annual-hint">RM 280/year &middot; saves 2 months</p>
+      </div>
+      <p class="tier-fit"><strong>Fits:</strong> kopitiams, kiosks, food trucks, single-product venues. A bubble tea shop with a tight signature menu fits comfortably here.</p>
+      <a class="tier-cta" href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bfrom%3A%20pricing%20page%20-%2030%20menus%5D%20Would%20like%20to%20explore%20the%2030-menu%20plan%20for%20our%20venue." target="_blank" rel="noopener">Start with 30 menus &rarr;</a>
     </div>
-    <div class="tier-card">
-      <span class="tier-label">TIER 2</span>
-      <h3>Cafes &amp; bubble tea</h3>
-      <p class="tier-band">Middle-band of Malaysian QR menu market</p>
-      <p class="tier-body">Dynamic specials, daypart menu rules, smart upsell, modifier matrix, payment integration with the full Malaysian rail set.</p>
-      <a class="tier-link" href="/for-cafes.html">For cafes &rarr;</a>
+
+    <!-- 60 menus -->
+    <div class="tier-card popular">
+      <div>
+        <p class="tier-menus">60</p>
+        <div class="tier-menus-lbl">Menu items</div>
+      </div>
+      <div class="tier-divider"></div>
+      <div>
+        <p class="tier-price"><span class="currency">RM</span><span class="amt" data-monthly="54" data-annual="540">54</span></p>
+        <div class="tier-period"><span class="period">per month</span></div>
+        <p class="tier-annual-hint">RM 540/year &middot; saves 2 months</p>
+      </div>
+      <p class="tier-fit"><strong>Fits:</strong> casual cafes, mamak, bistros and most full-service venues with a mid-size menu. The most-chosen tier across our Malaysian operator base.</p>
+      <a class="tier-cta" href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bfrom%3A%20pricing%20page%20-%2060%20menus%5D%20Would%20like%20to%20explore%20the%2060-menu%20plan%20for%20our%20venue." target="_blank" rel="noopener">Start with 60 menus &rarr;</a>
     </div>
+
+    <!-- 90 menus -->
     <div class="tier-card">
-      <span class="tier-label">TIER 3</span>
-      <h3>Full-service restaurants</h3>
-      <p class="tier-band">Upper-middle band of Malaysian QR menu market</p>
-      <p class="tier-body">Everything in Tier 2 plus multi-course pacing, table-side split bill, mid-meal add-ons, multi-outlet inventory sync.</p>
-      <a class="tier-link" href="/for-restaurants.html">For restaurants &rarr;</a>
+      <div>
+        <p class="tier-menus">90</p>
+        <div class="tier-menus-lbl">Menu items</div>
+      </div>
+      <div class="tier-divider"></div>
+      <div>
+        <p class="tier-price"><span class="currency">RM</span><span class="amt" data-monthly="78" data-annual="780">78</span></p>
+        <div class="tier-period"><span class="period">per month</span></div>
+        <p class="tier-annual-hint">RM 780/year &middot; saves 2 months</p>
+      </div>
+      <p class="tier-fit"><strong>Fits:</strong> full-service restaurants, premium cafes with seasonal rotations, multi-cuisine venues. Includes daypart menu rules and modifier matrix.</p>
+      <a class="tier-cta" href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bfrom%3A%20pricing%20page%20-%2090%20menus%5D%20Would%20like%20to%20explore%20the%2090-menu%20plan%20for%20our%20venue." target="_blank" rel="noopener">Start with 90 menus &rarr;</a>
     </div>
+
+    <!-- 120 menus -->
     <div class="tier-card">
-      <span class="tier-label">TIER 4</span>
-      <h3>Cloud kitchens</h3>
-      <p class="tier-band">Priced per brand, not per outlet</p>
-      <p class="tier-body">Multi-brand menu source of truth, stock-aware listings across Foodpanda and GrabFood, per-brand P&amp;L visibility. Tier rises with active brand count.</p>
-      <a class="tier-link" href="/for-cloud-kitchens.html">For cloud kitchens &rarr;</a>
-    </div>
-    <div class="tier-card">
-      <span class="tier-label">TIER 5</span>
-      <h3>Enterprise / chains</h3>
-      <p class="tier-band">6+ outlets, volume-discounted</p>
-      <p class="tier-body">Custom integration, SSO for staff, dedicated account manager, SLA on support response. Annual prepay options. WhatsApp the team for an enterprise quote.</p>
-      <a class="tier-link" href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bfrom%3A%20pricing%20page%20enterprise%20tier%5D%20Multi-outlet%20chain.%20Would%20like%20to%20explore%20more%20on%20how%20we%20can%20improve%20our%20sales." target="_blank" rel="noopener">Get enterprise quote &rarr;</a>
+      <div>
+        <p class="tier-menus">120</p>
+        <div class="tier-menus-lbl">Menu items</div>
+      </div>
+      <div class="tier-divider"></div>
+      <div>
+        <p class="tier-price"><span class="currency">RM</span><span class="amt" data-monthly="99" data-annual="990">99</span></p>
+        <div class="tier-period"><span class="period">per month</span></div>
+        <p class="tier-annual-hint">RM 990/year &middot; saves 2 months</p>
+      </div>
+      <p class="tier-fit"><strong>Fits:</strong> large full-service restaurants, premium multi-section venues, hotel F&amp;B outlets, multi-cuisine chains. The widest menu and modifier scope.</p>
+      <a class="tier-cta" href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bfrom%3A%20pricing%20page%20-%20120%20menus%5D%20Would%20like%20to%20explore%20the%20120-menu%20plan%20for%20our%20venue." target="_blank" rel="noopener">Start with 120 menus &rarr;</a>
     </div>
   </div>
+
+  <aside class="enterprise-strip">
+    <p class="es-text"><strong>Over 120 menus, or running multi-outlet?</strong> Cloud kitchens with multiple virtual brands, hotel F&amp;B groups, restaurant chains over 6 outlets. We quote enterprise pricing in writing within 24 hours, typically with volume discounting and a locked annual price.</p>
+    <a href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bfrom%3A%20pricing%20page%20-%20enterprise%5D%20More%20than%20120%20menus%20or%20multi-outlet.%20Would%20like%20an%20enterprise%20quote." target="_blank" rel="noopener">WhatsApp for enterprise quote &rarr;</a>
+  </aside>
 </section>
 
 <section class="pricing-section">
@@ -343,54 +515,44 @@
         <li>Payment integration with Touch n Go eWallet, GrabPay, Boost, DuitNow QR, FPX, major cards</li>
         <li>Unlimited menu revisions, no cap on edits per month</li>
         <li>Full data export to CSV in standard formats, included in the base rate</li>
-        <li>Monthly cancellation, no long-term lock-in</li>
+        <li>Monthly cancellation, no lock-in</li>
       </ul>
     </div>
     <div class="include-col">
       <h3 class="no">Never charged for</h3>
       <ul>
         <li>Setup or onboarding fees</li>
-        <li>Per-language add-ons (where multilingual is supported, it is in the base rate)</li>
+        <li>Per-language add-ons</li>
         <li>Per-menu-revision overage fees</li>
         <li>Per-payment-method integration fees</li>
         <li>Sponsored placement, promo participation or other engagement up-charges</li>
         <li>Data export or contract-exit fees</li>
         <li>Proprietary hardware lock-in (you use existing terminals and QR table cards)</li>
         <li>Per-transaction commission on orders (we are not a payment processor)</li>
+        <li>"Most operators on competing platforms quietly pay all of the above"</li>
       </ul>
     </div>
   </div>
 </section>
 
-<section class="pricing-section">
-  <h2>How the pay-on-results model works, <em>step by step.</em></h2>
-  <div class="include-col" style="grid-column: span 2;">
-    <ul style="padding-left: 0; list-style: none; margin: 0;">
-      <li style="font-size: 14.5px; color: var(--ink-2); line-height: 1.55; padding: 10px 0; border-bottom: 1px dashed rgba(255,255,255,0.06);"><strong style="color: var(--lime); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;">DAY 1</strong> &middot; Same-day setup. Menu live on your QR codes, smart upsell + promo push + daypart menu running on every order from minute one.</li>
-        <li style="font-size: 14.5px; color: var(--ink-2); line-height: 1.55; padding: 10px 0; border-bottom: 1px dashed rgba(255,255,255,0.06);"><strong style="color: var(--lime); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;">DAY 7</strong> &middot; You compare week-on-week AOV against your pre-MenuBase baseline. Most venues see a noticeable lift by now.</li>
-        <li style="font-size: 14.5px; color: var(--ink-2); line-height: 1.55; padding: 10px 0; border-bottom: 1px dashed rgba(255,255,255,0.06);"><strong style="color: var(--lime); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;">END OF MONTH 1</strong> &middot; The lift settles, typically 8 to 14% above pre-MenuBase AOV. We sit down together, look at the data, agree the lift is real.</li>
-        <li style="font-size: 14.5px; color: var(--ink-2); line-height: 1.55; padding: 10px 0; border-bottom: 1px dashed rgba(255,255,255,0.06);"><strong style="color: var(--lime); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;">MONTH 2 ONWARDS</strong> &middot; Monthly invoice starts at the agreed tier rate. The rate is locked for the life of the account; we do not raise it on you mid-contract.</li>
-        <li style="font-size: 14.5px; color: var(--ink-2); line-height: 1.55; padding: 10px 0;"><strong style="color: var(--lime); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em;">EVERY MONTH</strong> &middot; You can cancel any time. Your menu, customer data and sales history export to CSV within 24 hours. We do not believe in trapping operators.</li>
-    </ul>
-  </div>
-</section>
-
 <section class="pricing-section vertical-faq">
   <h2>Pricing questions, <em>answered honestly.</em></h2>
-  <details><summary>What does "free until the lift hits" actually mean?</summary><div class="faq-body">You pay zero until the AOV lift shows up in your numbers. Happy hour, threshold rewards, smart upsell and the daypart menu go live on your venue day one. Customers click in. Most venues see the lift within the first week and settle 8 to 14% above their pre-MenuBase AOV by end of month one. Only after that does a monthly bill start. Risk is on us, not you.</div></details>
-  <details><summary>What is the monthly cost after the lift hits?</summary><div class="faq-body">Tiered by venue type. Kopitiams and kiosks sit at the lower end of the Malaysian QR menu market range. Cafes and bubble tea shops sit at the middle tier. Full-service restaurants and multi-outlet chains sit at the upper tier. For exact RM figures for your specific venue and outlet count, WhatsApp the team. We quote in writing within 24 hours. (For the vendor-neutral context of QR menu pricing in Malaysia, see our <a href="/learn/qr-menu-pricing-malaysia.html">QR menu pricing primer</a>.)</div></details>
+  <details><summary>How does the menu-size pricing work?</summary><div class="faq-body">You pay by how many distinct menu items live on your MenuBase menu. 30 menus is RM28 a month. 60 menus is RM54. 90 menus is RM78. 120 menus is RM99. The tier scales with what you actually serve - a kopitiam with 25 items pays RM28, a casual cafe with 55 items also pays RM28 (up to 30 menus), a full-service restaurant with 85 items pays RM78.</div></details>
+  <details><summary>What does the annual subscription save?</summary><div class="faq-body">Annual subscription is the equivalent of ten months at the monthly rate. So you get two months free every year. RM280 a year instead of RM336 on the 30-menu tier, RM540 a year instead of RM648 on 60 menus, and so on.</div></details>
+  <details><summary>What if we have more than 120 menus?</summary><div class="faq-body">For menus larger than 120 items, multi-outlet chains or cloud kitchens running multiple virtual brands, WhatsApp the team. We quote an enterprise rate in writing within 24 hours, typically with volume discounting and a locked annual price.</div></details>
+  <details><summary>What if we have multiple outlets with the same menu?</summary><div class="faq-body">A multi-outlet venue running one shared menu pays one menu-size subscription, not one per outlet. So a 4-outlet cafe chain serving a 55-item menu pays RM54 a month total, not RM216. (Outlets are not the unit of pricing; menu items are.)</div></details>
   <details><summary>Is there a setup fee?</summary><div class="faq-body">No. Setup is included. We come in with your existing menu, build the digital version, generate the QR codes for every table or counter, and walk the team through the system in one shift. By end of service on day one you are live.</div></details>
-  <details><summary>Are there per-language or per-revision fees?</summary><div class="faq-body">No. Multilingual support (where supported) is included in the base rate. Menu revisions are unlimited - no cap on edits per month. We have written separately on how hidden per-language and per-revision fees inflate the real cost of competing systems; we deliberately do not do that.</div></details>
+  <details><summary>Are there per-language or per-revision fees?</summary><div class="faq-body">No. Where multilingual support is available, it is included in the base rate. Menu revisions are unlimited - no cap on edits per month. The hidden costs that bite Malaysian operators on competing systems (per-language fees, per-revision overage, per-payment-method fees, sponsored placement up-charges) are deliberately not on our invoice.</div></details>
   <details><summary>What about hardware?</summary><div class="faq-body">QR codes for the tables come included (printed sticker or table tent options). The customer side requires nothing - no app to download, no hardware to install. The waiter tablet is optional; some venues use it for parallel order receiving, others stick with their existing POS workflow. We discuss the hardware decision in the setup conversation.</div></details>
-  <details><summary>What if we want to cancel?</summary><div class="faq-body">Monthly cancellation, no lock-in. Your menu, customer data and historical sales export to CSV in standard formats within 24 hours of request. We do not believe in trapping operators in long contracts; if MenuBase is no longer earning its keep at your venue we want you to be free to switch.</div></details>
+  <details><summary>What if we want to cancel?</summary><div class="faq-body">Monthly subscription cancels monthly, no lock-in. Annual subscription cancels at renewal. Your menu, customer data and historical sales export to CSV in standard formats within 24 hours of request. We do not believe in trapping operators.</div></details>
   <details><summary>Do we need to replace our POS?</summary><div class="faq-body">No. MenuBase sits on top of any POS. Billing, accounting, payment processing and sales reports stay where they are. The waiter rings orders into the existing system the same way.</div></details>
-  <details><summary>How do we get an actual quote?</summary><div class="faq-body">WhatsApp the team with your venue type, outlet count, and a photo of your menu. We quote in writing within 24 hours - itemised, no hidden lines, no setup fee, no per-language fee. If MenuBase is not the right fit for your venue, we will say so.</div></details>
+  <details><summary>How do we get started?</summary><div class="faq-body">WhatsApp the team with your venue type, outlet count, and a photo of your menu. We will count the menu items, recommend the right tier, and confirm the price in writing within 24 hours. Same-day setup once you confirm.</div></details>
 </section>
 
 <aside class="closing-cta">
-  <h2>Ready to see a <em>written quote?</em></h2>
-  <p>WhatsApp the team with your venue type, your outlet count, and a photo of your current menu. You will get an itemised quote in writing within 24 hours. Zero cost until the lift hits your numbers. If MenuBase is not the right fit, we will say so.</p>
-  <a class="btn btn-lime btn-lg" href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bfrom%3A%20pricing%20page%20closing%5D%20Would%20like%20a%20written%20quote%20for%20MenuBase%20on%20our%20menu.%20Will%20send%20venue%20type%2C%20outlet%20count%20and%20menu%20photo." target="_blank" rel="noopener">WhatsApp for a written quote &rarr;</a>
+  <h2>Send us your menu. <em>We pick the tier.</em></h2>
+  <p>If you are not sure how many menu items you have, send us a photo of your current menu and your venue type. We will count it, recommend the right tier, and confirm in writing within 24 hours. Same-day setup once you confirm. No script, no deck.</p>
+  <a class="btn btn-lime btn-lg" href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bfrom%3A%20pricing%20page%20closing%5D%20Would%20like%20to%20see%20which%20menu-size%20tier%20fits%20us.%20Will%20send%20a%20photo%20of%20our%20menu%20and%20our%20venue%20type." target="_blank" rel="noopener">WhatsApp us your menu &rarr;</a>
 </aside>
 
 </main>
@@ -428,6 +590,39 @@
     </div>
   </div>
 </nav>
+
+<script>
+// Billing toggle: switch between monthly and annual price display
+(function(){
+  const toggle = document.querySelector('.billing-toggle');
+  if (!toggle) return;
+  const buttons = toggle.querySelectorAll('button[data-period]');
+  const amounts = document.querySelectorAll('.tier-card .amt');
+  const periods = document.querySelectorAll('.tier-card .period');
+  const annualHints = document.querySelectorAll('.tier-card .tier-annual-hint');
+
+  function setPeriod(period) {
+    buttons.forEach(b => {
+      const isActive = b.dataset.period === period;
+      b.classList.toggle('active', isActive);
+      b.setAttribute('aria-selected', String(isActive));
+    });
+    amounts.forEach(el => {
+      el.textContent = el.dataset[period];
+    });
+    periods.forEach(el => {
+      el.textContent = period === 'monthly' ? 'per month' : 'per year';
+    });
+    annualHints.forEach(el => {
+      el.style.display = period === 'monthly' ? '' : 'none';
+    });
+  }
+
+  buttons.forEach(b => {
+    b.addEventListener('click', () => setPeriod(b.dataset.period));
+  });
+})();
+</script>
 
 </body>
 </html>

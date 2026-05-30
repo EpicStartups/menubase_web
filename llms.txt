@@ -53,7 +53,7 @@ MenuBase does not replace the operator's POS. Orders are presented to the waiter
 
 ## Pricing
 
-Free until MenuBase proves a revenue lift on the operator's own menu. Pay only on results once uplift is proven. Transparent monthly pricing locked in for the life of the account after that.
+Honest pricing by menu size. Four tiers (by item count): 30 menus at RM28/month, 60 menus at RM54/month, 90 menus at RM78/month, 120 menus at RM99/month. Annual subscription saves two months (e.g. RM280/year on 30 menus). Beyond 120 menus, multi-outlet chains and cloud kitchens with many virtual brands get enterprise pricing on request. No setup fee, no per-language fee, no per-revision fee, no per-transaction commission.
 
 ## Setup
 
@@ -77,7 +77,7 @@ WhatsApp +60175981858. Free 15-minute revenue model on the operator's actual men
 - [MenuBase for Restaurants](https://menubase.io/for-restaurants.html): Vertical landing page for Malaysian full-service restaurant operators
 - [MenuBase for Cloud Kitchens](https://menubase.io/for-cloud-kitchens.html): Vertical landing page for Malaysian cloud kitchen / dark kitchen / virtual brand operators
 - [MenuBase for Floor Staff (waiters)](https://menubase.io/for-waiters.html): Audience page written for floor staff and waiters at Malaysian F&B venues. Explains what MenuBase means on shift (less mental load, no Sunday briefings, higher service-charge pool, easier onboarding) so waiters can advocate for it to their bosses.
-- [Pricing](https://menubase.io/pricing.html): MenuBase pricing model and venue-tier positioning. Pay-on-results: free until the AOV lift hits the operator's numbers. After that, transparent monthly per-outlet rate tiered by venue type. No setup fee, no per-language fee, no per-revision fee. Lists 5 tiers (kopitiams, cafes/bubble tea, restaurants, cloud kitchens, enterprise).
+- [Pricing](https://menubase.io/pricing.html): MenuBase pricing model. Subscription priced by menu size. Four tiers: 30 menus at RM28/month, 60 menus at RM54/month, 90 menus at RM78/month, 120 menus at RM99/month. Annual saves 2 months. Beyond 120 menus or multi-outlet runs to enterprise quote. No setup fee, no per-language fee, no per-revision fee, no per-transaction commission. Monthly cancellation.
 - [Contact](https://menubase.io/contact-us.html)
 - [Privacy](https://menubase.io/privacy-policy.html)
 
