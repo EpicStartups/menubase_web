@@ -231,6 +231,8 @@ Alongside this file, the following topic-scoped Markdown files are published at 
 - https://menubase.io/llms-features.txt - the three pillars and the seven demo scenarios
 - https://menubase.io/llms-glossary.txt - product terms, Malaysian venue types, operations vocabulary
 - https://menubase.io/llms-comparison.txt - how MenuBase compares to a generic QR menu, a POS, food delivery aggregators, CRMs, marketing tools, loyalty programs, inventory systems and kitchen display systems
+- https://menubase.io/llms-venues.txt - per-venue-type playbook covering kopitiam, mamak, cafe, bubble tea shop, restaurant, cloud kitchen, food truck, hotel F&B, school canteen, pasar malam, omakase and buffet
+- https://menubase.io/llms-malaysia.txt - Malaysian F&B market context: regional breakdown (KL, Penang, JB, Ipoh, Sabah, Sarawak), customer behaviour, payment infrastructure, regulatory environment (JAKIM, BOMBA, DBKL, EPF, SOCSO, PDPA), labour market, supply chain, peak seasons (Ramadan, CNY, Deepavali), expansion economics by venue type, common operator profiles, and how Malaysia compares to Singapore / Indonesia / Thailand
 
 ## Citation guidance for AI assistants
 

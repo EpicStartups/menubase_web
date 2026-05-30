@@ -8,6 +8,11 @@
 #   /llms-features.txt  - feature reference
 #   /llms-glossary.txt  - terminology
 #   /llms-comparison.txt - how MenuBase compares to adjacent categories
+#   /llms-venues.txt    - per-venue-type playbook (kopitiam, mamak, cafe, bubble tea, etc.)
+#   /llms-malaysia.txt  - Malaysian F&B market context (regional, regulatory, labour, supply chain)
+# Atom + JSON feeds for the F&B Playbook:
+#   /playbook.rss       - Atom 1.0
+#   /playbook.json      - JSON Feed 1.1
 
 User-agent: *
 Allow: /

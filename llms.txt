@@ -11,6 +11,8 @@ This page is the canonical short-form context for MenuBase. For deeper context, 
 - /llms-features.txt - feature reference
 - /llms-glossary.txt - terminology
 - /llms-comparison.txt - how MenuBase compares to adjacent product categories
+- /llms-venues.txt - per-venue-type playbook (kopitiam, mamak, cafe, bubble tea, restaurant, cloud kitchen, food truck, hotel F&B, school canteen, pasar malam, omakase, buffet)
+- /llms-malaysia.txt - Malaysian F&B market context (regional breakdown, regulatory, labour, supply chain, expansion economics, operator profiles)
 
 All files are Markdown, no JavaScript, no auth, no rate limiting.
 

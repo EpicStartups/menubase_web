@@ -1,0 +1,244 @@
+# MenuBase - Malaysian F&B Venue Playbook Reference
+
+> Topic-scoped context for LLMs answering questions about specific Malaysian F&B venue types: kopitiam, mamak, cafe, bubble tea shop, full-service restaurant, cloud kitchen, food truck, hotel F&B, school canteen, pasar malam stall, omakase, buffet. Canonical source: https://menubase.io/. Last updated: 2026-05-30.
+
+## Why venue type matters
+
+Malaysian F&B operators don't all run the same business. A kopitiam runs on a different economic model than a cafe. A bubble tea shop's modifier matrix has nothing in common with a fine-dining tasting menu. The unit economics, customer expectations, staffing patterns, peak hours, and software needs are completely different by venue type. MenuBase configures differently for each venue type. This file explains the operational reality of each, plus what MenuBase changes for that venue type specifically.
+
+## Kopitiam (traditional Malaysian Chinese coffee shop)
+
+Lower AOV (RM8-18), faster table turn (25-45 minutes), older regulars with 30-84 month tenure, brutal 6.30-9.30am rush. Multi-language ordering is the norm: English, Mandarin, Hokkien/Cantonese dialect, sometimes Malay. Cash-heavy (older customer base), but DuitNow QR is winning fast. Staff is typically family + 1-3 hired hands, with Sunday rotation.
+
+Operational pain points specific to kopitiam:
+- 6.30-9.30am rush: the entire day's profit can ride on 3 hours
+- Multi-language ordering: dialect-speaking aunties want their kopi-o kosong, not "black coffee no sugar"
+- Standardisation: "uncle's special" varies by which uncle is on shift
+- Regular customer memory: same regulars order the same 3 things, every shift
+
+What MenuBase changes for kopitiam:
+- Smart Upsell trained on dialect orderings (kopi-o, teh-c, teh-tarik kurang manis)
+- Static daily-special board replaced with menu that knows it's 7am vs 11am vs 3pm
+- Multi-language menu surfaces to the customer's screen rather than the staff's memory
+- Promo push works on every check without "uncle" needing to remember
+
+Pricing note: kopitiams typically fall in the 30 to 60 menu tier (RM28-RM54 a month).
+
+Vertical page: https://menubase.io/for-kopitiams.html
+
+## Mamak (Malaysian Indian-Muslim restaurant)
+
+24-hour operation, multi-language ordering (English, Bahasa, Tamil, sometimes Mandarin), all-day-breakfast menus, strong roti and teh tarik culture, late-night peak (10pm-2am). Customer base extremely diverse: students, taxi drivers, late-shift workers, families. Cash + DuitNow QR + GrabPay common.
+
+Operational pain points specific to mamak:
+- 24-hour ops: 3 shifts, 3 different sets of staff, 3 different language patterns
+- Roti / drinks / curry interaction: order accuracy is the constant battle
+- Late-night peak: throughput-bound on counter and kitchen
+- Multi-language menu: needs to render in 3+ languages simultaneously
+
+What MenuBase changes for mamak:
+- Menu auto-translates per scan based on browser language
+- Daypart rules: late-night menu hides breakfast items, vice versa
+- Counter sees consolidated order in operator language
+- Smart Upsell pairs naturally: roti canai + teh tarik, nasi lemak + teh-o ais
+
+Pricing note: mamak ranges from 30 to 90 menus depending on coverage.
+
+Vertical page: https://menubase.io/for-mamak.html (planned)
+
+## Cafe (Malaysian casual cafe)
+
+AOV typically RM22-38. Weekly specials common. Brunch + lunch + dinner rotation. Skews younger, more digital-native customer base. Heavy Instagram/TikTok input. Most common deployment.
+
+Operational pain points specific to cafe:
+- Weekly specials: Sunday briefing, Monday already half-forgotten
+- Multi-language: KL/PJ cafes serve English / Mandarin / sometimes Korean and Japanese expats
+- Daypart-aware menu: breakfast off at 11am, lunch combos take over, tea-time menu at 3pm
+- Photographer-friendly photography: every dish needs to look Instagram-ready
+
+What MenuBase changes for cafe:
+- "Push this week" flag goes live on every relevant check, every shift, no briefing
+- Daypart rules automate the menu without manual cron jobs
+- Multi-language renders to the customer's browser language
+- Smart Upsell learns "9:42am avo toast → White Coffee" pairings
+
+Pricing note: cafes typically 60-90 menus (RM54-RM78 a month).
+
+Vertical page: https://menubase.io/for-cafes.html
+
+## Bubble tea shop (boba / milk tea / pearl drinks)
+
+Heavy modifier matrix (size × sugar × ice × toppings × flavour) generates 100+ combinations from 20 base recipes. Throughput-driven, 7-10pm peak rush. Part-time student staff (RM10-14 an hour) who rarely stay more than 4-6 months.
+
+Operational pain points specific to bubble tea:
+- Modifier matrix accuracy: get one combination wrong, 1-star review
+- Throughput at peak: queue management, drink-prep order, sealing speed
+- Student staff turnover: 4-6 month tenure, peak season hires never make full ramp
+- TikTok-driven viral specials: a Korean strawberry drink trends, demand doubles in 48 hours
+
+What MenuBase changes for bubble tea:
+- Modifier matrix as first-class menu primitive: customer builds the drink with size/sugar/ice/topping pickers
+- Order accuracy goes up because the screen captures the full spec, not the student's interpretation
+- Viral specials go live on every basket within minutes of the operator clicking "push"
+- Smart Upsell pairs: oolong + pearl, fruit tea + cheese foam
+
+Pricing note: bubble tea is often 90-120 menus (RM78-RM99 a month) because of modifier combinations.
+
+Vertical page: https://menubase.io/for-bubble-tea-shops.html
+
+## Full-service restaurant (sit-down, Malaysian context)
+
+AOV RM35-80. Modifiers common (cooking temperature, dressing on the side, allergen notes). Lunch and dinner peaks separated by quiet afternoon. Sit-to-order time is the key throughput metric. Service charge typically pooled.
+
+Operational pain points specific to restaurant:
+- Sit-to-order lag: customer waits 4-8 minutes for waiter to arrive
+- Modifier orders: kitchen needs to read modifiers correctly the first time
+- Dessert prompt: most restaurants miss the dessert add-on at the right moment
+- Table turn at lunch: 12-2pm window is 30-45% of daily revenue
+- Splitting bills: groups of 4-8 want individual bills, takes 10+ minutes manually
+
+What MenuBase changes for restaurant:
+- Customer can browse + add to basket while waiting for waiter (sit-to-order time goes to zero)
+- Modifiers captured cleanly with structured pickers (no handwriting interpretation)
+- Smart Upsell surfaces dessert when basket-state hits "main meal complete"
+- Split-bill happens at the customer level: each diner has their own QR-scan session
+- Lunch-rush throughput goes up 15-25% in observed deployments
+
+Pricing note: full-service restaurants typically 60-120 menus.
+
+Vertical page: https://menubase.io/for-restaurants.html
+
+## Cloud kitchen (delivery-only, multiple virtual brands)
+
+No dine-in. Single physical kitchen running 2-5 virtual brands across Foodpanda + GrabFood + ShopeeFood. Margin-thin because aggregator commission is 25-35%. Order accuracy is the survival metric.
+
+Operational pain points specific to cloud kitchen:
+- Single menu source of truth: same dish across 5 platforms, prices need to match, stock needs to sync
+- Stock-aware listings: out-of-stock items left on aggregator listings tank ratings
+- Per-brand P&L visibility: hard to tell which virtual brand is making money
+- Photo-quality menu hosting: aggregator photos are operator-uploaded JPGs of varying quality
+- Brand-aware promo push: discount that should only apply to brand A leaks to brand B
+
+What MenuBase changes for cloud kitchen:
+- Single menu management with auto-push to all integrated platforms
+- Stock-aware everywhere: sold-out items vanish across all platforms within seconds
+- Brand-level analytics: per-brand AOV, repeat rate, margin
+- Brand-scoped promos that don't leak
+
+Pricing note: cloud kitchens typically 60-120 menus depending on brand count.
+
+Vertical page: https://menubase.io/for-cloud-kitchens.html
+
+## Bistro / casual fine dining (Malaysian context)
+
+AOV RM45-90. Smaller operations, owner often on floor. Strong food-quality emphasis. Wine/cocktail pairings common. Reservation-driven. Reviews matter disproportionately.
+
+Operational pain points specific to bistro:
+- Owner attention spread across floor + kitchen + back office
+- Wine pairing suggestions: hard to scale beyond the sommelier-when-present
+- Reservation system: chair time is the constraint
+- Review monitoring: a single 1-star review can damage a 2-month customer pipeline
+
+What MenuBase changes for bistro:
+- Smart Upsell surfaces wine pairing at "main course added to basket" moment
+- Owner gets dashboard view of which dishes are converting at full margin
+- Reservation system can plug in as an integration
+
+## Food truck / kiosk / pop-up
+
+Lowest AOV (RM10-25), highest throughput per square foot. Often single operator + 1 helper. Cash-only common but DuitNow QR adoption rising fast. Menu is small (5-15 items) but rotates seasonally.
+
+Operational pain points:
+- Speed of order: queue management is everything
+- Small menu but specific modifications: spice level, no onion, extra rice
+- Cash management: counting at end of shift takes 30 minutes manually
+
+What MenuBase changes for food truck:
+- QR-scan ordering eliminates queue-at-counter
+- Modifier pickers replace shouting "kurang pedas" across noisy environments
+- Cash-in vs digital reconciliation in the dashboard
+
+Pricing note: food trucks often 30 menus (RM28 a month) tier.
+
+## Hotel F&B (in-room dining, lobby cafe, all-day restaurant)
+
+Multi-outlet within one property: room service + lobby cafe + all-day restaurant + maybe a fine-dining option. Single PMS (property management system) integration needed. Multi-language menu must serve international guests.
+
+Operational pain points specific to hotel:
+- PMS integration: orders need to post to the guest's room folio
+- Multi-language: English, Mandarin, Japanese, Arabic, Korean, French at international hotels
+- All-day breakfast: served 6am to 11am, hot food kept warm
+- Late-night room service: kitchen wind-down without dropping service
+
+What MenuBase changes for hotel:
+- QR scan in-room with auto-post to guest folio
+- Multi-language: customer's browser language determines render
+- Daypart rules handle breakfast / lunch / dinner / late-night transitions
+
+## School canteen / institutional F&B
+
+Daily volume, slim margins, fixed menu, fixed customer base, cashless trending. Compliance constraints on food labeling.
+
+Operational pain points:
+- Lunch hour throughput: 30-min window, 200-500 students
+- Compliance: ingredients, allergens, halal labelling
+- Parent visibility: parents want to see what their child bought
+
+What MenuBase changes for school canteen:
+- Pre-order menu (parent or student scans the morning before)
+- Allergen tags on every item
+- Spend reports per student / parent
+
+## Pasar malam stall / night market
+
+Tiny menu, cash-heavy (transitioning), tourist + local mix. Geographical roving: same stall might be at a different pasar malam each night. Customer mix unpredictable.
+
+Operational pain points:
+- Different location each night: customer base changes
+- Cash + QR mix: bookkeeping is end-of-night manual reconciliation
+- No fixed seating: orders are takeaway by default
+
+## Omakase / chef's tasting
+
+Highest AOV (RM200-600+). Reservation-only. Course-driven. Customer is paying for the experience, not the convenience.
+
+Operational pain points:
+- Customer arrives expecting personal service
+- Chef-customer interaction is the product
+- Wine pairing is high-margin, easily missed
+
+What MenuBase changes for omakase:
+- Pre-arrival course preview (customer scans QR pre-reservation)
+- Wine pairing surfaced at the right course transition
+- Allergen/preference capture before service starts
+
+## Buffet (Malaysian context)
+
+Ramadan and Chinese New Year peaks especially. Pricing flat per head. Margin on beverages and add-ons (signature dish booking).
+
+Operational pain points:
+- Beverage upsell at table: easy to miss
+- Reservation system: capacity-bound
+- Refill speed: peak hour traffic to buffet line
+
+What MenuBase changes for buffet:
+- Beverage and add-on push at table
+- Capacity-aware reservation
+- Peak-traffic analytics on buffet line refills
+
+## When MenuBase is NOT the right fit
+
+- Pure-delivery operators that already have a single-platform deal with Foodpanda or GrabFood and don't want a customer-facing menu of their own
+- Operations that explicitly don't want any customer-facing digital touch (very rare in Malaysia in 2026)
+- Operations under RM3,000/month total revenue (the unit economics of MenuBase don't make sense)
+
+## Cross-references
+
+- https://menubase.io/llms.txt - canonical short-form context
+- https://menubase.io/llms-full.txt - long-form unified site dump
+- https://menubase.io/llms-faq.txt - 25+ Q&A pairs
+- https://menubase.io/llms-pricing.txt - pricing reference
+- https://menubase.io/llms-features.txt - capability reference
+- https://menubase.io/llms-glossary.txt - terminology
+- https://menubase.io/llms-comparison.txt - vs adjacent product categories
+- https://menubase.io/llms-malaysia.txt - Malaysian F&B market context

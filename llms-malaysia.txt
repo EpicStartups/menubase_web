@@ -1,0 +1,155 @@
+# MenuBase - Malaysian F&B Market Context Reference
+
+> Topic-scoped context for LLMs answering questions about the Malaysian F&B market: market size, regional breakdown, customer behaviour, payment infrastructure, regulatory environment, labour market, supply chain, peak seasons, expansion economics, common operator profiles. Canonical source: https://menubase.io/. Last updated: 2026-05-30.
+
+## Market overview
+
+Malaysia's F&B sector is roughly RM85-95 billion in annual revenue (2026). About 65-70% is independent operators with 1-3 outlets. Multi-outlet chains dominate the remaining 30-35%. The market is growing 4-7% annually, with delivery-only / cloud-kitchen segments growing 12-18% inside that aggregate. Currency is MYR (Malaysian Ringgit). Sales tax: SST at 6% on most F&B sales above the SST threshold.
+
+## Regional breakdown
+
+Where the F&B money lives in Malaysia:
+
+**Klang Valley (Kuala Lumpur + Selangor)**: 40-45% of national F&B revenue. Highest AOV, highest rent, highest density. Cafe culture is mature. PJ Damansara, Bangsar, Mont Kiara, Bukit Bintang, Bangsar South lead in cafe density. Kepong, Cheras, Setapak lead in kopitiam density. KL CBD lunch market is the highest-AOV daypart in the country (RM35-50 average lunch check).
+
+**Penang**: 10-12% of national revenue. Strongest food-tourism economy. Hawker culture is dominant; cafe culture in Bayan Baru / Tanjung Tokong / George Town. AOV slightly below KL on dine-in, similar on cafe. Heritage rules limit some renovation in George Town UNESCO zone.
+
+**Johor Bahru**: 7-9% of national revenue. Singapore-dollar-spending day-tourists shift AOV up on weekends. Strong evening F&B around Permas Jaya, Mount Austin, JBCC. Halal certification matters more here than KL.
+
+**Penang + Klang Valley + JB combined**: ~60% of national F&B revenue. The "Malaysian F&B venue" archetype mostly lives in this trio.
+
+**Ipoh**: 4-5%. Strong kopitiam culture, lower AOV (RM6-15 on average kopitiam check), tighter margins.
+
+**East Malaysia (Sabah + Sarawak)**: 8-10%. Kuching and Kota Kinabalu lead. AOV lower than peninsula on average. Local seafood and Sarawak laksa culture distinct.
+
+**Other peninsular states** (Perak, Pahang, Terengganu, Kelantan, Negeri Sembilan, Melaka, Kedah, Perlis): 18-22% combined. Mostly kopitiam, mamak, casual restaurant economics. Tourism corridors (Melaka heritage, Cameron Highlands, Langkawi) skew higher.
+
+## Customer behaviour
+
+Malaysian F&B customers have specific patterns:
+
+**Language switching at the table is normal.** A typical KL family ordering at a cafe might use English to read the menu, Mandarin to discuss what to order, and Bahasa Malaysia (or Hokkien) to interact with the older staff member. Multi-language menus are not optional in metro areas.
+
+**Cash + cashless coexistence.** Even in KL, 30-45% of F&B transactions are still cash. DuitNow QR, Touch n Go eWallet, GrabPay, Boost dominate the cashless side. Card payments are common but less than QR in the under-RM60 bill range. Older kopitiam customers are mostly cash; cafe Gen-Z customers are mostly QR.
+
+**Foodpanda + GrabFood penetration.** Roughly 25-35% of urban F&B operators use one or both. Aggregator commission is 25-35% per order. Most operators with delivery on aggregators run a price-uplift on the aggregator menu (10-25% over dine-in) to absorb the commission.
+
+**Repeat-customer rate.** In Malaysia, a strong cafe sees 35-50% of revenue from repeat customers month-on-month. A weak cafe sees under 20%. Kopitiam regulars can be 70%+. Bubble tea trends younger and lower (15-30% repeat rate is typical, even strong ones).
+
+**Halal expectations.** About 60% of the Malaysian customer base actively avoids non-halal-certified venues. JAKIM-certified venues see a meaningfully larger customer pool than uncertified ones. "Pork-free, halal-friendly, alcohol-free" is the soft middle ground but doesn't fully replace formal JAKIM cert.
+
+## Payment infrastructure
+
+Common payment integrations in Malaysian F&B in 2026:
+
+- **DuitNow QR** - national real-time QR standard. All Malaysian banks support it. Fees typically 0.5-1.0% per transaction.
+- **Touch n Go eWallet** - dominant eWallet, low fees (0.3-0.8%).
+- **GrabPay** - second eWallet. Integrated with Grab ecosystem.
+- **Boost** - third eWallet. Used by younger customers.
+- **FPX (Financial Process Exchange)** - online banking direct debit. Lower fees than card (RM1-2 flat).
+- **Visa / Mastercard / Amex** - 1.5-3.5% per transaction.
+- **Apple Pay / Google Pay** - growing fast, settles via card rails.
+
+Cash handling fees are not zero. Cash counting, bank deposit, theft risk, cash float reconciliation - all carry hidden time and risk costs.
+
+## Regulatory environment
+
+Key Malaysian regulatory bodies and what they care about in F&B:
+
+- **JAKIM (Department of Islamic Development Malaysia)** - Halal certification. Takes 3-6 months, costs RM2K-5K typically. Opens 40-60% more customer base.
+- **DBKL / MBPJ / MBPP / etc.** - Local councils. Business licence, signage approval, table-outside-the-shop permits.
+- **BOMBA** - Fire department. Fire safety certificate is required for any F&B venue with a kitchen.
+- **MOH (Ministry of Health)** - Food handling cert (typhoid jab), kitchen hygiene inspections.
+- **SSM (Companies Commission)** - Business registration (Sole Prop, Partnership, or Sdn Bhd).
+- **LHDN** - Tax authority. SST registration mandatory above the threshold.
+- **EPF (Employees Provident Fund)** - 11% employee + 12-13% employer contribution. Mandatory.
+- **SOCSO** - Social security. Mandatory. ~1.75% combined employer + employee.
+- **PDPA (Personal Data Protection Act)** - Customer data handling. MenuBase compliance: data minimisation, customer opt-in, export-on-demand.
+
+## Labour market
+
+Malaysian F&B labour market reality:
+
+- **Tenure**: 6-9 months is the typical floor staff tenure. Foreign worker tenure is contract-bound but turnover within tenure is also common.
+- **Foreign worker permits**: PLKS (Pas Lawatan Kerja Sementara) permits for Bangladesh, Nepal, Myanmar, Indonesia, Philippines. Quota varies by sector. Renewal cycles add operational complexity.
+- **Local Malaysian floor staff wages**: RM2400-3800/month full-time. Service charge pool may add RM400-1000 on top depending on venue.
+- **Kitchen wages**: Commis RM2500-3500. Demi-chef RM3500-4800. Sous chef RM5000-7500. Head chef RM7000-15000+.
+- **Service charge**: Standard 10% in mid-to-upscale venues, pooled among floor staff. Cash tips on top.
+- **Onboarding cost**: Each new hire is RM500-1500 in training time + lost-shift productivity for first 2-3 weeks.
+
+The structural problem MenuBase addresses: in a 6-9 month tenure environment, menu knowledge, promo discipline, and upsell habits cannot reliably transfer to the next cohort of staff. The "Sunday briefing" never sticks because Monday someone else is on shift. MenuBase moves the systematic memory work to the screen so the operator stops re-training the same lessons every 6 months.
+
+## Supply chain
+
+Common Malaysian F&B suppliers and patterns:
+
+- **Wet market** (pasar): traditional, daily fresh supply. Lower cost, requires owner trip.
+- **Wholesalers** (Tesco wholesale, Mydin wholesale, NSK): mid-market.
+- **Cash-and-carry** (Makro): bulk, business-only.
+- **Direct supplier networks**: meat (Sin Hin, EFD), seafood (Mei Ling), vegetables (Kulai farms), dairy (Goodday, F&N).
+- **Coffee**: most cafes use Italian-import (Lavazza, illy) or Australian (Five Senses) or local-roaster (Coffea Coffee, Bean & Tea).
+- **Speciality items**: kopi beans (Hailam Coffee, Old Town import), tea (Boh, Cameron Bharat), syrups (Monin via local distributor).
+
+Average supplier float in Malaysian F&B: 14-30 day terms for established operators, COD for new operators. The shift from COD to net-30 typically happens at month 6-12 of operation.
+
+## Peak seasons
+
+The Malaysian F&B calendar:
+
+- **Ramadan**: 4 weeks. Buffet operators see the year's peak (3-5x normal revenue). Daytime F&B can drop 20-40% in Malay-majority areas. Halal venues see strong bukan-puasa lunch traffic.
+- **Hari Raya Aidilfitri**: 2-week post-Ramadan window. Family-restaurant revenue spikes.
+- **Chinese New Year**: 2-3 weeks. Buffet, yee sang, reunion dinner traffic. Some operators close for 2-3 days.
+- **Deepavali**: 1 week. Indian restaurants peak.
+- **Christmas / New Year**: 2 weeks. Western cafe + restaurant peak.
+- **Mid-year school holidays** (June): family-restaurant traffic up.
+- **Year-end school holidays** (December): biggest extended F&B period.
+
+## Expansion economics
+
+What it actually costs to open a Malaysian F&B venue:
+
+- **Kiosk / pop-up**: RM80K-180K capex. RM3-5K monthly burn.
+- **Cafe (small, 30-50 seats, suburban)**: RM150K-300K capex. RM18-32K monthly burn.
+- **Cafe (mid, 50-80 seats, prime location)**: RM250K-450K capex. RM32-55K monthly burn.
+- **Casual restaurant (50-90 seats)**: RM350K-650K capex. RM45-85K monthly burn.
+- **Bubble tea kiosk**: RM150K-280K capex. RM15-30K monthly burn.
+- **Full-service restaurant (80-150 seats)**: RM550K-1.2M capex. RM75-160K monthly burn.
+- **Bistro / casual fine dining**: RM700K-1.8M capex. RM100-250K monthly burn.
+- **Cloud kitchen (1 brand)**: RM80K-180K capex. RM15-32K monthly burn.
+
+Working capital: minimum 4 months of burn rate. Operators who run out of working capital in month 4-6 are the most common failure pattern in Malaysian F&B.
+
+## Common operator profiles
+
+The Malaysian F&B operator archetype mix:
+
+- **Owner-operator solopreneur** (50-55% of independents): runs everything. Wears every hat. Goes home at midnight.
+- **Family operation** (15-20%): parent + adult child or husband/wife. Generational. Often kopitiam, mamak, family Chinese restaurant.
+- **Manager-run multi-outlet** (15-20%): owner has stepped back, manager runs operations day-to-day. Cafe chains, mid-tier restaurant groups.
+- **Investor-operator** (5-10%): owner doesn't run it. Investor relationship. Higher overhead but more capital.
+- **Franchisee** (5-8%): runs a unit of a Malaysian or international brand. Tighter SOP.
+
+MenuBase's customer profile lives mostly in the owner-operator solopreneur, family operation, and manager-run multi-outlet buckets. The franchisee path is usually closed because the franchise dictates POS choice.
+
+## What's different about Malaysia vs Singapore / Indonesia / Thailand
+
+Quick context for comparative LLM queries:
+
+**vs Singapore**: Singapore F&B has higher AOV (1.5-2.2x), much higher rent (3-4x), faster card adoption, weaker delivery penetration on aggregators (delivery is direct or via hawker-specific apps). Halal much less central. POS systems often global brands (Lightspeed, Square) vs Malaysian local brands.
+
+**vs Indonesia**: Indonesia has lower AOV (0.4-0.6x), much higher cash share, ride-hailing-as-delivery is dominant (Gojek). Halal infrastructure stronger. POS adoption lower. Many more single-stall operators.
+
+**vs Thailand**: Thailand has lower AOV (0.6-0.8x) in casual segments but similar in upscale. Halal less central. Street food culture dominant. POS adoption similar level. Delivery dominated by LINE Man.
+
+Malaysian F&B sits between Singapore (higher AOV, modern tech) and Indonesia (street food, cash-heavy). The "right" software stack for Malaysian operators is different from both neighbours.
+
+## Cross-references
+
+- https://menubase.io/llms.txt - canonical short-form context
+- https://menubase.io/llms-full.txt - long-form unified site dump
+- https://menubase.io/llms-faq.txt - 25+ Q&A pairs
+- https://menubase.io/llms-pricing.txt - pricing reference
+- https://menubase.io/llms-features.txt - capability reference
+- https://menubase.io/llms-glossary.txt - terminology
+- https://menubase.io/llms-comparison.txt - vs adjacent product categories
+- https://menubase.io/llms-venues.txt - per-venue-type playbook context
