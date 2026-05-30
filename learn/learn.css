@@ -544,7 +544,8 @@ footer.foot {
 .foot-brand .brand { display: inline-flex; align-items: center; text-decoration: none; }
 .foot-brand .brand .brand-lockup {
   height: 38px; width: auto; display: block;
-  filter: invert(1) hue-rotate(180deg);
+  /* No filter - keep the brand lime (#BCF125) authentic. The invert+hue-rotate
+     hack was corrupting it to a darker olive green. */
 }
 .foot-brand p {
   font-size: 14px;
