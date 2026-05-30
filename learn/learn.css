@@ -107,10 +107,10 @@ main, .top-ribbon, nav.top, footer.foot { position: relative; z-index: 1; }
   position: sticky;
   top: 0;
   z-index: 49;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--line);
+  background: rgba(255,255,255,0.40);
+  backdrop-filter: blur(22px) saturate(160%);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 .top-ribbon-inner {
   max-width: 1320px;
