@@ -1932,6 +1932,77 @@ section.block.tight { padding: 80px 28px; }
   z-index: 0;
 }
 
+/* ─── MOBILE: one-column chip list with the demo phone directly below ───
+   Stack heading / lede / chip column / annotation / phone in reading order.
+   Each chip is a compact full-width pill (not a tall scene card). Tap to
+   switch scenarios. Desktop untouched. */
+@media (max-width: 900px) {
+  .demo { padding: 56px 18px 72px; }
+  .demo-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
+  }
+  .demo-chips {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: none;
+    margin: 24px 0 8px;
+  }
+  .chip-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+  .chip-group-label {
+    flex: 0 0 auto;
+    margin: 10px 0 2px;
+    font-size: 10.5px;
+  }
+  .demo-chips .chip {
+    width: 100%;
+    min-height: 52px;
+    border-radius: 14px;
+    padding: 14px 18px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    white-space: normal;
+    line-height: 1.25;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .demo-chips .chip::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.25);
+    flex: 0 0 8px;
+    transition: background 180ms, box-shadow 180ms;
+  }
+  .demo-chips .chip.on { transform: none; }
+  .demo-chips .chip.on::after {
+    background: rgba(26,26,26,0.9);
+    box-shadow: 0 0 0 4px rgba(26,26,26,0.15);
+  }
+  .demo-annot {
+    margin: 18px 0 0;
+    max-width: none;
+  }
+  .demo-stage {
+    margin: 24px auto 0;
+    padding: 0;
+  }
+  .demo-stage::before { width: 280px; height: 280px; }
+}
+
 /* ─── CALCULATOR ─── */
 .calc-shell { background: rgba(21, 21, 26, 0.30); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .calc-inner {
@@ -2502,7 +2573,7 @@ footer.foot {
   .demo-side .lede { font-size: 15px; margin-bottom: 20px; }
   .demo-chips { gap: 8px; margin-bottom: 22px; }
   /* Demo scenario chips: bump to 44px tap target for Apple HIG / Material */
-  .demo-chips .chip { font-size: 13px; padding: 11px 16px; min-height: 44px; }
+  /* .demo-chips .chip rules moved to dedicated "MOBILE: one-column chip list" block. */
   .demo-annot { padding: 18px 20px; }
   .demo-annot .t { font-size: 16px; }
   .demo-annot .d { font-size: 14px; }
