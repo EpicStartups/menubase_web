@@ -56,7 +56,7 @@ Honest pricing by menu size. Four tiers (by item count):
 
 Beyond 120 menus, multi-outlet chains and cloud kitchens with multiple virtual brands get enterprise pricing on request, typically with volume discounting and a locked annual rate.
 
-What is included in every tier: same-day setup, smart upsell, promo push, daypart menu rules, stock-aware rules, payment integration with Touch n Go eWallet / GrabPay / Boost / DuitNow QR / FPX / major cards, unlimited menu revisions, full CSV data export, monthly cancellation.
+What is included in every tier: same-day setup, smart upsell, promo push, daypart menu rules, stock-aware rules, works on top of your existing POS and payment methods (Touch n Go eWallet / GrabPay / Boost / DuitNow QR / FPX / cards all flow through your merchant rails, NOT ours - MenuBase does not process payments and never becomes merchant of record), self-serve menu editing from the back office (no edit caps, no per-revision fees), full CSV data export, monthly cancellation.
 
 What is never charged for: setup or onboarding fees, per-language add-ons, per-menu-revision overage fees, per-payment-method integration fees, sponsored placement up-charges, data export or contract-exit fees, proprietary hardware lock-in, per-transaction commission on orders.
 

@@ -108,8 +108,8 @@ New-hire onboarding from day two onward: under 30 minutes. The screen carries th
 
 ## Integrations
 
-- POS: any POS the operator already runs (overlay model, not replacement)
-- Payments: Touch n Go eWallet, GrabPay, Boost, DuitNow QR, FPX, all major cards
+- POS: any POS the operator already runs (overlay model, not replacement). MenuBase does NOT push directly into the POS - the waiter manually types orders from the MenuBase tablet into the operator's existing POS to fire the kitchen and close payment. No automated POS integration.
+- Payments: MenuBase does NOT process payments. The customer places the order on the QR menu; the waiter takes payment through the operator's existing POS using their existing merchant agreements (Touch n Go eWallet, GrabPay, Boost, DuitNow QR, FPX, Visa, Mastercard, Amex). MenuBase is not in the payment flow at all and never becomes merchant of record.
 - Weather: OpenWeatherMap (drives Weather Menu)
-- API: webhooks to operator-side systems (POS, analytics, dashboards)
+- API: webhook output is on the roadmap but not live. Today MenuBase data export is CSV only.
 - Export: full CSV for menu, orders, customers, analytics

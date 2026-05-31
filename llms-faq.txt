@@ -70,9 +70,9 @@ Monthly. Cancel any time. Annual subscription is optional and saves 2 months. No
 
 The operator does. MenuBase does not resell customer data, share it with third parties, or use it for any purpose outside of running the operator's menu and improving the operator's upsell. Full CSV data export is included in every tier. The operator can export everything and leave at any time with no exit fees.
 
-## What payment methods does MenuBase integrate with?
+## How does MenuBase handle payments?
 
-Touch n Go eWallet, GrabPay, Boost, DuitNow QR, FPX, all major Visa / Mastercard / Amex cards. Payment integration is included at no extra cost - we never charge per-payment-method add-on fees.
+MenuBase does NOT process payments. The customer places the order on the QR menu; the waiter then takes payment through the operator's existing POS using their existing merchant agreements with Touch n Go eWallet, GrabPay, Boost, DuitNow QR, FPX, Visa, Mastercard, Amex. We never become merchant of record, never charge per-transaction commission, and never add per-payment-method fees because we are not in the payment flow at all. The operator keeps their existing payment relationships unchanged.
 
 ## Can I export my menu and order data?
 
