@@ -2560,8 +2560,9 @@ footer.foot {
   .nav-cta { width: auto; margin-left: 0; flex: 0 0 auto; }
   .nav-cta .btn.nav-wa-icon { flex: 0 0 auto; width: 36px; height: 36px; padding: 0; }
   .nav-cta .btn.nav-wa-icon svg { width: 16px; height: 16px; }
-  .top-ribbon-inner { padding: 10px 16px; }
-  .top-ribbon .brand .brand-lockup { height: 28px; }
+  .top-ribbon-inner { padding: 10px 14px; }
+  .top-ribbon .brand .brand-lockup { height: 26px; }
+  .top-ribbon-login { padding: 7px 12px; font-size: 12px; }
 
   .hero-actions .btn { padding: 12px 20px; font-size: 13.5px; }
 
@@ -2671,6 +2672,16 @@ footer.foot {
   .section-head h2 { font-size: 26px; }
   .pillar-txt h3 { font-size: 24px; }
   .calc-result .num.big { font-size: 28px; }
+}
+/* Tight mobile: small Androids + iPhone SE - prevent top ribbon overlap */
+@media (max-width: 420px) {
+  .top-ribbon-inner { padding: 9px 12px; }
+  .top-ribbon .brand .brand-lockup { height: 24px; }
+  .top-ribbon-login { padding: 6px 11px; font-size: 11.5px; gap: 3px; letter-spacing: 0; }
+  .top-ribbon-login .arr { display: none; }
+  .lang-switch { margin-right: 5px; min-width: 36px; height: 24px; padding: 0 7px; font-size: 10.5px; gap: 3px; }
+  .lang-switch .lang-arr { font-size: 10.5px; }
+  .lang-globe { width: 12px; height: 12px; }
 }
 
 /* Touch device hover suppression */
