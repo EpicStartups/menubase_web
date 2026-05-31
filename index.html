@@ -1985,10 +1985,11 @@ section.block.tight { padding: 80px 28px; }
   z-index: 0;
 }
 
-/* ─── MOBILE: one-column chip list with the demo phone directly below ───
-   Stack heading / lede / chip column / annotation / phone iframe in that
-   reading order. Each chip is a compact full-width pill (not a tall scene
-   card). Tap the chip to switch scenarios. Desktop is untouched. */
+/* ─── MOBILE: horizontal scroll chip carousel ───────────────────────────
+   All 7 scenario chips in a single horizontal scroll row with tiny inline
+   group labels (LIFT / PUSH / READS) acting as section dividers. Compact:
+   ~60px tall instead of ~600px stacked. Swipe horizontally to see all,
+   tap to activate. Mandatory snap so each chip locks. */
 @media (max-width: 900px) {
   .demo { padding: 56px 18px 72px; }
   .demo-inner {
@@ -1997,61 +1998,66 @@ section.block.tight { padding: 80px 28px; }
     gap: 0;
     align-items: stretch;
   }
-  /* Chips as a single vertical column of pills */
   .demo-chips {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: none;
-    margin: 24px 0 8px;
-  }
-  .chip-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    flex-direction: row;
     flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    /* mandatory snap = card-by-card. touch-action keeps vertical safe. */
+    scroll-snap-type: x mandatory;
+    touch-action: pan-x pan-y;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    gap: 8px;
+    align-items: center;
+    padding: 8px 18px 14px;
+    margin: 18px -18px 0;
+    max-width: none;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(188,241,37,0.4) transparent;
+    scroll-padding-inline: 18px;
   }
+  .demo-chips::-webkit-scrollbar { height: 4px; }
+  .demo-chips::-webkit-scrollbar-track { background: transparent; }
+  .demo-chips::-webkit-scrollbar-thumb { background: rgba(188,241,37,0.4); border-radius: 3px; }
+  /* Flatten chip-group so labels + chips become direct flex children of
+     .demo-chips. The label sits inline between chip clusters as a tiny
+     mono divider. */
+  .chip-group { display: contents; }
   .chip-group-label {
     flex: 0 0 auto;
-    margin: 10px 0 2px;
-    font-size: 10.5px;
+    align-self: center;
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+    margin: 0 4px 0 6px;
+    gap: 4px;
   }
+  .chip-group:first-child .chip-group-label { margin-left: 0; }
+  .chip-group-label .cg-ico { width: 10px; height: 10px; }
   .demo-chips .chip {
-    width: 100%;
-    min-height: 52px;
-    border-radius: 14px;
-    padding: 14px 18px;
-    text-align: left;
-    font-size: 15px;
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    width: auto;
+    min-height: 42px;
+    border-radius: 999px;
+    padding: 10px 18px;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: -0.01em;
-    white-space: normal;
-    line-height: 1.25;
-    display: flex;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 1.2;
+    display: inline-flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 12px;
+    justify-content: center;
   }
-  .demo-chips .chip::after {
-    content: '';
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.25);
-    flex: 0 0 8px;
-    transition: background 180ms, box-shadow 180ms;
-  }
+  .demo-chips .chip::after { display: none; }
   .demo-chips .chip.on { transform: none; }
-  .demo-chips .chip.on::after {
-    background: rgba(26,26,26,0.9);
-    box-shadow: 0 0 0 4px rgba(26,26,26,0.15);
-  }
-  /* Annotation sits between the chip list and the phone */
   .demo-annot {
     margin: 18px 0 0;
     max-width: none;
   }
-  /* Phone iframe sits directly below the chips + annotation, full-width */
   .demo-stage {
     margin: 24px auto 0;
     padding: 0;
