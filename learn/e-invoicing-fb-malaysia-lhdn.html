@@ -99,7 +99,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800;900&amp;family=Geist:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="learn.css?v=20260531tight"/>
+<link rel="stylesheet" href="learn.css?v=20260531clean"/>
 
 <script type="application/ld+json">
 {
@@ -288,7 +288,7 @@
 
 <p><strong>Phase 2 (January 1 2025): RM25 million to RM100 million.</strong> Mid-sized chains, franchise operators, larger hotel F&amp;B groups. Most had existing ERP infrastructure that could push e-invoices through a middleware layer. Still a significant lift but they had IT teams to handle it.</p>
 
-<p><strong>Phase 3 (July 1 2025): RM5 million to RM25 million.</strong> The larger independent restaurants, growing chains, airport concessions, food court operators with multiple units. Many used accounting software integrations (Bukku, SQL Account, AutoCount) with a MyInvois API connector bolted on.</p>
+<p><strong>Phase 3 (July 1 2025): RM5 million to RM25 million.</strong> The larger independent restaurants, growing chains, airport concessions, food court operators with multiple units. Many used existing accounting software integrations with a MyInvois API connector bolted on.</p>
 
 <p><strong>Phase 4A (January 1 2026): RM1 million to RM5 million.</strong> This is the band that covers the majority of serious single-outlet operators. A cafe doing RM90,000 to RM100,000 a month. A kopitiam doing RM80,000 to RM85,000 a month. A casual restaurant doing RM100,000 to RM400,000 a month. If you are in this guide, this phase likely applies to you. You are in scope. Penalty enforcement starts January 1 2027.</p>
 
@@ -392,13 +392,13 @@
 
 <p><strong>Path A: POS with native MyInvois integration.</strong> Some POS vendors have built a direct connector to the MyInvois API. When a transaction closes, the POS automatically pushes the data to MyInvois, receives the validation response, and stamps the receipt with the LHDN document ID and QR code. The operator does essentially nothing extra per transaction.</p>
 
-<p>Malaysian POS vendors with native or announced MyInvois integration as of mid-2026 include: StoreHub (direct API integration in their cloud POS), certain tiers of Slurp (their enterprise tier has an e-invoice module), ChickenSoft (used widely in fast food and quick service), and some Loyverse plugin configurations. Check with your specific vendor on version number and tier requirements, as the feature is not always included in base-tier pricing.</p>
+<p>Several Malaysian POS vendors offer native or announced MyInvois integration as of mid-2026, typically in their cloud-native or enterprise tiers rather than entry-level packages. The cleanest path is to ask your existing POS vendor three direct questions: (1) is MyInvois integration live today or roadmap, (2) which tier includes it, and (3) is there a per-transaction or per-invoice fee. Get those answers in writing before assuming compliance is covered.</p>
 
 <p>If your current POS is on Path A, this is the lowest-friction option. Test with a few sample invoices, confirm the document IDs are returning cleanly, and move on.</p>
 
 <p><strong>Path B: E-invoice middleware (API wrapper services).</strong> If your POS does not have a native integration but does have an API or export capability, you can use a middleware service that sits between your POS and the MyInvois API. The middleware receives the transaction data from your POS (typically via webhook or a scheduled export), transforms it into the LHDN-required format, submits it, and returns the document ID back to you.</p>
 
-<p>Malaysian middleware options as of mid-2026: JomeInvoice (built for SMEs, flat monthly fee), Bukku (accounting software with e-invoice module), and several independent MyInvois API wrapper services. Some accounting software packages (AutoCount, SQL Account) also offer this integration. Middleware typically costs RM50 to RM200 a month depending on transaction volume.</p>
+<p>Several Malaysian middleware options exist in 2026: SME-focused MyInvois wrapper services with flat monthly fees, accounting software packages with built-in e-invoice modules, and independent MyInvois API services. Middleware typically costs RM50 to RM200 a month depending on transaction volume. Your accountant or POS vendor will know which option fits your existing stack best.</p>
 
 <p>Path B is the right choice when your POS is mid-range and you want to keep it but need the MyInvois connection. The risk is that middleware adds a dependency: if the middleware goes down or the API connection breaks, your submissions pause. Build a monitoring habit: check that the prior month's consolidated submission went through on the 7th of every month.</p>
 

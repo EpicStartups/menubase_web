@@ -83,6 +83,16 @@ main, .top-ribbon, footer.foot { position: relative; z-index: 1; }
     color-mix(in oklab, var(--bg-soft) 55%, transparent) 72%,
     transparent 100%);
 }
+/* User-requested transparency boost on the /learn/ page hero so the
+   background canvas (pixel grid + grain) shows through more. The default
+   scrim above is solid for text legibility; here we soften it specifically
+   for the hub-intro so the page breathes more without losing readability. */
+.hub-intro.has-bg-scrim::before {
+  background: radial-gradient(110% 130% at 50% 50%,
+    color-mix(in oklab, var(--bg) 60%, transparent) 22%,
+    color-mix(in oklab, var(--bg) 25%, transparent) 60%,
+    transparent 100%);
+}
 .has-bg-scrim.scrim-dark::before {
   background: radial-gradient(120% 130% at 50% 50%,
     var(--ink-deep) 45%,
