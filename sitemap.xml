@@ -1234,4 +1234,20 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/state-of-malaysian-fb-2026.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/learn/state-of-malaysian-fb-2026.html"/>
   </url>
+  <url>
+    <loc>https://menubase.io/cities/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/cities/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/cities/"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/use-cases/</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/"/>
+  </url>
 </urlset>
