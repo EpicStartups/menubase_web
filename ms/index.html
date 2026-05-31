@@ -4709,6 +4709,28 @@ setTimeout(() => {
       }
     });
   });
+
+  // Mobile: swipe the chip row to activate the snapped chip
+  var mqM = window.matchMedia && window.matchMedia('(max-width: 900px)');
+  var chipTrack = document.getElementById('demo-chips');
+  if (mqM && mqM.matches && chipTrack) {
+    var swipeTimer = null;
+    chipTrack.addEventListener('scroll', function () {
+      clearTimeout(swipeTimer);
+      swipeTimer = setTimeout(function () {
+        var tr = chipTrack.getBoundingClientRect();
+        var anchor = tr.left + 18;
+        var bestChip = null;
+        var bestDist = Infinity;
+        chips.forEach(function (c) {
+          var r = c.getBoundingClientRect();
+          var d = Math.abs(r.left - anchor);
+          if (d < bestDist) { bestDist = d; bestChip = c; }
+        });
+        if (bestChip && !bestChip.classList.contains('on')) bestChip.click();
+      }, 140);
+    }, { passive: true });
+  }
 })();
 
 /* ─── Counter animations - count up to data-count when card enters viewport ─── */
