@@ -1250,4 +1250,44 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/use-cases/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/use-cases/"/>
   </url>
+  <url>
+    <loc>https://menubase.io/academy/102-licensing.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/academy/102-licensing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/academy/102-licensing.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/academy/202-team.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/academy/202-team.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/academy/202-team.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/academy/203-customers.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/academy/203-customers.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/academy/203-customers.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/academy/302-compliance.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/academy/302-compliance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/academy/302-compliance.html"/>
+  </url>
+  <url>
+    <loc>https://menubase.io/academy/401-scaling.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/academy/401-scaling.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/academy/401-scaling.html"/>
+  </url>
 </urlset>
