@@ -1138,4 +1138,12 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/learn/restaurant-break-even-analysis-malaysia.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/learn/restaurant-break-even-analysis-malaysia.html"/>
   </url>
+  <url>
+    <loc>https://menubase.io/procurement.html</loc>
+    <lastmod>2026-05-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/procurement.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/procurement.html"/>
+  </url>
 </urlset>
