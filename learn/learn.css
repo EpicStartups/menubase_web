@@ -909,6 +909,9 @@ footer.foot {
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x proximity;
+    /* pan-x pan-y so vertical swipes on the bottom nav still scroll the page */
+    touch-action: pan-x pan-y;
+    overscroll-behavior-x: contain;
   }
   .nav-links::-webkit-scrollbar { display: none; }
   .nav-links a {

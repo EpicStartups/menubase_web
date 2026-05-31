@@ -645,22 +645,14 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
-/* ─── SCROLL-SNAP MOMENTS - desktop only, proximity (not mandatory) ───
-   Creates gentle "pause here" anchors on the four most important sections:
-   hero, live demo, lime manifesto, founding CTA. Uses proximity not
-   mandatory so the user is never fought; scroll-snap-stop: normal lets
-   fast scrolls fly past. Gated to (hover: hover) so iOS Safari, which
-   handles snap inconsistently on touch, is unaffected. */
-@media (hover: hover) and (min-width: 901px) {
-  html {
-    scroll-snap-type: y proximity;
-    scroll-padding-top: 56px; /* top-ribbon height */
-  }
-  .hero, .demo, .manifesto, .cta-shell {
-    scroll-snap-align: start; scroll-snap-stop: normal;
-    scroll-snap-stop: normal;
-  }
-}
+/* User-flagged scroll-snap bug (2026-05-31): scrolling halfway through
+   the landing page caused unexpected jumps to the bottom. The desktop
+   y-axis scroll-snap was the culprit. Disabled until we can replace it
+   with a less invasive interaction. Same fix as EN landing. */
+/* @media (hover: hover) and (min-width: 901px) {
+  html { scroll-snap-type: y proximity; scroll-padding-top: 56px; }
+  .hero, .demo, .manifesto, .cta-shell { scroll-snap-align: start; scroll-snap-stop: normal; }
+} */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-snap-type: none; }
 }
@@ -2462,6 +2454,9 @@ footer.foot {
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x proximity;
+    /* pan-x pan-y so vertical swipes on the bottom nav still scroll the page */
+    touch-action: pan-x pan-y;
+    overscroll-behavior-x: contain;
   }
   .nav-links::-webkit-scrollbar { display: none; }
   .nav-links a {
@@ -4490,9 +4485,22 @@ setTimeout(() => {
     }
     function go(idx) {
       idx = Math.max(0, Math.min(cards.length - 1, idx));
-      cards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+      // scrollLeft instead of scrollIntoView so the document never moves -
+      // see EN landing for the bug write-up.
+      var cardW = cards[0].offsetWidth + 16;
+      var target = idx * cardW;
+      if (track.scrollTo) {
+        track.scrollTo({ left: target, behavior: 'smooth' });
+      } else {
+        track.scrollLeft = target;
+      }
+    }
+    function isCarouselInView() {
+      var r = carousel.getBoundingClientRect();
+      return r.bottom > 0 && r.top < (window.innerHeight || document.documentElement.clientHeight);
     }
     function nextOrWrap() {
+      if (!isCarouselInView()) return;
       var idx = activeIndex();
       go(idx >= cards.length - 1 ? 0 : idx + 1);
     }

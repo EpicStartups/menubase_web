@@ -2540,6 +2540,9 @@ footer.foot {
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x proximity;
+    /* pan-x pan-y so vertical swipes on the bottom nav still scroll the page */
+    touch-action: pan-x pan-y;
+    overscroll-behavior-x: contain;
   }
   .nav-links::-webkit-scrollbar { display: none; }
   .nav-links a {
@@ -4585,9 +4588,27 @@ setTimeout(() => {
     }
     function go(idx) {
       idx = Math.max(0, Math.min(cards.length - 1, idx));
-      cards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+      // CRITICAL: use direct track.scrollLeft instead of scrollIntoView.
+      // scrollIntoView with block:'nearest' can pull the PAGE back up to the
+      // carousel if the user has scrolled past it. That was the "page jumps
+      // back randomly while scrolling" bug. scrollLeft is horizontal-only
+      // and never touches the document scroll position.
+      var cardW = cards[0].offsetWidth + 16;
+      var target = idx * cardW;
+      if (track.scrollTo) {
+        track.scrollTo({ left: target, behavior: 'smooth' });
+      } else {
+        track.scrollLeft = target;
+      }
+    }
+    function isCarouselInView() {
+      // Skip autoplay tick if the carousel is not visible. Avoids both wasted
+      // work and any chance the browser still tries to scroll the page.
+      var r = carousel.getBoundingClientRect();
+      return r.bottom > 0 && r.top < (window.innerHeight || document.documentElement.clientHeight);
     }
     function nextOrWrap() {
+      if (!isCarouselInView()) return;
       var idx = activeIndex();
       go(idx >= cards.length - 1 ? 0 : idx + 1);
     }
