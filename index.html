@@ -2752,7 +2752,11 @@ footer.foot {
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
-    scroll-snap-type: x mandatory;
+    /* proximity (not mandatory) + pan-x pan-y so a vertical swipe is never
+       hijacked by the horizontal carousel - same fix pattern as .rc-track */
+    scroll-snap-type: x proximity;
+    touch-action: pan-x pan-y;
+    overscroll-behavior-x: contain;
     gap: 14px;
     padding: 4px 22px 18px;
     margin: 0 -22px;
@@ -2765,7 +2769,7 @@ footer.foot {
   .problem-grid::-webkit-scrollbar-track { background: transparent; }
   .problem-grid::-webkit-scrollbar-thumb { background: rgba(188,241,37,0.45); border-radius: 6px; }
   .problem-card {
-    scroll-snap-align: start; scroll-snap-stop: always;
+    scroll-snap-align: start; scroll-snap-stop: normal;
     flex: 0 0 78%;
     min-width: 260px;
     max-width: 320px;
@@ -3338,7 +3342,10 @@ footer.foot {
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
-    scroll-snap-type: x mandatory;
+    /* proximity + pan-x pan-y so a vertical swipe is never hijacked by the horizontal carousel - same fix as .rc-track */
+    scroll-snap-type: x proximity;
+    touch-action: pan-x pan-y;
+    overscroll-behavior-x: contain;
     gap: 16px;
     padding: 4px 22px 18px;
     margin: 24px -22px 0;
@@ -3351,7 +3358,7 @@ footer.foot {
   .testi-grid::-webkit-scrollbar-track { background: transparent; }
   .testi-grid::-webkit-scrollbar-thumb { background: rgba(188,241,37,0.45); border-radius: 6px; }
   .testi-card {
-    scroll-snap-align: start; scroll-snap-stop: always;
+    scroll-snap-align: start; scroll-snap-stop: normal;
     flex: 0 0 82%;
     min-width: 280px;
     max-width: 340px;
@@ -3585,7 +3592,10 @@ footer.foot {
     flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
-    scroll-snap-type: x mandatory;
+    /* proximity + pan-x pan-y so a vertical swipe is never hijacked by the horizontal carousel - same fix as .rc-track */
+    scroll-snap-type: x proximity;
+    touch-action: pan-x pan-y;
+    overscroll-behavior-x: contain;
     gap: 14px;
     padding: 4px 22px 16px;
     margin: 0 -22px;
@@ -3598,7 +3608,7 @@ footer.foot {
   .playbook-cta-grid::-webkit-scrollbar-track { background: transparent; }
   .playbook-cta-grid::-webkit-scrollbar-thumb { background: rgba(188,241,37,0.45); border-radius: 6px; }
   .playbook-card {
-    scroll-snap-align: start; scroll-snap-stop: always;
+    scroll-snap-align: start; scroll-snap-stop: normal;
     flex: 0 0 78%;
     min-width: 260px;
     max-width: 320px;
