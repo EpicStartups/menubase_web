@@ -2910,15 +2910,14 @@ footer.foot {
   display: flex;
   gap: 16px;
   overflow-x: auto;
-  /* proximity (not mandatory) prevents iOS Safari from hijacking vertical swipes */
-  scroll-snap-type: x proximity;
+  /* mandatory = card-by-card. Safe because touch-action declares both axes,
+     so vertical swipes go to the page and never trigger the snap. */
+  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   padding: 8px;
   scrollbar-width: none;
-  /* CRITICAL mobile fix: pan-x pan-y lets vertical swipes pass to the page,
-     horizontal stay in the carousel. Without this, mobile browsers can
-     capture the touch and snap the page unpredictably. */
+  /* CRITICAL: pan-x pan-y lets vertical swipes pass to the page. */
   touch-action: pan-x pan-y;
   overscroll-behavior-x: contain;
 }
@@ -2926,6 +2925,7 @@ footer.foot {
 .reassure-carousel .reassure-card {
   flex: 0 0 calc(50% - 12px);
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   margin: 0;
 }
 .rc-arrow {
@@ -2998,6 +2998,7 @@ footer.foot {
 .problem-carousel .problem-card {
   flex: 0 0 calc(50% - 12px);
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   min-height: 200px;
 }
 @media (max-width: 900px) {
@@ -3018,6 +3019,7 @@ footer.foot {
 .testi-carousel .testi-card {
   flex: 0 0 calc(100% - 16px);
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   margin: 0;
 }
 @media (min-width: 900px) {

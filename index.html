@@ -2998,17 +2998,17 @@ footer.foot {
   display: flex;
   gap: 16px;
   overflow-x: auto;
-  /* proximity (not mandatory) so iOS Safari does not hijack vertical swipes */
-  scroll-snap-type: x proximity;
+  /* mandatory snap = card-by-card swipe. Safe to use BECAUSE touch-action
+     declares both pan-x and pan-y, so the browser routes vertical swipes
+     to the page (not the carousel) and the page-jump bug stays dead.
+     The original bug was mandatory + NO touch-action, not mandatory alone. */
+  scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   padding: 8px;
   scrollbar-width: none;
-  /* CRITICAL mobile fix: pan-y lets vertical swipes pass through to the page,
-     pan-x lets horizontal swipes drive the carousel. Without this, mobile
-     browsers (especially iOS) can capture the touch and either hijack the
-     scroll or snap the whole page unpredictably when the user tries to
-     scroll past the carousel section. */
+  /* CRITICAL: pan-y lets vertical swipes pass through to the page,
+     pan-x lets horizontal swipes drive the carousel. */
   touch-action: pan-x pan-y;
   overscroll-behavior-x: contain;
 }
@@ -3016,6 +3016,7 @@ footer.foot {
 .reassure-carousel .reassure-card {
   flex: 0 0 calc(50% - 12px);
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   margin: 0;
 }
 .rc-arrow {
@@ -3088,6 +3089,7 @@ footer.foot {
 .problem-carousel .problem-card {
   flex: 0 0 calc(50% - 12px);
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   min-height: 200px;
 }
 @media (max-width: 900px) {
@@ -3108,6 +3110,7 @@ footer.foot {
 .testi-carousel .testi-card {
   flex: 0 0 calc(100% - 16px);
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   margin: 0;
 }
 @media (min-width: 900px) {
