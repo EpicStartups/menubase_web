@@ -2025,16 +2025,9 @@ section.block.tight { padding: 80px 28px; }
      .demo-chips. The label sits inline between chip clusters as a tiny
      mono divider. */
   .chip-group { display: contents; }
-  .chip-group-label {
-    flex: 0 0 auto;
-    align-self: center;
-    font-size: 9.5px;
-    letter-spacing: 0.16em;
-    margin: 0 4px 0 6px;
-    gap: 4px;
-  }
-  .chip-group:first-child .chip-group-label { margin-left: 0; }
-  .chip-group-label .cg-ico { width: 10px; height: 10px; }
+  /* Hide the LIFT / PUSH / READS group labels on mobile - per user request,
+     just chips in one row, no category dividers. */
+  .chip-group-label { display: none; }
   .demo-chips .chip {
     flex: 0 0 auto;
     scroll-snap-align: start;

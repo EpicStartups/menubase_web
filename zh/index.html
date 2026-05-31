@@ -1964,16 +1964,8 @@ section.block.tight { padding: 80px 28px; }
   .demo-chips::-webkit-scrollbar-track { background: transparent; }
   .demo-chips::-webkit-scrollbar-thumb { background: rgba(188,241,37,0.4); border-radius: 3px; }
   .chip-group { display: contents; }
-  .chip-group-label {
-    flex: 0 0 auto;
-    align-self: center;
-    font-size: 9.5px;
-    letter-spacing: 0.16em;
-    margin: 0 4px 0 6px;
-    gap: 4px;
-  }
-  .chip-group:first-child .chip-group-label { margin-left: 0; }
-  .chip-group-label .cg-ico { width: 10px; height: 10px; }
+  /* Hide group labels on mobile - chips only, no category dividers. */
+  .chip-group-label { display: none; }
   .demo-chips .chip {
     flex: 0 0 auto;
     scroll-snap-align: start;
