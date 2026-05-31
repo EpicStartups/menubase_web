@@ -629,9 +629,8 @@ body { padding-bottom: 84px; }
     overflow-y: hidden;
     overscroll-behavior-x: contain;
     overscroll-behavior-y: auto;
-    /* proximity (not mandatory) + touch-action prevents the iOS swipe-hijack
-       bug where vertical swipes get captured and snap the page. */
-    scroll-snap-type: x proximity;
+    /* mandatory snap = card-by-card. touch-action keeps vertical safe. */
+    scroll-snap-type: x mandatory;
     touch-action: pan-x pan-y;
     gap: 14px;
     padding: 4px 18px 16px;
@@ -969,7 +968,8 @@ footer.foot {
     display: flex;
     overflow-x: auto;
     overflow-y: visible;
-    scroll-snap-type: x proximity;
+    /* mandatory snap = card-by-card. touch-action keeps vertical safe. */
+    scroll-snap-type: x mandatory;
     touch-action: pan-x pan-y;
     overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch;
@@ -990,7 +990,7 @@ footer.foot {
 
   .article-card {
     scroll-snap-align: start;
-    scroll-snap-stop: normal;
+    scroll-snap-stop: always;
     flex: 0 0 82%;
     min-width: 0;
     max-width: 340px;

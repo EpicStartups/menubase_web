@@ -704,7 +704,7 @@ html { scroll-behavior: smooth; }
    but the trade-off was unpredictable scroll behavior. */
 /* @media (hover: hover) and (min-width: 901px) {
   html { scroll-snap-type: y proximity; scroll-padding-top: 56px; }
-  .hero, .demo, .manifesto, .cta-shell { scroll-snap-align: start; scroll-snap-stop: normal; }
+  .hero, .demo, .manifesto, .cta-shell { scroll-snap-align: start; scroll-snap-stop: always; }
 } */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-snap-type: none; }
@@ -2539,7 +2539,8 @@ footer.foot {
     overflow-y: hidden;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x proximity;
+    /* mandatory snap = card-by-card. touch-action keeps vertical swipes safe. */
+    scroll-snap-type: x mandatory;
     /* pan-x pan-y so vertical swipes on the bottom nav still scroll the page */
     touch-action: pan-x pan-y;
     overscroll-behavior-x: contain;
@@ -2757,7 +2758,8 @@ footer.foot {
     overflow-y: hidden;
     /* proximity (not mandatory) + pan-x pan-y so a vertical swipe is never
        hijacked by the horizontal carousel - same fix pattern as .rc-track */
-    scroll-snap-type: x proximity;
+    /* mandatory snap = card-by-card. touch-action keeps vertical swipes safe. */
+    scroll-snap-type: x mandatory;
     touch-action: pan-x pan-y;
     overscroll-behavior-x: contain;
     gap: 14px;
@@ -2772,7 +2774,7 @@ footer.foot {
   .problem-grid::-webkit-scrollbar-track { background: transparent; }
   .problem-grid::-webkit-scrollbar-thumb { background: rgba(188,241,37,0.45); border-radius: 6px; }
   .problem-card {
-    scroll-snap-align: start; scroll-snap-stop: normal;
+    scroll-snap-align: start; scroll-snap-stop: always;
     flex: 0 0 78%;
     min-width: 260px;
     max-width: 320px;
@@ -3349,7 +3351,8 @@ footer.foot {
     overflow-x: auto;
     overflow-y: hidden;
     /* proximity + pan-x pan-y so a vertical swipe is never hijacked by the horizontal carousel - same fix as .rc-track */
-    scroll-snap-type: x proximity;
+    /* mandatory snap = card-by-card. touch-action keeps vertical swipes safe. */
+    scroll-snap-type: x mandatory;
     touch-action: pan-x pan-y;
     overscroll-behavior-x: contain;
     gap: 16px;
@@ -3364,7 +3367,7 @@ footer.foot {
   .testi-grid::-webkit-scrollbar-track { background: transparent; }
   .testi-grid::-webkit-scrollbar-thumb { background: rgba(188,241,37,0.45); border-radius: 6px; }
   .testi-card {
-    scroll-snap-align: start; scroll-snap-stop: normal;
+    scroll-snap-align: start; scroll-snap-stop: always;
     flex: 0 0 82%;
     min-width: 280px;
     max-width: 340px;
@@ -3598,8 +3601,8 @@ footer.foot {
     flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
-    /* proximity + pan-x pan-y so a vertical swipe is never hijacked by the horizontal carousel - same fix as .rc-track */
-    scroll-snap-type: x proximity;
+    /* mandatory snap = card-by-card. touch-action keeps vertical swipes safe. */
+    scroll-snap-type: x mandatory;
     touch-action: pan-x pan-y;
     overscroll-behavior-x: contain;
     gap: 14px;
@@ -3614,7 +3617,7 @@ footer.foot {
   .playbook-cta-grid::-webkit-scrollbar-track { background: transparent; }
   .playbook-cta-grid::-webkit-scrollbar-thumb { background: rgba(188,241,37,0.45); border-radius: 6px; }
   .playbook-card {
-    scroll-snap-align: start; scroll-snap-stop: normal;
+    scroll-snap-align: start; scroll-snap-stop: always;
     flex: 0 0 78%;
     min-width: 260px;
     max-width: 320px;
