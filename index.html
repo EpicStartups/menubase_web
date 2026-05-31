@@ -1985,6 +1985,104 @@ section.block.tight { padding: 80px 28px; }
   z-index: 0;
 }
 
+/* ─── MOBILE: scroll-to-activate scenarios ───────────────────────────────
+   On mobile the demo restructures into a scrollable scene stack: phone
+   sticks at the top of the demo block, each chip becomes a tall (~48vh)
+   scene card stacked vertically below. As the user scrolls past a scene,
+   IntersectionObserver fires the chip's click handler and the iframe
+   swaps to that scenario. Tap still works as a shortcut.
+   Desktop is untouched. */
+@media (max-width: 900px) {
+  .demo { padding: 56px 18px 96px; }
+  .demo-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
+  }
+  .demo-side {
+    display: contents; /* let children reorder via flex on .demo-inner */
+  }
+  .demo-side .eyebrow,
+  .demo-side h2,
+  .demo-side .lede { order: -2; }
+  .demo-stage {
+    order: -1;
+    position: sticky;
+    top: 60px;
+    z-index: 5;
+    margin: 14px -18px 12px;
+    padding: 10px 0 14px;
+    background: linear-gradient(180deg, rgba(5,5,7,0.96) 0%, rgba(5,5,7,0.88) 88%, rgba(5,5,7,0) 100%);
+    -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .demo-stage::before { display: none; }
+  .demo-stage .phone.lg {
+    transform: scale(0.6);
+    transform-origin: top center;
+    margin-bottom: -36%; /* claw back the empty space scale leaves */
+  }
+  /* Chips stack vertically as scene cards */
+  .demo-chips {
+    order: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: none;
+    margin: 28px 0 8px;
+  }
+  .chip-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-wrap: nowrap;
+  }
+  .chip-group-label {
+    flex: 0 0 auto;
+    margin: 8px 0 2px;
+    font-size: 10.5px;
+  }
+  .demo-chips .chip {
+    width: 100%;
+    min-height: 48vh;
+    border-radius: 20px;
+    padding: 26px 22px 22px;
+    text-align: left;
+    font-size: 22px;
+    font-weight: 600;
+    white-space: normal;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    transition: background 220ms, color 220ms, border-color 220ms, box-shadow 220ms;
+  }
+  .demo-chips .chip::after {
+    content: 'Scroll or tap to activate';
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+    font-weight: 600;
+    margin-top: auto;
+  }
+  .demo-chips .chip.on { transform: none; }
+  .demo-chips .chip.on::after {
+    content: 'Active';
+    color: rgba(26,26,26,0.75);
+  }
+  .demo-annot {
+    order: 1;
+    margin: 20px 0 0;
+    max-width: none;
+  }
+}
+
 /* ─── CALCULATOR ─── */
 .calc-shell { background: rgba(21, 21, 26, 0.30); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .calc-inner {
@@ -2583,17 +2681,14 @@ footer.foot {
   .pillar-txt li { font-size: 14.5px; }
   .pillar-vis::before { width: 220px; height: 220px; }
 
-  .demo { padding: 56px 18px; }
-  .demo-inner { gap: 36px; }
+  /* .demo / .demo-inner / .demo-chips / .demo-stage rules now live in the
+     dedicated "MOBILE: scroll-to-activate scenarios" block (search the file).
+     Only the heading + annotation typography overrides stay here. */
   .demo-side h2 { font-size: clamp(26px, 8vw, 34px); }
   .demo-side .lede { font-size: 15px; margin-bottom: 20px; }
-  .demo-chips { gap: 8px; margin-bottom: 22px; }
-  /* Demo scenario chips: bump to 44px tap target for Apple HIG / Material */
-  .demo-chips .chip { font-size: 13px; padding: 11px 16px; min-height: 44px; }
   .demo-annot { padding: 18px 20px; }
   .demo-annot .t { font-size: 16px; }
   .demo-annot .d { font-size: 14px; }
-  .demo-stage::before { width: 280px; height: 280px; }
 
   .calc-shell .calc-inner { padding: 56px 18px; gap: 32px; }
   .calc-card { padding: 22px; }
@@ -4775,6 +4870,25 @@ setTimeout(() => {
       }
     });
   });
+
+  // ─── Mobile: scroll-to-activate. As each chip card crosses the centre
+  // of the viewport, fire its click. Debounced so the iframe only swaps
+  // once the user pauses scrolling (avoids flashing through every scene).
+  // Desktop is unaffected: media query gate + no observer attached. ───
+  var mqMobile = window.matchMedia && window.matchMedia('(max-width: 900px)');
+  if (mqMobile && mqMobile.matches && 'IntersectionObserver' in window) {
+    var pending = null;
+    var t = null;
+    var settleMs = 220;
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) pending = e.target; });
+      clearTimeout(t);
+      t = setTimeout(function () {
+        if (pending && !pending.classList.contains('on')) pending.click();
+      }, settleMs);
+    }, { rootMargin: '-40% 0px -40% 0px', threshold: 0 });
+    chips.forEach(function (c) { obs.observe(c); });
+  }
 })();
 
 /* ─── Counter animations - count up to data-count when card enters viewport ─── */
