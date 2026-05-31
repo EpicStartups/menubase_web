@@ -2912,11 +2912,17 @@ footer.foot {
   display: flex;
   gap: 16px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  /* proximity (not mandatory) prevents iOS Safari from hijacking vertical swipes */
+  scroll-snap-type: x proximity;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   padding: 8px;
   scrollbar-width: none;
+  /* CRITICAL mobile fix: pan-x pan-y lets vertical swipes pass to the page,
+     horizontal stay in the carousel. Without this, mobile browsers can
+     capture the touch and snap the page unpredictably. */
+  touch-action: pan-x pan-y;
+  overscroll-behavior-x: contain;
 }
 .rc-track::-webkit-scrollbar { display: none; }
 .reassure-carousel .reassure-card {

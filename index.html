@@ -2993,11 +2993,19 @@ footer.foot {
   display: flex;
   gap: 16px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  /* proximity (not mandatory) so iOS Safari does not hijack vertical swipes */
+  scroll-snap-type: x proximity;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   padding: 8px;
   scrollbar-width: none;
+  /* CRITICAL mobile fix: pan-y lets vertical swipes pass through to the page,
+     pan-x lets horizontal swipes drive the carousel. Without this, mobile
+     browsers (especially iOS) can capture the touch and either hijack the
+     scroll or snap the whole page unpredictably when the user tries to
+     scroll past the carousel section. */
+  touch-action: pan-x pan-y;
+  overscroll-behavior-x: contain;
 }
 .rc-track::-webkit-scrollbar { display: none; }
 .reassure-carousel .reassure-card {
