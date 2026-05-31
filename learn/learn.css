@@ -629,7 +629,10 @@ body { padding-bottom: 84px; }
     overflow-y: hidden;
     overscroll-behavior-x: contain;
     overscroll-behavior-y: auto;
-    scroll-snap-type: x mandatory;
+    /* proximity (not mandatory) + touch-action prevents the iOS swipe-hijack
+       bug where vertical swipes get captured and snap the page. */
+    scroll-snap-type: x proximity;
+    touch-action: pan-x pan-y;
     gap: 14px;
     padding: 4px 18px 16px;
     margin: 0 -18px;
@@ -954,23 +957,60 @@ footer.foot {
   .category-heading h2 { font-size: 24px; }
   .category-heading p { font-size: 14.5px; }
 
-  /* Categories collapse to single column on mobile - reads cleaner than
-     micro-carousels with 1-3 cards each. */
+  /* USER REQUEST (2026-05-31): topic-category sections scroll horizontally on
+     mobile instead of stacking. Easier to browse, less endless-vertical-wall.
+     Uses the same touch-action: pan-x pan-y pattern as the landing carousels
+     so vertical swipes still scroll the page (no scroll-hijack bug). */
   .hub-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: none;
+    display: flex;
+    overflow-x: auto;
+    overflow-y: visible;
+    scroll-snap-type: x proximity;
+    touch-action: pan-x pan-y;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
     gap: 14px;
-    padding: 0;
-    margin: 0;
+    padding: 6px 22px 20px;
+    margin: 0 -22px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(188,241,37,0.45) transparent;
+    scroll-padding-inline: 22px;
   }
+  .hub-grid::-webkit-scrollbar { height: 6px; }
+  .hub-grid::-webkit-scrollbar-track { background: transparent; }
+  .hub-grid::-webkit-scrollbar-thumb {
+    background: rgba(188,241,37,0.5);
+    border-radius: 6px;
+  }
+  .hub-grid::-webkit-scrollbar-thumb:hover { background: rgba(188,241,37,0.7); }
+
   .article-card {
-    scroll-snap-align: none;
+    scroll-snap-align: start;
     scroll-snap-stop: normal;
-    flex: 1 1 auto;
+    flex: 0 0 82%;
     min-width: 0;
-    max-width: none;
-    padding: 26px 22px;
+    max-width: 340px;
+    padding: 24px 22px;
   }
-  .article-card h2 { font-size: 22px; }
+  .article-card h2 { font-size: 19px; line-height: 1.25; }
+  .article-card p { font-size: 13.5px; }
+
+  /* Wrap each topic category in a position:relative to anchor the swipe hint */
+  .hub-category { position: relative; }
+  /* Subtle right-edge fade so users perceive there is more content offscreen */
+  .hub-category::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 26px;
+    top: auto;
+    height: calc(100% - 90px);
+    width: 32px;
+    background: linear-gradient(to right, transparent, var(--bg));
+    pointer-events: none;
+    z-index: 2;
+  }
   .coming-soon-card { padding: 24px 20px; }
   .coming-soon-card h3 { font-size: 15px; }
 
