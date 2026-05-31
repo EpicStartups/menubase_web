@@ -636,7 +636,7 @@
       "@type": "Person",
       "@id": "https://menubase.io/#team",
       "name": "The MenuBase Team",
-      "description": "Operators and engineers who ran F&B venues, interviewed 100+ Malaysian operators, and built MenuBase around the three patterns heard every time: staff cannot reliably sell specials in multiple languages, scripts and bonuses do not survive 6-9 month tenure, and every Sunday is a new training session for the new hires.",
+      "description": "Operators and engineers who ran F&B venues, interviewed Malaysian operators, and built MenuBase around the three patterns heard every time: staff cannot reliably sell specials in multiple languages, scripts and bonuses do not survive 6-9 month tenure, and every Sunday is a new training session for the new hires.",
       "url": "https://menubase.io/about.html",
       "worksFor": { "@id": "https://menubase.io/#organization" },
       "knowsAbout": [
@@ -698,16 +698,14 @@ html { scroll-behavior: smooth; }
    mandatory so the user is never fought; scroll-snap-stop: normal lets
    fast scrolls fly past. Gated to (hover: hover) so iOS Safari, which
    handles snap inconsistently on touch, is unaffected. */
-@media (hover: hover) and (min-width: 901px) {
-  html {
-    scroll-snap-type: y proximity;
-    scroll-padding-top: 56px; /* top-ribbon height */
-  }
-  .hero, .demo, .manifesto, .cta-shell {
-    scroll-snap-align: start; scroll-snap-stop: always;
-    scroll-snap-stop: normal;
-  }
-}
+/* User-flagged scroll-snap bug (2026-05-31): scrolling halfway through
+   the page was jumping to the bottom. Disabling the snap entirely so the
+   page scrolls naturally. The "pause and absorb" UX was nice on desktop
+   but the trade-off was unpredictable scroll behavior. */
+/* @media (hover: hover) and (min-width: 901px) {
+  html { scroll-snap-type: y proximity; scroll-padding-top: 56px; }
+  .hero, .demo, .manifesto, .cta-shell { scroll-snap-align: start; scroll-snap-stop: normal; }
+} */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-snap-type: none; }
 }
@@ -4220,9 +4218,9 @@ footer.foot {
 <!-- ─── TESTIMONIALS ─── -->
 <section class="testi-block" id="testimonials">
   <div class="section-head center reveal has-bg-scrim">
-    <span class="eyebrow">FINDINGS FROM 100+ OPERATOR INTERVIEWS</span>
+    <span class="eyebrow">WHAT OPERATORS TOLD US</span>
     <h2>What operators kept <em>telling us.</em></h2>
-    <p class="lede">We sat down with 100+ KL cafe, kopitiam and mamak operators across Klang Valley and Penang. The same three patterns came up every time.</p>
+    <p class="lede">We sat down with cafe, kopitiam and mamak operators across Klang Valley and Penang. The same three patterns came up every time.</p>
   </div>
   <div class="testi-carousel reveal" data-carousel data-autoplay="6000">
     <button class="rc-arrow rc-prev" type="button" aria-label="Previous quote">&lsaquo;</button>

@@ -13,7 +13,7 @@ Sits on top of any Malaysian F&B POS. Never replaces it.
 
 /* HOW WE BUILT IT */
 
-100+ operator discovery interviews across Klang Valley and Penang.
+MenuBase operator discovery interviews across Klang Valley and Penang.
 Three patterns heard nearly every time:
   - Staff cannot reliably sell specials in multiple languages
   - Scripts and bonuses do not survive 6 to 9 month tenure

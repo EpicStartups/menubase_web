@@ -97,7 +97,7 @@ Built for Malaysia. Operating across Klang Valley, Penang, Johor Bahru and the r
 
 ## Who runs it
 
-MenuBase Sdn Bhd is registered in Malaysia. The team is a mix of operators who have run F&B venues and engineers who have built ordering systems at scale. Discovery phase included 100+ operator interviews across Klang Valley and Penang. The three patterns heard from nearly every operator: staff cannot reliably sell specials in multiple languages, scripts and bonuses do not survive 6-9 month tenure, every Sunday is a new training session for the new hires that started Friday.
+MenuBase Sdn Bhd is registered in Malaysia. The team is a mix of operators who have run F&B venues and engineers who have built ordering systems at scale. Discovery phase included MenuBase operator interviews across Klang Valley and Penang. The three patterns heard from nearly every operator: staff cannot reliably sell specials in multiple languages, scripts and bonuses do not survive 6-9 month tenure, every Sunday is a new training session for the new hires that started Friday.
 
 The bet: the highest-leverage software an F&B operator can adopt in 2026 is not a replacement system. It is a thin, fast layer between the customer and the kitchen, with smart upsell built in. The operator does not change their POS, does not retrain their floor team, and gets an 8 to 14% AOV lift in the first month.
 

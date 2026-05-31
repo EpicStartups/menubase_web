@@ -108,7 +108,7 @@ Once happy hour, threshold rewards and smart upsell go live on your menu, custom
 
 ## Who built MenuBase?
 
-MenuBase Sdn Bhd is registered in Malaysia. The team is a mix of operators who have run F&B venues and engineers who have built ordering systems at scale. Discovery phase included 100+ operator interviews across Klang Valley and Penang.
+MenuBase Sdn Bhd is registered in Malaysia. The team is a mix of operators who have run F&B venues and engineers who have built ordering systems at scale. Discovery phase included MenuBase operator interviews across Klang Valley and Penang.
 
 ## How do I get started?
 
