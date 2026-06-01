@@ -15,6 +15,66 @@
   ],
   "items": [
     {
+      "id": "https://menubase.io/learn/how-to-open-a-restaurant-in-malaysia.html",
+      "url": "https://menubase.io/learn/how-to-open-a-restaurant-in-malaysia.html",
+      "title": "How To Open A Restaurant In Malaysia: The 7-Step Operator Playbook",
+      "summary": "The end-to-end full-service restaurant opener for Malaysia. 7 sequential steps over 9 months: concept validation, venue type, capex math (RM350K-RM1.5M), location, the licence sequence (liquor and halal are mutually exclusive), team build, soft launch.",
+      "date_published": "2026-05-31T10:00:00Z",
+      "date_modified": "2026-05-31T10:00:00Z",
+      "tags": ["Pre-launch"],
+      "language": "en-MY"
+    },
+    {
+      "id": "https://menubase.io/learn/restaurant-licenses-malaysia-complete-guide.html",
+      "url": "https://menubase.io/learn/restaurant-licenses-malaysia-complete-guide.html",
+      "title": "Restaurant Licences Malaysia: The Complete Operator's Guide (2026)",
+      "summary": "All 8 licences across 4 authorities. SSM, Kedai Makanan (DBKL / MBPJ / MBSJ / MPSJ), signboard, BOMBA, JAKIM halal, food handler, liquor, music. Real RM cost ranges and renewal calendar.",
+      "date_published": "2026-05-31T10:00:00Z",
+      "date_modified": "2026-05-31T10:00:00Z",
+      "tags": ["Compliance"],
+      "language": "en-MY"
+    },
+    {
+      "id": "https://menubase.io/learn/restaurant-fit-out-cost-malaysia.html",
+      "url": "https://menubase.io/learn/restaurant-fit-out-cost-malaysia.html",
+      "title": "Restaurant + Cafe Fit-Out Cost Malaysia 2026: The Real Capex Breakdown",
+      "summary": "RM180K-RM350K cafe, RM350K-RM800K full-service restaurant. The 5 cost categories (kitchen 35%, FOH 30%, FF&E 20%, professional fees 10%, contingency 5%). Where operators overspend and underspend.",
+      "date_published": "2026-05-31T10:00:00Z",
+      "date_modified": "2026-05-31T10:00:00Z",
+      "tags": ["Finance"],
+      "language": "en-MY"
+    },
+    {
+      "id": "https://menubase.io/learn/foreign-worker-permit-fb-malaysia.html",
+      "url": "https://menubase.io/learn/foreign-worker-permit-fb-malaysia.html",
+      "title": "Foreign Worker Permits For Malaysian F&B: The 2026 Policy Reality",
+      "summary": "JIM levy by source country, quota, accommodation (Act 446), contract registration, registered agent route. Cost-per-worker math and the monthly compliance calendar.",
+      "date_published": "2026-05-31T10:00:00Z",
+      "date_modified": "2026-05-31T10:00:00Z",
+      "tags": ["Compliance"],
+      "language": "en-MY"
+    },
+    {
+      "id": "https://menubase.io/learn/wrt-license-foreigners-restaurant-malaysia.html",
+      "url": "https://menubase.io/learn/wrt-license-foreigners-restaurant-malaysia.html",
+      "title": "WRT Licence For Foreigners Opening A Restaurant In Malaysia",
+      "summary": "For foreign investors. RM1M paid-up capital, KPDN application, 8-12 week timeline, employment quota, MSIC codes, halal eligibility, common rejection reasons.",
+      "date_published": "2026-05-31T10:00:00Z",
+      "date_modified": "2026-05-31T10:00:00Z",
+      "tags": ["Compliance"],
+      "language": "en-MY"
+    },
+    {
+      "id": "https://menubase.io/learn/restaurant-insurance-malaysia.html",
+      "url": "https://menubase.io/learn/restaurant-insurance-malaysia.html",
+      "title": "Restaurant Insurance Malaysia 2026: The 6 Covers Every F&B Operator Needs",
+      "summary": "Public liability, fire, business interruption, employer liability, money, equipment all-risks. RM4,500-RM12,000 a year for a single outlet. What each covers and what is typically NOT covered.",
+      "date_published": "2026-05-31T10:00:00Z",
+      "date_modified": "2026-05-31T10:00:00Z",
+      "tags": ["Finance"],
+      "language": "en-MY"
+    },
+    {
       "id": "https://menubase.io/learn/restaurant-inventory-management-malaysia.html",
       "url": "https://menubase.io/learn/restaurant-inventory-management-malaysia.html",
       "title": "Restaurant Inventory Management In Malaysia: How To Run It Without Dedicated Software",

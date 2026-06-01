@@ -5,11 +5,71 @@
   <subtitle>Practical guides for Malaysian F&amp;B operators on lifting revenue, cutting costs, managing turnover, and running tech that actually fits.</subtitle>
   <link rel="alternate" type="text/html" href="https://menubase.io/learn/"/>
   <link rel="self" type="application/atom+xml" href="https://menubase.io/playbook.rss"/>
-  <updated>2026-05-30T16:00:00Z</updated>
+  <updated>2026-05-31T16:00:00Z</updated>
   <generator uri="https://menubase.io/" version="1.0">MenuBase Playbook</generator>
   <rights>Copyright 2026 MenuBase Sdn Bhd</rights>
   <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
   <icon>https://menubase.io/img/menubase_logo_icon.png</icon>
+  <entry>
+    <id>https://menubase.io/learn/how-to-open-a-restaurant-in-malaysia.html</id>
+    <title>How To Open A Restaurant In Malaysia: The 7-Step Operator Playbook</title>
+    <link rel="alternate" type="text/html" href="https://menubase.io/learn/how-to-open-a-restaurant-in-malaysia.html"/>
+    <published>2026-05-31T10:00:00Z</published>
+    <updated>2026-05-31T10:00:00Z</updated>
+    <category term="Pre-launch"/>
+    <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
+    <summary type="text">The end-to-end full-service restaurant opener for Malaysia. 7 sequential steps over 9 months: concept validation, venue type, capex math (RM350K-RM1.5M), location, the licence sequence (liquor and halal are mutually exclusive), team build, soft launch.</summary>
+  </entry>
+  <entry>
+    <id>https://menubase.io/learn/restaurant-licenses-malaysia-complete-guide.html</id>
+    <title>Restaurant Licences Malaysia: The Complete Operator&#x27;s Guide (2026)</title>
+    <link rel="alternate" type="text/html" href="https://menubase.io/learn/restaurant-licenses-malaysia-complete-guide.html"/>
+    <published>2026-05-31T10:00:00Z</published>
+    <updated>2026-05-31T10:00:00Z</updated>
+    <category term="Compliance"/>
+    <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
+    <summary type="text">All 8 licences across 4 authorities. SSM, Kedai Makanan (DBKL / MBPJ / MBSJ / MPSJ), signboard, BOMBA, JAKIM halal, food handler, liquor, music. Real RM cost ranges and renewal calendar.</summary>
+  </entry>
+  <entry>
+    <id>https://menubase.io/learn/restaurant-fit-out-cost-malaysia.html</id>
+    <title>Restaurant + Cafe Fit-Out Cost Malaysia 2026: The Real Capex Breakdown</title>
+    <link rel="alternate" type="text/html" href="https://menubase.io/learn/restaurant-fit-out-cost-malaysia.html"/>
+    <published>2026-05-31T10:00:00Z</published>
+    <updated>2026-05-31T10:00:00Z</updated>
+    <category term="Finance"/>
+    <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
+    <summary type="text">RM180K-RM350K cafe, RM350K-RM800K full-service restaurant. The 5 cost categories (kitchen 35%, FOH 30%, FF&amp;E 20%, professional fees 10%, contingency 5%). Where operators overspend and underspend.</summary>
+  </entry>
+  <entry>
+    <id>https://menubase.io/learn/foreign-worker-permit-fb-malaysia.html</id>
+    <title>Foreign Worker Permits For Malaysian F&amp;B: The 2026 Policy Reality</title>
+    <link rel="alternate" type="text/html" href="https://menubase.io/learn/foreign-worker-permit-fb-malaysia.html"/>
+    <published>2026-05-31T10:00:00Z</published>
+    <updated>2026-05-31T10:00:00Z</updated>
+    <category term="Compliance"/>
+    <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
+    <summary type="text">JIM levy by source country, quota, accommodation (Act 446), contract registration, registered agent route. Cost-per-worker math and the monthly compliance calendar.</summary>
+  </entry>
+  <entry>
+    <id>https://menubase.io/learn/wrt-license-foreigners-restaurant-malaysia.html</id>
+    <title>WRT Licence For Foreigners Opening A Restaurant In Malaysia</title>
+    <link rel="alternate" type="text/html" href="https://menubase.io/learn/wrt-license-foreigners-restaurant-malaysia.html"/>
+    <published>2026-05-31T10:00:00Z</published>
+    <updated>2026-05-31T10:00:00Z</updated>
+    <category term="Compliance"/>
+    <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
+    <summary type="text">For foreign investors. RM1M paid-up capital, KPDN application, 8-12 week timeline, employment quota, MSIC codes, halal eligibility, common rejection reasons.</summary>
+  </entry>
+  <entry>
+    <id>https://menubase.io/learn/restaurant-insurance-malaysia.html</id>
+    <title>Restaurant Insurance Malaysia 2026: The 6 Covers Every F&amp;B Operator Needs</title>
+    <link rel="alternate" type="text/html" href="https://menubase.io/learn/restaurant-insurance-malaysia.html"/>
+    <published>2026-05-31T10:00:00Z</published>
+    <updated>2026-05-31T10:00:00Z</updated>
+    <category term="Finance"/>
+    <author><name>MenuBase</name><uri>https://menubase.io/</uri></author>
+    <summary type="text">Public liability, fire, business interruption, employer liability, money, equipment all-risks. RM4,500-RM12,000 a year for a single outlet. What each covers and what is typically NOT covered.</summary>
+  </entry>
   <entry>
     <id>https://menubase.io/learn/restaurant-inventory-management-malaysia.html</id>
     <title>Restaurant Inventory Management In Malaysia: How To Run It Without Dedicated Software</title>

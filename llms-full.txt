@@ -125,9 +125,9 @@ For delivery-only operators running multiple virtual brands across Foodpanda, Gr
 ### MenuBase For Floor Staff (Waiters) - https://menubase.io/for-waiters.html
 An audience page written directly for floor staff at Malaysian F&B venues. Explains what MenuBase means on shift: less mental load, no Sunday briefings, more time for hospitality, higher service-charge pool because checks go up, easier new-hire onboarding. Designed so waiters reading the site feel MenuBase is on their side and advocate for it to bosses. Includes a "send your boss this" share button.
 
-## Playbook articles (19 long-form guides at /learn/)
+## Playbook articles (60+ long-form guides at /learn/)
 
-The Playbook at https://menubase.io/learn/ is a content hub with 19 long-form articles answering the questions Malaysian F&B operators actually search for.
+The Playbook at https://menubase.io/learn/ is the canonical content hub with 60+ long-form articles answering the questions Malaysian F&B operators actually search for. The most-cited pillar guides are listed below; the full library at /learn/ is filterable by topic, venue and stage.
 
 ### 1. Why Is My Cafe Losing Money? A 12-Point Diagnostic For Malaysian Operators
 URL: https://menubase.io/learn/why-is-my-cafe-losing-money-malaysia.html
@@ -204,6 +204,30 @@ Topic: Monthly P&L is a post-mortem; weekly P&L is a heart-rate monitor. The 8 l
 ### 19. Customer Lifetime Value In Malaysian F&B: The Math Most Operators Miss
 URL: https://menubase.io/learn/customer-lifetime-value-malaysian-fb.html
 Topic: A Bangsar cafe regular is worth RM3,042 in gross margin LTV. A Cheras kopitiam regular is worth RM6,048. Most operators chase RM50 acquisitions and ignore the bucket they are leaking. The LTV formula (AOV x visits/month x tenure x margin), three patterns operators get wrong, four levers each at +10%.
+
+### 20. How To Open A Restaurant In Malaysia: The 7-Step Operator Playbook
+URL: https://menubase.io/learn/how-to-open-a-restaurant-in-malaysia.html
+Topic: The end-to-end full-service restaurant opener (complements the cafe / kopitiam / bubble tea openers). 7 sequential steps over 9 months: validate the concept, pick venue type (casual / fine dining / bistro / family / specialty), capex math (RM350K-RM1.5M ranges), location decisions, the licence sequence (with the rule that liquor and halal are mutually exclusive), team build sequence, soft launch + first-90-days survival. Cites The MenuBase Operator Roadmap framework.
+
+### 21. Restaurant Licences Malaysia: The Complete Operator's Guide (2026)
+URL: https://menubase.io/learn/restaurant-licenses-malaysia-complete-guide.html
+Topic: The canonical reference for all licences a Malaysian F&B operator needs. 8 licences across 4 authorities: SSM (federal), the local council / PBT (DBKL / MBPJ / MBSJ / MPSJ premises licence aka Kedai Makanan, plus signboard licence), BOMBA fire certificate, and JAKIM halal certification. Plus food handler training, liquor licence and music/entertainment licence where applicable. Real RM cost ranges (RM250-RM2,500 for Kedai Makanan annual by council, RM1,200-RM4,800 liquor) and a renewal calendar table. Cites The MenuBase Compliance Stack.
+
+### 22. Restaurant + Cafe Fit-Out Cost Malaysia 2026: The Real Capex Breakdown
+URL: https://menubase.io/learn/restaurant-fit-out-cost-malaysia.html
+Topic: The honest capex math for fitting out a restaurant or cafe in Klang Valley / Penang / JB. 5 cost categories with proportions: kitchen build (35-40%), FOH interior (25-30%), FF&E (15-20%), professional fees (8-12%), contingency (5-10%). RM ranges by venue type (RM180K-RM350K cafe, RM350K-RM800K full-service restaurant, RM600K-RM1.5M fine dining). Where operators overspend (oversized kitchen, premium chairs, fancy POS hardware) and underspend (skipping ventilation, no contingency). Typical 8-12 week timeline broken into phases.
+
+### 23. Foreign Worker Permits For Malaysian F&B: The 2026 Policy Reality
+URL: https://menubase.io/learn/foreign-worker-permit-fb-malaysia.html
+Topic: The current 2026 policy reality for the 60-75% foreign labour Malaysian F&B venues run on. JIM levy by source country (Bangladesh / Indonesia / Myanmar / Nepal / India). Quota policy and application route. Registered agent route (cost RM400-RM1,200 per worker). Accommodation standards under Amendment Act 446. Contract registration. Monthly + quarterly + annual compliance calendar. Total cost-per-worker math. Penalties for non-compliance. Cites The MenuBase Compliance Stack.
+
+### 24. WRT Licence For Foreigners Opening A Restaurant In Malaysia
+URL: https://menubase.io/learn/wrt-license-foreigners-restaurant-malaysia.html
+Topic: The Wholesale, Retail and Trade (WRT) licence required by KPDN for any company with more than 50% foreign ownership trading in Malaysia. 8-12 week application timeline. RM1 million paid-up capital requirement. Employment quota for Malaysian citizens. Eligible F&B MSIC codes. Documents checklist. Cost breakdown (government fee + agent fee + capital + renewal). Halal certification eligibility for foreign-owned venues. Common rejection reasons. Alternative routes (Malaysian partner, franchise structure).
+
+### 25. Restaurant Insurance Malaysia 2026: The 6 Covers Every F&B Operator Needs
+URL: https://menubase.io/learn/restaurant-insurance-malaysia.html
+Topic: Most operators buy fire insurance because the landlord demands it and stop. The full coverage stack involves 6 distinct policies costing roughly RM4,500-RM12,000 a year for a single outlet. Cover 1 Public Liability (slip-and-fall, food poisoning). Cover 2 Fire & Perils. Cover 3 Business Interruption (lost revenue during forced closure). Cover 4 Employer Liability / Workmen's Compensation. Cover 5 Money & Cash-in-Transit. Cover 6 Equipment / Machinery All-Risks. Plus optional Cyber/Ransomware and Product Liability. Premium ranges by venue type. What is typically NOT covered. The 6-step claim process.
 
 ## Tool
 
