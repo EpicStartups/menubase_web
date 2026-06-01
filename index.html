@@ -1261,6 +1261,66 @@ body { padding-bottom: 84px; }
 }
 .col-l h1 em { font-style: normal; color: var(--lime-deep); }
 
+/* Hero promise pill - the concrete outcome / no-friction line that
+   tells operators what they get in 3 seconds: +8 to 14% per check,
+   same POS, same team, live by end of service. Sits right under H1. */
+.hero-promise {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  padding: 10px 14px 10px 10px;
+  background: rgba(188,241,37,0.08);
+  border: 1.5px solid rgba(188,241,37,0.35);
+  border-radius: 999px;
+  margin: 14px 0 18px;
+  max-width: 100%;
+  font-family: var(--font-body);
+}
+.hero-promise .hp-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(20px, 2.4vw, 26px);
+  letter-spacing: -0.02em;
+  color: var(--lime);
+  padding: 4px 12px;
+  background: rgba(188,241,37,0.16);
+  border-radius: 999px;
+  line-height: 1.1;
+}
+.hero-promise .hp-label {
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.hero-promise .hp-sep {
+  color: rgba(188,241,37,0.45);
+  font-weight: 700;
+  margin: 0 2px;
+}
+.hero-promise .hp-pill {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  padding: 4px 10px;
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 999px;
+}
+@media (max-width: 720px) {
+  .hero-promise {
+    padding: 8px 10px 10px 8px;
+    gap: 8px;
+  }
+  .hero-promise .hp-num { font-size: 20px; padding: 3px 10px; }
+  .hero-promise .hp-label { font-size: 13px; }
+  .hero-promise .hp-sep { display: none; }
+  .hero-promise .hp-pill { font-size: 10px; padding: 3px 8px; letter-spacing: 0.1em; }
+}
+
 /* multilingual greeting strip - cycles Welcome / Selamat datang / 欢迎光临 / வரவேற்கிறோம் */
 .greet {
   font-family: var(--font-mono);
@@ -3968,6 +4028,15 @@ footer.foot {
 
     <h1>The waiter you<br/><em>wish</em> you could hire.</h1>
 
+    <div class="hero-promise">
+      <span class="hp-num">+8 to 14%</span>
+      <span class="hp-label">more per check</span>
+      <span class="hp-sep">&middot;</span>
+      <span class="hp-pill">Same POS</span>
+      <span class="hp-pill">Same team</span>
+      <span class="hp-pill">Live by end of service</span>
+    </div>
+
     <div class="greet">Greets every guest:&nbsp;
       <span class="g" id="greet">
         <span class="on">Welcome.</span>
@@ -3977,7 +4046,7 @@ footer.foot {
       </span>
     </div>
 
-    <p class="sub">Lives in your QR menu. <em>Never forgets the specials.</em> <em>Always pushes the promo.</em> Sits on top of any POS.</p>
+    <p class="sub">A QR menu that reads the basket, the time and the customer. <em>Pushes the perfect upsell on every relevant order.</em> Built for Malaysian cafes, kopitiams, restaurants and bubble tea shops. <em>Sits on top of any POS.</em></p>
 
     <div class="cta">
       <a class="btn btn-lime" href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bfrom%3A%20hero%5D.%20Want%20a%20free%2015-min%20uplift%20model%20on%20my%20actual%20menu.%20Sending%20our%20menu%20PDF%20now." target="_blank" rel="noopener">Send your menu &rarr;</a>

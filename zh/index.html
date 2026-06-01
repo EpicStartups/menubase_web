@@ -1210,6 +1210,62 @@ body { padding-bottom: 84px; }
 }
 .col-l h1 em { font-style: normal; color: var(--lime-deep); }
 
+
+/* Hero promise pill - the concrete outcome / no-friction line. */
+.hero-promise {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  padding: 10px 14px 10px 10px;
+  background: rgba(188,241,37,0.08);
+  border: 1.5px solid rgba(188,241,37,0.35);
+  border-radius: 999px;
+  margin: 14px 0 18px;
+  max-width: 100%;
+  font-family: var(--font-body);
+}
+.hero-promise .hp-num {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(20px, 2.4vw, 26px);
+  letter-spacing: -0.02em;
+  color: var(--lime);
+  padding: 4px 12px;
+  background: rgba(188,241,37,0.16);
+  border-radius: 999px;
+  line-height: 1.1;
+}
+.hero-promise .hp-label {
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.hero-promise .hp-sep {
+  color: rgba(188,241,37,0.45);
+  font-weight: 700;
+  margin: 0 2px;
+}
+.hero-promise .hp-pill {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  padding: 4px 10px;
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 999px;
+}
+@media (max-width: 720px) {
+  .hero-promise { padding: 8px 10px 10px 8px; gap: 8px; }
+  .hero-promise .hp-num { font-size: 20px; padding: 3px 10px; }
+  .hero-promise .hp-label { font-size: 13px; }
+  .hero-promise .hp-sep { display: none; }
+  .hero-promise .hp-pill { font-size: 10px; padding: 3px 8px; letter-spacing: 0.1em; }
+}
+
 /* multilingual greeting strip - cycles Welcome / Selamat datang / 欢迎光临 / வரவேற்கிறோம் */
 .greet {
   font-family: var(--font-mono);
@@ -3692,6 +3748,15 @@ footer.foot {
 
     <h1>您<em>理想中</em>的<br/>服务员。</h1>
 
+    <div class="hero-promise">
+      <span class="hp-num">+8 到 14%</span>
+      <span class="hp-label">每张单</span>
+      <span class="hp-sep">&middot;</span>
+      <span class="hp-pill">POS 不换</span>
+      <span class="hp-pill">团队不变</span>
+      <span class="hp-pill">今天结束前上线</span>
+    </div>
+
     <div class="greet">迎接每位顾客:&nbsp;
       <span class="g" id="greet">
         <span class="on">欢迎光临。</span>
@@ -3701,7 +3766,7 @@ footer.foot {
       </span>
     </div>
 
-    <p class="sub">住在您的扫码菜单中。<em>从不忘记特价菜。</em> <em>每个班次都推送促销。</em> 坐在任何 POS 系统之上。</p>
+    <p class="sub">一个读得懂购物车、读得懂时段、读得懂顾客的扫码菜单。<em>在每张相关订单上推出最合适的加点。</em>专为马来西亚咖啡馆、茶餐室、餐厅和奶茶店打造。<em>坐在任何 POS 系统之上。</em></p>
 
     <div class="cta">
       <a class="btn btn-lime" href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bfrom%3A%20hero%20ZH%5D.%20%E6%83%B3%E4%B8%BA%E6%88%91%E4%BB%AC%E5%AE%9E%E9%99%85%E8%8F%9C%E5%8D%95%E5%81%9A%E4%B8%80%E4%B8%AA%2015%20%E5%88%86%E9%92%9F%E7%9A%84%E5%85%8D%E8%B4%B9%E6%8F%90%E5%8D%87%E6%A8%A1%E5%9E%8B%E3%80%82%E7%8E%B0%E5%9C%A8%E5%8F%91%E9%80%81%E6%88%91%E4%BB%AC%E7%9A%84%E8%8F%9C%E5%8D%95%20PDF%E3%80%82" target="_blank" rel="noopener">发送您的菜单 &rarr;</a>
