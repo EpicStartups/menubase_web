@@ -1494,3 +1494,23 @@ footer.foot {
   .lang-switch .lang-arr { font-size: 10.5px; }
   .lang-globe { width: 12px; height: 12px; }
 }
+
+
+/* Mobile gutter for inline-styled /learn/ sections - cornerstone-banner,
+   frameworks-row, calculators-row, academy-strip, hub-browse-header.
+   Without this, they hit the viewport edge directly because the parent
+   <main> has no padding. */
+@media (max-width: 900px) {
+  .cornerstone-banner,
+  .frameworks-row,
+  .calculators-row,
+  .academy-strip,
+  .hub-browse-header { padding-left: 16px !important; padding-right: 16px !important; }
+}
+@media (max-width: 560px) {
+  .cornerstone-banner,
+  .frameworks-row,
+  .calculators-row,
+  .academy-strip,
+  .hub-browse-header { padding-left: 14px !important; padding-right: 14px !important; }
+}
