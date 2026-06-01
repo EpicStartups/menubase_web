@@ -5334,49 +5334,83 @@ setTimeout(() => {
   });
 })();
 
-/* ─── Manifesto kinetic moment - the "suggestions" word morphs through
-       real F&B items when the section scrolls into view, then settles. ─── */
+/* ─── Manifesto kinetic moment - the "suggestions" word LOOPS through real
+       Malaysian F&B items while the section is in view. Pauses when off-screen.
+       Wider word list, smooth slide-in/out, respects reduced motion. ─── */
 (function(){
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var em = document.querySelector('#manifesto h2 em');
   if (!em) return;
-  var finalWord = em.textContent;
-  var alts = ['the upsell.', 'kopi tarik.', 'nasi lemak.', 'the basket.', finalWord];
+  // Wider mix: brand defaults + Malaysian-flavour items + system-y nouns
+  var WORDS = [
+    'suggestions.',
+    'the upsell.',
+    'kopi tarik.',
+    'nasi lemak.',
+    'the basket.',
+    'the happy hour.',
+    'the combo.',
+    'the threshold reward.',
+    'the special.',
+    'roti canai.',
+    'teh ais.',
+    'kaya toast.',
+    'the daypart.',
+    'the spin & win.',
+    'cendol.',
+    'the perfect add-on.'
+  ];
   em.style.display = 'inline-block';
   em.style.minWidth = '9ch';
   em.style.textAlign = 'center';
-  em.style.transition = 'transform 280ms cubic-bezier(.16,1,.3,1), opacity 280ms';
+  em.style.transition = 'transform 320ms cubic-bezier(.16,1,.3,1), opacity 320ms';
   em.style.willChange = 'transform, opacity';
-  var triggered = false;
-  function morph(){
-    if (triggered) return;
-    triggered = true;
-    var i = 0;
-    function step(){
-      em.style.opacity = '0';
-      em.style.transform = 'translateY(-14px)';
-      setTimeout(function(){
-        em.textContent = alts[i];
-        em.style.transform = 'translateY(14px)';
-        requestAnimationFrame(function(){
-          em.style.opacity = '1';
-          em.style.transform = 'translateY(0)';
-        });
-        i++;
-        if (i < alts.length) setTimeout(step, 720);
-      }, 280);
-    }
-    step();
-  }
-  if ('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting) { morph(); io.disconnect(); }
+
+  var idx = 0;
+  var timer = null;
+  var running = false;
+  var IN_MS = 1400; // how long each word stays visible
+  var OUT_MS = 320; // exit transition duration
+
+  function show(word) {
+    em.style.opacity = '0';
+    em.style.transform = 'translateY(-14px)';
+    setTimeout(function () {
+      em.textContent = word;
+      em.style.transform = 'translateY(14px)';
+      requestAnimationFrame(function () {
+        em.style.opacity = '1';
+        em.style.transform = 'translateY(0)';
       });
-    }, { threshold: 0.5 });
+    }, OUT_MS);
+  }
+
+  function loop() {
+    if (!running) return;
+    show(WORDS[idx]);
+    idx = (idx + 1) % WORDS.length;
+    timer = setTimeout(loop, IN_MS + OUT_MS);
+  }
+
+  function start() {
+    if (running) return;
+    running = true;
+    loop();
+  }
+  function stop() {
+    running = false;
+    if (timer) { clearTimeout(timer); timer = null; }
+  }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) start(); else stop();
+      });
+    }, { threshold: 0.35 });
     io.observe(em);
   } else {
-    morph();
+    start();
   }
 })();
 </script>
