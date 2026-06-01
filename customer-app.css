@@ -298,12 +298,13 @@ html, body { height: 100%; }
   left: 0;
   right: 0;
   margin: 0;
-  padding: 16px 18px;
+  padding: 10px 16px;
   background: var(--ink);
   color: var(--bg-elev);
   border: none;
   border-radius: 0;
-  font-size: 14px;
+  font-size: 13px;
+  line-height: 1.25;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -312,6 +313,7 @@ html, body { height: 100%; }
   z-index: 20;
   box-shadow: 0 -10px 30px rgba(0,0,0,0.22);
 }
+.cust-cart-bar strong { font-size: 13px; font-weight: 700; }
 
 /* CART SCREEN */
 .cust-cart-list { flex: 1; overflow-y: auto; padding: 16px 20px; }
