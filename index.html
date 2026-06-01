@@ -1376,6 +1376,35 @@ body { padding-bottom: 84px; }
   border-radius: 999px;
   z-index: 4;
 }
+/* Hero phone scene label - tiny lime badge under the phone showing the
+   currently-playing scenario as the hero iframe auto-rotates. */
+.hero-scene-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px auto 0;
+  padding: 6px 14px;
+  background: rgba(188,241,37,0.12);
+  border: 1px solid rgba(188,241,37,0.30);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lime);
+  width: fit-content;
+}
+.hero-scene-label .hero-scene-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 0 3px rgba(188,241,37,0.20);
+  animation: heroScenePulse 1.8s ease-in-out infinite;
+}
+@keyframes heroScenePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
 .col-r .phone iframe {
   width: 100%;
   height: 100%;
@@ -3812,7 +3841,10 @@ footer.foot {
     <div class="glow"></div>
     <div class="phone">
       <div class="notch"></div>
-      <iframe src="Customer QR App.html?demo=upsell_popup&items=eb&screen=checkout&hour=9&hideDev=1&compact=1&cb=20260529x" title="MenuBase live app" loading="eager"></iframe>
+      <iframe id="hero-iframe" src="Customer QR App.html?demo=upsell_popup&items=eb&screen=checkout&hour=9&hideDev=1&compact=1&cb=20260529x" title="MenuBase live app" loading="eager"></iframe>
+    </div>
+    <div class="hero-scene-label" id="hero-scene-label" aria-live="polite">
+      <span class="hero-scene-dot"></span><span class="hero-scene-name">Smart Upsell</span>
     </div>
   </div>
 </section>
@@ -4828,6 +4860,77 @@ setTimeout(() => {
         if (bestChip && !bestChip.classList.contains('on')) bestChip.click();
       }, 140);
     }, { passive: true });
+  }
+
+  /* ─── HERO PHONE AUTO-ROTATE ────────────────────────────────────────
+     The hero phone cycles through 4 high-contrast scenarios every 6s
+     so visitors see the breadth (not just Smart Upsell) in the first
+     24 seconds. Pauses when:
+     - Hero scrolls off-screen (IntersectionObserver)
+     - User interacts with the demo section below
+     - User prefers reduced motion
+     Uses iframe.contentWindow.location.replace (same as chip handler)
+     to avoid a full React app remount on every cycle. */
+  var heroIframe = document.getElementById('hero-iframe');
+  var heroLabel = document.getElementById('hero-scene-label');
+  var heroLabelName = heroLabel ? heroLabel.querySelector('.hero-scene-name') : null;
+  var reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (heroIframe && !reducedMotion) {
+    var HERO_REEL = [
+      { key: 'upsell',     name: 'Smart Upsell',     qs: 'demo=upsell_popup&items=eb&screen=checkout&hour=9' },
+      { key: 'happy_hour', name: 'Happy Hour',       qs: 'demo=happy_hour&hour=15&day=1' },
+      { key: 'spin',       name: 'Spin & Win',       qs: 'demo=spin_wheel&items=eb,wc&screen=checkout&hour=12' },
+      { key: 'weather',    name: 'Weather Menu',     qs: 'demo=weather&weather=rain&items=wc,ml&screen=menu' }
+    ];
+    var heroIdx = 0;
+    var heroTimer = null;
+    var heroVisible = true;
+    var heroPaused = false;
+
+    function applyHero(idx) {
+      var s = HERO_REEL[idx];
+      try {
+        heroIframe.contentWindow.location.replace('Customer QR App.html?' + s.qs + '&hideDev=1&compact=1&cb=20260529x');
+      } catch (e) {
+        heroIframe.src = 'Customer QR App.html?' + s.qs + '&hideDev=1&compact=1&cb=20260529x';
+      }
+      if (heroLabelName) heroLabelName.textContent = s.name;
+    }
+
+    function startHeroReel() {
+      if (heroTimer || heroPaused || !heroVisible) return;
+      heroTimer = setInterval(function () {
+        heroIdx = (heroIdx + 1) % HERO_REEL.length;
+        applyHero(heroIdx);
+      }, 6000);
+    }
+    function stopHeroReel() {
+      if (heroTimer) { clearInterval(heroTimer); heroTimer = null; }
+    }
+    function pauseHeroReel() { heroPaused = true; stopHeroReel(); }
+
+    // Pause once user interacts with demo section below (any chip click)
+    chips.forEach(function (c) {
+      c.addEventListener('click', pauseHeroReel, { once: true });
+    });
+    // Pause once user manually scrolls the demo chip row
+    if (chipTrack) {
+      chipTrack.addEventListener('scroll', pauseHeroReel, { once: true, passive: true });
+    }
+
+    // Pause when hero is offscreen, resume when back
+    var heroSection = document.getElementById('top');
+    if (heroSection && 'IntersectionObserver' in window) {
+      var heroObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          heroVisible = e.isIntersecting;
+          if (heroVisible) startHeroReel();
+          else stopHeroReel();
+        });
+      }, { threshold: 0.25 });
+      heroObs.observe(heroSection);
+    }
+    startHeroReel();
   }
 })();
 
