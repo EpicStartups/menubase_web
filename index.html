@@ -3042,7 +3042,7 @@ footer.foot {
 }
 
 /* ──────────────── PROBLEM SECTION (foreign-worker truth) ──────────────── */
-.problem-block { padding: 96px 28px; max-width: 1320px; margin: 0 auto; }
+.problem-block { padding: 72px 28px 56px; max-width: 1320px; margin: 0 auto; }
 .problem-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -3055,9 +3055,9 @@ footer.foot {
           backdrop-filter: blur(10px);
   border: 1px solid var(--line);
   border-radius: 14px;
-  padding: 28px;
+  padding: 22px 22px 24px;
   display: flex;
-  gap: 18px;
+  gap: 14px;
   transition: border-color 200ms, transform 200ms, background 200ms;
 }
 .problem-card:hover { background: rgba(30, 30, 36, 0.40); }
@@ -3433,19 +3433,20 @@ footer.foot {
   .rc-arrow { width: 36px; height: 36px; font-size: 18px; }
 }
 
-/* Problem carousel - reuses the rc-track / rc-arrow / rc-dots primitives */
+/* Problem carousel - reuses the rc-track / rc-arrow / rc-dots primitives.
+   Desktop: 3 cards visible (smaller, more compact). Mobile: 1 card / swipe. */
 .problem-carousel {
   position: relative;
   max-width: 1200px;
-  margin: 0 auto 48px;
+  margin: 0 auto 32px;
   padding: 0 8px;
 }
-.problem-carousel .rc-track { padding: 12px 8px; }
+.problem-carousel .rc-track { padding: 8px 8px 14px; gap: 14px; }
 .problem-carousel .problem-card {
-  flex: 0 0 calc(50% - 12px);
+  flex: 0 0 calc(33.333% - 10px);
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  min-height: 200px;
+  min-height: 0;
 }
 /* Mobile problem-card width handled in the unified max-width: 900px block above */
 
