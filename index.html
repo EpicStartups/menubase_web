@@ -1983,18 +1983,60 @@ section.block.tight { padding: 80px 28px; }
 .rc-dots { margin-top: 22px; }
 
 @media (max-width: 900px) {
-  .demo { padding: 56px 18px 72px; }
-  .demo-header { margin: 0 auto 24px; }
+  .demo { padding: 56px 14px 72px; }
+  .demo-header { margin: 0 auto 20px; padding: 0 6px; }
+  .demo-header h2 { font-size: clamp(24px, 6.5vw, 32px); }
+  .demo-header .lede { font-size: 14.5px; }
   .demo-carousel { padding: 0; }
+  /* Each card is exactly viewport minus the gutter so 1 card = 1 swipe. */
+  .demo-carousel-track {
+    gap: 12px;
+    padding: 8px 12px 18px;
+    scroll-padding-inline: 12px;
+  }
   .demo-card {
     grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 24px 22px;
-    flex-basis: calc(100% - 24px);
+    gap: 16px;
+    padding: 20px 18px 22px;
+    /* card width = viewport minus track padding (24px total) */
+    flex-basis: calc(100vw - 36px);
+    max-width: calc(100vw - 36px);
+    min-width: 0;
+    overflow: hidden; /* belt + suspenders against phone overflow */
   }
-  .demo-card .dc-stage::before { width: 280px; height: 280px; }
-  .demo-card .dc-text h3 { font-size: 22px; }
-  .demo-card .dc-text p { font-size: 14.5px; }
+  .demo-card .dc-text { padding: 0; }
+  .demo-card .dc-eyebrow { font-size: 10px; padding: 4px 10px; margin-bottom: 10px; }
+  .demo-card .dc-text h3 { font-size: 20px; line-height: 1.2; margin-bottom: 10px; }
+  .demo-card .dc-text p { font-size: 14px; line-height: 1.5; }
+  /* Phone CAPPED to the card content width so it can never overflow.
+     Aspect ratio (740/380 = 1.947) preserved so the menu items stay readable. */
+  .demo-card .dc-stage { width: 100%; min-width: 0; }
+  .demo-card .dc-stage .phone.lg {
+    width: min(280px, calc(100vw - 90px));
+    height: calc(min(280px, calc(100vw - 90px)) * 740 / 380);
+    border-radius: calc(min(280px, calc(100vw - 90px)) * 44 / 380);
+    padding: calc(min(280px, calc(100vw - 90px)) * 10 / 380);
+    margin: 0 auto;
+  }
+  .demo-card .dc-stage .phone.lg .notch {
+    width: calc(min(280px, calc(100vw - 90px)) * 100 / 380);
+    height: calc(min(280px, calc(100vw - 90px)) * 24 / 380);
+    top: calc(min(280px, calc(100vw - 90px)) * 20 / 380);
+  }
+  .demo-card .dc-stage .phone.lg iframe {
+    border-radius: calc(min(280px, calc(100vw - 90px)) * 36 / 380);
+  }
+  /* Shrink the lime glow to match the smaller phone */
+  .demo-card .dc-stage::before { width: 240px; height: 240px; }
+  /* Hide the prev/next arrows on mobile - swipe is the primary control */
+  .demo-carousel .rc-prev,
+  .demo-carousel .rc-next { display: none; }
+}
+@media (max-width: 420px) {
+  .demo-card .dc-stage .phone.lg {
+    width: min(240px, calc(100vw - 90px));
+    height: calc(min(240px, calc(100vw - 90px)) * 740 / 380);
+  }
 }
 
 .demo-inner {
