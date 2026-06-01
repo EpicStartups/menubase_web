@@ -1510,4 +1510,12 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://menubase.io/zh/learn/restaurant-insurance-malaysia.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/learn/restaurant-insurance-malaysia.html"/>
   </url>
+  <url>
+    <loc>https://menubase.io/tools/break-even-calculator.html</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://menubase.io/tools/break-even-calculator.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://menubase.io/tools/break-even-calculator.html"/>
+  </url>
 </urlset>

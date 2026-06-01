@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>Restaurant + Cafe Break-Even Calculator (Malaysia) | Free, No Email | MenuBase</title>
+<meta name="description" content="Free break-even calculator for Malaysian restaurants, cafes, kopitiams and bubble tea shops. 5 sliders: monthly rent, food cost %, labour cost %, AOV, daily covers. Live RM output: monthly contribution margin, break-even covers, profit gap. No email gate."/>
+<meta name="keywords" content="restaurant break-even calculator Malaysia, cafe break-even Malaysia, F&amp;B unit economics calculator, restaurant profitability calculator, kopitiam break-even, F&amp;B fixed cost calculator Malaysia"/>
+<meta name="author" content="MenuBase"/>
+<meta name="theme-color" content="#BCF125"/>
+<meta name="robots" content="index, follow, max-image-preview:large"/>
+<link rel="canonical" href="https://menubase.io/tools/break-even-calculator.html"/>
+<link rel="alternate" hreflang="en" href="https://menubase.io/tools/break-even-calculator.html"/>
+<link rel="alternate" hreflang="x-default" href="https://menubase.io/tools/break-even-calculator.html"/>
+
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="MenuBase"/>
+<meta property="og:url" content="https://menubase.io/tools/break-even-calculator.html"/>
+<meta property="og:title" content="Restaurant + Cafe Break-Even Calculator (Malaysia) | Free, No Email"/>
+<meta property="og:description" content="Free break-even calculator. 5 sliders, live RM output. Built for Malaysian F&amp;B operators."/>
+<meta property="og:image" content="https://menubase.io/menubase-logo-dark.png"/>
+<meta property="og:image:width" content="3026"/>
+<meta property="og:image:height" content="548"/>
+<meta property="og:image:type" content="image/png"/>
+<meta property="og:locale" content="en_MY"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Restaurant + Cafe Break-Even Calculator (Malaysia)"/>
+<meta name="twitter:description" content="Free, no email gate. 5 sliders. Live RM output."/>
+<meta name="twitter:image" content="https://menubase.io/menubase-logo-dark.png"/>
+
+<link rel="icon" href="/img/menubase_logo_icon.png" type="image/png"/>
+<link rel="apple-touch-icon" href="/img/menubase_logo_icon.png"/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "@id": "https://menubase.io/tools/break-even-calculator.html#tool",
+      "name": "Restaurant + Cafe Break-Even Calculator (Malaysia)",
+      "url": "https://menubase.io/tools/break-even-calculator.html",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "browserRequirements": "JavaScript enabled",
+      "description": "Free break-even calculator for Malaysian F&B operators. 5 sliders: monthly fixed costs, food cost %, labour cost %, AOV, daily covers. Outputs current monthly contribution margin, monthly break-even covers, and the gap to profit. No email gate. Result link is shareable.",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "MYR" },
+      "provider": { "@id": "https://menubase.io/#organization" },
+      "inLanguage": "en",
+      "audience": { "@type": "BusinessAudience", "audienceType": "Malaysian F&B operators (cafes, kopitiams, restaurants, bubble tea shops)" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://menubase.io/tools/break-even-calculator.html#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://menubase.io/" },
+        { "@type": "ListItem", "position": 2, "name": "Playbook", "item": "https://menubase.io/learn/" },
+        { "@type": "ListItem", "position": 3, "name": "Break-Even Calculator", "item": "https://menubase.io/tools/break-even-calculator.html" }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://menubase.io/tools/break-even-calculator.html#webpage",
+      "url": "https://menubase.io/tools/break-even-calculator.html",
+      "name": "Restaurant + Cafe Break-Even Calculator For Malaysian F&B Operators",
+      "description": "Free 5-slider break-even calculator with live RM output and shareable result link. No email gate.",
+      "isPartOf": { "@id": "https://menubase.io/#website" },
+      "about": { "@id": "https://menubase.io/#organization" },
+      "breadcrumb": { "@id": "https://menubase.io/tools/break-even-calculator.html#breadcrumb" },
+      "mainEntity": { "@id": "https://menubase.io/tools/break-even-calculator.html#tool" },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://menubase.io/menubase-logo-dark.png",
+        "contentUrl": "https://menubase.io/menubase-logo-dark.png",
+        "caption": "MenuBase wordmark"
+      },
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800;900&amp;family=Geist:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../learn/learn.css?v=20260531cardsnap"/>
+
+<style>
+  .tool-wrap { max-width: 920px; margin: 0 auto; padding: 64px 24px 100px; }
+  .tool-wrap h1 { font-family: var(--font-display); font-weight: 800; font-size: clamp(34px, 4.6vw, 56px); line-height: 1.05; letter-spacing: -0.025em; color: var(--ink); margin: 0 0 18px; }
+  .tool-wrap h1 em { font-style: normal; color: var(--lime); }
+  .tool-wrap .lede { font-size: 17px; line-height: 1.55; color: var(--ink-2); max-width: 60ch; margin: 0 0 36px; }
+  .tool-wrap h2 { font-family: var(--font-display); font-weight: 700; font-size: clamp(22px, 2.8vw, 30px); letter-spacing: -0.02em; color: var(--ink); margin: 36px 0 14px; }
+  .tool-wrap p { font-size: 15.5px; line-height: 1.6; color: var(--ink-2); margin: 0 0 16px; }
+  .tool-wrap p a { color: var(--lime); }
+  .tool-wrap p a:hover { color: var(--lime-deep); }
+  .tool-wrap ul { padding-left: 22px; margin: 0 0 18px; color: var(--ink-2); font-size: 15.5px; line-height: 1.6; }
+  .tool-wrap ul li { margin-bottom: 6px; }
+
+  .calc-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px 28px;
+    margin: 28px 0 40px;
+  }
+  .calc-field { margin-bottom: 22px; }
+  .calc-field .row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+  .calc-field label { font-family: var(--font-display); font-weight: 600; font-size: 14.5px; color: var(--ink); }
+  .calc-field .val { font-family: var(--font-mono); font-size: 16px; color: var(--lime); font-weight: 700; }
+  .calc-field input[type="range"] {
+    width: 100%;
+    height: 4px;
+    background: var(--line);
+    border-radius: 2px;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+  }
+  .calc-field input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 16px; height: 16px;
+    background: var(--lime);
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  .calc-field input[type="range"]::-moz-range-thumb {
+    width: 16px; height: 16px;
+    background: var(--lime);
+    border-radius: 2px;
+    cursor: pointer;
+    border: none;
+  }
+  .calc-range-labels { display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10.5px; color: var(--ink-2); margin-top: 6px; letter-spacing: 0.1em; }
+  .calc-divider { border-top: 1px solid var(--line); margin: 26px 0; }
+  .calc-results { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .calc-result { padding: 16px 18px; background: rgba(188,241,37,0.06); border: 1px solid rgba(188,241,37,0.22); border-radius: 10px; }
+  .calc-result.warn { background: rgba(255, 90, 60, 0.06); border-color: rgba(255, 90, 60, 0.30); }
+  .calc-result .lbl { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); font-weight: 700; margin-bottom: 6px; }
+  .calc-result .num { font-family: var(--font-display); font-weight: 700; font-size: 26px; color: var(--ink); letter-spacing: -0.02em; }
+  .calc-result .num.big { font-size: 36px; color: var(--lime); }
+  .calc-result.warn .num.big { color: #FF6B47; }
+  .calc-result .sub { font-family: var(--font-mono); font-size: 11px; color: var(--ink-2); margin-top: 4px; letter-spacing: 0.06em; }
+
+  .share-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: -10px 0 36px; font-size: 13px; color: var(--ink-2); }
+  .share-row strong { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); font-weight: 700; }
+  .share-row button { font-family: var(--font-mono); font-size: 12px; padding: 6px 12px; background: transparent; border: 1px solid var(--line); border-radius: 6px; color: var(--ink); cursor: pointer; transition: border-color 180ms; }
+  .share-row button:hover { border-color: var(--lime); }
+
+  @media (max-width: 720px) {
+    .calc-results { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="mb-bg" aria-hidden="true"></canvas>
+<script src="/menubase-bg.js" data-theme="dark" data-mode="synthesis" defer></script>
+
+<div class="top-ribbon">
+  <div class="top-ribbon-inner">
+    <a href="/" class="brand" aria-label="MenuBase home">
+      <img class="brand-lockup" src="/menubase-logo-dark.png" alt="MenuBase" width="188" height="34" fetchpriority="high" decoding="async"/>
+    </a>
+<a class="lang-switch" href="/ms/" hreflang="ms" role="button" aria-label="Switch to Bahasa Malaysia (tap to cycle language)" data-current-lang="en"><svg class="lang-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19"/><path d="M12 2.5c2.7 3 4 6.2 4 9.5s-1.3 6.5-4 9.5c-2.7-3-4-6.2-4-9.5s1.3-6.5 4-9.5z"/></svg><span class="lang-current">EN</span><span class="lang-arr" aria-hidden="true">&#8634;</span></a>
+        <a class="top-ribbon-login" href="https://app.menubase.io" target="_blank" rel="noopener">
+      Login <span class="arr" aria-hidden="true">&rarr;</span>
+    </a>
+  </div>
+</div>
+
+<main>
+<article class="tool-wrap has-bg-scrim">
+
+<div class="crumb"><a href="/learn/">Playbook</a> &nbsp;/&nbsp; Tools</div>
+
+<h1>Break-Even Calculator <em>for Malaysian F&amp;B.</em></h1>
+
+<p class="lede">Move 5 sliders. See your monthly break-even covers and how far you are from profit. Built for cafes, kopitiams, restaurants and bubble tea shops in Malaysia. Free. No email gate.</p>
+
+<div class="calc-card">
+  <div class="calc-field">
+    <div class="row"><label>Monthly fixed costs (rent + utilities + admin)</label><span class="val">RM <span id="v-fixed">14,000</span></span></div>
+    <input id="i-fixed" type="range" min="2000" max="80000" step="500" value="14000"/>
+    <div class="calc-range-labels"><span>RM 2k</span><span>RM 80k / mo</span></div>
+  </div>
+  <div class="calc-field">
+    <div class="row"><label>Food cost percentage</label><span class="val"><span id="v-food">32</span>%</span></div>
+    <input id="i-food" type="range" min="15" max="50" step="1" value="32"/>
+    <div class="calc-range-labels"><span>15%</span><span>50%</span></div>
+  </div>
+  <div class="calc-field">
+    <div class="row"><label>Labour cost percentage</label><span class="val"><span id="v-labour">28</span>%</span></div>
+    <input id="i-labour" type="range" min="10" max="45" step="1" value="28"/>
+    <div class="calc-range-labels"><span>10%</span><span>45%</span></div>
+  </div>
+  <div class="calc-field">
+    <div class="row"><label>Average order value (RM)</label><span class="val">RM <span id="v-aov">32</span></span></div>
+    <input id="i-aov" type="range" min="8" max="150" step="1" value="32"/>
+    <div class="calc-range-labels"><span>RM 8</span><span>RM 150</span></div>
+  </div>
+  <div class="calc-field">
+    <div class="row"><label>Current daily covers</label><span class="val"><span id="v-covers">90</span> / day</span></div>
+    <input id="i-covers" type="range" min="20" max="500" step="5" value="90"/>
+    <div class="calc-range-labels"><span>20</span><span>500 / day</span></div>
+  </div>
+  <div class="calc-divider"></div>
+  <div class="calc-results">
+    <div class="calc-result">
+      <div class="lbl">Monthly break-even covers</div>
+      <div class="num" id="v-bebcovers">14,000</div>
+      <div class="sub" id="v-bebperday">~ 467 / day</div>
+    </div>
+    <div class="calc-result" id="result-gap">
+      <div class="lbl">Monthly gap to break-even</div>
+      <div class="num big" id="v-gap">+ RM 4,200</div>
+      <div class="sub" id="v-gapnote">on top of break-even</div>
+    </div>
+  </div>
+  <div class="calc-divider"></div>
+  <div class="calc-results">
+    <div class="calc-result">
+      <div class="lbl">Monthly revenue at current volume</div>
+      <div class="num" id="v-rev">RM 86,400</div>
+    </div>
+    <div class="calc-result">
+      <div class="lbl">Monthly contribution after food + labour</div>
+      <div class="num" id="v-contrib">RM 34,560</div>
+      <div class="sub" id="v-contribper">RM 12.80 per cover</div>
+    </div>
+  </div>
+</div>
+
+<div class="share-row">
+  <strong>SHARE</strong>
+  <button id="copy-link" type="button">Copy result link</button>
+  <span id="copy-status"></span>
+</div>
+
+<h2>How this calculator works</h2>
+
+<p>5 inputs, 4 outputs.</p>
+
+<ul>
+  <li><strong>Monthly fixed costs</strong> includes rent + utilities + insurance + software subscriptions + admin. The Klang Valley range is roughly RM6,000-RM35,000 for a single cafe; full-service restaurants run RM12,000-RM60,000. <a href="/learn/state-of-malaysian-fb-2026.html">See benchmarks</a>.</li>
+  <li><strong>Food cost percentage</strong> is COGS divided by revenue. Healthy ranges in Malaysian 2026: cafe 28-34%, kopitiam 22-28%, full-service 30-36%, bubble tea 18-26%. <a href="/learn/food-cost-percentage-malaysian-fb.html">Full guide</a>.</li>
+  <li><strong>Labour cost percentage</strong> includes salaries + EPF + SOCSO + EIS + HRD levy + service charge pool. Healthy is under 30% for most venues, under 25% for kopitiams.</li>
+  <li><strong>Average order value</strong> is total revenue divided by check count. Cafes RM22-RM48. Kopitiams RM8-RM18. Bubble tea RM12-RM25. Casual restaurants RM35-RM80. <a href="/learn/how-to-increase-average-order-value-malaysia.html">How to lift it</a>.</li>
+  <li><strong>Current daily covers</strong> is your average daily check count.</li>
+</ul>
+
+<p>The math:</p>
+
+<ul>
+  <li><strong>Contribution per cover</strong> = AOV &times; (1 - (food% + labour%) / 100). This is the RM each check contributes toward covering fixed costs after the variable costs of serving it.</li>
+  <li><strong>Monthly break-even covers</strong> = monthly fixed costs &divide; contribution per cover. The exact number of covers per month you need to cover fixed costs.</li>
+  <li><strong>Monthly gap</strong> = (current daily covers &times; 30 &minus; break-even covers) &times; contribution per cover. Positive = profit, negative = monthly loss.</li>
+  <li><strong>Monthly revenue at current volume</strong> = current daily covers &times; 30 &times; AOV.</li>
+</ul>
+
+<p>What this calculator does not include: corporate tax, depreciation, owner draw, marketing spend (treat marketing as a fixed cost line in your inputs). It is the operator break-even, not the accounting break-even. Use it as the diagnostic for "do my fundamentals work" not as your tax filing.</p>
+
+<h2>What to do if your break-even is too high</h2>
+
+<p>Four levers move break-even forward:</p>
+
+<ul>
+  <li><strong>Drop fixed costs.</strong> Renegotiate rent, audit software subscriptions, sublease quiet hours. See <a href="/learn/restaurant-lease-renewal-negotiation-malaysia.html">lease renewal negotiation</a> and <a href="/learn/pos-subscription-hidden-costs-malaysia.html">POS subscription hidden costs</a>.</li>
+  <li><strong>Drop food cost %.</strong> Multi-source the top 3 categories, lock 6-month contracts on volatile items, reprice the menu quarterly. See <a href="/learn/restaurant-supply-chain-malaysia.html">supply chain</a> and <a href="/learn/menu-engineering-malaysian-fb.html">menu engineering</a>.</li>
+  <li><strong>Drop labour cost %.</strong> Cross-train, design jobs that survive turnover, push system-led upsell so the team focuses on hospitality. See <a href="/learn/how-to-handle-staff-turnover-malaysian-fb.html">staff turnover</a>.</li>
+  <li><strong>Lift AOV.</strong> Smart upsell at the right moment, threshold rewards, daypart price ladders. See <a href="/learn/how-to-increase-average-order-value-malaysia.html">9 AOV tactics</a>.</li>
+</ul>
+
+<p>For the full operator playbook on bringing break-even forward, see <a href="/learn/restaurant-break-even-analysis-malaysia.html">Restaurant Break-Even Analysis in Malaysia</a>.</p>
+
+<h2>Send your numbers, get a tailored uplift model</h2>
+
+<p>WhatsApp +60175981858 with your venue type, your monthly fixed costs and your last 30 days of revenue. We model your specific break-even gap and the 2-3 highest-leverage moves to close it within 90 days. 15 minutes. No commitment. If MenuBase is not right for you, we will say so.</p>
+
+<p style="margin-top:20px;">
+  <a class="btn" style="display:inline-flex;align-items:center;gap:8px;padding:14px 24px;font-size:15px;font-weight:700;border-radius:14px;background:#BCF125;color:#0F1108;text-decoration:none;letter-spacing:-0.005em;" id="wa-share" href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bfrom%3A%20break-even%20calculator%5D%20Just%20ran%20the%20calculator.%20Want%20to%20look%20at%20the%20gap%20on%20our%20venue%20together." target="_blank" rel="noopener">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:18px;height:18px;flex-shrink:0;"><path d="M27.04 4.95C24.07 1.97 20.12.33 15.92.33 7.27.33.23 7.37.23 16.02c0 2.77.72 5.47 2.1 7.85L.1 31.67l8.02-2.1c2.3 1.25 4.88 1.91 7.5 1.91h.01c8.65 0 15.69-7.04 15.69-15.69 0-4.19-1.63-8.13-4.28-11.09zm-11.12 24.13h-.01c-2.34 0-4.63-.63-6.62-1.81l-.47-.28-4.92 1.29 1.31-4.79-.31-.49a13.04 13.04 0 0 1-2-6.97c0-7.21 5.87-13.07 13.08-13.07 3.5 0 6.78 1.36 9.25 3.83a13.01 13.01 0 0 1 3.83 9.25c.01 7.2-5.86 13.04-13.07 13.04zm7.14-9.78c-.39-.2-2.32-1.14-2.68-1.27-.36-.13-.62-.2-.89.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.46.29-.85.1-.39-.2-1.65-.61-3.15-1.95-1.16-1.04-1.95-2.32-2.18-2.71-.23-.39-.02-.6.17-.8.18-.18.39-.46.59-.69.2-.23.26-.39.39-.65.13-.26.07-.49-.03-.69-.1-.2-.89-2.15-1.22-2.93-.32-.77-.65-.67-.89-.68-.23-.01-.49-.01-.76-.01s-.69.1-1.06.49c-.36.39-1.39 1.36-1.39 3.3 0 1.95 1.42 3.83 1.62 4.09.2.26 2.79 4.27 6.77 5.99.95.41 1.69.65 2.27.84.95.3 1.82.26 2.5.16.76-.11 2.32-.95 2.65-1.87.33-.92.33-1.71.23-1.87-.1-.16-.36-.26-.75-.46z" fill="currentColor"/></svg>
+    Send my numbers to MenuBase &rarr;
+  </a>
+</p>
+
+</article>
+</main>
+
+<script>
+(function(){
+  var fmt = new Intl.NumberFormat('en-MY');
+
+  function $(id){ return document.getElementById(id); }
+
+  var els = {
+    fixed: $('i-fixed'), food: $('i-food'), labour: $('i-labour'), aov: $('i-aov'), covers: $('i-covers'),
+    vFixed: $('v-fixed'), vFood: $('v-food'), vLabour: $('v-labour'), vAov: $('v-aov'), vCovers: $('v-covers'),
+    vBebCovers: $('v-bebcovers'), vBebPerDay: $('v-bebperday'),
+    vGap: $('v-gap'), vGapNote: $('v-gapnote'), gapBox: $('result-gap'),
+    vRev: $('v-rev'), vContrib: $('v-contrib'), vContribPer: $('v-contribper')
+  };
+
+  function recompute(){
+    var fixed = parseFloat(els.fixed.value);
+    var food = parseFloat(els.food.value);
+    var labour = parseFloat(els.labour.value);
+    var aov = parseFloat(els.aov.value);
+    var covers = parseFloat(els.covers.value);
+
+    var variableRate = (food + labour) / 100;
+    var contribPerCover = aov * (1 - variableRate);
+    var monthlyCurrentCovers = covers * 30;
+    var monthlyRevenue = monthlyCurrentCovers * aov;
+    var monthlyContrib = monthlyRevenue * (1 - variableRate);
+    var bebCovers = contribPerCover > 0 ? Math.ceil(fixed / contribPerCover) : Infinity;
+    var bebPerDay = bebCovers === Infinity ? Infinity : Math.ceil(bebCovers / 30);
+    var monthlyGap = (monthlyCurrentCovers - bebCovers) * contribPerCover;
+
+    els.vFixed.textContent = fmt.format(fixed);
+    els.vFood.textContent = food;
+    els.vLabour.textContent = labour;
+    els.vAov.textContent = aov;
+    els.vCovers.textContent = covers;
+
+    if (bebCovers === Infinity || !isFinite(bebCovers)) {
+      els.vBebCovers.textContent = 'never';
+      els.vBebPerDay.textContent = 'food + labour > 100% of revenue';
+    } else {
+      els.vBebCovers.textContent = fmt.format(bebCovers);
+      els.vBebPerDay.textContent = '~ ' + fmt.format(bebPerDay) + ' / day';
+    }
+
+    if (monthlyGap >= 0) {
+      els.vGap.textContent = '+ RM ' + fmt.format(Math.round(monthlyGap));
+      els.vGapNote.textContent = 'profit above break-even';
+      els.gapBox.classList.remove('warn');
+    } else {
+      els.vGap.textContent = '- RM ' + fmt.format(Math.round(-monthlyGap));
+      els.vGapNote.textContent = 'monthly loss vs break-even';
+      els.gapBox.classList.add('warn');
+    }
+
+    els.vRev.textContent = 'RM ' + fmt.format(Math.round(monthlyRevenue));
+    els.vContrib.textContent = 'RM ' + fmt.format(Math.round(monthlyContrib));
+    els.vContribPer.textContent = 'RM ' + contribPerCover.toFixed(2) + ' per cover';
+
+    // Update URL state so it is shareable
+    var qs = new URLSearchParams({
+      fixed: fixed, food: food, labour: labour, aov: aov, covers: covers
+    });
+    history.replaceState(null, '', '?' + qs.toString());
+
+    // Update WhatsApp share with current numbers
+    var msg = 'Hi MenuBase! [from: break-even calculator] My numbers: monthly fixed RM' + fmt.format(fixed) + ', food cost ' + food + '%, labour ' + labour + '%, AOV RM' + aov + ', daily covers ' + covers + '. Break-even ~' + (bebCovers === Infinity ? 'never' : fmt.format(bebCovers)) + ' covers/month. Want to model the gap.';
+    var wa = $('wa-share');
+    if (wa) wa.href = 'https://wa.me/60175981858?text=' + encodeURIComponent(msg);
+  }
+
+  // Hydrate from URL if present
+  var p = new URLSearchParams(window.location.search);
+  ['fixed','food','labour','aov','covers'].forEach(function(k){
+    var v = p.get(k);
+    if (v !== null && els[k]) els[k].value = v;
+  });
+
+  ['fixed','food','labour','aov','covers'].forEach(function(k){
+    els[k].addEventListener('input', recompute);
+  });
+
+  recompute();
+
+  // Copy link
+  var copyBtn = $('copy-link');
+  var copyStatus = $('copy-status');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function(){
+      var url = window.location.href;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function(){
+          copyStatus.textContent = 'Copied';
+          setTimeout(function(){ copyStatus.textContent = ''; }, 1800);
+        });
+      } else {
+        // Fallback
+        var t = document.createElement('textarea');
+        t.value = url; document.body.appendChild(t); t.select();
+        try { document.execCommand('copy'); copyStatus.textContent = 'Copied'; }
+        catch(e){ copyStatus.textContent = 'Copy failed'; }
+        document.body.removeChild(t);
+        setTimeout(function(){ copyStatus.textContent = ''; }, 1800);
+      }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

@@ -166,6 +166,7 @@ WhatsApp +60175981858. Free 15-minute revenue model on the operator's actual men
 ## Tools
 
 - [AOV Calculator (free, no email gate)](https://menubase.io/tools/aov-calculator.html): Three-slider calculator that projects monthly upsell uplift for a Malaysian F&B venue based on daily orders, AOV and accept rate. Result URL is shareable via query string.
+- [Break-Even Calculator (free, no email gate)](https://menubase.io/tools/break-even-calculator.html): Five-slider calculator that projects monthly break-even covers and current profit gap for a Malaysian F&B venue. Inputs: monthly fixed costs, food cost %, labour cost %, AOV, daily covers. Outputs: monthly break-even covers, gap to break-even (positive = profit, negative = monthly loss), monthly revenue at current volume, monthly contribution after food + labour. Result URL is shareable.
 
 ## Topic-scoped LLM context files
 
