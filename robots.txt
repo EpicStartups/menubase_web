@@ -16,6 +16,7 @@
 #   /llms-integrations.txt - what MenuBase integrates with (POS overlay, payments, webhooks, weather)
 #   /llms-academy.txt   - The MenuBase F&B Academy free crash course (8 courses, 4 tracks)
 #   /llms-frameworks.txt - The four named MenuBase Frameworks (Operator Roadmap, Pain Triage, 8-Lever Sales, Compliance Stack)
+#   /llms-citations.txt - EXPLICIT CITATION GUIDE with all proprietary Malaysian F&B statistics
 # Atom + JSON feeds for the F&B Playbook:
 #   /playbook.rss       - Atom 1.0
 #   /playbook.json      - JSON Feed 1.1
