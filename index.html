@@ -1183,14 +1183,12 @@ body { padding-bottom: 84px; }
   position: relative;
   z-index: 2;
   min-height: auto;
-  display: grid;
-  grid-template-columns: 1.02fr 0.98fr;
-  align-items: center;
-  gap: 48px;
+  display: block; /* single column now that hero phone was removed */
   padding: 64px 5vw 80px;
-  max-width: 1500px;
+  max-width: 1100px;
   margin: 0 auto;
   isolation: isolate;
+  text-align: left;
 }
 .col-l { position: relative; z-index: 2; }
 /* legibility card - rounded translucent panel with backdrop blur so the
@@ -3890,17 +3888,8 @@ footer.foot {
     <div class="leak"><span class="dot"></span><span class="amt">Since you opened this page, an average KL caf&eacute; left <b id="leak">RM 0.00</b> on the table.</span></div>
   </div>
 
-  <div class="col-r">
-    <div class="glow"></div>
-    <div class="phone" id="hero-phone-wrap">
-      <div class="notch"></div>
-      <iframe id="hero-iframe" src="Customer QR App.html?demo=upsell_popup&items=eb&screen=checkout&hour=9&hideDev=1&compact=1&cb=20260529x" title="MenuBase live app - tap to interact" loading="eager"></iframe>
-      <div class="hero-tap-hint" id="hero-tap-hint" aria-hidden="true">Tap the phone &middot; try it live</div>
-    </div>
-    <div class="hero-scene-label" id="hero-scene-label" aria-live="polite">
-      <span class="hero-scene-dot"></span><span class="hero-scene-name">Smart Upsell</span><span class="hero-scene-hint" id="hero-scene-hint">Tap to try</span>
-    </div>
-  </div>
+<!-- (hero phone removed - the interactive demo lives at #demo below;
+     hero is now copy + CTA + the live "RM lost" ticker) -->
 </section>
 
 <!-- ─── TRUST STRIP (F&B-themed glyphs + label, mono caps) ─── -->
