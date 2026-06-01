@@ -961,12 +961,21 @@ section.compare-block,
 section.testi-block,
 section.manifesto,
 .trust-strip, .demo, .calc-shell, .cta-shell, .faq-shell,
-footer.foot, .top-ribbon, nav.top {
+footer.foot, nav.top {
   position: relative;
   z-index: 2;
 }
 nav.top { z-index: 50; }
-.top-ribbon { z-index: 49; }
+/* sticky top ribbon - explicit late rule so the early sticky declaration wins */
+.top-ribbon {
+  position: sticky;
+  top: 0;
+  z-index: 49;
+  background: rgba(15, 17, 13, 0.78);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
 .top-ribbon-inner {
   max-width: 1320px;
   margin: 0 auto;
@@ -2649,7 +2658,13 @@ footer.foot {
   .faq-answer { font-size: 14.5px; padding-bottom: 20px; }
 
   footer.foot { padding: 40px 18px 22px; }
-  .foot-inner { grid-template-columns: 1fr; gap: 28px; }
+  .foot-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 24px;
+  }
+  .foot-brand { grid-column: 1 / -1; }
+  .foot-col a { font-size: 13px; padding: 4px 0; }
+  .foot-col h5 { margin-bottom: 10px; font-size: 11px; }
   .foot-col h5 { margin-bottom: 12px; }
   .foot-col a { font-size: 13.5px; }
   .foot-bottom { font-size: 10px; margin-top: 36px; padding-top: 18px; }

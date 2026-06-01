@@ -1014,12 +1014,23 @@ section.compare-block,
 section.testi-block,
 section.manifesto,
 .trust-strip, .demo, .calc-shell, .cta-shell, .faq-shell,
-footer.foot, .top-ribbon, nav.top {
+footer.foot, nav.top {
   position: relative;
   z-index: 2;
 }
 nav.top { z-index: 50; }
-.top-ribbon { z-index: 49; }
+/* Keep .top-ribbon sticky (the early rule is sticky; do NOT override to relative).
+   Sticky is preserved with z-index 49 so the floating bottom nav stays on top. */
+.top-ribbon {
+  position: sticky;
+  top: 0;
+  z-index: 49;
+  /* Add a backdrop so content scrolling underneath doesn't bleed through */
+  background: rgba(15, 17, 13, 0.78);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
 .top-ribbon-inner {
   max-width: 1320px;
   margin: 0 auto;
@@ -1482,19 +1493,19 @@ body { padding-bottom: 84px; }
   .hero { min-height: auto; padding-top: 56px; padding-bottom: 40px; }
 }
 
-/* legacy secondary text-link (used in the manifesto section) */
+/* legacy secondary text-link (used in the manifesto section on lime bg) */
 .hero-watch {
   font-family: var(--font-body);
   font-size: 14.5px;
-  color: var(--ink);
-  font-weight: 500;
+  color: #0F1108; /* explicit dark ink - manifesto inherits white so we need to force dark here */
+  font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 5px;
-  text-decoration-color: var(--lime-deep);
+  text-decoration-color: #0F1108;
   text-decoration-thickness: 2px;
-  transition: color 120ms;
+  transition: opacity 120ms;
 }
-.hero-watch:hover { color: var(--lime-deep); }
+.hero-watch:hover { opacity: 0.7; }
 
 /* ─── TRUST STRIP (subtle one-line fact strip below hero) ─── */
 .trust-strip {
@@ -2929,7 +2940,13 @@ footer.foot {
   .faq-answer { font-size: 14.5px; padding-bottom: 20px; }
 
   footer.foot { padding: 40px 18px 22px; }
-  .foot-inner { grid-template-columns: 1fr; gap: 28px; }
+  .foot-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 24px;
+  }
+  .foot-brand { grid-column: 1 / -1; }
+  .foot-col a { font-size: 13px; padding: 4px 0; }
+  .foot-col h5 { margin-bottom: 10px; font-size: 11px; }
   .foot-col h5 { margin-bottom: 12px; }
   .foot-col a { font-size: 13.5px; }
   .foot-bottom { font-size: 10px; margin-top: 36px; padding-top: 18px; }

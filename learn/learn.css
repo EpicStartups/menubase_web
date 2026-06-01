@@ -125,8 +125,10 @@ main, .top-ribbon, footer.foot { position: relative; z-index: 1; }
   position: sticky;
   top: 0;
   z-index: 49;
-  background: transparent;
-  border-bottom: none;
+  background: rgba(15, 17, 13, 0.78);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .top-ribbon-inner {
   max-width: 1320px;
