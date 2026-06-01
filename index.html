@@ -3423,6 +3423,11 @@ footer.foot {
   width: 24px;
 }
 .rc-dot:hover { opacity: 0.75; }
+/* Mid-desktop: 3-up was too cramped for problem cards on ~1000px viewports.
+   Step down to 2-up between 901-1100px so cards keep readable width. */
+@media (max-width: 1100px) and (min-width: 901px) {
+  .problem-carousel .problem-card { flex: 0 0 calc(50% - 10px); }
+}
 @media (max-width: 900px) {
   /* One card fully visible per swipe - 100% width + mandatory snap = one-by-one */
   .reassure-carousel .reassure-card { flex-basis: 100%; }
