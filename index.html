@@ -172,11 +172,17 @@
       "@id": "https://menubase.io/#website",
       "url": "https://menubase.io/",
       "name": "MenuBase",
+      "alternateName": "MenuBase Malaysia",
+      "description": "The smart waiter inside your QR menu. Lifts average order value for Malaysian cafes, kopitiams, restaurants and bubble tea shops. Plus the MenuBase Playbook: 60+ free guides for Malaysian F&B operators.",
       "publisher": { "@id": "https://menubase.io/#organization" },
-      "inLanguage": "en",
+      "inLanguage": ["en", "ms", "zh-Hans"],
       "potentialAction": {
-        "@type": "ReadAction",
-        "target": "https://menubase.io/"
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://menubase.io/learn/?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
       }
     },
     {

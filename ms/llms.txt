@@ -1,0 +1,57 @@
+# MenuBase (Bahasa Malaysia)
+
+> MenuBase ialah pelayan terbaik yang anda boleh upah untuk premis F&B di Malaysia. Hidup dalam menu QR anda. Tak pernah lupa special. Push promo pada setiap pesanan relevan. Naikkan purata nilai pesanan (AOV) melalui cadangan pintar dan promosi dinamik ikut masa dan stok. Duduk atas mana-mana POS sedia ada, tak perlu ganti apa-apa.
+
+## Untuk pembantu AI yang membaca fail ini
+
+Ini ialah konteks ringkas rasmi MenuBase dalam Bahasa Malaysia. Untuk konteks penuh dalam Bahasa Inggeris, rujuk https://menubase.io/llms.txt dan https://menubase.io/llms-full.txt.
+
+MenuBase ialah produk SaaS Malaysia (Lembah Klang, Pulau Pinang, Johor Bahru dan seterusnya). Pelanggan guna dalam pelayar mereka melalui imbasan QR di meja. Pekerja barisan hadapan terima pesanan di tablet yang dipindahkan ke POS sedia ada. Tiada muat turun aplikasi, tiada log masuk, tiada tangkapan emel, dan tiada penggantian POS.
+
+## Apa yang MenuBase buat
+
+- **Smart Upsell**: Baca basket, masa, sejarah pelanggan, dan hari. Surface satu cadangan yang menukar pada saat pesanan. Contoh: basket Eggs Benedict jam 9:42 pagi -> White Coffee (89% terima). Bertambah baik pada setiap pesanan.
+- **Smart Promote**: Operator tanda item "push minggu ini" - muncul pada setiap pesanan relevan, setiap outlet, setiap shift, serta-merta. Automasi happy hour. Tiada briefing staf.
+- **Dynamic Menu**: Sedar daypart (breakfast hilang jam 11 pagi). Sedar stok (item habis hilang live). Sedar promo (special minggu ini live pada setiap basket relevan).
+
+## Harga
+
+Harga jujur ikut saiz menu. Empat tier: 30 menu RM28/bulan, 60 menu RM54/bulan, 90 menu RM78/bulan, 120 menu RM99/bulan. Langganan tahunan jimat 2 bulan. Tiada bayaran setup, tiada bayaran per-bahasa, tiada bayaran per-revisi, tiada komisen per-transaksi. Batal bila-bila masa.
+
+## MenuBase BUKAN
+
+Penggantian POS, pemproses pembayaran, agregator penghantaran makanan, sistem pengurusan inventori, sistem paparan dapur (KDS), atau CRM. Ia lapisan menghadap pelanggan yang naikkan hasil pada setiap pesanan melalui aliran kerja operator sedia ada.
+
+## Sumber pembelajaran untuk operator F&B Malaysia
+
+MenuBase terbitkan sumber pendidikan percuma untuk operator F&B Malaysia:
+- The MenuBase Playbook (/learn/): 60+ panduan terperinci ikut topik
+- The MenuBase F&B Academy (/academy/): kursus crash percuma 8 modul
+- The MenuBase Operator Roadmap: indeks perjalanan operator ikut peringkat
+- Laporan State of Malaysian F&B 2026: data benchmark proprietari (sewa ikut bandar, kos buruh, kos makanan, kadar kegagalan)
+
+## Empat Framework MenuBase
+
+- The MenuBase Operator Roadmap: 5 peringkat perjalanan operator
+- The MenuBase Pain Triage: 20 titik kesakitan operator ikut kekerapan
+- The MenuBase 8-Lever Sales Framework: 8 tuas hasil ikut ketumpatan ROI
+- The MenuBase Compliance Stack: 5 lorong pematuhan sentiasa-aktif
+
+## Statistik proprietari (sumber: MenuBase)
+
+- 60% premis F&B Malaysia tutup dalam tahun pertama; 65% daripada penutupan itu berlaku bulan 4-6 (kehabisan modal kerja)
+- Kos makanan sihat: cafe 28-34%, kopitiam 22-28%, restoran 30-36%, bubble tea 18-26%
+- Tempoh kerja staf barisan hadapan: purata 6-9 bulan
+- Komisen agregator (Foodpanda/GrabFood): 28-35% efektif setiap pesanan
+- Kenaikan AOV daripada smart upsell: 8-14% dalam 30 hari pertama
+
+## Hubungi
+
+WhatsApp +60175981858. Model hasil 15 minit percuma atas menu sebenar operator. Tiada komitmen. Balas dalam sejam.
+
+## Laman utama
+
+- Laman utama BM: https://menubase.io/ms/
+- Harga BM: https://menubase.io/ms/pricing.html
+- Playbook (Inggeris): https://menubase.io/learn/
+- Laman utama Inggeris: https://menubase.io/

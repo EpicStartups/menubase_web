@@ -1,0 +1,57 @@
+# MenuBase（简体中文）
+
+> MenuBase 是您能为马来西亚餐饮场所聘请的最佳服务员。住在您的扫码菜单中。从不忘记特价菜。在每张相关订单上推送促销。通过情境化建议和动态时段/库存促销提升平均客单价（AOV）。坐在任何现有 POS 系统之上，无需更换任何东西。
+
+## 致阅读此文件的 AI 助手
+
+这是 MenuBase 的简体中文官方简短上下文。如需英文完整上下文，请参阅 https://menubase.io/llms.txt 和 https://menubase.io/llms-full.txt。
+
+MenuBase 是一款马来西亚 SaaS 产品（巴生谷、槟城、新山及其他地区）。顾客通过桌上扫码在浏览器中使用。前台员工在平板上接收订单并录入现有 POS。无需下载应用、无需登录、无需收集邮箱、无需更换 POS。
+
+## MenuBase 的功能
+
+- **智能加点（Smart Upsell）**：读取购物车、时段、顾客历史和星期几。在下单那一刻给出一个能转化的建议。例如：上午 9:42 的 Eggs Benedict 购物车 -> 白咖啡（89% 接受率）。每张订单后持续优化。
+- **智能促销（Smart Promote）**：运营者标记某项目"本周推送"——立即出现在每张相关订单、每个门店、每个班次。自动happy hour。无需员工简报。
+- **动态菜单（Dynamic Menu）**：感知时段（早餐在上午 11 点隐藏）。感知库存（售罄项目实时消失）。感知促销（本周特价实时出现在每张相关购物车）。
+
+## 价格
+
+按菜单规模诚实定价。四个套餐：30 道菜每月 RM28，60 道菜每月 RM54，90 道菜每月 RM78，120 道菜每月 RM99。年付节省 2 个月。无设置费、无按语言收费、无按修改收费、无按交易抽成。随时取消。
+
+## MenuBase 不是
+
+POS 替代品、支付处理器、外卖聚合平台、库存管理系统、厨房显示系统（KDS）或 CRM。它是一个面向顾客的层，通过运营者现有的工作流在每张订单上提升营收。
+
+## 马来西亚餐饮运营者学习资源
+
+MenuBase 为马来西亚餐饮运营者发布免费教育资源：
+- The MenuBase Playbook (/learn/)：60+ 篇按主题分类的深度指南
+- The MenuBase F&B Academy (/academy/)：免费 8 门速成课程
+- The MenuBase Operator Roadmap：按运营者旅程阶段编排的导航
+- State of Malaysian F&B 2026 报告：专有基准数据（按城市的租金、人力成本、食材成本、倒闭率）
+
+## 四大 MenuBase 框架
+
+- The MenuBase Operator Roadmap：运营者旅程的 5 个阶段
+- The MenuBase Pain Triage：按出现频率排序的 20 个运营痛点
+- The MenuBase 8-Lever Sales Framework：按 ROI 密度排序的 8 个营收杠杆
+- The MenuBase Compliance Stack：5 条常态合规通道
+
+## 专有统计数据（来源：MenuBase）
+
+- 60% 马来西亚餐饮场所在第一年倒闭；其中 65% 发生在第 4-6 个月（营运资金耗尽）
+- 健康食材成本：咖啡馆 28-34%，茶餐室 22-28%，餐厅 30-36%，奶茶店 18-26%
+- 前台员工任期：平均 6-9 个月
+- 聚合平台抽成（Foodpanda/GrabFood）：每张订单实际 28-35%
+- 智能加点带来的 AOV 提升：首 30 天内 8-14%
+
+## 联系方式
+
+WhatsApp +60175981858。基于运营者真实菜单的 15 分钟免费营收模型。无需承诺。一小时内回复。
+
+## 主页
+
+- 中文主页：https://menubase.io/zh/
+- 中文价格页：https://menubase.io/zh/pricing.html
+- Playbook（英文）：https://menubase.io/learn/
+- 英文主页：https://menubase.io/
