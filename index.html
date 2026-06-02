@@ -3480,22 +3480,24 @@ footer.foot {
 }
 /* Mobile problem-card width handled in the unified max-width: 900px block above */
 
-/* Testimonial carousel - 1 card at a time, autoplays every 6s */
+/* Testimonial carousel - 2-up desktop / 1-up mobile, autoplays every 6s */
 .testi-carousel {
   position: relative;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 8px;
 }
-.testi-carousel .rc-track { padding: 12px 8px; }
+.testi-carousel .rc-track { padding: 12px 8px; gap: 16px; }
+/* Desktop: 2 testimonial cards side by side (smaller than the old 1-up). */
 .testi-carousel .testi-card {
-  flex: 0 0 calc(100% - 16px);
+  flex: 0 0 calc(50% - 8px);
   scroll-snap-align: start;
   scroll-snap-stop: always;
   margin: 0;
 }
-@media (min-width: 900px) {
-  .testi-carousel { max-width: 760px; }
+@media (max-width: 900px) {
+  /* Mobile: 1 card per swipe, full width. */
+  .testi-carousel .testi-card { flex: 0 0 100%; }
 }
 
 /* FAQ 2-column on desktop */
@@ -4736,7 +4738,7 @@ footer.foot {
   <div class="section-head center reveal has-bg-scrim">
     <span class="eyebrow">WHAT OPERATORS TOLD US</span>
     <h2>What operators kept <em>telling us.</em></h2>
-    <p class="lede">We sat down with cafe, kopitiam and mamak operators across Klang Valley and Penang. The same three patterns came up every time.</p>
+    <p class="lede">We sat down with cafe, kopitiam and mamak operators across Klang Valley and Penang. The same patterns came up every time.</p>
   </div>
   <div class="testi-carousel reveal" data-carousel data-autoplay="6000">
     <button class="rc-arrow rc-prev" type="button" aria-label="Previous quote">&lsaquo;</button>
@@ -4765,13 +4767,33 @@ footer.foot {
           <div class="testi-who"><strong>Kopitiam manager</strong><span>Petaling Jaya &middot; 2 outlets</span></div>
         </div>
       </article>
+      <article class="testi-card">
+        <div class="testi-stat">The promo thing.<span class="testi-stat-lbl">EVERY WEEK</span></div>
+        <p class="testi-quote">"I print the special, staple it to the menu. By Friday night nobody mentions it. The poster may as well not exist."</p>
+        <div class="testi-foot">
+          <div class="testi-ava">//</div>
+          <div class="testi-who"><strong>Bistro owner</strong><span>Mont Kiara &middot; 1 outlet</span></div>
+        </div>
+      </article>
+      <article class="testi-card">
+        <div class="testi-stat">The peak thing.<span class="testi-stat-lbl">EVERY LUNCH RUSH</span></div>
+        <p class="testi-quote">"Lunch rush, my team is drowning. Nobody has ten seconds to suggest the add-on. We lose the upsell exactly when the volume is there."</p>
+        <div class="testi-foot">
+          <div class="testi-ava">//</div>
+          <div class="testi-who"><strong>Restaurant operator</strong><span>Bangsar &middot; 2 outlets</span></div>
+        </div>
+      </article>
+      <article class="testi-card">
+        <div class="testi-stat">The consistency thing.<span class="testi-stat-lbl">EVERY ROSTER</span></div>
+        <p class="testi-quote">"Morning shift pushes the combo, night shift forgets. My revenue swings on who's rostered that day."</p>
+        <div class="testi-foot">
+          <div class="testi-ava">//</div>
+          <div class="testi-who"><strong>Cafe chain owner</strong><span>Penang &middot; 4 outlets</span></div>
+        </div>
+      </article>
     </div>
     <button class="rc-arrow rc-next" type="button" aria-label="Next quote">&rsaquo;</button>
-    <div class="rc-dots" role="tablist" aria-label="Testimonial navigation">
-      <button class="rc-dot active" type="button" data-idx="0" aria-label="Quote 1"></button>
-      <button class="rc-dot" type="button" data-idx="1" aria-label="Quote 2"></button>
-      <button class="rc-dot" type="button" data-idx="2" aria-label="Quote 3"></button>
-    </div>
+    <div class="rc-dots" role="tablist" aria-label="Testimonial navigation"></div>
   </div>
 </section>
 
@@ -5034,55 +5056,83 @@ setTimeout(() => {
   document.querySelectorAll('.reveal:not(.in)').forEach(el => el.classList.add('in'));
 }, 1500);
 
-// Generic carousel (reassure, problem, testi)
+// Generic carousel (reassure, problem, testi, demo)
+// Dots are PAGE-based: with multi-up layouts (e.g. 3 cards visible at once),
+// the number of reachable scroll positions is cards - perView + 1, NOT cards.
+// We build exactly that many dots so every dot is reachable and the active
+// dot always reflects the real scroll position. Rebuilds on resize so the
+// dot count tracks the breakpoint (3-up desktop, 2-up tablet, 1-up mobile).
 (function () {
   document.querySelectorAll('[data-carousel]').forEach(function (carousel) {
     var track = carousel.querySelector('.rc-track');
     if (!track) return;
     var cards = track.children;
     if (!cards || cards.length === 0) return;
-    var dots = carousel.querySelectorAll('.rc-dot');
+    var dotsWrap = carousel.querySelector('.rc-dots');
     var prev = carousel.querySelector('.rc-prev');
     var next = carousel.querySelector('.rc-next');
     var autoplayMs = parseInt(carousel.getAttribute('data-autoplay') || '0', 10);
     var autoTimer = null;
     var userInteracted = false;
 
-    function activeIndex() {
-      var sl = track.scrollLeft;
-      var w = cards[0].offsetWidth + 16;
-      return Math.round(sl / w);
+    function gap() {
+      var s = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || '16');
+      return isNaN(s) ? 16 : s;
     }
-    function setActive(idx) {
-      dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
-      if (prev) prev.disabled = idx <= 0;
-      if (next) next.disabled = idx >= cards.length - 1;
+    function step() { return cards[0].offsetWidth + gap(); }
+    function perView() {
+      return Math.max(1, Math.round(track.clientWidth / step()));
     }
-    function go(idx) {
-      idx = Math.max(0, Math.min(cards.length - 1, idx));
-      // CRITICAL: use direct track.scrollLeft instead of scrollIntoView.
-      // scrollIntoView with block:'nearest' can pull the PAGE back up to the
-      // carousel if the user has scrolled past it. That was the "page jumps
-      // back randomly while scrolling" bug. scrollLeft is horizontal-only
-      // and never touches the document scroll position.
-      var cardW = cards[0].offsetWidth + 16;
-      var target = idx * cardW;
-      if (track.scrollTo) {
-        track.scrollTo({ left: target, behavior: 'smooth' });
-      } else {
-        track.scrollLeft = target;
+    function pageCount() {
+      return Math.max(1, cards.length - perView() + 1);
+    }
+    function currentPage() {
+      var p = Math.round(track.scrollLeft / step());
+      return Math.max(0, Math.min(p, pageCount() - 1));
+    }
+
+    function buildDots() {
+      if (!dotsWrap) return;
+      var n = pageCount();
+      dotsWrap.innerHTML = '';
+      for (var i = 0; i < n; i++) {
+        var b = document.createElement('button');
+        b.className = 'rc-dot' + (i === currentPage() ? ' active' : '');
+        b.type = 'button';
+        b.setAttribute('data-idx', String(i));
+        b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+        (function (idx) {
+          b.addEventListener('click', function () { stopAutoplay(); go(idx); });
+        })(i);
+        dotsWrap.appendChild(b);
       }
     }
+    function dotEls() { return dotsWrap ? dotsWrap.querySelectorAll('.rc-dot') : []; }
+
+    function setActive() {
+      var idx = currentPage();
+      var ds = dotEls();
+      for (var i = 0; i < ds.length; i++) ds[i].classList.toggle('active', i === idx);
+      if (prev) prev.disabled = idx <= 0;
+      if (next) next.disabled = idx >= pageCount() - 1;
+    }
+    function go(idx) {
+      idx = Math.max(0, Math.min(pageCount() - 1, idx));
+      var target = idx * step();
+      var maxScroll = track.scrollWidth - track.clientWidth;
+      if (target > maxScroll) target = maxScroll;
+      // scrollLeft (not scrollIntoView) so the page scroll position is never touched.
+      if (track.scrollTo) track.scrollTo({ left: target, behavior: 'smooth' });
+      else track.scrollLeft = target;
+    }
     function isCarouselInView() {
-      // Skip autoplay tick if the carousel is not visible. Avoids both wasted
-      // work and any chance the browser still tries to scroll the page.
       var r = carousel.getBoundingClientRect();
       return r.bottom > 0 && r.top < (window.innerHeight || document.documentElement.clientHeight);
     }
     function nextOrWrap() {
       if (!isCarouselInView()) return;
-      var idx = activeIndex();
-      go(idx >= cards.length - 1 ? 0 : idx + 1);
+      var idx = currentPage();
+      go(idx >= pageCount() - 1 ? 0 : idx + 1);
     }
     function startAutoplay() {
       if (autoplayMs > 0 && !userInteracted) {
@@ -5094,19 +5144,26 @@ setTimeout(() => {
       userInteracted = true;
       clearInterval(autoTimer);
     }
-    dots.forEach(function (d, i) {
-      d.addEventListener('click', function () { stopAutoplay(); go(i); });
-    });
-    if (prev) prev.addEventListener('click', function () { stopAutoplay(); go(activeIndex() - 1); });
-    if (next) next.addEventListener('click', function () { stopAutoplay(); go(activeIndex() + 1); });
+
+    if (prev) prev.addEventListener('click', function () { stopAutoplay(); go(currentPage() - 1); });
+    if (next) next.addEventListener('click', function () { stopAutoplay(); go(currentPage() + 1); });
     track.addEventListener('touchstart', stopAutoplay, { passive: true });
     track.addEventListener('wheel', stopAutoplay, { passive: true });
     var raf;
     track.addEventListener('scroll', function () {
       cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(function () { setActive(activeIndex()); });
+      raf = requestAnimationFrame(setActive);
     });
-    setActive(0);
+
+    // Rebuild dots on resize (debounced) so the count tracks the breakpoint.
+    var rt;
+    window.addEventListener('resize', function () {
+      clearTimeout(rt);
+      rt = setTimeout(function () { buildDots(); setActive(); }, 180);
+    });
+
+    buildDots();
+    setActive();
     startAutoplay();
   });
 })();
