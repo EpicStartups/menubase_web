@@ -645,10 +645,16 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
+/* ─── SCROLL-SNAP MOMENTS - desktop only, proximity (not mandatory) ───
+   Creates gentle "pause here" anchors on the four most important sections:
+   hero, live demo, lime manifesto, founding CTA. Uses proximity not
+   mandatory so the user is never fought; scroll-snap-stop: normal lets
+   fast scrolls fly past. Gated to (hover: hover) so iOS Safari, which
+   handles snap inconsistently on touch, is unaffected. */
 /* User-flagged scroll-snap bug (2026-05-31): scrolling halfway through
-   the landing page caused unexpected jumps to the bottom. The desktop
-   y-axis scroll-snap was the culprit. Disabled until we can replace it
-   with a less invasive interaction. Same fix as EN landing. */
+   the page was jumping to the bottom. Disabling the snap entirely so the
+   page scrolls naturally. The "pause and absorb" UX was nice on desktop
+   but the trade-off was unpredictable scroll behavior. */
 /* @media (hover: hover) and (min-width: 901px) {
   html { scroll-snap-type: y proximity; scroll-padding-top: 56px; }
   .hero, .demo, .manifesto, .cta-shell { scroll-snap-align: start; scroll-snap-stop: always; }
@@ -966,11 +972,13 @@ footer.foot, nav.top {
   z-index: 2;
 }
 nav.top { z-index: 50; }
-/* sticky top ribbon - explicit late rule so the early sticky declaration wins */
+/* Keep .top-ribbon sticky (the early rule is sticky; do NOT override to relative).
+   Sticky is preserved with z-index 49 so the floating bottom nav stays on top. */
 .top-ribbon {
   position: sticky;
   top: 0;
   z-index: 49;
+  /* Add a backdrop so content scrolling underneath doesn't bleed through */
   background: rgba(15, 17, 13, 0.78);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
@@ -1139,14 +1147,12 @@ body { padding-bottom: 84px; }
   position: relative;
   z-index: 2;
   min-height: auto;
-  display: grid;
-  grid-template-columns: 1.02fr 0.98fr;
-  align-items: center;
-  gap: 48px;
+  display: block; /* single column now that hero phone was removed */
   padding: 64px 5vw 80px;
-  max-width: 1500px;
+  max-width: 1100px;
   margin: 0 auto;
   isolation: isolate;
+  text-align: left;
 }
 .col-l { position: relative; z-index: 2; }
 /* legibility card - rounded translucent panel with backdrop blur so the
@@ -1219,8 +1225,9 @@ body { padding-bottom: 84px; }
 }
 .col-l h1 em { font-style: normal; color: var(--lime-deep); }
 
-
-/* Hero promise pill - the concrete outcome / no-friction line. */
+/* Hero promise pill - the concrete outcome / no-friction line that
+   tells operators what they get in 3 seconds: +8 to 14% per check,
+   same POS, same team, live by end of service. Sits right under H1. */
 .hero-promise {
   display: inline-flex;
   align-items: center;
@@ -1267,8 +1274,14 @@ body { padding-bottom: 84px; }
   border: 1px solid rgba(255,255,255,0.10);
   border-radius: 999px;
 }
+/* hp-break is a dedicated flex line-break element. On desktop it's hidden
+   (the whole pill stays inline). On mobile we force the chips onto a new
+   row by giving it flex-basis: 100% so it occupies a full virtual row. */
 .hero-promise .hp-break { display: none; }
 @media (max-width: 720px) {
+  /* Mobile: rounded RECTANGLE (16px) so wrapping looks clean. 2 rows:
+     Row 1: "+8 to 14% more per check"
+     Row 2: 3 mono chip pills */
   .hero-promise {
     display: flex;
     flex-wrap: wrap;
@@ -1381,6 +1394,7 @@ body { padding-bottom: 84px; }
   background: radial-gradient(circle, rgba(188,241,37,0.42) 0%, transparent 62%);
   filter: blur(8px);
   z-index: 0;
+  pointer-events: none; /* never block taps on the phone iframe behind */
   animation: glowf 7s ease-in-out infinite;
 }
 @keyframes glowf {
@@ -1456,19 +1470,19 @@ body { padding-bottom: 84px; }
   .hero { min-height: auto; padding-top: 56px; padding-bottom: 40px; }
 }
 
-/* legacy secondary text-link (used in the manifesto section) */
+/* legacy secondary text-link (used in the manifesto section on lime bg) */
 .hero-watch {
   font-family: var(--font-body);
   font-size: 14.5px;
-  color: var(--ink);
-  font-weight: 500;
+  color: #0F1108; /* explicit dark ink - manifesto inherits white so we need to force dark here */
+  font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 5px;
-  text-decoration-color: var(--lime-deep);
+  text-decoration-color: #0F1108;
   text-decoration-thickness: 2px;
-  transition: color 120ms;
+  transition: opacity 120ms;
 }
-.hero-watch:hover { color: var(--lime-deep); }
+.hero-watch:hover { opacity: 0.7; }
 
 /* ─── TRUST STRIP (subtle one-line fact strip below hero) ─── */
 .trust-strip {
@@ -1893,6 +1907,190 @@ section.block.tight { padding: 80px 28px; }
   padding: 72px 28px;
   position: relative;
 }
+
+/* ─── DEMO CARD CAROUSEL (new pattern - 7 self-contained cards) ────────
+   Each card holds eyebrow + title + description + phone iframe for one
+   scenario. User swipes horizontally between cards. Each iframe uses
+   loading="lazy" so off-screen scenarios don't fetch until scrolled near.
+   Desktop: text-left / phone-right inside each card.
+   Mobile: text-top / phone-bottom inside each card. */
+.demo-header {
+  max-width: 720px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+.demo-header .eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: rgba(242,242,238,0.65);
+}
+.demo-header .eyebrow::before { background: var(--lime); }
+.demo-header h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  margin: 0 0 14px;
+  color: #F2F2EE;
+}
+.demo-header h2 em { font-style: normal; color: var(--lime); }
+.demo-header .lede {
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  margin: 0 auto;
+  max-width: 56ch;
+  line-height: 1.5;
+}
+.demo-carousel {
+  position: relative;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+.demo-carousel-track {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  touch-action: pan-x pan-y;
+  overscroll-behavior-x: contain;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  padding: 12px 8px 24px;
+  scrollbar-width: none;
+}
+.demo-carousel-track::-webkit-scrollbar { display: none; }
+.demo-card {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 40px;
+  align-items: center;
+  padding: 32px 32px;
+  background: rgba(20, 20, 24, 0.45);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 22px;
+  transition: border-color 220ms;
+  margin: 0;
+}
+.demo-card:hover { border-color: rgba(188,241,37,0.30); }
+.demo-card .dc-text {
+  min-width: 0;
+}
+.demo-card .dc-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 14px;
+  padding: 5px 12px;
+  background: rgba(188,241,37,0.10);
+  border-radius: 999px;
+}
+.demo-card .dc-text h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(22px, 2.4vw, 30px);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: #F2F2EE;
+  margin: 0 0 14px;
+}
+.demo-card .dc-text p {
+  font-size: 15.5px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.72);
+  margin: 0;
+  max-width: 48ch;
+}
+.demo-card .dc-stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  flex-shrink: 0;
+}
+.demo-card .dc-stage::before {
+  content: '';
+  position: absolute;
+  width: 380px; height: 380px;
+  background: radial-gradient(circle, rgba(188,241,37,0.22) 0%, transparent 65%);
+  z-index: 0;
+  pointer-events: none;
+}
+.demo-card .dc-stage .phone {
+  position: relative;
+  z-index: 1;
+}
+.rc-dots { margin-top: 22px; }
+
+@media (max-width: 900px) {
+  .demo { padding: 48px 10px 64px; }
+  .demo-header { margin: 0 auto 16px; padding: 0 6px; }
+  .demo-header h2 { font-size: clamp(24px, 6.5vw, 32px); }
+  .demo-header .lede { font-size: 14.5px; }
+  .demo-carousel { padding: 0; }
+  /* Each card = viewport minus track gutter so 1 card = 1 swipe. */
+  .demo-carousel-track {
+    gap: 10px;
+    padding: 8px 10px 16px;
+    scroll-padding-inline: 10px;
+  }
+  .demo-card {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 16px 14px 18px;
+    /* card width = viewport minus track padding (20px total) */
+    flex-basis: calc(100vw - 30px);
+    max-width: calc(100vw - 30px);
+    min-width: 0;
+    overflow: hidden;
+  }
+  .demo-card .dc-text { padding: 0; }
+  .demo-card .dc-eyebrow { font-size: 10px; padding: 4px 10px; margin-bottom: 8px; }
+  .demo-card .dc-text h3 { font-size: 18px; line-height: 1.2; margin-bottom: 6px; }
+  /* Hide the long description on mobile - the phone itself is the demo.
+     The eyebrow + h3 carry the context. Saves ~80-110px vertical so the
+     phone can grow bigger. */
+  .demo-card .dc-text p { display: none; }
+  /* Phone now fills the card width (~card content area). Aspect ratio
+     preserved so menu items stay readable. */
+  .demo-card .dc-stage { width: 100%; min-width: 0; }
+  .demo-card .dc-stage::before { display: none; } /* drop the glow blob - it crowded the small phone */
+  .demo-card .dc-stage .phone.lg {
+    width: min(340px, calc(100vw - 60px));
+    height: calc(min(340px, calc(100vw - 60px)) * 740 / 380);
+    border-radius: calc(min(340px, calc(100vw - 60px)) * 44 / 380);
+    padding: calc(min(340px, calc(100vw - 60px)) * 10 / 380);
+    margin: 0 auto;
+  }
+  .demo-card .dc-stage .phone.lg .notch {
+    width: calc(min(340px, calc(100vw - 60px)) * 100 / 380);
+    height: calc(min(340px, calc(100vw - 60px)) * 24 / 380);
+    top: calc(min(340px, calc(100vw - 60px)) * 20 / 380);
+  }
+  .demo-card .dc-stage .phone.lg iframe {
+    border-radius: calc(min(340px, calc(100vw - 60px)) * 36 / 380);
+  }
+  /* Hide prev/next arrows on mobile - swipe is the primary control */
+  .demo-carousel .rc-prev,
+  .demo-carousel .rc-next { display: none; }
+}
+@media (max-width: 420px) {
+  .demo-card { padding: 14px 12px 16px; gap: 10px; }
+  .demo-card .dc-text h3 { font-size: 17px; }
+  .demo-card .dc-stage .phone.lg {
+    width: min(320px, calc(100vw - 50px));
+    height: calc(min(320px, calc(100vw - 50px)) * 740 / 380);
+  }
+}
+
 .demo-inner {
   max-width: 1320px; margin: 0 auto;
   display: grid;
@@ -2018,7 +2216,11 @@ section.block.tight { padding: 80px 28px; }
   z-index: 0;
 }
 
-/* ─── MOBILE: horizontal scroll chip carousel ─── */
+/* ─── MOBILE: horizontal scroll chip carousel ───────────────────────────
+   All 7 scenario chips in a single horizontal scroll row with tiny inline
+   group labels (LIFT / PUSH / READS) acting as section dividers. Compact:
+   ~60px tall instead of ~600px stacked. Swipe horizontally to see all,
+   tap to activate. Mandatory snap so each chip locks. */
 @media (max-width: 900px) {
   .demo { padding: 56px 18px 72px; }
   .demo-inner {
@@ -2033,6 +2235,7 @@ section.block.tight { padding: 80px 28px; }
     flex-wrap: nowrap;
     overflow-x: auto;
     overflow-y: hidden;
+    /* mandatory snap = card-by-card. touch-action keeps vertical safe. */
     scroll-snap-type: x mandatory;
     touch-action: pan-x pan-y;
     overscroll-behavior-x: contain;
@@ -2049,8 +2252,12 @@ section.block.tight { padding: 80px 28px; }
   .demo-chips::-webkit-scrollbar { height: 4px; }
   .demo-chips::-webkit-scrollbar-track { background: transparent; }
   .demo-chips::-webkit-scrollbar-thumb { background: rgba(188,241,37,0.4); border-radius: 3px; }
+  /* Flatten chip-group so labels + chips become direct flex children of
+     .demo-chips. The label sits inline between chip clusters as a tiny
+     mono divider. */
   .chip-group { display: contents; }
-  /* Hide group labels on mobile - chips only, no category dividers. */
+  /* Hide the LIFT / PUSH / READS group labels on mobile - per user request,
+     just chips in one row, no category dividers. */
   .chip-group-label { display: none; }
   .demo-chips .chip {
     flex: 0 0 auto;
@@ -2197,6 +2404,38 @@ section.block.tight { padding: 80px 28px; }
   letter-spacing: -0.02em;
 }
 .calc-result .num.big { font-size: 40px; color: var(--lime-deep); }
+.calc-share-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 24px;
+  width: 100%;
+  padding: 16px 22px;
+  background: var(--lime);
+  color: #0A0A0C;
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: transform 180ms cubic-bezier(.16,1,.3,1), box-shadow 180ms ease;
+  box-shadow: 0 8px 24px rgba(188, 241, 37, 0.28);
+}
+.calc-share-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(188, 241, 37, 0.5);
+}
+.calc-share-btn .ico { width: 18px; height: 18px; flex-shrink: 0; }
+.calc-share-sub {
+  margin-top: 12px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--grey-2);
+}
 
 /* ─── FOUNDING CTA ─── */
 .cta-shell {
@@ -2397,7 +2636,6 @@ footer.foot {
   letter-spacing: 0.06em;
   font-weight: 500;
 }
-
 /* ─── REVEALS ─── */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 600ms ease, transform 600ms cubic-bezier(.16,1,.3,1); }
 .reveal.in { opacity: 1; transform: translateY(0); }
@@ -2491,7 +2729,9 @@ footer.foot {
   /* Hero v2 elements need a soft cap on mobile so long live text wraps cleanly */
   .status { max-width: 100%; }
   .greet { font-size: 13px; }
-  .leak { font-size: 11.5px; align-items: flex-start; }
+  .leak { font-size: 11px; align-items: flex-start; opacity: 0.72; margin-top: 8px; }
+  /* On mobile, the leak counter feels manipulative if it's between hero and CTAs.
+     Order in source = CTAs first then leak. Keep the leak visible but dimmer + smaller. */
   .col-l .sub { font-size: 15px; max-width: 100%; }
   /* Comparison table - stack vertically on mobile, no horizontal scroll.
      The base .compare-card and .compare-table rules live later in the
@@ -2626,8 +2866,9 @@ footer.foot {
   .nav-cta { width: auto; margin-left: 0; flex: 0 0 auto; }
   .nav-cta .btn.nav-wa-icon { flex: 0 0 auto; width: 36px; height: 36px; padding: 0; }
   .nav-cta .btn.nav-wa-icon svg { width: 16px; height: 16px; }
-  .top-ribbon-inner { padding: 10px 16px; }
-  .top-ribbon .brand .brand-lockup { height: 28px; }
+  .top-ribbon-inner { padding: 10px 14px; }
+  .top-ribbon .brand .brand-lockup { height: 26px; }
+  .top-ribbon-login { padding: 7px 12px; font-size: 12px; }
 
   .hero-actions .btn { padding: 12px 20px; font-size: 13.5px; }
 
@@ -2646,17 +2887,14 @@ footer.foot {
   .pillar-txt li { font-size: 14.5px; }
   .pillar-vis::before { width: 220px; height: 220px; }
 
-  .demo { padding: 56px 18px; }
-  .demo-inner { gap: 36px; }
+  /* .demo / .demo-inner / .demo-chips / .demo-stage rules now live in the
+     dedicated "MOBILE: scroll-to-activate scenarios" block (search the file).
+     Only the heading + annotation typography overrides stay here. */
   .demo-side h2 { font-size: clamp(26px, 8vw, 34px); }
   .demo-side .lede { font-size: 15px; margin-bottom: 20px; }
-  .demo-chips { gap: 8px; margin-bottom: 22px; }
-  /* Demo scenario chips: bump to 44px tap target for Apple HIG / Material */
-  /* .demo-chips .chip rules moved to dedicated "MOBILE: one-column chip list" block. */
   .demo-annot { padding: 18px 20px; }
   .demo-annot .t { font-size: 16px; }
   .demo-annot .d { font-size: 14px; }
-  .demo-stage::before { width: 280px; height: 280px; }
 
   .calc-shell .calc-inner { padding: 56px 18px; gap: 32px; }
   .calc-card { padding: 22px; }
@@ -2761,7 +2999,7 @@ footer.foot {
 }
 
 /* ──────────────── PROBLEM SECTION (foreign-worker truth) ──────────────── */
-.problem-block { padding: 96px 28px; max-width: 1320px; margin: 0 auto; }
+.problem-block { padding: 72px 28px 56px; max-width: 1320px; margin: 0 auto; }
 .problem-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2774,9 +3012,9 @@ footer.foot {
           backdrop-filter: blur(10px);
   border: 1px solid var(--line);
   border-radius: 14px;
-  padding: 28px;
+  padding: 22px 22px 24px;
   display: flex;
-  gap: 18px;
+  gap: 14px;
   transition: border-color 200ms, transform 200ms, background 200ms;
 }
 .problem-card:hover { background: rgba(30, 30, 36, 0.40); }
@@ -2825,7 +3063,8 @@ footer.foot {
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
-    /* proximity + pan-x pan-y so a vertical swipe is never hijacked by the horizontal carousel - same fix as .rc-track */
+    /* proximity (not mandatory) + pan-x pan-y so a vertical swipe is never
+       hijacked by the horizontal carousel - same fix pattern as .rc-track */
     /* mandatory snap = card-by-card. touch-action keeps vertical swipes safe. */
     scroll-snap-type: x mandatory;
     touch-action: pan-x pan-y;
@@ -3068,14 +3307,17 @@ footer.foot {
   display: flex;
   gap: 16px;
   overflow-x: auto;
-  /* mandatory = card-by-card. Safe because touch-action declares both axes,
-     so vertical swipes go to the page and never trigger the snap. */
+  /* mandatory snap = card-by-card swipe. Safe to use BECAUSE touch-action
+     declares both pan-x and pan-y, so the browser routes vertical swipes
+     to the page (not the carousel) and the page-jump bug stays dead.
+     The original bug was mandatory + NO touch-action, not mandatory alone. */
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   padding: 8px;
   scrollbar-width: none;
-  /* CRITICAL: pan-x pan-y lets vertical swipes pass to the page. */
+  /* CRITICAL: pan-y lets vertical swipes pass through to the page,
+     pan-x lets horizontal swipes drive the carousel. */
   touch-action: pan-x pan-y;
   overscroll-behavior-x: contain;
 }
@@ -3138,6 +3380,11 @@ footer.foot {
   width: 24px;
 }
 .rc-dot:hover { opacity: 0.75; }
+/* Mid-desktop: 3-up was too cramped for problem cards on ~1000px viewports.
+   Step down to 2-up between 901-1100px so cards keep readable width. */
+@media (max-width: 1100px) and (min-width: 901px) {
+  .problem-carousel .problem-card { flex: 0 0 calc(50% - 10px); }
+}
 @media (max-width: 900px) {
   /* One card fully visible per swipe - 100% width + mandatory snap = one-by-one */
   .reassure-carousel .reassure-card { flex-basis: 100%; }
@@ -3148,23 +3395,24 @@ footer.foot {
   .rc-arrow { width: 36px; height: 36px; font-size: 18px; }
 }
 
-/* Problem carousel - reuses the rc-track / rc-arrow / rc-dots primitives */
+/* Problem carousel - reuses the rc-track / rc-arrow / rc-dots primitives.
+   Desktop: 3 cards visible (smaller, more compact). Mobile: 1 card / swipe. */
 .problem-carousel {
   position: relative;
   max-width: 1200px;
-  margin: 0 auto 48px;
+  margin: 0 auto 32px;
   padding: 0 8px;
 }
-.problem-carousel .rc-track { padding: 12px 8px; }
+.problem-carousel .rc-track { padding: 8px 8px 14px; gap: 14px; }
 .problem-carousel .problem-card {
-  flex: 0 0 calc(50% - 12px);
+  flex: 0 0 calc(33.333% - 10px);
   scroll-snap-align: start;
   scroll-snap-stop: always;
-  min-height: 200px;
+  min-height: 0;
 }
 /* Mobile problem-card width handled in the unified max-width: 900px block above */
 
-/* Testimonial carousel - 2 cards on desktop, 1 on mobile, autoplays every 6s */
+/* Testimonial carousel - 2-up desktop / 1-up mobile, autoplays every 6s */
 .testi-carousel {
   position: relative;
   max-width: 1200px;
@@ -3172,6 +3420,7 @@ footer.foot {
   padding: 0 8px;
 }
 .testi-carousel .rc-track { padding: 12px 8px; gap: 16px; }
+/* Desktop: 2 testimonial cards side by side (smaller than the old 1-up). */
 .testi-carousel .testi-card {
   flex: 0 0 calc(50% - 8px);
   scroll-snap-align: start;
@@ -3179,6 +3428,7 @@ footer.foot {
   margin: 0;
 }
 @media (max-width: 900px) {
+  /* Mobile: 1 card per swipe, full width. */
   .testi-carousel .testi-card { flex: 0 0 100%; }
 }
 
@@ -3819,13 +4069,8 @@ footer.foot {
     <div class="leak"><span class="dot"></span><span class="amt">从您打开本页起,平均一家吉隆坡咖啡馆已少赚了 <b id="leak">RM 0.00</b>。</span></div>
   </div>
 
-  <div class="col-r">
-    <div class="glow"></div>
-    <div class="phone">
-      <div class="notch"></div>
-      <iframe src="Customer QR App.html?demo=upsell_popup&items=eb&screen=checkout&hour=9&hideDev=1&compact=1&cb=20260529x" title="MenuBase live app" loading="eager"></iframe>
-    </div>
-  </div>
+<!-- (hero phone removed - the interactive demo lives at #demo below;
+     hero is now copy + CTA + the live "RM lost" ticker) -->
 </section>
 
 <!-- (trust-strip removed - claims were redundant with comparison block + pillars + FAQ) -->
@@ -4164,43 +4409,124 @@ footer.foot {
 
 <!-- ─── LIVE DEMO (dark inverse) ─── -->
 <div class="demo" id="demo">
-  <div class="demo-inner">
-    <div class="demo-side has-bg-scrim scrim-dark">
-      <span class="eyebrow">现在就试试</span>
-      <h2>这不是设计稿。<em>每个功能都能试。</em></h2>
-      <p class="lede">真实应用。点任一场景,看它当场触发。</p>
+  <div class="demo-header has-bg-scrim scrim-dark">
+    <span class="eyebrow">现在就试试</span>
+    <h2>这不是设计稿。<em>每个功能都能试。</em></h2>
+    <p class="lede">真实应用。滑动浏览 7 个实时场景。每张卡都是该场景的说明 + 正在运行的演示。</p>
+  </div>
 
-      <div class="demo-chips" id="demo-chips">
-        <div class="chip-group">
-          <span class="chip-group-label"><svg class="cg-ico" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M2 1h10v2H2zm0 4h8v2H2zm0 4h6v2H2zm8 0l3 3-3 3v-2H6v-2h4z"/></svg>提升客单价</span>
-          <button class="chip on" data-scenario="upsell">Smart Upsell</button>
-          <button class="chip" data-scenario="bundle">Combo Deal</button>
-        </div>
-        <div class="chip-group">
-          <span class="chip-group-label"><svg class="cg-ico" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M7 0L9 5l5 .5-4 3.5 1.5 5L7 11l-4.5 3L4 9 0 5.5 5 5z"/></svg>推送特价</span>
-          <button class="chip" data-scenario="threshold">Threshold Reward</button>
-          <button class="chip" data-scenario="happy_hour">Happy Hour</button>
-          <button class="chip" data-scenario="flash">Flash Deal</button>
-        </div>
-        <div class="chip-group">
-          <span class="chip-group-label"><svg class="cg-ico" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="7" cy="7" r="5.5"/><path d="M1.5 7h11M7 1.5c1.8 2 1.8 9 0 11M7 1.5c-1.8 2-1.8 9 0 11"/></svg>察言观色</span>
-          <button class="chip" data-scenario="spin">Spin &amp; Win</button>
-          <button class="chip" data-scenario="weather">Weather Menu</button>
-        </div>
-      </div>
+  <div class="demo-carousel" data-carousel data-autoplay="0">
+    <button class="rc-arrow rc-prev" type="button" aria-label="上一个场景">&lsaquo;</button>
+    <div class="rc-track demo-carousel-track">
 
-      <div class="demo-annot" id="demo-annot">
-        <div class="h">SMART UPSELL · ON</div>
-        <div class="t">在恰当时机推一件最合适的加点。</div>
-        <div class="d">上午 9:42 点一份班尼迪克蛋,系统浮出白咖啡。这种购物车的接受率是 89%。一键加入,团队无需尴尬开口,无需背话术。</div>
-      </div>
+      <article class="demo-card" data-scenario="upsell">
+        <div class="dc-text">
+          <span class="dc-eyebrow">SMART UPSELL &middot; 已开启</span>
+          <h3>在恰当时机推一件最合适的加点。</h3>
+          <p>上午 9:42 点一份班尼迪克蛋，系统浮出白咖啡。这种购物车的接受率是 89%。一键加入，团队无需尴尬开口，无需背话术。</p>
+        </div>
+        <div class="dc-stage">
+          <div class="phone lg">
+            <div class="notch"></div>
+            <iframe loading="lazy" src="Customer QR App.html?demo=upsell_popup&items=eb&screen=checkout&hour=9&hideDev=1&compact=1&cb=20260529x" title="Smart Upsell 实时演示"></iframe>
+          </div>
+        </div>
+      </article>
+
+      <article class="demo-card" data-scenario="bundle">
+        <div class="dc-text">
+          <span class="dc-eyebrow">COMBO DEAL &middot; 已建议</span>
+          <h3>把菜品配对，以更便宜的套餐 SKU 推荐出去。</h3>
+          <p>顾客加了一杯咖啡和一块糕点，横幅出现：「换成套餐省 RM3」。一键把两行换成一个预设价格的套餐 SKU。服务员只需在 POS 出一次单。</p>
+        </div>
+        <div class="dc-stage">
+          <div class="phone lg">
+            <div class="notch"></div>
+            <iframe loading="lazy" src="Customer QR App.html?demo=bundle&items=wc,ac&screen=menu&hour=10&hideDev=1&compact=1&cb=20260529x" title="Combo Deal 实时演示"></iframe>
+          </div>
+        </div>
+      </article>
+
+      <article class="demo-card" data-scenario="threshold">
+        <div class="dc-text">
+          <span class="dc-eyebrow">THRESHOLD REWARD &middot; 已解锁</span>
+          <h3>消费满额，自动解锁一份免费菜品。</h3>
+          <p>购物车一过 RM50，一份杏仁可颂以 RM0 自动加入订单。服务员像处理普通菜品一样在 POS 出单。不用输码，不用券，不用在收银台算账。</p>
+        </div>
+        <div class="dc-stage">
+          <div class="phone lg">
+            <div class="notch"></div>
+            <iframe loading="lazy" src="Customer QR App.html?demo=threshold&items=eb,ml,tp&screen=menu&hour=12&hideDev=1&compact=1&cb=20260529x" title="Threshold Reward 实时演示"></iframe>
+          </div>
+        </div>
+      </article>
+
+      <article class="demo-card" data-scenario="happy_hour">
+        <div class="dc-text">
+          <span class="dc-eyebrow">HAPPY HOUR &middot; 进行中</span>
+          <h3>在时段窗内，自动开放一个预设折扣的菜单分类。</h3>
+          <p>周二下午 3 点，「Happy Hour 饮品」分类出现，带打折的双 SKU。下午 5 点窗口关闭，分类自动消失。每张订单都看得到实时倒计时。</p>
+        </div>
+        <div class="dc-stage">
+          <div class="phone lg">
+            <div class="notch"></div>
+            <iframe loading="lazy" src="Customer QR App.html?demo=happy_hour&hour=15&day=1&hideDev=1&compact=1&cb=20260529x" title="Happy Hour 实时演示"></iframe>
+          </div>
+        </div>
+      </article>
+
+      <article class="demo-card" data-scenario="flash">
+        <div class="dc-text">
+          <span class="dc-eyebrow">FLASH DEAL &middot; 倒计时</span>
+          <h3>5 分钟的窗口，开放一个 Flash 分类。</h3>
+          <p>店主点「开始闪购」。每个正在进行的会话都出现倒计时横幅。一个预设价格的 Flash 分类显现。倒计时归零，分类自动消失。</p>
+        </div>
+        <div class="dc-stage">
+          <div class="phone lg">
+            <div class="notch"></div>
+            <iframe loading="lazy" src="Customer QR App.html?demo=flash&items=ac,bc&screen=menu&hour=15&hideDev=1&compact=1&cb=20260529x" title="Flash Deal 实时演示"></iframe>
+          </div>
+        </div>
+      </article>
+
+      <article class="demo-card" data-scenario="spin">
+        <div class="dc-text">
+          <span class="dc-eyebrow">SPIN &amp; WIN &middot; 结账时</span>
+          <h3>结账时，转一次预设折扣 SKU 的转盘。</h3>
+          <p>购物车整理好后，顾客转一次。停在「椰浆饭 RM5（原价 RM12）」。一键加入，或一键跳过。奖项条件和价格由店主自行设置。</p>
+        </div>
+        <div class="dc-stage">
+          <div class="phone lg">
+            <div class="notch"></div>
+            <iframe loading="lazy" src="Customer QR App.html?demo=spin_wheel&items=eb,wc&screen=checkout&hour=12&hideDev=1&compact=1&cb=20260529x" title="Spin &amp; Win 实时演示"></iframe>
+          </div>
+        </div>
+      </article>
+
+      <article class="demo-card" data-scenario="weather">
+        <div class="dc-text">
+          <span class="dc-eyebrow">WEATHER &middot; 雨天模式</span>
+          <h3>真实天气数据自动开放对应菜单分类。</h3>
+          <p>OpenWeatherMap 显示门店所在地正在下雨时，「雨天特价」上线，带折扣的预设 SKU 同步显现。雨停了，分类自动隐藏。商家完全无需介入。</p>
+        </div>
+        <div class="dc-stage">
+          <div class="phone lg">
+            <div class="notch"></div>
+            <iframe loading="lazy" src="Customer QR App.html?demo=weather&weather=rain&items=wc,ml&screen=menu&hideDev=1&compact=1&cb=20260529x" title="Weather Menu 实时演示"></iframe>
+          </div>
+        </div>
+      </article>
+
     </div>
-
-    <div class="demo-stage">
-      <div class="phone lg">
-        <div class="notch"></div>
-        <iframe id="demo-iframe" src="Customer QR App.html?demo=upsell_popup&items=eb&screen=checkout&hour=9&hideDev=1&compact=1&cb=20260529x" title="MenuBase live demo" loading="lazy"></iframe>
-      </div>
+    <button class="rc-arrow rc-next" type="button" aria-label="下一个场景">&rsaquo;</button>
+    <div class="rc-dots" role="tablist" aria-label="场景导航">
+      <button class="rc-dot active" type="button" data-idx="0" aria-label="Smart Upsell"></button>
+      <button class="rc-dot" type="button" data-idx="1" aria-label="Combo Deal"></button>
+      <button class="rc-dot" type="button" data-idx="2" aria-label="Threshold Reward"></button>
+      <button class="rc-dot" type="button" data-idx="3" aria-label="Happy Hour"></button>
+      <button class="rc-dot" type="button" data-idx="4" aria-label="Flash Deal"></button>
+      <button class="rc-dot" type="button" data-idx="5" aria-label="Spin &amp; Win"></button>
+      <button class="rc-dot" type="button" data-idx="6" aria-label="Weather Menu"></button>
     </div>
   </div>
 </div>
@@ -4425,6 +4751,11 @@ footer.foot {
           <div class="num big" id="v-month">RM 30,240</div>
         </div>
       </div>
+      <a class="calc-share-btn" id="calc-wa-share" href="https://wa.me/60175981858" target="_blank" rel="noopener">
+        <svg class="ico" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M27.04 4.95C24.07 1.97 20.12.33 15.92.33 7.27.33.23 7.37.23 16.02c0 2.77.72 5.47 2.1 7.85L.1 31.67l8.02-2.1c2.3 1.25 4.88 1.91 7.5 1.91h.01c8.65 0 15.69-7.04 15.69-15.69 0-4.19-1.63-8.13-4.28-11.09zm-11.12 24.13h-.01c-2.34 0-4.63-.63-6.62-1.81l-.47-.28-4.92 1.29 1.31-4.79-.31-.49a13.04 13.04 0 0 1-2-6.97c0-7.21 5.87-13.07 13.08-13.07 3.5 0 6.78 1.36 9.25 3.83a13.01 13.01 0 0 1 3.83 9.25c.01 7.2-5.86 13.04-13.07 13.04zm7.14-9.78c-.39-.2-2.32-1.14-2.68-1.27-.36-.13-.62-.2-.89.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.46.29-.85.1-.39-.2-1.65-.61-3.15-1.95-1.16-1.04-1.95-2.32-2.18-2.71-.23-.39-.02-.6.17-.8.18-.18.39-.46.59-.69.2-.23.26-.39.39-.65.13-.26.07-.49-.03-.69-.1-.2-.89-2.15-1.22-2.93-.32-.77-.65-.67-.89-.68-.23-.01-.49-.01-.76-.01s-.69.1-1.06.49c-.36.39-1.39 1.36-1.39 3.3 0 1.95 1.42 3.83 1.62 4.09.2.26 2.79 4.27 6.77 5.99.95.41 1.69.65 2.27.84.95.3 1.82.26 2.5.16.76-.11 2.32-.95 2.65-1.87.33-.92.33-1.71.23-1.87-.1-.16-.36-.26-.75-.46z" fill="currentColor"/></svg>
+        把这些数字发给 MenuBase &rarr;
+      </a>
+      <div class="calc-share-sub">我们会用您真实的菜单来测算提升。免费，无需预约。</div>
     </div>
   </div>
 </div>
@@ -4752,6 +5083,7 @@ setTimeout(() => {
   const vR = document.getElementById('v-rate');
   const vPer = document.getElementById('v-perorder');
   const vMonth = document.getElementById('v-month');
+  const waShare = document.getElementById('calc-wa-share');
   // Smooth tween between calculator output values (200ms ease)
   const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function tween(el, from, to, dur, fmt) {
@@ -4782,103 +5114,28 @@ setTimeout(() => {
     vMonth._val = monthly;
     tween(vPer, prevPer, perOrder, 220, v => 'RM ' + v.toFixed(2));
     tween(vMonth, prevMonth, monthly, 220, v => 'RM ' + Math.round(v).toLocaleString());
+    // Update the WhatsApp share button with current numbers
+    if (waShare) {
+      const monthlyFmt = 'RM ' + Math.round(monthly).toLocaleString();
+      const perOrderFmt = 'RM ' + perOrder.toFixed(2);
+      const msg = 'Hi MenuBase! [from: calculator ZH]. 刚在网站上算了一下提升:\n'
+        + '- 每天 ' + o + ' 单\n'
+        + '- 平均客单价 RM' + a + '\n'
+        + '- 加点接受率 ' + (+rate.value) + '%\n'
+        + '- = 每单提升 ' + perOrderFmt + '\n'
+        + '- = 预计每月提升 ' + monthlyFmt + '\n\n'
+        + '想用我们真实的菜单来测算。现在发送菜单 PDF。';
+      waShare.href = 'https://wa.me/60175981858?text=' + encodeURIComponent(msg);
+    }
   }
   [orders, aov, rate].forEach(i => i.addEventListener('input', update));
   update();
 })();
 
-// Demo scenarios
-(function(){
-  const SCENARIOS = {
-    upsell: {
-      h: 'SMART UPSELL · 已开启',
-      t: '在恰当时机推一件最合适的加点。',
-      d: '上午 9:42 点一份班尼迪克蛋,系统浮出白咖啡。这种购物车的接受率是 89%。一键加入,团队无需尴尬开口,无需背话术。',
-      qs: 'demo=upsell_popup&items=eb&screen=checkout&hour=9'
-    },
-    threshold: {
-      h: 'THRESHOLD REWARD · 已解锁',
-      t: '消费满额,自动解锁一份免费菜品。',
-      d: '购物车一过 RM50,一份杏仁可颂以 RM0 自动加入订单。服务员像处理普通菜品一样在 POS 出单。不用输码,不用券,不用在收银台算账。',
-      qs: 'demo=threshold&items=eb,ml,tp&screen=menu&hour=12'
-    },
-    happy_hour: {
-      h: 'HAPPY HOUR · 进行中',
-      t: '在时段窗内,自动开放一个预设折扣的菜单分类。',
-      d: '周二下午 3 点,「Happy Hour 饮品」分类出现,带打折的双 SKU。下午 5 点窗口关闭,分类自动消失。每张订单都看得到实时倒计时。',
-      qs: 'demo=happy_hour&hour=15&day=1'
-    },
-    bundle: {
-      h: 'COMBO DEAL · 已建议',
-      t: '把菜品配对,以更便宜的套餐 SKU 推荐出去。',
-      d: '顾客加了一杯咖啡和一块糕点,横幅出现:「换成套餐省 RM3」。一键把两行换成一个预设价格的套餐 SKU。服务员只需在 POS 出一次单。',
-      qs: 'demo=bundle&items=wc,ac&screen=menu&hour=10'
-    },
-    spin: {
-      h: 'SPIN & WIN · 结账时',
-      t: '结账时,转一次预设折扣 SKU 的转盘。',
-      d: '购物车整理好后,顾客转一次。停在「椰浆饭 RM5(原价 RM12)」。一键加入,或一键跳过。奖项条件和价格由店主自行设置。',
-      qs: 'demo=spin_wheel&items=eb,wc&screen=checkout&hour=12'
-    },
-    flash: {
-      h: 'FLASH DEAL · 倒计时',
-      t: '5 分钟的窗口,开放一个 Flash 分类。',
-      d: '店主点「开始闪购」。每个正在进行的会话都出现倒计时横幅。一个预设价格的 Flash 分类显现。倒计时归零,分类自动消失。',
-      qs: 'demo=flash&items=ac,bc&screen=menu&hour=15'
-    },
-    weather: {
-      h: 'WEATHER · 雨天模式',
-      t: '真实天气数据自动开放对应菜单分类。',
-      d: 'OpenWeatherMap 显示门店所在地正在下雨时,「雨天特价」上线,带折扣的预设 SKU 同步显现。雨停了,分类自动隐藏。商家完全无需介入。',
-      qs: 'demo=weather&weather=rain&items=wc,ml&screen=menu'
-    }
-  };
-
-  const iframe = document.getElementById('demo-iframe');
-  const chips = document.querySelectorAll('#demo-chips .chip');
-  const annot = document.getElementById('demo-annot');
-  if (!iframe || !chips.length) return;
-
-  chips.forEach(c => {
-    c.addEventListener('click', () => {
-      const s = SCENARIOS[c.dataset.scenario]; if (!s) return;
-      chips.forEach(b => b.classList.toggle('on', b === c));
-      annot.style.opacity = '0';
-      setTimeout(() => {
-        annot.innerHTML = '<div class="h">' + s.h + '</div><div class="t">' + s.t + '</div><div class="d">' + s.d + '</div>';
-        annot.style.opacity = '1';
-      }, 180);
-      // Navigate via location.replace to avoid preview-token mismatch on iframe.src set
-      try {
-        iframe.contentWindow.location.replace('Customer QR App.html?' + s.qs + '&hideDev=1&compact=1&cb=20260529x');
-      } catch (e) {
-        iframe.src = 'Customer QR App.html?' + s.qs + '&hideDev=1&compact=1&cb=20260529x';
-      }
-    });
-  });
-
-  // Mobile: swipe the chip row to activate the snapped chip
-  var mqM = window.matchMedia && window.matchMedia('(max-width: 900px)');
-  var chipTrack = document.getElementById('demo-chips');
-  if (mqM && mqM.matches && chipTrack) {
-    var swipeTimer = null;
-    chipTrack.addEventListener('scroll', function () {
-      clearTimeout(swipeTimer);
-      swipeTimer = setTimeout(function () {
-        var tr = chipTrack.getBoundingClientRect();
-        var anchor = tr.left + 18;
-        var bestChip = null;
-        var bestDist = Infinity;
-        chips.forEach(function (c) {
-          var r = c.getBoundingClientRect();
-          var d = Math.abs(r.left - anchor);
-          if (d < bestDist) { bestDist = d; bestChip = c; }
-        });
-        if (bestChip && !bestChip.classList.contains('on')) bestChip.click();
-      }, 140);
-    }, { passive: true });
-  }
-})();
+/* Demo restructured to 7 self-contained .demo-card units, each with its
+   own iframe (loading="lazy"). No central iframe-swap logic needed -
+   each card IS its own scenario. The generic [data-carousel] handler
+   below picks up the .demo-carousel wrapper for dots + arrows + scroll. */
 
 /* ─── Counter animations - count up to data-count when card enters viewport ─── */
 (function(){
@@ -5133,49 +5390,83 @@ setTimeout(() => {
   });
 })();
 
-/* ─── Manifesto kinetic moment - the "suggestions" word morphs through
-       real F&B items when the section scrolls into view, then settles. ─── */
+/* ─── Manifesto kinetic moment - the "suggestions" word LOOPS through real
+       Malaysian F&B items while the section is in view. Pauses when off-screen.
+       Wider word list, smooth slide-in/out, respects reduced motion. ─── */
 (function(){
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var em = document.querySelector('#manifesto h2 em');
   if (!em) return;
-  var finalWord = em.textContent;
-  var alts = ['the upsell.', 'kopi tarik.', 'nasi lemak.', 'the basket.', finalWord];
+  // Wider mix: brand defaults + Malaysian-flavour items + system-y nouns
+  var WORDS = [
+    '推荐。',
+    'upsell。',
+    'kopi tarik。',
+    'nasi lemak。',
+    '购物车。',
+    'happy hour。',
+    'combo。',
+    'threshold reward。',
+    '特价。',
+    'roti canai。',
+    'teh ais。',
+    'kaya toast。',
+    '时段。',
+    'spin & win。',
+    'cendol。',
+    '完美加点。'
+  ];
   em.style.display = 'inline-block';
   em.style.minWidth = '9ch';
   em.style.textAlign = 'center';
-  em.style.transition = 'transform 280ms cubic-bezier(.16,1,.3,1), opacity 280ms';
+  em.style.transition = 'transform 320ms cubic-bezier(.16,1,.3,1), opacity 320ms';
   em.style.willChange = 'transform, opacity';
-  var triggered = false;
-  function morph(){
-    if (triggered) return;
-    triggered = true;
-    var i = 0;
-    function step(){
-      em.style.opacity = '0';
-      em.style.transform = 'translateY(-14px)';
-      setTimeout(function(){
-        em.textContent = alts[i];
-        em.style.transform = 'translateY(14px)';
-        requestAnimationFrame(function(){
-          em.style.opacity = '1';
-          em.style.transform = 'translateY(0)';
-        });
-        i++;
-        if (i < alts.length) setTimeout(step, 720);
-      }, 280);
-    }
-    step();
-  }
-  if ('IntersectionObserver' in window){
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){
-        if (e.isIntersecting) { morph(); io.disconnect(); }
+
+  var idx = 0;
+  var timer = null;
+  var running = false;
+  var IN_MS = 1400; // how long each word stays visible
+  var OUT_MS = 320; // exit transition duration
+
+  function show(word) {
+    em.style.opacity = '0';
+    em.style.transform = 'translateY(-14px)';
+    setTimeout(function () {
+      em.textContent = word;
+      em.style.transform = 'translateY(14px)';
+      requestAnimationFrame(function () {
+        em.style.opacity = '1';
+        em.style.transform = 'translateY(0)';
       });
-    }, { threshold: 0.5 });
+    }, OUT_MS);
+  }
+
+  function loop() {
+    if (!running) return;
+    show(WORDS[idx]);
+    idx = (idx + 1) % WORDS.length;
+    timer = setTimeout(loop, IN_MS + OUT_MS);
+  }
+
+  function start() {
+    if (running) return;
+    running = true;
+    loop();
+  }
+  function stop() {
+    running = false;
+    if (timer) { clearTimeout(timer); timer = null; }
+  }
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) start(); else stop();
+      });
+    }, { threshold: 0.35 });
     io.observe(em);
   } else {
-    morph();
+    start();
   }
 })();
 </script>
