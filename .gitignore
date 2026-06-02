@@ -68,3 +68,19 @@ node_modules/
 .claude/
 _archive/
 .DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE config (personal, not needed for the site)
+.vscode/
+.idea/
+
+# Scratch / working files + notes (kept in Google Drive, never pushed)
+.audit/
+scratch/
+notes/
+*.bak
+*.bak.html
+*.orig
+*.tmp
+*~
