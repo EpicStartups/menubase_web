@@ -895,6 +895,8 @@ body::after {
 }
 .testi-card:hover, .problem-card:hover {
   border-color: var(--lime-deep);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px -16px rgba(188,241,37,0.30);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -3038,8 +3040,7 @@ footer.foot {
   gap: 14px;
   transition: border-color 200ms, transform 200ms, background 200ms;
 }
-.problem-card:hover { background: rgba(30, 30, 36, 0.40); }
-.problem-card:hover { border-color: var(--ink); transform: translateY(-2px); }
+.problem-card:hover { background: rgba(30, 30, 36, 0.46); border-color: var(--lime-deep); transform: translateY(-4px); box-shadow: 0 18px 40px -16px rgba(188,241,37,0.30); }
 .problem-icon {
   width: 44px; height: 44px;
   background: var(--bg-soft);
