@@ -1223,6 +1223,26 @@ body { padding-bottom: 84px; }
   text-align: left;
 }
 .col-l { position: relative; z-index: 2; }
+
+/* ─── CINEMATIC HERO ENTRANCE ──────────────────────────────────────────
+   Hero children reveal in sequence on load (fade + rise + focus-in). Uses
+   animation-fill-mode: backwards so the hidden 'from' state only applies
+   during each element's delay; the RESTING state is fully visible, so if
+   animations are unsupported or disabled the hero simply shows normally
+   (it can never be left invisible). Plays once on paint, then settles.
+   Disabled under prefers-reduced-motion below. */
+@keyframes heroReveal {
+  from { opacity: 0; transform: translateY(16px); filter: blur(3px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0); }
+}
+.hero .col-l > .status       { animation: heroReveal 0.60s cubic-bezier(.16,1,.3,1) 0.06s backwards; }
+.hero .col-l > h1            { animation: heroReveal 0.75s cubic-bezier(.16,1,.3,1) 0.18s backwards; }
+.hero .col-l > .hero-promise { animation: heroReveal 0.62s cubic-bezier(.16,1,.3,1) 0.34s backwards; }
+.hero .col-l > .greet        { animation: heroReveal 0.60s cubic-bezier(.16,1,.3,1) 0.46s backwards; }
+.hero .col-l > .sub          { animation: heroReveal 0.60s cubic-bezier(.16,1,.3,1) 0.56s backwards; }
+.hero .col-l > .cta          { animation: heroReveal 0.60s cubic-bezier(.16,1,.3,1) 0.66s backwards; }
+.hero .col-l > .leak         { animation: heroReveal 0.60s cubic-bezier(.16,1,.3,1) 0.80s backwards; }
+
 /* legibility card - rounded translucent panel with backdrop blur so the
    text reads cleanly while the bg drifts behind. Tuned for transparency:
    lower opacity so the animated background shows through more. */
@@ -1502,6 +1522,7 @@ body { padding-bottom: 84px; }
 
 @media (prefers-reduced-motion: reduce) {
   .glow, .status .dot::after { animation: none; }
+  .hero .col-l > * { animation: none !important; }
 }
 
 /* ---- hero v2 responsive ---- */
