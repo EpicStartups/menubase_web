@@ -1459,6 +1459,91 @@ body { padding-bottom: 84px; }
   .hero .col-l > * { animation: none !important; }
 }
 
+/* ─── VENUE ROUTER - compact segment chooser right under the hero ─── */
+.venue-router {
+  max-width: 1100px;
+  margin: -18px auto 6px;
+  padding: 0 5vw 4px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  position: relative;
+  z-index: 2;
+}
+.venue-router .vr-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.50);
+  white-space: nowrap;
+}
+.venue-router .vr-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.venue-router a {
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.03);
+  color: rgba(255,255,255,0.86);
+  white-space: nowrap;
+  transition: transform 180ms, border-color 180ms, background 180ms, color 180ms;
+}
+.venue-router a:hover {
+  border-color: var(--lime-deep);
+  background: rgba(188,241,37,0.09);
+  color: #fff;
+  transform: translateY(-2px);
+}
+.venue-router a.vr-start {
+  border-color: var(--lime);
+  background: rgba(188,241,37,0.12);
+  color: var(--lime);
+  font-weight: 700;
+}
+.venue-router a.vr-start:hover { background: var(--lime); color: #1A1A1A; border-color: var(--lime); }
+@media (max-width: 700px) {
+  .venue-router { margin: -8px auto 4px; gap: 8px; }
+  .venue-router .vr-eyebrow { width: 100%; margin-bottom: 2px; }
+  .venue-router a { font-size: 12.5px; padding: 6px 12px; }
+}
+
+/* ─── STICKY MOBILE CTA - slim lime pill that fades in after the hero CTA
+   scrolls away, giving a persistent primary action while the visitor reads
+   (property-portal pattern). Mobile only; floats above the dock; hides near
+   the founding CTA so it never doubles up. JS toggles .show. ─── */
+.sticky-cta { display: none; }
+@media (max-width: 760px) {
+  .sticky-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    position: fixed;
+    left: 50%;
+    bottom: 84px;
+    z-index: 47;
+    padding: 11px 24px;
+    border-radius: 999px;
+    background: var(--lime);
+    color: #1A1A1A;
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    box-shadow: 0 12px 30px -8px rgba(188,241,37,0.55), 0 2px 10px rgba(0,0,0,0.35);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 14px);
+    transition: opacity 260ms ease, transform 260ms cubic-bezier(.16,1,.3,1);
+  }
+  .sticky-cta.show { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
+  .sticky-cta .sc-arrow { font-weight: 700; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sticky-cta { transition: opacity 200ms; }
+}
+
 /* ---- hero v2 responsive ---- */
 @media (max-width: 1100px) {
   .hero { gap: 36px; }
@@ -4095,6 +4180,20 @@ footer.foot {
      hero is now copy + CTA + the live "RM lost" ticker) -->
 </section>
 
+<!-- ─── VENUE ROUTER ─── -->
+<nav class="venue-router" aria-label="Pilih panduan untuk venue anda">
+  <span class="vr-eyebrow">您经营的是?</span>
+  <div class="vr-chips">
+    <a href="/for-kopitiams.html">茶餐室</a>
+    <a href="/for-cafes.html">咖啡馆</a>
+    <a href="/for-bubble-tea-shops.html">珍珠奶茶</a>
+    <a href="/for-restaurants.html">餐厅</a>
+    <a href="/use-cases/mamak-24-hour.html">嘛嘛档</a>
+    <a href="/for-cloud-kitchens.html">云厨房</a>
+    <a class="vr-start" href="/zh/start-here/">正要开店? &rarr;</a>
+  </div>
+</nav>
+
 <!-- (trust-strip removed - claims were redundant with comparison block + pillars + FAQ) -->
 <!-- ─── PIXEL-RAIN DIVIDER ─── -->
 <div class="pix-rain" aria-hidden="true">
@@ -5491,6 +5590,37 @@ setTimeout(() => {
     start();
   }
 })();
+
+/* ─── Sticky mobile CTA - show once the hero has scrolled away, hide again
+       when the founding CTA (#book) enters view so the two never stack.
+       Deferred to DOM-ready because the #sticky-cta element sits after this
+       inline script in the document. ─── */
+(function(){
+  function init(){
+    var cta = document.getElementById('sticky-cta');
+    if (!cta) return;
+    var hero = document.querySelector('.hero');
+    var book = document.getElementById('book');
+    var raf = 0;
+    function update(){
+      var y = window.scrollY || window.pageYOffset || 0;
+      var heroBottom = hero ? hero.offsetTop + hero.offsetHeight : 560;
+      var show = y > heroBottom - 80;
+      if (show && book) {
+        var r = book.getBoundingClientRect();
+        if (r.top < window.innerHeight && r.bottom > 0) show = false;
+      }
+      cta.classList.toggle('show', show);
+      raf = 0;
+    }
+    function onScroll(){ if (!raf) raf = requestAnimationFrame(update); }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    update();
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
 </script>
 
 <!-- ─── INK SPOTLIGHT on both dark sections (Try it now + founding CTA) ─── -->
@@ -5498,6 +5628,12 @@ setTimeout(() => {
 <script src="/menubase-ink.js" data-target=".cta-shell" defer></script>
 
 
+
+<!-- ─── STICKY MOBILE CTA ─── -->
+<a class="sticky-cta" id="sticky-cta" href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bfrom%3A%20sticky%20ZH%5D.%20%E6%83%B3%E7%94%A8%E6%88%91%E4%BB%AC%E7%9C%9F%E5%AE%9E%E7%9A%84%E8%8F%9C%E5%8D%95%E5%81%9A%E4%B8%80%E6%AC%A1%E5%85%8D%E8%B4%B9%E6%8F%90%E5%8D%87%E6%B5%8B%E7%AE%97%E3%80%82%E7%8E%B0%E5%9C%A8%E5%8F%91%E9%80%81%E8%8F%9C%E5%8D%95%20PDF%E3%80%82" target="_blank" rel="noopener" aria-label="发送菜单给 MenuBase（WhatsApp）">
+  <span class="sc-text">发送菜单</span>
+  <span class="sc-arrow" aria-hidden="true">&rarr;</span>
+</a>
 
 <!-- ─── BOTTOM NAV (scrolls inline at end of body) ─── -->
 <!-- ─── NAV (floating bottom dock) ─── -->
