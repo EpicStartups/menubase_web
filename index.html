@@ -578,7 +578,7 @@
           "@type": "DefinedTerm",
           "@id": "https://menubase.io/#term-threshold-reward",
           "name": "Threshold Reward",
-          "description": "Promo that auto-drops a free item into the basket when total crosses a target (e.g. cart hits RM50 -> free Almond Croissant at RM0). MenuBase rings the freebie through the POS as a normal line item.",
+          "description": "Promo that auto-drops a free item into the basket when total crosses a target (e.g. cart hits RM50 -> free Almond Croissant at RM0). Your waiter rings the freebie through the POS as a normal line item.",
           "inDefinedTermSet": { "@id": "https://menubase.io/#glossary-core" }
         },
         {
@@ -3615,6 +3615,16 @@ footer.foot {
 }
 /* Mobile problem-card width handled in the unified max-width: 900px block above */
 
+/* ─── ORIGIN STORY (Why MenuBase exists) - centred, readable, honest ─── */
+.origin-block { max-width: 760px; margin: 0 auto; padding: 72px 5vw 20px; position: relative; z-index: 2; }
+.origin-body { max-width: 640px; margin: 6px auto 0; text-align: center; }
+.origin-body p { font-size: 18px; line-height: 1.62; color: rgba(255,255,255,0.84); margin: 0 0 18px; }
+.origin-body p:last-child { margin-bottom: 0; }
+@media (max-width: 700px) {
+  .origin-block { padding: 52px 6vw 12px; }
+  .origin-body p { font-size: 16px; line-height: 1.6; }
+}
+
 /* Testimonial carousel - 2-up desktop / 1-up mobile, autoplays every 6s */
 .testi-carousel {
   position: relative;
@@ -4754,17 +4764,17 @@ footer.foot {
 <!-- ─── COMPARISON TABLE (we're not a POS) ─── -->
 <section class="compare-block" id="compare">
   <div class="section-head reveal has-bg-scrim">
-    <span class="eyebrow">HOW WE COMPARE</span>
-    <h2>We're not a POS. <em>That's the point.</em></h2>
-    <p class="lede">Your POS records sales. MenuBase is the waiter on top. Never forgets the promo, same workflow.</p>
+    <span class="eyebrow">HOW AN ORDER MOVES</span>
+    <h2>We're not a POS. <em>We're the layer on top.</em></h2>
+    <p class="lede">Here's exactly how an order gets from the customer's phone to your kitchen. No integration, no re-platforming, no magic.</p>
   </div>
   <div class="arch-stack reveal" aria-label="How MenuBase sits in your existing stack">
     <div class="arch-layer arch-customer">
       <div class="arch-layer-head">
         <span class="arch-num">01</span>
-        <span class="arch-role">YOUR CUSTOMER</span>
+        <span class="arch-role">CUSTOMER ORDERS ON THE QR</span>
       </div>
-      <p class="arch-line">Scans the QR. Sees the menu. Taps to add what MenuBase suggests.</p>
+      <p class="arch-line">Scans, sees the menu, and gets the perfect upsell. Builds the whole basket on their phone.</p>
     </div>
     <div class="arch-flow" aria-hidden="true">
       <svg viewBox="0 0 24 40" xmlns="http://www.w3.org/2000/svg">
@@ -4775,17 +4785,9 @@ footer.foot {
     <div class="arch-layer arch-menubase">
       <div class="arch-layer-head">
         <span class="arch-num">02</span>
-        <span class="arch-role">MENUBASE <em>(this is the new layer)</em></span>
+        <span class="arch-role">YOUR WAITER RINGS IT IN</span>
       </div>
-      <p class="arch-line">Reads the basket. Surfaces the right add-on. Holds the full menu in memory. Pushes this week's promo on every relevant order.</p>
-      <div class="arch-tags">
-        <span>SMART UPSELL</span>
-        <span>MENU KNOWLEDGE</span>
-        <span>PROMO PUSH</span>
-        <span>DAYPART</span>
-        <span>STOCK</span>
-        <span>HAPPY HOUR</span>
-      </div>
+      <p class="arch-line">Reads the finished basket off the screen and keys it into your POS, like any order. Nothing to take down, no upsell to remember, the order is already built.</p>
     </div>
     <div class="arch-flow" aria-hidden="true">
       <svg viewBox="0 0 24 40" xmlns="http://www.w3.org/2000/svg">
@@ -4796,13 +4798,13 @@ footer.foot {
     <div class="arch-layer arch-pos">
       <div class="arch-layer-head">
         <span class="arch-num">03</span>
-        <span class="arch-role">YOUR EXISTING POS <em>(unchanged)</em></span>
+        <span class="arch-role">YOUR POS + KITCHEN <em>(unchanged)</em></span>
       </div>
-      <p class="arch-line">Records the sale. Takes the payment. Same workflow your team uses today.</p>
+      <p class="arch-line">Records the sale, fires the ticket to the kitchen. Same till, same flow. MenuBase never touched it.</p>
     </div>
     <div class="arch-summary">
       <span class="arch-summary-k">Net</span>
-      <span class="arch-summary-v">Add a revenue layer. Replace nothing underneath.</span>
+      <span class="arch-summary-v">MenuBase adds the menu and the upsell. Your team and your POS stay exactly as they are.</span>
     </div>
   </div>
 
@@ -4820,8 +4822,8 @@ footer.foot {
           <div class="rc-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
-          <h4>No workflow change</h4>
-          <p>Same POS. Same till. Same receipt printer. We add the customer menu and the upsell, we touch nothing your team touches.</p>
+          <h4>No new system to learn</h4>
+          <p>Same POS, same till, same receipt printer. Your team keeps ringing orders the way they do today. The only new thing is the customer's QR menu, and it runs on their phone.</p>
         </article>
         <article class="reassure-card">
           <div class="rc-ico" aria-hidden="true">
@@ -4885,12 +4887,24 @@ footer.foot {
 </section>
 
 
-<!-- ─── TESTIMONIALS ─── -->
+<!-- ─── WHY MENUBASE EXISTS (origin story) ─── -->
+<section class="origin-block" id="why">
+  <div class="section-head center reveal has-bg-scrim">
+    <span class="eyebrow">WHY MENUBASE EXISTS</span>
+    <h2>Built in a caf&eacute;. <em>Not a software office.</em></h2>
+  </div>
+  <div class="origin-body reveal has-bg-scrim scrim-soft">
+    <p>MenuBase exists because of a frustration every F&amp;B operator lives: you train a team to know the menu and sell the specials, and six months later they're gone. The menu knowledge leaves with them.</p>
+    <p>MenuBase was built to move that knowledge off your staff and into the screen, so turnover stops costing you sales. Every shift runs like your best one, no matter who's on the floor.</p>
+  </div>
+</section>
+
+<!-- ─── WHAT WE HEARD FROM OPERATORS ─── -->
 <section class="testi-block" id="testimonials">
   <div class="section-head center reveal has-bg-scrim">
-    <span class="eyebrow">WHAT OPERATORS TOLD US</span>
-    <h2>What operators kept <em>telling us.</em></h2>
-    <p class="lede">We sat with cafe, kopitiam and mamak operators across KL and Penang. The same patterns, every time.</p>
+    <span class="eyebrow">WHAT WE HEARD FROM OPERATORS</span>
+    <h2>What we heard <em>from operators.</em></h2>
+    <p class="lede">Before building, we sat with caf&eacute;, kopitiam and mamak operators across KL and Penang. The same patterns came up every time, the problem we built MenuBase to fix.</p>
   </div>
   <div class="testi-carousel reveal" data-carousel data-autoplay="6000">
     <button class="rc-arrow rc-prev" type="button" aria-label="Previous quote">&lsaquo;</button>
