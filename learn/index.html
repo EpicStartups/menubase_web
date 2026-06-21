@@ -330,7 +330,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700;800;900&amp;family=Geist:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="learn.css?v=20260601gutter"/>
+<link rel="stylesheet" href="learn.css?v=20260619gutter"/>
 </head>
 <body>
 
@@ -457,13 +457,16 @@
   .frameworks-row,
   .calculators-row,
   .academy-strip,
-  .hub-browse-header { padding-left: 16px !important; padding-right: 16px !important; }
+  .hub-browse-header { padding-left: 24px !important; padding-right: 24px !important; }
   .cornerstone-banner a { padding: 28px 24px !important; }
   .frameworks-row .frameworks-grid { gap: 12px !important; }
   .frameworks-row > div:first-child { padding: 0 !important; }
-  /* Most-read + Pillar guides + all hub-category sections also need a gutter */
-  .hub-category .category-heading { padding-left: 16px !important; padding-right: 16px !important; }
-  .hub-category .hub-grid { padding-left: 16px !important; padding-right: 16px !important; }
+  /* Most-read + Pillar guides + all hub-category sections also need a gutter.
+     Heading padding 0 so it aligns with the cards below (the category itself
+     already carries the 24px gutter); the card scroller re-pads 24px after its
+     -24px full-bleed breakout so the first card rests level with the heading. */
+  .hub-category .category-heading { padding-left: 0 !important; padding-right: 0 !important; }
+  .hub-category .hub-grid { padding-left: 24px !important; padding-right: 24px !important; }
 }
 @media (max-width: 560px) {
   .frameworks-grid { grid-template-columns: 1fr !important; }
@@ -471,7 +474,7 @@
   .frameworks-row,
   .calculators-row,
   .academy-strip,
-  .hub-browse-header { padding-left: 14px !important; padding-right: 14px !important; }
+  .hub-browse-header { padding-left: 24px !important; padding-right: 24px !important; }
   .cornerstone-banner a { padding: 22px 18px !important; }
   .academy-strip a { padding: 18px 18px !important; }
 }

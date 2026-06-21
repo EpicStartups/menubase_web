@@ -312,7 +312,7 @@ body { padding-bottom: 84px; }
 /* ─── HUB INTRO ─── */
 .hub-intro {
   max-width: 1100px; margin: 0 auto;
-  padding: 96px 28px 40px;
+  padding: 96px 36px 40px;
   text-align: left;
 }
 .hub-intro h1 {
@@ -451,7 +451,7 @@ body { padding-bottom: 84px; }
 .hub-category {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 64px 28px 24px;
+  padding: 64px 36px 24px;
   scroll-margin-top: 16px;
 }
 .category-heading { margin-bottom: 24px; }
@@ -660,7 +660,7 @@ body { padding-bottom: 84px; }
 .article-wrap {
   max-width: 760px;
   margin: 0 auto;
-  padding: 56px 24px 140px;
+  padding: 56px 32px 140px;
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
@@ -935,7 +935,7 @@ footer.foot {
   .nav-cta .btn.nav-wa-icon { flex: 0 0 auto; width: 36px; height: 36px; padding: 0; }
   .nav-cta .btn.nav-wa-icon svg { width: 16px; height: 16px; }
 
-  .hub-intro { padding: 56px 18px 24px; max-width: 100%; }
+  .hub-intro { padding: 56px 24px 24px; max-width: 100%; }
   /* Category jump nav: horizontal scroll on mobile to avoid wrap chaos */
   .hub-categories {
     flex-wrap: nowrap;
@@ -949,14 +949,14 @@ footer.foot {
   .hub-categories a { flex: 0 0 auto; }
 
   /* Start Here panel + per-category sections */
-  .hub-starthere { padding: 40px 18px 24px; margin: 24px 0 0; max-width: 100%; }
+  .hub-starthere { padding: 40px 24px 24px; margin: 24px 0 0; max-width: 100%; }
   .hub-starthere h2 { font-size: 26px; }
   .starthere-list a { grid-template-columns: 44px 1fr; gap: 16px; padding: 14px 18px; }
   .sh-num { font-size: 22px; }
   .sh-body strong { font-size: 15.5px; }
   .sh-body span { font-size: 13px; }
 
-  .hub-category { padding: 40px 18px 16px; max-width: 100%; }
+  .hub-category { padding: 40px 24px 16px; max-width: 100%; }
   .hub-category:last-of-type { padding-bottom: 110px; }
   .category-heading h2 { font-size: 24px; }
   .category-heading p { font-size: 14.5px; }
@@ -976,11 +976,11 @@ footer.foot {
     overscroll-behavior-x: contain;
     -webkit-overflow-scrolling: touch;
     gap: 14px;
-    padding: 6px 22px 20px;
-    margin: 0 -22px;
+    padding: 6px 32px 20px;
+    margin: 0 -24px;
     scrollbar-width: thin;
     scrollbar-color: rgba(188,241,37,0.45) transparent;
-    scroll-padding-inline: 22px;
+    scroll-padding-inline: 32px;
   }
   .hub-grid::-webkit-scrollbar { height: 6px; }
   .hub-grid::-webkit-scrollbar-track { background: transparent; }
@@ -1019,7 +1019,7 @@ footer.foot {
   .coming-soon-card { padding: 24px 20px; }
   .coming-soon-card h3 { font-size: 15px; }
 
-  .article-wrap { padding: 32px 18px 120px; }
+  .article-wrap { padding: 32px 24px 120px; }
   .article-wrap h1 { font-size: 30px; }
   .article-wrap h2 { font-size: 22px; margin: 40px 0 14px; }
   .article-wrap h3 { font-size: 18px; margin: 28px 0 12px; }
@@ -1515,4 +1515,27 @@ footer.foot {
   .calculators-row,
   .academy-strip,
   .hub-browse-header { padding-left: 14px !important; padding-right: 14px !important; }
+}
+
+/* ─── GUTTER GUARANTEE (2026-06-19) ────────────────────────────────────
+   Comfortable, uniform side gutters across the whole /learn/ page on mobile.
+   Placed last + !important so it wins against the many earlier breakpoint
+   rules (some at 14-18px) that were leaving content too close to the edge.
+   The card scrollers keep their -24px full-bleed margin, so a 24px padding
+   rests the first card 24px in (matching the headings) while still letting
+   cards bleed to the edge as you swipe. ─── */
+@media (max-width: 720px) {
+  .hub-intro, .hub-category, .hub-starthere,
+  .cornerstone-banner, .frameworks-row, .calculators-row,
+  .academy-strip, .hub-browse-header,
+  .article-wrap {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+  }
+  .hub-grid {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    scroll-padding-left: 24px !important;
+    scroll-padding-inline: 24px !important;
+  }
 }
