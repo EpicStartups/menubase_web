@@ -553,7 +553,7 @@
           "@type": "DefinedTerm",
           "@id": "https://menubase.io/#term-threshold-reward",
           "name": "Threshold Reward",
-          "description": "Promo that auto-drops a free item into the basket when total crosses a target (e.g. cart hits RM50 -> free Almond Croissant at RM0). MenuBase rings the freebie through the POS as a normal line item.",
+          "description": "Promo that auto-drops a free item into the basket when total crosses a target (e.g. cart hits RM50 -> free Almond Croissant at RM0). Your waiter rings the freebie through the POS as a normal line item.",
           "inDefinedTermSet": { "@id": "https://menubase.io/#glossary-core" }
         },
         {
@@ -3547,6 +3547,16 @@ footer.foot {
 }
 /* Mobile problem-card width handled in the unified max-width: 900px block above */
 
+/* ─── ORIGIN STORY (Why MenuBase exists) - centred, readable, honest ─── */
+.origin-block { max-width: 760px; margin: 0 auto; padding: 72px 5vw 20px; position: relative; z-index: 2; }
+.origin-body { max-width: 640px; margin: 6px auto 0; text-align: center; }
+.origin-body p { font-size: 18px; line-height: 1.62; color: rgba(255,255,255,0.84); margin: 0 0 18px; }
+.origin-body p:last-child { margin-bottom: 0; }
+@media (max-width: 700px) {
+  .origin-block { padding: 52px 6vw 12px; }
+  .origin-body p { font-size: 16px; line-height: 1.6; }
+}
+
 /* Testimonial carousel - 2-up desktop / 1-up mobile, autoplays every 6s */
 .testi-carousel {
   position: relative;
@@ -4684,17 +4694,17 @@ footer.foot {
 <!-- ─── COMPARISON TABLE (we're not a POS) ─── -->
 <section class="compare-block" id="compare">
   <div class="section-head reveal has-bg-scrim">
-    <span class="eyebrow">我们与其它工具的差别</span>
-    <h2>我们不是 POS 系统。<em>这正是关键。</em></h2>
-    <p class="lede">您的 POS 负责记录销售。MenuBase 是上方的服务员。从不走神,从不忘记促销。团队工作流程不变。</p>
+    <span class="eyebrow">一笔订单如何流转</span>
+    <h2>我们不是 POS。<em>我们是上面那一层。</em></h2>
+    <p class="lede">这就是一笔订单从顾客手机到您厨房的完整路径。无需对接，无需换系统，没有魔法。</p>
   </div>
   <div class="arch-stack reveal" aria-label="MenuBase 在您现有架构中的位置">
     <div class="arch-layer arch-customer">
       <div class="arch-layer-head">
         <span class="arch-num">01</span>
-        <span class="arch-role">您的顾客</span>
+        <span class="arch-role">顾客在扫码菜单下单</span>
       </div>
-      <p class="arch-line">扫码。看到菜单。点选 MenuBase 建议的菜品。</p>
+      <p class="arch-line">扫码、看菜单、收到最合适的加点。整个购物车在自己手机上建好。</p>
     </div>
     <div class="arch-flow" aria-hidden="true">
       <svg viewBox="0 0 24 40" xmlns="http://www.w3.org/2000/svg">
@@ -4705,17 +4715,9 @@ footer.foot {
     <div class="arch-layer arch-menubase">
       <div class="arch-layer-head">
         <span class="arch-num">02</span>
-        <span class="arch-role">MENUBASE <em>(这是新增的一层)</em></span>
+        <span class="arch-role">您的服务员出单</span>
       </div>
-      <p class="arch-line">读取购物车。浮出该加的加点。把整套菜单都记在心里。在每张相关订单上推送本周促销。</p>
-      <div class="arch-tags">
-        <span>SMART UPSELL</span>
-        <span>菜单知识</span>
-        <span>促销推送</span>
-        <span>时段</span>
-        <span>库存</span>
-        <span>HAPPY HOUR</span>
-      </div>
+      <p class="arch-line">照着屏幕上建好的购物车，像处理任何订单一样录入您的 POS。无需记录，无需背加点话术，订单已经建好。</p>
     </div>
     <div class="arch-flow" aria-hidden="true">
       <svg viewBox="0 0 24 40" xmlns="http://www.w3.org/2000/svg">
@@ -4726,13 +4728,13 @@ footer.foot {
     <div class="arch-layer arch-pos">
       <div class="arch-layer-head">
         <span class="arch-num">03</span>
-        <span class="arch-role">您现有的 POS <em>(无需更改)</em></span>
+        <span class="arch-role">您的 POS + 厨房 <em>(无需更改)</em></span>
       </div>
-      <p class="arch-line">记录销售。收款。沿用团队今天就在用的工作流程。</p>
+      <p class="arch-line">记录销售，把单子送到厨房。同一台收银机，同样的流程。MenuBase 从没碰过它。</p>
     </div>
     <div class="arch-summary">
       <span class="arch-summary-k">总结</span>
-      <span class="arch-summary-v">加一层营收能力。底下原有的一切都不动。</span>
+      <span class="arch-summary-v">MenuBase 加上菜单和加点。您的团队和 POS 完全照旧。</span>
     </div>
   </div>
 
@@ -4748,8 +4750,8 @@ footer.foot {
       <div class="rc-track">
         <article class="reassure-card">
           <div class="rc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <h4>工作流程不变</h4>
-          <p>同一套 POS、同一台收银、同一只手按小票。我们只新增顾客菜单和加点逻辑,团队碰的一切我们都不碰。</p>
+          <h4>没有新系统要学</h4>
+          <p>同一台 POS，同一台收银机，同一台小票打印机。您的团队照旧出单。唯一的新东西是顾客的扫码菜单，它跑在顾客手机上。</p>
         </article>
         <article class="reassure-card">
           <div class="rc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
@@ -4802,11 +4804,23 @@ footer.foot {
 
 
 <!-- ─── TESTIMONIALS ─── -->
+<!-- ─── MENUBASE 为何存在 (origin story) ─── -->
+<section class="origin-block" id="why">
+  <div class="section-head center reveal has-bg-scrim">
+    <span class="eyebrow">MENUBASE 为何存在</span>
+    <h2>诞生在咖啡馆。<em>不是软件办公室。</em></h2>
+  </div>
+  <div class="origin-body reveal has-bg-scrim scrim-soft">
+    <p>MenuBase 之所以存在，是因为每个 F&amp;B 经营者都经历过的一种无奈：你培训一支团队熟悉菜单、会推特价，六个月后他们走了。菜单知识也跟着走了。</p>
+    <p>MenuBase 就是为了把这份知识从员工身上搬进屏幕里，让人员流动不再让你流失生意。无论谁当班，每个班次都像你最好的那个班次。</p>
+  </div>
+</section>
+
 <section class="testi-block" id="testimonials">
   <div class="section-head center reveal has-bg-scrim">
-    <span class="eyebrow">来自我们的客户访谈</span>
-    <h2>运营者反复<em>告诉我们的事。</em></h2>
-    <p class="lede">我们和吉隆坡的咖啡馆、茶餐室、嘛嘛档运营者面对面聊过。每次都浮现同样的问题。</p>
+    <span class="eyebrow">我们从经营者那里听到的</span>
+    <h2>我们从<em>经营者那里听到的。</em></h2>
+    <p class="lede">在动手开发前，我们和吉隆坡、槟城的咖啡馆、茶餐室、嘛嘛档经营者面对面聊过。每次都浮现同样的问题，也正是 MenuBase 要解决的问题。</p>
   </div>
     <div class="testi-carousel reveal" data-carousel data-autoplay="6000">
     <button class="rc-arrow rc-prev" type="button" aria-label="上一句">&lsaquo;</button>

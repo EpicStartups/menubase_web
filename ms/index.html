@@ -553,7 +553,7 @@
           "@type": "DefinedTerm",
           "@id": "https://menubase.io/#term-threshold-reward",
           "name": "Threshold Reward",
-          "description": "Promo that auto-drops a free item into the basket when total crosses a target (e.g. cart hits RM50 -> free Almond Croissant at RM0). MenuBase rings the freebie through the POS as a normal line item.",
+          "description": "Promo that auto-drops a free item into the basket when total crosses a target (e.g. cart hits RM50 -> free Almond Croissant at RM0). Your waiter rings the freebie through the POS as a normal line item.",
           "inDefinedTermSet": { "@id": "https://menubase.io/#glossary-core" }
         },
         {
@@ -3547,6 +3547,16 @@ footer.foot {
 }
 /* Mobile problem-card width handled in the unified max-width: 900px block above */
 
+/* ─── ORIGIN STORY (Why MenuBase exists) - centred, readable, honest ─── */
+.origin-block { max-width: 760px; margin: 0 auto; padding: 72px 5vw 20px; position: relative; z-index: 2; }
+.origin-body { max-width: 640px; margin: 6px auto 0; text-align: center; }
+.origin-body p { font-size: 18px; line-height: 1.62; color: rgba(255,255,255,0.84); margin: 0 0 18px; }
+.origin-body p:last-child { margin-bottom: 0; }
+@media (max-width: 700px) {
+  .origin-block { padding: 52px 6vw 12px; }
+  .origin-body p { font-size: 16px; line-height: 1.6; }
+}
+
 /* Testimonial carousel - 2-up desktop / 1-up mobile, autoplays every 6s */
 .testi-carousel {
   position: relative;
@@ -4684,17 +4694,17 @@ footer.foot {
 <!-- ─── COMPARISON TABLE (we're not a POS) ─── -->
 <section class="compare-block" id="compare">
   <div class="section-head reveal has-bg-scrim">
-    <span class="eyebrow">BAGAIMANA KAMI BANDING</span>
-    <h2>Kami bukan POS. <em>Itu yang penting.</em></h2>
-    <p class="lede">POS anda rekod jualan. MenuBase pelayan di atas. Tak pernah terganggu, tak pernah lupa promo. Workflow sama.</p>
+    <span class="eyebrow">BAGAIMANA ORDER BERGERAK</span>
+    <h2>Kami bukan POS. <em>Kami lapisan di atasnya.</em></h2>
+    <p class="lede">Inilah cara order bergerak dari telefon customer ke dapur anda. Tiada integrasi, tiada re-platform, tiada magic.</p>
   </div>
   <div class="arch-stack reveal" aria-label="Bagaimana MenuBase duduk dalam stack sedia ada anda">
     <div class="arch-layer arch-customer">
       <div class="arch-layer-head">
         <span class="arch-num">01</span>
-        <span class="arch-role">CUSTOMER ANDA</span>
+        <span class="arch-role">CUSTOMER ORDER ATAS QR</span>
       </div>
-      <p class="arch-line">Scan QR. Tengok menu. Tap untuk tambah apa MenuBase cadang.</p>
+      <p class="arch-line">Scan, tengok menu, dan dapat upsell yang tepat. Bina seluruh basket atas telefon mereka.</p>
     </div>
     <div class="arch-flow" aria-hidden="true">
       <svg viewBox="0 0 24 40" xmlns="http://www.w3.org/2000/svg">
@@ -4705,17 +4715,9 @@ footer.foot {
     <div class="arch-layer arch-menubase">
       <div class="arch-layer-head">
         <span class="arch-num">02</span>
-        <span class="arch-role">MENUBASE <em>(ini lapisan baru)</em></span>
+        <span class="arch-role">PELAYAN ANDA RING MASUK</span>
       </div>
-      <p class="arch-line">Baca basket. Keluarkan add-on yang betul. Pegang menu penuh dalam memori. Push promo minggu ini pada setiap order yang relevan.</p>
-      <div class="arch-tags">
-        <span>SMART UPSELL</span>
-        <span>PENGETAHUAN MENU</span>
-        <span>PROMO PUSH</span>
-        <span>DAYPART</span>
-        <span>STOCK</span>
-        <span>HAPPY HOUR</span>
-      </div>
+      <p class="arch-line">Baca basket siap atas skrin dan key masuk ke POS anda, macam order biasa. Tiada apa nak catat, tiada upsell nak ingat, order dah siap dibina.</p>
     </div>
     <div class="arch-flow" aria-hidden="true">
       <svg viewBox="0 0 24 40" xmlns="http://www.w3.org/2000/svg">
@@ -4726,13 +4728,13 @@ footer.foot {
     <div class="arch-layer arch-pos">
       <div class="arch-layer-head">
         <span class="arch-num">03</span>
-        <span class="arch-role">POS SEDIA ADA ANDA <em>(tidak diubah)</em></span>
+        <span class="arch-role">POS + DAPUR ANDA <em>(tidak diubah)</em></span>
       </div>
-      <p class="arch-line">Rekod jualan. Terima bayaran. Workflow sama yang team anda guna hari ini.</p>
+      <p class="arch-line">Rekod jualan, hantar tiket ke dapur. Till sama, aliran sama. MenuBase tak pernah sentuh pun.</p>
     </div>
     <div class="arch-summary">
       <span class="arch-summary-k">Net</span>
-      <span class="arch-summary-v">Tambah lapisan revenue. Ganti tiada apa di bawah.</span>
+      <span class="arch-summary-v">MenuBase tambah menu dan upsell. Team dan POS anda kekal macam sedia ada.</span>
     </div>
   </div>
 
@@ -4748,8 +4750,8 @@ footer.foot {
       <div class="rc-track">
         <article class="reassure-card">
           <div class="rc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <h4>Tiada perubahan workflow</h4>
-          <p>POS sama. Till sama. Printer resit sama. Kami tambah menu customer dan logik upsell, kami tak sentuh apa yang team anda sentuh.</p>
+          <h4>Tiada sistem baru nak belajar</h4>
+          <p>POS sama, till sama, printer resit sama. Team anda terus ring order macam hari ini. Satu-satunya benda baru ialah menu QR customer, dan ia jalan atas telefon mereka.</p>
         </article>
         <article class="reassure-card">
           <div class="rc-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
@@ -4802,11 +4804,23 @@ footer.foot {
 
 
 <!-- ─── TESTIMONIALS ─── -->
+<!-- ─── KENAPA MENUBASE WUJUD (origin story) ─── -->
+<section class="origin-block" id="why">
+  <div class="section-head center reveal has-bg-scrim">
+    <span class="eyebrow">KENAPA MENUBASE WUJUD</span>
+    <h2>Dibina dalam kafe. <em>Bukan dalam pejabat software.</em></h2>
+  </div>
+  <div class="origin-body reveal has-bg-scrim scrim-soft">
+    <p>MenuBase wujud sebab satu kekecewaan setiap operator F&amp;B alami: anda latih team kenal menu dan jual special, enam bulan lepas mereka dah pergi. Pengetahuan menu pergi bersama mereka.</p>
+    <p>MenuBase dibina untuk pindah pengetahuan itu dari staf anda ke skrin, supaya turnover berhenti makan jualan anda. Setiap shift jalan macam shift terbaik anda, tak kira siapa atas floor.</p>
+  </div>
+</section>
+
 <section class="testi-block" id="testimonials">
   <div class="section-head center reveal has-bg-scrim">
-    <span class="eyebrow">DARI TEMUBUAL DISCOVERY KAMI</span>
-    <h2>Apa operator <em>asyik beritahu kami.</em></h2>
-    <p class="lede">Kami duduk dengan operator cafe KL, kopitiam dan mamak. Masalah yang sama timbul setiap kali.</p>
+    <span class="eyebrow">APA YANG KAMI DENGAR DARIPADA OPERATOR</span>
+    <h2>Apa yang kami dengar <em>daripada operator.</em></h2>
+    <p class="lede">Sebelum bina, kami duduk dengan operator kafe, kopitiam dan mamak di KL dan Pulau Pinang. Corak yang sama timbul setiap kali, masalah yang MenuBase dibina untuk selesaikan.</p>
   </div>
     <div class="testi-carousel reveal" data-carousel data-autoplay="6000">
     <button class="rc-arrow rc-prev" type="button" aria-label="Quote sebelumnya">&lsaquo;</button>
