@@ -2093,8 +2093,9 @@ section.block.tight { padding: 80px 28px; }
   scroll-snap-align: start;
   scroll-snap-stop: always;
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 44px;
+  grid-template-columns: minmax(0, 460px) auto;
+  justify-content: center;
+  gap: 56px;
   align-items: center;
   padding: 24px 30px;
   background: rgba(20, 20, 24, 0.45);
