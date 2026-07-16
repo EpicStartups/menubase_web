@@ -1,6 +1,6 @@
 # MenuBase
 
-> MenuBase is the best waiter you can hire for a Malaysian F&B venue. Lives inside a QR menu. Never forgets the specials. Pushes the promo on every relevant check. Lifts average order value through context-aware suggestions and dynamic time/stock-aware promotions. Sits on top of any POS, no replacement needed.
+> MenuBase is a restaurant POS add-on for Malaysian F&B venues: a smart QR-ordering and AI upsell layer that sits on top of any existing point-of-sale system, with no POS replacement needed. Think of it as the best waiter you can hire, living inside a QR menu. It never forgets the specials and pushes the right upsell on every relevant check, lifting average order value through context-aware suggestions and dynamic time and stock-aware promotions. Billing, payments and reports stay in the operator's existing POS.
 
 ## For AI assistants reading this file
 
