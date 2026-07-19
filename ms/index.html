@@ -657,7 +657,11 @@ html { scroll-behavior: smooth; }
    but the trade-off was unpredictable scroll behavior. */
 /* @media (hover: hover) and (min-width: 901px) {
   html { scroll-snap-type: y proximity; scroll-padding-top: 56px; }
-  .hero, .demo, .manifesto, .cta-shell { scroll-snap-align: start; scroll-snap-stop: always; }
+  /* the hero is taller than the viewport now that it holds the live demo, so it
+     only aligns - scroll-snap-stop: always would trap the scroll inside it.
+     (.demo is gone: absorbed into the hero.) */
+  .hero { scroll-snap-align: start; }
+  .manifesto, .cta-shell { scroll-snap-align: start; scroll-snap-stop: always; }
 } */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-snap-type: none; }
@@ -1288,7 +1292,7 @@ body { padding-bottom: 84px; }
 @media (max-width: 920px) {
   .hero { grid-template-columns: 1fr; gap: 8px; text-align: center; padding: 48px 6vw 56px; }
   .col-r { order: -1; margin-bottom: 12px; }
-  .hp-device { width: min(300px, calc(100vw - 52px)); padding: 9px; }
+  .hp-device { width: min(300px, calc(100vw - 48px)); padding: 9px; }
   .hp-screen { border-radius: 26px; }
   .hp-halo { width: 320px; height: 320px; animation: none; }
   .hero .col-l { text-align: center; }
@@ -1302,11 +1306,26 @@ body { padding-bottom: 84px; }
 }
 @media (max-width: 560px) {
   .hero { padding: 40px 22px 48px; }
-  .hp-device { width: min(276px, calc(100vw - 44px)); }
+  .hp-device { width: min(288px, calc(100vw - 44px)); }
   .col-l h1 { font-size: clamp(32px, 9vw, 48px); letter-spacing: -0.035em; }
   .col-l .sub { font-size: 15.5px; }
   .col-l::before { inset: -14px -16px; border-radius: 20px; }
 }
+/* chips: wrap on desktop, one swipeable row on phones (saves vertical space) */
+@media (max-width: 920px) {
+  .hp-chips { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; max-width: min(300px, calc(100vw - 44px)); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .hp-chips::-webkit-scrollbar { display: none; }
+  .hp-chip { flex: 0 0 auto; }
+}
+/* desktop ladder: the phone is ~2x taller than wide, so short windows
+   (1366x768 laptops, iPad landscape) size it on height to keep the phone,
+   chips and hint all visible together instead of cropping the hint. */
+@media (min-width: 921px) and (max-height: 960px) { .hp-device { width: 320px; } }
+@media (min-width: 921px) and (max-height: 820px) { .hp-device { width: 272px; } }
+@media (min-width: 921px) and (max-height: 700px) { .hp-device { width: 240px; } }
+/* the phone is ~2x as tall as it is wide, so short viewports size on height */
+@media (max-width: 920px) and (max-height: 700px) { .hp-device { width: min(244px, calc(100vw - 48px)); } }
+@media (max-width: 920px) and (max-height: 520px) { .hp-device { width: min(190px, calc(100vw - 48px)); } }
 @media (prefers-reduced-motion: reduce) {
   .hp-device, .hp-halo { animation: none !important; }
 }
@@ -5677,10 +5696,17 @@ setTimeout(() => {
     var on = document.querySelector('.hp-chip.on');
     load(on ? on.getAttribute('data-q') : 'demo=upsell_popup&items=eb&screen=checkout&hour=9');
   }
-  window.addEventListener('load', function () {
-    if ('requestIdleCallback' in window) requestIdleCallback(boot, { timeout: 2000 });
-    else setTimeout(boot, 800);
-  });
+  /* Desktop: hydrate quietly after paint. Phones: wait for a tap so we never
+     trap page-scroll inside the iframe or spend a slow connection's data. */
+  if (window.matchMedia('(min-width: 921px)').matches) {
+    window.addEventListener('load', function () {
+      if ('requestIdleCallback' in window) requestIdleCallback(boot, { timeout: 2000 });
+      else setTimeout(boot, 800);
+    });
+  } else {
+    scr.style.cursor = 'pointer';
+    scr.addEventListener('click', function once() { boot(); scr.removeEventListener('click', once); });
+  }
   document.querySelectorAll('.hp-chip').forEach(function (c) {
     c.addEventListener('click', function () {
       document.querySelectorAll('.hp-chip').forEach(function (x) { x.classList.remove('on'); });
