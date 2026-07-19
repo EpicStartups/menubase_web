@@ -842,3 +842,11 @@ html, body { height: 100%; }
   box-shadow: none;
   background: transparent;
 }
+
+/* Embedded/compact only: the host hero clips the iframe at 29px (26px on mobile),
+   so the screen's own 36px mockup radius has to be flattened. Otherwise the 36px
+   arc cuts inside the host clip and the near-white document canvas shows through
+   as a crescent in each corner, most obvious against the dark cart bar. */
+.cust-app-root.compact .phone-screen {
+  border-radius: 0;
+}
