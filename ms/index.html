@@ -1231,15 +1231,16 @@ body { padding-bottom: 84px; }
    (NOT an iframe) so it adds zero load weight at the top of the page - the
    real interactive demo still lives at #demo. Decorative: aria-hidden. ── */
 .col-r { position: relative; z-index: 2; display: flex; justify-content: center; align-items: center; }
-.hero-phone { position: relative; display: flex; justify-content: center; align-items: center; }
+.hero-phone { position: relative; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.hp-stage { position: relative; display: flex; justify-content: center; align-items: center; }
 .hp-halo {
-  position: absolute; width: 410px; height: 410px; border-radius: 50%;
+  position: absolute; inset: 0; margin: auto; width: 410px; height: 410px; border-radius: 50%;
   background: radial-gradient(circle, rgba(188,241,37,0.20), transparent 62%);
   z-index: 0; pointer-events: none; animation: hpBreathe 5s ease-in-out infinite;
 }
 @keyframes hpBreathe { 0%,100% { transform: scale(1); opacity: 0.78; } 50% { transform: scale(1.07); opacity: 1; } }
 .hp-device {
-  position: relative; z-index: 1; width: 320px; border-radius: 40px;
+  position: relative; z-index: 1; flex: 0 0 auto; width: 344px; border-radius: 40px;
   background: #0E0F12; border: 1px solid var(--line-2);
   box-shadow: 0 40px 90px -30px rgba(0,0,0,0.8), inset 0 0 0 5px #050507;
   padding: 10px;
@@ -4256,6 +4257,7 @@ footer.foot {
 
   <div class="col-r" id="demo">
     <div class="hero-phone">
+      <div class="hp-stage">
       <div class="hp-halo"></div>
       <div class="hp-device">
         <div class="hp-screen">
@@ -4286,6 +4288,7 @@ footer.foot {
           </div>
           <iframe class="hp-live" title="Demo langsung MenuBase" data-src="/Customer QR App.html?demo=upsell_popup&amp;items=eb&amp;screen=checkout&amp;hour=9&amp;hideDev=1&amp;compact=1&amp;cb=20260619a"></iframe>
         </div>
+      </div>
       </div>
       <div class="hp-chips">
         <button class="hp-chip on" type="button" data-q="demo=upsell_popup&amp;items=eb&amp;screen=checkout&amp;hour=9">Smart upsell</button>
