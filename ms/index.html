@@ -1239,10 +1239,10 @@ body { padding-bottom: 84px; }
 }
 @keyframes hpBreathe { 0%,100% { transform: scale(1); opacity: 0.78; } 50% { transform: scale(1.07); opacity: 1; } }
 .hp-device {
-  position: relative; z-index: 1; width: 288px; border-radius: 40px;
+  position: relative; z-index: 1; width: 320px; border-radius: 40px;
   background: #0E0F12; border: 1px solid var(--line-2);
   box-shadow: 0 40px 90px -30px rgba(0,0,0,0.8), inset 0 0 0 5px #050507;
-  padding: 12px; animation: hpFloat 6s ease-in-out infinite;
+  padding: 10px;
 }
 @keyframes hpFloat { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 .hp-screen { border-radius: 29px; background: var(--bg-soft); overflow: hidden; }
@@ -1267,17 +1267,27 @@ body { padding-bottom: 84px; }
 .hp-cl b { color: var(--ink); font-family: var(--font-mono); font-size: 13px; }
 .hp-cgo { font-size: 11.5px; font-weight: 800; color: #15240A; background: var(--lime); padding: 8px 14px; border-radius: 999px; }
 .hero .col-r { animation: heroReveal 0.8s cubic-bezier(.16,1,.3,1) 0.5s backwards; }
+/* hero phone hosts the LIVE demo: facade paints instantly, real app hydrates after load */
+.col-r { flex-direction: column; gap: 14px; }
+.hp-screen { position: relative; aspect-ratio: 300 / 604; display: flex; flex-direction: column; overflow: hidden; }
+.hp-facade { display: flex; flex-direction: column; height: 100%; }
+.hp-facade .hp-items { flex: 1; }
+.hp-live { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: none; background: var(--bg-soft); }
+.hp-screen.live .hp-facade { display: none; }
+.hp-screen.live .hp-live { display: block; }
+.hp-chips { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; max-width: 330px; }
+.hp-chip { font-family: var(--font-mono); font-size: 10.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-2); background: rgba(255,255,255,0.04); border: 1px solid var(--line-2); padding: 6px 10px; border-radius: 999px; cursor: pointer; transition: background 160ms, border-color 160ms, color 160ms; }
+.hp-chip:hover { border-color: var(--lime-deep); color: var(--ink); }
+.hp-chip.on { background: rgba(188,241,37,0.14); border-color: var(--lime); color: var(--lime); }
+.hp-chip:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+
 /* hero phone doubles as a teaser: tap/click jumps to the live #demo */
-a.col-r.hp-link { flex-direction: column; gap: 14px; text-decoration: none; cursor: pointer; transition: transform 240ms cubic-bezier(.16,1,.3,1); }
-a.col-r.hp-link:hover { transform: translateY(-4px); }
-a.col-r.hp-link:focus-visible { outline: 2px solid var(--lime); outline-offset: 8px; border-radius: 28px; }
 .hp-hint { font-family: var(--font-mono); font-size: 12px; font-weight: 600; letter-spacing: 0.05em; color: var(--lime); display: inline-flex; align-items: center; gap: 6px; opacity: 0.88; transition: opacity 240ms; }
-a.col-r.hp-link:hover .hp-hint { opacity: 1; }
 
 @media (max-width: 920px) {
   .hero { grid-template-columns: 1fr; gap: 8px; text-align: center; padding: 48px 6vw 56px; }
   .col-r { order: -1; margin-bottom: 12px; }
-  .hp-device { width: 244px; padding: 9px; animation: none; }
+  .hp-device { width: min(300px, calc(100vw - 52px)); padding: 9px; }
   .hp-screen { border-radius: 26px; }
   .hp-halo { width: 320px; height: 320px; animation: none; }
   .hero .col-l { text-align: center; }
@@ -1291,7 +1301,7 @@ a.col-r.hp-link:hover .hp-hint { opacity: 1; }
 }
 @media (max-width: 560px) {
   .hero { padding: 40px 22px 48px; }
-  .hp-device { width: 218px; }
+  .hp-device { width: min(276px, calc(100vw - 44px)); }
   .col-l h1 { font-size: clamp(32px, 9vw, 48px); letter-spacing: -0.035em; }
   .col-l .sub { font-size: 15.5px; }
   .col-l::before { inset: -14px -16px; border-radius: 20px; }
@@ -4244,44 +4254,51 @@ footer.foot {
     <div class="leak"><span class="dot"></span><span class="amt">Sejak anda buka page ini, cafe KL purata tinggalkan <b id="leak">RM 0.00</b> atas meja.</span></div>
   </div>
 
-  <a class="col-r hp-link" href="#demo" aria-label="Cuba demo interaktif langsung di bawah">
-    <div class="hero-phone" aria-hidden="true">
+  <div class="col-r" id="demo">
+    <div class="hero-phone">
       <div class="hp-halo"></div>
       <div class="hp-device">
         <div class="hp-screen">
-          <div class="hp-top">
-            <div class="hp-eyebrow">Meja 6 &middot; Imbas untuk order</div>
-            <div class="hp-name">Kopi &amp; Co.</div>
-            <div class="hp-tag">Bangsar &middot; buka hingga 11 malam</div>
-          </div>
-          <div class="hp-items">
-            <div class="hp-item">
-              <div><h4>Kopi O kosong</h4><p>Kopi rumah, tanpa gula</p></div>
-              <span class="hp-pr">RM 3.20</span>
+          <div class="hp-facade" aria-hidden="true">
+            <div class="hp-top">
+              <div class="hp-eyebrow">Meja 6 &middot; Imbas untuk order</div>
+              <div class="hp-name">Kopi &amp; Co.</div>
+              <div class="hp-tag">Bangsar &middot; buka hingga 11 malam</div>
             </div>
-            <div class="hp-item">
-              <div><h4>Nasi lemak ayam</h4><p>Sambal, ayam goreng</p></div>
-              <span class="hp-pr">RM 12.90</span>
-            </div>
-            <div class="hp-nudge">
-              <div class="hp-nlbl">Smart upsell &middot; baca basket</div>
-              <h4>Tambah roti kaya?</h4>
-              <p>Sedap dengan kopi anda. Kebanyakan meja tambah sebelum 11 pagi.</p>
-              <div class="hp-add">
-                <span class="hp-px">+ RM 3.50</span>
-                <span class="hp-ab">Tambah &rarr;</span>
+            <div class="hp-items">
+              <div class="hp-item">
+                <div><h4>Kopi O kosong</h4><p>Kopi rumah, tanpa gula</p></div>
+                <span class="hp-pr">RM 3.20</span>
+              </div>
+              <div class="hp-nudge">
+                <div class="hp-nlbl">Smart upsell &middot; baca basket</div>
+                <h4>Tambah roti kaya?</h4>
+                <div class="hp-add">
+                  <span class="hp-px">+ RM 3.50</span>
+                  <span class="hp-ab">Tambah &rarr;</span>
+                </div>
               </div>
             </div>
+            <div class="hp-cart">
+              <span class="hp-cl">2 item &middot; <b>RM 16.10</b></span>
+              <span class="hp-cgo">Lihat troli &rarr;</span>
+            </div>
           </div>
-          <div class="hp-cart">
-            <span class="hp-cl">2 item &middot; <b>RM 16.10</b></span>
-            <span class="hp-cgo">Lihat troli &rarr;</span>
-          </div>
+          <iframe class="hp-live" title="Demo langsung MenuBase" data-src="/Customer QR App.html?demo=upsell_popup&amp;items=eb&amp;screen=checkout&amp;hour=9&amp;hideDev=1&amp;compact=1&amp;cb=20260619a"></iframe>
         </div>
       </div>
+      <div class="hp-chips">
+        <button class="hp-chip on" type="button" data-q="demo=upsell_popup&amp;items=eb&amp;screen=checkout&amp;hour=9">Smart upsell</button>
+        <button class="hp-chip" type="button" data-q="demo=bundle&amp;items=wc,ac&amp;screen=menu&amp;hour=10">Combo</button>
+        <button class="hp-chip" type="button" data-q="demo=threshold&amp;items=eb,ml,tp&amp;screen=menu&amp;hour=12">Threshold</button>
+        <button class="hp-chip" type="button" data-q="demo=happy_hour&amp;hour=15&amp;day=1">Happy hour</button>
+        <button class="hp-chip" type="button" data-q="demo=flash&amp;items=ac,bc&amp;screen=menu&amp;hour=15">Flash deal</button>
+        <button class="hp-chip" type="button" data-q="demo=spin_wheel&amp;items=eb,wc&amp;screen=checkout&amp;hour=12">Spin &amp; win</button>
+        <button class="hp-chip" type="button" data-q="demo=weather&amp;weather=rain&amp;items=wc,ml&amp;screen=menu">Cuaca</button>
+      </div>
+      <span class="hp-hint">Tap satu senario. Ini app sebenar.</span>
     </div>
-    <span class="hp-hint">Cuba sekarang &rarr;</span>
-  </a>
+  </div>
 </section>
 
 <!-- ─── VENUE ROUTER ─── -->
@@ -4633,128 +4650,7 @@ footer.foot {
 </section>
 
 <!-- ─── LIVE DEMO (dark inverse) ─── -->
-<div class="demo" id="demo">
-  <div class="demo-header has-bg-scrim scrim-dark">
-    <span class="eyebrow">CUBA SEKARANG</span>
-    <h2>Ini bukan mock-up. <em>Cuba setiap ciri.</em></h2>
-    <p class="lede">App sebenar. Swipe 7 senario live. Setiap kad ada penerangan + demo yang berjalan untuk senario itu.</p>
-  </div>
-
-  <div class="demo-carousel" data-carousel data-autoplay="0">
-    <button class="rc-arrow rc-prev" type="button" aria-label="Senario sebelum">&lsaquo;</button>
-    <div class="rc-track demo-carousel-track">
-
-      <article class="demo-card" data-scenario="upsell">
-        <div class="dc-text">
-          <span class="dc-eyebrow">SMART UPSELL &middot; ON</span>
-          <h3>Satu upsell sempurna pada masa yang betul.</h3>
-          <p>Order Eggs Benedict pada 9:42 pagi, sistem keluarkan White Coffee. 89% accept rate pada basket itu. Satu tap untuk tambah, tiada situasi kekok untuk staff, tiada skrip.</p>
-        </div>
-        <div class="dc-stage">
-          <div class="phone lg">
-            <div class="notch"></div>
-            <iframe loading="lazy" src="Customer QR App.html?demo=upsell_popup&items=eb&screen=checkout&hour=9&hideDev=1&compact=1&cb=20260619a" title="Demo live Smart Upsell"></iframe>
-          </div>
-        </div>
-      </article>
-
-      <article class="demo-card" data-scenario="bundle">
-        <div class="dc-text">
-          <span class="dc-eyebrow">COMBO DEAL &middot; DICADANG</span>
-          <h3>Pasangkan item, cadang combo SKU dengan harga lebih murah.</h3>
-          <p>Customer tambah coffee dan pastry, banner muncul: "Jimat RM3 dengan combo." Satu tap tukar dua line jadi satu combo SKU dengan harga sudah set. Combo tu masuk sebagai satu line dalam check, terus dalam MenuBase.</p>
-        </div>
-        <div class="dc-stage">
-          <div class="phone lg">
-            <div class="notch"></div>
-            <iframe loading="lazy" src="Customer QR App.html?demo=bundle&items=wc,ac&screen=menu&hour=10&hideDev=1&compact=1&cb=20260619a" title="Demo live Combo Deal"></iframe>
-          </div>
-        </div>
-      </article>
-
-      <article class="demo-card" data-scenario="threshold">
-        <div class="dc-text">
-          <span class="dc-eyebrow">THRESHOLD REWARD &middot; UNLOCK</span>
-          <h3>Belanja sampai target, unlock item percuma, automatik.</h3>
-          <p>Cart lepas RM50 - Almond Croissant percuma masuk ke order pada RM0. Ia direkod dalam check sebagai line biasa pada RM0. Tiada kod, tiada voucher, tiada kira-kira di kaunter.</p>
-        </div>
-        <div class="dc-stage">
-          <div class="phone lg">
-            <div class="notch"></div>
-            <iframe loading="lazy" src="Customer QR App.html?demo=threshold&items=eb,ml,tp&screen=menu&hour=12&hideDev=1&compact=1&cb=20260619a" title="Demo live Threshold Reward"></iframe>
-          </div>
-        </div>
-      </article>
-
-      <article class="demo-card" data-scenario="happy_hour">
-        <div class="dc-text">
-          <span class="dc-eyebrow">HAPPY HOUR &middot; LIVE</span>
-          <h3>Kategori menu dengan harga sudah set, muncul dalam tetingkap masa.</h3>
-          <p>Pada 3 petang Selasa, kategori "Happy Hour Drinks" muncul dengan twin SKU diskaun. Tetingkap tutup pada 5 petang dan kategori lesap. Countdown live pada setiap order.</p>
-        </div>
-        <div class="dc-stage">
-          <div class="phone lg">
-            <div class="notch"></div>
-            <iframe loading="lazy" src="Customer QR App.html?demo=happy_hour&hour=15&day=1&hideDev=1&compact=1&cb=20260619a" title="Demo live Happy Hour"></iframe>
-          </div>
-        </div>
-      </article>
-
-      <article class="demo-card" data-scenario="flash">
-        <div class="dc-text">
-          <span class="dc-eyebrow">FLASH DEAL &middot; COUNTDOWN</span>
-          <h3>Tetingkap 5 minit dedahkan kategori Flash.</h3>
-          <p>Owner tekan "start flash". Banner countdown muncul pada setiap sesi aktif. Kategori Flash dengan harga sudah set jadi visible. Bila timer sampai sifar, kategori lesap.</p>
-        </div>
-        <div class="dc-stage">
-          <div class="phone lg">
-            <div class="notch"></div>
-            <iframe loading="lazy" src="Customer QR App.html?demo=flash&items=ac,bc&screen=menu&hour=15&hideDev=1&compact=1&cb=20260619a" title="Demo live Flash Deal"></iframe>
-          </div>
-        </div>
-      </article>
-
-      <article class="demo-card" data-scenario="spin">
-        <div class="dc-text">
-          <span class="dc-eyebrow">SPIN &amp; WIN &middot; DI CHECKOUT</span>
-          <h3>Roda SKU diskaun dengan harga sudah set di checkout.</h3>
-          <p>Selepas basket siap, customer pusing sekali. Mendarat pada "Nasi Lemak RM5 (biasa RM12)". Tap untuk tambah, tap untuk skip. Owner set syarat hadiah dan harga.</p>
-        </div>
-        <div class="dc-stage">
-          <div class="phone lg">
-            <div class="notch"></div>
-            <iframe loading="lazy" src="Customer QR App.html?demo=spin_wheel&items=eb,wc&screen=checkout&hour=12&hideDev=1&compact=1&cb=20260619a" title="Demo live Spin &amp; Win"></iframe>
-          </div>
-        </div>
-      </article>
-
-      <article class="demo-card" data-scenario="weather">
-        <div class="dc-text">
-          <span class="dc-eyebrow">WEATHER &middot; HARI HUJAN</span>
-          <h3>Cuaca sebenar dedahkan menu konteks, automatik.</h3>
-          <p>Bila OpenWeatherMap kata sedang hujan di outlet, "Rainy Day Specials" jadi live dengan SKU prefix pada diskaun. Berhenti hujan, kategori sorok. Sifar input dari merchant.</p>
-        </div>
-        <div class="dc-stage">
-          <div class="phone lg">
-            <div class="notch"></div>
-            <iframe loading="lazy" src="Customer QR App.html?demo=weather&weather=rain&items=wc,ml&screen=menu&hideDev=1&compact=1&cb=20260619a" title="Demo live Menu Cuaca"></iframe>
-          </div>
-        </div>
-      </article>
-
-    </div>
-    <button class="rc-arrow rc-next" type="button" aria-label="Senario seterusnya">&rsaquo;</button>
-    <div class="rc-dots" role="tablist" aria-label="Navigasi senario">
-      <button class="rc-dot active" type="button" data-idx="0" aria-label="Smart Upsell"></button>
-      <button class="rc-dot" type="button" data-idx="1" aria-label="Combo Deal"></button>
-      <button class="rc-dot" type="button" data-idx="2" aria-label="Threshold Reward"></button>
-      <button class="rc-dot" type="button" data-idx="3" aria-label="Happy Hour"></button>
-      <button class="rc-dot" type="button" data-idx="4" aria-label="Flash Deal"></button>
-      <button class="rc-dot" type="button" data-idx="5" aria-label="Spin &amp; Win"></button>
-      <button class="rc-dot" type="button" data-idx="6" aria-label="Menu Cuaca"></button>
-    </div>
-  </div>
-</div>
+<!-- (demo absorbed into the hero: the live app is now the hero phone) -->
 
 <!-- ─── ORDER FLOW (order + pay move through MenuBase) ─── -->
 <section class="compare-block" id="compare">
@@ -5763,5 +5659,33 @@ setTimeout(() => {
     </div>
   </div>
 </nav>
+<script>
+/* Hero live demo: defer the iframe until after paint so LCP stays fast,
+   then let the chips swap scenarios. If JS never runs the static facade
+   simply stays, so the hero can never look broken. */
+(function () {
+  var scr = document.querySelector('.hp-screen');
+  var frame = document.querySelector('.hp-live');
+  if (!scr || !frame) return;
+  var TAIL = '&hideDev=1&compact=1&cb=20260619a';
+  function load(q) { frame.src = '/Customer QR App.html?' + q + TAIL; }
+  frame.addEventListener('load', function () { if (frame.getAttribute('src')) scr.classList.add('live'); });
+  function boot() {
+    var on = document.querySelector('.hp-chip.on');
+    load(on ? on.getAttribute('data-q') : 'demo=upsell_popup&items=eb&screen=checkout&hour=9');
+  }
+  window.addEventListener('load', function () {
+    if ('requestIdleCallback' in window) requestIdleCallback(boot, { timeout: 2000 });
+    else setTimeout(boot, 800);
+  });
+  document.querySelectorAll('.hp-chip').forEach(function (c) {
+    c.addEventListener('click', function () {
+      document.querySelectorAll('.hp-chip').forEach(function (x) { x.classList.remove('on'); });
+      c.classList.add('on');
+      load(c.getAttribute('data-q'));
+    });
+  });
+})();
+</script>
 </body>
 </html>
