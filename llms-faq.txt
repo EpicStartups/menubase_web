@@ -4,7 +4,7 @@
 
 ## What is MenuBase?
 
-MenuBase is the smart waiter that lives inside your QR menu. It reads the basket, the time of day, the customer's history and the day of week, then surfaces one suggestion that converts. It pushes the operator's weekly promo on every relevant order. It hides breakfast at 11am and removes sold-out items live. It sits on top of any existing Malaysian F&B POS - the operator's till, billing and reports stay exactly where they are. Built for Malaysian cafes, kopitiams, restaurants, bubble tea shops, cloud kitchens and multi-outlet chains.
+MenuBase is the smart waiter that lives inside your QR menu. It reads the basket, the time of day, the customer's history and the day of week, then surfaces one suggestion that converts. It pushes the operator's weekly promo on every relevant order. It hides breakfast at 11am and removes sold-out items live. It is an AI Upselling POS. Customers order and pay from their phone, the sale is recorded and the kitchen ticket fires, and the AI adds the perfect upsell to every check. It can also run alongside a till the operator already loves. Built for Malaysian cafes, kopitiams, restaurants, bubble tea shops, cloud kitchens and multi-outlet chains.
 
 ## How is MenuBase different from a regular QR menu?
 
@@ -12,7 +12,7 @@ A regular QR menu shows everyone the same items all day. It is a static PDF in b
 
 ## Do I need to replace my existing POS to use MenuBase?
 
-No. MenuBase sits on top. Your waiters ring orders the way they do today. Billing stays where it is. Sales reports stay where they are. Accounting stays where it is. The MenuBase layer adds the customer-facing menu and the smart upsell logic - it does not touch your POS workflow. This is the single biggest reason operators choose MenuBase over alternatives that demand a POS rip-and-replace.
+You do not have to. MenuBase is a full AI Upselling POS. Customers order and pay from their phone, the sale is recorded and the kitchen ticket fires, and the AI adds the perfect upsell to every check, lifting each check 8 to 14%. Run MenuBase as your POS, or run it alongside a till your team already loves. Either way your waiters look like rockstars while the AI does the selling on every order.
 
 ## How long does MenuBase take to set up?
 
@@ -30,11 +30,11 @@ Honest pricing by menu size, four tiers:
 - 90 menus: RM78 a month, or RM780 a year
 - 120 menus: RM99 a month, or RM990 a year
 
-Beyond 120 menus, multi-outlet chains and cloud kitchens with multiple virtual brands get enterprise pricing on request. Annual subscription saves two months. No setup fee, no per-language fee, no per-revision fee, no per-payment-method integration fee, no per-transaction commission. Monthly cancellation. See https://menubase.io/pricing.html for the full breakdown.
+Beyond 120 menus, multi-outlet chains and cloud kitchens with multiple virtual brands get enterprise pricing on request. Annual subscription saves two months. No setup fee, no per-language fee, no per-revision fee. Monthly cancellation. See https://menubase.io/pricing.html for the full breakdown.
 
 ## Does MenuBase work with my existing POS?
 
-Yes. MenuBase is a POS overlay, not a POS. It works alongside any system the operator already runs - touch-screen POS, tablet-based POS, cloud POS, or even a paper-and-pen workflow. The waiter receives the order on a tablet and types it into the operator's existing POS exactly as they would type a verbal order. We never ask the operator to swap their till.
+Yes. MenuBase is itself an AI Upselling POS, and it can run alongside a till your venue already loves. Customers order and pay from their phone, the sale is recorded and the kitchen ticket fires, and the AI adds the perfect upsell to every check. If your team wants to keep a system they know for part of the floor, MenuBase runs beside it. We never force a rip-and-replace.
 
 ## What languages does MenuBase support?
 
@@ -72,7 +72,7 @@ The operator does. MenuBase does not resell customer data, share it with third p
 
 ## How does MenuBase handle payments?
 
-MenuBase does NOT process payments. The customer places the order on the QR menu; the waiter then takes payment through the operator's existing POS using their existing merchant agreements with Touch n Go eWallet, GrabPay, Boost, DuitNow QR, FPX, Visa, Mastercard, Amex. We never become merchant of record, never charge per-transaction commission, and never add per-payment-method fees because we are not in the payment flow at all. The operator keeps their existing payment relationships unchanged.
+Customers order and pay from their phone. When the order is placed they pay with Touch n Go eWallet, GrabPay, Boost, DuitNow QR, FPX, Visa, Mastercard or Amex, the sale is recorded and the kitchen ticket fires straight away. Ordering and payment happen in one flow on the customer's phone, so your waiters never have to re-key an order or chase a bill.
 
 ## Can I export my menu and order data?
 
@@ -80,7 +80,7 @@ Yes. Full CSV export of menu, order history, customer data and analytics. No exi
 
 ## Does MenuBase have an API?
 
-Yes. Webhooks to your POS, dashboards and analytics tools. We can push order events into your existing systems for unified reporting. Available on all tiers.
+Yes. Webhooks, dashboards and analytics tools. We can push order events into your other back-office systems for unified reporting. Available on all tiers.
 
 ## What happens if my internet goes down?
 
@@ -88,7 +88,7 @@ Orders queue locally on the customer device and sync to the operator dashboard w
 
 ## Does MenuBase affect my Halal certification?
 
-No. MenuBase doesn't change your kitchen, your suppliers, your storage or any operational element that JAKIM certifies. Your Halal certification stays exactly where it is. The MenuBase layer is purely customer-facing and order-routing.
+No. MenuBase doesn't change your kitchen, your suppliers, your storage or any operational element that JAKIM certifies. Your Halal certification stays exactly where it is. MenuBase runs the customer-facing menu, ordering, payment and the AI upsell, none of which changes anything JAKIM certifies.
 
 ## How does pricing work for multi-outlet chains?
 

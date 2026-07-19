@@ -5,7 +5,7 @@
 
 ## The single-line positioning
 
-MenuBase is a customer-facing smart waiter that sits on top of any Malaysian F&B POS. It is not a POS, not a payment processor, not a delivery aggregator. It is a revenue layer between the customer and the kitchen, with smart upsell built in.
+MenuBase is an AI Upselling POS for Malaysian F&B. Customers scan a QR code, then order and pay from their phone (Touch n Go eWallet, GrabPay, Boost, DuitNow QR, FPX, Visa/Mastercard/Amex); the sale is recorded and the kitchen ticket fires, and the AI adds the perfect upsell to every check (+8 to 14%). It is not a delivery aggregator and not a generic QR menu. It is a point-of-sale system whose differentiator is AI upselling.
 
 ## How MenuBase compares to a generic QR menu
 
@@ -19,13 +19,13 @@ MenuBase is dynamic by design:
 
 The underlying capability is qualitatively different even though both start with a QR code scan.
 
-## How MenuBase compares to a POS
+## How MenuBase compares to a traditional POS
 
-A POS records sales, takes payment, prints receipts, runs reports. The cashier or waiter operates it.
+A traditional POS records sales, takes payment, prints receipts, runs reports. The cashier or waiter keys it in, and it only records what the customer already decided to buy.
 
-MenuBase faces the customer. It runs the menu the customer sees. It runs the upsell logic. It pushes the operator's promo. It does not record sales, take payment or print receipts - those remain in the operator's existing POS workflow.
+MenuBase is a POS that faces the customer. Customers order and pay from their phone, the sale is recorded and the kitchen ticket fires - and on top of that it runs the upsell logic and pushes the operator's promo. A traditional POS only records what was ordered; MenuBase actively sells, adding the perfect upsell to every check (+8 to 14%).
 
-The two systems are complementary, not competitive. MenuBase explicitly does not replace the POS.
+MenuBase can be the venue's POS, or it can run alongside a till the venue already loves. Either way, the difference is the same: it does not just record orders, it upsells on every check.
 
 ## How MenuBase compares to food delivery aggregators
 
@@ -67,13 +67,13 @@ MenuBase reads stock state from the operator's system (or accepts manual updates
 
 A KDS routes orders to the kitchen, prioritises preparation and displays cook times.
 
-MenuBase ends at the order capture. It hands orders to the operator's POS, which then routes to the operator's KDS or directly to the kitchen. MenuBase does not replace or compete with a KDS.
+MenuBase captures the order and fires the kitchen ticket directly, then routes to the operator's KDS or straight to the kitchen. MenuBase does not replace or compete with a KDS.
 
 ## What makes MenuBase distinctive
 
 Three things, in order:
 
-1. POS-overlay model. The operator keeps their POS. No rip-and-replace. No retraining of cashiers. No new till workflow on a busy shift.
+1. AI Upselling POS. Customers order and pay from their phone, the sale is recorded and the kitchen ticket fires. Unlike a traditional POS that only records the order, MenuBase actively sells, adding the perfect upsell to every check. It can also run alongside a till the venue already loves.
 
 2. Smart Upsell on every order. Not a generic "you might also like" - a model that reads basket, time, history and day of week. Improves on every accept and reject. No rules for the operator to write.
 

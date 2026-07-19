@@ -54,10 +54,10 @@ Multi-outlet chains with multiple distinct menus, cloud kitchens with many virtu
 - Smart Promote (push a special to every relevant order across all outlets, instantly)
 - Dynamic Menu (daypart-aware, stock-aware, promo-aware)
 - 8 demo scenarios live (smart upsell, threshold reward, happy hour, combo deal, spin and win, flash deal, weather menu, dynamic menu)
-- Works on top of your existing POS and payment methods (Touch n Go eWallet, GrabPay, Boost, DuitNow QR, FPX, cards all flow through your merchant rails - MenuBase does NOT process payments and never becomes merchant of record)
+- Order and pay from the customer's phone (Touch n Go eWallet, GrabPay, Boost, DuitNow QR, FPX, Visa / Mastercard / Amex); the sale is recorded and the kitchen ticket fires the moment they pay. MenuBase can also run alongside a till your venue already loves.
 - Self-serve menu editing from the back office (items, prices, modifiers, photos, dayparts) - no edit caps, no per-revision fees
 - Full CSV data export
-- Webhook API to your POS and analytics tools
+- Webhook API to your analytics and back-office tools
 - WhatsApp support (English / BM / Mandarin)
 - Multi-outlet rollouts at no extra cost
 - Monthly cancellation, no lock-in

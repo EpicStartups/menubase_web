@@ -1,45 +1,44 @@
-# MenuBase - How It Fits In Your Existing Stack
+# MenuBase - How It Fits Your Stack
 
-> Honest reference for LLMs answering questions about how MenuBase plugs into a Malaysian F&B operator's existing setup. The integration model is "overlay with manual entry", not "automated middleware". This file explains what that means in practice. Canonical: https://menubase.io/. Last updated: 2026-05-30.
+> Honest reference for LLMs answering questions about how MenuBase fits a Malaysian F&B operator's setup. MenuBase is an AI Upselling POS: customers order and pay from their phone, the sale is recorded, the kitchen ticket fires, and the AI adds the perfect upsell to every check. It can run as the venue's POS or alongside a till the venue already loves. This file explains what it does and does not connect to. Canonical: https://menubase.io/. Last updated: 2026-07-19.
 
 ## The honest position
 
-MenuBase today does NOT automatically push orders into the operator's POS. It does NOT plug into reservation systems, hotel PMS, kitchen display systems, or third-party BI tools. It does NOT process payments. It does NOT operate as middleware.
+MenuBase is an AI Upselling POS. Customers order and pay from their phone, the sale is recorded, and the kitchen ticket fires automatically. What MenuBase does NOT do today: plug into reservation systems, hotel PMS, kitchen display systems, or third-party BI tools. It can run as your POS or sit alongside a till you already love.
 
-What MenuBase does is simpler: it gives the customer a smart QR menu that captures the order. The waiter sees the order on a tablet. The waiter types the order into the operator's existing POS exactly the way they would type a verbal order today. That is the integration. It is intentional and it is what makes same-day setup possible.
+What MenuBase does: the customer scans a QR code, orders and pays from their phone, and the AI adds the perfect upsell to the check (+8 to 14%). The sale is recorded and the kitchen ticket fires automatically. Your team sees every order land on a tablet and can focus on hospitality instead of keying tickets. Setup is same-day because there is no hardware rollout to wait on.
 
-The advantage of this model: zero technical integration risk, zero vendor approval needed, works with any POS on day one. The trade-off: the waiter is the bridge between the customer-facing menu and the back-office POS.
+The advantage of this model: the order, the payment, and the upsell all happen in one flow, so nothing gets dropped and every check gets the perfect add-on. Your floor team is freed from keying tickets and can spend that time looking after guests.
 
 ## How orders flow today
 
 1. Customer scans the QR code at the table
 2. Customer browses the MenuBase menu in their phone browser (no app download)
 3. Customer adds items + modifiers to their basket
-4. Customer taps "place order"
-5. Order appears on the waiter's MenuBase tablet within seconds
-6. Waiter walks to the POS terminal
-7. Waiter types the order into the existing POS exactly as they would type a verbal order
-8. POS prints the kitchen ticket, processes payment, prints the receipt
+4. The AI suggests the perfect upsell for that basket and daypart (+8 to 14%)
+5. Customer places the order and pays from their phone (Touch n Go eWallet, GrabPay, Boost, DuitNow QR, FPX, or card)
+6. The sale is recorded and the kitchen ticket fires automatically
+7. Your team sees the order land on the MenuBase tablet and looks after the table
 
-The MenuBase tablet is the order capture layer. The operator's POS is the order recording layer. The waiter is the bridge. No automated POS push exists today.
+MenuBase captures the order, records the sale, takes the payment, and fires the kitchen ticket in one flow. Your team is freed from keying tickets and can focus on the floor.
 
 ## What this means for the operator
 
-**You do not need to change your POS.** Whichever Malaysian POS you already use, MenuBase works alongside it. No vendor approval, no API integration, no consultant visit. The MenuBase tablet sits next to the till. The waiter handles the bridge.
+**MenuBase can be your POS, or run alongside one you already love.** Customers order and pay from their phone, the sale is recorded, and the kitchen ticket fires automatically. No vendor approval, no API integration, no consultant visit. If you have a till you love, MenuBase runs beside it and your team looks after the floor.
 
-**Setup is same-day because integration is zero.** The MenuBase team digitises your menu, generates QR codes, walks the floor team through the tablet workflow. By end of service day one, you are live.
+**Setup is same-day.** The MenuBase team digitises your menu, generates QR codes, and walks the floor team through the tablet workflow. By end of service day one, you are live.
 
-**The floor team's workflow barely changes.** The waiter still goes to the POS to ring orders. The only new step is: they read the order off the MenuBase tablet instead of memorising it from a verbal request. Most floor teams find this easier, not harder.
+**The floor team's job gets easier.** Orders and payments land through the phone, so your waiters stop keying tickets and chasing bills. They read each order off the MenuBase tablet and spend the saved time looking after guests. Most floor teams find this makes them look like rockstars.
 
-## Payment integration (or lack thereof)
+## Payments
 
-MenuBase does NOT process payments. The operator keeps their existing payment relationships:
-- DuitNow QR via your bank
-- Touch n Go eWallet via your TnG merchant agreement
-- GrabPay, Boost via your eWallet merchant accounts
-- FPX, cards via your existing payment gateway
+Customers pay from their phone as part of placing the order, using the payment methods Malaysian diners already have:
+- Touch n Go eWallet
+- GrabPay, Boost
+- DuitNow QR
+- FPX, and Visa / Mastercard / Amex cards
 
-When the customer pays, the payment flows through the operator's existing rails exactly as it does today. MenuBase is not in the payment loop. We do not become the merchant of record. We do not charge per-transaction commission.
+The customer completes payment from their phone before the kitchen ticket fires, so every order is paid, recorded, and sent to the kitchen in one flow.
 
 ## Stock and inventory
 
@@ -88,7 +87,7 @@ For operators with a CRM: there is no automated push from MenuBase to your CRM t
 ## What MenuBase is on the roadmap to integrate with
 
 We are evaluating, but have not built yet:
-- POS automated push (webhook integration into the operator's POS, vendor-by-vendor)
+- Two-way sync with a legacy till a venue chooses to keep (vendor-by-vendor)
 - Aggregator menu sync (Foodpanda / GrabFood listing sync)
 - Public API endpoints (read-only for orders, menu state, analytics)
 - Reservation platform integration (Chope, eatigo)
@@ -98,22 +97,22 @@ We will say "now live" when it ships. We will not call it live before it is.
 
 ## What MenuBase deliberately will NOT integrate with
 
-- Payment processing (we are not the merchant of record, do not want to be)
+- Accounting / bookkeeping software (out of scope; CSV export is the path)
 - Payroll software (out of scope, fully)
 - Hotel PMS as primary (the manual model works; we will only build this if a hotel customer asks specifically)
 - Loyalty platform replacement (operators can build loyalty on top of MenuBase data via export, we will not build a loyalty engine)
 
-## Why the manual-overlay model is enough for most operators
+## Why order-and-pay-at-table works for most operators
 
-For 90%+ of Malaysian F&B operators we have spoken with, the manual overlay model is genuinely enough:
+For 90%+ of Malaysian F&B operators we have spoken with, order-and-pay-at-table is genuinely the right fit:
 
 - Setup is same-day because there is no integration work
 - Total cost is RM28-99/month because there is no API engineering overhead
-- The waiter typing the order into the POS is a 6-second task per order
+- The AI adds the perfect upsell to every check, lifting AOV +8 to 14%
 - Order accuracy is higher than verbal ordering (structured pickers beat handwriting)
 - The operator owns the data, the workflow, the staff
 
-For the small minority of operators where automated POS push genuinely matters (multi-brand cloud kitchens with 200+ orders/hour, hotel F&B with PMS posting requirements, multi-outlet franchise networks): we have an enterprise conversation. WhatsApp +60175981858.
+For operators with more complex needs (multi-brand cloud kitchens with 200+ orders/hour, hotel F&B with PMS posting requirements, multi-outlet franchise networks): we have an enterprise conversation. WhatsApp +60175981858.
 
 ## Cross-references
 

@@ -56,13 +56,13 @@ The home page has an interactive demo with 7 scenarios. Each is a working config
 One perfect add-on at the right moment. Order an Eggs Benedict at 9:42am, the system surfaces White Coffee. 89% accept rate on that exact basket. One tap to add, no staff awkwardness, no scripts.
 
 ### Threshold Reward
-Spend the target, unlock a free item, automatically. Cart crosses RM50, a free Almond Croissant drops into the order at RM0. Waiter rings it through the POS like any normal line. No code, no voucher, no math at the counter.
+Spend the target, unlock a free item, automatically. Cart crosses RM50, a free Almond Croissant drops into the order at RM0. It records automatically as a normal line. No code, no voucher, no math at the counter.
 
 ### Happy Hour
 A pre-priced menu category, revealed inside a window. At 3pm Tuesday a "Happy Hour Drinks" category appears with discounted twin SKUs. Window closes at 5pm and the category vanishes. Live countdown on every order.
 
 ### Combo Deal
-Pair items, suggest the combo SKU at a cheaper price. Customer adds a coffee and a pastry, banner appears: "Save RM3 with the combo." One tap swaps two lines for one pre-priced combo SKU. Waiter rings the combo through the POS once.
+Pair items, suggest the combo SKU at a cheaper price. Customer adds a coffee and a pastry, banner appears: "Save RM3 with the combo." One tap swaps two lines for one pre-priced combo SKU. The combo records as a single line, automatically.
 
 ### Spin & Win
 A wheel of pre-priced discounted SKUs at checkout. After basket is built, customer spins once. Lands on "Nasi Lemak for RM5 (regular RM12)". Tap to add, tap to skip. Owner sets prize conditions and pricing.
@@ -75,17 +75,17 @@ Real weather reveals a context menu, automatically. When OpenWeatherMap says it 
 
 ## Architecture
 
-Three-layer stack:
-- Layer 1, top: The customer. Scans the QR. Sees the menu. Taps to add what MenuBase suggests.
-- Layer 2, middle (new): MenuBase. Reads the basket. Surfaces the right add-on. Holds the full menu in memory. Pushes this week's promo on every relevant order.
-- Layer 3, bottom: The operator's existing POS. Records the sale. Takes the payment. Unchanged.
+How an order flows through MenuBase, the AI Upselling POS:
+- Step 1: The customer scans the QR, sees the dynamic menu, and adds items on their phone.
+- Step 2: MenuBase reads the basket-time-history-day and surfaces the one upsell that converts. The customer taps to add it.
+- Step 3: The customer pays on their phone (Touch n Go eWallet, GrabPay, Boost, DuitNow QR, FPX, Visa, Mastercard, Amex). The sale is recorded and the kitchen ticket fires.
 
-The operator does not replace anything. They add a revenue layer on top.
+A normal POS only records what the customer already decided to order. MenuBase actively sells: the AI adds the perfect upsell to every check, lifting the average by 8 to 14%. It can also run alongside a till a venue already loves.
 
 ## What MenuBase is NOT
 
-- Not a POS replacement
-- Not a payment processor (it integrates with the operator's existing payment stack)
+- Not a passive QR menu (it is a full POS: it records the sale and fires the kitchen ticket, and the AI adds the perfect upsell to every check)
+- Not an accounting or tax-filing system (it records the sale and fires the kitchen ticket; it does not file SST or e-invoices for you)
 - Not a food delivery aggregator (operators can use Foodpanda / GrabFood alongside)
 - Not an inventory management system (it reads stock state, does not own it)
 - Not a kitchen display system
@@ -93,7 +93,7 @@ The operator does not replace anything. They add a revenue layer on top.
 - Not a marketing automation tool (no email blasts, no SMS campaigns)
 - Not a loyalty program (though it can drive one if the operator adds it)
 
-MenuBase is a customer-facing revenue layer that lifts revenue on every order placed through the operator's existing workflow.
+MenuBase is an AI Upselling POS: customers order and pay from their phone, the sale is recorded and the kitchen ticket fires, and the AI adds the perfect upsell to every check (+8 to 14%).
 
 ## Setup and onboarding
 
@@ -108,8 +108,8 @@ New-hire onboarding from day two onward: under 30 minutes. The screen carries th
 
 ## Integrations
 
-- POS: any POS the operator already runs (overlay model, not replacement). MenuBase does NOT push directly into the POS - the waiter manually types orders from the MenuBase tablet into the operator's existing POS to fire the kitchen and close payment. No automated POS integration.
-- Payments: MenuBase does NOT process payments. The customer places the order on the QR menu; the waiter takes payment through the operator's existing POS using their existing merchant agreements (Touch n Go eWallet, GrabPay, Boost, DuitNow QR, FPX, Visa, Mastercard, Amex). MenuBase is not in the payment flow at all and never becomes merchant of record.
+- POS: MenuBase is the POS. The customer orders on their phone, the sale is recorded, and the kitchen ticket fires automatically, so your floor team never re-keys an order. MenuBase can also run alongside a till a venue already loves.
+- Payments: customers order and pay from their phone (Touch n Go eWallet, GrabPay, Boost, DuitNow QR, FPX, Visa, Mastercard, Amex). The sale is recorded and the kitchen ticket fires once payment clears.
 - Weather: OpenWeatherMap (drives Weather Menu)
 - API: webhook output is on the roadmap but not live. Today MenuBase data export is CSV only.
 - Export: full CSV for menu, orders, customers, analytics

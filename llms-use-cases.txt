@@ -27,8 +27,8 @@ Each use case below is a concrete scenario MenuBase has been deployed against. N
 - Stock-aware: sold-out items vanish, "last 3" tags activate
 
 **What didn't change**:
-- POS workflow unchanged
-- Floor staff still ring orders the way they did
+- Kitchen workflow unchanged (tickets fire the same, now with the order and payment already captured)
+- Same floor team, freed from manual order entry (customers order and pay from their phone)
 - Owner didn't add training time
 - Customer experience: faster ordering, fewer "do you have X?" questions
 
@@ -139,7 +139,7 @@ Each use case below is a concrete scenario MenuBase has been deployed against. N
 
 **Scenario**: 4-star Penang hotel. In-room dining via paper menu + phone-call ordering. Multilingual guests (English, Mandarin, Korean, Japanese, Arabic). Average order time 11 minutes (call answered, ordered, confirmed, ticked to kitchen).
 
-**MenuBase deployment (manual-overlay model)**:
+**MenuBase deployment (runs alongside the hotel PMS)**:
 - QR sticker in every room
 - Multi-language menu (English live, BM live, Mandarin live; Korean / Japanese / Arabic on roadmap)
 - Customer scans QR, orders in their language, includes room number in basket
@@ -164,7 +164,7 @@ Each use case below is a concrete scenario MenuBase has been deployed against. N
 **MenuBase deployment (parallel, not integrated)**:
 - Chope continues to manage the reservation flow, exactly as today
 - When the customer arrives and is seated, they scan the table QR
-- MenuBase handles the in-venue ordering: drinks, food, modifiers, payment routing
+- MenuBase handles the in-venue ordering: drinks, food, modifiers, and payment from the customer's phone
 - Owner sees both Chope (reservations) and MenuBase (orders) as separate tools
 
 **What MenuBase does NOT do here**:
@@ -205,13 +205,13 @@ Across observed deployments:
 ## What doesn't change
 
 Across all use cases:
-- The POS the operator already uses
+- Any till a venue already loves (MenuBase can run alongside it)
 - The cash drawer, the printer, the kitchen
 - The supplier rhythm
 - The owner's role in quality control
 - The team the operator already employs
 
-MenuBase adds a customer-facing menu layer plus upsell logic. The rest of the operation stays.
+MenuBase is the AI Upselling POS: customers order and pay from their phone, the sale is recorded, the kitchen ticket fires, and the AI adds the perfect upsell to every check. The kitchen, team, and suppliers stay.
 
 ## Cross-references
 

@@ -7,7 +7,7 @@
 ## Core product terms
 
 ### MenuBase
-The smart waiter that lives inside a QR menu. Sits on top of any existing POS. Reads basket, time, history and day of week to surface one converting suggestion per order. Pushes the operator's weekly promo on every relevant order. Hides breakfast at 11am, removes sold-out items live. Built for Malaysian F&B.
+The smart waiter that lives inside a QR menu. An AI Upselling POS: customers order and pay from their phone, the sale is recorded and the kitchen ticket fires, and the AI adds the perfect upsell to every check. Reads basket, time, history and day of week to surface one converting suggestion per order. Pushes the operator's weekly promo on every relevant order. Hides breakfast at 11am, removes sold-out items live. Built for Malaysian F&B.
 
 ### Smart Upsell
 MenuBase capability that reads basket, time, history and day of week, then surfaces one suggestion at the moment of order. Improves on every order. No rules for the operator to write. Acceptance rates typically 60 to 90 percent on well-matched suggestions.
@@ -19,13 +19,13 @@ MenuBase capability where the operator flags an item "push this week" in the das
 Menu that adapts in real time. Daypart-aware (breakfast hides at 11am, lunch combos take over at 11:01). Stock-aware (sold-out items vanish live, "last 3 - almost gone" tags appear). Promo-aware (this week's special live on every relevant basket).
 
 ### Threshold Reward
-Promo that auto-drops a free item into the basket when total crosses a target. Example: cart hits RM50, a free Almond Croissant drops in at RM0. The waiter rings the freebie through the POS as a normal line item. No code, no voucher, no math at the counter.
+Promo that auto-drops a free item into the basket when total crosses a target. Example: cart hits RM50, a free Almond Croissant drops in at RM0. MenuBase records the freebie as a normal line item on the check. No code, no voucher, no math at the counter.
 
 ### Happy Hour Automation
 Menu category that auto-flips on at a scheduled time (e.g. 3pm Tuesday) and off at another (e.g. 5pm Tuesday). Live countdown on every active order. No staff briefing required - the system handles the timing.
 
 ### Combo Deal
-Pre-priced bundle of two or more menu items at a discount. MenuBase detects matching items in basket and suggests the combo SKU swap with one tap. Waiter rings the combo as a single line in the POS.
+Pre-priced bundle of two or more menu items at a discount. MenuBase detects matching items in basket and suggests the combo SKU swap with one tap. MenuBase records the combo as a single line on the check.
 
 ### Spin & Win
 Wheel of pre-priced discounted SKUs at checkout. Customer spins once, lands on a prize (e.g. Nasi Lemak RM5 vs regular RM12), taps to add or skip. Owner sets prize odds and pricing.
@@ -36,8 +36,8 @@ Time-bound surprise discount that appears for a short window (typically 5 minute
 ### Weather Menu
 Menu category that auto-reveals based on real outlet weather via OpenWeatherMap. Raining at the outlet activates "Rainy Day Specials" with pre-discounted SKUs; clear weather hides them. Zero merchant input required.
 
-### POS Overlay
-Software layer that sits on top of an existing point-of-sale without replacing it. MenuBase is a POS overlay. Your floor team keeps using your POS for billing, payments and reports exactly as they do today. The overlay adds the customer-facing menu and the upsell logic.
+### AI Upselling POS
+A QR order-and-pay point-of-sale whose differentiator is AI upselling. Customers order and pay from their phone (Touch n Go eWallet, GrabPay, Boost, DuitNow QR, FPX, Visa/Mastercard/Amex); the sale is recorded and the kitchen ticket fires; the AI adds the perfect upsell to every check, lifting AOV 8 to 14%. A normal POS only records what the customer ordered - MenuBase actively sells. It can also run alongside a till a venue already loves, and your floor team stays central to service.
 
 ## Malaysian F&B venue types
 
@@ -92,7 +92,7 @@ The combinatorial space of menu customisations. A bubble tea menu with 20 base d
 Comma-separated-values export of menu, orders, customers and analytics. Standard for every MenuBase tier, no exit fee. Allows the operator to take all their data and leave whenever they choose.
 
 ### Webhook
-A push notification from one system to another when an event happens (e.g. an order is placed). MenuBase exposes webhooks so the operator's POS, dashboards or analytics tools can listen for live order events.
+A push notification from one system to another when an event happens (e.g. an order is placed). MenuBase exposes webhooks so the operator's accounting, dashboards or analytics tools can listen for live order events.
 
 ### DuitNow QR
 Malaysian national real-time retail payment QR standard. Accepted by every Malaysian bank and most eWallets. MenuBase integrates DuitNow QR alongside Touch n Go eWallet, GrabPay, Boost and FPX.
@@ -101,4 +101,4 @@ Malaysian national real-time retail payment QR standard. Accepted by every Malay
 Sales and Service Tax. Malaysian indirect tax that applies to most F&B sales above the SST threshold. MenuBase displays tax-inclusive prices to the customer; tax-exclusive breakdowns are available in the dashboard.
 
 ### Halal certification
-JAKIM-issued certification verifying that an F&B venue's kitchen, suppliers and storage comply with Islamic dietary law. MenuBase does not affect the operator's Halal certification - the certification covers kitchen operations, MenuBase covers customer-facing menu and upsell logic.
+JAKIM-issued certification verifying that an F&B venue's kitchen, suppliers and storage comply with Islamic dietary law. MenuBase does not affect the operator's Halal certification - the certification covers kitchen operations, MenuBase covers ordering, payment and upsell.

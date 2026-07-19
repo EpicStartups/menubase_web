@@ -98,7 +98,7 @@ Operational pain points specific to restaurant:
 - Splitting bills: groups of 4-8 want individual bills, takes 10+ minutes manually
 
 What MenuBase changes for restaurant:
-- Customer can browse + add to basket while waiting for waiter (sit-to-order time goes to zero)
+- Customer orders and pays from their phone the moment they sit (sit-to-order time goes to zero), freeing your waiters to run food and read the room instead of chasing order pads
 - Modifiers captured cleanly with structured pickers (no handwriting interpretation)
 - Smart Upsell surfaces dessert when basket-state hits "main meal complete"
 - Split-bill happens at the customer level: each diner has their own QR-scan session
@@ -154,7 +154,7 @@ Operational pain points:
 - Cash management: counting at end of shift takes 30 minutes manually
 
 What MenuBase changes for food truck:
-- QR-scan ordering eliminates queue-at-counter
+- QR order-and-pay eliminates queue-at-counter: customers order and settle from their phone
 - Modifier pickers replace shouting "kurang pedas" across noisy environments
 - Cash-in vs digital reconciliation in the dashboard
 
