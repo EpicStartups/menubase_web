@@ -9,7 +9,7 @@ Location: Malaysia (Klang Valley, Penang, JB and Peninsula)
 
 The smart waiter that lives inside a QR menu.
 Reads the basket. Pushes the promo. Hides breakfast at 11am.
-Sits on top of any Malaysian F&B POS. Never replaces it.
+The AI Upselling POS for Malaysian F&B.
 
 /* HOW WE BUILT IT */
 
