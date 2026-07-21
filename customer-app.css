@@ -867,8 +867,8 @@ html, body { height: 100%; }
 .cust-app-root.compact .cust-cart-list { padding: 3.2vw 4.2vw; }
 .cust-app-root.compact .cust-menu-scroll { padding-bottom: 17.9vw; }
 .cust-app-root.compact .spin-wrap {
-  width: min(180px, 46vw);
-  height: min(180px, 46vw);
+  width: min(180px, 56vw);
+  height: min(180px, 56vw);
   margin: 0.5vw auto 1.5vw;
 }
 .cust-app-root.compact .spin-btn {
@@ -880,10 +880,26 @@ html, body { height: 100%; }
 /* .lbl's "bottom" is the label's orbit radius from the wheel centre, tuned to the
    180px wheel. It has to shrink with the wheel or the labels fly outside the rim. */
 .cust-app-root.compact .spin-label > .lbl {
-  bottom: min(46px, 9.5vw);
-  font-size: clamp(6px, 2.4vw, 9.5px);
+  bottom: min(46px, 11.5vw);
+  font-size: clamp(8px, 3.1vw, 9.5px);
+  /* Truncate rather than let a long prize name escape the rim. Proportional
+     sizing alone bottomed out at 6px, which is not readable, so legibility wins
+     and the name ellipsises instead. max-width tracks the wheel, not the
+     viewport, because the wheel caps at 180px while vw keeps growing. */
+  display: block;
+  max-width: min(95px, 27vw);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .cust-app-root.compact .reveal-btn {
   padding: 2.6vw 4.2vw;
   font-size: clamp(10px, 3.4vw, 13px);
+}
+
+/* The 3-up payment grid's buttons totalled 167px inside a 156px track at the
+   narrowest frame, pushing .pay-btn past the phone edge. */
+.cust-app-root.compact .pay-grid { gap: 2.1vw; }
+.cust-app-root.compact .pay-btn {
+  padding: 3.2vw 1.8vw;
+  font-size: clamp(9px, 3.3vw, 12.5px);
 }
