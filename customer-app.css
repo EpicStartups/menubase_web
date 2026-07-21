@@ -850,3 +850,40 @@ html, body { height: 100%; }
 .cust-app-root.compact .phone-screen {
   border-radius: 0;
 }
+
+/* Embedded/compact only: the app is laid out for a 380x760 phone, but the hero
+   renders it between 170px and 322px wide, so every fixed pixel size comes out
+   oversized (the checkout button was eating 16 percent of the screen height and
+   the spin wheel's 52px hub covered 45 percent of a shrunken wheel). Each value
+   below is the 380px design value expressed in vw, so the embed keeps the
+   standalone mockup's proportions at any frame size. Measured in-browser at
+   170px, 250px and 322px wide. */
+.cust-app-root.compact .checkout-btn {
+  margin: 3.2vw 4.2vw;
+  padding: 3.4vw;
+  font-size: clamp(11px, 3.7vw, 15px);
+  border-radius: 3.2vw;
+}
+.cust-app-root.compact .cust-cart-list { padding: 3.2vw 4.2vw; }
+.cust-app-root.compact .cust-menu-scroll { padding-bottom: 17.9vw; }
+.cust-app-root.compact .spin-wrap {
+  width: min(180px, 46vw);
+  height: min(180px, 46vw);
+  margin: 0.5vw auto 1.5vw;
+}
+.cust-app-root.compact .spin-btn {
+  width: 13.7vw;
+  height: 13.7vw;
+  border-width: max(2px, 1vw);
+  font-size: clamp(8px, 2.9vw, 11px);
+}
+/* .lbl's "bottom" is the label's orbit radius from the wheel centre, tuned to the
+   180px wheel. It has to shrink with the wheel or the labels fly outside the rim. */
+.cust-app-root.compact .spin-label > .lbl {
+  bottom: min(46px, 9.5vw);
+  font-size: clamp(6px, 2.4vw, 9.5px);
+}
+.cust-app-root.compact .reveal-btn {
+  padding: 2.6vw 4.2vw;
+  font-size: clamp(10px, 3.4vw, 13px);
+}
