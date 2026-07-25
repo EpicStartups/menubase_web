@@ -1467,10 +1467,10 @@ body { padding-bottom: 84px; }
   display: inline-flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px 12px;
-  padding: 10px 14px 10px 10px;
-  background: rgba(188,241,37,0.08);
-  border: 1.5px solid rgba(188,241,37,0.35);
+  gap: 8px 10px;
+  padding: 6px 12px 6px 7px;
+  background: rgba(188,241,37,0.06);
+  border: 1px solid rgba(188,241,37,0.28);
   border-radius: 999px;
   margin: 14px 0 18px;
   max-width: 100%;
@@ -1479,17 +1479,17 @@ body { padding-bottom: 84px; }
 .hero-promise .hp-num {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: clamp(20px, 2.4vw, 26px);
+  font-size: clamp(15px, 1.9vw, 20px);
   letter-spacing: -0.02em;
   color: var(--lime);
-  padding: 4px 12px;
+  padding: 3px 11px;
   background: rgba(188,241,37,0.16);
   border-radius: 999px;
   line-height: 1.1;
 }
 .hero-promise .hp-label {
   font-weight: 600;
-  font-size: 14.5px;
+  font-size: 13.5px;
   color: var(--ink);
   letter-spacing: -0.005em;
 }
@@ -1500,12 +1500,12 @@ body { padding-bottom: 84px; }
 }
 .hero-promise .hp-pill {
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-2);
-  padding: 4px 10px;
+  padding: 3px 9px;
   border: 1px solid rgba(255,255,255,0.10);
   border-radius: 999px;
 }
@@ -1527,8 +1527,8 @@ body { padding-bottom: 84px; }
     width: fit-content;
     max-width: 100%;
   }
-  .hero-promise .hp-num { font-size: 19px; padding: 3px 10px; }
-  .hero-promise .hp-label { font-size: 13.5px; }
+  .hero-promise .hp-num { font-size: 16px; padding: 3px 10px; }
+  .hero-promise .hp-label { font-size: 13px; }
   .hero-promise .hp-sep { display: none; }
   .hero-promise .hp-break {
     display: block;
@@ -3245,33 +3245,33 @@ footer.foot {
 .problem-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 56px;
+  gap: 14px;
+  margin-bottom: 44px;
 }
 .problem-card {
   background: rgba(30, 30, 36, 0.18);
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
   border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 22px 22px 24px;
+  border-radius: 13px;
+  padding: 16px 18px 18px;
   display: flex;
-  gap: 14px;
+  gap: 12px;
   transition: border-color 200ms, transform 200ms, background 200ms;
 }
 .problem-card:hover { background: rgba(30, 30, 36, 0.46); border-color: var(--lime-deep); transform: translateY(-4px); box-shadow: 0 18px 40px -16px rgba(188,241,37,0.30); }
 .problem-icon {
-  width: 44px; height: 44px;
+  width: 34px; height: 34px;
   background: var(--bg-soft);
   color: var(--ink);
-  border-radius: 10px;
+  border-radius: 9px;
   display: grid; place-items: center;
   flex-shrink: 0;
 }
-.problem-icon svg { width: 22px; height: 22px; }
-.problem-card h4 { font-family: var(--font-display); font-weight: 700; font-size: 18px; margin-bottom: 6px; letter-spacing: -0.015em; line-height: 1.2; transition: color 200ms; }
+.problem-icon svg { width: 17px; height: 17px; }
+.problem-card h4 { font-family: var(--font-display); font-weight: 700; font-size: 15px; margin-bottom: 4px; letter-spacing: -0.015em; line-height: 1.2; transition: color 200ms; }
 .problem-card:hover h4 { color: var(--lime); }
-.problem-card p { font-size: 14.5px; color: var(--grey); line-height: 1.55; }
+.problem-card p { font-size: 12.5px; color: var(--grey); line-height: 1.5; }
 /* Subtle pulse on the lime icon when card is hovered */
 .problem-card .problem-icon { transition: transform 280ms cubic-bezier(.34,1.4,.64,1), color 200ms; }
 .problem-card:hover .problem-icon { transform: scale(1.10) rotate(-3deg); color: var(--lime); }
@@ -3323,9 +3323,9 @@ footer.foot {
   .problem-grid::-webkit-scrollbar-thumb { background: rgba(188,241,37,0.45); border-radius: 6px; }
   .problem-card {
     scroll-snap-align: start; scroll-snap-stop: always;
-    flex: 0 0 78%;
-    min-width: 260px;
-    max-width: 320px;
+    flex: 0 0 72%;
+    min-width: 228px;
+    max-width: 290px;
   }
   .problem-block { padding: 64px 22px; }
 }
