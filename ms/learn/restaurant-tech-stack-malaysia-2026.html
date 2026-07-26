@@ -285,11 +285,11 @@
 
 <h3>2. Lapisan ordering menghadap-pelanggan (menu QR, scan-to-order, smart upsell)</h3>
 
-<p>Ini bahagian stack yang kebanyakan operator buat salah. POS untuk team floor anda. Lapisan ordering untuk pelanggan. Ia kerja berbeza dan ia patut alat berbeza.</p>
+<p>Ini bahagian stack yang kebanyakan operator buat salah. Kebanyakan POS hanya layan team floor anda dan lupa terus sisi pelanggan. Sedangkan sisi pelanggan, order, tambah, dan bayar terus di telefon, itulah yang tukar POS yang hanya rekod jadi POS yang betul-betul menjual.</p>
 
 <p>Lapisan ordering adalah sticker QR atas meja, menu yang pelanggan nampak pada telefon mereka, saat upsell berlaku ("tambah teh tarik untuk RM4 lebih"), dan basket order mengembara sebelum sampai ke dapur. Kalau anda tiada lapisan ni, setiap upsell kena datang dari waiter yang terlalu sibuk untuk buat pada setiap check, yang adalah masalah struktur yang kami cover dalam artikel <a href="/learn/why-restaurant-staff-dont-upsell.html">kenapa staff tak upsell</a>.</p>
 
-<p>Apa lapisan ordering patut buat: terjemah per pelanggan (English, Bahasa, Cina, Tamil), sembunyi breakfast pada 11 pagi dan surface happy hour pada 5 petang, jalankan smart upsell yang ikat kepada apa yang sudah dalam basket, push order ke dapur, dan duduk atas POS sedia ada anda bukan ganti. Pecahan kos penuh hidup dalam <a href="/learn/qr-menu-pricing-malaysia.html">panduan harga menu QR kami</a>.</p>
+<p>Apa lapisan ordering patut buat: terjemah per pelanggan (English, Bahasa, Cina, Tamil), sembunyi breakfast pada 11 pagi dan surface happy hour pada 5 petang, jalankan smart upsell yang ikat kepada apa yang sudah dalam basket, push order ke dapur, dan benarkan pelanggan order dan bayar terus dari telefon (dan boleh juga jalan seiring dengan till yang anda dah guna). Pecahan kos penuh hidup dalam <a href="/learn/qr-menu-pricing-malaysia.html">panduan harga menu QR kami</a>.</p>
 
 <h3>3. Integrasi pembayaran (DuitNow QR, TnG, GrabPay, Boost, FPX, kad)</h3>
 
@@ -382,11 +382,13 @@
 
 <h2>Bagaimana MenuBase sesuai dalam stack 6-bahagian</h2>
 
-<p>Untuk telus tentang tempat kami duduk. MenuBase adalah bahagian 2, lapisan ordering menghadap-pelanggan. Kami duduk atas POS sedia ada anda (bahagian 1) jadi anda tak perlu ganti. Pelanggan scan QR, order di telefon mereka, dan waiter anda nampak order pada tablet dan tetap ring masuk POS sedia ada anda secara manual. Kami integrasi dengan rel pembayaran (bahagian 3) jadi DuitNow QR, e-wallet dan kad semua settle melalui ke tempat sama. Kami bukan bahagian 4, 5 atau 6.</p>
+<p>Untuk telus tentang tempat kami duduk. MenuBase adalah AI Upselling POS: pelanggan order dan bayar terus dari telefon sendiri (Touch 'n Go eWallet, GrabPay, Boost, DuitNow QR, FPX, kad), jualan terus terekod, docket dapur tercetak, dan AI tambah satu upsell yang tepat pada setiap check (+8 hingga 14%). POS biasa cuma rekod apa pelanggan order; MenuBase pergi menjual. Kalau anda dah ada till yang anda tak nak lepas, MenuBase boleh jalan seiring dengannya, tak perlu ganti. Inventori, aggregator delivery dan payroll (bahagian 4, 5 dan 6) kami tak sentuh.</p>
 
-<p>Itu seluruh pitch. Kami tak cuba ganti POS anda. Kami tak berpura jadi sistem inventori anda. Kami tak jalankan order aggregator delivery anda. Kami buat satu kerja yang lapisan POS sedia ada tak pernah dibina untuk buat dengan baik: tukar telefon pelanggan jadi permukaan ordering pintar, berbilang bahasa yang jalankan upsell pada setiap check, tanpa perlukan waiter ingat.</p>
+<p>Jujur sikit tentang apa kami tak buat. Kami tiada push API POS automatik. Cara MenuBase terima order: pelanggan tekan hantar, waiter nampak notifikasi, dan waiter masukkan order ke POS sedia ada anda secara manual macam biasa. Lapisan ordering biar pelanggan buat bahagian pintar (menu berbilang bahasa, smart upsell, senarai sedar-stok), dan team floor buat bahagian tenang letak order. Dalam realiti kebanyakan POS di Malaysia tak buka integrasi API, ini setup yang jujur.</p>
 
-<p>Ini penting sebab mod kegagalan stack tech restoran adalah satu alat yang cuba jadi semua enam bahagian, buat setiap satu buruk, dan kunci data anda dalam taman berdinding. Senibina yang betul dalam 2026 adalah POS tipis, lapisan ordering pintar atas, aggregator pembayaran sebelah, dan spreadsheet untuk semua benda lain sehingga anda betul-betul lebih besar.</p>
+<p>Kami tak berpura jadi sistem inventori anda. Kami tak jalankan order aggregator delivery anda. Kami buat satu kerja yang POS biasa tak pernah buat: bukan sekadar rekod pasif apa pelanggan order, tapi tukar telefon pelanggan jadi permukaan ordering dan pembayaran pintar, berbilang bahasa yang jalankan upsell pada setiap check, tanpa perlukan waiter ingat.</p>
+
+<p>Ini penting sebab mod kegagalan stack tech restoran adalah satu alat yang cuba jadi semua enam bahagian, buat setiap satu buruk, dan kunci data anda dalam taman berdinding. Senibina yang betul dalam 2026 adalah satu POS pintar yang jalankan upsell dan terima pembayaran terus dari telefon pelanggan, dan spreadsheet untuk semua benda lain sehingga anda betul-betul lebih besar.</p>
 
 <h2>Anjakan spesifik-2026 yang berbaloi track</h2>
 
@@ -495,7 +497,7 @@
       <a href="/ms/" class="brand" aria-label="MenuBase home">
         <img class="brand-lockup" src="/menubase-logo-dark.png" alt="MenuBase" width="210" height="38" loading="lazy" decoding="async"/>
       </a>
-      <p>Waiter yang anda harap boleh ambil. Tinggal dalam menu QR anda. Tak pernah lupa specials. Tolak promo setiap shift. Duduk atas mana-mana POS.</p>
+      <p>Waiter yang anda harap boleh ambil. Tinggal dalam menu QR anda. Tak pernah lupa specials. Tolak promo setiap shift. Upselling POS berkuasa AI.</p>
     </div>
     <div class="foot-col">
       <h5>Produk</h5>

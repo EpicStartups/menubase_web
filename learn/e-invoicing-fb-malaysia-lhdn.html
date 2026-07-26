@@ -485,19 +485,19 @@
 
 <p><strong>Staff meal discounts.</strong> Staff meals at discounted or zero prices are generally not part of your taxable supply. Flag them accordingly in your POS so they do not inadvertently appear in your consolidated B2C submission as regular revenue transactions.</p>
 
-<h2 id="sec-menubase-role">What MenuBase fits in this</h2>
+<h2 id="sec-menubase-role">Where MenuBase fits in this</h2>
 
-<p>Honest framing: MenuBase does not issue e-invoices. We do not have a MyInvois integration. We are not an accounting or tax software. If you are looking for a system that pushes directly to LHDN's API, that is your POS vendor or your middleware provider, not MenuBase.</p>
+<p>Straight framing: MenuBase is your AI Upselling POS. The customer orders and pays from their phone by QR (TnG, GrabPay, Boost, DuitNow QR, FPX, card), the sale records instantly with every line itemised, the kitchen ticket fires, and the AI adds the upsell to the check. Because the order and the payment are captured in one clean record, the transaction data a MyInvois submission draws on is correct from the first tap. Prefer to keep the till and accounting stack you already run? MenuBase runs alongside it as your front-of-house ordering and upsell POS, and the order that lands in your till is already itemised.</p>
 
-<p>What MenuBase does contribute upstream of the e-invoice flow:</p>
+<p>What MenuBase gives you for the e-invoice flow:</p>
 
-<p><strong>Clean order data at the source.</strong> Every order that comes through the MenuBase QR menu has itemised line items, modifiers accounted for, and table or customer attribution. When your waiter transfers that order into your POS, the receipt that gets created is clean. Each item is a discrete line, not a lump "food order RM48." Clean POS receipts produce clean e-invoice exports. Sloppy order entry produces consolidated submissions with categories like "miscellaneous" that LHDN is not happy with.</p>
+<p><strong>Clean order data at the source.</strong> Every order that comes through the MenuBase QR menu has itemised line items, modifiers accounted for, and table or customer attribution. Because MenuBase takes the order and records the sale, the transaction is clean from the start. Each item is a discrete line, not a lump "food order RM48." Clean records produce clean e-invoice exports. Sloppy order entry produces consolidated submissions with categories like "miscellaneous" that LHDN is not happy with.</p>
 
-<p><strong>Modifier discipline.</strong> The most common source of messy POS data in F&amp;B is unstructured modifiers: "extra rice, no chilli, add egg" typed as free text in the notes field. MenuBase structures all modifiers as priced or unpriced line items on the order. When this lands in the POS, the pricing is explicit and auditable. That explicit pricing is what the e-invoice SST calculation needs to be accurate.</p>
+<p><strong>Modifier discipline.</strong> The most common source of messy transaction data in F&amp;B is unstructured modifiers: "extra rice, no chilli, add egg" typed as free text in the notes field. MenuBase structures all modifiers as priced or unpriced line items on the order. When the sale records, the pricing is explicit and auditable. That explicit pricing is what the e-invoice SST calculation needs to be accurate.</p>
 
-<p><strong>Daypart and discount transparency.</strong> When a happy hour discount is applied through MenuBase, it appears as a named discount line (not a silent price reduction). That discount line needs to travel through to the POS and then to the e-invoice. The chain is: MenuBase order with explicit discount line, to POS receipt with the same explicit discount, to MyInvois consolidated submission with the discount line intact. MenuBase ensures the chain starts cleanly.</p>
+<p><strong>Daypart and discount transparency.</strong> When a happy hour discount is applied through MenuBase, it appears as a named discount line (not a silent price reduction). That discount line travels straight into the e-invoice. The chain is: MenuBase sale with an explicit discount line, to the MyInvois consolidated submission with the discount line intact. If you keep a separate till, the same explicit discount carries across cleanly.</p>
 
-<p>We contribute the upstream discipline that makes the downstream compliance easier. The actual e-invoice submission is still the POS or middleware's job. Your accountant or your POS vendor will handle the MyInvois API connection. We handle the order quality that feeds it.</p>
+<p>MenuBase records the sale cleanly, which is what makes the downstream filing easy. The MyInvois submission itself runs through one of the three paths above: a native connector, a middleware service, or the manual portal. Either way, the clean, itemised record MenuBase produces is what that filing draws on.</p>
 
 <aside class="article-related" aria-labelledby="related-heading">
   <h2 id="related-heading" class="related-heading">Read next</h2>
@@ -525,7 +525,7 @@
 
 <div class="cta-block has-bg-scrim scrim-dark">
   <h3>Getting your POS and order data ready for MyInvois?</h3>
-  <p>Most operators discover their POS data is messier than expected when they try to push it through the e-invoice flow. Orders with free-text modifiers, lump totals, mixed category lines. MenuBase structures the order at source so the POS receipt is clean enough for your MyInvois submission to go through without manual correction.</p>
+  <p>Most operators discover their transaction data is messier than expected when they try to push it through the e-invoice flow. Orders with free-text modifiers, lump totals, mixed category lines. MenuBase is the ordering-and-payment POS that records every sale itemised at the source, so your MyInvois submission goes through without manual correction.</p>
   <p>WhatsApp the team with a photo of your current menu. 15 minutes. We will show you exactly where your current order flow produces e-invoice-unfriendly data and what the fix looks like. No commitment.</p>
   <a class="btn btn-lime btn-lg" href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bfrom%3A%20article%20-%20e-invoicing-fb-malaysia-lhdn%5D%20Would%20like%20to%20understand%20how%20clean%20order%20data%20upstream%20helps%20our%20MyInvois%20submission." target="_blank" rel="noopener">WhatsApp the team &rarr;</a>
 </div>
@@ -533,7 +533,7 @@
 <aside class="vertical-callout">
   <p class="vc-eyebrow">BUILT FOR YOUR VENUE</p>
   <h2>Clean order data for every venue type</h2>
-  <p>The upstream order discipline that feeds your e-invoice flow applies whether you run a single outlet or a multi-venue group. See how MenuBase fits your specific venue type:</p>
+  <p>The clean, itemised sale records MenuBase produces carry into your e-invoice flow whether you run a single outlet or a multi-venue group. See how MenuBase fits your specific venue type:</p>
   <div class="vc-grid">
     <a href="/for-restaurants.html"><span>FOR RESTAURANTS</span><strong>Modifier discipline and itemised receipts</strong></a>
     <a href="/for-cafes.html"><span>FOR CAFES</span><strong>Clean order lines for SST and e-invoice</strong></a>
@@ -574,7 +574,7 @@
 <section class="article-cta" aria-labelledby="cta-article-h">
   <span class="eyebrow">Getting MyInvois-ready?</span>
   <h3 id="cta-article-h">Send your menu. We show you where the order data needs work.</h3>
-  <p>MenuBase structures order data cleanly at source so your POS receipts are e-invoice-ready. Same-day setup. RM28 to RM99 a month by menu size, no setup fee, monthly cancellation.</p>
+  <p>MenuBase is the AI Upselling POS that records every sale cleanly at source, so your transactions are e-invoice-ready. Same-day setup. RM28 to RM99 a month by menu size, no setup fee, monthly cancellation.</p>
   <a class="btn" href="https://wa.me/60175981858?text=Hi%20MenuBase%21%20%5Bfrom%3A%20article%20-%20e-invoicing-fb-malaysia-lhdn%5D.%20Just%20read%20the%20e-invoicing%20playbook.%20Want%20to%20check%20if%20our%20order%20data%20is%20MyInvois-ready.%20Sending%20our%20menu%20now." target="_blank" rel="noopener">
     <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="width:18px;height:18px;flex-shrink:0;"><path d="M27.04 4.95C24.07 1.97 20.12.33 15.92.33 7.27.33.23 7.37.23 16.02c0 2.77.72 5.47 2.1 7.85L.1 31.67l8.02-2.1c2.3 1.25 4.88 1.91 7.5 1.91h.01c8.65 0 15.69-7.04 15.69-15.69 0-4.19-1.63-8.13-4.28-11.09zm-11.12 24.13h-.01c-2.34 0-4.63-.63-6.62-1.81l-.47-.28-4.92 1.29 1.31-4.79-.31-.49a13.04 13.04 0 0 1-2-6.97c0-7.21 5.87-13.07 13.08-13.07 3.5 0 6.78 1.36 9.25 3.83a13.01 13.01 0 0 1 3.83 9.25c.01 7.2-5.86 13.04-13.07 13.04zm7.14-9.78c-.39-.2-2.32-1.14-2.68-1.27-.36-.13-.62-.2-.89.2-.26.39-1.01 1.27-1.24 1.53-.23.26-.46.29-.85.1-.39-.2-1.65-.61-3.15-1.95-1.16-1.04-1.95-2.32-2.18-2.71-.23-.39-.02-.6.17-.8.18-.18.39-.46.59-.69.2-.23.26-.39.39-.65.13-.26.07-.49-.03-.69-.1-.2-.89-2.15-1.22-2.93-.32-.77-.65-.67-.89-.68-.23-.01-.49-.01-.76-.01s-.69.1-1.06.49c-.36.39-1.39 1.36-1.39 3.3 0 1.95 1.42 3.83 1.62 4.09.2.26 2.79 4.27 6.77 5.99.95.41 1.69.65 2.27.84.95.3 1.82.26 2.5.16.76-.11 2.32-.95 2.65-1.87.33-.92.33-1.71.23-1.87-.1-.16-.36-.26-.75-.46z" fill="currentColor"/></svg>
     Send your menu &rarr;
