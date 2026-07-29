@@ -812,7 +812,8 @@ body { padding-bottom: 84px; }
 footer.foot {
   background: var(--bg-soft);
   border-top: 1px solid var(--line);
-  padding: 64px 28px 36px;
+  padding: 64px 28px 28px;
+  overflow-x: clip;
 }
 .foot-inner {
   max-width: 1320px; margin: 0 auto;
@@ -836,30 +837,30 @@ footer.foot {
 .foot-col h5 {
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.12em;
+  color: var(--grey-2);
   text-transform: uppercase;
-  color: var(--grey);
-  font-weight: 600;
-  margin: 0 0 18px;
+  margin-bottom: 18px;
+  font-weight: 700;
 }
 .foot-col a {
   display: block;
-  font-size: 14.5px;
+  font-size: 14px;
   color: var(--ink-2);
-  margin-bottom: 10px;
+  padding: 6px 0;
   transition: color 120ms;
 }
-.foot-col a:hover { color: var(--ink); }
+.foot-col a:hover { color: var(--lime-deep); }
 .foot-bottom {
   max-width: 1320px; margin: 56px auto 0;
   padding-top: 24px;
   border-top: 1px solid var(--line);
   display: flex; justify-content: space-between;
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   color: var(--grey-2);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.06em;
+  font-weight: 500;
   flex-wrap: wrap; gap: 12px;
 }
 
