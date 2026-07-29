@@ -629,7 +629,7 @@
   --ink:       #F2F2EE;   /* primary text - off-white */
   --ink-2:     #BDBDBE;   /* secondary text - lifted for legibility */
   --grey:      #8C8C90;   /* mid grey */
-  --grey-2:    #6E6E72;   /* muted mono labels */
+  --grey-2:    #949498;   /* muted mono labels (AA on dark) */
   --lime:      #BCF125;
   --lime-deep: #A6D413;
   --lime-soft: #2A3E18;   /* dark green tint - visible against dark bg */
@@ -2548,6 +2548,12 @@ section.block.tight { padding: 80px 28px; }
 .calc-field input[type="range"]:focus::-moz-range-thumb {
   background: var(--lime-deep);
 }
+.calc-field input[type="range"]:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 2px var(--lime-deep), 0 0 0 5px var(--ink);
+}
+.calc-field input[type="range"]:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 2px var(--lime-deep), 0 0 0 5px var(--ink);
+}
 .calc-range-labels {
   display: flex; justify-content: space-between;
   margin-top: 6px;
@@ -2760,6 +2766,7 @@ footer.foot {
   background: var(--bg-soft);
   border-top: 1px solid var(--line);
   padding: 64px 28px 28px;
+  overflow-x: clip;
 }
 .foot-inner {
   max-width: 1320px; margin: 0 auto;
@@ -4209,7 +4216,7 @@ footer.foot {
 
 <!-- ─── ANIMATED CANVAS BACKGROUND (drifts everywhere, synthesis mode on home hero) ─── -->
 <canvas id="mb-bg" aria-hidden="true"></canvas>
-<script src="/menubase-bg.js" data-theme="dark" data-mode="synthesis" defer></script>
+<script src="/menubase-bg.js?v=20260719c" data-theme="dark" data-mode="synthesis" defer></script>
 
 <!-- ─── TOP RIBBON (logo + login) ─── -->
 <div class="top-ribbon">
@@ -4436,7 +4443,7 @@ footer.foot {
     </article>
     </div>
     <button class="rc-arrow rc-next" type="button" aria-label="下一个">&rsaquo;</button>
-    <div class="rc-dots" role="tablist" aria-label="问题导航">
+    <div class="rc-dots" role="group" aria-label="问题导航">
       <button class="rc-dot active" type="button" data-idx="0" aria-label="卡 1"></button>
       <button class="rc-dot" type="button" data-idx="1" aria-label="卡 2"></button>
       <button class="rc-dot" type="button" data-idx="2" aria-label="卡 3"></button>
@@ -4768,7 +4775,7 @@ footer.foot {
         </article>
       </div>
       <button class="rc-arrow rc-next" type="button" aria-label="下一张">&rsaquo;</button>
-      <div class="rc-dots" role="tablist" aria-label="卡片导航">
+      <div class="rc-dots" role="group" aria-label="卡片导航">
         <button class="rc-dot active" type="button" data-idx="0" aria-label="卡 1"></button>
         <button class="rc-dot" type="button" data-idx="1" aria-label="卡 2"></button>
         <button class="rc-dot" type="button" data-idx="2" aria-label="卡 3"></button>
@@ -4858,7 +4865,7 @@ footer.foot {
     </article>
     </div>
     <button class="rc-arrow rc-next" type="button" aria-label="下一句">&rsaquo;</button>
-    <div class="rc-dots" role="tablist" aria-label="评价导航"></div>
+    <div class="rc-dots" role="group" aria-label="评价导航"></div>
   </div>
 </section>
 
@@ -4965,7 +4972,7 @@ footer.foot {
 <!-- ─── PLAYBOOK STRIP (compact) ─── -->
 <section class="playbook-cta" id="playbook-teaser" style="padding:48px 24px;">
   <div class="reveal has-bg-scrim" style="max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;padding:28px 32px;border-radius:18px;">
-    <div style="flex:1;min-width:280px;">
+    <div style="flex:1;min-width:0;">
       <span class="eyebrow" style="display:inline-block;margin-bottom:8px;">F&amp;B 运营手册 &middot; 60+ 篇免费指南</span>
       <h3 style="font-family:var(--font-display);font-size:clamp(22px,3vw,28px);font-weight:800;letter-spacing:-0.015em;margin:0 0 6px;line-height:1.2;">真实运营者的疑问,直接给答案。</h3>
       <p style="font-size:14.5px;opacity:0.78;margin:0;line-height:1.5;">咖啡馆为何亏钱。如何提升客单价。Foodpanda 与 GrabFood。餐厅执照。清真认证。保险。CAPEX 与 OPEX。</p>
@@ -5650,8 +5657,8 @@ setTimeout(() => {
 </script>
 
 <!-- ─── INK SPOTLIGHT on both dark sections (Try it now + founding CTA) ─── -->
-<script src="/menubase-ink.js" data-target="#demo" defer></script>
-<script src="/menubase-ink.js" data-target=".cta-shell" defer></script>
+<script src="/menubase-ink.js?v=20260719c" data-target="#demo" defer></script>
+<script src="/menubase-ink.js?v=20260719c" data-target=".cta-shell" defer></script>
 
 
 
